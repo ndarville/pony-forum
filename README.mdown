@@ -2,6 +2,6 @@ Some of the problems with this code (and DotCloud):
 
 1. The `pip` installations seems to fail, most likely at PIL.
 2. I get an error, if I do not place an empty static folder in my root.
-3. mkadmin.py throws *some* kind of error, presumably one that has to do with my extension of the User model. I removed the line that runs it from `postinstall` for the time being.
+3. `mkadmin.py` throws *some* kind of error, presumably one that has to do with my extension of the User model. I removed the line that runs it from `postinstall` for the time being.
 
 And then there is the likely culprit of Python only being 2.6 on DotCloud. (...)
