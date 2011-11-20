@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Settings{% endblock %}
+
+{% block content %}
+<div id="content">
+    <p><a href="/user/{{ user.id }}/">View profile</a> |
+    <a href="/accounts/{{ user.username }}/edit/">Edit profile</a> |
+    <a href="/accounts/{{ user.username }}/password/">Change password</a> |
+    <a href="/accounts/{{ user.username }}/email/">Change e-mail</a></p>
+
+    <p>
+    <label for="avatar">Avatar</label>
+    <input type="file" name="avatar">
+    </p>
+
+    <p>
+    <label for="has_dyslexia">I have dyslexia</label>
+    <input type="checkbox" name="has_dyslexia">
+    </p>
+
+	<p>
+	<label for="autosubscribe">Automatically subscribe to threads I post in</label>
+	<input type="checkbox" name="autosubscribe">
+	</p>
+
+<!--
+    Formatting buttons
+-->
+    
+    <p><a href="#" class="js" id=""></a></p>
+</div>
+{% endblock %}
+{% block credits %}
+            <div id="credits">
+                <hr />
+                The forum is powered by <a href="http://pony-forum.com/">Pony Forum</a>, which was made by <a href="http://me.niclasdarville.com/">Niclas Darville</a>. Icons by <a href="http://glyphish.com/">Glyphish</a>.
+            </div>
+{% endblock %}
+{% block js %}
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/settings-js.js"></script>
+{% endblock %}

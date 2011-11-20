@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% if current_site.name != "example.com" %}{{ current_site.name }}{% else %}The Forum{% endif %}{% endblock %}</title>
+        <link rel="canonical" href="{% block canonical_url %}{{ full_url }}{% endblock %}" />
+        <link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico" />
+        <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/reset.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/style.css" />
+    {% if user.is_dyslexic %}
+        <link rel="stylesheet" type="text/css" media="all" href="/css/dyslexia.css" />
+    {% endif %}
+    {% block js %}{% endblock %}
+        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame. Will not validate. Disregard. Can be done in .htaccess instead. -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    </head>
+    <body>
+        <div id="container">
+{% block alert %}
+    {% if messages %}
+        {% for message in messages %}
+            <div id="alert"{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+{% block js-blocked-warning %}{% endblock %}
+            <div id="header"><a href="/" title="Return to home page">{% if current_site.name != "example.com" %}{{ current_site.name }}{% else %}Forum{% endif %}</a></div>
+            <div id="navigation">
+                <ul>
+                        <a class="screenreader-only" href="/">Return to home page</a>
+                    <!--
+                        http://webaim.org/techniques/css/invisiblecontent/
+                        <a class="screenreader-only" href="#board">Go to threads</a>
+                        <a class="screenreader-only" href="#content">Go to content</a>                      
+                    -->
+                    {% if user.is_authenticated %}
+                        <li><strong><a href="/user/{{ user.id }}/" title="Inspect your own user profile">{{ user.username }}</a></strong></li>
+                    {% if perms.report.use_report %}
+                        <li><a href="/reports/">Reports</a></li>
+                    {% endif %}
+                        <li><a href="/accounts/settings/" title="Change and check your settings">Settings</a></li>
+                        <li><a href="/bookmarks/" title="See your bookmarked threads">Bookmarks</a></li>
+                        <li><a href="/subscriptions/" title="View your subscriptions">Subscriptions</a></li>
+                        <li><a href="/pm/">Private Messages</a></li>
+                    {% if user.is_staff %}
+                        <li><a href="/admin/">Site Admin Controls</a></li>
+                    {% endif %}
+                        <li><a href="http://pony-forum.com/rules/">Rules</a></li>
+                        <li><a href="http://pony-forum.com/guide/">Guide</a></li>
+                        <li><a href="/search/">Search</a></li>
+                        <li><a href="/accounts/logout/">Log Out</a></li>
+                    {% else %}
+                        <li><strong><a href="/accounts/login/">Log In</a></strong></li>
+                        <li><a href="http://pony-forum.com/rules/">Rules</a></li>
+                        <li><a href="http://pony-forum.com/guide/">Guide</a></li>
+                        <li><a href="/search/">Search</a></li>
+                        <li><a href="/accounts/signup/" title="Create your own user on the site">Sign Up</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+{# banners #}
+{% block threadbar %}{% endblock %}
+{% block content %}{% endblock %}
+{% block credits %}
+            <div id="credits">
+                The forum is powered by <a href="http://pony-forum.com/">Pony Forum</a>, which was made by <a href="http://me.niclasdarville.com/">Niclas Darville</a>. Icons by <a href="http://glyphish.com/">Glyphish</a>.
+            </div>
+{% endblock %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}{{ thread.title_html|safe }}{% if thread.is_locked %}&nbsp;(LOCKED){% endif %}{% endblock %}
+{% block canonical_url %}{{ thread.get_absolute_url }}{% endblock %}
+{% block js-blocked-warning %}{% include "includes/js-blocked-warning.html" %}{% endblock %}
+{% block content %}
+            <div id="board">
+                <div id="breadcrumbs">
+                    <a href="/">Overview</a>&nbsp;&raquo;&nbsp;<a href="/category/{{ thread.category.id }}/">{{ thread.category.title_html|safe }}</a>&nbsp;&raquo;&nbsp;<a href="{{ thread.get_absolute_url }}">{{ thread.title_html|safe }}{% if thread.is_locked %}&nbsp;(LOCKED){% endif %}</a>
+                </div>
+        
+        <!--    <div class="pagination"></div> -->
+
+            {% if not thread.is_removed %}
+                <div id="thread-buttons-top">
+                {% if not thread.is_locked %}
+                    <a class="button" href="{{ thread.get_absolute_url }}reply">
+                    Reply</a>
+                    <a class="button" href="{{ thread.get_absolute_url }}report">Report</a>
+                {% else %}
+                    <a class="button" href="#">Locked</a>
+                {% endif %}
+                    <a class="button js" id="{{ thread.id }}" href="#">{% if thread in user.bookmarks.all %}Unbookmark{% else %}Bookmark{% endif %}</a>
+                    <a class="button js" id="{{ thread.id }}" href="#">{% if thread in user.subscriptions.all %}Unsubscribe{% else %}Subscribe{% endif %}</a>
+                </div>
+            {% endif %}
+
+                <div id="thread-mod-buttons-top">
+            {% if thread.is_removed and perms.forum.remove_thread %}
+                    <a class="button" href="{{ thread.get_absolute_url }}remove/">Restore</a>
+            {% else %}
+                {% if perms.forum.lock_thread %}
+                    <a class="button" href="{{ thread.get_absolute_url }}lock/">{% if thread.is_locked %}Unlock{% else %}Lock{% endif %}</a>
+                {% endif %}
+                {% if perms.forum.change_thread %}
+                    <a class="button" href="{{ thread.get_absolute_url }}moderate/">Moderate</a>
+                {% endif %}
+                {% if perms.forum.move_thread %}
+                    <a class="button" href="{{ thread.get_absolute_url }}move/">Move</a>
+                {% endif %}
+                {% if perms.forum.sticky_thread %}
+                    <a class="button" href="{{ thread.get_absolute_url }}sticky/">{% if thread.is_sticky %}Unsticky{% else %}Sticky{% endif %}</a>
+                {% endif %}
+                {% if perms.forum.merge_thread %}
+                    <a class="button" href="{{ thread.get_absolute_url }}merge/">Merge</a>
+                {% endif %}
+                {% if perms.forum.remove_thread %}
+                    <a class="button" href="{{ thread.get_absolute_url }}remove/">Remove</a>
+                {% endif %}
+            {% endif %}
+                <!-- appoint_threadmin -->
+                </div>
+
+            {% for post in posts %} <!-- exclude is_removed -->
+                {% include "includes/entries.html" %}
+            {% endfor %}
+
+                <div id="thread-mod-buttons-bottom">
+            {% if thread.is_removed and perms.forum.remove_thread %}
+                    <a class="button" href="{{ thread.get_absolute_url }}remove/">Restore</a>
+            {% else %}
+                {% if perms.forum.lock_thread %}
+                    <a class="button" href="{{ thread.get_absolute_url }}lock/">{% if thread.is_locked %}Unlock{% else %}Lock{% endif %}</a>
+                {% endif %}
+                {% if perms.forum.change_thread %}
+                    <a class="button" href="{{ thread.get_absolute_url }}moderate/">Moderate</a>
+                {% endif %}
+                {% if perms.forum.move_thread %}
+                    <a class="button" href="{{ thread.get_absolute_url }}move/">Move</a>
+                {% endif %}
+                {% if perms.forum.sticky_thread %}
+                    <a class="button" href="{{ thread.get_absolute_url }}sticky/">{% if thread.is_sticky %}Unsticky{% else %}Sticky{% endif %}</a>
+                {% endif %}
+                {% if perms.forum.merge_thread %}
+                    <a class="button" href="{{ thread.get_absolute_url }}merge/">Merge</a>
+                {% endif %}
+                {% if perms.forum.remove_thread %}
+                    <a class="button" href="{{ thread.get_absolute_url }}remove/">Remove</a>
+                {% endif %}
+            {% endif %}
+                <!-- appoint_threadmin -->
+                </div>
+
+            {% if not thread.is_removed %}
+                <div id="thread-buttons-bottom">
+                {% if not thread.is_locked %}
+                    <a class="button" href="{{ thread.get_absolute_url }}reply">
+                    Reply</a>
+                    <a class="button" href="{{ thread.get_absolute_url }}report">Report</a>
+                {% else %}
+                    <a class="button" href="#">Locked</a>
+                {% endif %}
+                    <a class="button js" id="{{ thread.id }}" href="#">{% if thread in user.bookmarks.all %}Unbookmark{% else %}Bookmark{% endif %}</a>
+                    <a class="button js" id="{{ thread.id }}" href="#">{% if thread in user.subscriptions.all %}Unsubscribe{% else %}Subscribe{% endif %}</a>
+                </div>
+            {% endif %}
+
+        <!--    <div class="pagination"></div> -->
+            </div>
+{% endblock %}
+{% block js %}
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/thread-js.js"></script>
+{% endblock %}

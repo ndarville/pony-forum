@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Your Subscriptions{% endblock %}
+{% block canonical_url %}/subscriptions{% endblock %}
+{% block threadbar %}
+            {% include "includes/threadbar.html" %}
+{% endblock %}
+{% block content %}
+            <div id="content">
+        {% if has_subs %}
+                <table class="subscriptions">
+            {% if updated_subs %}
+                {% for sub in updated_subs %}
+                    <tr>
+                        <td><a href="" title="">Title</a></td>
+                        <td><a href="" title="">Number of updates</a></td>
+                        <td><a title="Hide categories in the list" href="#">Unsubscribe</a></td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            {% if inactive_subs %}
+                {% for sub in inactive_subs %}
+                    <tr>
+                        <td><a href="" title="">Title</a></td>
+                        <td><a href="" title="">Number of updates</a></td>
+                        <td><a title="Hide categories in the list" href="#">Unsubscribe</a></td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+                </table>
+            </div>
+{% endblock %}
+{% block credits %}
+            <div id="credits">
+                <hr />
+                The forum is powered by <a href="http://pony-forum.com/">Pony Forum</a>, which was made by <a href="http://me.niclasdarville.com/">Niclas Darville</a>. Icons by <a href="http://glyphish.com/">Glyphish</a>.
+            </div>
+{% endblock %}
+{% block js %}
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/subscriptions-js.js"></script>
+{% endblock %}

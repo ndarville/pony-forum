@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block threadbar %}
+            {% include "includes/threadbar.html" %}
+{% endblock %}
+{% block content %}
+            <div id="content">
+                <table class="categories">
+                {% for category in categories %}    
+                    <tr>
+                        <th id="thread-category">Category</th>
+                        <th id="category-threads">Threads</th>
+                        <th id="posts-in-category">Posts</th>
+                        <th id="hide"></th>
+                    </tr>
+                    <tr>
+                        <td><a href="/category/{{ category.id }}/" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.title_html|safe }}</a></td>
+                        <td><a href="/category/{{ category.id }}/" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.thread_set.all.count }}</a></td>
+                        <td><a href="/category/{{ category.id }}/" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.post_count }}</a></td>
+                        <td><a title="Hide categories in the list" href="#">-</a></td>
+                    </tr>
+                {% endfor %}
+                </table>
+            {% if perms.forum.add_category %}
+                <a class="button" href="/category/add/">Add a new category</a>
+            {% endif %}
+            </div>
+{% endblock %}
+{% block credits %}
+            <div id="credits">
+                <hr />
+                The forum is powered by <a href="http://pony-forum.com/">Pony Forum</a>, which was made by <a href="http://me.niclasdarville.com/">Niclas Darville</a>. Icons by <a href="http://glyphish.com/">Glyphish</a>.
+            </div>
+{% endblock %}

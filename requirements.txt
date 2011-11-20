@@ -1,0 +1,16 @@
+### Pony-Forum
+
+Django
+PIL==1.1.7
+#
+elementtree==1.2.7-20070827-preview
+smartypants==1.6.0.3
+markdown==2.0.3
+bleach==1.1.0
+#
+django-userena==1.0.2
+#
+### MySQL-python==1.2.3
+### bcrypt
+### py-bcrypt
+### django-bcrypt==0.9.2

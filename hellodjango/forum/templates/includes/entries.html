@@ -1,0 +1,79 @@
+                <div class="post" id="{{ post.id }}">
+                    {% if post.author == post.thread.author %}
+                    <div class="op">
+                    {% else %}
+                    <div class="user">
+                    {% endif %}
+                        <span class="username">
+                            <a href="/user/{{ post.author.id }}/">{{ post.author.username }}</a>
+                        </span>
+
+                        <p class="user-title"></p>
+                    <!--
+                        <a class="avatar" href="/user/{{ post.author.id }}/">
+                            <img src="#" />
+                        </a>
+                    -->
+                        <p>Post{{ post.author.post_set.all|length|pluralize }}: {{ post.author.post_set.all.count }}</p>
+                    <!--
+                    {% if user.is_authenticated %}
+                        <p><a href="#">Send PM</a></p>
+                    {% endif %}
+                    -->
+                    </div>
+                    <div class="words">
+                        <div class="post-top">
+                            <span class="postdate">{{ post.relative_date }}</span>
+                            <!-- Anchor number borked -->
+                            <a class="anchor" href="/thread/{{ post.thread.id }}/#{{ post.id }}">#</a>
+                            <a class="permalink" title="View this post by itself at its own link" href="/post/{{ post.id }}/">&infin;</a>
+                            <a class="postsinthread" title="View all posts by the {{ post.author.username }} in this thread" href="/thread/{{ thread.id }}/author/{{ post.author.id }}/">&Phi;</a>
+                        </div>
+                        <div class="body">{{ post.content_html|safe }}</div>
+                    </div>
+                    <div class="post-bottom">
+                        <div class="right-buttons">
+                        {% if not post.thread.is_locked %}
+                            <a class="button" href="/thread/{{ post.thread.id }}/reply">Reply</a>
+                        {% endif %}
+                    {% if user.is_authenticated %}
+                        {% if user == post.author %}
+                            <a class="button" href="/post/{{ post.id }}/edit/">Edit</a>
+                        {% endif %}
+                        {% if user == post.author and forloop.first %}
+                            <a class="button" href="/thread/{{ thread.id }}/co-editor">Manage Co-Editors</a>
+                        {% endif %}
+                    {% endif %}
+                        </div>
+
+                        <div class="left-buttons">
+                            <a class="button js" id="{{ post.id }}" href="#">{% if post in user.saves.all %}Unsave{% else %}Save{% endif %}</a>
+                        {% if user != post.author %}
+                            <a class="button js" id="{{ post.id }}" href="#">{% if post in user.thanks.all %}Unthank{% else %}Thank{% endif %}</a>
+                            <a class="button js" id="{{ post.id }}" href="#">{% if post in user.agrees.all %}Unagree{% else %}Agree{% endif %}</a>
+                        {% endif %}
+                        {% if post.thanks.all %}
+                            <a class="button thanks" href="#">Thanked</a>
+                        {% endif %}
+                        {% if post.agrees.all %}
+                            <a class="button agrees" href="#">Has Agrees</a>
+                        {% endif %}
+                    {% if user != post.author %}
+                        {% if not post.thread.is_locked %}
+                            <a class="button" id="{{ post.id }}" href="{{ post.get_absolute_url }}report">Report</a>
+                        {% endif %}
+                    {% endif %}
+                        {% if perms.forum.remove_post %}
+                            <a class="button" href="{{ post.get_absolute_url }}remove">Remove</a>
+                        {% endif %}
+                        </div>
+
+                {# Three cases: 1) The first person 2) Everyone between 3) The last person #}
+                    {% if post.thanks.all %}
+                        <div class="thankers">Thanked by: <i>{% for person in post.thanks.all %}{% if forloop.first and not forloop.last %}<a href="/user/{{ person.id }}" title="See the people who have thanked the author for this post">{{ person.username }}</a>{% endif %}{% if not forloop.first and not forloop.last %}<a href="/user/{{ person.id }}" title="See the people who have thanked the author for this post">{{ person.username }}, </a>{% endif %}{% if forloop.last and not forloop.first %}and <a href="/user/{{ person.id }}" title="See the people who have thanked the author for this post">{{ person.username }}</a>{% endif %}<a href="/user/{{ person.id }}" title="See the people who have thanked the author for this post">{{ person.username }}</a>{% endfor %}.</i></div>
+                    {% endif %}
+                    {% if post.agrees.all %}
+                        <div class="agreeers">These people agree: <i>{% for person in post.thanks.all %}{% if forloop.first and not forloop.last %}<a href="/user/{{ person.id }}" title="See the people who agreed with this post">{{ person.username }}</a>{% endif %}{% if not forloop.first and not forloop.last %}<a href="/user/{{ person.id }}" title="See the people who agreed with this post">{{ person.username }}, </a>{% endif %}{% if forloop.last and not forloop.first %}and <a href="/user/{{ person.id }}" title="See the people who agreed with this post">{{ person.username }}</a>{% endif %}<a href="/user/{{ person.id }}" title="See the people who agreed with this post">{{ person.username }}</a>{% endfor %}.</i></div>
+                    {% endif %}
+                    </div>
+                </div>

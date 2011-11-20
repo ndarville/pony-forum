@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+{% block content %}
+            <div id="content">
+                <form action="/register/" method="post">
+                    {% csrf_token %}
+                    <label for="username">Username: </label><input type="text" name="username" id="username" placeholder="Enter a unique username" autofocus required><br />
+                    <label for="email">E-mail: </label><input type="email" name="email" id="email" required><br />
+                    <label for="email-verification">Verify e-mail: </label><input type="email" name="email-verification" id="email-verification placeholder="Enter the e-mail again" required><br />
+                    <label for="password">Password: </label><input type="password" name="password" id="password" required><br />
+                    <label for="password-verification">Verify password: </label><input type="password" name="password-verification" id="password-verification" placeholder="Enter the password again" required><br />
+                    <input type="submit" value="Submit"><br />
+                </form>
+            </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+            <div id="threadbar">
+            {% if subs %}
+                <div id="subscribed">
+                <span class="threadsort">Subscribed Threads</span>
+                    <ul>      
+                    {% for sub in subs %}
+                        <li><a href="/thread/{{ sub.id }}/" title="View the posts in the thread &ldquo;{{ sub.title_html|safe }}&rdquo;">{{ sub.title_html|safe }}</a>{% if update %} <span class="updates">{{ update.count }}</span></a>{% endif %}</li>
+                    {% endfor %}                 
+                    </ul>
+                </div>
+            {% endif %}
+                <div id="recent">
+                <span class="threadsort">New Threads</span>
+                    <ul>
+                    {% for thread in new_threads %}
+                        <li><a href="/thread/{{ thread.id }}/" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.title_html|safe }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            <!--
+                <div id="popular">
+                <span class="threadsort">Popular Threads</span>
+                    <ul>
+                        <li><a href="#">Recommend a Movie</span></a></li>
+                    </ul>
+                </div>
+            -->
+            </div>

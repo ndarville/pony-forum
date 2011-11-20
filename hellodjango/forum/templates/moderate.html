@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ thread.title_html|safe }}: Moderate Thread{% endblock %}
+{% block canonical_url %}{{ thread.get_absolute_url }}moderate/{% endblock %}
+{% block content %}
+            <div id="board">
+                <div id="breadcrumbs">
+                    <a href="/">Overview</a>&nbsp;&raquo;&nbsp;<a href="/category/{{ thread.category.id }}/">{{ thread.category.title_html|safe }}</a>&nbsp;&raquo;&nbsp;<a href="/thread/{{ thread.id }}/">{{ thread.title_html|safe }}</a>
+                </div>
+
+                {% if has_long_title %}
+                    Your chosen title was too long. Keep it under characters.
+                {% endif %}
+
+                <form action="{{ thread.get_absolute_url }}moderate/" method="post" id="reply" name="reply-form">
+                    {% csrf_token %}
+                    <input type="text" name="title" id="title-form" value="{{ title }}" placeholder="Put your title here (in capital letters). Keep it less than eighty characters, and be descriptive." required />
+                    
+                    <input type="submit" name="moderate" id="submit" value="Moderate" />
+                </form>
+            </div>
+{% endblock %}

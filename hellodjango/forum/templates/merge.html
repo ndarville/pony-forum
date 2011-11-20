@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}{{ thread.title_html|safe }}: Merge Threads{% endblock %}
+{% block canonical_url %}{{ thread.get_absolute_url }}merge/{% endblock %}
+{% block content %}
+            <div id="board">
+                <div id="breadcrumbs">
+                    <a href="/">Overview</a>&nbsp;&raquo;&nbsp;<a href="/category/{{ thread.category.id }}/">{{ thread.category.title_html|safe }}</a>&nbsp;&raquo;&nbsp;<a href="/thread/{{ thread.id }}/">{{ thread.title_html|safe }}</a>
+                </div>
+
+            {% if has_long_title %}
+                <p>Your chosen title was too long. Keep it under {{ max_title_length }} characters.</p>
+            {% endif %}
+
+            {% if not other_thread and not has_long_title %}
+                <form action="{{ thread.get_absolute_url }}merge/" method="post" id="reply" name="reply-form">
+                    {% csrf_token %}
+
+                    <input type="number" name="other-thread-id" id="id-form" value="{% if other_thread %}{{ other_thread.id }}{% endif %}" min="1" step="1" placeholder="Enter the ID of the other thread." required />
+
+                    <input type="text" name="new-thread-title" id="title-form" value="{{ new_title }}" placeholder="Put your title here (in capital letters). Keep it less than eighty characters, and be descriptive." required />
+                    
+                    <input type="submit" name="merge" id="submit" value="Merge" />
+                </form>
+            {% else %}
+                <form action="{{ thread.get_absolute_url }}merge/" method="post" id="reply" name="reply-form">
+                    {% csrf_token %}
+
+                    <p>Are you sure, you want to merge these threads:</p>
+                    <ul>
+                        <li><i>{{ thread.title_html|safe }}</i></li>
+                        <li><i>{{ other_thread.title_html|safe }}</i></li>
+                    </ul>
+                    <p>Merging them will show the posts in both in chronological order in one single thread named <i>{{ new_title_html|safe }}</i>.</p>
+                    
+                    <input type="submit" name="confirm" id="submit" value="Yes, merge them" />
+                    <input type="submit" name="cancel" id="submit" value="Cancel" />
+
+                    <input type="hidden" name="other-thread-id" value="{{ other_thread.id }}" />
+                    <input type="hidden" name="new-thread-title" value="{{ new_title }}" />
+                </form>
+            {% endif %}
+            </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+18:						E-mail notification
+30:						Log in
+40:						PMs
+54:						Log out
+58+28:					Bookmark
+78:						Timeout
+81+53:					Home/Dashboard
+90:						Report thread
+110:					Report bug
+112+111:				Buddy/Ignore
+121:					Insert photo
+123+111:				Profile
+146:					Ban
+158+157+106+95+20+19:	Settings
+179: 					Notepad(?)
+184: 					Warning
+185: 					Print
+187: 					Edit
+191:					Bookmarks
+
+Bookmarks
+Settings
+Profile
+Login/Logout
+
+Subscriptions
+Register

@@ -1,0 +1,794 @@
+html {
+/** cf. hicksdesign.co.uk/journal/forcing-scrollbars-now-even-better cf. Gruber */
+	height: 100%;
+	margin-bottom: 1px;
+}
+
+body,
+textarea {
+	font: 14px/1.5em Helvetica, "Helvetica Neue", sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:visited {
+	color: inherit;
+}
+
+code {
+	background-color: #ffa;
+}
+
+table {
+	margin-bottom: 1em; /** Recalculate */
+}
+
+#container {
+	width: 960px;
+	margin: 1.5em auto;
+}
+
+#alert,
+#js-blocked-warning {
+	width: 100%;
+	text-align: center;
+	font-family: Georgia;
+}
+
+#alert.info {
+	background: lightblue;
+}
+
+#alert.error,
+#js-blocked-warning {
+	background: #EE3B3B;
+}
+
+/** All side panels */
+#header,
+#navigation,
+#board,
+#recent,
+#subscribed,
+#popular,
+#content table.categories,
+#content table.threads { 
+	-moz-box-shadow: 1px 1px 5px #888;
+	-webkit-box-shadow: 1px 1px 5px #888;
+    box-shadow: 1px 1px 5px #888;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    /**
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    */
+    /**
+    border-top: 1px solid #bbb; border-left: 1px solid #bbb;
+    border-right: 1px solid #888; border-bottom: 1px solid #888;
+    */
+}
+
+#alert,
+#js-blocked-warning,
+#header,
+#navigation,
+#recent,
+#subscribed,
+#popular,
+#content,
+#breadcrumbs
+#credits {
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, .5);
+}
+
+#header {
+	font: 1.5em/2.25em "Palatino Linotype", Georgia;
+	width: 450px;
+	margin: 15px auto 0;
+	clear: both;
+	background-color: #ff9;
+	text-align: center;
+}
+
+#navigation {
+	width: 210px;
+	float: left;
+	margin: 1.5em 15px;
+	background: lightgreen;
+}
+
+#navigation li {
+	padding-left: 10px;
+}
+
+/*
+#navigation li:hover {
+	color: #3985a8;
+	text-shadow: 0 1px #fff;
+	background: #ddeef6;
+	box-shadow: inset 0 1px 3px #fff, 
+				inset 0 -15px #cbe6f2,
+				0 0 3px #8ec1da;
+	-webkit-box-shadow: inset 0 1px 3px #fff, inset 0 -15px #cbe6f2, 0 0 3px #8ec1da;
+	-moz-box-shadow: inset 0 1px 3px #fff, inset 0 -15px #cbe6f2, 0 0 3px #8ec1da;
+}
+*/
+
+#navigation li a {
+	display: block;
+	padding: 5px 0 5px 35px;
+}
+
+#navigation li a[href*="/user/"] {
+	background: url(/static/glyphish/123-id-card.png) no-repeat left;
+}
+
+#navigation li a[href$="/reports/"] {
+	background: url(/static/glyphish/146-gavel.png) no-repeat left;
+}
+
+#navigation li a[href$="/settings/"] {
+	background: url(/static/glyphish/20-gear2.png) no-repeat left;
+}
+
+#navigation li a[href$="/bookmarks/"] {
+	background: url(/static/glyphish/191-collection.png) no-repeat left;
+}
+
+#navigation li a[href$="/subscriptions/"] {
+	background: url(/static/glyphish/44-shoebox.png) no-repeat left;
+}
+
+#navigation li a[href$="/pm/"] {
+	background: url(/static/glyphish/18-envelope.png) no-repeat left;
+}
+
+#navigation li a[href$="/admin/"] {
+	background: url(/static/glyphish/158-wrench-2.png) no-repeat left;
+}
+
+#navigation li a[href="http://pony-forum.com/rules/"] {
+	background: url(/static/glyphish/138-scales.png) no-repeat left;
+}
+
+#navigation li a[href$="/rules/"] {
+	background: url(/static/glyphish/138-scales.png) no-repeat left;
+}
+
+#navigation li a[href="http://pony-forum.com/guide/"] {
+	background: url(/static/glyphish/96-book.png) no-repeat left;
+}
+
+#navigation li a[href$="/guide/"] {
+	background: url(/static/glyphish/96-book.png) no-repeat left;
+}
+
+
+#navigation li a[href$="/search/"] {
+	background: url(/static/glyphish/06-magnify.png) no-repeat left;
+}
+
+#navigation li a[href$="/logout/"] {
+	background: url(/static/glyphish/54-lock.png) no-repeat left;
+}
+
+#navigation li a[href$="/login/"] {
+	background: url(/static/glyphish/30-key.png) no-repeat left;
+}
+
+#navigation li a[href$="/signup/"] {
+	background: url(/static/glyphish/111-user.png) no-repeat left;
+}
+
+#navigation li,
+#threadbar li {
+	list-style: none;
+}
+
+#subscribed,
+#recent {
+	margin-bottom: 1em; /** Recalculate */
+}
+
+#subscribed {
+	background: beige;
+}
+
+#popular {
+	background: pink;
+}
+/** */
+
+#content a.button,
+#thread-buttons-top a.button,
+#thread-buttons-bottom a.button,
+#thread-mod-buttons-top a.button,
+#thread-mod-buttons-bottom a.button,
+input[type="submit"] {
+    color: #484848;
+    font: bold 12px monospace, sans-serif;
+    /** Modified */
+    line-height: 25px; height: 25px; 
+    text-shadow: 0 1px 0 #fff;
+    background: #f0f0f0;
+    background: -webkit-linear-gradient(top, #f7f7f7, #d1d1d1);
+    background: -moz-linear-gradient(top, #f7f7f7, #d1d1d1);
+    background: -ms-linear-gradient(top, #f7f7f7, #d1d1d1);
+    background: -o-linear-gradient(top, #f7f7f7, #d1d1d1);
+    border: solid 1px #7f7f7f;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+	-moz-box-shadow: 1px 1px 5px #888;
+	-webkit-box-shadow: 1px 1px 5px #888;
+    box-shadow: 1px 1px 5px #888;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=90, Color='#ffffff')";
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=90, Color='#ffffff');
+    -webkit-transition: border-color .218s;
+    -moz-transition: border .218s;
+    -o-transition: border-color .218s;
+    transition: border-color .218s;
+    display: block;
+    padding: 0 10px;
+}
+
+#content a.button:hover,
+#thread-buttons-top a.button:hover,
+#thread-buttons-bottom a.button:hover,
+#thread-mod-buttons-top a.button:hover,
+#thread-mod-buttons-bottom a.button:hover,
+input[type="submit"]:hover {
+    border: solid 1px #333;
+    color: #282828;
+    background: -webkit-linear-gradient(top, #ffffff, #dfdfdf);
+    background: -moz-linear-gradient(top, #ffffff, #dfdfdf);
+    background: -ms-linear-gradient(top, #ffffff, #dfdfdf);
+    background: -o-linear-gradient(top, #ffffff, #dfdfdf);
+}
+
+#content a.button:active,
+#thread-buttons-top a.button:active,
+#thread-buttons-bottom a.button:active,
+#thread-mod-buttons-top a.button:active,
+#thread-mod-buttons-bottom a.button:active,
+input[type="submit"]:active {
+    border: solid 1px #7f7f7f;
+    background: #d0d0d0;
+    background: -webkit-gradient(linear, left top, left bottom, 
+	    			from(#a8a8a8), color-stop(0.15, #c6c6c6), to(#d8d8d8));
+    background: -webkit-linear-gradient(top, #a8a8a8, #c6c6c6 15%, #d8d8d8);
+    background: -moz-linear-gradient(top, #a8a8a8, #c6c6c6 15%, #d8d8d8);
+    background: -ms-linear-gradient(top, #a8a8a8, #c6c6c6 15%, #d8d8d8);
+    background: -o-linear-gradient(top, #a8a8a8, #c6c6c6 15%, #d8d8d8);
+}
+
+.screenreader-only {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.sticky { background: pink; }
+
+/****		   *****
+***** ACCOUNTS ****/
+form p.checkbox { }
+form p.checkbox label {
+	width: 90%;
+}
+
+label {
+	cursor: pointer;
+	float: left;
+	width: 45%;
+}
+
+legend {
+	display: none;
+}
+/**** * ****/
+
+
+/****		  *****
+***** PROFILE *****
+*****		  ****/
+.info {
+	font-weight: bold;
+	float: left;
+	width: 5em;
+}
+
+#latest-posts {
+	float: left;
+	clear: both;
+	margin-top: 3em;
+}
+
+#latest-posts a,
+#profile-information a,
+#profile-interaction a {
+	text-decoration: underline;
+}
+
+#profile-information { float: left;  width: 50%; }
+#profile-interaction { float: right; width: 50%; }
+/**** * ****/
+
+/****		  *****
+***** REPORTS *****
+*****		  ****/
+
+.report {
+	margin-bottom: 1.5em;
+}
+
+.report-top {
+	background: orange;
+	clear: both;
+}
+
+.report-date {
+	display: block;
+}
+
+.report-link { /** Rewrite */
+	float: right;
+	display: block;
+}
+
+.report-link a {
+	text-decoration: underline;
+}
+
+#content .report table {
+	width: 50% !important;
+	margin-left: auto; margin-right: auto;
+}
+
+.report th {
+	text-align: left;
+}
+
+/**** * ****/
+
+/****		  *****
+***** THREADS *****
+*****		  ****/
+#content {
+	width: 450px;
+	margin: 1.5em 15px;
+	float: left;
+}
+
+#content table {
+	width: 100%;
+	border-collapse: separate; /** Allows round corners
+	cf. http://vamin.net/examples/rounded_tables2.html */
+}
+
+#content a.button {
+	display: inline; /** Fixes the width: 100% button problem. Revise */
+	padding: 5px 5px;
+}
+
+/** Problematic
+th#thread-category:first-child,
+th#category-title {
+	-moz-border-top-left-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
+th#posts-in-category,
+th#latest-post {
+	-moz-border-top-right-radius: 5px !important;
+	-webkit-border-top-right-radius: 5px;
+	border-top-right-radius: 5px;
+}
+*/
+
+#content .categories thead,
+#content .threads thead,
+#threadbar thead,
+#content .categories th,
+#content .threads th,
+#threadbar th {
+	background: grey;
+	font-weight: bold;
+	text-align: left;
+}
+
+#content tr:hover,
+#threadbar tr:hover,
+#threadbar li:hover,
+#navigation li:hover {
+	background-color: yellow;
+}
+
+#content table.hide {
+	font: 0.6em/1.2em Consolas, monospace;
+}
+/**** * ****/
+
+/****			*****
+***** HOME.html *****
+*****			****/
+#threadbar {
+	width: 210px;
+	float: right;
+	margin: 1.5em 15px;
+}
+
+#threadbar li a {
+	position: relative;
+	display: block;
+	padding: 5px 3em 5px 10px;
+/**	margin: 0.5em 0 0.5em 0;*/
+}
+
+.threadsort {
+	background-color: grey;
+	font-weight: bold;
+	display: block;
+	padding: 5px 0;
+	text-align: center;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	-moz-border-top-left-radius: 5px;
+	-moz-border-top-right-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+}
+
+#recent {
+	background: lightblue;
+}
+
+td,
+th {
+	padding: 5px;
+}
+
+.updates {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	color: pink;
+}
+
+/*
+table, td, tr {
+	border-collapse: separate; Allows rounded corners. cf. http://vamin.net/examples/rounded_tables.html, http://vamin.net/examples/rounded_tables2.html, http://stackoverflow.com/questions/628301/css3s-border-radius-property-and-border-collapsecollapse-dont-mix-how-can-i-u#635863 
+}
+*/
+
+/**
+span#error {
+	font-family: Vollkorn, 'Palatino Linotype', Georgia;
+	font-size: 4em;
+}
+*/
+/**** * ****/
+
+/****						 *****
+***** THREAD & POST template *****
+*****						 ****/
+#board {
+	background-color: yellow;
+	width: 680px;
+	float: left;
+	margin: 1.5em 15px;
+}
+
+#breadcrumbs {
+	margin-bottom: 1.5em; /** Recalcuate. Depends on button size */
+	padding: 10px;
+}
+
+.post {
+	background-color: beige;
+	padding: 0 10px;
+	clear: both;
+}
+
+#thread-buttons-top,
+#thread-mod-buttons-top {
+	margin-bottom: 4em;	/** Recalcuate. Depends on button size */
+}
+
+#thread-buttons-bottom,
+#thread-mod-buttons-bottom {
+	margin-top: 3em;	/** Recalcuate. Depends on button size */
+}
+
+#thread-buttons-top,
+#thread-buttons-bottom,
+#thread-mod-buttons-top,
+#thread-mod-buttons-bottom {
+	padding: 0 10px;
+}
+
+#thread-buttons-top,
+#thread-buttons-bottom,
+#thread-mod-buttons-top,
+#thread-mod-buttons-bottom,
+.post-top {
+	clear: both;
+	background-color: orange;
+}
+
+.postdate {
+	font-size: 0.85em;
+}
+
+.postsinthread,
+.permalink,
+.anchor {
+	float: right;
+	margin-left: 1em;
+	font-family: Georgia;
+}
+
+/**
+.avatar {
+
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border: 2px solid orange;
+	width: 100px; height: auto;
+}
+*/
+
+.username {
+	font-weight: bold;
+}
+
+.user,
+.op {
+	float: left;
+	width: 100px; /** Recalculate */
+}
+
+.op .username {
+	color: blue;
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.body a,
+#preview a,
+#example a,
+#markdown a {
+	text-decoration: underline;
+}
+
+.body p:first-child {
+	margin-top: 0;
+}
+
+.words {
+	float: right;
+	width: 550px; /** Recalculate */
+}
+
+.words p, #example p,
+blockquote, .words blockquote, #example blockquote {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+blockquote, .words blockquote, #example blockquote {
+	padding-left: 10px;
+	border-left: 1px solid #444;
+	margin-left: 1px; /** To counter the 1px border above */
+}
+
+.post-bottom {
+	clear: both;
+	background-color: pink;
+}
+
+#thread-buttons-top a.button,
+#thread-buttons-bottom a.button,
+#thread-mod-buttons-top a.button,
+#thread-mod-buttons-bottom a.button,
+.post-bottom .right-buttons a.button {
+	float: right;
+	margin-left: 10px;
+}
+
+.post-bottom .left-buttons a.button {
+	float: left;
+	margin-right: 10px;
+}
+
+.post-bottom .left-buttons,
+.post-bottom .agreeers,
+.post-bottom .thankers {
+	margin-left: 110px; /** Recalculate */
+}
+
+.agreeers,
+.thankers {
+	display: none; /** Shown on-click by jQuery */
+	clear: both;
+	margin-top: 1em; /** Does not work */
+}
+
+.agreeers li,
+.thankers li {
+	list-style: none;
+}
+/** * **/
+
+.body {
+	font-family: Georgia;
+}
+
+.body table, #example table {
+	font: 0.9em/1.35em Consolas, Inconsolata, monospace;
+	border: 1px solid black;
+	width: 90%;
+	margin: 0 auto 1.5em; /** Recalculate */
+}
+
+.body tr:hover,
+.body thead:hover {
+	background-color: pink;
+}
+
+.body th:hover,
+.body td:hover {
+	background-color: yellow;
+}
+
+/** Check that CSS doesn't break this in other browsers
+nor with different rules */
+.spoiler {
+	background-color: black;
+	color: black;
+}
+
+.spoiler:hover {
+	color: grey;
+}
+/**** * ****/
+
+/****					   *****
+***** CREATE, REPLY & EDIT *****
+*****			   		   ****/
+input[type=email],
+/**
+input[type=file],
+*/
+input[type=password],
+input[type=text],
+textarea,
+#title-form,
+#id-form { 
+	border: none;
+	/**
+	border-right: 1px solid yellow;
+	border-bottom: 1px solid yellow;
+	*/
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	box-shadow: inset 1px 1px 5px #888;
+	-moz-box-shadow: inset 1px 1px 5px #888;
+	-webkit-box-shadow: inset 1px 1px 5px #888;
+    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;	/** May not work for IE7- */
+}
+
+input[type=email],
+/**
+input[type=file],
+*/
+input[type=password],
+input[type=text],
+textarea,
+#title-form,
+#id-form {
+	padding: 5px;
+    font-size: 0.9em; line-height: 1.35em;
+/** border: 1px solid #F5F5DC; */
+}
+
+/**
+input[type=email]:focus,
+input[type=file]:focus,
+input[type=password]:focus,
+input[type=text]:focus,
+textarea:focus,
+#title-form:focus,
+#id-form:focus {
+	border: 1px solid black;
+}
+*/
+
+#id-form {
+	width: 35%;
+	display: block;
+	margin: 1em auto;
+	text-align: center;
+}
+
+/** For special button design */
+input[type=submit] {
+	display: inline;
+	margin-right: 5px;
+}
+
+#example {
+	background-color: white;
+}
+
+#reply {
+	margin: 1.5em auto;
+}
+
+textarea,
+#title-form,
+#markdown,
+#example {
+	width: 90%;
+	display: block;
+	margin: 0 auto 1.5em;
+}
+
+#submit,
+#markdown {
+	margin-left: 2.5em;
+}
+
+#markdown {
+	background-color: pink;
+	font-family: "Palatino Linotype", sans-serif;
+}
+
+#markdown blockquote {
+	border-left: 2px solid #000;
+	padding-left: 5px;
+}
+
+#markdown ol,
+#markdown ul {
+	margin-left: 1.5em;
+}
+
+#markdown table {
+	width: 100%;
+}
+
+#markdown th,
+#markdown td {
+	border: 1px solid #000;
+}
+/**** * ****/
+
+/****		  *****
+***** CREDITS *****
+*****		  ****/
+#credits {
+	font: 0.6em/0.9em "Georgia";
+	width: 450px;
+	margin: 1.5em auto; /** Recalculate */
+	text-align: center;
+	clear: both;
+}
+
+/** error in reports */
+
+#credits a {
+	text-decoration: underline;
+}
+/**** * ****/

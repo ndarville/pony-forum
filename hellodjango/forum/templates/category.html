@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Threads in &ldquo;{{ category.title_html|safe }}&rdquo;{% endblock %}
+{% block canonical_url %}{{ category.get_absolute_url }}{% endblock %}
+{% block content %}
+            <div id="content"> 
+                <table class="threads">
+                    <!-- IDs improve screenreaders' experience -->
+                    <tr>
+                        <th id="category-title">{{ category.title_html|safe }}</th>
+                        <th id="post-quantity">Posts</th>
+                        <th id="latest-post">Latest Post</th>
+                        <th id="hide"></th>
+                    </tr>
+                {% for sticky in stickies %}
+                    <tr class="sticky">
+                        <td><a href="{{ sticky.get_absolute_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.title_html|safe }}</a></td>
+                        <td><a href="{{ sticky.get_absolute_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.post_set.all.count }}</a></td>
+                        <td><a href="{{ sticky.get_absolute_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.relative_date }}</a></td>
+                        <td><a title="Hide categories in the list" href="#">-</a></td>
+                    </tr>
+                {% endfor %}
+                {% for thread in threads %}
+                    <tr>
+                        <td><a href="{{ thread.get_absolute_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.title_html|safe }}</a></td>
+                        <td><a href="{{ thread.get_absolute_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.post_set.all.count }}</a></td>
+                        <td><a href="{{ thread.get_absolute_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.relative_date }}</a></td>
+                        <td><a title="Hide categories in the list" href="#">-</a></td>
+                    </tr>
+                {% endfor %}
+                </table>
+                
+            {% if perms.forum.create_category %}
+                <a class="button" href="{{ category.get_absolute_url }}create/">Create new thread</a>
+            {% endif %}
+            </div> 
+{% endblock %}

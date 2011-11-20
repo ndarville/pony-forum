@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Log in{% endblock %}
+{% block content %}
+            <div id="content">
+                <form action="/login/" method="post">
+                    {% csrf_token %}
+                    <label for="username">Username: </label><input type="text" name="username" id="username" autofocus required><br />
+                    <label for="password">Password: </label><input type="password" name="password" id="password" required><br />
+                    <input type="submit" value="Submit"><br />
+
+                    <label for="remember-password">Remember password?</label><input type="checkbox" id="remember-password">
+                </form>
+
+                <p><a href="#">Forgot your password?</a></p>
+            </div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}User Profile for {{ person.username }}{% endblock %}
+
+{% block content %}
+<div id="content">
+    <div id="profile-interaction">
+{% if person != user %}
+        <p><a href="#">Send PM</a></p>
+    {% if person in user.get_profile.follows.all %}
+        <p><a href="#" class="js" id="{{ person.id }}">Unfollow user</a></p>
+    {% else %}
+        <p><a href="#" class="js" id="{{ person.id }}">Follow user</a></p>
+    {% endif %}
+    {% if person in user.get_profile.ignores.all %}
+        <p><a href="#" class="js" id="{{ person.id }}">Remove user from shit list</a></p>
+    {% else %}
+        <p><a href="#" class="js" id="{{ person.id }}">Add user to shit list</a></p>
+    {% endif %}
+
+    {# if forum.perms.ban_user #}
+    {#  <p>Ban user</p> #}
+    {# endif #}
+    {# if forum.perms.probate_user #}
+    {#   <p>Probate user</p> #}
+    {# endif #}
+{% else %}
+        <p><a href="/accounts/settings/">Manage your settings</a></p>
+{% endif %}
+    </div>
+
+{% with post_count=person.post_set.all.count %}
+{% with thread_count=person.thread_set.all.count %}
+    <div id="profile-information">
+        <p><span class="info">Name:</span> {{ person.username }}</p>
+        <p><span class="info">Joined:</span> {{ person.date_joined|timesince }} ago</p>
+        <p><span class="info">Post{{ post_count|pluralize }}:</span> <a title="View list of replies by {{ person.username }}" href="/user/{{ person.id }}/posts/">{{ post_count }}</a></p>
+        <p><span class="info">Thread{{ thread_count|pluralize }}:</span> <a title="View list of threads by {{ person.username }}" href="/user/{{ person.id }}/threads/">{{ thread_count }}</a></p>
+    </div>
+
+    <div id="latest-posts">
+    {% if post_count > 0 %}
+        <strong>Ten latest posts:</strong>
+        <ul>
+        {% for post in posts %}
+            <li><a href="{{ post.thread.get_absolute_url }}#{{ post.id }}">{{ post.thread.title_html|safe }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <strong>{{ person.username }} has not written any posts yet.
+    {% endif %}
+    </div>
+{% endwith %}
+{% endwith %}
+</div>
+{% endblock %}
+{% block credits %}
+            <div id="credits">
+                <hr />
+                The forum is powered by <a href="http://pony-forum.com/">Pony Forum</a>, which was made by <a href="http://me.niclasdarville.com/">Niclas Darville</a>. Icons by <a href="http://glyphish.com/">Glyphish</a>.
+            </div>
+{% endblock %}
+{% block js %}
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/user-js.js"></script>
+{% endblock %}

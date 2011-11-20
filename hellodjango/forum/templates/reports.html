@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% load markup %}
+{% block title %}Reports{% endblock %}
+{% block canonical_url %}/reports/{% endblock %}
+{% block content %}
+            <div id="content">
+            {% for report in reports %}
+            {% if report.post and request.user != report.post.author or report.thread %}
+                <div class="report">
+                    <div class="report-top">
+                        <span class="report-date">Submitted {{ report.relative_date }}</span>
+                        <span class="report-link">(<a href="{% if report.post %}{{ report.post.get_absolute_url }}{% else %}{{ report.thread.get_absolute_url }}{% endif %}">Link</a>)</span>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Type:</th>
+                            <td>{% if report.post %}Post{% else %}Thread{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Thread:</th>
+                            <td><a href="/thread/{{ report.thread.id }}/">{{ report.thread.title_html|safe }}</a></td>
+                        </tr>
+                        <tr>
+                            <th>Category:</th>
+                            <td><a href="/category/{{ report.thread.category.id }}/">{{ report.thread.category.title_html|safe }}</a></td>
+                        </tr>
+                        <tr>
+                            <th>Author:</th>
+                            <td>{% if report.post %}<a href="/user/{{ report.post.author.id }}/">{{ report.post.author }}</a>{% else %}<a href="/user/{{ report.thread.author.id }}/">{{ report.thread.author }}</a>{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Submitted by:</th> <td><a href="/user/{{ report.author.id }}">{{ report.author }}</a></td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Reason:</strong> &ldquo;{{ report.reason_short }}&rdquo;</p>
+                {% if report.reason_long %}
+                    <p><strong>Elaboration:</strong></p>
+                    <blockquote>{{ report.reason_long|markdown:"tables, nl2br, video" }}</blockquote>
+                {% endif %}
+
+                <form action="/reports/" method="post" id="reply" name="reply-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="report-id" value="{{ report.id }}" />
+                    <input type="submit" name="dismiss"  value="Dismiss" />
+                </form>
+                </div>
+            {% endif %}
+            {% endfor %}
+            </div>
+{% endblock %}
