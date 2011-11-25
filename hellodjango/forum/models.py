@@ -1,7 +1,7 @@
 from datetime                   import datetime
 
-from django.contrib.auth.models	import User
-from django.db					import models
+from django.contrib.auth.models import User
+from django.db                  import models
 from django.db.models.signals   import post_save
 
 from userena.models             import UserenaBaseProfile
@@ -78,7 +78,7 @@ class Category(models.Model):
     title_html  = models.TextField()
     #: the sequential placement of categories in the "home"
 #   position = models.AutoField(unique=True)
-	#: M2M user who has chosen to hide the category in the home view
+    #: M2M user who has chosen to hide the category in the home view
 #   hider = models.ManyToManyField(User, null=True, blank=True
 #                                      related_name="hidden_categories")
 #    moderators
@@ -93,7 +93,7 @@ class Category(models.Model):
         )
 
     def __unicode__(self):
-        return self.title
+        return self.title_plain
 
     def get_absolute_url(self):
         return "/category/%i/" % self.id
@@ -138,7 +138,7 @@ class Thread(models.Model):
         )
 
     def __unicode__(self):
-        return self.title
+        return self.title_plain
 
     def get_absolute_url(self):
         return "/thread/%i/" % self.id
@@ -196,7 +196,7 @@ class Subscription(models.Model):
     last_read_post = models.ManyToManyField(Post, related_name="latest_read_post")
 
     def __unicode__(self):
-        return u"%s's subscription of %s" % (self.subscriber, self.thread.title)
+        return u"%s's subscription of %s" % (self.subscriber, self.thread.title_plain)
 
 
 class Report(models.Model):
@@ -233,7 +233,7 @@ class UserProfile(UserenaBaseProfile):
     """Extends the default User model.
 
     Remember to change your AUTH_PROFILE_MODULE to
-    "forum.userprofile" in settings.py to support it.
+    "forum.UserProfile" in settings.py to support it.
     """
     user               = models.OneToOneField(User, related_name="profile")
 #    avatar_file        = models.ImageField(blank=True,
