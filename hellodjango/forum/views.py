@@ -284,7 +284,7 @@ def subscriptions(request):
         updated_subs  = threads.filter(subscriber__exact=request.user)[:5]
         inactive_subs = False
 
-    return render(request, 'subscriptions.html',
+    return render(request, 'placeholder.html',
                           {'full_url'     : request.build_absolute_uri(),
                            'current_site' : Site.objects.get_current(),
                            'new_threads'  : new_threads,
@@ -1074,10 +1074,12 @@ def settings(request):
     return render(request, 'settings.html', {'current_site': Site.objects.get_current()})
 
 
-#@login_required(login_url=LOGIN_URL)
-#def saves_and_bookmarks(request, object_type):
-#    """Shows the user's saved posts and/or bookmarked threads."""
-#    if object_type == "save":
-#        objects = request.user.saves.all()
-#    else:  # Bookmarks
-#        objects = request.user.bookmarks.all()
+@login_required(login_url=LOGIN_URL)
+def saves_and_bookmarks(request, object_type):
+    """Shows the user's saved posts and/or bookmarked threads."""
+    if object_type == "save":
+        objects = request.user.saves.all()
+    else:  # Bookmark
+        objects = request.user.bookmarks.all()
+
+    return render(request, 'placeholder.html', {})
