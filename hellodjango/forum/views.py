@@ -295,17 +295,28 @@ def subscriptions(request):
 
 def category(request, category_id):
     """Category with threads ordered by latest posts."""
-    category    = get_object_or_404(Category, pk=category_id)
-    all_threads = category.thread_set.all()
-    threads     = all_threads.order_by("-latest_reply_date")\
-                  .exclude(is_sticky__exact=True)
-#                  .only("latest_reply_date")
-    stickies    = all_threads.exclude(is_sticky__exact=False)
+    category         = get_object_or_404(Category, pk=category_id)
+    all_threads      = category.thread_set.all()
+    category_threads = all_threads.order_by("-latest_reply_date")\
+                       .exclude(is_sticky__exact=True)
+#                       .only("latest_reply_date")
+    stickies         = all_threads.exclude(is_sticky__exact=False)
+
+    # Threadbar code from home()
+    subscribed_threads = False
+    threads     = Thread.objects.exclude(is_removed__exact=True)
+    new_threads = threads[:5]    
+
+    if not request.user.is_anonymous() and request.user.subscriptions.all():
+        subscribed_threads = threads.filter(subscriber__exact=request.user)[:5]
+
     return render(request, 'category.html',
-                          {'current_site': Site.objects.get_current(),
-                           'category'    : category,
-                           'threads'     : threads,
-                           'stickies'    : stickies})
+                          {'current_site'    : Site.objects.get_current(),
+                           'category'        : category,
+                           'category_threads': category_threads,
+                           'stickies'        : stickies,
+                           'new_threads'     : new_threads,
+                           'subs'            : subscribed_threads})
 
 
 def thread(request, thread_id, author_id):

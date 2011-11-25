@@ -23,7 +23,7 @@
                         <td><a title="Hide categories in the list" href="#">-</a></td>
                     </tr>
                 {% endfor %}
-                {% for thread in threads %}
+                {% for thread in category_threads %}
                     <tr>
                         <td><a href="{{ thread.get_absolute_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.title_html|safe }}</a></td>
                         <td><a href="{{ thread.get_absolute_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.post_set.all.count }}</a></td>
