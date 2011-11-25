@@ -2,6 +2,9 @@
 
 {% block title %}Threads in &ldquo;{{ category.title_html|safe }}&rdquo;{% endblock %}
 {% block canonical_url %}{{ category.get_absolute_url }}{% endblock %}
+{% block threadbar %}
+            {% include "includes/threadbar.html" %}
+{% endblock %}
 {% block content %}
             <div id="content"> 
                 <table class="threads">
