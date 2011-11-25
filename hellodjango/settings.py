@@ -200,7 +200,7 @@ USERENA_FORBIDDEN_USERNAMES  = ('activate', 'login', 'logout', 'me',\
                                 'password', 'register', 'signin',\
                                 'signout', 'signup')
 USERENA_MUGSHOT_GRAVATAR     = False
-USERENA_USE_HTTPS            = True
+USERENA_USE_HTTPS            = False
 ###
 
 ### BCRYPT APP, if used
