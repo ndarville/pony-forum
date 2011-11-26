@@ -8,6 +8,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('forum.views',
     (r'^$',                                      'home'),
+    (r'^pm/$',                                   'pm'),
     (r'^reports/$',                              'reports'),
 #   (r'^search/$',                               'search'),
     (r'^subscriptions/$',                        'subscriptions'),

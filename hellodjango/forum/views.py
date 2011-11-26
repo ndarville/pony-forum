@@ -53,6 +53,8 @@ from forum.models                   import Category, Post, Report,\
 ##  report
 ##  reports
 #
+##  pm
+#
 ##  logout
 ##  settings
 
@@ -1027,6 +1029,10 @@ def logout(request):
         auth.logout(request)
     messages.success(request, "Logged out successfully.")
     return HttpResponseRedirect("/")
+
+
+def pm(request):
+  return render(request, 'placeholder.html', {})
 
 
 # Replaced by the `signup` view in the userena app
