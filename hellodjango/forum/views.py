@@ -8,7 +8,6 @@ from django.conf                    import settings
 from django.contrib                 import messages, auth  # notifications, login, register
 from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib.auth.models     import User  # register
-from django.contrib.sites.models    import Site  # current_site
 from django.core.urlresolvers       import reverse  # reply, create, edit
 from django.db.utils                import DatabaseError
 from django.http                    import HttpResponse, HttpResponseRedirect
@@ -266,7 +265,6 @@ def home(request):
     # number of new posts
     return render(request, 'home.html',
                           {'full_url'    : request.build_absolute_uri(),
-                           'current_site': Site.objects.get_current(),
                            'categories'  : categories,
                            'new_threads' : new_threads,
                            'subs'        : subscribed_threads})
@@ -288,7 +286,6 @@ def subscriptions(request):
 
     return render(request, 'placeholder.html',
                           {'full_url'     : request.build_absolute_uri(),
-                           'current_site' : Site.objects.get_current(),
                            'new_threads'  : new_threads,
                            'has_subs'     : has_subs,
                            'updated_subs' : updated_subs,
@@ -313,8 +310,7 @@ def category(request, category_id):
         subscribed_threads = threads.filter(subscriber__exact=request.user)[:5]
 
     return render(request, 'category.html',
-                          {'current_site'    : Site.objects.get_current(),
-                           'category'        : category,
+                          {'category'        : category,
                            'category_threads': category_threads,
                            'stickies'        : stickies,
                            'new_threads'     : new_threads,
@@ -338,8 +334,7 @@ def thread(request, thread_id, author_id):
 #        anchor_number = forloop.counter
         anchor_number = '???'
         return render(request, 'thread.html',
-                              {'current_site' : Site.objects.get_current(),
-                               'thread_id'    : thread_id,
+                              {'thread_id'    : thread_id,
                                'thread'       : thread,
                                'posts'        : posts,
                                'anchor_number': anchor_number})
@@ -357,8 +352,7 @@ def post(request, post_id):
            or request.user.has_perm('forum.remove_post'):
             anchor_number = '???'
             return render(request, 'post.html',
-                                  {'current_site' : Site.objects.get_current(),
-                                   'post_id'      : post_id,
+                                  {'post_id'      : post_id,
                                    'post'         : post,
                                    'anchor_number': anchor_number})
         else:
@@ -383,9 +377,8 @@ def user(request, user_id):
             .exclude(thread__is_removed__exact=True)\
             .order_by("-creation_date")
     return render(request, 'user.html',
-                          {'current_site': Site.objects.get_current(),
-                           'person'      : person,
-                           'posts'       : posts})
+                          {'person': person,
+                           'posts' : posts})
 
 
 def user_content(request, user_id, object_type):
@@ -401,10 +394,9 @@ def user_content(request, user_id, object_type):
                      .exclude(is_removed__exact=True)\
                      .order_by("-creation_date")
     return render(request, 'user_content.html',
-                          {'current_site': Site.objects.get_current(),
-                           'type'        : object_type,
-                           'person'      : person,
-                           'objects'     : objects})
+                          {'type'   : object_type,
+                           'person' : person,
+                           'objects': objects})
 
 
 @permission_required('forum.add_category', login_url=LOGIN_URL)
@@ -422,9 +414,8 @@ def add(request):
             c.save()
             return HttpResponseRedirect("/")
     return render(request, 'add.html',
-                          {'full_url'    : request.build_absolute_uri(),
-                           'current_site': Site.objects.get_current(),
-                           'title'       : title_plain})
+                          {'full_url': request.build_absolute_uri(),
+                           'title'   : title_plain})
 
 
 @login_required(login_url=LOGIN_URL)
@@ -473,7 +464,6 @@ def create(request, category_id):
 
     return render(request, 'create.html',
                           {'full_url'     : request.build_absolute_uri(),
-                           'current_site' : Site.objects.get_current(),
                            'category'     : category,
                            'title'        : title_plain,
                            'preview_plain': preview_plain,
@@ -522,8 +512,7 @@ def reply(request, thread_id):
             preview_html  = sanitized_smartdown(text)
 
     return render(request, 'reply.html',
-                          {'current_site' : Site.objects.get_current(),
-                           'thread'       : thread,
+                          {'thread'       : thread,
                            'preview_plain': preview_plain,
                            'preview_html' : preview_html})
 
@@ -559,8 +548,7 @@ def edit(request, post_id):
         return HttpResponseRedirect(reverse('forum.views.post', args=(post.id,)))
 
     return render(request, 'edit.html',
-                          {'current_site' : Site.objects.get_current(),
-                           'post'         : post,
+                          {'post'         : post,
                            'preview_plain': preview_plain,
                            'preview_html' : preview_html})
 
@@ -689,9 +677,7 @@ def lock_thread(request, thread_id):
         thread.save()
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'lock.html',
-                              {'current_site': Site.objects.get_current(),
-                               'thread'      : thread})
+        return render(request, 'lock.html', {'thread': thread})
 
 
 @permission_required('forum.sticky_thread', login_url=LOGIN_URL)
@@ -716,9 +702,7 @@ def sticky_thread(request, thread_id):
         thread.save()
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'sticky.html',
-                              {'current_site': Site.objects.get_current(),
-                               'thread'      : thread})
+        return render(request, 'sticky.html', {'thread': thread})
 
 
 @permission_required('forum.merge_thread', login_url=LOGIN_URL)
@@ -786,7 +770,6 @@ def merge_thread(request, thread_id):
 
     return render(request, 'merge.html',
                           {'full_url'    : request.build_absolute_uri(),
-                           'current_site': Site.objects.get_current(),
                            'thread'      : thread,
                            'other_thread': other_thread,
                            'new_title'   : new_title_plain})
@@ -813,10 +796,9 @@ def moderate_thread(request, thread_id):
             else:
                 return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     return render(request, 'moderate.html',
-                          {'full_url'    : request.build_absolute_uri(),
-                           'current_site': Site.objects.get_current(),
-                           'thread'      : thread,
-                           'title'       : title_plain})
+                          {'full_url': request.build_absolute_uri(),
+                           'thread'  : thread,
+                           'title'   : title_plain})
 
 
 @permission_required('forum.move_thread', login_url=LOGIN_URL)
@@ -833,9 +815,8 @@ def move_thread(request, thread_id):
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:  # Otherwise, show clean, normal page with no populated data
         return render(request, 'move.html',
-                              {'current_site': Site.objects.get_current(),
-                               'thread'      : thread,
-                               'categories'  : categories})
+                              {'thread'    : thread,
+                               'categories': categories})
 
 
 @login_required(login_url=LOGIN_URL)
@@ -867,10 +848,9 @@ def remove(request, object_id, object_type):
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:
         return render(request, 'remove.html',
-                              {'current_site': Site.objects.get_current(),
-                               'type'        : object_type,
-                               'obj'         : obj,
-                               'thread'      : thread})
+                              {'type'  : object_type,
+                               'obj'   : obj,
+                               'thread': thread})
 
 
 @login_required(login_url=LOGIN_URL)
@@ -941,13 +921,12 @@ def report(request, object_id, object_type):
         elif "preview" in request.POST:  # "preview" button pressed
             preview = text
     return render(request, 'report.html',
-                          {'full_url'    : request.build_absolute_uri(),
-                           'current_site': Site.objects.get_current(),
-                           'obj'         : obj,
-                           'type'        : object_type,
-                           'thread'      : thread,
-                           'title'       : title,
-                           'preview'     : preview})
+                          {'full_url': request.build_absolute_uri(),
+                           'obj'     : obj,
+                           'type'    : object_type,
+                           'thread'  : thread,
+                           'title'   : title,
+                           'preview' : preview})
 
 
 @permission_required('forum.use_report', login_url=LOGIN_URL)
@@ -965,9 +944,7 @@ def reports(request):
         report.addressed_by   = request.user
         report.date_addressed = now
         report.save()
-    return render(request, 'reports.html',
-                          {'current_site': Site.objects.get_current(),
-                           'reports'     : reports})
+    return render(request, 'reports.html', {'reports': reports})
 
 
 # def search(request):
@@ -976,10 +953,9 @@ def reports(request):
 #     if query:
 #         results = Post.objects.filter(content_plain__icontains=query)
 #     return render('search/search.html',
-#                  {'query'       : query,
-#                   'results'     : results,
-#                   'full_url'    : request.build_absolute_uri(),
-#                   'current_site': Site.objects.get_current()})
+#                  {'query'   : query,
+#                   'results' : results,
+#                   'full_url': request.build_absolute_uri()})
 
 
 # Replaced by the signin view in the userena app
@@ -1020,8 +996,7 @@ def reports(request):
 #             return HttpResponseRedirect("/invalid/")
 #     else:  # User not logged in *and* hasn't submitted the form: clean form
 #         return render(request, 'login.html',
-#                               {'full_url'    : request.build_absolute_uri(),
-#                                'current_site': Site.objects.get_current()})
+#                               {'full_url': request.build_absolute_uri()})
 
 
 def logout(request):
@@ -1066,8 +1041,7 @@ def pm(request):
 #             to check your settings.")
 #             return HttpResponseRedirect("/")
 #     return render(request, 'register.html',  # Clean form on first visit
-#                           {'full_url'    : request.build_absolute_uri(),
-#                            'current_site': Site.objects.get_current()})
+#                           {'full_url': request.build_absolute_uri()})
 
 
 @login_required(login_url=LOGIN_URL)
@@ -1077,7 +1051,7 @@ def settings(request):
         messages.success(request, "New settings saved.")
         HttpResponse("Done!")
     
-    return render(request, 'settings.html', {'current_site': Site.objects.get_current()})
+    return render(request, 'settings.html', {})
 
 
 @login_required(login_url=LOGIN_URL)
