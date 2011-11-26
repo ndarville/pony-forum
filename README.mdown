@@ -1,5 +1,5 @@
 Pony-Forum on DotCloud
-----------------------
+======================
 Pony-Forum is a forum (also known as a bulletin board) written in Python for the Django framework.
 
 Installation
