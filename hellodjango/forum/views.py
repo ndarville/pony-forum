@@ -264,10 +264,9 @@ def home(request):
     # link to newest post
     # number of new posts
     return render(request, 'home.html',
-                          {'full_url'    : request.build_absolute_uri(),
-                           'categories'  : categories,
-                           'new_threads' : new_threads,
-                           'subs'        : subscribed_threads})
+                          {'categories' : categories,
+                           'new_threads': new_threads,
+                           'subs'       : subscribed_threads})
 
 
 @login_required(login_url=LOGIN_URL)
@@ -285,8 +284,7 @@ def subscriptions(request):
         inactive_subs = False
 
     return render(request, 'placeholder.html',
-                          {'full_url'     : request.build_absolute_uri(),
-                           'new_threads'  : new_threads,
+                          {'new_threads'  : new_threads,
                            'has_subs'     : has_subs,
                            'updated_subs' : updated_subs,
                            'inactive_subs': inactive_subs})
@@ -372,10 +370,10 @@ def user(request, user_id):
     `latest_posts_amount` determines the amount of latest posts to show.
     """
     person = get_object_or_404(User, pk=user_id)
-    posts = person.post_set.all()\
-            .exclude(is_removed__exact=True)\
-            .exclude(thread__is_removed__exact=True)\
-            .order_by("-creation_date")
+    posts  = person.post_set.all()\
+             .exclude(is_removed__exact=True)\
+             .exclude(thread__is_removed__exact=True)\
+             .order_by("-creation_date")
     return render(request, 'user.html',
                           {'person': person,
                            'posts' : posts})
@@ -413,9 +411,7 @@ def add(request):
             c = Category(title_plain=title_plain, title_html=title_html)
             c.save()
             return HttpResponseRedirect("/")
-    return render(request, 'add.html',
-                          {'full_url': request.build_absolute_uri(),
-                           'title'   : title_plain})
+    return render(request, 'add.html', {'title': title_plain})
 
 
 @login_required(login_url=LOGIN_URL)
@@ -463,8 +459,7 @@ def create(request, category_id):
             preview_html  = sanitized_smartdown(text_plain)
 
     return render(request, 'create.html',
-                          {'full_url'     : request.build_absolute_uri(),
-                           'category'     : category,
+                          {'category'     : category,
                            'title'        : title_plain,
                            'preview_plain': preview_plain,
                            'preview_html' : preview_html})
@@ -769,8 +764,7 @@ def merge_thread(request, thread_id):
             return HttpResponseRedirect(reverse('forum.views.thread', args=(t.id,)))
 
     return render(request, 'merge.html',
-                          {'full_url'    : request.build_absolute_uri(),
-                           'thread'      : thread,
+                          {'thread'      : thread,
                            'other_thread': other_thread,
                            'new_title'   : new_title_plain})
 
@@ -796,8 +790,7 @@ def moderate_thread(request, thread_id):
             else:
                 return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     return render(request, 'moderate.html',
-                          {'full_url': request.build_absolute_uri(),
-                           'thread'  : thread,
+                          {'thread'  : thread,
                            'title'   : title_plain})
 
 
@@ -921,8 +914,7 @@ def report(request, object_id, object_type):
         elif "preview" in request.POST:  # "preview" button pressed
             preview = text
     return render(request, 'report.html',
-                          {'full_url': request.build_absolute_uri(),
-                           'obj'     : obj,
+                          {'obj'     : obj,
                            'type'    : object_type,
                            'thread'  : thread,
                            'title'   : title,
@@ -954,8 +946,7 @@ def reports(request):
 #         results = Post.objects.filter(content_plain__icontains=query)
 #     return render('search/search.html',
 #                  {'query'   : query,
-#                   'results' : results,
-#                   'full_url': request.build_absolute_uri()})
+#                   'results' : results})
 
 
 # Replaced by the signin view in the userena app
@@ -995,8 +986,7 @@ def reports(request):
 #             messages.error(request, "Invalid credentials. Try again.")
 #             return HttpResponseRedirect("/invalid/")
 #     else:  # User not logged in *and* hasn't submitted the form: clean form
-#         return render(request, 'login.html',
-#                               {'full_url': request.build_absolute_uri()})
+#         return render(request, 'login.html', {'LOGIN_URL': LOGIN_URL})
 
 
 def logout(request):
@@ -1040,8 +1030,7 @@ def pm(request):
 #             messages.success(request, "Registration complete! Now would be a good time \
 #             to check your settings.")
 #             return HttpResponseRedirect("/")
-#     return render(request, 'register.html',  # Clean form on first visit
-#                           {'full_url': request.build_absolute_uri()})
+#     return render(request, 'register.html', {}) # Clean form on first visit
 
 
 @login_required(login_url=LOGIN_URL)

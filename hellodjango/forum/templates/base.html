@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>{% block title %}{% if current_site.name != "example.com" %}{{ current_site.name }}{% else %}The Forum{% endif %}{% endblock %}</title>
-        <link rel="canonical" href="{% block canonical_url %}{{ full_url }}{% endblock %}" />
+        <link rel="canonical" href="{% block canonical_url %}{% endblock %}" />
         <link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico" />
         <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/reset.css" />
         <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/style.css" />

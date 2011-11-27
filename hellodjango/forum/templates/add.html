@@ -1,13 +1,9 @@
 {% extends "base.html" %}
 
 {% block title %}Category creation station{% endblock %}
+{% block canonical_url %}/category/add/{% endblock %}
 {% block content %}
             <div id="board">
-
-                {% if has_long_title %}
-                    Your chosen title was too long. Keep it under {{ max_title_length }} characters.
-                {% endif %}
-
                 <form action="/category/add/" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
                     <input type="text" name="title" id="title-form" value="{% if title %}{{ title }}{% endif %}" placeholder="Put your title here (in capital letters). Keep it less than eighty characters." autofocus required />

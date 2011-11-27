@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}{{ type|capfirst }} by {{ person.username }}{% endblock %}
+{% block canonical_url %}/user/{{ type }}s{% endblock %}
 
 {% block content %}
 {% load markup %}
