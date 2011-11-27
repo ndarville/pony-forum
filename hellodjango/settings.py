@@ -2,7 +2,7 @@
 
 import json
 with open('/home/dotcloud/environment.json') as f:
-  env = json.load(f)
+    env = json.load(f)
 
 import os
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
@@ -103,7 +103,22 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '!_1l5t^g34$58bl&eh))tz%&)tq$&(x_2d&0@zz7fh8=z^t%d#'
+try:
+    SECRET_KEY
+except NameError:
+    SECRET_FILE = os.path.join(PROJECT_PATH, 'secret.txt')
+    try:
+        SECRET_KEY = open(SECRET_FILE).read().strip()
+    except IOError:
+        try:
+            from random import choice
+            SECRET_KEY = ''.join([choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(50)])
+            secret = file(SECRET_FILE, 'w')
+            secret.write(SECRET_KEY)
+            secret.close()
+        except IOError:
+            Exception('Please create a %s file with random characters \
+            to generate your secret key!' % SECRET_FILE)
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -170,15 +185,17 @@ LOGGING = {
     }
 }
 
-### Only for production:
+### E-MAIL SERVER
+## Only for testing. Uncomment and set up your server in the
+## commented section below
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
-### http://sontek.net/using-gmail-to-send-e-mails-from-django
-# EMAIL_HOST =           'smtp.gmail.com'
-# EMAIL_HOST_USER =      '<example@gmail.com>'
-# EMAIL_HOST_PASSWORD =  '<mypassword>'
-# EMAIL_PORT =           587
-# EMAIL_USE_TLS =        True
-# EMAIL_SUBJECT_PREFIX = '[Pony Forum] '
+## http://sontek.net/using-gmail-to-send-e-mails-from-django
+# EMAIL_HOST          = 'smtp.gmail.com'
+# EMAIL_HOST_USER     = '<example@gmail.com>'
+# EMAIL_HOST_PASSWORD = '<mypassword>'
+# EMAIL_PORT          = 587
+# EMAIL_USE_TLS       = True
+###
 
 ### USERENA APP
 ANONYMOUS_USER_ID = -1.
