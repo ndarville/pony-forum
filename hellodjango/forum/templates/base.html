@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>{% block title %}{% if current_site.name != "example.com" %}{{ current_site.name }}{% else %}The Forum{% endif %}{% endblock %}</title>
+        <title>{% block title %}The Forum{% endblock %}</title>
         <link rel="canonical" href="{% block canonical_url %}{% endblock %}" />
         <link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico" />
         <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/reset.css" />
@@ -26,7 +26,7 @@
     {% endif %}
 {% endblock %}
 {% block js-blocked-warning %}{% endblock %}
-            <div id="header"><a href="/" title="Return to home page">{% if current_site.name != "example.com" %}{{ current_site.name }}{% else %}Forum{% endif %}</a></div>
+            <div id="header"><a href="/" title="Return to home page">Forum</a></div>
             <div id="navigation">
                 <ul>
                         <a class="screenreader-only" href="/">Return to home page</a>
