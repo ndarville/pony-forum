@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}Threads in &ldquo;{{ category.title_html|safe }}&rdquo;{% endblock %}
-{% block canonical_url %}{{ category.get_absolute_url }}{% endblock %}
+{% block canonical_url %}{% url forum.views.category category.id %}{% endblock %}
 {% block threadbar %}
             {% include "includes/threadbar.html" %}
 {% endblock %}
@@ -16,25 +16,27 @@
                         <th id="hide"></th>
                     </tr>
                 {% for sticky in stickies %}
+                    {% url forum.views.thread sticky.id as sticky_url %}
                     <tr class="sticky">
-                        <td><a href="{{ sticky.get_absolute_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.title_html|safe }}</a></td>
-                        <td><a href="{{ sticky.get_absolute_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.post_set.all.count }}</a></td>
-                        <td><a href="{{ sticky.get_absolute_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.relative_date }}</a></td>
+                        <td><a href="{{ sticky_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.title_html|safe }}</a></td>
+                        <td><a href="{{ sticky_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.post_set.all.count }}</a></td>
+                        <td><a href="{{ sticky_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.relative_date }}</a></td>
                         <td><a title="Hide categories in the list" href="#">-</a></td>
                     </tr>
                 {% endfor %}
                 {% for thread in category_threads %}
+                    {% url forum.views.thread thread.id as thread_url %}
                     <tr>
-                        <td><a href="{{ thread.get_absolute_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.title_html|safe }}</a></td>
-                        <td><a href="{{ thread.get_absolute_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.post_set.all.count }}</a></td>
-                        <td><a href="{{ thread.get_absolute_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.relative_date }}</a></td>
+                        <td><a href="{{ thread_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.title_html|safe }}</a></td>
+                        <td><a href="{{ thread_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.post_set.all.count }}</a></td>
+                        <td><a href="{{ thread_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.relative_date }}</a></td>
                         <td><a title="Hide categories in the list" href="#">-</a></td>
                     </tr>
                 {% endfor %}
                 </table>
                 
             {% if perms.forum.create_category %}
-                <a class="button" href="{{ category.get_absolute_url }}create/">Create new thread</a>
+                <a class="button" href="{% url forum.views.create category.id %}">Create new thread</a>
             {% endif %}
             </div> 
 {% endblock %}

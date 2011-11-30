@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block title %}Create new thread in {{ category.title_html|safe }}{% endblock %}
-{% block canonical_url %}{{ category.get_absolute_url }}create/{% endblock %}
+{% block canonical_url %}{% url forum.views.create category.id %}{% endblock %}
 {% block content %}
             <div id="board">
                 <div id="breadcrumbs">
-                    <a href="/">Overview</a>&nbsp;&raquo;&nbsp;<a href="/category/{{ category.id }}/">{{ category.title_html|safe }}</a>
+                    <a href="{% url forum.views.home %}">Overview</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.category category.id %}">{{ category.title_html|safe }}</a>
                 </div>
 
         {% if preview_html %}
@@ -14,7 +14,7 @@
                 </div>
         {% endif %}
 
-                <form action="{{ category.get_absolute_url }}create/" method="post" id="reply" name="reply-form">
+                <form action="{% url forum.views.create category.id %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
                     <input type="text" name="title" id="title-form" value="{% if title %}{{ title }}{% endif %}" placeholder="Put your title here (in capital letters). Keep it less than eighty characters, and be descriptive." required />
                     <textarea

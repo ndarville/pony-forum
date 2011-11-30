@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}User Profile for {{ person.username }}{% endblock %}
-{% block canonical_url %}/user/{{ person.id }}/{% endblock %}
+{% block canonical_url %}{% url forum.views.user person.id %}/{% endblock %}
 
 {% block content %}
 <div id="content">
@@ -26,7 +26,7 @@
     {#   <p>Probate user</p> #}
     {# endif #}
 {% else %}
-        <p><a href="/accounts/settings/">Manage your settings</a></p>
+        <p><a href="{% url forum.views.settings %}">Manage your settings</a></p>
 {% endif %}
     </div>
 
@@ -35,8 +35,8 @@
     <div id="profile-information">
         <p><span class="info">Name:</span> {{ person.username }}</p>
         <p><span class="info">Joined:</span> {{ person.date_joined|timesince }} ago</p>
-        <p><span class="info">Post{{ post_count|pluralize }}:</span> <a title="View list of replies by {{ person.username }}" href="/user/{{ person.id }}/posts/">{{ post_count }}</a></p>
-        <p><span class="info">Thread{{ thread_count|pluralize }}:</span> <a title="View list of threads by {{ person.username }}" href="/user/{{ person.id }}/threads/">{{ thread_count }}</a></p>
+        <p><span class="info">Post{{ post_count|pluralize }}:</span> <a title="View list of replies by {{ person.username }}" href="{% url user_posts person.id %}">{{ post_count }}</a></p>
+        <p><span class="info">Thread{{ thread_count|pluralize }}:</span> <a title="View list of threads by {{ person.username }}" href="{% url user_threads person.id %}">{{ thread_count }}</a></p>
     </div>
 
     <div id="latest-posts">
@@ -44,7 +44,7 @@
         <strong>Ten latest posts:</strong>
         <ul>
         {% for post in posts %}
-            <li><a href="{{ post.thread.get_absolute_url }}#{{ post.id }}">{{ post.thread.title_html|safe }}</a></li>
+            <li><a href="{% url forum.views.thread post.thread.id %}#{{ post.id }}">{{ post.thread.title_html|safe }}</a></li>
         {% endfor %}
         </ul>
     {% else %}

@@ -4,7 +4,7 @@
                 <span class="threadsort">Subscribed Threads</span>
                     <ul>      
                     {% for sub in subs %}
-                        <li><a href="/thread/{{ sub.id }}/" title="View the posts in the thread &ldquo;{{ sub.title_html|safe }}&rdquo;">{{ sub.title_html|safe }}</a>{% if update %} <span class="updates">{{ update.count }}</span></a>{% endif %}</li>
+                        <li><a href="{% url forum.views.thread sub.id %}" title="View the posts in the thread &ldquo;{{ sub.title_html|safe }}&rdquo;">{{ sub.title_html|safe }}</a>{% if update %} <span class="updates">{{ update.count }}</span></a>{% endif %}</li>
                     {% endfor %}                 
                     </ul>
                 </div>
@@ -14,7 +14,7 @@
                 <span class="threadsort">New Threads</span>
                     <ul>
                     {% for thread in new_threads %}
-                        <li><a href="/thread/{{ thread.id }}/" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.title_html|safe }}</a></li>
+                        <li><a href="{% url forum.views.thread thread.id %}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.title_html|safe }}</a></li>
                     {% endfor %}
                     </ul>
                 </div>

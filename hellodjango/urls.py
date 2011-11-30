@@ -1,3 +1,4 @@
+from django.conf                 import settings
 from django.conf.urls.defaults   import patterns, include, url
 from django.contrib              import admin
 from django.views.generic.simple import redirect_to
@@ -8,14 +9,16 @@ admin.autodiscover()
 
 urlpatterns = patterns('forum.views',
     (r'^$',                                      'home'),
-    (r'^pm/$',                                   'pm'),
+    (r'^pm/$',                                   'pm',),
     (r'^reports/$',                              'reports'),
 #   (r'^search/$',                               'search'),
     (r'^subscriptions/$',                        'subscriptions'),
     (r'^bookmarks/$',                            'saves_and_bookmarks',
-                                                    {'object_type': 'bookmark'}),
+                                                    {'object_type': 'bookmark'},
+                                                    'bookmarks'),
     (r'^saves/$',                                'saves_and_bookmarks',
-                                                    {'object_type': 'save'}),
+                                                    {'object_type': 'save'},
+                                                    'saves'),
 
 #   Category
     (r'^category/add/$',                         'add'),
@@ -31,28 +34,34 @@ urlpatterns = patterns('forum.views',
     (r'^thread/(?P<thread_id>\d+)/merge/$',      'merge_thread'),
     (r'^thread/(?P<thread_id>\d+)/move/$',       'move_thread'),
     (r'^thread/(?P<thread_id>\d+)/moderate/$',   'moderate_thread'),
-    (r'^thread/(\d+)/report/$',                  'report',
-                                                 	{'object_type': 'thread'}),
-    (r'^thread/(\d+)/remove/$',                  'remove',
-                                                    {'object_type': 'thread'}),
+    (r'^thread/(?P<object_id>\d+)/report/$',     'report',
+                                                    {'object_type': 'thread'},
+                                                    'report_thread'),
+    (r'^thread/(?P<object_id>\d+)/remove/$',     'remove',
+                                                    {'object_type': 'thread'},
+                                                    'remove_thread'),
     (r'^thread/(?P<thread_id>\d+)/$',            'thread',
                                                     {'author_id': "Everyone"}),
 	(r'^thread/(?P<thread_id>\d+)/author/(?P<author_id>\d+)/$', 'thread'),
 
 #   Post
     (r'^post/(?P<post_id>\d+)/edit/$',           'edit'),
-    (r'^post/(\d+)/report/$',                    'report',
-                                                    {'object_type': 'post'}),
-    (r'^post/(\d+)/remove/$',                    'remove',
-                                                    {'object_type': 'post'}),
+    (r'^post/(?P<object_id>\d+)/report/$',       'report',
+                                                    {'object_type': 'post'},
+                                                    'report_post'),
+    (r'^post/(?P<object_id>\d+)/remove/$',       'remove',
+                                                    {'object_type': 'post'},
+                                                    'remove_post'),
     (r'^post/(?P<post_id>\d+)/$',                'post'),
 
 #   User
     (r'^user/js/$',                              'user_js'),
-    (r'^user/(?P<user_id>\d+)/threads/$',        'user_content', 
-                                                     {'object_type': 'thread'}),
+    (r'^user/(?P<user_id>\d+)/threads/$',        'user_content',
+                                                     {'object_type': 'thread'},
+                                                     "user_threads"),
     (r'^user/(?P<user_id>\d+)/posts/$',          'user_content',
-                                                     {'object_type': 'post'}),
+                                                     {'object_type': 'post'},
+                                                     "user_posts"),
     (r'^user/(?P<user_id>\d+)/$',                'user'),
 
 #   Accounts
@@ -68,7 +77,12 @@ urlpatterns = patterns('forum.views',
     # be passed to the url of redirect_to().
     #
     # Kinda hacky, but gets it done.
+
+    # (r'^' + getattr(settings, "LOGIN_URL"[1:], "accounts/login/") + '$',
+    #                                                userena_views.signin),    
     (r'^accounts/login/$',                        userena_views.signin),
+    # (r'^' + getattr(settings, "LOGOUT_URL"[1:], "accounts/logout/") + '$',
+    #                                               'logout'),
     (r'^accounts/logout/$',                      'logout'),
     (r'^accounts/settings/$',                    'settings'),
 

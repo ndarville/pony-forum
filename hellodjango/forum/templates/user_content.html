@@ -1,20 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}{{ type|capfirst }} by {{ person.username }}{% endblock %}
-{% block canonical_url %}/user/{{ type }}s{% endblock %}
+{% block canonical_url %}{% if type == "thread" %}{% url user_threads person.id %}{% else %}{% url user_posts person.id %}{% endif %}{% endblock %}
 
 {% block content %}
-{% load markup %}
 <div id="content">
     <dl>
 {% if type == "thread" %}
     {% for thread in objects %}
         <dt>{{ thread.relative_date }}</dt>
-            <dd><a href="{{ thread.get_absolute_url }}">{{ thread.title_html|safe }}</a></dd>
+            <dd><a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a></dd>
     {% endfor %}
 {% else %}
     {% for post in objects %}
-        <dt><a href="{{ post.thread.get_absolute_url }}">{{ post.thread.title_html|safe }}</a></dt>
+        <dt><a href="{% url forum.views.thread post.id %}">{{ post.thread.title_html|safe }}</a></dt>
             <dd>{{ post.content_html|safe }}</dd>
     {% endfor %}
 {% endif %}

@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block title %}{{ thread.title_html|safe }}: Move Thread{% endblock %}
-{% block canonical_url %}{{ thread.get_absolute_url }}move/{% endblock %}
+{% block canonical_url %}{% url forum.views.move_thread thread.id %}{% endblock %}
 {% block content %}
             <div id="board">
                 <div id="breadcrumbs">
-                    <a href="/">Overview</a>&nbsp;&raquo;&nbsp;<a href="/category/{{ thread.category.id }}/">{{ thread.category.title_html|safe }}</a>&nbsp;&raquo;&nbsp;<a href="{{ thread.get_absolute_url }}">{{ thread.title_html|safe }}</a>
+                    <a href="{% url forum.views.home %}">Overview</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.category thread.category.id %}">{{ thread.category.title_html|safe }}</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a>
                 </div>
 
-                <form action="{{ thread.get_absolute_url }}move/" method="post" id="reply" name="reply-form">
+                <form action="{% url forum.views.move_thread thread.id %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
                     
                 {% for category in categories %}

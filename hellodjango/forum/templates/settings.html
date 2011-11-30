@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block title %}Manage Settings{% endblock %}
-{% block canonical_url %}/accounts/settings/{% endblock %}
+{% block canonical_url %}{% url forum.views.settings %}{% endblock %}
 
 {% block content %}
 <div id="content">
-    <p><a href="/user/{{ user.id }}/">View profile</a> |
+    <p><a href="{% url forum.views.user user.id %}">View profile</a> |
     <a href="/accounts/{{ user.username }}/edit/">Edit profile</a> |
     <a href="/accounts/{{ user.username }}/password/">Change password</a> |
     <a href="/accounts/{{ user.username }}/email/">Change e-mail</a></p>
@@ -28,7 +28,7 @@
 <!--
     Formatting buttons
 -->
-    
+
     <p><a href="#" class="js" id=""></a></p>
 </div>
 {% endblock %}

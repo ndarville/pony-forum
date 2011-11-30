@@ -95,9 +95,6 @@ class Category(models.Model):
     def __unicode__(self):
         return self.title_plain
 
-    def get_absolute_url(self):
-        return "/category/%i/" % self.id
-
     def post_count(self):
         """Shows the number of posts in an entire category."""
         return Post.objects.filter(thread__category = self.id).count()
@@ -140,9 +137,6 @@ class Thread(models.Model):
     def __unicode__(self):
         return self.title_plain
 
-    def get_absolute_url(self):
-        return "/thread/%i/" % self.id
-
     def relative_date(self):
         """Shows the time since the last post in a thread."""
         
@@ -177,9 +171,6 @@ class Post(models.Model):
     def __unicode__(self):
         end = len(self.content_plain) > 40 and "..." or ""
         return u"%s: %s%s" % (self.author, self.content_plain[:40], end)
-
-    def get_absolute_url(self):
-        return "/post/%i/" % self.id
 
     def relative_date(self):
         """Returns the age of the post as a relative date

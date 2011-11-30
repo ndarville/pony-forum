@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block title %}{{ thread.title_html|safe }}: Merge Threads{% endblock %}
-{% block canonical_url %}{{ thread.get_absolute_url }}merge/{% endblock %}
+{% block canonical_url %}{% url forum.views.merge_thread thread.id %}{% endblock %}
 {% block content %}
             <div id="board">
                 <div id="breadcrumbs">
-                    <a href="/">Overview</a>&nbsp;&raquo;&nbsp;<a href="/category/{{ thread.category.id }}/">{{ thread.category.title_html|safe }}</a>&nbsp;&raquo;&nbsp;<a href="/thread/{{ thread.id }}/">{{ thread.title_html|safe }}</a>
+                    <a href="{% url forum.views.home %}">Overview</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.category thread.category.id %}">{{ thread.category.title_html|safe }}</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a>
                 </div>
 
             {% if has_long_title %}
@@ -13,7 +13,7 @@
             {% endif %}
 
             {% if not other_thread and not has_long_title %}
-                <form action="{{ thread.get_absolute_url }}merge/" method="post" id="reply" name="reply-form">
+                <form action="{% url forum.views.merge_thread thread.id %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
 
                     <input type="number" name="other-thread-id" id="id-form" value="{% if other_thread %}{{ other_thread.id }}{% endif %}" min="1" step="1" placeholder="Enter the ID of the other thread." required />
@@ -23,7 +23,7 @@
                     <input type="submit" name="merge" id="submit" value="Merge" />
                 </form>
             {% else %}
-                <form action="{{ thread.get_absolute_url }}merge/" method="post" id="reply" name="reply-form">
+                <form action="{% url forum.views.merge_thread thread.id %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
 
                     <p>Are you sure, you want to merge these threads:</p>

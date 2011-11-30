@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block canonical_url %}/{% endblock %}
+{% block canonical_url %}{% url forum.views.home %}{% endblock %}
 {% block threadbar %}
             {% include "includes/threadbar.html" %}
 {% endblock %}
@@ -15,15 +15,16 @@
                         <th id="hide"></th>
                     </tr>
                     <tr>
-                        <td><a href="/category/{{ category.id }}/" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.title_html|safe }}</a></td>
-                        <td><a href="/category/{{ category.id }}/" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.thread_set.all.count }}</a></td>
-                        <td><a href="/category/{{ category.id }}/" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.post_count }}</a></td>
+                    {% url forum.views.category category.id as category_url %}
+                        <td><a href="{{ category_url }}" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.title_html|safe }}</a></td>
+                        <td><a href="{{ category_url }}" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.thread_set.all.count }}</a></td>
+                        <td><a href="{{ category_url }}" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.post_count }}</a></td>
                         <td><a title="Hide categories in the list" href="#">-</a></td>
                     </tr>
                 {% endfor %}
                 </table>
             {% if perms.forum.add_category %}
-                <a class="button" href="/category/add/">Add a new category</a>
+                <a class="button" href="{% url forum.views.add %}">Add a new category</a>
             {% endif %}
             </div>
 {% endblock %}
