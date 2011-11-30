@@ -1,14 +1,14 @@
-from datetime                       import datetime  # reply, create
+from datetime                       import datetime
 from markdown                       import markdown
 from MySQLdb                        import OperationalError
 from smartypants                    import smartyPants as smartypants
 import bleach
 
 from django.conf                    import settings
-from django.contrib                 import messages, auth  # notifications, login, register
+from django.contrib                 import messages, auth
 from django.contrib.auth.decorators import permission_required, login_required
-from django.contrib.auth.models     import User  # register
-from django.core.urlresolvers       import reverse  # reply, create, edit
+from django.contrib.auth.models     import User
+from django.core.urlresolvers       import reverse
 from django.db.utils                import DatabaseError
 from django.http                    import HttpResponse, HttpResponseRedirect
 from django.shortcuts               import render, get_object_or_404
@@ -197,6 +197,7 @@ def sanitized_smartdown(string):
                           'b',
                           'blockquote',
                           'code',
+                          'del',
                           'em',
                           'i',
                           'img',
@@ -849,8 +850,8 @@ def remove(request, object_id, object_type):
 @login_required(login_url=LOGIN_URL)
 def report(request, object_id, object_type):
     """Report a post or thread infraction to the moderators."""
-    title   = False
-    preview = False
+    title        = False
+    preview_html = False
 
     if object_type == "post":
         obj    = get_object_or_404(Post, pk=object_id)
@@ -889,11 +890,11 @@ def report(request, object_id, object_type):
     if request.method == 'POST':  # Form has been submitted
         title = request.POST['title']
         if "content" in request.POST:  # elaboration provided
-            text  = request.POST['content']
+            text = sanitized_smartdown(request.POST['content'])
         if "submit" in request.POST:  # "submit" button pressed
             if len(title) > MAX_THREAD_TITLE_LENGTH:
                 messages.error(request, long_title_error % MAX_THREAD_TITLE_LENGTH)
-                preview = text
+                preview_html = text
             else:
                 user = request.user
                 now  = datetime.now()  # UTC?
@@ -912,13 +913,13 @@ def report(request, object_id, object_type):
                     return HttpResponseRedirect(reverse('forum.views.thread',
                         args=(thread.id,)))
         elif "preview" in request.POST:  # "preview" button pressed
-            preview = text
+            preview_html = text
     return render(request, 'report.html',
-                          {'obj'     : obj,
-                           'type'    : object_type,
-                           'thread'  : thread,
-                           'title'   : title,
-                           'preview' : preview})
+                          {'obj'         : obj,
+                           'type'        : object_type,
+                           'thread'      : thread,
+                           'title'       : title,
+                           'preview_html': preview_html})
 
 
 @permission_required('forum.use_report', login_url=LOGIN_URL)

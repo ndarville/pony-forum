@@ -8,11 +8,7 @@
                     <a href="{% url forum.views.home %}">Overview</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.category post.thread.category.id %}">{{ post.thread.category.title_html|safe }}</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.thread post.thread.id %}">{{ post.thread.title_html|safe }}</a>{% if type == "post" %}&nbsp;&raquo;&nbsp;<a href="{% url forum.views.post obj.id %}">{{ obj.author }}&rsquo;s Post</a>{% endif %}
                 </div>
 
-            {% if preview_html %}
-                <div id="example">
-                    {{ preview_html|safe }}
-                </div>
-            {% endif %}
+                {% include "includes/preview.html" %}
 
                 <form action="{% url forum.views.edit post.id %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}

@@ -8,11 +8,7 @@
                     <a href="{% url forum.views.home %}">Overview</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.category category.id %}">{{ category.title_html|safe }}</a>
                 </div>
 
-        {% if preview_html %}
-                <div id="example">
-                    {{ preview_html|safe }}
-                </div>
-        {% endif %}
+                {% include "includes/preview.html" %}
 
                 <form action="{% url forum.views.create category.id %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
