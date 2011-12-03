@@ -41,7 +41,7 @@ urlpatterns = patterns('forum.views',
                                                     {'object_type': 'thread'},
                                                     'remove_thread'),
     (r'^thread/(?P<thread_id>\d+)/$',            'thread',
-                                                    {'author_id': "Everyone"}),
+                                                    {'author_id': 'Everyone'}),
 	(r'^thread/(?P<thread_id>\d+)/author/(?P<author_id>\d+)/$', 'thread'),
 
 #   Post
@@ -58,18 +58,13 @@ urlpatterns = patterns('forum.views',
     (r'^user/js/$',                              'user_js'),
     (r'^user/(?P<user_id>\d+)/threads/$',        'user_content',
                                                      {'object_type': 'thread'},
-                                                     "user_threads"),
+                                                     'user_threads'),
     (r'^user/(?P<user_id>\d+)/posts/$',          'user_content',
                                                      {'object_type': 'post'},
-                                                     "user_posts"),
+                                                     'user_posts'),
     (r'^user/(?P<user_id>\d+)/$',                'user'),
 
 #   Accounts
-#   (r'^login/$',                                'login'),
-#   (r'^logout/$',                               'logout'), 
-#   (r'^signup/$',                               'register'),
-#	(r'^settings/$',                             'settings'),
-
     # Redirecting undesired URLs in the userena app to home page
     # and replacing them with such ones as "login" and "logout".
     #
@@ -78,22 +73,23 @@ urlpatterns = patterns('forum.views',
     #
     # Kinda hacky, but gets it done.
 
-    # (r'^' + getattr(settings, "LOGIN_URL"[1:], "accounts/login/") + '$',
-    #                                                userena_views.signin),    
-    (r'^accounts/login/$',                        userena_views.signin),
-    # (r'^' + getattr(settings, "LOGOUT_URL"[1:], "accounts/logout/") + '$',
-    #                                               'logout'),
-    (r'^accounts/logout/$',                      'logout'),
+    (r'^' + getattr(settings, 'LOGIN_URL'[1:],   'accounts/login/') + '$',
+                                                  userena_views.signin, {},
+                                                  'login'),
+    (r'^' + getattr(settings, 'LOGOUT_URL'[1:],  'accounts/logout/') + '$',
+                                                 'logout'),
     (r'^accounts/settings/$',                    'settings'),
 
     url(r'^accounts/$',
         redirect_to, {'url': '/'}),
 
     url(r'^accounts/signin/$',
-        redirect_to, {'url': '/accounts/login/'}),
+        redirect_to,
+        {'url': getattr(settings, 'LOGIN_URL', '/accounts/login/')}),
 
     url(r'^accounts/signout/$',
-        redirect_to, {'url': '/accounts/logout/'}),
+        redirect_to,
+        {'url': getattr(settings, 'LOGOUT_URL', '/accounts/logout/')}),
 
     url(r'^accounts/page/(?P<dummy>[0-9]+)/$',
         redirect_to, {'url': '/'}),

@@ -55,12 +55,7 @@
 {% endwith %}
 </div>
 {% endblock %}
-{% block credits %}
-            <div id="credits">
-                <hr />
-                The forum is powered by <a href="http://pony-forum.com/">Pony Forum</a>, which was made by <a href="http://me.niclasdarville.com/">Niclas Darville</a>. Icons by <a href="http://glyphish.com/">Glyphish</a>.
-            </div>
-{% endblock %}
+{% block credits-border %}<hr />{% endblock %}
 {% block js %}
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}js/user-js.js"></script>

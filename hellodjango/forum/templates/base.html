@@ -52,22 +52,23 @@
                         <li><a href="/search/">Search</a></li>
                         <li><a href="{% url forum.views.logout %}">Log Out</a></li>
                     {% else %}
-                        <li><strong><a href="">Log In</a></strong></li>
+                        <li><strong><a href="{% url login %}">Log In</a></strong></li>
                         <li><a href="http://pony-forum.com/rules/">Rules</a></li>
                         <li><a href="http://pony-forum.com/guide/">Guide</a></li>
                         <li><a href="/search/">Search</a></li>
-                        <li><a href="/accounts/signup/" title="Create your own user on the site">Sign Up</a></li>
+                        <li><a href="{% url userena.views.signup %}" title="Create your own user on the site">Sign Up</a></li>
                     {% endif %}
                 </ul>
             </div>
 {# banners #}
 {% block threadbar %}{% endblock %}
 {% block content %}{% endblock %}
-{% block credits %}
             <div id="credits">
+{% block credits-border %}{% endblock %}
+{% block credits %}
                 The forum is powered by <a href="http://pony-forum.com/">Pony Forum</a>, which was made by <a href="http://me.niclasdarville.com/">Niclas Darville</a>. Icons by <a href="http://glyphish.com/">Glyphish</a>.
-            </div>
 {% endblock %}
+            </div>
         </div>
     </body>
 </html>
