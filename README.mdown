@@ -1,6 +1,6 @@
 Pony-Forum on DotCloud
 ======================
-Pony-Forum is a forum (also known as a bulletin board) written in Python for the Django framework.
+Pony-Forum is a forum (also known as a bulletin board) written in Python for the Django framework. It is intended as a replacement of the decade-old forums like vBulletin, PHPBB, etc.---and a free one easy to deploy at that.
 
 Installation
 ------------
@@ -41,7 +41,7 @@ Speaking of automatic changes, Pony-Forum guesses the name and domain of your we
 
 How all this is done can be seen in [definesite.py](https://github.com/ndarville/dotcloud-django/blob/master/definesite.py), which is (also) called in `postinstall`.
 
-"So what?" you ask; what are these used for? As it happens, as of this writing, the name of your site is only relevant, if you want the name to appear in the header in the top middle of your forum. Besides that, it doesn't appear anywhere, really.
+"So what?" you ask; what are these used for? As it happens, as of this writing, the name of your site is only relevant, if you want the name to appear in the header in the top middle of your forum[^1]. Besides that, it doesn't appear anywhere, really.
 
 The *domain* on the other hand is much more important. It is used for in the `userena` app that, amongst other things, sends activation e-mails to your users. As you may know, these e-mails contain an activation link that your users have to follow in order to activate their accounts.
 
@@ -60,19 +60,27 @@ Using [sontek's intelligible guide](http://sontek.net/using-gmail-to-send-e-mail
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
     
-Obviously, you need to change the USER and PASSWORD fields to your own settings. Also note that if you are using Google's [two-factor authentication](https://account.google.com/SmsAuthConfig/), you default password will not work, because you need to create a designated application password for it [here](https://account.google.com/SmsAuthConfig/).
+Obviously, you need to change the `USER` and `PASSWORD` fields to your own settings. Also note that if you are using Google's [two-factor authentication](https://accounts.google.com/SmsAuthConfig), you default password will not work, because you need to create a designated application password for it [here](https://accounts.google.com/IssuedAuthSubTokens).
 
-If you aren't already using two-factor authentication, I urge you to do it to improve your Google and Gmail security significantly, but I'll talk your ear off about that another time.
+If you aren't already using two-factor authentication, I urge you to do it to improve your Google and Gmail security significantly, but I'll talk your ear off about that another time. Just one more thing: if you use two-factor authentication, you will not use the password for your actual account, but an application password instead. The advantage of this is that you can remove this application in your Google account settings right away, if you accidentally share it through GitHub or elsewhere.
 
 After you have changed and saved your new settings in `settings.py`, run the `dotcloud push hellodjango` command again, and your new settings will be (derp) pushed to your instance. If nothing happens, follow it up with the command `dotcloud restart hellodjango.www`.
+
+### DEBUG = True or False? ###
+While you're still in `settings.py`, you might consider changing the value of DEBUG, whether it is set to `True` or `False`.
+
+It all depends on where you are in your development cycle, but remember to flip it off, once you open it to the public.
+
+Leave it on `True`, if you are customizing it yourself, but set it to `False`, once you launch your site.
 
 ### Aaand You're Done! ###
 Let's recapitulate the adjustments needed to set up Pony-Forum:
 
 1. Clone, create, push.
-2. Change the default admin `"password"' password.
+2. Change the default admin `"password"` password.
 3. Check that your defined site name and domain match your intended name and used URL.
 4. Set up your e-mail server.
+5. Evaluate whether Django's debug mode should be on of off.
 
 Boom! You're done.
 
@@ -80,7 +88,8 @@ To-Do List
 ----------
 Fire up [some music](http://soundcloud.com/pluxemburg/first-floor-power-to-do-list-akamu-remix) and let's take a look at what I hope to get to at some point.
 
-0. Markdown footnotes!!!
+I want to implement Markdown footnotes, but as of now, they get identical anchor IDs, which breaks the links (since they all point to the same). I hope to find something that will work in the end, because I regard this as a very important feature to a forum that encourages long-form discussion.
+
 1. (Forced) HTTPS for account-based views
 2. Subscriptions
 3. Bans
@@ -90,6 +99,7 @@ Fire up [some music](http://soundcloud.com/pluxemburg/first-floor-power-to-do-li
 * Formatting buttons
 * Thread polls
 * Private messages (PMs)
+* Spoiler code
 
 * Views and templates:
     * Bookmarks/Saves
@@ -104,6 +114,8 @@ Fire up [some music](http://soundcloud.com/pluxemburg/first-floor-power-to-do-li
 * (Better) caching
 * Finite log-in attempts
 
+I should probably find some way to dynamically change the unique `SECRET_KEY` in `settings.py` ...
+
 ### Features Under Consideration ###
 * UTC-based datetimes
 * Post edit time stamps
@@ -114,3 +126,5 @@ Fire up [some music](http://soundcloud.com/pluxemburg/first-floor-power-to-do-li
     * HTML5 storage?
 
 And much, much more.
+
+[1]: This has been disabled for the time being.
