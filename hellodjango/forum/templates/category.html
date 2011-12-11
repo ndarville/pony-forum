@@ -6,7 +6,7 @@
             {% include "includes/threadbar.html" %}
 {% endblock %}
 {% block content %}
-            <div id="content"> 
+            <div id="content">
                 <table class="threads">
                     <!-- IDs improve screenreaders' experience -->
                     <tr>
@@ -24,7 +24,7 @@
                         <td><a title="Hide categories in the list" href="#">-</a></td>
                     </tr>
                 {% endfor %}
-                {% for thread in category_threads %}
+                {% for thread in category_threads.object_list %}
                     {% url forum.views.thread thread.id as thread_url %}
                     <tr>
                         <td><a href="{{ thread_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.title_html|safe }}</a></td>
@@ -38,5 +38,23 @@
             {% if perms.forum.create_category %}
                 <a class="button" href="{% url forum.views.create category.id %}">Create new thread</a>
             {% endif %}
-            </div> 
+
+                <div class="pagination">
+                    <span class="previous-page">
+                    {% if category_threads.has_previous %}
+                        <a href="?page={{ category_threads.previous_page_number }}" title="Go to the previous page of threads">Previous</a>
+                    {% endif %}
+                    </span>
+
+                    <span class="current-page">
+                        Page {{ category_threads.number }} of {{ category_threads.paginator.num_pages }}
+                    </span>
+                
+                    <span class="next-page">
+                    {% if category_threads.has_next %}
+                        <a href="?page={{ category_threads.next_page_number }}" title="Go to the next page of threads">Next</a>
+                    {% endif %}
+                    </span>
+                </div>
+            </div>
 {% endblock %}

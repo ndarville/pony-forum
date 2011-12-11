@@ -8,6 +8,7 @@ from django.conf                    import settings
 from django.contrib                 import messages, auth
 from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib.auth.models     import User
+from django.core.paginator          import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers       import reverse
 from django.db.utils                import DatabaseError
 from django.http                    import HttpResponse, HttpResponseRedirect
@@ -61,6 +62,9 @@ from forum.models                   import Category, Post, Report,\
 LOGIN_URL                 = getattr(settings, "LOGIN_URL", "/accounts/login/")
 MAX_THREAD_TITLE_LENGTH   = Thread._meta.get_field("title_plain").max_length
 MAX_CATEGORY_TITLE_LENGTH = Category._meta.get_field("title_plain").max_length
+POSTS_PER_PAGE            = 25
+THREADS_PER_PAGE          = 25
+USER_CONTENT_PER_PAGE     = 50
 
 
 long_title_error  = "Your chosen title was too long. Keep it under %i characters."
@@ -308,6 +312,20 @@ def category(request, category_id):
     if not request.user.is_anonymous() and request.user.subscriptions.all():
         subscribed_threads = threads.filter(subscriber__exact=request.user)[:5]
 
+    # Pagination
+    category_thread_list = category_threads
+    paginator = Paginator(category_thread_list, THREADS_PER_PAGE)
+
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+    try:
+        category_threads = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        category_threads = paginator.page(paginator.num_pages)
+
     return render(request, 'category.html',
                           {'category'        : category,
                            'category_threads': category_threads,
@@ -332,6 +350,21 @@ def thread(request, thread_id, author_id):
                 .order_by("creation_date")\
 #        anchor_number = forloop.counter
         anchor_number = '???'
+
+        # Pagination
+        post_list = posts
+        paginator = Paginator(post_list, POSTS_PER_PAGE)
+
+        try:
+            page = int(request.GET.get('page', '1'))
+        except ValueError:
+            page = 1
+
+        try:
+            posts = paginator.page(page)
+        except (EmptyPage, InvalidPage):
+            posts = paginator.page(paginator.num_pages)
+
         return render(request, 'thread.html',
                               {'thread_id'    : thread_id,
                                'thread'       : thread,
@@ -392,6 +425,21 @@ def user_content(request, user_id, object_type):
         objects    = person.thread_set.all()\
                      .exclude(is_removed__exact=True)\
                      .order_by("-creation_date")
+
+    # Pagination
+    object_list = objects
+    paginator = Paginator(object_list, USER_CONTENT_PER_PAGE)
+
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+    try:
+        objects = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        objects = paginator.page(paginator.num_pages)
+
     return render(request, 'user_content.html',
                           {'type'   : object_type,
                            'person' : person,

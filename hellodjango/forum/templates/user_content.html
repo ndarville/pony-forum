@@ -7,17 +7,40 @@
 <div id="content">
     <dl>
 {% if type == "thread" %}
-    {% for thread in objects %}
+    {% for thread in objects.object_list %}
         <dt>{{ thread.relative_date }}</dt>
             <dd><a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a></dd>
+    {% empty %}
+        <p>This user has not created any threads yet.</p>
     {% endfor %}
 {% else %}
-    {% for post in objects %}
+    {% for post in objects.object_list %}
         <dt><a href="{% url forum.views.thread post.id %}">{{ post.thread.title_html|safe }}</a></dt>
             <dd>{{ post.content_html|safe }}</dd>
+    {% empty %}
+        <p>This user has not posted in the forums yet.</p>
     {% endfor %}
 {% endif %}
     <dl>
+
+    <div class="pagination">
+        <span class="previous-page">
+        {% if objects.has_previous %}
+            <a href="?page={{ objects.previous_page_number }}" title="Go to the previous page of threads">Previous</a>
+        {% endif %}
+        </span>
+
+        <span class="current-page">
+            Page {{ objects.number }} of {{ objects.paginator.num_pages }}
+        </span>
+    
+        <span class="next-page">
+        {% if objects.has_next %}
+            <a href="?page={{ objects.next_page_number }}" title="Go to the next page of threads">Next</a>
+        {% endif %}
+        </span>
+    </div>
 </div>
 {% endblock %}
+
 {% block credits-border %}<hr />{% endblock %}
