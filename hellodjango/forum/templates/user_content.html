@@ -23,6 +23,7 @@
 {% endif %}
     <dl>
 
+{% if objects.paginator.num_pages > 1 %}
     <div class="pagination">
         <span class="previous-page">
         {% if objects.has_previous %}
@@ -40,6 +41,7 @@
         {% endif %}
         </span>
     </div>
+{% endif %}
 </div>
 {% endblock %}
 

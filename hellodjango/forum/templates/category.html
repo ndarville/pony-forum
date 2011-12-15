@@ -39,6 +39,7 @@
                 <a class="button" href="{% url forum.views.create category.id %}">Create new thread</a>
             {% endif %}
 
+            {% if category_threads.paginator.num_pages > 1 %}
                 <div class="pagination">
                     <span class="previous-page">
                     {% if category_threads.has_previous %}
@@ -56,5 +57,6 @@
                     {% endif %}
                     </span>
                 </div>
+            {% endif %}
             </div>
 {% endblock %}

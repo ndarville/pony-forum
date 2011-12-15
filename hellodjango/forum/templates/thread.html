@@ -9,6 +9,7 @@
                     <a href="{% url forum.views.home %}">Overview</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.category thread.category.id %}">{{ thread.category.title_html|safe }}</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}{% if thread.is_locked %}&nbsp;(LOCKED){% endif %}</a>
                 </div>
         
+            {% if posts.paginator.num_pages > 1 %}
                 <div class="pagination">
                     <span class="previous-page">
                     {% if posts.has_previous %}
@@ -26,6 +27,7 @@
                     {% endif %}
                     </span>
                 </div>
+            {% endif %}
 
             {% if not thread.is_removed %}
                 <div id="thread-buttons-top">
@@ -111,6 +113,7 @@
                 </div>
             {% endif %}
 
+            {% if posts.paginator.num_pages > 1 %}
                 <div class="pagination">
                     <span class="previous-page">
                     {% if posts.has_previous %}
@@ -128,6 +131,7 @@
                     {% endif %}
                     </span>
                 </div>
+            {% endif %}
             </div>
 {% endblock %}
 {% block js %}
