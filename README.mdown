@@ -18,6 +18,10 @@ The results on Windows 7 have been uneven at best, but if you want to try your l
 
 Remember to [sign up](https://www.dotcloud.com/accounts/register/) for free on DotCloud, if you don't already have an account, in order to retrieve your API key.
 
+If you want to use your forum locally, remember that you need to install the needed packages. If you have already installed `pip`, you can go to the directory of `requirements.txt` and type `pip install -r requirements.txt` in the terminal (`sudo pip install -r requirements.txt`, if you aren't on Windows), and all the packages will be downloaded and installed on you local development computer.
+
+As said, Windows is a very, very wonky experience, and it seems to take issue with the `PIL` package most of the time for reasons beyond my scant knowledge.
+
 After-Installation Instructions
 -------------------------------
 ### The Default "Admin" ###
@@ -52,34 +56,61 @@ If you need to change these two fields---for instance, if you were to give your 
 ### Setting Up an E-Mail Server ###
 *Speakiiing* of activation e-mails, you need to, you know, send e-mails. "Jesus &"¤!#! Christ!" you think to yourself, but if you use a Gmail account, it's all actually quite easy! (I was surprised, too.)
 
-Using [sontek's intelligible guide](http://sontek.net/using-gmail-to-send-e-mails-from-django), you can define your own e-mail server by including this part in your `settings.py` file:
+Using [sontek's intelligible guide](http://sontek.net/using-gmail-to-send-e-mails-from-django), if you use a Gmail e-mail account, you can define your own e-mail server by including this part in your `settings.py` file:
 
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_HOST_USER = 'user@gmail.com'
     EMAIL_HOST_PASSWORD = 'password'
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
-    
-Obviously, you need to change the `USER` and `PASSWORD` fields to your own settings. Also note that if you are using Google's [two-factor authentication](https://accounts.google.com/SmsAuthConfig), you default password will not work, because you need to create a designated application password for it [here](https://accounts.google.com/IssuedAuthSubTokens).
 
-If you aren't already using two-factor authentication, I urge you to do it to improve your Google and Gmail security significantly, but I'll talk your ear off about that another time. Just one more thing: if you use two-factor authentication, you will not use the password for your actual account, but an application password instead. The advantage of this is that you can remove this application in your Google account settings right away, if you accidentally share it through GitHub or elsewhere.
+*However!* Putting this kind of configuration information in a file that may end up in a publically viewable place is not adviseable. Instead, follow [DotCloud's guide to environmental variables](http://docs.dotcloud.com/guides/environment/) and, instead, enter the information like environment variables like so:
+
+    dotcloud var set hellodjango EMAIL_HOST=smtp.gmail.com
+    dotcloud var set hellodjango EMAIL_HOST_USER=your_user_name@gmail.com
+    dotcloud var set hellodjango EMAIL_HOST_PASSWORD=your_password
+    dotcloud var set hellodjango EMAIL_PORT=587
+    dotcloud var set hellodjango EMAIL_USE_TLS=True
+
+If you want to, you can also do it like this on some operating system:
+
+    dotcloud var set hellodjango \
+        'EMAIL_HOST=smtp.gmail.com' \
+        'EMAIL_HOST_USER=your_user_name@gmail.com' \
+        'EMAIL_HOST_PASSWORD=your_password' \
+        'EMAIL_PORT=587' \
+        'EMAIL_USE_TLS=True'
+
+I think the last one is the easiest one, but choose whichever you prefer.
+
+All environment variables can be viewed with
+
+    dotcloud var list hellodjango
+    
+This should set up your e-mail server. At any point, you can alter the values by the approaches above. You can remove any erroneous environment variables entirely using
+
+    dotcloud var unset hellodjango EMAIL_HOST_PASSWORD
+
+Obviously, you need to change the `USER` and `PASSWORD` fields to your own. Also note that if you are using Google's [two-factor authentication](https://accounts.google.com/SmsAuthConfig), you default password will not work, because you need to create a designated application password for it [here](https://accounts.google.com/IssuedAuthSubTokens). The reason is that if you use two-factor authentication, you will not use the password for your actual account outside of Google's own sites, but an application password. The advantage of this is that you can remove this application in your Google account settings right away, if you accidentally share it through GitHub or elsewhere.
+
+This is a much better security solution, because it is much easier to shut down a compromised application password by just removing it in your account settings than replacing your general password and playing cat and mouse with any potential hacker, as well as trying to recall your mother's middle name. If you aren't already using two-factor authentication, I urge you to do it to improve your Google and Gmail security significantly. Not because of Pony Forum, but the general security advantages it affods you. 
 
 After you have changed and saved your new settings in `settings.py`, run the `dotcloud push hellodjango` command again, and your new settings will be (derp) pushed to your instance. If nothing happens, follow it up with the command `dotcloud restart hellodjango.www`.
 
 ### DEBUG = True or False? ###
 While you're still in `settings.py`, you might consider changing the value of DEBUG, whether it is set to `True` or `False`.
 
-It all depends on where you are in your development cycle, but remember to flip it off, once you open it to the public.
+It all depends on where you are in your development cycle, but remember to flip it off, once you open it to the public---and on, if you are testing your site.
 
-Leave it on `True`, if you are customizing it yourself, but set it to `False`, once you launch your site.
+Set it to `True`, if you are customizing it yourself, but set it to `False`, once you launch your site.
 
 ### Aaand You're Done! ###
 Let's recapitulate the adjustments needed to set up Pony-Forum:
 
 1. Clone, create, push.
-2. Change the default admin `"password"` password.
-3. Check that your defined site name and domain match your intended name and used URL.
-4. Set up your e-mail server.
+2. Set up your e-mail server.
+3. Change the default admin `"password"` password.
+4. Check that your defined site name and domain match your intended name and used URL.
 5. Evaluate whether Django's debug mode should be on of off.
 
 Boom! You're done.
@@ -94,7 +125,6 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 2. Subscriptions
 3. Bans
 4. Avatars
-5. Pagination
 
 * Formatting buttons
 * Thread polls
@@ -113,8 +143,6 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 * Unit testing
 * (Better) caching
 * Finite log-in attempts
-
-I should probably find some way to dynamically change the unique `SECRET_KEY` in `settings.py` ...
 
 ### Features Under Consideration ###
 * UTC-based datetimes

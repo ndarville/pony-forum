@@ -1,13 +1,14 @@
-# Django settings for hellodjango project.
-
-import json
-with open('/home/dotcloud/environment.json') as f:
-    env = json.load(f)
+try:
+    import json
+    with open('/home/dotcloud/environment.json') as f:
+        env = json.load(f)
+except IOError:  # Local development---not on DotCloud
+    pass
 
 import os
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -16,27 +17,29 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE':  'django.db.backends.postgresql_psycopg2',
-        'NAME':    'template1',
-        'USER':     env['DOTCLOUD_DB_SQL_LOGIN'],
-        'PASSWORD': env['DOTCLOUD_DB_SQL_PASSWORD'],
-        'HOST':     env['DOTCLOUD_DB_SQL_HOST'],
-        'PORT':     int(env['DOTCLOUD_DB_SQL_PORT']),
+try:
+    # Do not alter these values under normal circumstances:
+    DOTCLOUD_DB = {
+        'default': {
+            'ENGINE':  'django.db.backends.postgresql_psycopg2',
+            'NAME':    'template1',
+            'USER':     env['DOTCLOUD_DB_SQL_LOGIN'],
+            'PASSWORD': env['DOTCLOUD_DB_SQL_PASSWORD'],
+            'HOST':     env['DOTCLOUD_DB_SQL_HOST'],
+            'PORT':     int(env['DOTCLOUD_DB_SQL_PORT']),
+        }
     }
-}
+except NameError:  # Local development---not on DotCloud
+    pass
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-#         'NAME': 'mydb',                       # Or path to database file if using sqlite3.
-#         'USER': 'root',                       # Not used with sqlite3.
-#         'PASSWORD': 'MySQLpassword',          # Not used with sqlite3.
-#         'HOST': '',                           # Set to empty string for localhost. Not used with sqlite3.
-#         'PORT': '',                           # Set to empty string for default. Not used with sqlite3.
-#     }
-# }
+try:
+    DATABASES = DOTCLOUD_DB
+except NameError:  # Local development---not on DotCloud
+    pass
+
+### Enter your local database information in local_settings.py
+### An example_local_settings.py exists to give you an idea of
+### how to set it up
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -186,16 +189,20 @@ LOGGING = {
 }
 
 ### E-MAIL SERVER
-## Only for testing. Uncomment and set up your server in the
-## commented section below
-EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 ## http://sontek.net/using-gmail-to-send-e-mails-from-django
-# EMAIL_HOST          = 'smtp.gmail.com'
-# EMAIL_HOST_USER     = '<example@gmail.com>'
-# EMAIL_HOST_PASSWORD = '<mypassword>'
-# EMAIL_PORT          = 587
-# EMAIL_USE_TLS       = True
-###
+try:
+    EMAIL_HOST           = env['EMAIL_HOST']
+    EMAIL_HOST_USER      = env['EMAIL_HOST_USER']
+    EMAIL_HOST_PASSWORD  = env['EMAIL_HOST_PASSWORD']
+    EMAIL_PORT           = int(env['EMAIL_PORT'])
+    EMAIL_USE_TLS        = bool(env['EMAIL_USE_TLS'])
+#    EMAIL_SUBJECT_PREFIX = ""  # Doesn't work, optional
+except KeyError:  # E-mail settings have not been entered
+    raise KeyError("""You need to enter your e-mail server settings.
+    A guide is available in the README at http://git.io/TurlLQ.
+    """)
+except NameError:  # Local development
+    pass
 
 ### USERENA APP
 ANONYMOUS_USER_ID = -1.
@@ -210,7 +217,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL          = '/accounts/login/'
 LOGOUT_URL         = '/accounts/logout/'
 
-USERENA_ACTIVATION_REQUIRED  = True # Set to false when debugging
+USERENA_ACTIVATION_REQUIRED  = True  # Set to False when debugging
 USERENA_DEFAULT_PRIVACY      = 'open'
 USERENA_DISABLE_PROFILE_LIST = True
 USERENA_FORBIDDEN_USERNAMES  = ('activate', 'login', 'logout', 'me',\
@@ -224,3 +231,11 @@ USERENA_USE_HTTPS            = False
 BCRYPT_MIGRATE = True
 BCRYPT_ROUNDS  = 16
 ###
+
+try:
+    LOCAL_SETTINGS
+except NameError:
+    try:
+        from local_settings import *
+    except ImportError:
+        pass
