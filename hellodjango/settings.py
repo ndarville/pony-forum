@@ -12,7 +12,11 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    try:
+        # ('Your Name', 'your_email@example.com'),
+        (env['ADMIN_NAME'], env['ADMIN_EMAIL']),
+    except NameError, KeyError:
+        pass
 )
 
 MANAGERS = ADMINS
@@ -198,9 +202,10 @@ try:
     EMAIL_USE_TLS        = bool(env['EMAIL_USE_TLS'])
 #    EMAIL_SUBJECT_PREFIX = ""  # Doesn't work, optional
 except KeyError:  # E-mail settings have not been entered
-    raise KeyError("""You need to enter your e-mail server settings.
-    A guide is available in the README at http://git.io/TurlLQ.
-    """)
+#    raise KeyError("""You need to enter your e-mail server settings.
+#    A guide is available in the README at https://github.com/ndarville/dotcloud-django
+#    """)
+    pass
 except NameError:  # Local development
     pass
 
