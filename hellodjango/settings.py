@@ -11,15 +11,15 @@ PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-    try:
-        # ('Your Name', 'your_email@example.com'),
-        (env['ADMIN_NAME'], env['ADMIN_EMAIL']),
-    except NameError, KeyError:
-        pass
-)
-
-MANAGERS = ADMINS
+#ADMINS = (
+#    try:
+#        # ('Your Name', 'your_email@example.com'),
+#        (env['ADMIN_NAME'], env['ADMIN_EMAIL']),
+#    except NameError, KeyError:
+#        pass
+#)
+#
+#MANAGERS = ADMINS
 
 try:
     # Do not alter these values under normal circumstances:
