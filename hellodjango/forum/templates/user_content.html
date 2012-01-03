@@ -15,7 +15,7 @@
     {% endfor %}
 {% else %}
     {% for post in objects.object_list %}
-        <dt><a href="{% url forum.views.thread post.id %}">{{ post.thread.title_html|safe }}</a></dt>
+        <dt><a href="{% url forum.views.post post.id %}">{{ post.thread.title_html|safe }}</a></dt>
             <dd>{{ post.content_html|safe }}</dd>
     {% empty %}
         <p>This user has not posted in the forums yet.</p>
