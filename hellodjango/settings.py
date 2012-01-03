@@ -2,8 +2,9 @@ try:
     import json
     with open('/home/dotcloud/environment.json') as f:
         env = json.load(f)
+    LOCAL_DEVELOPMENT = False
 except IOError:  # Local development---not on DotCloud
-    pass
+    LOCAL_DEVELOPMENT = True
 
 import os
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
@@ -21,7 +22,7 @@ TEMPLATE_DEBUG = DEBUG
 #
 #MANAGERS = ADMINS
 
-try:
+if not LOCAL_DEVELOPMENT:
     # Do not alter these values under normal circumstances:
     DOTCLOUD_DB = {
         'default': {
@@ -33,13 +34,7 @@ try:
             'PORT':     int(env['DOTCLOUD_DB_SQL_PORT']),
         }
     }
-except NameError:  # Local development---not on DotCloud
-    pass
-
-try:
     DATABASES = DOTCLOUD_DB
-except NameError:  # Local development---not on DotCloud
-    pass
 
 ### Enter your local database information in local_settings.py
 ### An example_local_settings.py exists to give you an idea of
@@ -136,6 +131,7 @@ TEMPLATE_LOADERS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
+#    'djangosecure.middleware.SecurityMiddleware', # https
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -162,8 +158,9 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'forum',
     'django.contrib.markup',
-#   'django_bcrypt',
-    'userena', 'guardian', 'easy_thumbnails',
+#    'django_bcrypt',
+    'userena', 'guardian', 'easy_thumbnails', # userena
+#    'djangosecure', # https
 )
 
 # Extension of the User model with forum-related fields in models.py
@@ -194,20 +191,19 @@ LOGGING = {
 
 ### E-MAIL SERVER
 ## http://sontek.net/using-gmail-to-send-e-mails-from-django
-try:
-    EMAIL_HOST           = env['EMAIL_HOST']
-    EMAIL_HOST_USER      = env['EMAIL_HOST_USER']
-    EMAIL_HOST_PASSWORD  = env['EMAIL_HOST_PASSWORD']
-    EMAIL_PORT           = int(env['EMAIL_PORT'])
-    EMAIL_USE_TLS        = bool(env['EMAIL_USE_TLS'])
-#    EMAIL_SUBJECT_PREFIX = ""  # Doesn't work, optional
-except KeyError:  # E-mail settings have not been entered
-#    raise KeyError("""You need to enter your e-mail server settings.
-#    A guide is available in the README at https://github.com/ndarville/dotcloud-django
-#    """)
-    pass
-except NameError:  # Local development
-    pass
+if not LOCAL_DEVELOPMENT:
+    try:
+        EMAIL_HOST           = env['EMAIL_HOST']
+        EMAIL_HOST_USER      = env['EMAIL_HOST_USER']
+        EMAIL_HOST_PASSWORD  = env['EMAIL_HOST_PASSWORD']
+        EMAIL_PORT           = int(env['EMAIL_PORT'])
+        EMAIL_USE_TLS        = bool(env['EMAIL_USE_TLS'])
+    #    EMAIL_SUBJECT_PREFIX = ""  # Doesn't work, optional
+    except KeyError:  # E-mail settings have not been entered
+    #    raise KeyError("""You need to enter your e-mail server settings.
+    #    A guide is available in the README at https://github.com/ndarville/dotcloud-django
+    #    """)
+        pass
 
 ### USERENA APP
 ANONYMOUS_USER_ID = -1.
@@ -229,8 +225,14 @@ USERENA_FORBIDDEN_USERNAMES  = ('activate', 'login', 'logout', 'me',\
                                 'password', 'register', 'signin',\
                                 'signout', 'signup')
 USERENA_MUGSHOT_GRAVATAR     = False
-USERENA_USE_HTTPS            = False
-###
+
+### DJANGO-SECURE HTTPS
+# if not LOCAL_DEVELOPMENT:
+    # SECURE_SSL_REDIRECT = True
+    # SECURE_FRAME_DENY = True
+    # SECURE_BROWSER_XSS_FILTER
+    # SESSION_COOKIE_SECURE, SESSION_COOKIE_HTTPONLY = True, True
+    # SECURE_HSTS_SECONDS = 1
 
 ### BCRYPT APP, if used
 BCRYPT_MIGRATE = True
