@@ -1,6 +1,10 @@
+try:
+    from MySQLdb import OperationalError
+except ImportError: # postgresql database
+    pass
+
 from datetime                       import datetime
 from markdown                       import markdown
-from MySQLdb                        import OperationalError
 from smartypants                    import smartyPants as smartypants
 import bleach
 
@@ -23,6 +27,7 @@ from forum.models                   import Category, Post, Report,\
 #
 ##  helper constants
 ##  helper errors
+##  helper exceptions
 ##  helper functions
 #
 ##  home
@@ -93,6 +98,10 @@ S/he might want to contact the site&rsquo;s host in return.</p>
     How-To guide</a></li>
 </ul>
 """
+
+
+class DatabaseEncodingError(Exception):
+    messages.error(request, "%s" % operational_error)
 
 
 def amazon_referral(text):
@@ -347,7 +356,7 @@ def thread(request, thread_id, author_id):
             posts     = posts.filter(author__exact=author_id)
 
         posts = posts.exclude(is_removed__exact=True)\
-                .order_by("creation_date")\
+                .order_by("creation_date")
 #        anchor_number = forloop.counter
         anchor_number = '???'
 
@@ -498,7 +507,7 @@ def create(request, category_id):
                     p.save()
                     t.subscriber.add(request.user)
                 except OperationalError:  # Database interaction error
-                    messages.error(request, "%s") % operational_error
+                    raise DatabaseEncodingError
                 else:
                     # After successful submission
                     return HttpResponseRedirect(reverse('forum.views.thread',
@@ -547,7 +556,7 @@ def reply(request, thread_id):
                 thread.latest_reply_date = now
                 thread.save()
             except OperationalError:  # Database interaction error
-                messages.error(request, "%s") % operational_error
+                raise DatabaseEncodingError
             else:
                 # After successful submission
                 return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
@@ -835,7 +844,7 @@ def moderate_thread(request, thread_id):
                 thread.title_html  = title_html
                 thread.save()
             except OperationalError:  # Database interaction error
-                messages.error(request, "%s")
+                raise DatabaseEncodingError
             else:
                 return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     return render(request, 'moderate.html',
@@ -955,7 +964,7 @@ def report(request, object_id, object_type):
                         r.post = obj
                     r.save()
                 except OperationalError:  # Database interaction error
-                    messages.error(request, "%s") % operational_error
+                    raise DatabaseEncodingError
                 else:
                     # After successful submission
                     return HttpResponseRedirect(reverse('forum.views.thread',
