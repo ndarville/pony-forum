@@ -108,12 +108,12 @@ class Thread(models.Model):
     title_plain       = models.CharField(max_length=70)
     title_html        = models.TextField()
     category          = models.ForeignKey(Category)
-#   poll              = models.ForeignKey(Poll, null=True, blank=True)    
+#    poll              = models.ForeignKey(Poll, null=True, blank=True)    
     bookmarker        = models.ManyToManyField(User, null=True, blank=True,
                                                related_name="bookmarks")
     subscriber        = models.ManyToManyField(User, null=True, blank=True,
                                                related_name="subscriptions")
-#    hider            = models.ManyToManyField(User, null=True, blank=True,
+#    hider             = models.ManyToManyField(User, null=True, blank=True,
 #                           related_name="hidden_threads")
     #: Users granted moderator rights on a per-thread basis    
 #    threadmins        = models.ManyToManyField(User, null=True, blank=True)
@@ -124,14 +124,16 @@ class Thread(models.Model):
     class Meta:
         ordering = ["-creation_date"]
         permissions = (
-            ("remove_thread",          "Remove threads"),
-            ("merge_thread",           "Merge multiple threads together"),
-            ("sticky_thread",          "Stick a thread to the top of the thread list"),
-            ("move_thread",            "Move a thread to another category"),
-            ("lock_thread",            "Lock (and unlock) threads"),
-#            ("ban_user_in_thread",     "Ban user from post in thread"),
-#            ("timeout_user_in_thread", "Ban user from posting in thread temporarily"),
-            ("appoint_threadmin",      "Give a user mod-like permissions in a thread"),
+            ("remove_thread", "Remove (and restore) threads"),
+            ("merge_thread",  "Merge multiple threads together"),
+            ("sticky_thread", "Stick a thread to the top of the thread list"),
+            ("move_thread",   "Move a thread to another category"),
+            ("lock_thread",   "Lock (and unlock) threads"),
+#            ("ban_user_in_thread",
+#                              "Ban user from posting in thread permanently"),
+#            ("timeout_user_in_thread",
+#                              "Ban user from posting in thread temporarily"),
+            ("is_threadmin",  "Give a user mod-like permissions in a thread"),
         )
 
     def __unicode__(self):
@@ -141,6 +143,7 @@ class Thread(models.Model):
         """Shows the time since the last post in a thread."""
         
         return relative_date(self.latest_reply_date)
+
     relative_date.short_description = "Latest post"
 
 
@@ -232,9 +235,11 @@ class UserProfile(UserenaBaseProfile):
 #    avatar_url         = models.URLField(blank=True)
     has_dyslexia       = models.BooleanField(default=False,
                                              verbose_name="User has dyslexia")
+    has_epilepsy       = models.BooleanField(default=False,
+                                             verbose_name="User has epilepsy")
     # post_count
     # thread_count
-    formatting_buttons = models.BooleanField(default=True)
+    # formatting_buttons = models.BooleanField(default=True)
     #! Automatically subscribe to a thread after posting in it.
     auto_subscribe     = models.BooleanField(default=False,
                                              verbose_name="Automatically subscribe \
