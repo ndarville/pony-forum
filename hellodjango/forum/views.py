@@ -370,7 +370,8 @@ def post(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
 
     if not post.thread.is_removed or request.user.has_perm('forum.remove_thread'):
-        if not post.is_removed or request.user.has_perm('forum.remove_thread') \
+        if not post.is_removed\
+           or request.user.has_perm('forum.remove_thread')\
            or request.user.has_perm('forum.remove_post'):
             anchor_number = '???'
             return render(request, 'post.html',
@@ -398,9 +399,7 @@ def user(request, user_id):
              .exclude(is_removed__exact=True)\
              .exclude(thread__is_removed__exact=True)\
              .order_by("-creation_date")
-    return render(request, 'user.html',
-                          {'person': person,
-                           'posts' : posts})
+    return render(request, 'user.html', {'person': person, 'posts': posts})
 
 
 def user_content(request, user_id, object_type):
@@ -410,7 +409,7 @@ def user_content(request, user_id, object_type):
     if object_type == "post":
         objects    = person.post_set.all()\
                      .exclude(thread__is_removed__exact=True)
-    else:  # ..... == "thread"
+    else:  #   ... == "thread"
         objects    = person.thread_set.all()\
                      .exclude(is_removed__exact=True)
     objects = objects.order_by("-creation_date")
@@ -515,8 +514,7 @@ def reply(request, thread_id):
             html = sanitized_smartdown(text)
             Post.objects.create(\
                 thread=thread, author=user, creation_date=now,
-                content_plain=text, content_html=html)
-                
+                content_plain=text, content_html=html)            
             thread.latest_reply_date = now
             thread.save()
             return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
@@ -545,15 +543,14 @@ def edit(request, post_id):
         return HttpResponseRedirect(reverse('forum.views.thread', args=(post.thread.id,)))
 
     if request.method == 'POST':  # Form has been submitted
-        text = request.POST['content']
         if "submit" in request.POST:  # "submit" button pressed
-            post.content_plain = text
-            post.content_html  = sanitized_smartdown(text)
+            post.content_plain = request.POST['content']
+            post.content_html  = sanitized_smartdown(post.content_plain)
             post.save()
             return HttpResponseRedirect(reverse('forum.views.thread', args=(post.thread.id,)))
         elif "preview" in request.POST:  # "preview" button pressed
-            preview_plain = text
-            preview_html  = sanitized_smartdown(text)
+            preview_plain = request.POST['content']
+            preview_html  = sanitized_smartdown(preview_plain)
     # The post author or a moderator/admin visits the link
     elif request.user == post.author or request.user.has_perm('forum.change_post'):
         pass
@@ -791,14 +788,12 @@ def moderate_thread(request, thread_id):
     title_plain = thread.title_plain
 
     if request.method == 'POST':  # Form has been submitted
-        title_plain = request.POST['title']
-        title_html  = prettify_title(title_plain)
-        if len(title_plain) > MAX_THREAD_TITLE_LENGTH:
+        if len(request.POST['title']) > MAX_THREAD_TITLE_LENGTH:
             messages.error(request, long_title_error % MAX_THREAD_TITLE_LENGTH)
         else:
             try:
-                thread.title_plain = title_plain
-                thread.title_html  = title_html
+                thread.title_plain = request.POST['title']
+                thread.title_html  = prettify_title(thread.title_plain)
                 thread.save()
             except:
                 pass
@@ -816,9 +811,7 @@ def move_thread(request, thread_id):
     categories = Category.objects.all()
 
     if request.method == 'POST':  # Form has been submitted
-        category = get_object_or_404(Category, pk=request.POST['category'])
-
-        thread.category = category
+        thread.category = get_object_or_404(Category, pk=request.POST['category'])
         thread.save()
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:  # Otherwise, show clean, normal page with no populated data
@@ -867,16 +860,11 @@ def report(request, object_id, object_type):
     title        = False
     preview_html = False
 
-    if object_type == "post":
-        obj    = get_object_or_404(Post, pk=object_id)
-        thread = obj.thread
-    else:  # ... == thread
+    if object_type == "thread":
         obj    = get_object_or_404(Thread, pk=object_id)
         thread = obj
-
-# Check for reasons not to let the user file a report
-    if object_type == "thread":
-        if thread.is_removed:
+    # Check for reasons not to let the user file a report
+        if obj.is_removed:
             messages.info(request, "The thread %s has been removed and is no longer available." % thread.title_html)
             return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category.id,)))
         elif thread.is_locked:
@@ -887,7 +875,10 @@ def report(request, object_id, object_type):
                            .filter(was_addressed__exact=False):
             messages.info(request, "This %s has already been reported by you." % object_type)
             return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
-    elif object_type == "post":
+    else:  # ... == post
+        obj    = get_object_or_404(Post, pk=object_id)
+        thread = obj.thread
+    # Check for reasons not to let the user file a report
         if obj.is_removed:
             messages.info(request, "The post has been removed and is no longer available.")
         elif request.user == obj.author:
@@ -900,7 +891,7 @@ def report(request, object_id, object_type):
                            .filter(post__exact=obj):
             messages.info(request, "This %s has already been reported by you." % object_type)
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
-    
+   
     if request.method == 'POST':  # Form has been submitted
         title = request.POST['title']
         if "content" in request.POST:  # elaboration provided
@@ -908,7 +899,7 @@ def report(request, object_id, object_type):
         if "submit" in request.POST:  # "submit" button pressed
             if len(title) > MAX_THREAD_TITLE_LENGTH:
                 messages.error(request, long_title_error % MAX_THREAD_TITLE_LENGTH)
-                preview_html = text
+                preview_html = text  # buggy if no content?
             else:
                 user = request.user
                 now  = datetime.now()  # UTC?
@@ -928,7 +919,7 @@ def report(request, object_id, object_type):
                     return HttpResponseRedirect(reverse('forum.views.thread',
                         args=(thread.id,)))
         elif "preview" in request.POST:  # "preview" button pressed
-            preview_html = text
+            preview_html = text  # buggy if no content?
     return render(request, 'report.html',
                           {'obj'         : obj,
                            'type'        : object_type,
@@ -946,11 +937,10 @@ def reports(request):
     reports = reports.order_by("thread")
 
     if request.method == 'POST':  # Report has been dismissed
-        now    = datetime.now()  # UTC?
         report = get_object_or_404(Report, pk=request.POST['report-id'])
         report.was_addressed  = True
         report.addressed_by   = request.user
-        report.date_addressed = now
+        report.date_addressed = datetime.now()  # UTC?
         report.save()
     return render(request, 'reports.html', {'reports': reports})
 
