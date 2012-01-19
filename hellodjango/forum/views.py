@@ -1,8 +1,3 @@
-try:
-    from MySQLdb import OperationalError
-except ImportError: # postgresql database
-    pass
-
 from datetime                       import datetime
 from markdown                       import markdown
 from smartypants                    import smartyPants as smartypants
@@ -100,10 +95,6 @@ S/he might want to contact the site&rsquo;s host in return.</p>
 """
 
 
-class DatabaseEncodingError(Exception):
-    messages.error(request, "%s" % operational_error)
-
-
 def amazon_referral(text):
     return "regex blahblahblah"
 
@@ -144,6 +135,23 @@ def email_is_taken(email):
         return False
     else:
         return True
+
+
+def paginate(request, items, num_items):
+    """Create and return a paginator."""
+    paginator = Paginator(items, num_items)
+    
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+    try:
+        items = paginator.page(page)
+    except (InvalidPage, EmptyPage):
+        items = paginator.page(paginator.num_pages)
+    
+    return items
 
 
 def prettify_title(title):
@@ -311,6 +319,7 @@ def category(request, category_id):
     category_threads = all_threads.order_by("-latest_reply_date")\
                        .exclude(is_sticky__exact=True)
 #                       .only("latest_reply_date")
+    category_threads = paginate(request, category_threads, THREADS_PER_PAGE)
     stickies         = all_threads.exclude(is_sticky__exact=False)
 
     # Threadbar code from home()
@@ -320,20 +329,6 @@ def category(request, category_id):
 
     if not request.user.is_anonymous() and request.user.subscriptions.all():
         subscribed_threads = threads.filter(subscriber__exact=request.user)[:5]
-
-    # Pagination
-    category_thread_list = category_threads
-    paginator = Paginator(category_thread_list, THREADS_PER_PAGE)
-
-    try:
-        page = int(request.GET.get('page', '1'))
-    except ValueError:
-        page = 1
-
-    try:
-        category_threads = paginator.page(page)
-    except (EmptyPage, InvalidPage):
-        category_threads = paginator.page(paginator.num_pages)
 
     return render(request, 'category.html',
                           {'category'        : category,
@@ -357,22 +352,9 @@ def thread(request, thread_id, author_id):
 
         posts = posts.exclude(is_removed__exact=True)\
                 .order_by("creation_date")
+        posts = paginate(request, posts, POSTS_PER_PAGE)
 #        anchor_number = forloop.counter
         anchor_number = '???'
-
-        # Pagination
-        post_list = posts
-        paginator = Paginator(post_list, POSTS_PER_PAGE)
-
-        try:
-            page = int(request.GET.get('page', '1'))
-        except ValueError:
-            page = 1
-
-        try:
-            posts = paginator.page(page)
-        except (EmptyPage, InvalidPage):
-            posts = paginator.page(paginator.num_pages)
 
         return render(request, 'thread.html',
                               {'thread_id'    : thread_id,
@@ -428,26 +410,12 @@ def user_content(request, user_id, object_type):
 
     if object_type == "post":
         objects    = person.post_set.all()\
-                     .exclude(thread__is_removed__exact=True)\
-                     .order_by("-creation_date")
+                     .exclude(thread__is_removed__exact=True)
     else:  # ..... == "thread"
         objects    = person.thread_set.all()\
-                     .exclude(is_removed__exact=True)\
-                     .order_by("-creation_date")
-
-    # Pagination
-    object_list = objects
-    paginator = Paginator(object_list, USER_CONTENT_PER_PAGE)
-
-    try:
-        page = int(request.GET.get('page', '1'))
-    except ValueError:
-        page = 1
-
-    try:
-        objects = paginator.page(page)
-    except (EmptyPage, InvalidPage):
-        objects = paginator.page(paginator.num_pages)
+                     .exclude(is_removed__exact=True)
+    objects = objects.order_by("-creation_date")
+    objects = paginate(request, objects, USER_CONTENT_PER_PAGE)
 
     return render(request, 'user_content.html',
                           {'type'   : object_type,
@@ -466,8 +434,7 @@ def add(request):
         if len(title_plain) > MAX_CATEGORY_TITLE_LENGTH:
             messages.error(request, long_title_error % MAX_CATEGORY_TITLE_LENGTH)
         else:
-            c = Category(title_plain=title_plain, title_html=title_html)
-            c.save()
+            Category.objects.create(title_plain=title_plain, title_html=title_html)
             return HttpResponseRedirect("/")
     return render(request, 'add.html', {'title': title_plain})
 
@@ -498,20 +465,18 @@ def create(request, category_id):
                 now       = datetime.now()  # UTC?
                 text_html = sanitized_smartdown(text_plain)
                 try:
-                    t = Thread(title_plain=title_plain, title_html=title_html,
-                               author=user, category=category,
-                               creation_date=now, latest_reply_date=now)
-                    t.save()
-                    p = Post(thread=t, creation_date=now, author=user,
-                             content_plain=text_plain, content_html=text_html)
-                    p.save()
-                    t.subscriber.add(request.user)
-                except OperationalError:  # Database interaction error
-                    raise DatabaseEncodingError
-                else:
-                    # After successful submission
-                    return HttpResponseRedirect(reverse('forum.views.thread',
-                        args=(user.thread_set.all().order_by('-creation_date')[0].id,)))
+                    t = Thread.objects.create(\
+                            title_plain=title_plain, title_html=title_html,
+                            author=user, category=category,
+                            creation_date=now, latest_reply_date=now)
+                    Post.objects.create(\
+                            thread=t, creation_date=now, author=user,
+                            content_plain=text_plain, content_html=text_html)
+                    t.subscriber.add(user)
+                except:
+                    pass
+                else: # After successful submission                   
+                    return HttpResponseRedirect(reverse('forum.views.thread', args=(t.id,)))
         elif "preview" in request.POST:  # "preview" button pressed
             preview_plain = text_plain
             preview_html  = sanitized_smartdown(text_plain)
@@ -549,17 +514,13 @@ def reply(request, thread_id):
             user = request.user
             now  = datetime.now()  # UTC?
             html = sanitized_smartdown(text)
-            try:
-                p = Post(thread=thread, author=user, creation_date=now,
-                         content_plain=text, content_html=html)
-                p.save()
-                thread.latest_reply_date = now
-                thread.save()
-            except OperationalError:  # Database interaction error
-                raise DatabaseEncodingError
-            else:
-                # After successful submission
-                return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
+            Post.objects.create(\
+                thread=thread, author=user, creation_date=now,
+                content_plain=text, content_html=html)
+                
+            thread.latest_reply_date = now
+            thread.save()
+            return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
         elif "preview" in request.POST:  # "preview" button pressed
             preview_plain = text
             preview_html  = sanitized_smartdown(text)
@@ -783,10 +744,10 @@ def merge_thread(request, thread_id):
         elif request.method == 'POST' and "confirm" in request.POST:
             now  = datetime.now()  # UTC?
             user = request.user
-            t    = Thread(title_plain=new_title_plain, title_html=new_title_html,
-                          creation_date=now, author=user, category=thread.category,
-                          latest_reply_date=now)
-            t.save()
+            t    = Thread.objects.create(\
+                       title_plain=new_title_plain, title_html=new_title_html,
+                       creation_date=now, author=user, category=thread.category,
+                       latest_reply_date=now)
         # Update posts in two threads to point to new thread t
             thread.post_set.all().update(thread=t.id)
             other_thread.post_set.all().update(thread=t.id)
@@ -805,15 +766,12 @@ def merge_thread(request, thread_id):
                              t.get_absolute_url(),
                              end)
             html = sanitized_smartdown(message)
-            p1   = Post(creation_date=now, author=user, thread=t, 
-                        content_plain=message, content_html=html)
-            p2   = Post(creation_date=now, author=user, thread=thread, 
-                        content_plain=message, content_html=html)
-            p3   = Post(creation_date=now, author=user, thread=other_thread,
-                        content_plain=message, content_html=html)
-            p1.save()
-            p2.save()
-            p3.save()
+            Post.objects.create(creation_date=now, author=user, thread=t, 
+                                content_plain=message, content_html=html)
+            Post.objects.create(creation_date=now, author=user, thread=thread, 
+                                content_plain=message, content_html=html)
+            Post.objects.create(creation_date=now, author=user, thread=other_thread,
+                                content_plain=message, content_html=html)
         # Lock original threads
             thread.is_locked       = True
             other_thread.is_locked = True
@@ -843,8 +801,8 @@ def moderate_thread(request, thread_id):
                 thread.title_plain = title_plain
                 thread.title_html  = title_html
                 thread.save()
-            except OperationalError:  # Database interaction error
-                raise DatabaseEncodingError
+            except:
+                pass
             else:
                 return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     return render(request, 'moderate.html',
@@ -956,15 +914,16 @@ def report(request, object_id, object_type):
                 user = request.user
                 now  = datetime.now()  # UTC?
                 try:
-                    r = Report(creation_date=now, author=user,
-                               reason_short=title, thread=thread)
+                    r = Report.objects.create(\
+                            creation_date=now, author=user,
+                            reason_short=title, thread=thread)
                     if "content" in request.POST:
                         r.reason_long = text
                     if object_type == "post":
                         r.post = obj
                     r.save()
-                except OperationalError:  # Database interaction error
-                    raise DatabaseEncodingError
+                except:
+                    pass
                 else:
                     # After successful submission
                     return HttpResponseRedirect(reverse('forum.views.thread',
