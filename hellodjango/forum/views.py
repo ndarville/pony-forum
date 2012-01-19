@@ -22,7 +22,6 @@ from forum.models                   import Category, Post, Report,\
 #
 ##  helper constants
 ##  helper errors
-##  helper exceptions
 ##  helper functions
 #
 ##  home
@@ -62,9 +61,9 @@ from forum.models                   import Category, Post, Report,\
 LOGIN_URL                 = getattr(settings, "LOGIN_URL", "/accounts/login/")
 MAX_THREAD_TITLE_LENGTH   = Thread._meta.get_field("title_plain").max_length
 MAX_CATEGORY_TITLE_LENGTH = Category._meta.get_field("title_plain").max_length
-POSTS_PER_PAGE            = 25
-THREADS_PER_PAGE          = 25
-USER_CONTENT_PER_PAGE     = 50
+POSTS_PER_PAGE            = getattr(settings, "POSTS_PER_PAGE", 25)
+THREADS_PER_PAGE          = getattr(settings, "THREADS_PER_PAGE", 25)
+USER_CONTENT_PER_PAGE     = getattr(settings, "USER_CONTENT_PER_PAGE", 50)
 
 
 long_title_error  = "Your chosen title was too long. Keep it under %i characters."
