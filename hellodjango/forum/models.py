@@ -141,9 +141,25 @@ class Thread(models.Model):
 
     def relative_date(self):
         """Shows the time since the last post in a thread."""
-        
         return relative_date(self.latest_reply_date)
-
+        
+##    def create(self, *args, **kwargs):
+##        """Alters the default create method for Thread."""
+##        now = datetime.datetime.now()
+#       self.author = self.request.user
+#       self.author.thread_count += 1
+#       self.author.save()
+#
+#       self.category = category # wrong
+#       self.category.thread_count +=1
+#       self.category.save()
+#
+#       self.subscriber.add(self.author)
+##        self.creation_date = now
+##        self.latest_reply_date = now
+##        self.title_html = prettify_title(self.title_plain)
+##        super(Thread, self).create(*args, **kwargs)
+        
     relative_date.short_description = "Latest post"
 
 
@@ -180,6 +196,26 @@ class Post(models.Model):
         between now and creation_date.
         """
         return relative_date(self.creation_date)
+        
+#    def create(self, *args, **kwargs):
+#        """Alters the default create method for Post."""
+#        # https://docs.djangoproject.com/en/1.3/topics/db/managers/
+##        now = datetime.datetime.now()
+#       self.author = self.request.user
+#       self.author.post_count += 1
+#       self.author.save()
+#
+#       if not self.thread:
+#           self.thread = thread # wrong
+#       self.thread.thread_count +=1
+#       self.thread.save()
+#
+##        self.creation_date = now
+#        self.content_plain="The code worked."
+#        self.content_html = prettify_title(self.content_plain)
+#        if request.user.auto_subscribe:
+#            thread.subscriber.add(request.user)
+#        super(Post, self).create(*args, **kwargs)
 
 
 class Subscription(models.Model):
@@ -221,7 +257,7 @@ class Report(models.Model):
     relative_date.short_description = "Latest post"
 
 
-# Swap the two todisable userena-based accounts (not recommended)
+# Swap the two to disable userena-based accounts (not recommended)
 # class UserProfile(models.Model):
 class UserProfile(UserenaBaseProfile):
     """Extends the default User model.
@@ -229,29 +265,34 @@ class UserProfile(UserenaBaseProfile):
     Remember to change your AUTH_PROFILE_MODULE to
     "forum.UserProfile" in settings.py to support it.
     """
-    user               = models.OneToOneField(User, related_name="profile")
-#    avatar_file        = models.ImageField(blank=True,
-#                                           upload_to="avatars")
-#    avatar_url         = models.URLField(blank=True)
-    has_dyslexia       = models.BooleanField(default=False,
-                                             verbose_name="User has dyslexia")
-    has_epilepsy       = models.BooleanField(default=False,
-                                             verbose_name="User has epilepsy")
-    # post_count
-    # thread_count
+    user            = models.OneToOneField(User, related_name="profile")
+    post_count      = models.IntegerField(default=0)
+    thread_count    = models.IntegerField(default=0)
+    # avatar          = models.ImageField(null=True, blank=True,
+    #                                     upload_to="images/avatars/")
+    #! Disclose your dyslexia to read a more accessible font
+    has_dyslexia    = models.BooleanField(default=False,
+                                          verbose_name="User has dyslexia")
+    #! Disclose your epilepsy so animated .gif images are hidden by default
+    has_epilepsy    = models.BooleanField(default=False,
+                                          verbose_name="User has epilepsy")
+    #! Disclose your colour blindness to benefit from potential future features
+    # has_c_blindness = models.BooleanField(default=False,
+    #                                       verbose_name="User has epilepsy")
+    #! Show rich-text-formatting buttons
     # formatting_buttons = models.BooleanField(default=True)
     #! Automatically subscribe to a thread after posting in it.
-    auto_subscribe     = models.BooleanField(default=False,
-                                             verbose_name="Automatically subscribe \
-                                             to threads posted in")
-    # buddies        = models.ManyToManyField(User, null=True, blank=True,
-    #                                         related_name="buddies")
-    ignores            = models.ManyToManyField(User, null=True, blank=True,
-                                                related_name="ignores")
-    follows            = models.ManyToManyField(User, null=True, blank=True,
-                                                related_name="follows")
-    # twitter        = models.CharField(blank=True)
-#    timezone        = models.CharField(choices=TIMEZONES")
+    auto_subscribe  = models.BooleanField(default=False,
+                                          verbose_name="Automatically subscribe \
+                                          to threads posted in")
+    # buddies         = models.ManyToManyField(User, null=True, blank=True,
+    #                                          related_name="buddies")
+    ignores         = models.ManyToManyField(User, null=True, blank=True,
+                                             related_name="ignores")
+    follows         = models.ManyToManyField(User, null=True, blank=True,
+                                             related_name="follows")
+    # timezone        = models.CharField(choices=TIMEZONES")
+    twitter         = models.CharField(blank=True)
 
     def __unicode__(self):
         return "%s's profile" % self.user

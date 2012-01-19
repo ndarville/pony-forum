@@ -515,8 +515,11 @@ def reply(request, thread_id):
             Post.objects.create(\
                 thread=thread, author=user, creation_date=now,
                 content_plain=text, content_html=html)            
+            if request.user.auto_subscribe:
+                thread.subscriber.add(request.user)
             thread.latest_reply_date = now
             thread.save()
+                
             return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
         elif "preview" in request.POST:  # "preview" button pressed
             preview_plain = text
