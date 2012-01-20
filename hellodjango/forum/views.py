@@ -1,4 +1,4 @@
-from datetime                       import datetime
+import datetime
 from markdown                       import markdown
 from smartypants                    import smartyPants as smartypants
 import bleach
@@ -460,7 +460,7 @@ def create(request, category_id):
                 preview_html  = sanitized_smartdown(text_plain)
             else:
                 user      = request.user
-                now       = datetime.now()  # UTC?
+                now       = datetime.datetime.now()  # UTC?
                 text_html = sanitized_smartdown(text_plain)
                 try:
                     t = Thread.objects.create(\
@@ -510,7 +510,7 @@ def reply(request, thread_id):
         text = request.POST['content']
         if "submit" in request.POST:  # "submit" button pressed
             user = request.user
-            now  = datetime.now()  # UTC?
+            now  = datetime.datetime.now()  # UTC?
             html = sanitized_smartdown(text)
             Post.objects.create(\
                 thread=thread, author=user, creation_date=now,
@@ -738,7 +738,7 @@ def merge_thread(request, thread_id):
                 messages.error(request, long_title_error % MAX_THREAD_TITLE_LENGTH)
 
         elif request.method == 'POST' and "confirm" in request.POST:
-            now  = datetime.now()  # UTC?
+            now  = datetime.datetime.now()  # UTC?
             user = request.user
             t    = Thread.objects.create(\
                        title_plain=new_title_plain, title_html=new_title_html,
@@ -902,7 +902,7 @@ def report(request, object_id, object_type):
                 preview_html = text  # buggy if no content?
             else:
                 user = request.user
-                now  = datetime.now()  # UTC?
+                now  = datetime.datetime.now()  # UTC?
                 try:
                     r = Report.objects.create(\
                             creation_date=now, author=user,
@@ -940,7 +940,7 @@ def reports(request):
         report = get_object_or_404(Report, pk=request.POST['report-id'])
         report.was_addressed  = True
         report.addressed_by   = request.user
-        report.date_addressed = datetime.now()  # UTC?
+        report.date_addressed = datetime.datetime.now()  # UTC?
         report.save()
     return render(request, 'reports.html', {'reports': reports})
 
