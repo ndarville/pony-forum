@@ -159,7 +159,7 @@ INSTALLED_APPS = (
     'forum',
     'django.contrib.markup',
 #    'django_bcrypt',
-    'userena', 'guardian', 'easy_thumbnails', # userena
+    'registration',
 #    'djangosecure', # https
 )
 
@@ -217,14 +217,6 @@ AUTHENTICATION_BACKENDS = (
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL          = '/accounts/login/'
 LOGOUT_URL         = '/accounts/logout/'
-
-USERENA_ACTIVATION_REQUIRED  = True  # Set to False when debugging
-USERENA_DEFAULT_PRIVACY      = 'open'
-USERENA_DISABLE_PROFILE_LIST = True
-USERENA_FORBIDDEN_USERNAMES  = ('activate', 'login', 'logout', 'me',\
-                                'password', 'register', 'signin',\
-                                'signout', 'signup')
-USERENA_MUGSHOT_GRAVATAR     = False
 
 ### DJANGO-SECURE HTTPS
 # if not LOCAL_DEVELOPMENT:
