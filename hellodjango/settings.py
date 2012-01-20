@@ -189,6 +189,12 @@ LOGGING = {
     }
 }
 
+### PONY-FORUM APP
+## These already have default values, so you don't need to define them
+# POSTS_PER_PAGE        =
+# THREADS_PER_PAGE      =
+# USER_CONTENT_PER_PAGE =
+
 ### E-MAIL SERVER
 ## http://sontek.net/using-gmail-to-send-e-mails-from-django
 if not LOCAL_DEVELOPMENT:
