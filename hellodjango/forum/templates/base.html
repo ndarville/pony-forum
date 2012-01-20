@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/reset.css" />
         <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/style.css" />
     {% if user.is_dyslexic %}
-        <link rel="stylesheet" type="text/css" media="all" href="/css/dyslexia.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/dyslexia.css" />
     {% endif %}
     {% block js %}{% endblock %}
         <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame. Will not validate. Disregard. Can be done in .htaccess instead. -->
