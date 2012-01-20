@@ -205,12 +205,7 @@ if not LOCAL_DEVELOPMENT:
     #    """)
         pass
 
-### USERENA APP
-ANONYMOUS_USER_ID = -1.
-
 AUTHENTICATION_BACKENDS = (
-    'userena.backends.UserenaAuthenticationBackend',
-    'guardian.backends.ObjectPermissionBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
