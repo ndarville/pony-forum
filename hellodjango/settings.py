@@ -205,10 +205,6 @@ if not LOCAL_DEVELOPMENT:
     #    """)
         pass
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-)
-
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL          = '/accounts/login/'
 LOGOUT_URL         = '/accounts/logout/'
