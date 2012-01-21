@@ -227,18 +227,18 @@ class UserProfile(models.Model):
     """
     user            = models.OneToOneField(User, related_name="profile")
     avatar          = models.ImageField(null=True, blank=True,
-                                           upload_to="avatars")
+                                        upload_to="avatars")
     has_dyslexia    = models.BooleanField(default=False,
-                                             verbose_name="User has dyslexia")
+                                          verbose_name="User has dyslexia")
     has_epilepsy    = models.BooleanField(default=False,
-                                             verbose_name="User has epilepsy")
+                                          verbose_name="User has epilepsy")
 #   post_count      = models.IntegerField(default=0)
 #   thread_count    = models.IntegerField(default=0)
 ##  formatting_buttons = models.BooleanField(default=True)
     #! Automatically subscribe to a thread after posting in it.
     auto_subscribe  = models.BooleanField(default=False,
-                                             verbose_name="Automatically subscribe \
-                                             to threads posted in")
+                                          verbose_name="Automatically subscribe \
+                                          to threads posted in")
 ##  buddies         = models.ManyToManyField(User, null=True, blank=True,
 ##                                           related_name="buddies")
     ignores         = models.ManyToManyField(User, null=True, blank=True,
