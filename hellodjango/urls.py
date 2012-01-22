@@ -3,6 +3,8 @@ from django.conf.urls.defaults   import patterns, include, url
 from django.contrib              import admin
 from django.views.generic.simple import redirect_to
 
+from registration                import views as registration_views
+
 admin.autodiscover()
 
 urlpatterns = patterns('forum.views',
@@ -73,8 +75,11 @@ urlpatterns = patterns('forum.views',
 
     # (r'^' + getattr(settings, 'LOGIN_URL'[1:],   'accounts/login/') + '$',
     #                                              'login'),
+    # (r'^' + getattr(settings, 'LOGIN_URL'[1:],   'accounts/login/') + '$',
+    #                                               registration_views.login),
     (r'^' + getattr(settings, 'LOGOUT_URL'[1:],  'accounts/logout/') + '$',
                                                  'logout'),
+    (r'^accounts/register/',                      registration_views.register),
     # (r'^accounts/register/$',                    'register'),
     # (r'^accounts/settings/$',                    'settings'),
 
