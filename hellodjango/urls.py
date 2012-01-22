@@ -3,8 +3,6 @@ from django.conf.urls.defaults   import patterns, include, url
 from django.contrib              import admin
 from django.views.generic.simple import redirect_to
 
-from userena                     import views as userena_views
-
 admin.autodiscover()
 
 urlpatterns = patterns('forum.views',
@@ -73,32 +71,32 @@ urlpatterns = patterns('forum.views',
     #
     # Kinda hacky, but gets it done.
 
-    (r'^' + getattr(settings, 'LOGIN_URL'[1:],   'accounts/login/') + '$',
-                                                  userena_views.signin, {},
-                                                  'login'),
+    # (r'^' + getattr(settings, 'LOGIN_URL'[1:],   'accounts/login/') + '$',
+    #                                              'login'),
     (r'^' + getattr(settings, 'LOGOUT_URL'[1:],  'accounts/logout/') + '$',
                                                  'logout'),
-    (r'^accounts/settings/$',                    'settings'),
+    # (r'^accounts/register/$',                    'register'),
+    # (r'^accounts/settings/$',                    'settings'),
 
-    url(r'^accounts/$',
-        redirect_to, {'url': '/'}),
+    # url(r'^accounts/$',
+    #     redirect_to, {'url': '/'}),
 
-    url(r'^accounts/signin/$',
-        redirect_to,
-        {'url': getattr(settings, 'LOGIN_URL', '/accounts/login/')}),
+    # url(r'^accounts/signin/$',
+    #     redirect_to,
+    #     {'url': getattr(settings, 'LOGIN_URL', '/accounts/login/')}),
 
-    url(r'^accounts/signout/$',
-        redirect_to,
-        {'url': getattr(settings, 'LOGOUT_URL', '/accounts/logout/')}),
+    # url(r'^accounts/signout/$',
+    #     redirect_to,
+    #     {'url': getattr(settings, 'LOGOUT_URL', '/accounts/logout/')}),
 
-    url(r'^accounts/page/(?P<dummy>[0-9]+)/$',
-        redirect_to, {'url': '/'}),
+    # url(r'^accounts/page/(?P<dummy>[0-9]+)/$',
+    #     redirect_to, {'url': '/'}),
 
-    url(r'^accounts/(?P<dummy>(?!login|logout|signup)[\.\w]+)/edit/$',
-        redirect_to, {'url': '/'}),
+    # url(r'^accounts/(?P<dummy>(?!login|logout|signup)[\.\w]+)/edit/$',
+    #     redirect_to, {'url': '/'}),
 
-    url(r'^accounts/(?P<dummy>(?!login|logout|signup)[\.\w]+)/$',
-        redirect_to, {'url': '/'}),
+    # url(r'^accounts/(?P<dummy>(?!login|logout|signup)[\.\w]+)/$',
+    #     redirect_to, {'url': '/'}),
 )
 
 urlpatterns += patterns('',

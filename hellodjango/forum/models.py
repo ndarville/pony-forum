@@ -226,6 +226,7 @@ class UserProfile(models.Model):
     "forum.UserProfile" in settings.py to support it.
     """
     user            = models.OneToOneField(User, related_name="profile")
+    #: http://lightbird.net/dbe/forum2.html
     avatar          = models.ImageField(null=True, blank=True,
                                         upload_to="avatars")
     has_dyslexia    = models.BooleanField(default=False,
@@ -235,7 +236,7 @@ class UserProfile(models.Model):
 #   post_count      = models.IntegerField(default=0)
 #   thread_count    = models.IntegerField(default=0)
 ##  formatting_buttons = models.BooleanField(default=True)
-    #! Automatically subscribe to a thread after posting in it.
+    #: Automatically subscribe to a thread after posting in it.
     auto_subscribe  = models.BooleanField(default=False,
                                           verbose_name="Automatically subscribe \
                                           to threads posted in")

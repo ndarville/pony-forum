@@ -166,7 +166,6 @@ table {
 	background: url(/static/glyphish/96-book.png) no-repeat left;
 }
 
-
 #navigation li a[href$="/search/"] {
 	background: url(/static/glyphish/06-magnify.png) no-repeat left;
 }
@@ -175,11 +174,11 @@ table {
 	background: url(/static/glyphish/54-lock.png) no-repeat left;
 }
 
-#navigation li a[href$="/login/"] {
+#navigation li a[href*="/login/"] {
 	background: url(/static/glyphish/30-key.png) no-repeat left;
 }
 
-#navigation li a[href$="/signup/"] {
+#navigation li a[href$="/register/"] {
 	background: url(/static/glyphish/111-user.png) no-repeat left;
 }
 

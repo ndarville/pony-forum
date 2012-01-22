@@ -1,7 +1,7 @@
-import datetime
 from markdown                       import markdown
 from smartypants                    import smartyPants as smartypants
 import bleach
+import datetime
 
 from django.conf                    import settings
 from django.contrib                 import messages, auth
@@ -955,7 +955,6 @@ def reports(request):
 #                   'results' : results})
 
 
-# Replaced by the signin view in the userena app
 # def login(request):
 #     """If SHA1 password, convert to bcrypt on successful log-in:
 
@@ -1006,10 +1005,9 @@ def pm(request):
   return render(request, 'placeholder.html', {})
 
 
-# Replaced by the `signup` view in the userena app
 # def register(request):
 #     """Handles user registration.
-#
+
 #     Throws an error if passwords or e-mails do not match,
 #     and if username and e-mail are not unique.
 #     """

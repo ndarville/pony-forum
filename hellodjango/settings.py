@@ -209,6 +209,9 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL          = '/accounts/login/'
 LOGOUT_URL         = '/accounts/logout/'
 
+### DJANGO-REGISTRATION
+ACCOUNT_ACTIVATION_DAYS = 14
+
 ### DJANGO-SECURE HTTPS
 # if not LOCAL_DEVELOPMENT:
     # SECURE_SSL_REDIRECT = True

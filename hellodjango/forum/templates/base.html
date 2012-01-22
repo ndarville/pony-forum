@@ -1,18 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <title>{% block title %}The Forum{% endblock %}</title>
-        <link rel="canonical" href="{% block canonical_url %}{% endblock %}" />
-        <link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico" />
-        <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/reset.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/style.css" />
-    {% if user.is_dyslexic %}
-        <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/dyslexia.css" />
-    {% endif %}
-    {% block js %}{% endblock %}
-        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame. Will not validate. Disregard. Can be done in .htaccess instead. -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        {% include "includes/head.html" %}
     </head>
     <body>
         <div id="container">
@@ -28,39 +17,9 @@
 {% block js-blocked-warning %}{% endblock %}
             <div id="header"><a href="/" title="Return to home page">Forum</a></div>
             <div id="navigation">
-                <ul>
-                        <a class="screenreader-only" href="/">Return to home page</a>
-                    <!--
-                        http://webaim.org/techniques/css/invisiblecontent/
-                        <a class="screenreader-only" href="#board">Go to threads</a>
-                        <a class="screenreader-only" href="#content">Go to content</a>                      
-                    -->
-                    {% if user.is_authenticated %}
-                        <li><strong><a href="{% url forum.views.user user.id %}" title="Inspect your own user profile">{{ user.username }}</a></strong></li>
-                    {% if perms.report.use_report %}
-                        <li><a href="{% url forum.views.reports %}">Reports</a></li>
-                    {% endif %}
-                        <li><a href="{% url forum.views.settings %}" title="Change and check your settings">Settings</a></li>
-                        <li><a href="{% url bookmarks %}" title="See your bookmarked threads">Bookmarks</a></li>
-                        <li><a href="{% url forum.views.subscriptions %}" title="View your subscriptions">Subscriptions</a></li>
-                        <li><a href="{% url forum.views.pm %}">Private Messages</a></li>
-                    {% if user.is_staff %}
-                        <li><a href="/admin/">Site Admin Controls</a></li>
-                    {% endif %}
-                        <li><a href="http://pony-forum.com/rules/">Rules</a></li>
-                        <li><a href="http://pony-forum.com/guide/">Guide</a></li>
-                        <li><a href="/search/">Search</a></li>
-                        <li><a href="{% url forum.views.logout %}">Log Out</a></li>
-                    {% else %}
-                        <li><strong><a href="{% url login %}">Log In</a></strong></li>
-                        <li><a href="http://pony-forum.com/rules/">Rules</a></li>
-                        <li><a href="http://pony-forum.com/guide/">Guide</a></li>
-                        <li><a href="/search/">Search</a></li>
-                        <li><a href="{% url userena.views.signup %}" title="Create your own user on the site">Sign Up</a></li>
-                    {% endif %}
-                </ul>
+                {% include "includes/navigation.html" %}
             </div>
-{# banners #}
+{# banners #}{# endblock #}
 {% block threadbar %}{% endblock %}
 {% block content %}{% endblock %}
             <div id="credits">
