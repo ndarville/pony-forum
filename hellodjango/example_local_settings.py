@@ -1,5 +1,10 @@
 # If you use this as your local settings file,
 # remember to change the name to local_settings.py.
+#
+# Don't make the mistake of committing this file
+# containing your delicate passwords to a repo.
+import os
+
 
 LOCAL_SETTINGS = True
 DEBUG = True
@@ -8,9 +13,8 @@ MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 INTERNAL_IPS = ('127.0.0.1',)
 
 ### DATABASES
-# Remember to set up the example databases below,
-# before you can use them; they are just set-ups to give you an idea
-# of what they could be. I have the exact same working config at home.
+# These are example databases that don't work out of the box.
+# You will have to configure your own.
 #
 # WARNING: You should *not* leave this formation in the settings.py
 # file you upload to your server, as it contains passwords
@@ -27,9 +31,9 @@ INTERNAL_IPS = ('127.0.0.1',)
 LOCAL_DB_MYSQL = {
     'default': {
         'ENGINE':   'django.db.backends.mysql',
-        'NAME':     'mydb',
+        'NAME':     'mydb',        ## Change this value to your own
         'USER':     'root',
-        'PASSWORD': 'mypassword',
+        'PASSWORD': 'mypassword',  ## Change this value to your own
         'HOST':     '',
         'PORT':     '',
     }
@@ -38,21 +42,23 @@ LOCAL_DB_MYSQL = {
 LOCAL_DB_POSTGRESQL = {
     'default': {
         'ENGINE':   'django.db.backends.postgresql_psycopg2',
-        'NAME':     'template1',
+        'NAME':     'template1',  ## Change this value to your own
         'USER':     'postgres',
-        'PASSWORD': 'mypassword',
+        'PASSWORD': 'mypassword', ## Change this value to your own
         'HOST':     'localhost',  # Remember this part!
         'PORT':     '',
     }
 }
 
 # Database to use:
-DATABASES = LOCAL_DB_POSTGRESQ
+if os.name == "nt":  # OS is Windows
+    DATABASES = LOCAL_DB_MYSQL
+else:  # Not Windows: Linux/UNIX-based such as Mac OS, Ubuntu, etc.
+    DATABASES = LOCAL_DB_POSTGRESQL
 ###
 
 ### E-MAIL
 # EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
-
 EMAIL_HOST           = 'smtp.gmail.com'
 EMAIL_HOST_USER      = 'myusername@gmail.com'
 EMAIL_HOST_PASSWORD  = 'mypassword'
