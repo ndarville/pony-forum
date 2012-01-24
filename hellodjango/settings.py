@@ -154,6 +154,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles', 
+    'registration_defaults',  # must be placed before ~.admin
     'django.contrib.admin',
     'django.contrib.admindocs',
     'forum',
