@@ -1,10 +1,9 @@
-{% extends "base.html" %}
+{% extends "page.html" %}
 
 {% block title %}User Profile for {{ person.username }}{% endblock %}
 {% block canonical_url %}{% url forum.views.user person.id %}/{% endblock %}
 
-{% block content %}
-<div id="content">
+{% block content_body %}
     <div id="profile-interaction">
 {% if person != user %}
         <p><a href="#">Send PM</a></p>
@@ -53,9 +52,7 @@
     </div>
 {% endwith %}
 {% endwith %}
-</div>
 {% endblock %}
-{% block credits-border %}<hr />{% endblock %}
 {% block js %}
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}js/user-js.js"></script>

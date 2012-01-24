@@ -1,10 +1,9 @@
-{% extends "base.html" %}
+{% extends "page.html" %}
 
 {% load markup %}
 {% block title %}Reports{% endblock %}
 {% block canonical_url %}{% url forum.views.reports %}{% endblock %}
-{% block content %}
-            <div id="content">
+{% block content_body %}
             {% for report in reports %}
             {% if report.post and request.user != report.post.author or report.thread %}
                 <div class="report">
@@ -48,5 +47,4 @@
                 </div>
             {% endif %}
             {% endfor %}
-            </div>
 {% endblock %}

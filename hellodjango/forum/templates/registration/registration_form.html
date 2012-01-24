@@ -1,16 +1,10 @@
-<html>
-    <head>
-        <title>Register</title>
-    </head>
-    <body>
-        <h2>Register</h2>
-        <form action="/accounts/register/" method="POST">{% csrf_token %}
-            <table>
-            {{ form.as_table }}
-            </table>
-        <p>
-            <input type="submit" value="Submit" />
-        </p>
-        </form>
-    </body>
-</html>
+{% extends "page.html" %}
+{% block title %}Register for an account{% endblock %}
+{% block content_body %}
+<table>
+    <form method='post' action=''>{% csrf_token %}
+        {{ form }}
+        <tr><td></td><td><input type="submit" value="Send activation email" /></td>
+    </form>
+</table>
+{% endblock %}

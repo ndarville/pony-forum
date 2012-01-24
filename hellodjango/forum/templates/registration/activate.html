@@ -1,9 +1,9 @@
-<html>
-    <head>
-        <title>Activation</title>
-    </head>
-    <body>
-        <h2>Your account is now active!</h2>
-        <a href="/accounts/login/?next=/forum/">Login</a>
-    </body>
-</html>
+{% extends "page.html" %}
+{% block title %}{% if account %}Activation complete{% else %}Activation problem{% endif %}{% endblock %}
+{% block content_body %}
+{% if account %}
+Thanks {{ account }}, activation complete!  You may now <a href='{% url auth_login %}'>login</a> using the username and password you set at registration.
+{% else %}
+Oops &ndash; it seems that your activation key is invalid.  Please check the url again.
+{% endif %}
+{% endblock %}
