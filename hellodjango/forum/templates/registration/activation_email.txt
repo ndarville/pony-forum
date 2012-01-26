@@ -1,5 +1,5 @@
-You (or someone pretending to be you) have asked to register an account at 
-{{ site.name }}.  If this wasn't you, please ignore this email
+You (or someone pretending to be you) asked to register an account at 
+{{ site.name }}.  If this wasn't you, please ignore this e-mail,
 and your address will be removed from our records.
 
 To activate this account, please click the following link within the next 
