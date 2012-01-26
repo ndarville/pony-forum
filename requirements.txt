@@ -8,5 +8,3 @@ bleach==1.1.0
 
 PIL==1.1.7
 django-registration
-# django-registration-defaults
--e git://github.com/yourcelf/django-registration-defaults.git#egg=django-registration-defaults

@@ -17,7 +17,7 @@
                 <td>{{ form.password }}</td>
             </tr>
         </table>
-        <p><a href="{% url auth_password_reset %}">Forgot your password?</a> <a href="{% url registration_register %}">Need an account</a>?</p>
+        <p><a href="{% url auth_password_reset %}">Forgot your password?</a>&nbsp;<a href="{% url registration_register %}">Need an account</a>?</p>
 
         <input type="submit" value="Log In" />
         <input type="hidden" name="next" value="{{ next }}" />

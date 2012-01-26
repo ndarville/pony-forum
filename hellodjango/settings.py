@@ -210,7 +210,7 @@ LOGIN_URL          = '/accounts/login/'
 LOGOUT_URL         = '/accounts/logout/'
 
 ### DJANGO-REGISTRATION
-ACCOUNT_ACTIVATION_DAYS = 14
+ACCOUNT_ACTIVATION_DAYS = 7
 
 ### DJANGO-SECURE HTTPS
 # if not LOCAL_DEVELOPMENT:
