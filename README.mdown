@@ -1,16 +1,16 @@
-Pony-Forum on DotCloud
+Pony Forum on DotCloud
 ======================
-Pony-Forum is a forum (also known as a bulletin board) written in Python for the Django framework. It is intended as a replacement of the decade-old forums like vBulletin, PHPBB, etc.---and a free one easy to deploy at that.
+Pony Forum is a forum (also known as a bulletin board) written in Python for the Django framework. It is intended as a replacement of the decade-old forums like vBulletin, PHPBB, etc.---and a free one easy to deploy at that.
 
 Installation
 ------------
-One of the ideas behind Pony-Forum was to create a forum that is *easily* deployed with little head-scratching. At the moment [DotCloud](https://dotcloud.com) accommodates this goal and allows us to deploy a whole working forum to a DotCloud instance using only these three terminal commands:
+One of the ideas behind Pony Forum was to create a forum that is *easily* deployed with little head-scratching. At the moment [DotCloud](https://dotcloud.com) accommodates this goal and allows us to deploy a whole working forum to a DotCloud instance using only these three terminal commands:
 
     git clone git@github.com:ndarville/dotcloud-django.git
     dotcloud create hellodjango
     dotcloud push hellodjango
 
-The `hellodjango` name is temporary and can be replaced with any other name. In the future, it will be probably be renamed to `forum` or `pony-forum` in the future.
+The `hellodjango` name is temporary and can be replaced with any other name. In the future, it will be probably be renamed to `forum` or `pony forum` in the future.
 
 You will also need to set up an e-mail server (which is very, very easy), all of which is explained in *Setting Up an E-Mail Server* later on in this README. Fret not.
 
@@ -29,7 +29,7 @@ When the forum is first deployed on DotCloud, an `admin` user is created and ass
 
 Normally, you get to create your own admin, when the database is created, but since this happens automagically behind the scenes, you will not be able to enter your own credentials. Instead, you will have to change the password and details for the `admin` user to suit your own needs or create your own user(s) and dispose of the default admin user.
 
-The important thing here is to tell you that **all deployed pony-forums will have the same password**. This is fine, but you will eventually need to prevent other people from hijacking the `admin` user and wreaking havoc by either changing the user's password (done at `/admin/auth/user/1/password/`) or stripping the user of its `staff` and `superuser` status.
+The important thing here is to tell you that **all deployed pony forums will have the same password**. This is fine, but you will eventually need to prevent other people from hijacking the `admin` user and wreaking havoc by either changing the user's password (done at `/admin/auth/user/1/password/`) or stripping the user of its `staff` and `superuser` status.
 
 Just make sure you have another admin-like user ready, so you don't lock yourself out. If you do, you can always wipe and recreate the forum with these commands:
 
@@ -38,7 +38,7 @@ Just make sure you have another admin-like user ready, so you don't lock yoursel
     dotcloud push hellodjango
 
 ### Your Site Name ###
-Speaking of automatic changes, Pony-Forum guesses the name and domain of your website based on respectively
+Speaking of automatic changes, Pony Forum guesses the name and domain of your website based on respectively
 
 1. Your DotCloud project name
 2. The URL for you DotCloud instance
@@ -49,7 +49,7 @@ How all this is done can be seen in [definesite.py](https://github.com/ndarville
 
 The *domain* on the other hand is much more important. It is used for in the `userena` app that, amongst other things, sends activation e-mails to your users. As you may know, these e-mails contain an activation link that your users have to follow in order to activate their accounts.
 
-But how does Pony-Forum know which site the link points to? You guessed it, it uses the `domain` defined by `definesite.py`.
+But how does Pony Forum know which site the link points to? You guessed it, it uses the `domain` defined by `definesite.py`.
 
 If you need to change these two fields---for instance, if you were to give your forum a better-looking URL---you will need to change the `domain` field. This can be done at `/admin/sites/site/1/`.
 
@@ -105,7 +105,7 @@ It all depends on where you are in your development cycle, but remember to flip 
 Set it to `True`, if you are customizing it yourself, but set it to `False`, once you launch your site.
 
 ### Aaand You're Done! ###
-Let's recapitulate the adjustments needed to set up Pony-Forum:
+Let's recapitulate the adjustments needed to set up Pony Forum:
 
 1. Clone, create, push.
 2. Set up your e-mail server.
@@ -114,6 +114,10 @@ Let's recapitulate the adjustments needed to set up Pony-Forum:
 5. Evaluate whether Django's debug mode should be on of off.
 
 Boom! You're done.
+
+License
+-------
+*(To be decided. As long as you don't sell the code as-is nor in any altered form, you're probably good.)*
 
 To-Do List
 ----------
