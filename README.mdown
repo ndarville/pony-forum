@@ -72,7 +72,7 @@ Using [sontek's intelligible guide](http://sontek.net/using-gmail-to-send-e-mail
     dotcloud var set hellodjango EMAIL_PORT=587
     dotcloud var set hellodjango EMAIL_USE_TLS=True
 
-If you want to, you can also do it like this on some operating system:
+If you want to, you can also do it like this on some operating systems:
 
     dotcloud var set hellodjango \
         'EMAIL_HOST=smtp.gmail.com' \
