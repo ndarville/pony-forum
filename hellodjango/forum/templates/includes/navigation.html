@@ -22,10 +22,10 @@
         <li><a href="/search/">Search</a></li>
         <li><a href="{% url forum.views.logout %}">Log Out</a></li>
     {% else %}
-        <li><strong><a href="/accounts/login/?next={% url forum.views.home %}">Log in</a></strong></li>
+        <li><strong><a href="{% url twostepauth.views.login_step_one %}?next={% url forum.views.home %}">Log in</a></strong></li>
         <li><a href="http://pony-forum.com/rules/">Rules</a></li>
         <li><a href="http://pony-forum.com/guide/">Guide</a></li>
-        <li><a href="/search/">Search</a></li>
+    {#  <li><a href="{% url search %}">Search</a></li> #}
         <li><a href="{% url registration.views.register %}">Register</a></li>
     {% endif %}
 </ul>

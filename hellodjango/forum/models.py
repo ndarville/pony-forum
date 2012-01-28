@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.db                  import models
 from django.db.models.signals   import post_save
 
+from twostepauth.models         import TwoStepAuthBaseProfile
+
 
 # Accessed by UserProfile.get_formatting_buttons_display()
 # minus the () for a template
@@ -219,7 +221,7 @@ class Report(models.Model):
     relative_date.short_description = "Latest post"
 
 
-class UserProfile(models.Model):
+class UserProfile(TwoStepAuthBaseProfile):
     """Extends the default User model.
 
     Remember to change your AUTH_PROFILE_MODULE to
@@ -252,13 +254,17 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return "%s's profile" % self.user
 
-def create_user_profile(sender, instance, created, **kwargs):
-    """Used to extend User using aforementioned UserProfile model."""
-    if created:
-        UserProfile.objects.create(user=instance)
+def create_profile(sender, **kw):
+    """Automatically creates a user profile when a user is created."""
+    user = kw["instance"]
+    if kw["created"]:
+        profile = UserProfile(user=user)
+        profile.save()
 
-post_save.connect(create_user_profile, sender=User)
+post_save.connect(create_profile, sender=User,
+                  dispatch_uid="users-profilecreation-signal")
 
-## If you have not done so already, add this line without the "# " to settings.py:
+
+## If this has not been done so already,
+## add this line without the "# " to settings.py:
 # AUTH_PROFILE_MODULE = 'forum.UserProfile'
-##### UserProfile section END #####

@@ -160,6 +160,7 @@ INSTALLED_APPS = (
     'django.contrib.markup',
 #    'django_bcrypt',
     'registration',
+    'twostepauth',
 #    'djangosecure', # https
 )
 
@@ -223,6 +224,15 @@ ACCOUNT_ACTIVATION_DAYS = 7
 ### BCRYPT APP, if used
 BCRYPT_MIGRATE = True
 BCRYPT_ROUNDS  = 16
+###
+
+### DJANGO-TWOSTEPAUTH
+AUTHENTICATION_BACKENDS = (
+    'twostepauth.auth_backend.TwoStepAuthBackend',
+)
+
+TWOSTEPAUTH_FOR_USERS = True
+TWOSTEPAUTH_FOR_ADMIN = True
 ###
 
 try:

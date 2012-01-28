@@ -4,6 +4,7 @@ from django.contrib              import admin
 from django.views.generic.simple import redirect_to
 
 from registration                import views as registration_views
+from twostepauth                 import views as twostepauth_views
 
 admin.autodiscover()
 
@@ -11,7 +12,7 @@ urlpatterns = patterns('forum.views',
     (r'^$',                                      'home'),
     (r'^pm/$',                                   'pm',),
     (r'^reports/$',                              'reports'),
-#   (r'^search/$',                               'search'),
+#   (r'^search/$',                               'search', name='search'),
     (r'^subscriptions/$',                        'subscriptions'),
     (r'^bookmarks/$',                            'saves_and_bookmarks',
                                                     {'object_type': 'bookmark'},
@@ -65,43 +66,24 @@ urlpatterns = patterns('forum.views',
     (r'^user/(?P<user_id>\d+)/$',                'user'),
 
 #   Accounts
-    # Redirecting undesired URLs in the userena app to home page
-    # and replacing them with such ones as "login" and "logout".
-    #
-    # <?Pdummy> is there to capture the argument that should not 
-    # be passed to the url of redirect_to().
-    #
-    # Kinda hacky, but gets it done.
-
+    (r'^accounts/register/',                      registration_views.register),
     # (r'^' + getattr(settings, 'LOGIN_URL'[1:],   'accounts/login/') + '$',
     #                                              'login'),
-    # (r'^' + getattr(settings, 'LOGIN_URL'[1:],   'accounts/login/') + '$',
-    #                                               registration_views.login),
+    (r'^' + getattr(settings, 'LOGIN_URL'[1:],   'accounts/login/') + '$',
+                                                  twostepauth_views.login_step_one,
+                                                  {}, 'auth_login'),
+
+    (r'^' + getattr(settings, 'LOGIN_URL'[1:] + 'step_two', 
+                              'accounts/login/step_two') + '$',
+                                                  twostepauth_views.login_step_two,
+                                                  {}, 'login_step_two'),
+
     (r'^' + getattr(settings, 'LOGOUT_URL'[1:],  'accounts/logout/') + '$',
                                                  'logout'),
-    (r'^accounts/register/',                      registration_views.register),
-    # (r'^accounts/register/$',                    'register'),
+
+    (r'^accounts/twostepauth/$',                  twostepauth_views.twostepauth_profile,
+                                                  {}, 'twostepauth_profile'),
     # (r'^accounts/settings/$',                    'settings'),
-
-    # url(r'^accounts/$',
-    #     redirect_to, {'url': '/'}),
-
-    # url(r'^accounts/signin/$',
-    #     redirect_to,
-    #     {'url': getattr(settings, 'LOGIN_URL', '/accounts/login/')}),
-
-    # url(r'^accounts/signout/$',
-    #     redirect_to,
-    #     {'url': getattr(settings, 'LOGOUT_URL', '/accounts/logout/')}),
-
-    # url(r'^accounts/page/(?P<dummy>[0-9]+)/$',
-    #     redirect_to, {'url': '/'}),
-
-    # url(r'^accounts/(?P<dummy>(?!login|logout|signup)[\.\w]+)/edit/$',
-    #     redirect_to, {'url': '/'}),
-
-    # url(r'^accounts/(?P<dummy>(?!login|logout|signup)[\.\w]+)/$',
-    #     redirect_to, {'url': '/'}),
 )
 
 urlpatterns += patterns('',
