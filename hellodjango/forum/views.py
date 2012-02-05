@@ -94,19 +94,6 @@ S/he might want to contact the site&rsquo;s host in return.</p>
 """
 
 
-def amazon_referral(text):
-    return "regex blahblahblah"
-
-
-#def module_exists(module_name):
-#    try:
-#        __import__(module_name)
-#    except ImportError:
-#        return False
-#    else:
-#        return True
-
-
 def email_is_taken(email):
     """Checks whether the e-mail submitted is already in user by someone
     in the database.
@@ -955,45 +942,6 @@ def reports(request):
 #                   'results' : results})
 
 
-# def login(request):
-#     """If SHA1 password, convert to bcrypt on successful log-in:
-
-#     if request.method == 'POST':
-#         form = AuthenticationForm(request.POST)
-
-#         if form.is_valid():
-#             user = form.get_user()
-
-#             if user.password.startswith('sha1'):
-#                 user.set_password(form['password'])
-#                 user.save()
-
-#     https://docs.djangoproject.com/en/1.3/topics/auth/#how-to-log-a-user-in
-#     """
-#     if request.user.is_authenticated():  # User already logged in
-#         return HttpResponseRedirect("/")
-#     elif request.method == 'POST':  # Form has submitted
-#         username = request.POST.get('username', '')
-#         password = request.POST.get('password', '')
-#         user     = auth.authenticate(username=username, password=password)
-#         if user is not None:  # Credentials correct
-#             if user.is_active:  # User is activated
-#                 auth.login(request, user)
-# #                # Password has not - yet - been converted by bcrypt
-# #                if request.user.password.startswith('sha1') and "bcrypt" in settings.INSTALLED_APPS:
-# #                    user.set_password(password)
-#                 messages.success(request, "You were logged in, %s." % request.user.username)
-#                 return HttpResponseRedirect("/")
-#             else:  # User is disabled (digitally)
-#                 messages.error(request, "Your user account is disabled.")
-#                 return HttpResponseRedirect("/disabled/")
-#         else:  # Form invalid
-#             messages.error(request, "Invalid credentials. Try again.")
-#             return HttpResponseRedirect("/invalid/")
-#     else:  # User not logged in *and* hasn't submitted the form: clean form
-#         return render(request, 'login.html', {'LOGIN_URL': LOGIN_URL})
-
-
 def logout(request):
     if request.user.is_authenticated():  # User logged in
         auth.logout(request)
@@ -1003,38 +951,6 @@ def logout(request):
 
 def pm(request):
   return render(request, 'placeholder.html', {})
-
-
-# def register(request):
-#     """Handles user registration.
-
-#     Throws an error if passwords or e-mails do not match,
-#     and if username and e-mail are not unique.
-#     """
-#     if request.user.is_authenticated():  # User already logged in
-#         return HttpResponseRedirect("/")
-#     elif request.method == 'POST':  # Form has been submitted
-#         username  = request.POST.get('username', '')
-#         email     = request.POST.get('email', '')
-#         email2    = request.POST.get('email-verification', '')        
-#         password  = request.POST.get('password', '')
-#         password2 = request.POST.get('password-verification', '')
-#         if password != password2:
-#             messages.error(request, "Your two passwords did not match.")
-#         elif email != email2:
-#             messages.error(request, "Your two e-mail addresses did not match.")            
-#         elif email_is_taken(email):
-#             messages.error(request, "There is already a user with that e-mail address.")
-#         elif username_is_taken(username):
-#             messages.error(request, "There is already a user with that name.")
-#         else:
-#             user = User.objects.create_user(username, email, password)
-#             user.save()
-#             auth.login(request, auth.authenticate(username=username, password=password))
-#             messages.success(request, "Registration complete! Now would be a good time \
-#             to check your settings.")
-#             return HttpResponseRedirect("/")
-#     return render(request, 'register.html', {}) # Clean form on first visit
 
 
 @login_required(login_url=LOGIN_URL)
