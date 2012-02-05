@@ -66,7 +66,7 @@ urlpatterns = patterns('forum.views',
     (r'^user/(?P<user_id>\d+)/$',                'user'),
 
 #   Accounts
-    (r'^accounts/register/',                      registration_views.register),
+    (r'^accounts/register/$',                      registration_views.register),
     # (r'^' + getattr(settings, 'LOGIN_URL'[1:],   'accounts/login/') + '$',
     #                                              'login'),
     (r'^' + getattr(settings, 'LOGIN_URL'[1:],   'accounts/login/') + '$',
