@@ -12,5 +12,5 @@ name = env['DOTCLOUD_PROJECT']
 
 s = Site.objects.get_current()
 s.domain = unicode(env['DOTCLOUD_WWW_HTTP_URL'])
-s.name   = unicode(name[0].upper() + name[1:])
+s.name   = unicode(name.capitalize())
 s.save()
