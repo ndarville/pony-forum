@@ -143,14 +143,14 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 * Unit testing
 * (Better) caching
-* Finite log-in attempts
 
 ### Features Under Consideration ###
-* UTC-based datetimes
+* UTC-based datetimes (wait for [Django 1.4](https://docs.djangoproject.com/en/dev/topics/i18n/timezones/#time-zones))
 * Post edit time stamps
 * [LaTeX/MathML support](http://mathjax.org)
-* Synthax highlighting
+* Syntax highlighting
 * [Markdown Video](http://tylerlesmann.com/2008/jul/25/smart-way-implementing-markdown-django)
+* Finite log-in attempts
 * Post and thread drafts
     * HTML5 storage?
 
