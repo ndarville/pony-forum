@@ -39,7 +39,7 @@ LOCAL_DB_MYSQL = {
 LOCAL_DB_POSTGRESQL = {
     'default': {
         'ENGINE':   'django.db.backends.postgresql_psycopg2',
-        'NAME':     'template1',  ## Change this value to your own
+        'NAME':     'mydb',  ## Change this value to your own
         'USER':     'postgres',
         'PASSWORD': 'mypassword', ## Change this value to your own
         'HOST':     'localhost',  # Remember this part!

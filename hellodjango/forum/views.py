@@ -261,7 +261,7 @@ def home(request):
     subscribed_threads = False
     categories  = Category.objects.all()
     threads     = Thread.objects.exclude(is_removed__exact=True)
-    new_threads = threads[:5]    
+    new_threads = threads[:5]
 
     if not request.user.is_anonymous() and request.user.subscriptions.all():
         subscribed_threads = threads.filter(subscriber__exact=request.user)[:5]
