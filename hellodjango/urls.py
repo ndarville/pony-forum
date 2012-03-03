@@ -6,6 +6,7 @@ from django.views.generic.simple import redirect_to
 from registration                import views as registration_views
 from twostepauth                 import views as twostepauth_views
 
+
 admin.autodiscover()
 
 urlpatterns = patterns('forum.views',
