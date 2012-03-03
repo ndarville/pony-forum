@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        {% include "includes/head.html" %}
+        <meta charset="utf-8">
+        <title>{% block title %}The Forum{% endblock %}</title>
+        <link rel="canonical" href="{% block canonical_url %}{% endblock %}" />
+        <link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico" />
+        <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/reset.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/style.css" />
+    {% if user.is_dyslexic %}
+        <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/dyslexia.css" />
+    {% endif %}
+    {% block js %}{% endblock %}
+        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame. Will not validate. Disregard. Can be done in .htaccess instead. -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     </head>
     <body>
         <div id="container">
