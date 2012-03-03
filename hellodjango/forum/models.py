@@ -292,7 +292,7 @@ class UserProfile(UserenaBaseProfile):
     follows         = models.ManyToManyField(User, null=True, blank=True,
                                              related_name="follows")
     # timezone        = models.CharField(choices=TIMEZONES")
-    twitter         = models.CharField(blank=True)
+    twitter         = models.CharField(max_length=20, blank=True)
 
     def __unicode__(self):
         return "%s's profile" % self.user
