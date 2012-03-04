@@ -10,7 +10,6 @@ import os
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 DEBUG = False
-TEMPLATE_DEBUG = DEBUG
 
 #ADMINS = (
 #    try:
@@ -241,6 +240,8 @@ except NameError:
         from local_settings import *
     except ImportError:
         pass
+
+TEMPLATE_DEBUG = DEBUG
 
 ### DJANGO-DEBUG-TOOLBAR
 if DEBUG:
