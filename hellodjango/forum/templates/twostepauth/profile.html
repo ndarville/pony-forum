@@ -1,0 +1,59 @@
+{% extends 'page.html' %}
+
+{% block title %}Manage Two-Factor Authentication{% endblock %}
+{# block content_title #}{#<h2>Account {{ profile.user.username }}&mdash;Manage Two-Factor Authentication</h2>#}{# endblock #}
+
+{% block content_body %}
+    <script>
+        $(document).ready( function() {
+            $('a#backcode_toggle').click( function() {
+                $('#backupcodes').toggle();
+                return false;
+            });    
+        });
+    </script>
+
+    <form action="" method="post" id="twostepauth_change_form">
+        <fieldset>
+        {% if not chart_url %}
+            <p>If you choose to enable two-factor authentication&mdash;also known as two-step authentication&mdash; for your account, this site will first ask for your user name/e-mail and the related password, as you know from countless sites already.</p>
+            
+            <p>With TFA, there will be a <em>second</em> authentication step that you will need to pass as well in order to log in to your account. This is the second step, or factor, that the name refers to.</p>
+
+            <p>In this step you will be asked for an <em>authentication token</em> that is generated an authenticator app on your mobile device. (We recommend <a rel="nofollow" href="http://www.google.com/support/accounts/bin/answer.py?answer=180744">Google Authenticator</a>.) This is not in any way as complicated as it may seem! What this means is that you add a second layer of protection against anyone who tries to gain access to your account to, say, acquire your information, impersonate you, or wreak havoc on the site in any other way.</p>
+
+            <p>This way, losing your password to someone else no longer means that your account could be compromised, because it now takes more than just your password (and your user name or e-mail) to log in to your account. This may seem like an obscure feature to you, but it is actually a protection that <em>every</em> site ought to allow their users to enable!
+
+            <p>Did you make it all the way here? Great job! Now that you have learnt about two-factor authentication and Google Authenticator, why don&rsquo;t you spend a couple of settings enabling this on your Gmail account <a rel="nofollow" href="http://www.google.com/support/forum/p/Google+Mobile/thread?tid=7acb96be08b4d4fc&amp;hl=en">like so</a>?</p>
+
+            <p>If you think this will be too much of a hassle, worry not; you only need to enter your authenticator token every 30 days. And isn&rsquo;t it really a bigger hassle, when someone gains access to your private account?</p>
+        {% endif %}
+        {% csrf_token %}
+        {{ form.as_p }}
+        </fieldset>
+        {% if chart_url %}
+        <p>
+            <label>QR code to setup the authenticator app</label>
+            <img src="{{ chart_url }}">
+        </p>
+        <p>
+            <label>Secret Key</label>
+            {{ profile.tsa_secret }}
+        </p>
+        <p>
+            <label>Backup codes<br />&nbsp;</label>
+            <a id="backcode_toggle" href="">Display/hide backup codes</a>
+            <span id="backupcodes" style="display:none">
+                <br />
+                {% for code in profile.get_backup_codes %}
+                    {{ code }},&nbsp;
+                {% if forloop.counter == 5 %}<br />{% endif %}
+                {% endfor %}
+            </span>
+        </p>
+        {% endif %}
+        <p>
+            <input type="submit" value="Change" />
+        </p>
+    </form>
+{% endblock %}

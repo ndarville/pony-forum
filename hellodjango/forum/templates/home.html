@@ -21,6 +21,8 @@
                         <td><a href="{{ category_url }}" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.post_count }}</a></td>
                         <td><a title="Hide categories in the list" href="#">-</a></td>
                     </tr>
+                {% empty %}
+                    <p>This forum currently does not have any categories&mdash;and the threads and posts to go with them. {% if user.is_staff %}You should get right on that.{% endif %}{% if not user.is_authenticated %}If you have the permissions, you should log in and get started.{% endif %}</p>
                 {% endfor %}
                 </table>
             {% if perms.forum.add_category %}

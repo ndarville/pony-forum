@@ -72,7 +72,7 @@ Using [sontek's intelligible guide](http://sontek.net/using-gmail-to-send-e-mail
     dotcloud var set hellodjango EMAIL_PORT=587
     dotcloud var set hellodjango EMAIL_USE_TLS=True
 
-If you want to, you can also do it like this on some operating system:
+If you want to, you can also do it like this on some operating systems:
 
     dotcloud var set hellodjango \
         'EMAIL_HOST=smtp.gmail.com' \
@@ -125,11 +125,10 @@ Fire up [some music](http://soundcloud.com/pluxemburg/first-floor-power-to-do-li
 
 I want to implement Markdown footnotes, but as of now, they get identical anchor IDs, which breaks the links (since they all point to the same). I hope to find something that will work in the end, because I regard this as a very important feature to a forum that encourages long-form discussion.
 
-1. Get a better account and registration back-end
-2. HTTPS for other views with POST requests
-3. Subscriptions
-4. Bans
-5. Avatars
+1. Polish registration/accounts
+2. Subscriptions
+3. Bans
+4. Avatars
 
 * Formatting buttons
 * Thread polls
@@ -142,19 +141,20 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 * Members-only threads, categories, and forums
 * CSS
+    * General
     * Mobile
     * Print
 
 * Unit testing
 * (Better) caching
-* Finite log-in attempts
 
 ### Features Under Consideration ###
-* UTC-based datetimes
+* UTC-based datetimes (wait for [Django 1.4](https://docs.djangoproject.com/en/dev/topics/i18n/timezones/#time-zones))
 * Post edit time stamps
 * [LaTeX/MathML support](http://mathjax.org)
-* Synthax highlighting
+* Syntax highlighting
 * [Markdown Video](http://tylerlesmann.com/2008/jul/25/smart-way-implementing-markdown-django)
+* Finite log-in attempts
 * Post and thread drafts
     * HTML5 storage?
 

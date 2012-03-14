@@ -1,10 +1,9 @@
-{% extends "base.html" %}
+{% extends "page.html" %}
 
 {% block title %}{{ type|capfirst }} by {{ person.username }}{% endblock %}
 {% block canonical_url %}{% if type == "thread" %}{% url user_threads person.id %}{% else %}{% url user_posts person.id %}{% endif %}{% endblock %}
 
-{% block content %}
-<div id="content">
+{% block content_body %}
     <dl>
 {% if type == "thread" %}
     {% for thread in objects.object_list %}
@@ -42,7 +41,4 @@
         </span>
     </div>
 {% endif %}
-</div>
 {% endblock %}
-
-{% block credits-border %}<hr />{% endblock %}

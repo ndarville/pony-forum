@@ -1,10 +1,10 @@
-from datetime                   import datetime
+import datetime
 
 from django.contrib.auth.models import User
 from django.db                  import models
 from django.db.models.signals   import post_save
 
-from userena.models             import UserenaBaseProfile
+from twostepauth.models         import TwoStepAuthBaseProfile
 
 
 # Accessed by UserProfile.get_formatting_buttons_display()
@@ -39,7 +39,7 @@ from userena.models             import UserenaBaseProfile
 
 def relative_date(date):
     """Displays a date relative to now."""
-    delta = datetime.now() - date  # UTC?
+    delta = datetime.datetime.now() - date  # UTC?
     s = delta.seconds
     d = delta.days
     
@@ -74,16 +74,16 @@ def relative_date(date):
 
 class Category(models.Model):
     """Contains threads."""
-    title_plain = models.CharField(max_length=50)
-    title_html  = models.TextField()
-    #: the sequential placement of categories in the "home"
-#   position = models.AutoField(unique=True)
+    title_plain  = models.CharField(max_length=50)
+    title_html   = models.TextField()
+##  description  = models.CharField(max_length=70)
+#   thread_count = models.IntegerField(default=0) 
+#   post_count   = models.IntegerField(default=0)
+    #: The sequential placement of the category in the "home" page
+##  position     = models.AutoField(unique=True)
     #: M2M user who has chosen to hide the category in the home view
-#   hider = models.ManyToManyField(User, null=True, blank=True
-#                                      related_name="hidden_categories")
-#    moderators
-#    description
-#    post_count
+#   hider        = models.ManyToManyField(User, null=True, blank=True
+#                                         related_name="hidden_categories")
 
     class Meta:
         verbose_name_plural = "categories"
@@ -104,22 +104,22 @@ class Thread(models.Model):
     """Contains posts."""
     creation_date     = models.DateTimeField()
     latest_reply_date = models.DateTimeField()
-    author            = models.ForeignKey(User)
     title_plain       = models.CharField(max_length=70)
     title_html        = models.TextField()
     category          = models.ForeignKey(Category)
-#    poll              = models.ForeignKey(Poll, null=True, blank=True)    
+    author            = models.ForeignKey(User)
+    is_sticky         = models.BooleanField(default=False)
+    is_locked         = models.BooleanField(default=False)
+    is_removed        = models.BooleanField(default=False)
+#   poll              = models.ForeignKey(Poll, null=True, blank=True)
     bookmarker        = models.ManyToManyField(User, null=True, blank=True,
                                                related_name="bookmarks")
     subscriber        = models.ManyToManyField(User, null=True, blank=True,
                                                related_name="subscriptions")
-#    hider             = models.ManyToManyField(User, null=True, blank=True,
-#                           related_name="hidden_threads")
+#   hider             = models.ManyToManyField(User, null=True, blank=True,
+#                                              related_name="hidden_threads")
     #: Users granted moderator rights on a per-thread basis    
-#    threadmins        = models.ManyToManyField(User, null=True, blank=True)
-    is_sticky         = models.BooleanField(default=False)
-    is_locked         = models.BooleanField(default=False)
-    is_removed        = models.BooleanField(default=False)
+#   threadmins        = models.ManyToManyField(User, null=True, blank=True)
 
     class Meta:
         ordering = ["-creation_date"]
@@ -129,10 +129,10 @@ class Thread(models.Model):
             ("sticky_thread", "Stick a thread to the top of the thread list"),
             ("move_thread",   "Move a thread to another category"),
             ("lock_thread",   "Lock (and unlock) threads"),
-#            ("ban_user_in_thread",
-#                              "Ban user from posting in thread permanently"),
-#            ("timeout_user_in_thread",
-#                              "Ban user from posting in thread temporarily"),
+#           ("ban_user_in_thread",
+#                             "Ban user from posting in thread permanently"),
+#           ("timeout_user_in_thread",
+#                             "Ban user from posting in thread temporarily"),
             ("is_threadmin",  "Give a user mod-like permissions in a thread"),
         )
 
@@ -166,10 +166,10 @@ class Thread(models.Model):
 class Post(models.Model):
     """The reply of a user in a thread. Or its opening post (OP)."""
     creation_date = models.DateTimeField()
-    author        = models.ForeignKey(User)
-    thread        = models.ForeignKey(Thread)
     content_plain = models.TextField()
     content_html  = models.TextField()
+    author        = models.ForeignKey(User)
+    thread        = models.ForeignKey(Thread)
     co_editors    = models.ManyToManyField(User, null=True, blank=True,
                                            verbose_name="co-editor",
                                            related_name="co-editors")
@@ -222,8 +222,8 @@ class Subscription(models.Model):
     """Manages all the users subscribed to new posts in threads."""
     subscriber     = models.ManyToManyField(User, related_name="subscriber")
     thread         = models.ManyToManyField(Thread, related_name="subscribed_thread")
-#    last_read_time = models.DateTimeField(null=True, blank=True)
     last_read_post = models.ManyToManyField(Post, related_name="latest_read_post")
+##  last_read_time = models.DateTimeField(null=True, blank=True)
 
     def __unicode__(self):
         return u"%s's subscription of %s" % (self.subscriber, self.thread.title_plain)
@@ -232,12 +232,12 @@ class Subscription(models.Model):
 class Report(models.Model):
     """Model for filing reports against the posts and threads of users."""
     creation_date  = models.DateTimeField()
+    reason_short   = models.CharField(max_length=80)                                
+    reason_long    = models.TextField(blank=True)
     author         = models.ForeignKey(User, related_name="reporter")
     thread         = models.ForeignKey(Thread, related_name="thread_reports")
     post           = models.ForeignKey(Post, null=True, blank=True,
                                        related_name="post_reports")
-    reason_short   = models.CharField(max_length=80)                                
-    reason_long    = models.TextField(blank=True)
     was_addressed  = models.BooleanField(default=False)
     addressed_by   = models.ForeignKey(User, null=True, blank=True)
     date_addressed = models.DateTimeField(null=True, blank=True)
@@ -257,9 +257,7 @@ class Report(models.Model):
     relative_date.short_description = "Latest post"
 
 
-# Swap the two to disable userena-based accounts (not recommended)
-# class UserProfile(models.Model):
-class UserProfile(UserenaBaseProfile):
+class UserProfile(TwoStepAuthBaseProfile):
     """Extends the default User model.
 
     Remember to change your AUTH_PROFILE_MODULE to
@@ -268,6 +266,7 @@ class UserProfile(UserenaBaseProfile):
     user            = models.OneToOneField(User, related_name="profile")
     post_count      = models.IntegerField(default=0)
     thread_count    = models.IntegerField(default=0)
+    #! http://lightbird.net/dbe/forum2.html
     # avatar          = models.ImageField(null=True, blank=True,
     #                                     upload_to="images/avatars/")
     #! Disclose your dyslexia to read a more accessible font
@@ -297,13 +296,17 @@ class UserProfile(UserenaBaseProfile):
     def __unicode__(self):
         return "%s's profile" % self.user
 
-def create_user_profile(sender, instance, created, **kwargs):
-    """Used to extend User using aforementioned UserProfile model."""
-    if created:
-        UserProfile.objects.create(user=instance)
+def create_profile(sender, **kw):
+    """Automatically creates a user profile when a user is created."""
+    user = kw["instance"]
+    if kw["created"]:
+        profile = UserProfile(user=user)
+        profile.save()
 
-post_save.connect(create_user_profile, sender=User)
+post_save.connect(create_profile, sender=User,
+                  dispatch_uid="users-profilecreation-signal")
 
-## If you have not done so already, add this line without the "# " to settings.py:
+
+## If this has not been done so already,
+## add this line without the "# " to settings.py:
 # AUTH_PROFILE_MODULE = 'forum.UserProfile'
-##### UserProfile section END #####

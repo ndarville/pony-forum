@@ -1,6 +1,5 @@
 #!/bin/sh
 python hellodjango/manage.py syncdb --noinput
-python hellodjango/manage.py check_permissions
 python mkadmin.py
 python definesite.py
 python mkcategorythreadpost.py

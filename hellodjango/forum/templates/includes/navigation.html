@@ -1,0 +1,31 @@
+<ul>
+        <a class="screenreader-only" href="/">Return to home page</a>
+    <!--
+        http://webaim.org/techniques/css/invisiblecontent/
+        <a class="screenreader-only" href="#board">Go to threads</a>
+        <a class="screenreader-only" href="#content">Go to content</a>                      
+    -->
+    {% if user.is_authenticated %}
+        <li><strong><a href="{% url forum.views.user user.id %}" title="Inspect your own user profile">{{ user.username }}</a></strong></li>
+    {% if perms.report.use_report %}
+        <li><a href="{% url forum.views.reports %}">Reports</a></li>
+    {% endif %}
+    {#  <li><a href="{% url forum.views.settings %}" title="Change and check your settings">Settings</a></li> #}
+        <li><a href="{% url bookmarks %}" title="See your bookmarked threads">Bookmarks</a></li>
+        <li><a href="{% url forum.views.subscriptions %}" title="View your subscriptions">Subscriptions</a></li>
+        <li><a href="{% url forum.views.pm %}">Private Messages</a></li>
+    {% if user.is_staff %}
+        <li><a href="/admin/">Site Admin Controls</a></li>
+    {% endif %}
+        <li><a href="http://pony-forum.com/rules/">Rules</a></li>
+        <li><a href="http://pony-forum.com/guide/">Guide</a></li>
+        <li><a href="/search/">Search</a></li>
+        <li><a href="{% url forum.views.logout %}">Log Out</a></li>
+    {% else %}
+        <li><strong><a href="{% url twostepauth.views.login_step_one %}?next={% url forum.views.home %}">Log in</a></strong></li>
+        <li><a href="http://pony-forum.com/rules/">Rules</a></li>
+        <li><a href="http://pony-forum.com/guide/">Guide</a></li>
+    {#  <li><a href="{% url search %}">Search</a></li> #}
+        <li><a href="{% url registration.views.register %}">Register</a></li>
+    {% endif %}
+</ul>

@@ -1,0 +1,12 @@
+{% extends "page.html" %}
+
+{% block title %}Account Registration{% endblock %}
+
+{% block content_body %}
+    <table>
+        <form method='post' action=''>{% csrf_token %}
+            {{ form }}
+            <tr><td></td><td><input type="submit" value="Send activation e-mail" /></td>
+        </form>
+    </table>
+{% endblock %}

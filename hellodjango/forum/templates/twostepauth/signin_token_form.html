@@ -1,0 +1,27 @@
+{% extends "page.html" %}
+{% block title %}Authenticate Log-In{% endblock %}
+
+{% block content_body %}
+    <form action="{% url login_step_two %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Authentication Code</legend>
+            {{ form.non_field_errors }}
+            {% for field in form %}
+                {% if field.is_hidden %}
+                    {{ field }}
+                {% else %}            
+                <p>
+                    {{ field.label_tag }}
+                    {{ field }} 
+                    {% if field.errors %}<br />{{ field.errors }}{% endif %}
+                </p>
+                {% endif %}
+            {% endfor %}
+        </fieldset>
+        <div class="submit">
+        <input type="submit" value="Log In" />
+        {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+        </div>
+    </form>
+{% endblock %}

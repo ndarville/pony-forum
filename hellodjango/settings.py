@@ -10,7 +10,6 @@ import os
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 DEBUG = False
-TEMPLATE_DEBUG = DEBUG
 
 #ADMINS = (
 #    try:
@@ -158,8 +157,8 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'forum',
     'django.contrib.markup',
-#    'django_bcrypt',
-    'userena', 'guardian', 'easy_thumbnails', # userena
+    'registration',
+    'twostepauth',
 #    'djangosecure', # https
 )
 
@@ -195,6 +194,11 @@ LOGGING = {
 # THREADS_PER_PAGE      =
 # USER_CONTENT_PER_PAGE =
 
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL          = '/accounts/login/'
+LOGOUT_URL         = '/accounts/logout/'
+###
+
 ### E-MAIL SERVER
 ## http://sontek.net/using-gmail-to-send-e-mails-from-django
 if not LOCAL_DEVELOPMENT:
@@ -210,27 +214,11 @@ if not LOCAL_DEVELOPMENT:
     #    A guide is available in the README at https://github.com/ndarville/dotcloud-django
     #    """)
         pass
+###
 
-### USERENA APP
-ANONYMOUS_USER_ID = -1.
-
-AUTHENTICATION_BACKENDS = (
-    'userena.backends.UserenaAuthenticationBackend',
-    'guardian.backends.ObjectPermissionBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
-
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URL          = '/accounts/login/'
-LOGOUT_URL         = '/accounts/logout/'
-
-USERENA_ACTIVATION_REQUIRED  = True  # Set to False when debugging
-USERENA_DEFAULT_PRIVACY      = 'open'
-USERENA_DISABLE_PROFILE_LIST = True
-USERENA_FORBIDDEN_USERNAMES  = ('activate', 'login', 'logout', 'me',\
-                                'password', 'register', 'signin',\
-                                'signout', 'signup')
-USERENA_MUGSHOT_GRAVATAR     = False
+### DJANGO-REGISTRATION
+ACCOUNT_ACTIVATION_DAYS = 7
+###
 
 ### DJANGO-SECURE HTTPS
 # if not LOCAL_DEVELOPMENT:
@@ -239,10 +227,15 @@ USERENA_MUGSHOT_GRAVATAR     = False
     # SECURE_BROWSER_XSS_FILTER
     # SESSION_COOKIE_SECURE, SESSION_COOKIE_HTTPONLY = True, True
     # SECURE_HSTS_SECONDS = 1
+###
 
-### BCRYPT APP, if used
-BCRYPT_MIGRATE = True
-BCRYPT_ROUNDS  = 16
+### DJANGO-TWOSTEPAUTH
+AUTHENTICATION_BACKENDS = (
+    'twostepauth.auth_backend.TwoStepAuthBackend',
+)
+
+TWOSTEPAUTH_FOR_USERS = True
+TWOSTEPAUTH_FOR_ADMIN = True
 ###
 
 try:
@@ -252,3 +245,13 @@ except NameError:
         from local_settings import *
     except ImportError:
         pass
+
+TEMPLATE_DEBUG = DEBUG
+
+### DJANGO-DEBUG-TOOLBAR
+if DEBUG:
+    INSTALLED_APPS += ('debug_toolbar',)
+    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+    if LOCAL_DEVELOPMENT:
+        INTERNAL_IPS = ('127.0.0.1',)
+###
