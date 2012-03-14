@@ -281,7 +281,7 @@ class UserProfile(TwoStepAuthBaseProfile):
     #! Show rich-text-formatting buttons
     # formatting_buttons = models.BooleanField(default=True)
     #! Automatically subscribe to a thread after posting in it.
-    auto_subscribe  = models.BooleanField(default=False,
+    auto_subscribe  = models.BooleanField(default=True,
                                           verbose_name="Automatically subscribe \
                                           to threads posted in")
     # buddies         = models.ManyToManyField(User, null=True, blank=True,
