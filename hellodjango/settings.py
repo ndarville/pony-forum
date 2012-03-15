@@ -130,7 +130,7 @@ TEMPLATE_LOADERS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
-#    'djangosecure.middleware.SecurityMiddleware', # https
+    'djangosecure.middleware.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -159,7 +159,7 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'registration',
     'twostepauth',
-#    'djangosecure', # https
+    'djangosecure',
 )
 
 # Extension of the User model with forum-related fields in models.py
