@@ -952,10 +952,6 @@ def logout(request):
     return HttpResponseRedirect("/")
 
 
-def pm(request):
-  return render(request, 'placeholder.html', {})
-
-
 @login_required(login_url=LOGIN_URL)
 def settings(request):
     """Place for the user to change and manage his or her user settings."""

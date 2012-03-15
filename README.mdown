@@ -125,14 +125,13 @@ Fire up [some music](http://soundcloud.com/pluxemburg/first-floor-power-to-do-li
 
 I want to implement Markdown footnotes, but as of now, they get identical anchor IDs, which breaks the links (since they all point to the same). I hope to find something that will work in the end, because I regard this as a very important feature to a forum that encourages long-form discussion.
 
-1. Polish registration/accounts
+1. Polish registration/accounts/settings
 2. Subscriptions
 3. Bans
 4. Avatars
 
 * Formatting buttons
 * Thread polls
-* Private messages (PMs)
 * Spoiler code
 
 * Views and templates:
@@ -160,4 +159,4 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 And much, much more.
 
-[1]: This has been disabled for the time being.
+[^1]: This has been disabled for the time being.

@@ -6,7 +6,7 @@
 {% block content_body %}
     <div id="profile-interaction">
 {% if person != user %}
-        <p><a href="#">Send PM</a></p>
+    {#  <p><a href="#">Send PM</a></p> #}
     {% if person in user.get_profile.follows.all %}
         <p><a href="#" class="js" id="{{ person.id }}">Unfollow user</a></p>
     {% else %}
