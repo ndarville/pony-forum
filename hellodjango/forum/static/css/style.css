@@ -20,9 +20,11 @@ a:visited {
 
 code {
     background-color: #ffa;
+    font-family: Consolas, Monaco, monospace;
 }
 
 pre {
+	font-family: Consolas, Monaco, monospace;
     font-size: 0.8em;
     line-height: 1.2em;
     display: block;
