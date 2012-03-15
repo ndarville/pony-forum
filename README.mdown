@@ -129,6 +129,8 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 2. Subscriptions
 3. Bans
 4. Avatars
+5. Better report system
+6. Moderation action tracker
 
 * Formatting buttons
 * Thread polls

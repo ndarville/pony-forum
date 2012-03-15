@@ -13,7 +13,6 @@
     {#  <li><a href="{% url forum.views.settings %}" title="Change and check your settings">Settings</a></li> #}
         <li><a href="{% url bookmarks %}" title="See your bookmarked threads">Bookmarks</a></li>
         <li><a href="{% url forum.views.subscriptions %}" title="View your subscriptions">Subscriptions</a></li>
-        <li><a href="{% url forum.views.pm %}">Private Messages</a></li>
     {% if user.is_staff %}
         <li><a href="/admin/">Site Admin Controls</a></li>
     {% endif %}
