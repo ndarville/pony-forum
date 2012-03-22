@@ -148,6 +148,7 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 * Unit testing
 * (Better) caching
+* [Gist embedding][gist]
 
 ### Features Under Consideration ###
 * UTC-based datetimes (wait for [Django 1.4](https://docs.djangoproject.com/en/dev/topics/i18n/timezones/#time-zones))
@@ -158,7 +159,11 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 * Finite log-in attempts
 * Post and thread drafts
     * HTML5 storage?
+* Search
 
 And much, much more.
 
+
 [^1]: This has been disabled for the time being.
+
+[gist]: https://github.com/blog/122-embedded-gists
