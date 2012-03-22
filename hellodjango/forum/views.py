@@ -178,17 +178,6 @@ def sanitized_smartdown(string):
         For non-English-language boards, the SmartyPants quotes may
         be different from how they are used in your country (e.g. France).
 
-        If this is the case, you can replace the line
-
-        (...)
-
-        with
-
-        (...)
-
-        You will still need to save existing titles and posts again
-        for them to be affected by the change.
-
     NB (Bleach and Encoding):
         Bleach always returns a unicode object, whether you give it a
         bytestring or a unicode object, but Bleach does not attempt to detect
@@ -230,18 +219,16 @@ def sanitized_smartdown(string):
                           'a':       ['href', 'title'],
                           'acronym': ['title'],
                           'abbr':    ['title'],
-                          'img':     ['alt', 'src']
+                          'img':     ['alt', 'src'],
                          }
+
     return bleach.clean(\
-                        markdown(
-                                 smartypants(\
-                                 # issue: https://github.com/jsocol/bleach/issues/49
-                                 #            bleach.linkify(string, skip_pre=True)),\
-                                 # Delete the following line and uncomment
-                                 # the line above, if the issue is fixed.
-                                             string, "2"),\
-                                 extensions=['tables'],\
-                                 safe_mode='escape'),\
+                        smartypants(\
+                                    markdown(\
+                                             string,
+                                             extensions=['tables'],
+                                             safe_mode='escape'),\
+                                    "2"),\
                         tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES)
 
 
