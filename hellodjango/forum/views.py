@@ -190,11 +190,15 @@ def sanitized_smartdown(string):
                           'a',
                           'abbr',
                           'acronym',
-                          'b',
                           'blockquote',
                           'code',
                           'del',
                           'em',
+                          'h1',
+                          'h2',
+                          'h3',
+                          'h4',
+                          'h5',
                           'i',
                           'img',
                           'li',
@@ -220,14 +224,24 @@ def sanitized_smartdown(string):
                           'acronym': ['title'],
                           'abbr':    ['title'],
                           'img':     ['alt', 'src'],
+                      ### Attribute List:
+                          'h1':      ['id'],
+                          'h2':      ['id'],
+                          'h3':      ['id'],
+                          'h4':      ['id'],
+                          'h5':      ['id']
                          }
+
+    MD_EXTENSIONS = ['attr_list', 'fenced_code', 'tables']
 
     return bleach.clean(\
                         smartypants(\
                                     markdown(\
-                                             string,
-                                             extensions=['tables'],
-                                             safe_mode='escape'),\
+                                             text=string,
+                                             extensions=MD_EXTENSIONS,
+                                             #output_format='html5',
+                                             #lazy_ol=True,
+                                             safe_mode=True),\
                                     "2"),\
                         tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES)
 
