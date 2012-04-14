@@ -45,6 +45,7 @@ pre {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    overflow: auto;
 }
 
 /** This basically undoes all rules from the <pre> parent */
