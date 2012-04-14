@@ -8,7 +8,7 @@ docutils
 elementtree==1.2.7-20070827-preview
 smartypants==1.6.0.3
 markdown==2.1.1
-bleach==1.1.0
+bleach==1.1.1
 
 # User models and registration
 # PIL==1.1.7
