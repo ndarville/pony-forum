@@ -36,7 +36,7 @@ code {
 }
 
 pre {
-	font: 0.8em/1.2em Consolas, Monaco, monospace;
+	font: 0.8125em/1.8462em Consolas, Monaco, monospace;
     display: block;
     margin: 1em 1px; /** 1px to offset the border */
     padding: 5px 15px;
