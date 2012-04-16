@@ -115,8 +115,7 @@ except NameError:
     except IOError:
         try:
             import random
-            randomizer = random.SystemRandom()
-            SECRET_KEY = ''.join([randomizer.choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(50)])
+            SECRET_KEY = ''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(50)])
             secret = file(SECRET_FILE, 'w')
             secret.write(SECRET_KEY)
             secret.close()
