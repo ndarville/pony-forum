@@ -11,6 +11,8 @@ PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 DEBUG = False
 
+APPEND_SLASH=True
+
 #ADMINS = (
 #    try:
 #        # ('Your Name', 'your_email@example.com'),
@@ -112,8 +114,9 @@ except NameError:
         SECRET_KEY = open(SECRET_FILE).read().strip()
     except IOError:
         try:
-            from random import choice
-            SECRET_KEY = ''.join([choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(50)])
+            import random
+            randomizer = random.SystemRandom()
+            SECRET_KEY = ''.join([randomizer.choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(50)])
             secret = file(SECRET_FILE, 'w')
             secret.write(SECRET_KEY)
             secret.close()
