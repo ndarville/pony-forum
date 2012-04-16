@@ -11,8 +11,6 @@ PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 DEBUG = False
 
-APPEND_SLASH=True
-
 #ADMINS = (
 #    try:
 #        # ('Your Name', 'your_email@example.com'),
