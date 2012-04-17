@@ -1,7 +1,7 @@
 #!/bin/sh
-python hellodjango/manage.py syncdb --noinput
+python ponyforum/manage.py syncdb --noinput
 python mkadmin.py
 python definesite.py
 python mkcategorythreadpost.py
 mkdir -p /home/dotcloud/data/media /home/dotcloud/data/static
-python hellodjango/manage.py collectstatic --noinput
+python ponyforum/manage.py collectstatic --noinput

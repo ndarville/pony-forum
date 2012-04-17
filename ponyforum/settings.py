@@ -137,7 +137,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'hellodjango.urls'
+ROOT_URLCONF = 'ponyforum.urls'
 
 TEMPLATE_DIRS = (
     PROJECT_PATH + '/templates/',
