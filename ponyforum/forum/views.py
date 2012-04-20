@@ -229,10 +229,15 @@ def sanitized_smartdown(string):
                           'h2':      ['id'],
                           'h3':      ['id'],
                           'h4':      ['id'],
-                          'h5':      ['id']
+                          'h5':      ['id'],
+                          'img':     ['id']
                          }
 
-    MD_EXTENSIONS = ['attr_list', 'fenced_code', 'tables']
+    MD_EXTENSIONS = [
+                     'attr_list',
+                     'fenced_code',
+                     'tables'
+                    ]
 
     return bleach.clean(\
                         smartypants(\
