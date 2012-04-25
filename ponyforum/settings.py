@@ -252,12 +252,9 @@ except NameError:
 TEMPLATE_DEBUG = DEBUG
 
 ### DJANGO-DEBUG-TOOLBAR
-
-# Incompatible with Django 1.4 implementation; disabled
-
-# if DEBUG:
-#     INSTALLED_APPS += ('debug_toolbar',)
-#     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-#     if LOCAL_DEVELOPMENT:
-#         INTERNAL_IPS = ('127.0.0.1',)
+if DEBUG:
+    INSTALLED_APPS += ('debug_toolbar',)
+    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+    if LOCAL_DEVELOPMENT:
+        INTERNAL_IPS = ('127.0.0.1',)
 ###
