@@ -129,41 +129,53 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 2. Subscriptions
 3. Bans
 4. Avatars
-5. Better report system
-6. Moderation action tracker
-
-* Formatting buttons
-* Thread polls
-* Spoiler code
-
-* Views and templates:
+5. Views and templates:
     * Bookmarks/Saves
     * Settings
+6. Better report system
 
-* Members-only threads, categories, and forums
 * CSS
     * General
     * Mobile
     * Print
 
+* Formatting buttons
+* Thread polls
+* Spoiler code
+
+* UTC-based datetimes (wait for [Django 1.4][timezones]))
+
+* Moderation action tracker
+* Members-only threads, categories, and forums
+* Threadmins and moderator groups
+
+* Registration
+    * Finite log-in attempts
+    * E-mail check that includes +filters
+    * Invitation-based sign-up
+
 * Unit testing
-* (Better) caching
-* [Gist embedding][gist]
+
+* Embedding
+    * [Gist][gist]
+    * [Tweets][tweets]
 
 ### Features Under Consideration ###
-* UTC-based datetimes (wait for [Django 1.4](https://docs.djangoproject.com/en/dev/topics/i18n/timezones/#time-zones))
-* Post edit time stamps
-* [LaTeX/MathML support](http://mathjax.org)
+* Search
 * Syntax highlighting
-* [Markdown Video](http://tylerlesmann.com/2008/jul/25/smart-way-implementing-markdown-django)
-* Finite log-in attempts
+* Post edit time stamps
+* [Markdown Video][video]
 * Post and thread drafts
     * HTML5 storage?
-* Search
+* [LaTeX/MathML support][latex-mathml]
 
 And much, much more.
 
 
 [^1]: This has been disabled for the time being.
 
-[gist]: https://github.com/blog/122-embedded-gists
+[gist]:         https://github.com/blog/122-embedded-gists
+[tweets]:       https://dev.twitter.com/docs/embedded-tweets
+[timezones]:    https://docs.djangoproject.com/en/dev/topics/i18n/timezones/#time-zones
+[latex-mathml]: http://mathjax.org
+[video]:        http://code.google.com/p/python-markdown-video/
