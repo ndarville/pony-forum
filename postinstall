@@ -1,7 +1,7 @@
 #!/bin/sh
 python manage.py syncdb --noinput
-python mkadmin.py
-python definesite.py
-python mkcategorythreadpost.py
+python _postinstall/mkadmin.py
+python _postinstall/definesite.py
+python _postinstall/mkcategorythreadpost.py
 mkdir -p /home/dotcloud/data/media /home/dotcloud/data/static
 python manage.py collectstatic --noinput
