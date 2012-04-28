@@ -124,6 +124,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'djangosecure.middleware.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
     'djangosecure.middleware.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -223,13 +224,19 @@ ACCOUNT_ACTIVATION_DAYS = 7
 
 ### DJANGO-SECURE HTTPS
 if not LOCAL_DEVELOPMENT:
-    # SECURE_BROWSER_XSS_FILTER = True
-    SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_FRAME_DENY = True
     SECURE_HSTS_SECONDS = 1
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
     # SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_HTTPONLY = True
+        # Disable for dotCloud: http://tinyurl.com/conn569
     SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_HTTPONLY = True
+###
+
+### Secure Django (Native Features)
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
 ###
 
 ### DJANGO-TWOSTEPAUTH

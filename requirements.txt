@@ -15,7 +15,7 @@ bleach==1.1.1
 django-registration==0.7
 django-twostepauth==0.1dev
 
-django-secure==0.1.1
+django-secure==0.1.2
 
 # Debugging
 django-debug-toolbar==0.9.1
