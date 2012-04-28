@@ -155,6 +155,7 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
     * Invitation-based sign-up
 
 * Unit testing
+* [Logging][logging]
 
 * Embedding
     * [Gist][gist]
@@ -174,6 +175,7 @@ And much, much more.
 
 [^1]: This has been disabled for the time being.
 
+[logging]:      http://packages.python.org/Logbook/
 [gist]:         https://github.com/blog/122-embedded-gists
 [tweets]:       https://dev.twitter.com/docs/embedded-tweets
 [timezones]:    https://docs.djangoproject.com/en/dev/topics/i18n/timezones/#time-zones
