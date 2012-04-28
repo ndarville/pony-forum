@@ -236,7 +236,8 @@ if not LOCAL_DEVELOPMENT:
 ###
 
 ### Secure Django (Native Features)
-    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
+    # SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
+        # Disable for dotCloud
 ###
 
 ### DJANGO-TWOSTEPAUTH
