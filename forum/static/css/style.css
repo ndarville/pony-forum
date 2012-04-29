@@ -821,32 +821,3 @@ textarea,
     text-decoration: underline;
 }
 /**** * ****/
-
-@media only screen and (max-width: 480px) {
-    #navigation {
-    /** Hide navigation text */
-    /** END */
-    }
-
-    /** Place navbar at the top */
-    #container {
-        width: 100%;
-    }
-
-    #board,
-    #content,
-    #credits,
-    #header,
-    #navigation {
-        width: 95%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    /** END */
-
-    /** Hide threadbar */
-    #threadbar {
-        display: none;
-    }
-    /** END */
-}
