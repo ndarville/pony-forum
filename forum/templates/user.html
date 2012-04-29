@@ -2,6 +2,9 @@
 
 {% block title %}User Profile for {{ person.username }}{% endblock %}
 {% block canonical_url %}{% url forum.views.user person.id %}/{% endblock %}
+{% block threadbar %}
+            {% include "includes/threadbar.html" %}
+{% endblock %}
 
 {% block content_body %}
     <div id="profile-interaction">

@@ -2,6 +2,9 @@
 
 {% block title %}{{ type|capfirst }} by {{ person.username }}{% endblock %}
 {% block canonical_url %}{% if type == "thread" %}{% url user_threads person.id %}{% else %}{% url user_posts person.id %}{% endif %}{% endblock %}
+{% block threadbar %}
+            {% include "includes/threadbar.html" %}
+{% endblock %}
 
 {% block content_body %}
     <dl>
