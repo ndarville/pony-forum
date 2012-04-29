@@ -1,7 +1,4 @@
 $(document).ready(function() {
-// Remove the no-JS warning, if JS is not blocked in the browser
-    $("#js-blocked-warning").remove();
-
 // Shows the list of people who have thanked and agreed with a post.
     $(".agrees").click(function() {
         $(this).parent().siblings(".agreeers").toggle();

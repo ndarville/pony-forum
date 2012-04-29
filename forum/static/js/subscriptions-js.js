@@ -1,7 +1,4 @@
 $(document).ready(function() {
-// Remove the no-JS warning, if JS is not blocked in the browser
-    $("#js-blocked-warning").remove();
-
 // This CSRF token allows us to make POST requests
     $(document).ajaxSend(function(event, xhr, settings) {
         function getCookie(name) {
