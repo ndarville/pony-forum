@@ -1,0 +1,16 @@
+{% extends "page.html" %}
+
+{% block title %}Log In{% endblock %}
+{% block canonical_url %}{% url forum.views.login %}{% endblock %}
+{% block content_body %}
+                <form action="/login/" method="post">
+                    {% csrf_token %}
+                    <label for="username">Username: </label><input type="text" name="username" id="username" autofocus required><br />
+                    <label for="password">Password: </label><input type="password" name="password" id="password" required><br />
+                    <input type="submit" value="Submit"><br />
+
+                    <label for="remember-password">Remember password?</label><input type="checkbox" id="remember-password">
+                </form>
+
+                <p><a href="{% url auth_password_reset %}">Forgot your password?</a></p>
+{% endblock %}
