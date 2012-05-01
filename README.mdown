@@ -45,7 +45,7 @@ Speaking of automatic changes, Pony Forum guesses the name and domain of your we
 
 How all this is done can be seen in [definesite.py](https://github.com/ndarville/dotcloud-django/blob/master/_postinstall/definesite.py), which is (also) called in `postinstall`.
 
-"So what?" you ask; what are these used for? As it happens, as of this writing, the name of your site is only relevant, if you want the name to appear in the header in the top middle of your forum[^1]. Besides that, it doesn't appear anywhere, really.
+"So what?" you ask; what are these used for? As it happens, as of this writing, the name of your site is only relevant, if you want the name to appear in the header in the top middle of your forum<sup>**1**</sup> Besides that, it doesn't appear anywhere, really.
 
 The *domain* on the other hand is much more important. It is used for in the `userena` app that, amongst other things, sends activation e-mails to your users. As you may know, these e-mails contain an activation link that your users have to follow in order to activate their accounts.
 
@@ -121,7 +121,7 @@ License
 
 To-Do List
 ----------
-Fire up [some music](http://soundcloud.com/pluxemburg/first-floor-power-to-do-list-akamu-remix) and let's take a look at what I hope to get to at some point.
+Fire up [some music][music] and let's take a look at what I hope to get to at some point.
 
 I want to implement Markdown footnotes, but as of now, they get identical anchor IDs, which breaks the links (since they all point to the same). I hope to find something that will work in the end, because I regard this as a very important feature to a forum that encourages long-form discussion.
 
@@ -134,28 +134,30 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
     * Settings
 6. Better report system
 
-* CSS
-    * General
-    * Mobile
-    * Print
-
-* Formatting buttons
-* Thread polls
-* Spoiler code
-
 * UTC-based datetimes (wait for [Django 1.4][timezones]))
 
-* Moderation action tracker
-* Members-only threads, categories, and forums
-* Threadmins and moderator groups
+* CSS
+    * General
+    * [Mobile][mobile]
+    * Print
+
+* Maintenance
+    * Unit testing
+    * [Logging][logging]
 
 * Registration
     * Finite log-in attempts
     * E-mail check that includes +filters
     * Invitation-based sign-up
 
-* Unit testing
-* [Logging][logging]
+### Eventual, Not Impending, Features ###
+* Thread polls
+* Spoiler code
+
+* Moderation and special access
+    * Moderation action tracker
+    * Members-only threads, categories, and forums
+    * Threadmins and moderator groups
 
 * Embedding
     * [Gist][gist]
@@ -169,15 +171,19 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 * Post and thread drafts
     * HTML5 storage?
 * [LaTeX/MathML support][latex-mathml]
+* Formatting buttons
 
 And much, much more.
 
+* * * * *
 
-[^1]: This has been disabled for the time being.
+**1:** This has been disabled for the time being.
 
 [logging]:      http://packages.python.org/Logbook/
 [gist]:         https://github.com/blog/122-embedded-gists
 [tweets]:       https://dev.twitter.com/docs/embedded-tweets
+[music]:        http://soundcloud.com/pluxemburg/first-floor-power-to-do-list-akamu-remix
+[mobile]:       https://github.com/ndarville/dotcloud-django/tree/adaptive
 [timezones]:    https://docs.djangoproject.com/en/dev/topics/i18n/timezones/#time-zones
 [latex-mathml]: http://mathjax.org
 [video]:        http://code.google.com/p/python-markdown-video/
