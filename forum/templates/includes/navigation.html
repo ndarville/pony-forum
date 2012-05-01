@@ -5,26 +5,26 @@
         <a class="screenreader-only" href="#board">Go to threads</a>
         <a class="screenreader-only" href="#content">Go to content</a>                      
     -->
-    {% if user.is_authenticated %}
-        <li><strong><a href="{% url forum.views.user user.id %}" title="Inspect your own user profile">{{ user.username }}</a></strong></li>
+{% if user.is_authenticated %}
+        <li id="first"><strong><a href="{% url forum.views.user user.id %}" title="Inspect your own user profile"><span>{{ user.username }}</span></a></strong></li>
     {% if perms.report.use_report %}
-        <li><a href="{% url forum.views.reports %}">Reports</a></li>
+        <li><a href="{% url forum.views.reports %}"><span>Reports</span></a></li>
     {% endif %}
-    {#  <li><a href="{% url forum.views.settings %}" title="Change and check your settings">Settings</a></li> #}
-        <li><a href="{% url bookmarks %}" title="See your bookmarked threads">Bookmarks</a></li>
-        <li><a href="{% url forum.views.subscriptions %}" title="View your subscriptions">Subscriptions</a></li>
+    {#  <li><a href="{% url forum.views.settings %}" title="Change and check your settings"><span>Settings</span></a></li> #}
+        <li><a href="{% url bookmarks %}" title="See your bookmarked threads"><span>Bookmarks</span></a></li>
+        <li><a href="{% url forum.views.subscriptions %}" title="View your subscriptions"><span>Subscriptions</span></a></li>
     {% if user.is_staff %}
-        <li><a href="/admin/">Site Admin Controls</a></li>
+        <li><a href="/admin/"><span>Site Admin Controls</span></a></li>
     {% endif %}
-        <li><a href="http://pony-forum.com/rules/">Rules</a></li>
-        <li><a href="http://pony-forum.com/guide/">Guide</a></li>
-        <li><a href="/search/">Search</a></li>
-        <li><a href="{% url forum.views.logout %}">Log Out</a></li>
-    {% else %}
-        <li><strong><a href="{% url twostepauth.views.login_step_one %}?next={% url forum.views.home %}">Log in</a></strong></li>
-        <li><a href="http://pony-forum.com/rules/">Rules</a></li>
-        <li><a href="http://pony-forum.com/guide/">Guide</a></li>
-    {#  <li><a href="{% url search %}">Search</a></li> #}
-        <li><a href="{% url registration.views.register %}">Register</a></li>
-    {% endif %}
+        <li><a href="http://pony-forum.com/rules/"><span>Rules</span></a></li>
+        <li><a href="http://pony-forum.com/guide/"><span>Guide</span></a></li>
+        <li><a href="/search/"><span>Search</span></a></li>
+        <li id="last"><a href="{% url forum.views.logout %}"><span>Log Out</span></a></li>
+{% else %}
+        <li id="first"><strong><a href="{% url twostepauth.views.login_step_one %}?next={% url forum.views.home %}"><span>Log in</span></a></strong></li>
+        <li><a href="http://pony-forum.com/rules/"><span>Rules</span></a></li>
+        <li><a href="http://pony-forum.com/guide/"><span>Guide</span></a></li>
+    {#  <li><a href="{% url search %}"><span>Search</span></a></li> #}
+        <li id="last"><a href="{% url registration.views.register %}"><span>Register</span></a></li>
+{% endif %}
 </ul>

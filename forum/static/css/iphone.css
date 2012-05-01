@@ -1,13 +1,55 @@
+/** Navigation bar */
 #navigation {
-/** Hide navigation text */
-/** END */
+    background: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    box-shadow: none;
+    text-align: center;
 }
 
-/** Place navbar at the top */
+#navigation li {
+    display: inline-block;
+    padding: 0;
+}
+
+#navigation li a {
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    height: 15px;
+    width: 25px;
+}
+
+#navigation li#first a {
+    -webkit-border-top-left-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+#navigation li#last a {
+    -webkit-border-top-right-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    -moz-border-radius-topright: 4px;
+    -moz-border-radius-bottomright: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+/** Hide text */
+#navigation span {
+    display: none;
+}
+/** */
+/** */
+
 #container {
     width: 100%;
 }
 
+/** Adapt to mobile viewport */
 #board,
 #content,
 #credits,
@@ -19,10 +61,78 @@
     float: none;
     clear: both;
 }
-/** END */
+/** */
 
 /** Hide threadbar */
 #threadbar {
     display: none;
 }
 /** END */
+
+#credits {
+    font-family: "Helvetica Neue", "Helvetica", "Verdana", sans-serif;
+    font-size: 0.75em;
+    line-height: 2em;
+}
+
+/** Align icons to the middle instead of left */
+#navigation li a[href*="/user/"] {
+    background: url(glyphish/123-id-card.png) no-repeat center;
+}
+
+#navigation li a[href$="/reports/"] {
+    background: url(glyphish/146-gavel.png) no-repeat center;
+}
+
+#navigation li a[href$="/settings/"] {
+    background: url(glyphish/20-gear2.png) no-repeat center;
+}
+
+#navigation li a[href$="/bookmarks/"] {
+    background: url(glyphish/191-collection.png) no-repeat center;
+}
+
+#navigation li a[href$="/subscriptions/"] {
+    background: url(glyphish/44-shoebox.png) no-repeat center;
+}
+
+#navigation li a[href$="/pm/"] {
+    background: url(glyphish/18-envelope.png) no-repeat center;
+}
+
+#navigation li a[href$="/admin/"] {
+    background: url(glyphish/158-wrench-2.png) no-repeat center;
+}
+
+#navigation li a[href="http://pony-forum.com/rules/"] {
+    background: url(glyphish/138-scales.png) no-repeat center;
+}
+
+#navigation li a[href$="/rules/"] {
+    background: url(glyphish/138-scales.png) no-repeat center;
+}
+
+#navigation li a[href="http://pony-forum.com/guide/"] {
+    background: url(glyphish/96-book.png) no-repeat center;
+}
+
+#navigation li a[href$="/guide/"] {
+    background: url(glyphish/96-book.png) no-repeat center;
+}
+
+#navigation li a[href$="/search/"] {
+    background: url(glyphish/06-magnify.png) no-repeat center;
+}
+
+#navigation li a[href$="/logout/"] {
+    background: url(glyphish/54-lock.png) no-repeat center;
+}
+
+#navigation li a[href*="/login/"] {
+    background: url(glyphish/30-key.png) no-repeat center;
+}
+
+#navigation li a[href$="/register/"] {
+    background: url(glyphish/111-user.png) no-repeat center;
+}
+/** */
