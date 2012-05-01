@@ -20,6 +20,12 @@
     width: 25px;
 }
 
+/** Align icons to the middle instead of left */
+#navigation li a[href] {
+    background-position: center;
+}
+/** */
+
 #navigation li#first a {
     -webkit-border-top-left-radius: 4px;
     -webkit-border-bottom-left-radius: 4px;
@@ -74,65 +80,3 @@
     font-size: 0.75em;
     line-height: 2em;
 }
-
-/** Align icons to the middle instead of left */
-#navigation li a[href*="/user/"] {
-    background: url(/static/glyphish/123-id-card.png) no-repeat center;
-}
-
-#navigation li a[href$="/reports/"] {
-    background: url(/static/glyphish/146-gavel.png) no-repeat center;
-}
-
-#navigation li a[href$="/settings/"] {
-    background: url(/static/glyphish/20-gear2.png) no-repeat center;
-}
-
-#navigation li a[href$="/bookmarks/"] {
-    background: url(/static/glyphish/191-collection.png) no-repeat center;
-}
-
-#navigation li a[href$="/subscriptions/"] {
-    background: url(/static/glyphish/44-shoebox.png) no-repeat center;
-}
-
-#navigation li a[href$="/pm/"] {
-    background: url(/static/glyphish/18-envelope.png) no-repeat center;
-}
-
-#navigation li a[href$="/admin/"] {
-    background: url(/static/glyphish/158-wrench-2.png) no-repeat center;
-}
-
-#navigation li a[href="http://pony-forum.com/rules/"] {
-    background: url(/static/glyphish/138-scales.png) no-repeat center;
-}
-
-#navigation li a[href$="/rules/"] {
-    background: url(/static/glyphish/138-scales.png) no-repeat center;
-}
-
-#navigation li a[href="http://pony-forum.com/guide/"] {
-    background: url(/static/glyphish/96-book.png) no-repeat center;
-}
-
-#navigation li a[href$="/guide/"] {
-    background: url(/static/glyphish/96-book.png) no-repeat center;
-}
-
-#navigation li a[href$="/search/"] {
-    background: url(/static/glyphish/06-magnify.png) no-repeat center;
-}
-
-#navigation li a[href$="/logout/"] {
-    background: url(/static/glyphish/54-lock.png) no-repeat center;
-}
-
-#navigation li a[href*="/login/"] {
-    background: url(/static/glyphish/30-key.png) no-repeat center;
-}
-
-#navigation li a[href$="/register/"] {
-    background: url(/static/glyphish/111-user.png) no-repeat center;
-}
-/** */
