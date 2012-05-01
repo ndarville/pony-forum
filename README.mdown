@@ -147,7 +147,6 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 * Registration
     * Finite log-in attempts
-    * E-mail check that includes +filters
     * Invitation-based sign-up
 
 ### Eventual, Not Impending, Features ###
@@ -165,13 +164,14 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 ### Features Under Consideration ###
 * Search
+* Formatting buttons
 * Syntax highlighting
 * Post edit time stamps
 * [Markdown Video][video]
 * Post and thread drafts
     * HTML5 storage?
 * [LaTeX/MathML support][latex-mathml]
-* Formatting buttons
+* E-mail check with [better regex][+filters]. (Section 3.)
 
 And much, much more.
 
@@ -179,11 +179,12 @@ And much, much more.
 
 **1:** This has been disabled for the time being.
 
+[music]:        http://soundcloud.com/pluxemburg/first-floor-power-to-do-list-akamu-remix
+[timezones]:    https://docs.djangoproject.com/en/dev/topics/i18n/timezones/#time-zones
+[mobile]:       https://github.com/ndarville/dotcloud-django/tree/adaptive
 [logging]:      http://packages.python.org/Logbook/
 [gist]:         https://github.com/blog/122-embedded-gists
 [tweets]:       https://dev.twitter.com/docs/embedded-tweets
-[music]:        http://soundcloud.com/pluxemburg/first-floor-power-to-do-list-akamu-remix
-[mobile]:       https://github.com/ndarville/dotcloud-django/tree/adaptive
-[timezones]:    https://docs.djangoproject.com/en/dev/topics/i18n/timezones/#time-zones
-[latex-mathml]: http://mathjax.org
 [video]:        http://code.google.com/p/python-markdown-video/
+[latex-mathml]: http://mathjax.org
+[+filters]:     https://tools.ietf.org/html/rfc3696
