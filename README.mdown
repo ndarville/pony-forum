@@ -162,6 +162,8 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
     * [Gist][gist]
     * [Tweets][tweets]
 
+* [Localization][local]
+
 ### Features Under Consideration ###
 * Search
 * Formatting buttons
@@ -185,6 +187,7 @@ And much, much more.
 [logging]:      http://packages.python.org/Logbook/
 [gist]:         https://github.com/blog/122-embedded-gists
 [tweets]:       https://dev.twitter.com/docs/embedded-tweets
+[local]:        https://docs.djangoproject.com/en/1.4/topics/i18n/com/en/dev/topics/i18n/formatting/
 [video]:        http://code.google.com/p/python-markdown-video/
 [latex-mathml]: http://mathjax.org
 [+filters]:     https://tools.ietf.org/html/rfc3696
