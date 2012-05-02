@@ -26,7 +26,9 @@
                 {% endfor %}
                 </table>
             {% if perms.forum.add_category %}
-                <a class="button" href="{% url forum.views.add %}">Add a new category</a>
+                <div id="button-group">
+                    <a class="button" href="{% url forum.views.add %}">Add a new category</a>
+                </div>
             {% endif %}
             </div>
 {% endblock %}
