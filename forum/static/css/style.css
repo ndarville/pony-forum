@@ -676,6 +676,19 @@ span#error {
     background-color: yellow;
 }
 
+/** Buttons and submit input */
+input[type=submit] {
+    display: inline;
+}
+
+#board input[type="submit"] + input[type="submit"] {
+    margin-left: 3em;
+}
+
+#button-group {
+    text-align: center;
+}
+
 /** Check that CSS doesn't break this in other browsers
 nor with different rules */
 .spoiler {
@@ -750,12 +763,6 @@ textarea:focus,
     text-align: center;
 }
 
-/** For special button design */
-input[type=submit] {
-    display: inline;
-    margin-right: 5px;
-}
-
 #example {
     background-color: white;
 }
@@ -773,14 +780,10 @@ textarea,
     margin: 0 auto 1.5em;
 }
 
-#submit,
-#markdown {
-    margin-left: 2.5em;
-}
-
 #markdown {
     background-color: pink;
     font-family: "Palatino Linotype", sans-serif;
+    margin: 0 auto;  /** Pick a better value for 0 */
 }
 
 #markdown blockquote {
