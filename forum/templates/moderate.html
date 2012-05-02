@@ -14,9 +14,12 @@
 
                 <form action="{% url forum.views.moderate_thread thread.id %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
+
                     <input type="text" name="title" id="title-form" value="{{ title }}" placeholder="Put your title here (in capital letters). Keep it less than eighty characters, and be descriptive." required />
                     
-                    <input type="submit" name="moderate" id="submit" value="Moderate" />
+                    <div id="button-group">
+                        <input type="submit" name="moderate" id="submit" value="Moderate" />
+                    </div>
                 </form>
             </div>
 {% endblock %}

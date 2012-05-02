@@ -33,8 +33,10 @@
                     </ul>
                     <p>Merging them will show the posts in both in chronological order in one single thread named <i>{{ new_title_html|safe }}</i>.</p>
                     
-                    <input type="submit" name="confirm" id="submit" value="Yes, merge them" />
-                    <input type="submit" name="cancel" id="submit" value="Cancel" />
+                    <div id="button-group">
+                        <input type="submit" name="confirm" id="submit" value="Yes, merge them" />
+                        <input type="submit" name="cancel" id="submit" value="Cancel" />
+                    </div>
 
                     <input type="hidden" name="other-thread-id" value="{{ other_thread.id }}" />
                     <input type="hidden" name="new-thread-title" value="{{ new_title }}" />

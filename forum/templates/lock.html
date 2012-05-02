@@ -11,8 +11,10 @@
                 <form action="{% url forum.views.lock_thread thread.id %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
                     
-                    <input type="submit" name="lock" value="Lock" />
-                    <input type="submit" name="unlock" value="Unlock" />
+                    <div id="button-group">
+                        <input type="submit" name="lock" value="Lock" />
+                        <input type="submit" name="unlock" value="Unlock" />
+                    </div>
                 </form>
             </div>
 {% endblock %}

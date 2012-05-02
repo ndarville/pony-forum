@@ -12,12 +12,15 @@
 
                 <form action="{% if type == "thread" %}{% url report_thread obj.id %}{% else %}{% url report_post obj.id %}{% endif %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
+
                     <input type="text" name="title" id="title-form" value="{% if title %}{{ title }}{% endif %}" placeholder="Briefly summarize the infraction in 80 characters or less." required />
                     <textarea
                         rows="10" name="content" placeholder="If you so desire, write a longer explanation for your report here. You can not edit your report, once it has been filed, nor will you be able to view it. Make full use of the preview feature.">{% if preview %}{{ preview }}{% endif %}</textarea>
                     
-                    <input type="submit" name="submit" id="submit" value="Report" />
-                    <input type="submit" name="preview" id="preview" value="Preview" />
+                    <div id="button-group">
+                        <input type="submit" name="submit" id="submit" value="Report" />
+                        <input type="submit" name="preview" id="preview" value="Preview" />
+                    </div>
                 </form>
 
                 {% include "includes/markdown.html" %}

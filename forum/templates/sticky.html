@@ -11,8 +11,10 @@
                 <form action="{% url forum.views.sticky_thread thread.id %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
                     
-                    <input type="submit" name="sticky" value="Sticky" />
-                    <input type="submit" name="unsticky" value="Unsticky" />
+                    <div id="button-group">
+                        <input type="submit" name="sticky" value="Sticky" />
+                        <input type="submit" name="unsticky" value="Unsticky" />
+                    </div>
                 </form>
             </div>
 {% endblock %}
