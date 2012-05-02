@@ -74,3 +74,18 @@
     display: none;
 }
 /** END */
+
+/**
+    #board: 680px
+        .post:  660px
+            .user:  100px (15.15...%)
+            .words: 550px (83.33...%)
+*/
+.user,
+.op {
+    width: 15%;
+}
+
+.words {
+    width: 83%;
+}
