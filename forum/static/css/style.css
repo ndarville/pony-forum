@@ -677,7 +677,7 @@ span#error {
 }
 
 /** Buttons and submit input */
-input[type=submit] {
+input[type="submit"] {
     display: inline;
 }
 
