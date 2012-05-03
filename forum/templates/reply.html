@@ -14,7 +14,7 @@
                     {% csrf_token %}
 
                     <textarea
-                        rows="10" name="content" placeholder="Write the content of your post here, use the Markdown formatting explained below, and press &ldquo;Reply&rdquo;." autofocus required>{% if preview_plain %}{{ preview_plain }}{% endif %}</textarea>
+                        rows="10" name="content" autofocus required>{% if preview_plain %}{{ preview_plain }}{% endif %}</textarea>
                     
                     <div id="button-group">
                         <input type="submit" name="submit" id="submit" value="Reply" />
