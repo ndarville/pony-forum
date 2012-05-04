@@ -300,6 +300,19 @@ input[type="submit"]:active {
     background: -o-linear-gradient(top, #a8a8a8, #c6c6c6 15%, #d8d8d8);
 }
 
+.pagination {
+    font-family: Georgia, serif;
+    padding: 0 0.25em;
+    background-color: #F7F7F7;
+    border: 1px solid #D1D1D1;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 1.5em 0;
+    font-variant: small-caps;
+}
+
 .screenreader-only {
     position: absolute;
     left: -10000px;
