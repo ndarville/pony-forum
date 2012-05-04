@@ -30,7 +30,9 @@
                         <td><a href="{{ thread_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.title_html|safe }}</a></td>
                         <td><a href="{{ thread_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.post_set.all.count }}</a></td>
                         <td><a href="{{ thread_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.relative_date }}</a></td>
+                    <!--
                         <td><a title="Hide categories in the list" href="#">-</a></td>
+                    -->
                     </tr>
                 {% endfor %}
                 </table>
