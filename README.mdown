@@ -169,7 +169,7 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 * [Localization][local]
 
 ### Features Under Consideration ###
-* Search
+* [Search][search]
 * Formatting buttons
 * Syntax highlighting
 * Post edit time stamps
@@ -192,6 +192,7 @@ And much, much more.
 [gist]:         https://github.com/blog/122-embedded-gists
 [tweets]:       https://dev.twitter.com/docs/embedded-tweets
 [local]:        https://docs.djangoproject.com/en/1.4/topics/i18n/com/en/dev/topics/i18n/formatting/
+[search]:       http://ericholscher.com/blog/2009/nov/2/large-problems-django-mostly-solved/
 [video]:        http://code.google.com/p/python-markdown-video/
 [latex-mathml]: http://mathjax.org
 [+filters]:     https://tools.ietf.org/html/rfc3696
