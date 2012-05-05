@@ -1,19 +1,58 @@
-            {% if total_pages > 1 %}
+            {% if page.has_other_pages %}
                 <div class="pagination">
-                    <span class="previous-page">
+        <!-- Older page -->
                     {% if page.has_previous %}
-                        <strong><a href="?page={{ page.previous_page_number }}" title="Go to the older threads.">&lt;</a></strong>
+                        <a href="?page={{ page.previous_page_number }}" title="Go to the older threads.">&lt;&nbsp;Older</a>
                     {% endif %}
-                    </span>
 
-                    <span class="current-page">
-                        {{ current_page }} &hellip; {{ total_pages }}
-                    </span>
-                
-                    <span class="next-page">
-                    {% if page.has_next %}
-                        <strong><a href="?page={{ page.next_page_number }}" title="Go to the newer threads.">&gt;</a></strong>
+            <!-- First page -->
+                    {% if current_page > 4 %}
+                        <a href="?page=1">1</a>&nbsp;&#8943;
                     {% endif %}
-                    </span>
+
+                <!-- Current page -3 -->
+                    {% if current_page > 3 %}
+                        <a href="?page={{ current_page|add:"-3" }}">{{ current_page|add:"-3" }}</a>
+                    {% endif %}
+
+                <!-- Current page -2 -->
+                    {% if current_page > 2 %}
+                        <a href="?page={{ current_page|add:"-2" }}">{{ current_page|add:"-2" }}</a>
+                    {% endif %}
+
+                <!-- Current page -1 -->
+                    <!-- current_page > 1 -->
+                    {% if page.has_previous %}
+                        <a href="?page={{ page.previous_page_number }}">{{ current_page|add:"-1" }}</a>
+                    {% endif %}
+
+                    <!-- Current page -->
+                        {{ current_page }}
+
+                <!-- Current page +1 -->
+                    <!-- current_page < total_pages -->
+                    {% if page.has_next %}
+                        <a href="?page={{ page.next_page_number }}">{{ current_page|add:"1" }}</a>
+                    {% endif %}
+
+                <!-- Current page +2 -->
+                    {% if current_page < total_pages|add:"-1" and total_pages > 2 %}
+                        <a href="?page={{ current_page|add:"2" }}">{{ current_page|add:"2" }}</a>
+                    {% endif %}
+
+                <!-- Current page +3 -->
+                    {% if current_page < total_pages|add:"-2" %}
+                        <a href="?page={{ current_page|add:"3" }}">{{ current_page|add:"3" }}</a>
+                    {% endif %}
+
+            <!-- Last page -->
+                    {% if current_page < total_pages|add:"-3" and total_pages > 4 %}
+                        &#8943;&nbsp;<a href="?page={{ total_pages }}">{{ total_pages }}</a>
+                    {% endif %}
+
+        <!-- Newer page -->
+                    {% if page.has_next %}
+                        <a href="?page={{ page.next_page_number }}" title="Go to the newer threads.">Newer&nbsp;&gt;</a>
+                    {% endif %}
                 </div>
             {% endif %}
