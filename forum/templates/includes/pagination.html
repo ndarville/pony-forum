@@ -1,0 +1,19 @@
+            {% if total_pages > 1 %}
+                <div class="pagination">
+                    <span class="previous-page">
+                    {% if page.has_previous %}
+                        <strong><a href="?page={{ page.previous_page_number }}" title="Go to the older threads.">&lt;</a></strong>
+                    {% endif %}
+                    </span>
+
+                    <span class="current-page">
+                        {{ current_page }} &hellip; {{ total_pages }}
+                    </span>
+                
+                    <span class="next-page">
+                    {% if page.has_next %}
+                        <strong><a href="?page={{ page.next_page_number }}" title="Go to the newer threads.">&gt;</a></strong>
+                    {% endif %}
+                    </span>
+                </div>
+            {% endif %}

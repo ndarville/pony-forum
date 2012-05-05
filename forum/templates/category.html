@@ -37,25 +37,13 @@
                 {% endfor %}
                 </table>
                 
-            {% if category_threads.paginator.num_pages > 1 %}
-                <div class="pagination">
-                    <span class="previous-page">
-                    {% if category_threads.has_previous %}
-                        <a href="?page={{ category_threads.previous_page_number }}" title="Go to the older threads.">Older</a>
-                    {% endif %}
-                    </span>
-
-                    <span class="current-page">
-                        {{ category_threads.number }} &hellip; {{ category_threads.paginator.num_pages }}
-                    </span>
-                
-                    <span class="next-page">
-                    {% if category_threads.has_next %}
-                        <a href="?page={{ category_threads.next_page_number }}" title="Go to the newer threads.">Newer</a>
-                    {% endif %}
-                    </span>
-                </div>
-            {% endif %}
+            {% with current_page=category_threads.number %}
+            {% with total_pages=category_threads.paginator.num_pages %}
+            {% with page=category_threads %}
+                {% include "includes/pagination.html" %}
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
 
             {% if perms.forum.create_category %}
                 <a class="button" href="{% url forum.views.create category.id %}">Create new thread</a>

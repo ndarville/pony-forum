@@ -25,23 +25,12 @@
 {% endif %}
     <dl>
 
-{% if objects.paginator.num_pages > 1 %}
-    <div class="pagination">
-        <span class="previous-page">
-        {% if objects.has_previous %}
-            <a href="?page={{ objects.previous_page_number }}" title="Go to the previous page of threads">Previous</a>
-        {% endif %}
-        </span>
+{% with current_page=objects.number %}
+{% with total_pages=objects.paginator.num_pages %}
+{% with page=objects %}
+    {% include "includes/pagination.html" %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
 
-        <span class="current-page">
-            Page {{ objects.number }} of {{ objects.paginator.num_pages }}
-        </span>
-    
-        <span class="next-page">
-        {% if objects.has_next %}
-            <a href="?page={{ objects.next_page_number }}" title="Go to the next page of threads">Next</a>
-        {% endif %}
-        </span>
-    </div>
-{% endif %}
 {% endblock %}

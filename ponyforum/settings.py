@@ -194,7 +194,8 @@ LOGGING = {
 ## These already have default values, so you don't need to define them
 # POSTS_PER_PAGE        =
 # THREADS_PER_PAGE      =
-# USER_CONTENT_PER_PAGE =
+# USER_POSTS_PER_PAGE =
+# USER_THREADS_PER_PAGE =
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL          = '/accounts/login/'

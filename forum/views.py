@@ -63,7 +63,8 @@ MAX_THREAD_TITLE_LENGTH   = Thread._meta.get_field("title_plain").max_length
 MAX_CATEGORY_TITLE_LENGTH = Category._meta.get_field("title_plain").max_length
 POSTS_PER_PAGE            = getattr(settings, "POSTS_PER_PAGE", 25)
 THREADS_PER_PAGE          = getattr(settings, "THREADS_PER_PAGE", 25)
-USER_CONTENT_PER_PAGE     = getattr(settings, "USER_CONTENT_PER_PAGE", 50)
+USER_POSTS_PER_PAGE       = getattr(settings, "USER_CONTENT_PER_PAGE", 10)
+USER_THREADS_PER_PAGE     = getattr(settings, "USER_CONTENT_PER_PAGE", 25)
 
 
 long_title_error  = "Your chosen title was too long. Keep it under %i characters."
@@ -391,7 +392,7 @@ def user(request, user_id):
     posts  = person.post_set.all()\
              .exclude(is_removed__exact=True)\
              .exclude(thread__is_removed__exact=True)\
-             .order_by("-creation_date")
+             .order_by("-creation_date")[:10]
     return render(request, 'user.html', {'person': person, 'posts': posts})
 
 
@@ -402,9 +403,11 @@ def user_content(request, user_id, object_type):
     if object_type == "post":
         objects    = person.post_set.all()\
                      .exclude(thread__is_removed__exact=True)
+        USER_CONTENT_PER_PAGE = USER_POSTS_PER_PAGE
     else:  #   ... == "thread"
         objects    = person.thread_set.all()\
                      .exclude(is_removed__exact=True)
+        USER_CONTENT_PER_PAGE = USER_THREADS_PER_PAGE
     objects = objects.order_by("-creation_date")
     objects = paginate(request, objects, USER_CONTENT_PER_PAGE)
 
