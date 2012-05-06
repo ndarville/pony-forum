@@ -322,8 +322,6 @@ input[type="submit"]:active {
     overflow: hidden;
 }
 
-.sticky { background: pink; }
-
 /****           *****
 ***** ACCOUNTS ****/
 form p.checkbox { }
@@ -447,9 +445,25 @@ th#latest-post {
 #content .categories th,
 #content .threads th,
 #threadbar th {
-    background: grey;
+    background: #FFB;
     font-weight: bold;
     text-align: left;
+}
+
+#content .threads .locked {
+    background: beige;
+}
+
+#content .threads .removed {
+    background: red;
+}
+
+#content .threads .stickied {
+    background: pink;
+}
+
+#content .threads .subscribed {
+    background: yellow;
 }
 
 #content tr:hover,
