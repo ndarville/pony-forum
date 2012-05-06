@@ -162,6 +162,10 @@ table {
     background: url(/static/glyphish/123-id-card.png) no-repeat left;
 }
 
+#navigation li a[href$="/saves/"] {
+    background: url(/static/glyphish/28-star.png) no-repeat left;
+}
+
 #navigation li a[href$="/reports/"] {
     background: url(/static/glyphish/146-gavel.png) no-repeat left;
 }

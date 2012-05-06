@@ -1,26 +1,26 @@
 {% extends "page.html" %}
 
-{% block title %}{{ type|capfirst }}s by {{ person.username }}{% endblock %}
-{% block canonical_url %}{% if type == "thread" %}{% url user_threads person.id %}{% else %}{% url user_posts person.id %}{% endif %}{% endblock %}
+{% block title %}Your {{ type }}s{% endblock %}
+{% block canonical_url %}{% if type == "bookmark" %}{% url bookmarks %}{% else %}{% url saves %}{% endif %}{% endblock %}
 {% block threadbar %}
             {% include "includes/threadbar.html" %}
 {% endblock %}
 
 {% block content_body %}
     <dl>
-{% if type == "thread" %}
+{% if type == "bookmark" %}
     {% for thread in objects.object_list %}
         <dt>{{ thread.relative_date }}</dt>
             <dd><a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a></dd>
     {% empty %}
-        <p>This user has not created any threads yet.</p>
+        <p>You haven&rsquo;t bookmarked any threads yet.</p>
     {% endfor %}
 {% else %}
     {% for post in objects.object_list %}
         <dt><a href="{% url forum.views.post post.id %}">{{ post.thread.title_html|safe }}</a></dt>
             <dd>{{ post.content_html|safe }}</dd>
     {% empty %}
-        <p>This user has not posted in the forums yet.</p>
+        <p>You haven&rsquo;t saved any posts yet.</p>
     {% endfor %}
 {% endif %}
     <dl>

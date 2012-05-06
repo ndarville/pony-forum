@@ -7,10 +7,11 @@
     -->
     {% if user.is_authenticated %}
         <li><strong><a href="{% url forum.views.user user.id %}" title="Inspect your own user profile">{{ user.username }}</a></strong></li>
+    {#  <li><a href="{% url forum.views.settings %}" title="Change and check your settings">Settings</a></li> #}
+        <li><a href="{% url saves %}" title="See your saved posts">Saves</a></li>
     {% if perms.report.use_report %}
         <li><a href="{% url forum.views.reports %}">Reports</a></li>
     {% endif %}
-    {#  <li><a href="{% url forum.views.settings %}" title="Change and check your settings">Settings</a></li> #}
         <li><a href="{% url bookmarks %}" title="See your bookmarked threads">Bookmarks</a></li>
         <li><a href="{% url forum.views.subscriptions %}" title="View your subscriptions">Subscriptions</a></li>
     {% if user.is_staff %}

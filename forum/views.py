@@ -975,8 +975,15 @@ def settings(request):
 def saves_and_bookmarks(request, object_type):
     """Shows the user's saved posts and/or bookmarked threads."""
     if object_type == "save":
-        objects = request.user.saves.all()
-    else:  # Bookmark
-        objects = request.user.bookmarks.all()
+        objects    = request.user.post_set.all()\
+                     .exclude(thread__is_removed__exact=True)
+        USER_CONTENT_PER_PAGE = USER_POSTS_PER_PAGE
+    else:  #   ... == "bookmark"
+        objects    = request.user.thread_set.all()
+        USER_CONTENT_PER_PAGE = USER_THREADS_PER_PAGE
+    # objects = objects.order_by("-creation_date") -saved_date
+    objects = paginate(request, objects, USER_CONTENT_PER_PAGE)
 
-    return render(request, 'placeholder.html', {})
+    return render(request, 'saved_content.html',
+                          {'type'   : object_type,
+                           'objects': objects})
