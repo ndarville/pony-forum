@@ -165,6 +165,7 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 * Embedding
     * [Gist][gist]
     * [Tweets][tweets]
+    * [U.S. states][states]
 
 * [Localization][local]
 
@@ -191,6 +192,7 @@ And much, much more.
 [logging]:      http://packages.python.org/Logbook/
 [gist]:         https://github.com/blog/122-embedded-gists
 [tweets]:       https://dev.twitter.com/docs/embedded-tweets
+[states]:       https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/<STATE>_in_United_States.svg/500px-<STATE>_in_United_States.svg.png
 [local]:        https://docs.djangoproject.com/en/1.4/topics/i18n/com/en/dev/topics/i18n/formatting/
 [search]:       http://ericholscher.com/blog/2009/nov/2/large-problems-django-mostly-solved/
 [video]:        http://code.google.com/p/python-markdown-video/
