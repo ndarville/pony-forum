@@ -445,13 +445,24 @@ th#latest-post {
 
 #content .categories thead,
 #content .threads thead,
-#threadbar thead,
 #content .categories th,
 #content .threads th,
 #threadbar th {
     background: #FFB;
     font-weight: bold;
     text-align: left;
+}
+
+#content .categories th:first-child {
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    border-top-left-radius: 5px;
+}
+
+#content .categories th:last-child {
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
 }
 
 #content .threads .locked {
@@ -471,10 +482,21 @@ th#latest-post {
 }
 
 #content tr:hover,
-#threadbar tr:hover,
 #threadbar li:hover,
 #navigation li:hover {
     background-color: yellow;
+}
+
+/** #content table tr:last-child:hover, */
+#threadbar li:last-child:hover,
+#navigation li:hover:last-child:hover {
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: pink;
 }
 
 #content table.hide {
