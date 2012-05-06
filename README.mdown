@@ -128,11 +128,10 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 1. Polish registration/accounts/settings
     * Settings view and template
 2. Subscriptions
-3. Bookmarks/saves views and templates
-4. Bans
-5. Avatars
-6. Moderator management interface w/ back-end
-7. Better report system
+3. Bans
+4. Avatars
+5. Moderator management interface w/ back-end
+6. Better report system
 
 * Consolidate POST templates (and templates?) to fewer
     * Throw moderation-based templates in a separate folder
