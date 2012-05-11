@@ -6,7 +6,7 @@
         <a class="screenreader-only" href="#content">Go to content</a>                      
     -->
     {% if user.is_authenticated %}
-        <li><strong><a href="{% url forum.views.user user.id %}" title="Inspect your own user profile">{{ user.username }}</a></strong></li>
+        <li class="first"><strong><a href="{% url forum.views.user user.id %}" title="Inspect your own user profile">{{ user.username }}</a></strong></li>
     {#  <li><a href="{% url forum.views.settings %}" title="Change and check your settings">Settings</a></li> #}
         <li><a href="{% url saves %}" title="See your saved posts">Saves</a></li>
     {% if perms.report.use_report %}
@@ -20,12 +20,12 @@
         <li><a href="http://pony-forum.com/rules/">Rules</a></li>
         <li><a href="http://pony-forum.com/guide/">Guide</a></li>
         <li><a href="/search/">Search</a></li>
-        <li><a href="{% url forum.views.logout %}">Log Out</a></li>
+        <li class="last"><a href="{% url forum.views.logout %}">Log Out</a></li>
     {% else %}
-        <li><strong><a href="{% url twostepauth.views.login_step_one %}?next={% url forum.views.home %}">Log in</a></strong></li>
+        <li class="first"><strong><a href="{% url twostepauth.views.login_step_one %}?next={% url forum.views.home %}">Log in</a></strong></li>
         <li><a href="http://pony-forum.com/rules/">Rules</a></li>
         <li><a href="http://pony-forum.com/guide/">Guide</a></li>
     {#  <li><a href="{% url search %}">Search</a></li> #}
-        <li><a href="{% url registration.views.register %}">Register</a></li>
+        <li class="last"><a href="{% url registration.views.register %}">Register</a></li>
     {% endif %}
 </ul>

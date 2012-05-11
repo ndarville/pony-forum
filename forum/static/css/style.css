@@ -489,14 +489,22 @@ th#latest-post {
 
 /** #content table tr:last-child:hover, */
 #threadbar li:last-child:hover,
-#navigation li:hover:last-child:hover {
+#navigation .last:hover {
     -webkit-border-bottom-right-radius: 5px;
     -webkit-border-bottom-left-radius: 5px;
     -moz-border-radius-bottomright: 5px;
     -moz-border-radius-bottomleft: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
-    background-color: pink;
+}
+
+#navigation .first:hover {
+    -webkit-border-top-left-radius: 5px ;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 #content table.hide {
