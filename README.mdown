@@ -146,6 +146,7 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 * Maintenance
     * Unit testing
+    * [Travis CI testing][travis]
     * [Logging][logging]
 
 * Registration
@@ -188,6 +189,7 @@ And much, much more.
 [music]:        http://soundcloud.com/pluxemburg/first-floor-power-to-do-list-akamu-remix
 [timezones]:    https://docs.djangoproject.com/en/dev/topics/i18n/timezones/#time-zones
 [mobile]:       https://github.com/ndarville/dotcloud-django/tree/adaptive
+[travis]:       http://justcramer.com/2012/05/03/using-travis-ci/
 [logging]:      http://packages.python.org/Logbook/
 [gist]:         https://github.com/blog/122-embedded-gists
 [tweets]:       https://dev.twitter.com/docs/embedded-tweets
