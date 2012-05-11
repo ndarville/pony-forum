@@ -162,6 +162,8 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
     * Members-only threads, categories, and forums
     * Threadmins and moderator groups
 
+* [Caching][caching]
+
 * Embedding
     * [Gist][gist]
     * [Tweets][tweets]
@@ -191,6 +193,7 @@ And much, much more.
 [mobile]:       https://github.com/ndarville/dotcloud-django/tree/adaptive
 [travis]:       http://justcramer.com/2012/05/03/using-travis-ci/
 [logging]:      http://packages.python.org/Logbook/
+[caching]:      http://docs.dotcloud.com/tutorials/python/django/#caching
 [gist]:         https://github.com/blog/122-embedded-gists
 [tweets]:       https://dev.twitter.com/docs/embedded-tweets
 [states]:       https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/<STATE>_in_United_States.svg/500px-<STATE>_in_United_States.svg.png
