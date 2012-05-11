@@ -478,7 +478,7 @@ th#latest-post {
 }
 
 #content .threads .subscribed {
-    background: yellow;
+    background: orange;
 }
 
 #content tr:hover,
@@ -487,9 +487,9 @@ th#latest-post {
     background-color: yellow;
 }
 
-/** #content table tr:last-child:hover, */
-#threadbar li:last-child:hover,
-#navigation .last:hover {
+/** #content table tr:last-child, */
+#threadbar li:last-child,
+#navigation .last {
     -webkit-border-bottom-right-radius: 5px;
     -webkit-border-bottom-left-radius: 5px;
     -moz-border-radius-bottomright: 5px;
@@ -498,7 +498,7 @@ th#latest-post {
     border-bottom-left-radius: 5px;
 }
 
-#navigation .first:hover {
+#navigation .first {
     -webkit-border-top-left-radius: 5px ;
     -webkit-border-top-right-radius: 5px;
     -moz-border-radius-topleft: 5px;
