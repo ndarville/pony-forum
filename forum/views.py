@@ -954,6 +954,10 @@ def reports(request):
 #                   'results' : results})
 
 
+def search(request):
+    return render(request, 'placeholder.html', {})
+
+
 def logout(request):
     if request.user.is_authenticated():  # User logged in
         auth.logout(request)

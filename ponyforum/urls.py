@@ -20,6 +20,7 @@ urlpatterns = patterns('forum.views',
     (r'^saves/$',                                'saves_and_bookmarks',
                                                     {'object_type': 'save'},
                                                     'saves'),
+    (r'^search/$',                               'search'),
 
 #   Category
     (r'^category/add/$',                         'add'),
