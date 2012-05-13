@@ -11,8 +11,10 @@
                 <form action="{% if type == "thread" %}{% url remove_thread obj.id %}{% else %}{% url remove_post obj.id %}{% endif %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
 
-                    <input type="submit" name="remove" value="Remove" />
-                    <input type="submit" name="restore" value="Restore" />
+                    <div id="button-group">
+                        <input type="submit" name="remove" value="Remove" />
+                        <input type="submit" name="restore" value="Restore" />
+                    </div>
                 </form>
             </div>
 {% endblock %}

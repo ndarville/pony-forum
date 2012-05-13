@@ -40,9 +40,13 @@
                 {% endif %}
 
                 <form action="{% url forum.views.reports %}" method="post" id="reply" name="reply-form">
+
                     {% csrf_token %}
+                    <div id="button-group">
+                        <input type="submit" name="dismiss"  value="Dismiss" />
+                    </div>
+                    
                     <input type="hidden" name="report-id" value="{{ report.id }}" />
-                    <input type="submit" name="dismiss"  value="Dismiss" />
                 </form>
                 </div>
             {% endif %}

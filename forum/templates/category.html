@@ -52,7 +52,9 @@
             {% endwith %}
 
             {% if perms.forum.create_category %}
-                <a class="button" href="{% url forum.views.create category.id %}">Create new thread</a>
+                <div id="button-group">
+                    <a class="button" href="{% url forum.views.create category.id %}">Create new thread</a>
+                </div>
             {% endif %}
             </div>
 {% endblock %}

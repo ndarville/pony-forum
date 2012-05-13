@@ -15,7 +15,9 @@
                     <input type="radio" name="category" value="{{ category.id }}" {% if category == thread.category %}checked{% endif %} />{{ category.title_html|safe }}<br />
                 {% endfor %}
 
-                <input type="submit" name="move" value="Move" />
+                <div id="button-group">
+                    <input type="submit" name="move" value="Move" />
+                </div>
                 </form>
             </div>
 {% endblock %}

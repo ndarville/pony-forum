@@ -3,10 +3,12 @@
     <head>
         <meta charset="utf-8">
         <title>{% block title %}The Forum{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.75">
         <link rel="canonical" href="{% block canonical_url %}{% endblock %}" />
         <link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico" />
         <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/reset.css" />
         <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/style.css" />
+        <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="{{ STATIC_URL }}css/iphone.css" />
     {% if user.is_dyslexic %}
         <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/dyslexia.css" />
     {% endif %}
@@ -36,7 +38,7 @@
             <div id="credits">
 {% block credits-border %}{% endblock %}
 {% block credits %}
-                The forum is powered by <a href="http://pony-forum.com/">Pony Forum</a>, which was made by <a href="http://me.niclasdarville.com/">Niclas Darville</a>. Icons by <a href="http://glyphish.com/">Glyphish</a>.
+                <span>The forum is powered by <a href="http://pony-forum.com/">Pony Forum</a>, which was made by <a href="http://me.niclasdarville.com/">Niclas Darville</a>.</span> <span>Icons by <a href="http://glyphish.com/">Glyphish</a>.</span>
 {% endblock %}
             </div>
             <!-- Remove the commenting and enter your tracker data following "UA-" to enable Google Analytics tracking

@@ -12,12 +12,15 @@
 
                 <form action="{% url forum.views.create category.id %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
-                    <input type="text" name="title" id="title-form" value="{% if title %}{{ title }}{% endif %}" placeholder="Put your title here (in capital letters). Keep it less than eighty characters, and be descriptive." required />
-                    <textarea
-                        rows="10" name="content" placeholder="Write the content of your post here, use the Markdown formatting explained below, and press &ldquo;Reply&rdquo;." autofocus required>{% if preview_plain %}{{ preview_plain }}{% endif %}</textarea>
                     
-                    <input type="submit" name="submit" id="submit" value="Create" />
-                    <input type="submit" name="preview" id="preview" value="Preview" />
+                    <input type="text" name="title" id="title-form" value="{% if title %}{{ title }}{% endif %}" placeholder="Use a descriptive title here." required />
+                    <textarea
+                        rows="10" name="content" autofocus required>{% if preview_plain %}{{ preview_plain }}{% endif %}</textarea>
+                    
+                    <div id="button-group">
+                        <input type="submit" name="submit" id="submit" value="Create" />
+                        <input type="submit" name="preview" id="preview" value="Preview" />
+                    </div>
                 </form>
 
                 {% include "includes/markdown.html" %}

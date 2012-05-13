@@ -6,9 +6,12 @@
             <div id="board">
                 <form action="{% url forum.views.add %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
-                    <input type="text" name="title" id="title-form" value="{% if title %}{{ title }}{% endif %}" placeholder="Put your title here (in capital letters). Keep it less than eighty characters." autofocus required />
+
+                    <input type="text" name="title" id="title-form" value="{% if title %}{{ title }}{% endif %}" placeholder="Use a descriptive title here." autofocus required />
                     
-                    <input type="submit" name="submit" id="submit" value="Add" />
+                    <div id="button-group">
+                        <input type="submit" name="submit" id="submit" value="Add" />
+                    </div>
                 </form>
             </div>
 {% endblock %}

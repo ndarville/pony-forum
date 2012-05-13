@@ -12,11 +12,14 @@
 
                 <form action="{% url forum.views.edit post.id %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
-                    <textarea
-                        rows="10" name="content" placeholder="Write the content of your post here, use the Markdown formatting explained below, and press &ldquo;Reply&rdquo;." autofocus required>{% if preview_plain %}{{ preview_plain }}{% else %}{{ post.content_plain }}{% endif %}</textarea>
                     
-                    <input type="submit" name="submit" id="submit" value="Edit" />
-                    <input type="submit" name="preview" id="preview" value="Preview" />
+                    <textarea
+                        rows="10" name="content" autofocus required>{% if preview_plain %}{{ preview_plain }}{% else %}{{ post.content_plain }}{% endif %}</textarea>
+                    
+                    <div id="button-group">
+                        <input type="submit" name="submit" id="submit" value="Edit" />
+                        <input type="submit" name="preview" id="preview" value="Preview" />
+                    </div>
                 </form>
 
                 {% include "includes/markdown.html" %}
