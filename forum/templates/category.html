@@ -9,38 +9,42 @@
             <div id="content">
                 <table class="threads">
                     <!-- IDs improve screenreaders' experience -->
-                    <tr>
-                        <th id="category-title">{{ category.title_html|safe }}</th>
-                        <th id="post-quantity">Posts</th>
-                        <th id="latest-post">Latest Post</th>
-                    </tr>
-                {% for sticky in stickies %}
-                    {% url forum.views.thread sticky.id as sticky_url %}
-                    <tr class="stickied">
-                        <td><a href="{{ sticky_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.title_html|safe }}</a></td>
-                        <td><a href="{{ sticky_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.post_set.all.count }}</a></td>
-                        <td><a href="{{ sticky_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.relative_date }}</a></td>
-                    </tr>
-                {% endfor %}
-                {% for thread in category_threads.object_list %}
-                    {% url forum.views.thread thread.id as thread_url %}
-                    <tr
-                    {% if thread.is_removed %}
-                        class="removed"
-                    {% elif thread.is_locked %}
-                        class="locked"
-                    {% elif thread in user.subscriptions.all %}
-                        class="subscribed"
-                    {% endif %}
-                    >
-                        <td><a href="{{ thread_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.title_html|safe }}</a></td>
-                        <td><a href="{{ thread_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.post_set.all.count }}</a></td>
-                        <td><a href="{{ thread_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.relative_date }}</a></td>
-                    <!--
-                        <td><a title="Hide categories in the list" href="#">-</a></td>
-                    -->
-                    </tr>
-                {% endfor %}
+                    <thead>
+                        <tr>
+                            <th id="category-title">{{ category.title_html|safe }}</th>
+                            <th id="post-quantity">Posts</th>
+                            <th id="latest-post">Latest Post</th>
+                        </tr>
+                    <thead>
+                    <tbody>
+                    {% for sticky in stickies %}
+                        {% url forum.views.thread sticky.id as sticky_url %}
+                        <tr class="stickied">
+                            <td><a href="{{ sticky_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.title_html|safe }}</a></td>
+                            <td><a href="{{ sticky_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.post_set.all.count }}</a></td>
+                            <td><a href="{{ sticky_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.relative_date }}</a></td>
+                        </tr>
+                    {% endfor %}
+                    {% for thread in category_threads.object_list %}
+                        {% url forum.views.thread thread.id as thread_url %}
+                        <tr
+                        {% if thread.is_removed %}
+                            class="removed"
+                        {% elif thread.is_locked %}
+                            class="locked"
+                        {% elif thread in user.subscriptions.all %}
+                            class="subscribed"
+                        {% endif %}
+                        >
+                            <td><a href="{{ thread_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.title_html|safe }}</a></td>
+                            <td><a href="{{ thread_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.post_set.all.count }}</a></td>
+                            <td><a href="{{ thread_url }}" title="View the posts in the thread &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.relative_date }}</a></td>
+                        <!--
+                            <td><a title="Hide categories in the list" href="#">-</a></td>
+                        -->
+                        </tr>
+                    {% endfor %}
+                <tbody>
                 </table>
                 
             {% with current_page=category_threads.number %}
