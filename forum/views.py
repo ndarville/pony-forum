@@ -202,6 +202,7 @@ def sanitized_smartdown(string):
                           'h5',
                           'i',
                           'img',
+                          'ins',
                           'li',
                           'ol',
                           'p',
