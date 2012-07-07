@@ -87,5 +87,6 @@ def parse_text(text):
 for root, dirs, files in os.walk(PATH):
     for name in files:
         if name == "text.txt":
-            with text as open(name, "r"):
-                parse_text(text)
+            filepath = os.path.join(root, "text.txt")
+            with open(filepath) as text:
+                parse(text)
