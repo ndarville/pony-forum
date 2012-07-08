@@ -22,10 +22,10 @@ def mkuser(line):
     name = line.strip().lower().capitalize()
 
     u, created = User.objects.get_or_create(username=name)
-        if created:
-            # u.avatar = "..."
-            u.set_password("password")
-            u.save()
+    if created:
+        # u.avatar = "..."
+        u.set_password("password")
+        u.save()
 
 def author(line):
     mkuser(line)
