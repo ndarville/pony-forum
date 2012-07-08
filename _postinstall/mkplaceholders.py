@@ -18,7 +18,17 @@ now = datetime.datetime.now() # UTC?
 c = Category.objects.create(
         title_plain="Discussions", title_html=title_plain)
 
+def mkuser(line):
+    name = line.strip().lower().capitalize()
+
+    u, created = User.objects.get_or_create(username=name)
+        if created:
+            # u.avatar = "..."
+            u.set_password("password")
+            u.save()
+
 def author(line):
+    mkuser(line)
     categories["AUTHOR"] = line.strip()
 
 def translator(line):
@@ -32,13 +42,7 @@ def title(line):
             creation_date=now, latest_reply_date=now)
 
 def characters(line):
-    name = line.strip().lower().capitalize()    
-
-    # Test if username is taken
-    u = User.objects.create(username=name)
-    # u.avatar = "..."
-    u.set_password("password")
-    u.save()
+    mkuser(line)
     characters[line.strip()] = u
 
 def speaker(speaker, content):
