@@ -82,13 +82,13 @@ def parse_manuscript(text):
                 category = ""
 
         elif category:
-            if category == categories[0]:
+            if category == "AUTHOR":
                 author(line)
-            elif category == categories[1]:
+            elif category == "TRANSLATOR":
                 translator(line)
-            elif category == categories[2]:
+            elif category == "TITLE":
                 title(line)
-            elif category == categories[3]:
+            elif category == "CHARACTERS":
                 characters(line, speaker)
 
         elif speaker:
