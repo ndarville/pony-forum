@@ -16,7 +16,7 @@ from smartypants import smartyPants as sp
 PATH = os.path.join(os.curdir, "_postinstall", "placeholders")
 now = datetime.datetime.now() # UTC?
 c = Category.objects.create(
-        title_plain="Discussions", title_html=title_plain)
+        title_plain="Discussions", title_html="Discussions")
 
 def mkuser(line):
     name = line.strip().lower().capitalize()
@@ -37,7 +37,7 @@ def translator(line):
 def title(line):
     categories["TITLE"] = line.strip()
     t = Thread.objects.create(
-            title_plain=categories["TITLE"], title_html=sp(title_plain),
+            title_plain=categories["TITLE"], title_html=sp(categories["TITLE"]),
             author=categories["AUTHOR"], category=c,
             creation_date=now, latest_reply_date=now)
 
