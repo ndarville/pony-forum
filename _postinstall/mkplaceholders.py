@@ -14,17 +14,16 @@ from smartypants import smartyPants as sp
 
 
 PATH = os.path.join(os.curdir, "_postinstall", "placeholders")
-now = datetime.datetime.now() # UTC?
-c = Category.objects.create(
+now = datetime.datetime.now()  # UTC?
+c, created = Category.objects.get_or_create(
         title_plain="Discussions", title_html="Discussions")
 
 def mkuser(line):
     name = line.strip().lower().capitalize()
-
     u, created = User.objects.get_or_create(username=name)
     if created:
         # u.avatar = "..."
-        u.set_password("password")
+        u.set_password("password")  # Address security implications later
         u.save()
 
 def author(line):
@@ -36,20 +35,27 @@ def translator(line):
 
 def title(line):
     categories["TITLE"] = line.strip()
-    t = Thread.objects.create(
-            title_plain=categories["TITLE"], title_html=sp(categories["TITLE"]),
-            author=categories["AUTHOR"], category=c,
-            creation_date=now, latest_reply_date=now)
+    t, created = Thread.objects.get_or_create(
+            title_plain=categories["TITLE"],
+            title_html=sp(categories["TITLE"]),
+            author=categories["AUTHOR"], category=c)
+    if created:
+        t.creation_date = now
+        t.latest_reply_date =now
+        t.save()
 
 def characters(line):
     mkuser(line)
     characters[line.strip()] = u
 
 def speaker(speaker, content):
-    p = Post.objects.create(thread=t, author=characters[speaker],
-            content_plain=content,
-            content_html=sd(md(content, extensions="nl2br")),
-            creation_date=now)
+    p, created = Post.objects.get_or_create(
+            thread=t, author=characters[speaker],
+            content_plain=content)
+    if created:
+        p.content_html = sd(md(content, extensions="nl2br"))
+        p.creation_date = now
+        p.save()
 
 def parse_text(text):
     speaker, content, category, characters = "", "", "", {}
