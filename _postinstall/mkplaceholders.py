@@ -57,7 +57,7 @@ def speaker(speaker, content):
         p.creation_date = now
         p.save()
 
-def parse_text(text):
+def parse_manuscript(text):
     speaker, content, category, characters = "", "", "", {}
     categories = {
                     "AUTHOR": "",
@@ -99,4 +99,4 @@ for root, dirs, files in os.walk(PATH):
         if name == "text.txt":
             filepath = os.path.join(root, "text.txt")
             with open(filepath) as text:
-                parse(text)
+                parse_manuscript(text)
