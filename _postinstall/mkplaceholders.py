@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from forum.models import Category, Thread, Post
 
 from markdown import markdown as md
-from smartypants import smartypants as sp
+from smartypants import smartyPants as sp
 
 
 PATH = os.path.join(os.curdir, "_postinstall", "placeholders")
