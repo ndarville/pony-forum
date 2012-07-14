@@ -15,6 +15,7 @@ from smartypants import smartyPants as sp
 
 PATH = os.path.join(os.curdir, "_postinstall", "placeholders")
 now = datetime.datetime.now()  # UTC?
+categories, characters = {}, {}
 c, created = Category.objects.get_or_create(
         title_plain="Discussions", title_html="Discussions")
 
@@ -25,15 +26,19 @@ def mkuser(line):
         # u.avatar = "..."
         u.set_password("password")  # Address security implications later
         u.save()
+    return u
 
 def author(line):
+    global categories
     mkuser(line)
     categories["AUTHOR"] = line.strip()
 
 def translator(line):
+    global categories
     categories["TRANSLATOR"] = line.strip()
 
 def title(line):
+    global categories
     categories["TITLE"] = line.strip()
     t, created = Thread.objects.get_or_create(
             title_plain=categories["TITLE"],
@@ -45,10 +50,11 @@ def title(line):
         t.save()
 
 def characters(line):
-    mkuser(line)
-    characters[line.strip()] = u
+    global characters
+    characters[line.strip()] = mkuser(line)
 
-def speaker(speaker, content):
+def parse_speaker(speaker, content):
+    global characters
     p, created = Post.objects.get_or_create(
             thread=t, author=characters[speaker],
             content_plain=content)
@@ -58,6 +64,8 @@ def speaker(speaker, content):
         p.save()
 
 def parse_manuscript(text):
+    global categories
+    global characters
     speaker, content, category, characters = "", "", "", {}
     categories = {
                     "AUTHOR": "",
@@ -75,9 +83,8 @@ def parse_manuscript(text):
 
         elif line == "\n":
             if speaker:
-                speaker(speaker, content)
-                speaker = ""
-                content = ""
+                parse_speaker(speaker, content)
+                speaker, content = "", ""
             else:
                 category = ""
 
