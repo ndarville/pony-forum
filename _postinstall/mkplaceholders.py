@@ -34,7 +34,7 @@ def author(line):
 
 def translator(line):
     global categories
-    categories["TRANSLATOR"] = line.strip()
+    categories["TRANSLATOR"] = mkuser(line)
 
 def title(line):
     global categories
