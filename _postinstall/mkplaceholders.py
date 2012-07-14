@@ -30,8 +30,7 @@ def mkuser(line):
 
 def author(line):
     global categories
-    mkuser(line)
-    categories["AUTHOR"] = line.strip()
+    categories["AUTHOR"] = mkuser(line)
 
 def translator(line):
     global categories
@@ -46,7 +45,7 @@ def title(line):
             author=categories["AUTHOR"], category=c)
     if created:
         t.creation_date = now
-        t.latest_reply_date =now
+        t.latest_reply_date = now
         t.save()
 
 def characters(line):
@@ -95,6 +94,8 @@ def parse_manuscript(text):
                 translator(line)
             elif category == "TITLE":
                 title(line)
+#               "and" gets capitalized; fix
+#               also: http://stackoverflow.com/a/1549644
             elif category == "CHARACTERS":
                 characters(line, speaker)
 
