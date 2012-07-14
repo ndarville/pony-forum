@@ -78,7 +78,7 @@ def parse_manuscript(text):
         if line.rstrip() in categories:
             category = line.rstrip()
 
-        elif line.rstrip() in characters:
+        elif line.rstrip().lower().title() in characters:
             speaker = line.rstrip()
 
         elif line == "\n":
