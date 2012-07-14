@@ -1,5 +1,5 @@
 AUTHOR
-    Alice
+    Lewis Carroll
 
 TITLE
     Where to Go from Here?
