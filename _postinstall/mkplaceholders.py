@@ -43,10 +43,6 @@ def title(line):
             title_plain=categories["TITLE"],
             title_html=sp(categories["TITLE"]),
             author=categories["AUTHOR"], category=c)
-    if created:
-        t.creation_date = now
-        t.latest_reply_date = now
-        t.save()
 
 def characters(line):
     global characters

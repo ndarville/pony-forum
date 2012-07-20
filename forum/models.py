@@ -102,8 +102,8 @@ class Category(models.Model):
 
 class Thread(models.Model):
     """Contains posts."""
-    creation_date     = models.DateTimeField()
-    latest_reply_date = models.DateTimeField()
+    creation_date     = models.DateTimeField(default=datetime.datetime.now())
+    latest_reply_date = models.DateTimeField(default=datetime.datetime.now())
     title_plain       = models.CharField(max_length=70)
     title_html        = models.TextField()
     category          = models.ForeignKey(Category)
@@ -165,7 +165,7 @@ class Thread(models.Model):
 
 class Post(models.Model):
     """The reply of a user in a thread. Or its opening post (OP)."""
-    creation_date = models.DateTimeField()
+    creation_date = models.DateTimeField(default=datetime.datetime.now())
     content_plain = models.TextField()
     content_html  = models.TextField()
     author        = models.ForeignKey(User)
@@ -231,7 +231,7 @@ class Subscription(models.Model):
 
 class Report(models.Model):
     """Model for filing reports against the posts and threads of users."""
-    creation_date  = models.DateTimeField()
+    creation_date  = models.DateTimeField(default=datetime.datetime.now())
     reason_short   = models.CharField(max_length=80)                                
     reason_long    = models.TextField(blank=True)
     author         = models.ForeignKey(User, related_name="reporter")
