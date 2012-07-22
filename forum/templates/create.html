@@ -13,7 +13,7 @@
                 <form action="{% url forum.views.create category.id %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
                     
-                    <input type="text" name="title" id="title-form" value="{% if title %}{{ title }}{% endif %}" placeholder="Use a descriptive title here." required />
+                    <input type="text" x-webkit-speech name="title" id="title-form" value="{% if title %}{{ title }}{% endif %}" placeholder="Use a descriptive title here." required />
                     <textarea
                         rows="10" name="content" autofocus required>{% if preview_plain %}{{ preview_plain }}{% endif %}</textarea>
                     

@@ -18,7 +18,7 @@
 
                     <input type="number" name="other-thread-id" id="id-form" value="{% if other_thread %}{{ other_thread.id }}{% endif %}" min="1" step="1" placeholder="Enter the ID of the other thread." required />
 
-                    <input type="text" name="new-thread-title" id="title-form" value="{{ new_title }}" placeholder="Use a descriptive title here." required />
+                    <input type="text" x-webkit-speech name="new-thread-title" id="title-form" value="{{ new_title }}" placeholder="Use a descriptive title here." required />
                     
                     <input type="submit" name="merge" id="submit" value="Merge" />
                 </form>
