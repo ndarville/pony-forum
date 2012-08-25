@@ -38,6 +38,7 @@ def mktranslator(line):
 
 def mktitle(line):
     global categories
+    global t
     categories["TITLE"] = line.strip()
     t, created = Thread.objects.get_or_create(
             title_plain=categories["TITLE"],
