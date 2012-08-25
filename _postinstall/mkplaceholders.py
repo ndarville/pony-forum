@@ -28,15 +28,15 @@ def mkuser(line):
         u.save()
     return u
 
-def author(line):
+def mkauthor(line):
     global categories
     categories["AUTHOR"] = mkuser(line)
 
-def translator(line):
+def mktranslator(line):
     global categories
     categories["TRANSLATOR"] = mkuser(line)
 
-def title(line):
+def mktitle(line):
     global categories
     categories["TITLE"] = line.strip()
     t, created = Thread.objects.get_or_create(
@@ -44,7 +44,7 @@ def title(line):
             title_html=sp(categories["TITLE"]),
             author=categories["AUTHOR"], category=c)
 
-def characters(line):
+def mkcharacters(line):
     global characters
     characters[line.strip()] = mkuser(line)
 
@@ -85,15 +85,15 @@ def parse_manuscript(text):
 
         elif category:
             if category == "AUTHOR":
-                author(line)
+                mkauthor(line)
             elif category == "TRANSLATOR":
-                translator(line)
+                mktranslator(line)
             elif category == "TITLE":
-                title(line)
+                mktitle(line)
 #               "and" gets capitalized; fix
 #               also: http://stackoverflow.com/a/1549644
             elif category == "CHARACTERS":
-                characters(line, speaker)
+                mkcharacters(line)
 
         elif speaker:
             content += line.lstrip()
