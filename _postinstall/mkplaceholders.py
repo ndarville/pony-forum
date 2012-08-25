@@ -65,7 +65,8 @@ def parse_manuscript(text):
     categories = {
                     "AUTHOR": "",
                     "TRANSLATOR": "",
-                    "TITLE": ""
+                    "TITLE": "",
+                    "CHARACTERS": ""
                 }
 
     for line in text:
