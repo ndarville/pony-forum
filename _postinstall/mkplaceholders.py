@@ -55,7 +55,6 @@ def parse_speaker(speaker, content):
             content_plain=content)
     if created:
         p.content_html = sd(md(content, extensions="nl2br"))
-        p.creation_date = now
         p.save()
 
 def parse_manuscript(text):
