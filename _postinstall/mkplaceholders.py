@@ -51,6 +51,7 @@ def mkcharacters(line):
 
 def parse_speaker(speaker, content):
     global characters
+    speaker = speaker.lower().capitalize()
     p, created = Post.objects.get_or_create(
             thread=t, author=characters[speaker],
             content_plain=content)
