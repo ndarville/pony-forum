@@ -44,7 +44,7 @@ def relative_date(date):
 
 class Category(models.Model):
     """Contains threads."""
-    title_plain  = models.CharField(max_length=50)
+    title_plain  = models.CharField(max_length=50, unique=True)
     title_html   = models.TextField()
 ##  description  = models.CharField(max_length=70)
 #   thread_count = models.IntegerField(default=0) 
@@ -71,7 +71,7 @@ class Thread(models.Model):
     """Contains posts."""
     creation_date     = models.DateTimeField(default=datetime.datetime.now())
     latest_reply_date = models.DateTimeField(default=datetime.datetime.now())
-    title_plain       = models.CharField(max_length=70)
+    title_plain       = models.CharField(max_length=70, unique=True)
     title_html        = models.TextField()
     category          = models.ForeignKey(Category)
     author            = models.ForeignKey(User)
