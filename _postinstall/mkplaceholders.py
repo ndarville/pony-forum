@@ -20,7 +20,7 @@ c, created = Category.objects.get_or_create(
         title_plain="Discussions", title_html="Discussions")
 
 def mkuser(line):
-    name = line.strip().lower().capitalize()
+    name = line.strip().lower().title()
     u, created = User.objects.get_or_create(username=name)
     if created:
         # u.avatar = "..."
@@ -50,7 +50,7 @@ def mkcharacters(line):
     characters[line.strip()] = mkuser(line)
 
 def parse_speaker(speaker, content):
-    speaker = speaker.lower().capitalize()
+    speaker = speaker.lower().title()
     p, created = Post.objects.get_or_create(
             thread=t, author=characters[speaker],
             content_plain=content)
