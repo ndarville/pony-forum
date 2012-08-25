@@ -7,36 +7,6 @@ from django.db.models.signals   import post_save
 from twostepauth.models         import TwoStepAuthBaseProfile
 
 
-# Accessed by UserProfile.get_formatting_buttons_display()
-# minus the () for a template
-# 
-# FORMATTING_BUTTON_CHOICES = (
-#     ('Text Decoration', (
-#             ('EM',   'Emphasized'),
-#             ('I',    'Italic'),
-#             ('S',    'Strong'),
-#         )
-#     ),
-#     ('Lists', (
-#             ('OL',   'Ordered list'),    
-#             ('UL',   'Unordered list'),
-#         )
-#     ),
-#     ('References', (
-#         #    ('FN',   'Footnote'),
-#             ('IMG',  'Image'),
-#             ('URL',  'Linkification'),
-#         )
-#     ),
-#     ('Code', (
-#             ('CODE', 'Code'),
-#             ('PRE',  'Multi-line code'),
-#         )
-#     ),
-#     ('Quote', 'Block quote'),
-# )
-
-
 def relative_date(date):
     """Displays a date relative to now."""
     delta = datetime.datetime.now() - date  # UTC?
@@ -81,9 +51,6 @@ class Category(models.Model):
 #   post_count   = models.IntegerField(default=0)
     #: The sequential placement of the category in the "home" page
 ##  position     = models.AutoField(unique=True)
-    #: M2M user who has chosen to hide the category in the home view
-#   hider        = models.ManyToManyField(User, null=True, blank=True
-#                                         related_name="hidden_categories")
 
     class Meta:
         verbose_name_plural = "categories"
@@ -116,8 +83,6 @@ class Thread(models.Model):
                                                related_name="bookmarks")
     subscriber        = models.ManyToManyField(User, null=True, blank=True,
                                                related_name="subscriptions")
-#   hider             = models.ManyToManyField(User, null=True, blank=True,
-#                                              related_name="hidden_threads")
     #: Users granted moderator rights on a per-thread basis    
 #   threadmins        = models.ManyToManyField(User, null=True, blank=True)
 
@@ -278,14 +243,10 @@ class UserProfile(TwoStepAuthBaseProfile):
     #! Disclose your colour blindness to benefit from potential future features
     # has_c_blindness = models.BooleanField(default=False,
     #                                       verbose_name="User has epilepsy")
-    #! Show rich-text-formatting buttons
-    # formatting_buttons = models.BooleanField(default=True)
     #! Automatically subscribe to a thread after posting in it.
     auto_subscribe  = models.BooleanField(default=True,
                                           verbose_name="Automatically subscribe \
                                           to threads posted in")
-    # buddies         = models.ManyToManyField(User, null=True, blank=True,
-    #                                          related_name="buddies")
     ignores         = models.ManyToManyField(User, null=True, blank=True,
                                              related_name="ignores")
     follows         = models.ManyToManyField(User, null=True, blank=True,
