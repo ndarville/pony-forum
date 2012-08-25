@@ -55,7 +55,7 @@ def parse_speaker(speaker, content):
             thread=t, author=characters[speaker],
             content_plain=content)
     if created:
-        p.content_html = sd(md(content, extensions="nl2br"))
+        p.content_html = sp(md(content, extensions="nl2br"))
         p.save()
 
 def parse_manuscript(text):
