@@ -1,6 +1,6 @@
 AUTHOR
     Plato
-    
+
 TRANSLATOR
     Benjamin Jowett
 
