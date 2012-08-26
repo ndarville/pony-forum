@@ -3,7 +3,7 @@ AUTHOR
 
 TITLE
     Romeo & Juliet
-                
+
 CHARACTERS
     Romeo
     Juliet
