@@ -7,7 +7,7 @@ TRANSLATOR
 TITLE
      Antigone
 
-CHARACTER
+CHARACTERS
      Antigone
      Creon
      Chorus leader
