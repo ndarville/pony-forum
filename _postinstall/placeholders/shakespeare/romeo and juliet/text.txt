@@ -13,7 +13,7 @@ ROMEO
     He jests at scars that never felt a wound.
 
 JULIET
-    <i>Appears above at a window</i>
+    <p><i>Appears above at a window</i></p>
     But, soft! what light through yonder window breaks?
     It is the east, and Juliet is the sun.
     Arise, fair sun, and kill the envious moon,
@@ -224,8 +224,7 @@ JULIET
     I hear some noise within; dear love, adieu!
     Anon, good nurse! Sweet Montague, be true.
     Stay but a little, I will come again.
-
-    <i>Exits, above</i>
+    <p><i>Exits, above</i></p>
 
 ROMEO
     O blessed, blessed night! I am afeard.
@@ -264,20 +263,17 @@ ROMEO
 
 JULIET
     A thousand times good night!
-
-    <i>Exits, above</i>
+    <p><i>Exits, above</i></p>
 
 ROMEO
     A thousand times the worse, to want thy light.
     Love goes toward love, as schoolboys from
     their books,
     But love from love, toward school with heavy looks.
-
-    <i>Retiring</i>
+    <p><i>Retiring</i></p>
 
 JULIET
-    <i>Re-enters, above</i>
-
+    <p><i>Re-enters, above</i></p>
     Hist! Romeo, hist! O, for a falconer's voice,
     To lure this tassel-gentle back again!
     Bondage is hoarse, and may not speak aloud;
@@ -335,13 +331,11 @@ JULIET
     Good night, good night! parting is such
     sweet sorrow,
     That I shall say good night till it be morrow.
-
-    <i>Exits above</i>
+    <p><i>Exits above</i></p>
 
 ROMEO
     Sleep dwell upon thine eyes, peace in thy breast!
     Would I were sleep and peace, so sweet to rest!
     Hence will I to my ghostly father's cell,
     His help to crave, and my dear hap to tell.
-
-    <i>Exits</i>
+    <p><i>Exits</i></p>
