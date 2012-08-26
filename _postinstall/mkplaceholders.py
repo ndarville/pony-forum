@@ -5,6 +5,7 @@ from wsgi import *
 
 import datetime
 import os
+import random
 
 from django.contrib.auth.models import User
 from forum.models import Category, Thread, Post
@@ -15,6 +16,8 @@ from smartypants import smartyPants as sp
 
 PATH = os.path.join(os.curdir, "_postinstall", "placeholders")
 categories, characters = {}, {}
+PASSWORD = ''.join([random.SystemRandom().choice(
+    'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(128)])
 c, created = Category.objects.get_or_create(
         title_plain="Discussions", title_html="Discussions")
 
@@ -23,7 +26,7 @@ def mkuser(line):
     u, created = User.objects.get_or_create(username=name)
     if created:
         # u.avatar = "..."
-        u.set_password("password")  # Address security implications later
+        u.set_password(PASSWORD)
         u.save()
     return u
 
