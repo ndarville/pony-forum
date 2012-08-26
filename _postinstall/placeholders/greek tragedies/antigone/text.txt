@@ -22,21 +22,17 @@ CREON
     And thou didst indeed dare to transgress that law?
 
 ANTIGONE
-    Yes; for it was not Zeus that had published me that edict; not such are the laws set among men by the justice who dwells with the gods below; nor deemed I that thy decrees were of such force, that a mortal could override the unwritten and unfailing statutes of heaven. For their life is not of to-day or yesterday, but from all time, and no man knows when they were first put forth.
-
-    Not through dread of any human pride could I answer to the gods for breaking these. Die I must,---I knew that well (how should I not?)---even without thy edicts. But if I am to die before my time, I count that a gain: for when any one lives, as I do, compassed about with evils, can such an one find aught but gain in death?
-
-    So for me to meet this doom is trifling grief; but if I had suffered my mother's son to lie in death an unburied corpse, that would have grieved me; for this, I am not grieved. And if my present deeds are foolish in thy sight, it may be that a foolish judge arraigns my folly.
+    <p>Yes; for it was not Zeus that had published me that edict; not such are the laws set among men by the justice who dwells with the gods below; nor deemed I that thy decrees were of such force, that a mortal could override the unwritten and unfailing statutes of heaven. For their life is not of to-day or yesterday, but from all time, and no man knows when they were first put forth.</p>
+    <p>Not through dread of any human pride could I answer to the gods for breaking these. Die I must,---I knew that well (how should I not?)---even without thy edicts. But if I am to die before my time, I count that a gain: for when any one lives, as I do, compassed about with evils, can such an one find aught but gain in death?</p>
+    <p>So for me to meet this doom is trifling grief; but if I had suffered my mother's son to lie in death an unburied corpse, that would have grieved me; for this, I am not grieved. And if my present deeds are foolish in thy sight, it may be that a foolish judge arraigns my folly.</p>
 
 CHORUS LEADER
     The maid shows herself passionate child of passionate sire, and knows not how to bend before troubles.
 
 CREON
-    Yet I would have thee know that o'er---stubborn spirits are most often humbled; 'tis the stiffest iron, baked to hardness in the fire, that thou shalt oftenest see snapped and shivered; and I have known horses that show temper brought to order by a little curb; there is no room for pride when thou art thy neighbour's slave.---This girl was already versed in insolence when she transgressed the laws that had been set forth; and, that done, lo, a second insult,---to vaunt of this, and exult in her deed.
-
-    Now verily I am no man, she is the man, if this victory shall rest with her, and bring no penalty. No! be she sister's child, or nearer to me in blood than any that worships Zeus at the altar of our house,---she and her kinsfolk shall not avoid a doom most dire; for indeed I charge that other with a like share in the plotting of this burial.
-
-    And summon her---for I saw her e'en now within,---raving, and not mistress of her wits. So oft, before the deed, the mind stands self-convicted in its treason, when folks are plotting mischief in the dark. But verily this, too, is hateful,---when one who hath been caught in wickednes then seeks to make the crime a glory.
+    <p>Yet I would have thee know that o'er---stubborn spirits are most often humbled; 'tis the stiffest iron, baked to hardness in the fire, that thou shalt oftenest see snapped and shivered; and I have known horses that show temper brought to order by a little curb; there is no room for pride when thou art thy neighbour's slave.---This girl was already versed in insolence when she transgressed the laws that had been set forth; and, that done, lo, a second insult,---to vaunt of this, and exult in her deed.</p>
+    <p>Now verily I am no man, she is the man, if this victory shall rest with her, and bring no penalty. No! be she sister's child, or nearer to me in blood than any that worships Zeus at the altar of our house,---she and her kinsfolk shall not avoid a doom most dire; for indeed I charge that other with a like share in the plotting of this burial.</p>
+    <p>And summon her---for I saw her e'en now within,---raving, and not mistress of her wits. So oft, before the deed, the mind stands self-convicted in its treason, when folks are plotting mischief in the dark. But verily this, too, is hateful,---when one who hath been caught in wickednes then seeks to make the crime a glory.</p>
 
 ANTIGONE
     Wouldst thou do more than take and slay me?
