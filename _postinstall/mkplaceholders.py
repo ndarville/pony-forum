@@ -14,7 +14,6 @@ from smartypants import smartyPants as sp
 
 
 PATH = os.path.join(os.curdir, "_postinstall", "placeholders")
-now = datetime.datetime.now()  # UTC?
 categories, characters = {}, {}
 c, created = Category.objects.get_or_create(
         title_plain="Discussions", title_html="Discussions")
@@ -56,6 +55,7 @@ def parse_speaker(speaker, content):
             content_plain=content)
     if created:
         p.content_html = sp(md(text=content, extensions=["nl2br"]))
+        p.creation_date = datetime.datetime.now()  # UTC?
         p.save()
 
 def parse_manuscript(text):
