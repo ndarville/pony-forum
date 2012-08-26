@@ -95,6 +95,9 @@ def parse_manuscript(text):
             elif category == "CHARACTERS":
                 mkcharacters(line)
 
+        elif line.rstrip() == "END":
+            pass
+
         elif speaker:
             content += line.lstrip()
 

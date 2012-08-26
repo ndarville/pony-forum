@@ -34,3 +34,5 @@ THEAETETUS
 
 SOCRATES
     And may not the same be said of madness and other disorders? the difference is only that the times are not equal.
+
+END
