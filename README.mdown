@@ -1,5 +1,7 @@
 Pony Forum on DotCloud
 ======================
+[![Build Status](https://secure.travis-ci.org/ndarville/dotcloud-django.png)](http://travis-ci.org/ndarville/dotcloud-django)
+
 Pony Forum is a forum (also known as a bulletin board) written in Python for the Django framework. It is intended as a replacement of the decade-old forums like vBulletin, PHPBB, etc.---and a free one easy to deploy at that.
 
 Installation
