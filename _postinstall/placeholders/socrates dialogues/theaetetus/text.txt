@@ -1,0 +1,38 @@
+AUTHOR
+    Plato
+
+TRANSLATOR
+    Benjamin Jowett
+
+TITLE
+    Theaetetus
+
+CHARACTERS
+    Socrates
+    Theaetetus
+
+THEAETETUS
+    I am afraid to say, Socrates, that I have nothing to answer, because you rebuked me just now for making this excuse; but I certainly cannot undertake to argue that madmen or dreamers think truly, when they imagine, some of them that they are gods, and others that they can fly, and are flying in their sleep. 
+
+SOCRATES
+    Do you see another question which can be raised about these phenomena, notably about dreaming and waking?
+
+THEAETETUS
+    What question?
+
+SOCRATES
+    A question which I think that you must often have heard persons ask: How can you determine whether at this moment we are sleeping, and all our thoughts are a dream; or whether we are awake, and talking to one another in the waking state?
+
+THEAETETUS
+    Indeed, Socrates, I do not know how to prove the one any more than the other, for in both cases the facts precisely correspond;-and there is no difficulty in supposing that during all this discussion we have been talking to one another in a dream; and when in a dream we seem to be narrating dreams, the resemblance of the two states is quite astonishing.
+
+SOCRATES
+    You see, then, that a doubt about the reality of sense is easily raised, since there may even be a doubt whether we are awake or in a dream. And as our time is equally divided between sleeping and waking, in either sphere of existence the soul contends that the thoughts which are present to our minds at the time are true; and during one half of our lives we affirm the truth of the one, and, during the other half, of the other; and are equally confident of both.
+
+THEAETETUS
+    Most true.
+
+SOCRATES
+    And may not the same be said of madness and other disorders? the difference is only that the times are not equal.
+
+END

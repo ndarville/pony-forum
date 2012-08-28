@@ -4,5 +4,7 @@
 *.pyc
 build/
 notes/
+venv/
+.DS_Store
 local_settings.py
 secret.txt

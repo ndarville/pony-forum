@@ -1,0 +1,29 @@
+AUTHOR
+    Lewis Carroll
+
+TITLE
+    Where to Go from Here?
+
+CHARACTERS
+    Alice
+    Cheshire Cat
+
+ALICE
+    Would you tell me, please, which way I ought to go from here?
+
+CHESHIRE CAT
+    That depends a good deal on where you want to get to.
+
+ALICE
+    I don't much care where---
+
+CHESHIRE CAT
+    Then it doesn't matter which way you go.
+
+ALICE
+    ---so long as I get *somewhere*.
+
+CHESHIRE CAT
+    Oh, you're sure to do that, if you only walk long enough.
+
+END
