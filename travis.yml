@@ -1,0 +1,20 @@
+language: python
+
+python:
+  - 2.6
+  - 2.7
+
+services: postgresql
+
+install:
+  - pip install -r requirements.txt --use-mirrors
+
+before_script:
+  - psql -c "CREATE DATABASE ponydb;" -U postgres
+
+script:
+  - python manage.py syncdb --noinput
+  - python _postinstall/mkadmin.py
+  - python _postinstall/definesite.py
+  - python _postinstall/mkcategorythreadpost.py
+  - python _postinstall/mkplaceholders.py
