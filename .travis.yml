@@ -8,6 +8,7 @@ services: postgresql
 
 install:
   - pip install -r requirements.txt --use-mirrors
+  - pip install psycopg2 --use-mirrors
 
 before_script:
   - psql -c "CREATE DATABASE ponydb;" -U postgres
