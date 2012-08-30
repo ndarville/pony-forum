@@ -11,9 +11,9 @@ env:
 
 before_install:
   - export DJANGO_SETTINGS_MODULE=ponyforum.settings
-  - export PYTHONPATH=$HOME
+  - echo $HOME/builds/ndarville/dotcloud-django
+  - export PYTHONPATH=$HOME/builds/ndarville/dotcloud-django
   - export PIP_USE_MIRRORS=true
-  - echo $PWD
 
 install:
   - pip install -r requirements.txt
