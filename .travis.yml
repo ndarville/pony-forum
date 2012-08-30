@@ -10,7 +10,7 @@ env: DJANGO_SETTINGS_MODULE=ponyforum.settings
 
 install:
   - pip install -r requirements.txt --use-mirrors
-  - pip install psycopg2 --use-mirrors
+  - pip install psycopg2 --use-mirrors --quiet
 
 before_script:
   - psql -c "CREATE DATABASE ponydb;" -U postgres
