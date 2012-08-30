@@ -1,7 +1,13 @@
 #!/usr/bin/env python
 "Creates placeholder objects."
 
-from wsgi import *
+try:
+    import json
+    with open('/home/dotcloud/environment.json') as f:
+        env = json.load(f)
+    from wsgi import *
+except IOError:  # Development---not on DotCloud
+    pass
 
 import datetime
 import os

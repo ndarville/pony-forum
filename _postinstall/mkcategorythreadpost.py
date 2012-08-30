@@ -1,9 +1,19 @@
 #!/usr/bin/env python
-### Creates a default category with a thread and post
-from wsgi import *
+"Creates a default category with a thread and post."
+
+try:
+    import json
+    with open('/home/dotcloud/environment.json') as f:
+        env = json.load(f)
+    from wsgi import *
+except IOError:  # Development---not on DotCloud
+    pass
+
+import datetime
+
 from django.contrib.auth.models import User
 from forum.models import Category, Thread, Post
-import datetime
+
 
 c, created = Category.objects.get_or_create(pk=1)
 
