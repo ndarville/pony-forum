@@ -13,6 +13,7 @@ before_install:
   - export DJANGO_SETTINGS_MODULE=ponyforum.settings
   - export PYTHONPATH=$HOME
   - export PIP_USE_MIRRORS=true
+  - echo $PWD
 
 install:
   - pip install -r requirements.txt
