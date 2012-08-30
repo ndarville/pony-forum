@@ -6,6 +6,8 @@ python:
 
 services: postgresql
 
+env: DJANGO_SETTINGS_MODULE=ponyforum.settings
+
 install:
   - pip install -r requirements.txt --use-mirrors
   - pip install psycopg2 --use-mirrors
