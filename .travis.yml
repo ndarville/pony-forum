@@ -11,7 +11,6 @@ env:
 
 before_install:
   - export DJANGO_SETTINGS_MODULE=ponyforum.settings
-  - echo $HOME/builds/ndarville/dotcloud-django
   - export PYTHONPATH=$HOME/builds/ndarville/dotcloud-django
   - export PIP_USE_MIRRORS=true
 
@@ -28,4 +27,4 @@ script:
   - python _postinstall/mkadmin.py
   - python _postinstall/definesite.py
   - python _postinstall/mkcategorythreadpost.py
-  - python _postinstall/mkplaceholders.py
+#  - python _postinstall/mkplaceholders.py
