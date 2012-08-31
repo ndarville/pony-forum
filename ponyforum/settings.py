@@ -1,3 +1,6 @@
+import os
+
+
 try:
     import json
     with open('/home/dotcloud/environment.json') as f:
@@ -6,9 +9,7 @@ try:
 except IOError:  # Local development---not on DotCloud
     LOCAL_DEVELOPMENT = True
 
-import os
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
-
 DEBUG = False
 
 #ADMINS = (
@@ -34,6 +35,18 @@ if not LOCAL_DEVELOPMENT:
         }
     }
     DATABASES = DOTCLOUD_DB
+
+elif 'TRAVIS' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE':   'django.db.backends.postgresql_psycopg2',
+            'NAME':     'ponydb',
+            'USER':     'postgres',
+            'PASSWORD': '',
+            'HOST':     'localhost',
+            'PORT':     '',
+        }
+    }
 
 ### Enter your local database information in local_settings.py
 ### An example_local_settings.py exists to give you an idea of
