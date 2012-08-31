@@ -129,9 +129,9 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 1. Polish registration/accounts/settings
     * Settings view and template
-2. Subscriptions
-3. Bans
-4. Avatars
+2. [Subscriptions][subscriptions]
+3. [Bans][bans]
+4. [Avatars][avatars]
 5. Moderator management interface w/ back-end
 6. Better report system
 
@@ -188,6 +188,7 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
     * HTML5 storage?
 * [LaTeX/MathML support][latex-mathml]
 * E-mail check with [better regex][+filters]. (Section 3.)
+* [iOS home screen icon trick][ios-icon]
 
 And much, much more.
 
@@ -196,6 +197,9 @@ And much, much more.
 **1:** This has been disabled for the time being.
 
 [music]:        http://soundcloud.com/pluxemburg/first-floor-power-to-do-list-akamu-remix
+[subscription]: https://github.com/ndarville/dotcloud-django/issues/39
+[bans]:         https://github.com/ndarville/dotcloud-django/issues/40
+[avatars]:      https://github.com/ndarville/dotcloud-django/issues/41
 [timezones]:    https://docs.djangoproject.com/en/dev/topics/i18n/timezones/#time-zones
 [mobile]:       https://github.com/ndarville/dotcloud-django/tree/adaptive
 [testing]:      http://docs.python-guide.org/en/latest/writing/tests/
@@ -212,3 +216,4 @@ And much, much more.
 [video]:        http://code.google.com/p/python-markdown-video/
 [latex-mathml]: http://mathjax.org
 [+filters]:     https://tools.ietf.org/html/rfc3696
+[ios-icon]:     https://github.com/ndarville/dotcloud-django/issues/54
