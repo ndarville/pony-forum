@@ -175,7 +175,7 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 * [Localization][local]
 
-* Replacement of URLs with secure ones (secure., https, etc.)
+* Replacement of URLs with secure ones (secure, https, etc.)
 
 ### Features Under Consideration ###
 * [Search][search]
