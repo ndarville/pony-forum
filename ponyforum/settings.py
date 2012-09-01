@@ -167,7 +167,6 @@ INSTALLED_APPS = (
     'forum',
     'django.contrib.markup',
     'registration',
-    'twostepauth',
     'djangosecure',
 )
 
@@ -252,15 +251,6 @@ if not LOCAL_DEVELOPMENT:
 ### Secure Django (Native Features)
     # SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
         # Disable for dotCloud
-###
-
-### DJANGO-TWOSTEPAUTH
-AUTHENTICATION_BACKENDS = (
-    'twostepauth.auth_backend.TwoStepAuthBackend',
-)
-
-TWOSTEPAUTH_FOR_USERS = True
-TWOSTEPAUTH_FOR_ADMIN = True
 ###
 
 try:
