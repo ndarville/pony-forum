@@ -49,7 +49,7 @@ How all this is done can be seen in [definesite.py](https://github.com/ndarville
 
 "So what?" you ask; what are these used for? As it happens, as of this writing, the name of your site is only relevant, if you want the name to appear in the header in the top middle of your forum<sup>**1**</sup> Besides that, it doesn't appear anywhere, really.
 
-The *domain* on the other hand is much more important. It is used for in the `userena` app that, amongst other things, sends activation e-mails to your users. As you may know, these e-mails contain an activation link that your users have to follow in order to activate their accounts.
+The *domain* on the other hand is much more important. It is used, amongst other things, to send activation e-mails to your users. As you may know, these e-mails contain an activation link that your users have to follow in order to activate their accounts.
 
 But how does Pony Forum know which site the link points to? You guessed it, it uses the `domain` defined by `definesite.py`.
 
