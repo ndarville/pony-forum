@@ -129,7 +129,7 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 1. Polish registration/accounts/settings
     * Settings view and template
-2. [Subscriptions][subscriptions]
+2. [Subscriptions][subscription]
 3. [Bans][bans]
 4. [Avatars][avatars]
 5. Moderator management interface w/ back-end
