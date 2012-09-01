@@ -1,4 +1,4 @@
-Pony Forum on DotCloud
+Pony Forum on dotCloud
 ======================
 [![Build Status](https://secure.travis-ci.org/ndarville/dotcloud-django.png)](http://travis-ci.org/ndarville/dotcloud-django)
 
@@ -6,7 +6,7 @@ Pony Forum is a forum (also known as a bulletin board) written in Python for the
 
 Installation
 ------------
-One of the ideas behind Pony Forum was to create a forum that is *easily* deployed with little head-scratching. At the moment [DotCloud](https://dotcloud.com) accommodates this goal and allows us to deploy a whole working forum to a DotCloud instance using only these three terminal commands:
+One of the ideas behind Pony Forum was to create a forum that is *easily* deployed with little head-scratching. At the moment [dotCloud](https://dotcloud.com) accommodates this goal and allows us to deploy a whole working forum to a dotCloud instance using only these three terminal commands:
 
     git clone git@github.com:ndarville/dotcloud-django.git
     dotcloud create ponyforum
@@ -16,9 +16,9 @@ The `ponyforum` name is temporary and can be replaced with any other name. In th
 
 You will also need to set up an e-mail server (which is very, very easy), all of which is explained in *Setting Up an E-Mail Server* later on in this README. Fret not.
 
-The results on Windows 7 have been uneven at best, but if you want to try your luck, you can install the DotCloud dependencies DotCloud can be installed using either [DotCloud's own installation instructions](http://docs.dotcloud.com/firststeps/install/) (not recommended) compared to just downloading and executing [DotCloudWin](https://github.com/speier/DotCloudWin/downloads). Users on other platforms can use DotCloud's installation guide to set it up with no hitches.
+The results on Windows 7 have been uneven at best, but if you want to try your luck, you can install the dotCloud dependencies dotCloud can be installed using either [dotCloud's own installation instructions](http://docs.dotcloud.com/firststeps/install/) (not recommended) compared to just downloading and executing [DotCloudWin](https://github.com/speier/DotCloudWin/downloads). Users on other platforms can use dotCloud's installation guide to set it up with no hitches.
 
-Remember to [sign up](https://www.dotcloud.com/accounts/register/) for free on DotCloud, if you don't already have an account, in order to retrieve your API key.
+Remember to [sign up](https://www.dotcloud.com/accounts/register/) for free on dotCloud, if you don't already have an account, in order to retrieve your API key.
 
 If you want to use your forum locally, remember that you need to install the needed packages. If you have already installed `pip`, you can go to the directory of `requirements.txt` and type `pip install -r requirements.txt` in the terminal (`sudo pip install -r requirements.txt`, if you aren't on Windows), and all the packages will be downloaded and installed on you local development computer.
 
@@ -27,7 +27,7 @@ As said, Windows is a very, very wonky experience, and it seems to take issue wi
 After-Installation Instructions
 -------------------------------
 ### The Default "Admin" ###
-When the forum is first deployed on DotCloud, an `admin` user is created and assigned a default password (wait for it): `"password"`. This is done through the [mkadmin.py](https://github.com/ndarville/dotcloud-django/blob/master/_postisntall/mkadmin.py) script, which is called by [postinstall](https://github.com/ndarville/dotcloud-django/blob/master/postinstall) if you want have a look under the bonnet.
+When the forum is first deployed on dotCloud, an `admin` user is created and assigned a default password (wait for it): `"password"`. This is done through the [mkadmin.py](https://github.com/ndarville/dotcloud-django/blob/master/_postisntall/mkadmin.py) script, which is called by [postinstall](https://github.com/ndarville/dotcloud-django/blob/master/postinstall) if you want have a look under the bonnet.
 
 Normally, you get to create your own admin, when the database is created, but since this happens automagically behind the scenes, you will not be able to enter your own credentials. Instead, you will have to change the password and details for the `admin` user to suit your own needs or create your own user(s) and dispose of the default admin user.
 
@@ -42,8 +42,8 @@ Just make sure you have another admin-like user ready, so you don't lock yoursel
 ### Your Site Name ###
 Speaking of automatic changes, Pony Forum guesses the name and domain of your website based on respectively
 
-1. Your DotCloud project name
-2. The URL for you DotCloud instance
+1. Your dotCloud project name
+2. The URL for you dotCloud instance
 
 How all this is done can be seen in [definesite.py](https://github.com/ndarville/dotcloud-django/blob/master/_postinstall/definesite.py), which is (also) called in `postinstall`.
 
@@ -66,7 +66,7 @@ Using [sontek's intelligible guide](http://sontek.net/using-gmail-to-send-e-mail
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
 
-*However!* Putting this kind of configuration information in a file that may end up in a publically viewable place is not adviseable. Instead, follow [DotCloud's guide to environmental variables](http://docs.dotcloud.com/guides/environment/) and, instead, enter the information like environment variables like so:
+*However!* Putting this kind of configuration information in a file that may end up in a publically viewable place is not adviseable. Instead, follow [dotCloud's guide to environmental variables](http://docs.dotcloud.com/guides/environment/) and, instead, enter the information like environment variables like so:
 
     dotcloud var set ponyforum EMAIL_HOST=smtp.gmail.com
     dotcloud var set ponyforum EMAIL_HOST_USER=your_user_name@gmail.com
