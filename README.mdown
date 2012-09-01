@@ -119,7 +119,7 @@ Boom! You're done.
 
 License
 -------
-*(To be decided. As long as you don't sell the code as-is nor in any altered form, you're probably good.)*
+*(To be decided.)*
 
 To-Do List
 ----------
