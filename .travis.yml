@@ -26,8 +26,7 @@ script:
   - python manage.py syncdb --noinput
   - python _postinstall/mkadmin.py
   - python _postinstall/definesite.py
-  - python _postinstall/mkcategorythreadpost.py
-#  - python _postinstall/mkplaceholders.py
+  - python _postinstall/mkplaceholders.py
 
 notifications:
   email:
