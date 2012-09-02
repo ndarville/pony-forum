@@ -59,11 +59,17 @@ elif 'TRAVIS' in os.environ:
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+if not LOCAL_DEVELOPMENT:
+    TIME_ZONE = os.environ.get('TIME_ZONE', 'America/Chicago')
+else:
+    TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+if not LOCAL_DEVELOPMENT:
+    LANGUAGE_CODE = os.environ.get('LANGUAGE_CODE', 'en-us')
+else:
+    LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
 
@@ -207,7 +213,7 @@ LOGGING = {
 ## These already have default values, so you don't need to define them
 # POSTS_PER_PAGE        =
 # THREADS_PER_PAGE      =
-# USER_POSTS_PER_PAGE =
+# USER_POSTS_PER_PAGE   =
 # USER_THREADS_PER_PAGE =
 
 LOGIN_REDIRECT_URL = '/'
