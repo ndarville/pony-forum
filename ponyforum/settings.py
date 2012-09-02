@@ -166,6 +166,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'forum',
     'django.contrib.markup',
+    'django.contrib.humanize',
     'registration',
     'djangosecure',
 )

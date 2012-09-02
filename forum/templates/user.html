@@ -1,5 +1,7 @@
 {% extends "page.html" %}
 
+{% load humanize %}
+
 {% block title %}User Profile for {{ person.username }}{% endblock %}
 {% block canonical_url %}{% url forum.views.user person.id %}/{% endblock %}
 {% block threadbar %}
@@ -37,8 +39,8 @@
     <div id="profile-information">
         <p><span class="info">Name:</span> {{ person.username }}</p>
         <p><span class="info">Joined:</span> {{ person.date_joined|timesince }} ago</p>
-        <p><span class="info">Post{{ post_count|pluralize }}:</span> <a title="View list of replies by {{ person.username }}" href="{% url user_posts person.id %}">{{ post_count }}</a></p>
-        <p><span class="info">Thread{{ thread_count|pluralize }}:</span> <a title="View list of threads by {{ person.username }}" href="{% url user_threads person.id %}">{{ thread_count }}</a></p>
+        <p><span class="info">Post{{ post_count|pluralize }}:</span> <a title="View list of replies by {{ person.username }}" href="{% url user_posts person.id %}">{{ post_count|intcomma }}</a></p>
+        <p><span class="info">Thread{{ thread_count|pluralize }}:</span> <a title="View list of threads by {{ person.username }}" href="{% url user_threads person.id %}">{{ thread_count|intcomma }}</a></p>
     </div>
 
     <div id="latest-posts">
