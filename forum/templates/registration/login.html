@@ -8,11 +8,10 @@
                     <label for="username">Username:</label><input type="text"     name="username" id="username" required autofocus><br />
                     <label for="password">Password:</label><input type="password" name="password" id="password" required><br />
 
-                    <input type="submit" value="Submit" /><br />
-
-                    <label for="remember-password">Remember password?</label>
+                    <label for="remember-password">Remember password:</label>
                     <input type="checkbox" id="remember-password">
-                </form>
+                    <p><a href="{% url auth_password_reset %}">I forgot my password :(</a></p>
 
-                <p><a href="{% url auth_password_reset %}">Forgot your password?</a></p>
+                    <input type="submit" value="Submit" /><br />
+                </form>  
 {% endblock %}
