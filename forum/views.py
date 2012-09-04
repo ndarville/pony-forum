@@ -54,7 +54,6 @@ from forum.models                   import Category, Post, Report,\
 #
 ##  pm
 #
-##  logout
 ##  settings
 
 
@@ -957,13 +956,6 @@ def reports(request):
 
 def search(request):
     return render(request, 'placeholder.html', {})
-
-
-def logout(request):
-    if request.user.is_authenticated():  # User logged in
-        auth.logout(request)
-    messages.success(request, "Logged out successfully.")
-    return HttpResponseRedirect("/")
 
 
 @login_required(login_url=LOGIN_URL)

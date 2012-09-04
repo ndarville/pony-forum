@@ -1,7 +1,7 @@
 {% extends "page.html" %}
 
 {% block title %}Register Your Account{% endblock %}
-{% block canonical_url %}{% url registration.views.register %}{% endblock %}
+{% block canonical_url %}{% url registration %}{% endblock %}
 {% block content_body %}
                 <form action="" method="post">
                     {% csrf_token %}

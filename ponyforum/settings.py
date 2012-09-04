@@ -216,9 +216,14 @@ LOGGING = {
 # USER_POSTS_PER_PAGE   =
 # USER_THREADS_PER_PAGE =
 
+# If you change these default values without changing the URLs style.css,
+# the icons will break, because their URLs are hardcoded.
+#
+# You will have to change them manually for now.
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL          = '/accounts/login/'
 LOGOUT_URL         = '/accounts/logout/'
+REGISTRATION_URL   = '/accounts/register/'
 ###
 
 ### E-MAIL SERVER

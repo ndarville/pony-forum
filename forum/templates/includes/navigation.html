@@ -20,12 +20,12 @@
         <li><a href="//pony-forum.com/rules/"><span>Rules</span></a></li>
         <li><a href="//pony-forum.com/guide/"><span>Guide</span></a></li>
         <li><a href="/search/"><span>Search</span></a></li>
-        <li class="last"><a href="{% url forum.views.logout %}"><span>Log Out</span></a></li>
+        <li class="last"><a href="{% url logout %}"><span>Log Out</span></a></li>
     {% else %}
-        <li class="first"><strong><a href="{% url auth_login %}?next={% url forum.views.home %}"><span>Log in</span></a></strong></li>
+        <li class="first"><strong><a href="{% url login %}?next={% url forum.views.home %}"><span>Log in</span></a></strong></li>
         <li><a href="http://pony-forum.com/rules/"><span>Rules</span></a></li>
         <li><a href="http://pony-forum.com/guide/"><span>Guide</span></a></li>
     {#  <li><a href="{% url search %}"><span>Search</span></a></li> #}
-        <li class="last"><a href="{% url registration.views.register %}"><span>Register</span></a></li>
+        <li class="last"><a href="{% url register %}"><span>Register</span></a></li>
     {% endif %}
 </ul>
