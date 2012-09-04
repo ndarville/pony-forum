@@ -1,5 +1,5 @@
 ### Pony-Forum
-Django==1.4
+Django==1.4.1
 
 # Admin documentation
 docutils==0.8.1
@@ -12,7 +12,7 @@ bleach==1.1.1
 
 # User models and registration
 # PIL==1.1.7
-django-registration==0.7
+django-registration==0.8
 
 django-secure==0.1.2
 
