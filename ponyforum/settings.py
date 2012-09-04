@@ -59,11 +59,17 @@ elif 'TRAVIS' in os.environ:
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+if not LOCAL_DEVELOPMENT:
+    TIME_ZONE = os.environ.get('TIME_ZONE', 'America/Chicago')
+else:
+    TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+if not LOCAL_DEVELOPMENT:
+    LANGUAGE_CODE = os.environ.get('LANGUAGE_CODE', 'en-us')
+else:
+    LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
 
@@ -166,8 +172,8 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'forum',
     'django.contrib.markup',
+    'django.contrib.humanize',
     'registration',
-    'twostepauth',
     'djangosecure',
 )
 
@@ -207,12 +213,17 @@ LOGGING = {
 ## These already have default values, so you don't need to define them
 # POSTS_PER_PAGE        =
 # THREADS_PER_PAGE      =
-# USER_POSTS_PER_PAGE =
+# USER_POSTS_PER_PAGE   =
 # USER_THREADS_PER_PAGE =
 
+# If you change these default values without changing the URLs style.css,
+# the icons will break, because their URLs are hardcoded.
+#
+# You will have to change them manually for now.
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL          = '/accounts/login/'
 LOGOUT_URL         = '/accounts/logout/'
+REGISTRATION_URL   = '/accounts/register/'
 ###
 
 ### E-MAIL SERVER
@@ -252,15 +263,6 @@ if not LOCAL_DEVELOPMENT:
 ### Secure Django (Native Features)
     # SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
         # Disable for dotCloud
-###
-
-### DJANGO-TWOSTEPAUTH
-AUTHENTICATION_BACKENDS = (
-    'twostepauth.auth_backend.TwoStepAuthBackend',
-)
-
-TWOSTEPAUTH_FOR_USERS = True
-TWOSTEPAUTH_FOR_ADMIN = True
 ###
 
 try:

@@ -13,7 +13,6 @@ bleach==1.1.1
 # User models and registration
 # PIL==1.1.7
 django-registration==0.7
-django-twostepauth==0.1dev
 
 django-secure==0.1.2
 

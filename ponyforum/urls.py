@@ -3,9 +3,6 @@ from django.conf.urls.defaults   import patterns, include, url
 from django.contrib              import admin
 from django.views.generic.simple import redirect_to
 
-from registration                import views as registration_views
-from twostepauth                 import views as twostepauth_views
-
 
 admin.autodiscover()
 
@@ -67,24 +64,24 @@ urlpatterns = patterns('forum.views',
     (r'^user/(?P<user_id>\d+)/$',                'user'),
 
 #   Accounts
-    (r'^accounts/register/$',                      registration_views.register),
-    # (r'^' + getattr(settings, 'LOGIN_URL'[1:],   'accounts/login/') + '$',
-    #                                              'login'),
-    (r'^' + getattr(settings, 'LOGIN_URL'[1:],   'accounts/login/') + '$',
-                                                  twostepauth_views.login_step_one,
-                                                  {}, 'auth_login'),
-
-    (r'^' + getattr(settings, 'LOGIN_URL'[1:] + 'step_two', 
-                              'accounts/login/step_two') + '$',
-                                                  twostepauth_views.login_step_two,
-                                                  {}, 'login_step_two'),
-
-    (r'^' + getattr(settings, 'LOGOUT_URL'[1:],  'accounts/logout/') + '$',
-                                                 'logout'),
-
-    (r'^accounts/twostepauth/$',                  twostepauth_views.twostepauth_profile,
-                                                  {}, 'twostepauth_profile'),
+    url(r'^' + getattr(settings, 'LOGIN_URL'[1:],
+                                                 'accounts/login/') + '$',
+                                                 'custom_login',
+                                                  name='login'),
+    url(r'^' + getattr(settings, 'REGISTRATION_URL'[1:],
+                                                 'accounts/register/') + '$',
+                                                 'custom_register',
+                                                  name="register"),
     # (r'^accounts/settings/$',                    'settings'),
+)
+
+#   Accounts (cont.)
+urlpatterns += patterns('',
+    url(r'^' + getattr(settings, 'LOGOUT_URL'[1:],
+                                                 'accounts/logout/') + '$',
+                                                 'django.contrib.auth.views.logout',
+                                                {'next_page': '/'},
+                                                  name='logout'),
 )
 
 urlpatterns += patterns('',

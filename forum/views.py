@@ -15,6 +15,7 @@ from django.shortcuts               import render, get_object_or_404
 
 from forum.models                   import Category, Post, Report,\
                                            Subscription, Thread, UserProfile
+from registration                   import views as registration_views
 
 
 #   views.py TOC:
@@ -54,11 +55,11 @@ from forum.models                   import Category, Post, Report,\
 #
 ##  pm
 #
-##  logout
 ##  settings
 
 
 LOGIN_URL                 = getattr(settings, "LOGIN_URL", "/accounts/login/")
+LOGIN_REDIRECT_URL        = getattr(settings, "LLOGIN_REDIRECT_URL", "/")
 MAX_THREAD_TITLE_LENGTH   = Thread._meta.get_field("title_plain").max_length
 MAX_CATEGORY_TITLE_LENGTH = Category._meta.get_field("title_plain").max_length
 POSTS_PER_PAGE            = getattr(settings, "POSTS_PER_PAGE", 25)
@@ -959,11 +960,20 @@ def search(request):
     return render(request, 'placeholder.html', {})
 
 
-def logout(request):
-    if request.user.is_authenticated():  # User logged in
-        auth.logout(request)
-    messages.success(request, "Logged out successfully.")
-    return HttpResponseRedirect("/")
+def custom_login(request, **kwargs):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(LOGIN_REDIRECT_URL)
+    else:
+        return auth.views.login(
+            request, 'registration/login.html', **kwargs)
+
+
+def custom_register(request, **kwargs):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(LOGIN_REDIRECT_URL)
+    else:
+        return registration_views.register(
+            request, 'registration/registration_form.html', **kwargs)
 
 
 @login_required(login_url=LOGIN_URL)

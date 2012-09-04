@@ -4,8 +4,6 @@ from django.contrib.auth.models import User
 from django.db                  import models
 from django.db.models.signals   import post_save
 
-from twostepauth.models         import TwoStepAuthBaseProfile
-
 
 def relative_date(date):
     """Displays a date relative to now."""
@@ -222,7 +220,7 @@ class Report(models.Model):
     relative_date.short_description = "Latest post"
 
 
-class UserProfile(TwoStepAuthBaseProfile):
+class UserProfile(models.Model):
     """Extends the default User model.
 
     Remember to change your AUTH_PROFILE_MODULE to
@@ -257,16 +255,12 @@ class UserProfile(TwoStepAuthBaseProfile):
     def __unicode__(self):
         return "%s's profile" % self.user
 
-def create_profile(sender, **kw):
-    """Automatically creates a user profile when a user is created."""
-    user = kw["instance"]
-    if kw["created"]:
-        profile = UserProfile(user=user)
-        profile.save()
+def create_user_profile(sender, instance, created, **kwargs):
+    """Used to extend User using aforementioned UserProfile model."""
+    if created:
+        UserProfile.objects.create(user=instance)
 
-post_save.connect(create_profile, sender=User,
-                  dispatch_uid="users-profilecreation-signal")
-
+post_save.connect(create_user_profile, sender=User)
 
 ## If this has not been done so already,
 ## add this line without the "# " to settings.py:

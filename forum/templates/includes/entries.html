@@ -1,3 +1,5 @@
+{% load humanize %}
+
                 <div class="post" id="{{ post.id }}">
                     {% if post.author == post.thread.author %}
                     <div class="op">
@@ -14,7 +16,7 @@
                             <img src="#" />
                         </a>
                     -->
-                        <p>Post{{ post.author.post_set.all|length|pluralize }}: {{ post.author.post_set.all.count }}</p>
+                        <p>Post{{ post.author.post_set.all|length|pluralize }}: {{ post.author.post_set.all.count|intcomma }}</p>
                     <!--
                     {% if user.is_authenticated %}
                         <p><a href="#">Send PM</a></p>
