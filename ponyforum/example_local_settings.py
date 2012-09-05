@@ -74,6 +74,9 @@ EMAIL_HOST_PASSWORD  = 'mypassword'
 EMAIL_PORT           = 587
 EMAIL_USE_TLS        = True
 EMAIL_SUBJECT_PREFIX = '[Pony Forum] '  # Does not work (anymore?)
+
+if EMAIL_HOST_USER == "myusername@gmail.com":
+    EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 ###
 
 ### DJANGO-DEBUG-TOOLBAR
