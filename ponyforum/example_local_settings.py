@@ -1,8 +1,18 @@
-# If you use this as your local settings file,
-# remember to change the name to local_settings.py.
-#
-# Don't make the mistake of committing this file
-# containing your delicate passwords to a repo.
+"""
+If you use this as your local settings file,
+remember to change the name to local_settings.py.
+
+Don't make the mistake of committing this file
+containing your delicate passwords to a repo.
+
+If you do, you can try this:
+    git reset --soft HEAD^
+    git push -f
+
+This reverts back to the second-most recent commit.
+
+It is not recommended for repos that other people use.
+"""
 import os
 
 
@@ -13,7 +23,7 @@ DEBUG = True
 # These are example databases that don't work out of the box.
 # You will have to configure your own.
 #
-# WARNING: You should *not* leave this formation in the settings.py
+# WARNING: You should *not* leave this information in the settings.py
 # file you upload to your server, as it contains passwords
 # to what may be very sensitive and valuable databases
 # on the local development environment!
@@ -39,15 +49,17 @@ LOCAL_DB_MYSQL = {
 LOCAL_DB_POSTGRESQL = {
     'default': {
         'ENGINE':   'django.db.backends.postgresql_psycopg2',
-        'NAME':     'mydb',  ## Change this value to your own
-        'USER':     'postgres',
-        'PASSWORD': 'mypassword', ## Change this value to your own
+        'NAME':     'mydb',       # Change this value to your own;
+                                  #     leave blank on OS X
+        'USER':     'postgres',   # Leave blank on OS X
+        'PASSWORD': 'mypassword', # Change this value to your own;
+                                  #     leave blank on OS X
         'HOST':     'localhost',  # Remember this part!
         'PORT':     '',
     }
 }
 
-# Database to use:
+# Database to use; note that PF only officially supports postgreSQL
 if os.name == "nt":  # OS is Windows
     DATABASES = LOCAL_DB_MYSQL
 else:  # Not Windows: Linux/UNIX-based such as Mac OS, Ubuntu, etc.
