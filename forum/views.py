@@ -972,8 +972,10 @@ def custom_register(request, **kwargs):
     if request.user.is_authenticated():
         return HttpResponseRedirect(LOGIN_REDIRECT_URL)
     else:
-        return registration_views.register(
-            request, 'registration/registration_form.html', **kwargs)
+        return registration_views.register(request,
+            backend='registration.backends.default.DefaultBackend',
+            template_name='registration/registration_form.html',
+            **kwargs)
 
 
 @login_required(login_url=LOGIN_URL)
