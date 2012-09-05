@@ -1,7 +1,7 @@
 {% extends "page.html" %}
 
 {% block title %}Activation Complete{% endblock %}
-
-{% block content %}
-    <p>Activation complete. You may now <a href="{% url auth_login %}">log in</a> using the user name and password you set at registration.</p>
+{% block canonical_url %}{% url home %}{% endblock %}
+{% block content_body %}
+                <p>Activation complete. You may now <a href="{% url auth_login %}">log in</a> using the user name and password you set at registration.</p>
 {% endblock %}
