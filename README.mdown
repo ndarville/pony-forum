@@ -188,6 +188,9 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 * [LaTeX/MathML support][latex-mathml]
 * E-mail check with [better regex][+filters]. (Section 3.)
 * [iOS home screen icon trick][ios-icon]
+* Security:
+    * [Separate account and password reset e-mail][sep-email]
+    * [Implicit password][implicit-pwd]
 
 And much, much more.
 
@@ -215,3 +218,5 @@ And much, much more.
 [latex-mathml]: http://mathjax.org
 [+filters]:     https://tools.ietf.org/html/rfc3696
 [ios-icon]:     https://github.com/ndarville/dotcloud-django/issues/54
+[sep-email]:    https://twitter.com/mikko/status/231726890933698560
+[implicit-pwd]: https://www.schneier.com/blog/archives/2012/07/implicit_passwo.html
