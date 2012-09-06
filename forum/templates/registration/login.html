@@ -12,6 +12,8 @@
                     <input type="checkbox" id="remember-password">
                     <p><a href="{% url auth_password_reset %}">I forgot my password :(</a></p>
 
-                    <input type="submit" value="Submit" /><br />
+                    <div id="button-group">
+                        <input type="submit" value="Submit" />
+                    </div>
                 </form>  
 {% endblock %}
