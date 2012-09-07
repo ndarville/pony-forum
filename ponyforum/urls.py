@@ -68,20 +68,15 @@ urlpatterns = patterns('forum.views',
                                                  'accounts/login/') + '$',
                                                  'custom_login',
                                                   name='login'),
+    url(r'^' + getattr(settings, 'LOGOUT_URL'[1:],
+                                                 'accounts/logout/') + '$',
+                                                 'custom_logout',
+                                                  name='logout'),
     url(r'^' + getattr(settings, 'REGISTRATION_URL'[1:],
                                                  'accounts/register/') + '$',
                                                  'custom_register',
                                                   name="register"),
     # (r'^accounts/settings/$',                    'settings'),
-)
-
-#   Accounts (cont.)
-urlpatterns += patterns('',
-    url(r'^' + getattr(settings, 'LOGOUT_URL'[1:],
-                                                 'accounts/logout/') + '$',
-                                                 'django.contrib.auth.views.logout',
-                                                {'next_page': '/'},
-                                                  name='logout'),
 )
 
 urlpatterns += patterns('',

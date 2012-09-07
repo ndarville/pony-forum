@@ -55,7 +55,11 @@ from registration                   import views as registration_views
 #
 ##  pm
 #
+##  custom_login
+##  custom_register
 ##  settings
+#
+##  saves_and_bookmarks
 
 
 LOGIN_URL                 = getattr(settings, "LOGIN_URL", "/accounts/login/")
@@ -966,6 +970,13 @@ def custom_login(request, **kwargs):
     else:
         return auth.views.login(
             request, 'registration/login.html', **kwargs)
+
+
+def custom_logout(request):
+    if request.user.is_authenticated():  # User logged in
+        auth.logout(request)
+    messages.success(request, "Logged out successfully.")
+    return HttpResponseRedirect(LOGIN_REDIRECT_URL)
 
 
 def custom_register(request, **kwargs):
