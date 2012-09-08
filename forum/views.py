@@ -2,6 +2,7 @@ from markdown                       import markdown
 from smartypants                    import smartyPants as smartypants
 import bleach
 import datetime
+import json
 import os
 
 # cf. http://meta.osqa.net/question/9722
@@ -1033,14 +1034,17 @@ def site_configuration(request):
 
     if request.method == 'POST':  # Form has been submitted
         if not project_settings.LOCAL_DEVELOPMENT:
-            os.environ['EMAIL_HOST'] = request.POST['email_host']  # -> env
-            os.environ['EMAIL_HOST_USER'] = request.POST['email_host_user']
-            os.environ['EMAIL_HOST_PASSWORD'] = request.POST['email_host_password']
-            os.environ['EMAIL_PORT'] = request.POST['email_port']
-            os.environ['EMAIL_USE_TLS'] = request.POST['email_use_tls']
-            messages.success(request, "New e-mail settings saved.")
+            with open('/home/dotcloud/environment.json') as f:
+                env = json.load(f)
+                env['EMAIL_HOST'] = request.POST['email_host']
+                env['EMAIL_HOST_USER'] = request.POST['username']
+                env['EMAIL_HOST_PASSWORD'] = request.POST['password']
+                env['EMAIL_PORT'] = request.POST['email_port']
+                env['EMAIL_USE_TLS'] = request.POST['email_use_tls']
+                messages.success(request, "New e-mail settings saved.")
         else:
-            messages.error(request, "This form only works on production servers. More info below.")
+            messages.error(request,
+            "This form only works on production servers. More info below.")
 
     return render(request, 'site_configuration.html', {
         'EMAIL_HOST'         : project_settings.EMAIL_HOST,
