@@ -1030,6 +1030,8 @@ def settings(request):
 @login_required(login_url=LOGIN_URL)
 def site_configuration(request):
     if not request.user.is_staff:
+        messages.error(request,
+            "You need staff status to configure the site.")
         return HttpResponseRedirect(LOGIN_REDIRECT_URL)
 
     if request.method == 'POST':  # Form has been submitted
