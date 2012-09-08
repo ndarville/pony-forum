@@ -1,7 +1,7 @@
     {% if email_config_error or site_config_error %}
         <div id="configuration-warning">
-            {% if email_error %}
-                {% if site_error %}
+            {% if email_config_error %}
+                {% if site_config_error %}
                     For user registration to work, please set up your <a href="{% url site_configuration %}">e-mail</a> and <a href="/admin/sites/site/1/">site</a> settings.
                 {% else %}
                     For user registration to work, please set up your <a href="{% url site_configuration %}">e-mail</a> settings.
