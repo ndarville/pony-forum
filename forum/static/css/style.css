@@ -870,9 +870,9 @@ textarea,
 }
 /**** * ****/
 
-/****          *****
+/****         *****
 ***** CREDITS *****
-*****          ****/
+*****         ****/
 #credits {
     font-family: "Helvetica Neue", "Helvetica", "Verdana", sans-serif;
     font-size: 0.75em;
@@ -890,4 +890,24 @@ textarea,
 #credits span {
     white-space: nowrap;
 }
+/**** * ****/
+
+/****            *****
+***** MISCELLANY *****
+*****            ****/
+
+#configuration-warning {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 0.5em;
+    background-color: pink;
+    font-family: Georgia;
+}
+
+#configuration-warning a {
+    text-decoration: underline;
+}
+
 /**** * ****/

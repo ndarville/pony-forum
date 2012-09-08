@@ -1,0 +1,22 @@
+{% extends "page.html" %}
+
+{% block title %}Site Configuration{% endblock %}
+{% block canonical_url %}{% url site_configuration %}{% endblock %}
+{% block content_body %}
+<form action="{% url site_configuration %}" method="post">
+    {% csrf_token %}
+    <label for="username">Username:</label><input type="text"     name="email_host_user"     value="{{ EMAIL_HOST_USER }}" required autofocus><br />
+    <label for="password">Password:</label><input type="password" name="email_host_password" value="{{ EMAIL_HOST_PASSWORD }}" required><br />
+    <label for="username">E-mail host:</label><input type="text"  name="email_host"          value="{{ EMAIL_HOST }}" required><br />
+    <label for="username">E-mail port:</label><input type="text"  name="email_port"          value="{{ EMAIL_PORT }}" required><br />
+    <label for="username">Use TLS?:</label><input type="text"     name="email_use_tls"       value="{{ EMAIL_USE_TLS }}" required>
+
+    <div id="button-group">
+        <input type="submit" value="Submit" />
+    </div>
+
+{% if LOCAL_DEVELOPMENT %}
+    <p>Because you are running this on a local server, you need to change these settings in a settings file such as <code>settings.py</code> or <code>local_settings.py</code>. This form only works for online projects.</p>
+{% endif %}
+</form>  
+{% endblock %}

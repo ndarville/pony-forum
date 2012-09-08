@@ -18,6 +18,10 @@ urlpatterns = patterns('forum.views',
                                                     {'object_type': 'save'},
                                                     'saves'),
     (r'^search/$',                               'search'),
+    url(r'^' + getattr(settings, 'SITE_CONFIGURATION_URL'[1:],  # doesn't work
+                                                 'configuration/') + '$',
+                                                 'site_configuration',
+                                                  name='site_configuration'),
 
 #   Category
     (r'^category/add/$',                         'add'),
@@ -64,18 +68,18 @@ urlpatterns = patterns('forum.views',
     (r'^user/(?P<user_id>\d+)/$',                'user'),
 
 #   Accounts
-    url(r'^' + getattr(settings, 'LOGIN_URL'[1:],
+    url(r'^' + getattr(settings, 'LOGIN_URL'[1:],   # doesn't work
                                                  'accounts/login/') + '$',
                                                  'custom_login',
                                                   name='login'),
-    url(r'^' + getattr(settings, 'LOGOUT_URL'[1:],
+    url(r'^' + getattr(settings, 'LOGOUT_URL'[1:],  # doesn't work
                                                  'accounts/logout/') + '$',
                                                  'custom_logout',
                                                   name='logout'),
     url(r'^' + getattr(settings, 'REGISTRATION_URL'[1:],
                                                  'accounts/register/') + '$',
                                                  'custom_register',
-                                                  name="register"),
+                                                  name='register'),
     # (r'^accounts/settings/$',                    'settings'),
 )
 

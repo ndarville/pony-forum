@@ -2,11 +2,14 @@ from markdown                       import markdown
 from smartypants                    import smartyPants as smartypants
 import bleach
 import datetime
+import os
 
-from django.conf                    import settings
+# cf. http://meta.osqa.net/question/9722
+from django.conf                    import settings as project_settings
 from django.contrib                 import messages, auth
 from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib.auth.models     import User
+from django.contrib.sites.models    import Site
 from django.core.paginator          import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers       import reverse
 from django.db.utils                import DatabaseError
@@ -59,17 +62,19 @@ from registration                   import views as registration_views
 ##  custom_register
 ##  settings
 #
+##  site_configuration
+#
 ##  saves_and_bookmarks
 
 
-LOGIN_URL                 = getattr(settings, "LOGIN_URL", "/accounts/login/")
-LOGIN_REDIRECT_URL        = getattr(settings, "LLOGIN_REDIRECT_URL", "/")
+LOGIN_URL                 = getattr(project_settings, "LOGIN_URL", "/accounts/login/")  # doesn't work
+LOGIN_REDIRECT_URL        = getattr(project_settings, "LOGIN_REDIRECT_URL", "/")
 MAX_THREAD_TITLE_LENGTH   = Thread._meta.get_field("title_plain").max_length
 MAX_CATEGORY_TITLE_LENGTH = Category._meta.get_field("title_plain").max_length
-POSTS_PER_PAGE            = getattr(settings, "POSTS_PER_PAGE", 25)
-THREADS_PER_PAGE          = getattr(settings, "THREADS_PER_PAGE", 25)
-USER_POSTS_PER_PAGE       = getattr(settings, "USER_CONTENT_PER_PAGE", 10)
-USER_THREADS_PER_PAGE     = getattr(settings, "USER_CONTENT_PER_PAGE", 25)
+POSTS_PER_PAGE            = getattr(project_settings, "POSTS_PER_PAGE", 25)
+THREADS_PER_PAGE          = getattr(project_settings, "THREADS_PER_PAGE", 25)
+USER_POSTS_PER_PAGE       = getattr(project_settings, "USER_CONTENT_PER_PAGE", 10)
+USER_THREADS_PER_PAGE     = getattr(project_settings, "USER_CONTENT_PER_PAGE", 25)
 
 
 long_title_error  = "Your chosen title was too long. Keep it under %i characters."
@@ -284,10 +289,21 @@ def home(request):
     ## or update.last_read == None  # (or something)
     # link to newest post
     # number of new posts
+
+    site_config_error, email_config_error = False, False
+    if request.user.is_staff:
+        if Site.objects.get_current().domain == "example.com"\
+        or Site.objects.get_current().name == "example.com":
+            site_config_error = True
+        if project_settings.EMAIL_HOST_USER == "myusername@gmail.com":
+            email_config_error = True
+
     return render(request, 'home.html',
                           {'categories' : categories,
                            'new_threads': new_threads,
-                           'subs'       : subscribed_threads})
+                           'subs'       : subscribed_threads,
+                           'site_config_error' : site_config_error,
+                           'email_config_error': email_config_error})
 
 
 @login_required(login_url=LOGIN_URL)
@@ -983,9 +999,20 @@ def custom_register(request, **kwargs):
     if request.user.is_authenticated():
         return HttpResponseRedirect(LOGIN_REDIRECT_URL)
     else:
+        site_config_error, email_config_error = False, False
+        if request.user.is_staff:
+            if Site.objects.get_current().domain == "example.com"\
+            or Site.objects.get_current().name == "example.com":
+                site_config_error = True
+            if project_settings.EMAIL_HOST_USER == "myusername@gmail.com":
+                email_config_error = True
+
         return registration_views.register(request,
             backend='registration.backends.default.DefaultBackend',
             template_name='registration/registration_form.html',
+            extra_context={
+                'site_config_error' : site_config_error,
+                'email_config_error': email_config_error},
             **kwargs)
 
 
@@ -997,6 +1024,31 @@ def settings(request):
         HttpResponse("Done!")
     
     return render(request, 'settings.html', {})
+
+
+@login_required(login_url=LOGIN_URL)
+def site_configuration(request):
+    if not request.user.is_staff:
+        return HttpResponseRedirect(LOGIN_REDIRECT_URL)
+
+    if request.method == 'POST':  # Form has been submitted
+        if not project_settings.LOCAL_DEVELOPMENT:
+            os.environ['EMAIL_HOST'] = request.POST['email_host']  # -> env
+            os.environ['EMAIL_HOST_USER'] = request.POST['email_host_user']
+            os.environ['EMAIL_HOST_PASSWORD'] = request.POST['email_host_password']
+            os.environ['EMAIL_PORT'] = request.POST['email_port']
+            os.environ['EMAIL_USE_TLS'] = request.POST['email_use_tls']
+            messages.success(request, "New e-mail settings saved.")
+        else:
+            messages.error(request, "This form only works on production servers. More info below.")
+
+    return render(request, 'site_configuration.html', {
+        'EMAIL_HOST'         : project_settings.EMAIL_HOST,
+        'EMAIL_HOST_USER'    : project_settings.EMAIL_HOST_USER,
+        'EMAIL_HOST_PASSWORD': project_settings.EMAIL_HOST_PASSWORD,
+        'EMAIL_PORT'         : project_settings.EMAIL_PORT,
+        'EMAIL_USE_TLS'      : project_settings.EMAIL_USE_TLS,
+        'LOCAL_DEVELOPMENT'  : project_settings.LOCAL_DEVELOPMENT})
 
 
 @login_required(login_url=LOGIN_URL)

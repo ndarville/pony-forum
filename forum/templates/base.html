@@ -18,6 +18,7 @@
     </head>
     <body>
         <div id="container">
+        {% block configuration-warning %}{% endblock %}
 {% block alert %}
     {% if messages %}
         {% for message in messages %}

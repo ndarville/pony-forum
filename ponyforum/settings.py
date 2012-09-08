@@ -219,28 +219,24 @@ LOGGING = {
 # If you change these default values without changing the URLs style.css,
 # the icons will break, because their URLs are hardcoded.
 #
-# You will have to change them manually for now.
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URL          = '/accounts/login/'
-LOGOUT_URL         = '/accounts/logout/'
-REGISTRATION_URL   = '/accounts/register/'
+# You will have to change them in the CSS manually for now.
+LOGIN_REDIRECT_URL     = '/'
+LOGIN_URL              = '/accounts/login/'
+LOGOUT_URL             = '/accounts/logout/'
+REGISTRATION_URL       = '/accounts/register/'
+
+SITE_CONFIGURATION_URL = '/configuration/'
 ###
 
 ### E-MAIL SERVER
 ## http://sontek.net/using-gmail-to-send-e-mails-from-django
 if not LOCAL_DEVELOPMENT:
-    try:
-        EMAIL_HOST           = env['EMAIL_HOST']
-        EMAIL_HOST_USER      = env['EMAIL_HOST_USER']
-        EMAIL_HOST_PASSWORD  = env['EMAIL_HOST_PASSWORD']
-        EMAIL_PORT           = int(env['EMAIL_PORT'])
-        EMAIL_USE_TLS        = bool(env['EMAIL_USE_TLS'])
-    #    EMAIL_SUBJECT_PREFIX = ""  # Doesn't work, optional
-    except KeyError:  # E-mail settings have not been entered
-    #    raise KeyError("""You need to enter your e-mail server settings.
-    #    A guide is available in the README at https://github.com/ndarville/dotcloud-django
-    #    """)
-        pass
+    EMAIL_HOST           = env.get('EMAIL_HOST', 'smtp.gmail.com')
+    EMAIL_HOST_USER      = env.get('EMAIL_HOST_USER', 'myusername@gmail.com')
+    EMAIL_HOST_PASSWORD  = env.get('EMAIL_HOST_PASSWORD', '')
+    EMAIL_PORT           = int(env.get('EMAIL_PORT', '587'))
+    EMAIL_USE_TLS        = bool(env.get('EMAIL_USE_TLS', 'True'))
+#    EMAIL_SUBJECT_PREFIX = ""  # Doesn't work, optional
 ###
 
 ### DJANGO-REGISTRATION
