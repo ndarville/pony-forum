@@ -67,13 +67,19 @@ else:  # Not Windows: Linux/UNIX-based such as Mac OS, Ubuntu, etc.
 ###
 
 ### E-MAIL
-# EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+# Here is a rather simple guide for setting up a local e-mail server:
+# http://tinyurl.com/cprffxb
+#
+# Otherwise, use this guide for Gmail accounts:
+# http://sontek.net/using-gmail-to-send-e-mails-from-django
+
 EMAIL_HOST           = 'smtp.gmail.com'
 EMAIL_HOST_USER      = 'myusername@gmail.com'
 EMAIL_HOST_PASSWORD  = 'mypassword'
 EMAIL_PORT           = 587
 EMAIL_USE_TLS        = True
 EMAIL_SUBJECT_PREFIX = '[Pony Forum] '  # Does not work (anymore?)
+DEFAULT_FROM_EMAIL   = 'noreply@mysite.com'
 
 if EMAIL_HOST_USER == "myusername@gmail.com":
     EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
