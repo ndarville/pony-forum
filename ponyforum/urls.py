@@ -18,10 +18,10 @@ urlpatterns = patterns('forum.views',
                                                     {'object_type': 'save'},
                                                     'saves'),
     (r'^search/$',                               'search'),
-    url(r'^' + getattr(settings, 'SITE_CONFIGURATION_URL'[1:],  # doesn't work
-                                                 'configuration/') + '$',
-                                                 'site_configuration',
-                                                  name='site_configuration'),
+#   url(r'^' + getattr(settings, 'SITE_CONFIGURATION_URL'[1:],  # doesn't work
+#                                                'configuration/') + '$',
+#                                                'site_configuration',
+#                                                 name='site_configuration'),
 
 #   Category
     (r'^category/add/$',                         'add'),
