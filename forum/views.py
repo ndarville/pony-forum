@@ -1001,12 +1001,11 @@ def custom_register(request, **kwargs):
         return HttpResponseRedirect(LOGIN_REDIRECT_URL)
     else:
         site_config_error, email_config_error = False, False
-        if request.user.is_staff:
-            if Site.objects.get_current().domain == "example.com"\
-            or Site.objects.get_current().name == "example.com":
-                site_config_error = True
-            if project_settings.EMAIL_HOST_USER == "myusername@gmail.com":
-                email_config_error = True
+        if Site.objects.get_current().domain == "example.com"\
+        or Site.objects.get_current().name == "example.com":
+            site_config_error = True
+        if project_settings.EMAIL_HOST_USER == "myusername@gmail.com":
+            email_config_error = True
 
         return registration_views.register(request,
             backend='registration.backends.default.DefaultBackend',
@@ -1043,7 +1042,7 @@ def site_configuration(request):
                 env['EMAIL_HOST_PASSWORD'] = request.POST['password']
                 env['EMAIL_PORT'] = request.POST['email_port']
                 env['EMAIL_USE_TLS'] = request.POST['email_use_tls']
-                messages.success(request, "New e-mail settings saved.")
+            messages.success(request, "New e-mail settings saved.")
         else:
             messages.error(request,
             "This form only works on production servers. More info below.")

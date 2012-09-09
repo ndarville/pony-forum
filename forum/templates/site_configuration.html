@@ -5,11 +5,11 @@
 {% block content_body %}
 <form action="{% url site_configuration %}" method="post">
     {% csrf_token %}
-    <label for="username">Username:</label><input type="text"     name="username"     value="{{ EMAIL_HOST_USER }}" required autofocus><br />
-    <label for="password">Password:</label><input type="password" name="password" value="{{ EMAIL_HOST_PASSWORD }}" required><br />
-    <label for="username">E-mail host:</label><input type="text"  name="email_host"          value="{{ EMAIL_HOST }}" required><br />
-    <label for="username">E-mail port:</label><input type="text"  name="email_port"          value="{{ EMAIL_PORT }}" required><br />
-    <label for="username">Use TLS?:</label><input type="text"     name="email_use_tls"       value="{{ EMAIL_USE_TLS }}" required>
+    <label for="username">Username:</label><input type="text"     name="username"      value="{{ EMAIL_HOST_USER }}" required autofocus><br />
+    <label for="password">Password:</label><input type="password" name="password"      value="{{ EMAIL_HOST_PASSWORD }}" required><br />
+    <label for="username">E-mail host:</label><input type="text"  name="email_host"    value="{{ EMAIL_HOST }}" required><br />
+    <label for="username">E-mail port:</label><input type="text"  name="email_port"    value="{{ EMAIL_PORT }}" required><br />
+    <label for="username">Use TLS?:</label><input type="text"     name="email_use_tls" value="{{ EMAIL_USE_TLS }}" required>
 
     <div id="button-group">
         <input type="submit" value="Submit" />

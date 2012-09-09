@@ -60,14 +60,14 @@ elif 'TRAVIS' in os.environ:
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
 if not LOCAL_DEVELOPMENT:
-    TIME_ZONE = os.environ.get('TIME_ZONE', 'America/Chicago')
+    TIME_ZONE = env.get('TIME_ZONE', 'America/Chicago')
 else:
     TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 if not LOCAL_DEVELOPMENT:
-    LANGUAGE_CODE = os.environ.get('LANGUAGE_CODE', 'en-us')
+    LANGUAGE_CODE = env.get('LANGUAGE_CODE', 'en-us')
 else:
     LANGUAGE_CODE = 'en-us'
 
@@ -231,11 +231,11 @@ SITE_CONFIGURATION_URL = '/configuration/'
 ### E-MAIL SERVER
 ## http://sontek.net/using-gmail-to-send-e-mails-from-django
 if not LOCAL_DEVELOPMENT:
-    EMAIL_HOST           = env.get('EMAIL_HOST', 'smtp.gmail.com')
-    EMAIL_HOST_USER      = env.get('EMAIL_HOST_USER', 'myusername@gmail.com')
-    EMAIL_HOST_PASSWORD  = env.get('EMAIL_HOST_PASSWORD', '')
-    EMAIL_PORT           = int(env.get('EMAIL_PORT', '587'))
-    EMAIL_USE_TLS        = bool(env.get('EMAIL_USE_TLS', 'True'))
+    EMAIL_HOST          = env.get('EMAIL_HOST', 'smtp.gmail.com')
+    EMAIL_HOST_USER     = env.get('EMAIL_HOST_USER', 'myusername@gmail.com')
+    EMAIL_HOST_PASSWORD = env.get('EMAIL_HOST_PASSWORD', '')
+    EMAIL_PORT          = int(env.get('EMAIL_PORT', '587'))
+    EMAIL_USE_TLS       = bool(env.get('EMAIL_USE_TLS', 'True'))
 #    EMAIL_SUBJECT_PREFIX = ""  # Doesn't work, optional
 ###
 
