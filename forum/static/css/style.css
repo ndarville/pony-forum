@@ -67,6 +67,21 @@ table {
 }
 
 #alert,
+#configuration-warning {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 0.5em;
+    background-color: pink;
+    font-family: Georgia;
+}
+
+#configuration-warning a {
+    text-decoration: underline;
+}
+
+#alert,
 #js-blocked-warning {
     width: 100%;
     text-align: center;
@@ -107,8 +122,6 @@ table {
     */
 }
 
-#alert,
-#js-blocked-warning,
 #header,
 #navigation,
 #recent,
@@ -349,7 +362,7 @@ legend {
 /****          *****
 ***** PROFILE *****
 *****          ****/
-.info {
+#profile-information .info {
     font-weight: bold;
     float: left;
     width: 5em;
@@ -890,24 +903,4 @@ textarea,
 #credits span {
     white-space: nowrap;
 }
-/**** * ****/
-
-/****            *****
-***** MISCELLANY *****
-*****            ****/
-
-#configuration-warning {
-    position: relative;
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin: 0 auto 0.5em;
-    background-color: pink;
-    font-family: Georgia;
-}
-
-#configuration-warning a {
-    text-decoration: underline;
-}
-
 /**** * ****/
