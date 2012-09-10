@@ -1,4 +1,4 @@
-from django.conf                 import settings
+from django.conf                 import settings as project_settings
 from django.conf.urls.defaults   import patterns, include, url
 from django.contrib              import admin
 from django.views.generic.simple import redirect_to
@@ -18,8 +18,8 @@ urlpatterns = patterns('forum.views',
                                                     {'object_type': 'save'},
                                                     'saves'),
     (r'^search/$',                               'search'),
-#   url(r'^' + getattr(settings, 'SITE_CONFIGURATION_URL'[1:],  # doesn't work
-#                                                'configuration/') + '$',
+#   url(r'^' + getattr(project_settings, 'SITE_CONFIGURATION_URL',  # doesn't work
+#                                                '/configuration/')[1:] + '$',
 #                                                'site_configuration',
 #                                                 name='site_configuration'),
 
@@ -68,16 +68,16 @@ urlpatterns = patterns('forum.views',
     (r'^user/(?P<user_id>\d+)/$',                'user'),
 
 #   Accounts
-    url(r'^' + getattr(settings, 'LOGIN_URL'[1:],   # doesn't work
-                                                 'accounts/login/') + '$',
+    url(r'^' + getattr(project_settings, 'LOGIN_URL',
+                                                 '/accounts/login/')[1:] + '$',
                                                  'custom_login',
                                                   name='login'),
-    url(r'^' + getattr(settings, 'LOGOUT_URL'[1:],  # doesn't work
-                                                 'accounts/logout/') + '$',
+    url(r'^' + getattr(project_settings, 'LOGOUT_URL',
+                                                 '/accounts/logout/')[1:] + '$',
                                                  'custom_logout',
                                                   name='logout'),
-    url(r'^' + getattr(settings, 'REGISTRATION_URL'[1:],
-                                                 'accounts/register/') + '$',
+    url(r'^' + getattr(project_settings, 'REGISTRATION_URL',
+                                                 '/accounts/register/')[1:] + '$',
                                                  'custom_register',
                                                   name='register'),
     # (r'^accounts/settings/$',                    'settings'),
