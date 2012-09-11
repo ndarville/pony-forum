@@ -763,6 +763,11 @@ input[type="submit"] {
 
 div#button-group {
     text-align: center;
+    margin: 1em auto; /** Revise */
+}
+
+div#button-group a.button { /** Revise */
+    margin: 0 1em;
 }
 
 /** Check that CSS doesn't break this in other browsers

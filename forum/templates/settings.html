@@ -1,36 +1,33 @@
-{% extends "base.html" %}
+{% extends "page.html" %}
 
 {% block title %}Manage Settings{% endblock %}
 {% block canonical_url %}{% url forum.views.settings %}{% endblock %}
 
-{% block content %}
-<div id="content">
-    <p><a href="{% url forum.views.user user.id %}">View profile</a> |
-    <a href="/accounts/{{ user.username }}/edit/">Edit profile</a> |
-    <a href="/accounts/{{ user.username }}/password/">Change password</a> |
-    <a href="/accounts/{{ user.username }}/email/">Change e-mail</a></p>
-
+{% block content_body %}
     <p>
-    <label for="avatar">Avatar</label>
-    <input type="file" name="avatar">
+    {#  <a class="button" href="/accounts/{{ user.username }}/edit/">Edit profile</a> | #}
+    {#  <a class="button" href="/accounts/{{ user.username }}/email/">Change e-mail</a> | #}
     </p>
 
     <p>
-    <label for="has_dyslexia">I have dyslexia</label>
-    <input type="checkbox" name="has_dyslexia">
+        <label for="avatar">Avatar</label>
+        <input type="file" name="avatar">
+    </p>
+
+    <p>
+        <label for="has_dyslexia">I have dyslexia</label>
+        <input type="checkbox" name="has_dyslexia">
     </p>
 
 	<p>
-	<label for="autosubscribe">Automatically subscribe to threads I post in</label>
-	<input type="checkbox" name="autosubscribe">
+	   <label for="autosubscribe">Autosubscribe after posting</label>
+	   <input type="checkbox" name="autosubscribe">
 	</p>
 
-<!--
-    Formatting buttons
--->
-
-    <p><a href="#" class="js" id=""></a></p>
-</div>
+    <div id="button-group">
+        <a class="button" href="#" class="js" id="">Save settings</a>
+        <a class="button" href="{% url auth_password_change %}">Change password</a>
+    </div>
 {% endblock %}
 {% block credits-border %}<hr />{% endblock %}
 {% block js %}

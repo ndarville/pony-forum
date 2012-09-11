@@ -80,7 +80,7 @@ urlpatterns = patterns('forum.views',
                                                  '/accounts/register/')[1:] + '$',
                                                  'custom_register',
                                                   name='register'),
-    # (r'^accounts/settings/$',                    'settings'),
+    (r'^accounts/settings/$',                    'settings'),
 )
 
 urlpatterns += patterns('',
