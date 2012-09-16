@@ -55,45 +55,61 @@ But how does Pony Forum know which site the link points to? You guessed it, it u
 
 If you need to change these two fields---for instance, if you were to give your forum a better-looking URL---you will need to change the `domain` field. This can be done at `/admin/sites/site/1/`.
 
-### <del>Setting Up an E-Mail Server</del> ###
+### Setting Up an E-Mail Server ###
 ***(This part is under revision and should be ignored for now.)***
 
 *Speakiiing* of activation e-mails, you need to, you know, send e-mails. "Jesus &"¤!#! Christ!" you think to yourself, but if you use a Gmail account, it's all actually quite easy! (I was surprised, too.)
 
-Using [sontek's intelligible guide](http://sontek.net/using-gmail-to-send-e-mails-from-django), if you use a Gmail e-mail account, you can define your own e-mail server by including this part in your `settings.py` file:
+Using [sontek's intelligible guide](http://sontek.net/using-gmail-to-send-e-mails-from-django), if you use a Gmail e-mail account, you can define your own e-mail server by entering these credentials:
 
-    EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_HOST_USER = 'user@gmail.com'
-    EMAIL_HOST_PASSWORD = 'password'
-    EMAIL_PORT = 587
-    EMAIL_USE_TLS = True
+~~~python
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'user@gmail.com'
+EMAIL_HOST_PASSWORD = 'password'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+~~~
 
-*However!* Putting this kind of configuration information in a file that may end up in a publically viewable place is not adviseable. Instead, follow [dotCloud's guide to environmental variables](http://docs.dotcloud.com/guides/environment/) and, instead, enter the information like environment variables like so:
+*However!* Putting this kind of configuration information in a place that may end up in a publically viewable place is not adviseable. Instead:
 
-    dotcloud var set ponyforum EMAIL_HOST=smtp.gmail.com
-    dotcloud var set ponyforum EMAIL_HOST_USER=your_user_name@gmail.com
-    dotcloud var set ponyforum EMAIL_HOST_PASSWORD=your_password
-    dotcloud var set ponyforum EMAIL_PORT=587
-    dotcloud var set ponyforum EMAIL_USE_TLS=True
+1. If you are working in a local development environment, add above information to your `local_settings.py`. The file does not come with `dotcloud-django` for good reasons, but you can create it by renaming the templated and [included](https://github.com/ndarville/dotcloud-django/blob/master/ponyforum/example_local_settings.py)`example_local_settings.py` to `local_settings.py` and change the relevant values there.
 
-If you want to, you can also do it like this on some operating systems:
+2. If you are setting up your forum on dotCloud, follow [their guide to environmental variables](http://docs.dotcloud.com/guides/environment/) and, instead, enter the information like environment variables like so:
 
-    dotcloud var set ponyforum \
-        'EMAIL_HOST=smtp.gmail.com' \
-        'EMAIL_HOST_USER=your_user_name@gmail.com' \
-        'EMAIL_HOST_PASSWORD=your_password' \
-        'EMAIL_PORT=587' \
-        'EMAIL_USE_TLS=True'
+~~~sh
+dotcloud var set ponyforum EMAIL_HOST=smtp.gmail.com
+dotcloud var set ponyforum EMAIL_HOST_USER=your_user_name@gmail.com
+dotcloud var set ponyforum EMAIL_HOST_PASSWORD=your_password
+dotcloud var set ponyforum EMAIL_PORT=587
+dotcloud var set ponyforum EMAIL_USE_TLS=True
+~~~
+
+The problem with this method, is that dotCloud restarts your server, which takes a while, so to save your time, you can also do it like this on some operating systems:
+
+~~~sh
+dotcloud var set ponyforum \
+    'EMAIL_HOST=smtp.gmail.com' \
+    'EMAIL_HOST_USER=your_user_name@gmail.com' \
+    'EMAIL_HOST_PASSWORD=your_password' \
+    'EMAIL_PORT=587' \
+    'EMAIL_USE_TLS=True'
+~~~
 
 I think the last one is the easiest one, but choose whichever you prefer.
 
-All environment variables can be viewed with
+All dotCloud environment variables for your app can be viewed with
 
-    dotcloud var list ponyforum
-    
+~~~sh
+dotcloud var list ponyforum
+~~~
+
+**NOTE!** If you are having problems with this, do *not* post the entirety of what this command returns, as it contains sensitive information that would jeopardize your app---and potentialy e-mail---security. It is better to engage in a yes-no dialogue with the people asking you what values are present in the list, and what they contain.
+
 This should set up your e-mail server. At any point, you can alter the values by the approaches above. You can remove any erroneous environment variables entirely using
 
-    dotcloud var unset ponyforum EMAIL_HOST_PASSWORD
+~~~sh
+dotcloud var unset ponyforum EMAIL_HOST_PASSWORD
+~~~
 
 Obviously, you need to change the `USER` and `PASSWORD` fields to your own. Also note that if you are using Google's [two-factor authentication](https://accounts.google.com/SmsAuthConfig), you default password will not work, because you need to create a designated application password for it [here](https://accounts.google.com/IssuedAuthSubTokens). The reason is that if you use two-factor authentication, you will not use the password for your actual account outside of Google's own sites, but an application password. The advantage of this is that you can remove this application in your Google account settings right away, if you accidentally share it through GitHub or elsewhere.
 
