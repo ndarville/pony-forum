@@ -210,11 +210,16 @@ LOGGING = {
 }
 
 ### PONY-FORUM APP
-## These already have default values, so you don't need to define them
-# POSTS_PER_PAGE        =
-# THREADS_PER_PAGE      =
-# USER_POSTS_PER_PAGE   =
-# USER_THREADS_PER_PAGE =
+if LOCAL_DEVELOPMENT:
+    POSTS_PER_PAGE        = 25
+    THREADS_PER_PAGE      = 25
+    USER_POSTS_PER_PAGE   = 10
+    USER_THREADS_PER_PAGE = 25
+else:
+    POSTS_PER_PAGE        = int(env.get('POSTS_PER_PAGE', '25'))
+    THREADS_PER_PAGE      = int(env.get('THREADS_PER_PAGE', '25'))
+    USER_POSTS_PER_PAGE   = int(env.get('USER_POSTS_PER_PAGE', '10'))
+    USER_THREADS_PER_PAGE = int(env.get('USER_THREADS_PER_PAGE', '25'))
 
 # If you change these default values without changing the URLs style.css,
 # the icons will break, because their URLs are hardcoded.
@@ -240,7 +245,12 @@ if not LOCAL_DEVELOPMENT:
 ###
 
 ### DJANGO-REGISTRATION
-ACCOUNT_ACTIVATION_DAYS = 7
+if LOCAL_DEVELOPMENT:
+    ACCOUNT_ACTIVATION_DAYS = 7
+    REGISTRATION_OPEN = True
+else:
+    int(env.get('ACCOUNT_ACTIVATION_DAYS', '7'))
+    bool(env.get('REGISTRATION_OPEN', 'True'))
 ###
 
 ### DJANGO-SECURE HTTPS

@@ -68,7 +68,7 @@ from registration                   import views as registration_views
 ##  saves_and_bookmarks
 
 
-LOGIN_URL                 = getattr(project_settings, "LOGIN_URL", "/accounts/login/")  # doesn't work
+LOGIN_URL                 = getattr(project_settings, "LOGIN_URL", "/accounts/login/")  # revize
 LOGIN_REDIRECT_URL        = getattr(project_settings, "LOGIN_REDIRECT_URL", "/")
 MAX_THREAD_TITLE_LENGTH   = Thread._meta.get_field("title_plain").max_length
 MAX_CATEGORY_TITLE_LENGTH = Category._meta.get_field("title_plain").max_length
