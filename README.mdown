@@ -102,6 +102,8 @@ All dotCloud environment variables for your app can be viewed with
 dotcloud var list ponyforum
 ~~~
 
+If you have an admin user, you can also view these key/values in your `configuration` view located by default at `/accounts/configuration/`.
+
 **NOTE!** If you are having problems with this, do *not* post the entirety of what this command returns, as it contains sensitive information that would jeopardize your app---and potentialy e-mail---security. It is better to engage in a yes-no dialogue with the people asking you what values are present in the list, and what they contain.
 
 This should set up your e-mail server. At any point, you can alter the values by the approaches above. You can remove any erroneous environment variables entirely using

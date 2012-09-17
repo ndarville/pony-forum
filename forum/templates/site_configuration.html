@@ -3,18 +3,95 @@
 {% block title %}Site Configuration{% endblock %}
 {% block canonical_url %}{% url site_configuration %}{% endblock %}
 {% block content_body %}
-<form action="{% url site_configuration %}" method="post">
-    {% csrf_token %}
-    <label for="username">Username:</label><input type="text"     name="username"      value="{{ EMAIL_HOST_USER }}" required autofocus><br />
-    <label for="password">Password:</label><input type="password" name="password"      value="{{ EMAIL_HOST_PASSWORD }}" required><br />
-    <label for="username">E-mail host:</label><input type="text"  name="email_host"    value="{{ EMAIL_HOST }}" required><br />
-    <label for="username">E-mail port:</label><input type="text"  name="email_port"    value="{{ EMAIL_PORT }}" required><br />
-    <label for="username">Use TLS?:</label><input type="text"     name="email_use_tls" value="{{ EMAIL_USE_TLS }}" required>
+<table>
+    <caption>
+        E-mail Settings
+    </caption>
+    <thead>
+        <td>Key</td>
+        <td>Value</td>
+    </thead>
+    <tr>
+        <td>Username</td>
+        <td>{{ EMAIL_HOST_USER }}</td>
+    </tr>
+    <tr>
+        <td>Password</td>
+        <td>{{ EMAIL_HOST_PASSWORD }}</td>
+    </tr>
+    <tr>
+        <td>Use TLS?</td>
+        <td>{{ EMAIL_USE_TLS }}</td>
+    </tr>
+    <tr>
+        <td>From e-mail</td>
+        <td>{{ DEFAULT_FROM_EMAIL }}</td>
+    </tr>
+</table>
 
-    <div id="button-group">
-        <input type="submit" value="Submit" />
-    </div>
+<table>
+    <caption>
+        Other settings
+    </caption>
+    <thead>
+        <td>Key</td>
+        <td>Value</td>
+    </thead>
+    <tr>
+        <td>Time zone</td>
+        <td>{{ TIME_ZONE }}</td>
+    </tr>
+    <tr>
+        <td>Language code</td>
+        <td>{{ LANGUAGE_CODE }}</td>
+    </tr>
+    <tr>
+        <td>Account activation days</td>
+        <td>{{ ACCOUNT_ACTIVATION_DAYS }}</td>
+    </tr>
+    <tr>
+        <td>Registrations open?</td>
+        <td>{{ REGISTRATION_OPEN }}</td>
+    </tr>
+</table>
 
+<table>
+    <caption>
+        Pagination settings
+    </caption>
+    <thead>
+        <td>Key</td>
+        <td>Value</td>
+    </thead>
+    <tr>
+        <td>Posts per page</td>
+        <td>{{ POSTS_PER_PAGE }}</td>
+    </tr>
+    <tr>
+        <td>Threads per page</td>
+        <td>{{ THREADS_PER_PAGE }}</td>
+    </tr>
+    <tr>
+        <td>User posts per page</td>
+        <td>{{ USER_POSTS_PER_PAGE }}</td>
+    </tr>
+    <tr>
+        <td>User threads per page</td>
+        <td>{{ USER_THREADS_PER_PAGE }}</td>
+    </tr>
+    <tr>
+        <td>Subscriptions per page</td>
+        <td>{{ SUBSCRIPTIONS_PER_PAGE }}</td>
+    </tr>
+    <tr>
+        <td>Bookmarks per page</td>
+        <td>{{ BOOKMARKS_PER_PAGE }}</td>
+    </tr>
+    <tr>
+        <td>Saves per page</td>
+        <td>{{ SAVES_PER_PAGE }}</td>
+    </tr>
+</table>
 {% if LOCAL_DEVELOPMENT %}
     <p>Because you are running this on a local server, you need to change these settings in a settings file such as <code>settings.py</code> or <code>local_settings.py</code>. This form only works for online projects.</p>
 {% endif %}

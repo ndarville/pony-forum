@@ -211,15 +211,21 @@ LOGGING = {
 
 ### PONY-FORUM APP
 if LOCAL_DEVELOPMENT:
-    POSTS_PER_PAGE        = 25
-    THREADS_PER_PAGE      = 25
-    USER_POSTS_PER_PAGE   = 10
-    USER_THREADS_PER_PAGE = 25
+    POSTS_PER_PAGE         = 25
+    THREADS_PER_PAGE       = 25
+    USER_POSTS_PER_PAGE    = 10
+    USER_THREADS_PER_PAGE  = 25
+    SUBSCRIPTIONS_PER_PAGE = 25
+    BOOKMARKS_PER_PAGE     = 50
+    SAVES_PER_PAGE         = 10 
 else:
-    POSTS_PER_PAGE        = int(env.get('POSTS_PER_PAGE', '25'))
-    THREADS_PER_PAGE      = int(env.get('THREADS_PER_PAGE', '25'))
-    USER_POSTS_PER_PAGE   = int(env.get('USER_POSTS_PER_PAGE', '10'))
-    USER_THREADS_PER_PAGE = int(env.get('USER_THREADS_PER_PAGE', '25'))
+    POSTS_PER_PAGE         = int(env.get('POSTS_PER_PAGE', '25'))
+    THREADS_PER_PAGE       = int(env.get('THREADS_PER_PAGE', '25'))
+    USER_POSTS_PER_PAGE    = int(env.get('USER_POSTS_PER_PAGE', '10'))
+    USER_THREADS_PER_PAGE  = int(env.get('USER_THREADS_PER_PAGE', '25'))
+    SUBSCRIPTIONS_PER_PAGE = int(env.get('SUBSCRIPTIONS_PER_PAGE', '25'))
+    BOOKMARKS_PER_PAGE     = int(env.get('BOOKMARKS_PER_PAGE', '50'))
+    SAVES_PER_PAGE         = int(env.get('SAVES_PER_PAGE', '10'))
 
 # If you change these default values without changing the URLs style.css,
 # the icons will break, because their URLs are hardcoded.
@@ -229,7 +235,6 @@ LOGIN_REDIRECT_URL     = '/'
 LOGIN_URL              = '/accounts/login/'
 LOGOUT_URL             = '/accounts/logout/'
 REGISTRATION_URL       = '/accounts/register/'
-
 SITE_CONFIGURATION_URL = '/configuration/'
 ###
 
@@ -241,6 +246,8 @@ if not LOCAL_DEVELOPMENT:
     EMAIL_HOST_PASSWORD = env.get('EMAIL_HOST_PASSWORD', '')
     EMAIL_PORT          = int(env.get('EMAIL_PORT', '587'))
     EMAIL_USE_TLS       = bool(env.get('EMAIL_USE_TLS', 'True'))
+    DEFAULT_FROM_EMAIL  = env.get('DEFAULT_FROM_EMAIL',
+                                  'noreply@equestria.pony')
 #    EMAIL_SUBJECT_PREFIX = ""  # Doesn't work, optional
 ###
 

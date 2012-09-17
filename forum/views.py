@@ -1033,27 +1033,28 @@ def site_configuration(request):
             "You need staff status to configure the site.")
         return HttpResponseRedirect(LOGIN_REDIRECT_URL)
 
-    if request.method == 'POST':  # Form has been submitted
-        if not project_settings.LOCAL_DEVELOPMENT:
-            with open('/home/dotcloud/environment.json') as f:
-                env = json.load(f)
-                env['EMAIL_HOST'] = request.POST['email_host']
-                env['EMAIL_HOST_USER'] = request.POST['username']
-                env['EMAIL_HOST_PASSWORD'] = request.POST['password']
-                env['EMAIL_PORT'] = request.POST['email_port']
-                env['EMAIL_USE_TLS'] = request.POST['email_use_tls']
-            messages.success(request, "New e-mail settings saved.")
-        else:
-            messages.error(request,
-            "This form only works on production servers. More info below.")
+    HOST_USER = project_settings.EMAIL_HOST_USER != "myusername@gmail.com"
+    HOST_PASSWORD = project_settings.EMAIL_HOST != "mypassword"
+    PORT = project_settings.EMAIL_PORT
 
     return render(request, 'site_configuration.html', {
-        'EMAIL_HOST'         : project_settings.EMAIL_HOST,
-        'EMAIL_HOST_USER'    : project_settings.EMAIL_HOST_USER,
-        'EMAIL_HOST_PASSWORD': project_settings.EMAIL_HOST_PASSWORD,
-        'EMAIL_PORT'         : project_settings.EMAIL_PORT,
-        'EMAIL_USE_TLS'      : project_settings.EMAIL_USE_TLS,
-        'LOCAL_DEVELOPMENT'  : project_settings.LOCAL_DEVELOPMENT})
+        'EMAIL_HOST_USER'        : HOST_USER,
+        'EMAIL_HOST_PASSWORD'    : HOST_PASSWORD,
+        'EMAIL_USE_TLS'          : project_settings.EMAIL_USE_TLS,
+        'LOCAL_DEVELOPMENT'      : project_settings.LOCAL_DEVELOPMENT,
+        'TIME_ZONE'              : project_settings.TIME_ZONE,
+        'LANGUAGE_CODE'          : project_settings.LANGUAGE_CODE,
+        'ACCOUNT_ACTIVATION_DAYS': project_settings.ACCOUNT_ACTIVATION_DAYS,
+        'REGISTRATION_OPEN'      : project_settings.REGISTRATION_OPEN,
+        'POSTS_PER_PAGE'         : project_settings.POSTS_PER_PAGE,
+        'THREADS_PER_PAGE'       : project_settings.THREADS_PER_PAGE,
+        'USER_POSTS_PER_PAGE'    : project_settings.USER_POSTS_PER_PAGE,
+        'USER_THREADS_PER_PAGE'  : project_settings.USER_THREADS_PER_PAGE,
+        'SUBSCRIPTIONS_PER_PAGE' : project_settings.SUBSCRIPTIONS_PER_PAGE,
+        'BOOKMARKS_PER_PAGE'     : project_settings.BOOKMARKS_PER_PAGE,
+        'SAVES_PER_PAGE'         : project_settings.SAVES_PER_PAGE,
+        'DEFAULT_FROM_EMAIL'     : project_settings.DEFAULT_FROM_EMAIL
+        })
 
 
 @login_required(login_url=LOGIN_URL)
