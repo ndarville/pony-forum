@@ -123,7 +123,7 @@ While you're still in `settings.py`, you might consider changing the value of DE
 
 It all depends on where you are in your development cycle, but remember to flip it off, once you open it to the public---and on, if you are testing your site.
 
-Set it to `True`, if you are customizing it yourself, but set it to `False`, once you launch your site.
+Set it to `True`, if you are customizing it yourself, but set it to `False`, once you launch your site. By default, `DEBUG` is set to `False`, but you can alter this by changing the value of your `DEBUG` key in your dotCLoud environment variable.
 
 ### Aaand You're Done! ###
 Let's recapitulate the adjustments needed to set up Pony Forum:

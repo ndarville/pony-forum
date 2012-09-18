@@ -286,6 +286,8 @@ except NameError:
     except ImportError:
         pass
 
+if not LOCAL_DEVELOPMENT:
+    DEBUG = bool(env.get('DEBUG', 'False'))
 TEMPLATE_DEBUG = DEBUG
 
 ### DJANGO-DEBUG-TOOLBAR
