@@ -93,7 +93,9 @@
     </tr>
 </table>
 {% if LOCAL_DEVELOPMENT %}
-    <p>Because you are running this on a local server, you need to change these settings in a settings file such as <code>settings.py</code> or <code>local_settings.py</code>. This form only works for online projects.</p>
+    <p>You can change or override these values in your <code>local_settings.py</code> file.</p>
+{% else %}
+    <p>You can change these values in your dotCloud environment. To find out how, read <a href="http://ndarville.github.com/dotcloud-django/#after-installation-instructions/setting-up-an-e-mail-server">this</a>.</p>
 {% endif %}
 </form>  
 {% endblock %}
