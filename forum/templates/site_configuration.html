@@ -5,20 +5,38 @@
 {% block content_body %}
 <table>
     <caption>
-        E-mail Settings
+        Required settings
     </caption>
     <thead>
         <td>Key</td>
+        <td>Configured?</td>
         <td>Value</td>
     </thead>
     <tr>
+        <td>Site name</td>
+        <td>{% if HAS_SITE_NAME %}Yes{% else %}<strong>No</strong><a href="/admin/sites/site/1/">&mdash;fix here{% endif %}</td>
+        <td><i>{{ SITE_NAME }}</i></td>
+    </tr>
+    <tr>
+        <td>Site domain</td>
+        <td>{% if HAS_SITE_DOMAIN %}Yes{% else %}<strong>No</strong><a href="/admin/sites/site/1/">&mdash;fix here{% endif %}</td>
+        <td><i>{{ SITE_DOMAIN }}</i></td>
+    </tr>
+    <tr>
         <td>Username</td>
-        <td>{{ EMAIL_HOST_USER }}</td>
+        <td>{% if EMAIL_HOST_USER %}Yes{% else %}<strong>No.</strong> <a href="http://ndarville.github.com/dotcloud-django/#after-installation-instructions/setting-up-an-e-mail-server">(More info.)</a>{% endif %}</td>
+        <td>{% if EMAIL_HOST_USER %}(Value hidden){% else %}myusername@gmail.com{% endif %}</td>
     </tr>
     <tr>
         <td>Password</td>
-        <td>{{ EMAIL_HOST_PASSWORD }}</td>
+        <td>{% if EMAIL_HOST_PASSWORD %}Yes{% else %}<strong>No.</strong> <a href="http://ndarville.github.com/dotcloud-django/#after-installation-instructions/setting-up-an-e-mail-server">(More info.)</a>{% endif %}</td>
+        <td>{% if EMAIL_HOST_PASSWORD %}(Value hidden){% else %}mypassword{% endif %}</td>
     </tr>
+
+<table>
+    <caption>
+        More e-mail settings
+    </caption>
     <tr>
         <td>Use TLS?</td>
         <td>{{ EMAIL_USE_TLS }}</td>

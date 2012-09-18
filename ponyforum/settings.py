@@ -243,7 +243,7 @@ SITE_CONFIGURATION_URL = '/configuration/'
 if not LOCAL_DEVELOPMENT:
     EMAIL_HOST          = env.get('EMAIL_HOST', 'smtp.gmail.com')
     EMAIL_HOST_USER     = env.get('EMAIL_HOST_USER', 'myusername@gmail.com')
-    EMAIL_HOST_PASSWORD = env.get('EMAIL_HOST_PASSWORD', '')
+    EMAIL_HOST_PASSWORD = env.get('EMAIL_HOST_PASSWORD', 'mypassword')
     EMAIL_PORT          = int(env.get('EMAIL_PORT', '587'))
     EMAIL_USE_TLS       = bool(env.get('EMAIL_USE_TLS', 'True'))
     DEFAULT_FROM_EMAIL  = env.get('DEFAULT_FROM_EMAIL',

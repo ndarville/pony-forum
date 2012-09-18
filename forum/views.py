@@ -1036,6 +1036,8 @@ def site_configuration(request):
     HOST_USER = project_settings.EMAIL_HOST_USER != "myusername@gmail.com"
     HOST_PASSWORD = project_settings.EMAIL_HOST != "mypassword"
     PORT = project_settings.EMAIL_PORT
+    HAS_SITE_NAME = Site.objects.get_current().name != "example.com"
+    HAS_SITE_DOMAIN = Site.objects.get_current().domain != "example.com"
 
     return render(request, 'site_configuration.html', {
         'EMAIL_HOST_USER'        : HOST_USER,
@@ -1053,7 +1055,11 @@ def site_configuration(request):
         'SUBSCRIPTIONS_PER_PAGE' : project_settings.SUBSCRIPTIONS_PER_PAGE,
         'BOOKMARKS_PER_PAGE'     : project_settings.BOOKMARKS_PER_PAGE,
         'SAVES_PER_PAGE'         : project_settings.SAVES_PER_PAGE,
-        'DEFAULT_FROM_EMAIL'     : project_settings.DEFAULT_FROM_EMAIL
+        'DEFAULT_FROM_EMAIL'     : project_settings.DEFAULT_FROM_EMAIL,
+        'HAS_SITE_NAME'          : HAS_SITE_NAME,
+        'HAS_SITE_DOMAIN'        : HAS_SITE_DOMAIN,
+        'SITE_NAME'              : Site.objects.get_current().name,
+        'SITE_DOMAIN'            : Site.objects.get_current().domain
         })
 
 
