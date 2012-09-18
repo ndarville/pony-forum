@@ -26,7 +26,7 @@
                 {% else %}
                     <a class="button" href="#">Locked</a>
                 {% endif %}
-                    <a class="button js" id="{{ thread.id }}" href="#">{% if thread in user.bookmarks.all %}Unbookmark{% else %}Bookmark{% endif %}</a>
+                {#  <a class="button js" id="{{ thread.id }}" href="#">{% if thread in user.bookmarks.all %}Unbookmark{% else %}Bookmark{% endif %}</a> #}
                     <a class="button js" id="{{ thread.id }}" href="#">{% if thread in user.subscriptions.all %}Unsubscribe{% else %}Subscribe{% endif %}</a>
                 </div>
             {% endif %}
@@ -96,7 +96,7 @@
                 {% else %}
                     <a class="button" href="#">Locked</a>
                 {% endif %}
-                    <a class="button js" id="{{ thread.id }}" href="#">{% if thread in user.bookmarks.all %}Unbookmark{% else %}Bookmark{% endif %}</a>
+                {#  <a class="button js" id="{{ thread.id }}" href="#">{% if thread in user.bookmarks.all %}Unbookmark{% else %}Bookmark{% endif %}</a> #}
                     <a class="button js" id="{{ thread.id }}" href="#">{% if thread in user.subscriptions.all %}Unsubscribe{% else %}Subscribe{% endif %}</a>
                 </div>
             {% endif %}
