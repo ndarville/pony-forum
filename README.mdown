@@ -69,6 +69,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 ~~~
 
+(If you use a Gmail e-mail, you just need to change the username and password, as the default values for the other keys will work fine.)
+
 *However!* Putting this kind of configuration information in a place that may end up in a publically viewable place is not adviseable. Instead:
 
 1. If you are working in a local development environment, add above information to your `local_settings.py`. The file does not come with `dotcloud-django` for good reasons, but you can create it by renaming the templated and [included](https://github.com/ndarville/dotcloud-django/blob/master/ponyforum/example_local_settings.py)`example_local_settings.py` to `local_settings.py` and change the relevant values there.
@@ -76,22 +78,16 @@ EMAIL_USE_TLS = True
 2. If you are setting up your forum on dotCloud, follow [their guide to environmental variables](http://docs.dotcloud.com/guides/environment/) and, instead, enter the information like environment variables like so:
 
 ~~~sh
-dotcloud var set ponyforum EMAIL_HOST=smtp.gmail.com
 dotcloud var set ponyforum EMAIL_HOST_USER=your_user_name@gmail.com
 dotcloud var set ponyforum EMAIL_HOST_PASSWORD=your_password
-dotcloud var set ponyforum EMAIL_PORT=587
-dotcloud var set ponyforum EMAIL_USE_TLS=True
 ~~~
 
 The problem with this method, is that dotCloud restarts your server, which takes a while, so to save your time, you can also do it like this on some operating systems:
 
 ~~~sh
 dotcloud var set ponyforum \
-    'EMAIL_HOST=smtp.gmail.com' \
     'EMAIL_HOST_USER=your_user_name@gmail.com' \
-    'EMAIL_HOST_PASSWORD=your_password' \
-    'EMAIL_PORT=587' \
-    'EMAIL_USE_TLS=True'
+    'EMAIL_HOST_PASSWORD=your_password'
 ~~~
 
 I think the last one is the easiest one, but choose whichever you prefer.
