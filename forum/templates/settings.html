@@ -15,8 +15,12 @@
     </p>
 
     <p>
-        <label for="has_dyslexia">I have dyslexia</label>
-        <input type="checkbox" name="has_dyslexia">
+        <label for="has_dyslexia">I have dyslexia:</label>
+        <select size="1">
+            <option value="U"{% if user.get_profile.has_dyslexia == 'U' %} selected{% endif %}>Undecided</option>
+            <option value="Y"{% if user.get_profile.has_dyslexia == 'Y' %} selected{% endif %}>Yes</option>
+            <option value="N"{% if user.get_profile.has_dyslexia == 'N' %} selected{% endif %}>No</option>
+        </select>
     </p>
 
 	<p>

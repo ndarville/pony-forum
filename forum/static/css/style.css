@@ -211,7 +211,7 @@ table {
     background: url(/static/glyphish/138-scales.png) no-repeat left;
 }
 
-#navigation li a[href="http://pony-forum.com/guide/"] {
+#navigation li a[href$="pony-forum.com/guide/"] {
     background: url(/static/glyphish/96-book.png) no-repeat left;
 }
 
@@ -233,6 +233,10 @@ table {
 
 #navigation li a[href$="/register/"] {
     background: url(/static/glyphish/111-user.png) no-repeat left;
+}
+
+#navigation li a[href*="dyslexicfonts"] {
+    background: url(/static/glyphish/12-eye.png) no-repeat left;
 }
 
 #navigation li,

@@ -5,6 +5,12 @@ from django.db                  import models
 from django.db.models.signals   import post_save
 
 
+BOOLEAN_CHOICES = (
+    ('Y', 'Yes'),
+    ('N', 'No'),
+    ('U', 'Undecided'),
+)
+
 def relative_date(date):
     """Displays a date relative to now."""
     delta = datetime.datetime.now() - date  # UTC?
@@ -233,11 +239,13 @@ class UserProfile(models.Model):
     # avatar          = models.ImageField(null=True, blank=True,
     #                                     upload_to="images/avatars/")
     #! Disclose your dyslexia to read a more accessible font
-    has_dyslexia    = models.BooleanField(default=False,
-                                          verbose_name="User has dyslexia")
+    has_dyslexia    = models.CharField(default='U', max_length=1,
+                                       choices=BOOLEAN_CHOICES,
+                                       verbose_name="User has dyslexia")
     #! Disclose your epilepsy so animated .gif images are hidden by default
-    has_epilepsy    = models.BooleanField(default=False,
-                                          verbose_name="User has epilepsy")
+    has_epilepsy    = models.CharField(default='U', max_length=1,
+                                       choices=BOOLEAN_CHOICES,
+                                       verbose_name="User has epilepsy")
     #! Disclose your colour blindness to benefit from potential future features
     # has_c_blindness = models.BooleanField(default=False,
     #                                       verbose_name="User has epilepsy")
