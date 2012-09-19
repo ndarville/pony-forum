@@ -594,7 +594,7 @@ span#error {
 ***** THREAD & POST template *****
 *****                         ****/
 #board {
-    background-color: yellow;
+    background-color: #FF9;
     width: 680px;
     float: left;
     margin: 1.5em 15px;
