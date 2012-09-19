@@ -17,4 +17,6 @@ If the build fails, it is expected that you will amend the error—assuming you 
 
 I will later create Travis tests that try to strike a balance between catching errors, before they enter the code, and penalize contributors for pedantic reasons. Nevertheless, the script exists to catch errors and make it more effortless and time-consuming for everyone involved to contribute to the project.
 
-Please don‘t take it personally, if your contribution is rejected. It is incredibly strenuous and time-consuming to manage a project of this magnitude without succumbing to feature creep, design by committee, and people who feel entitled to appropriate the project and make the decisions. Such users are welcome to fork the project and take it in their own direction.
+Finally—and Most Important
+---------------------------
+Please don‘t take it personally, if your suggestion or contribution is rejected. It is incredibly strenuous and time-consuming to manage a project of this magnitude without succumbing to feature creep, design by committee, and people who feel entitled to appropriate the project and make the decisions. Such users are welcome to fork the project and take it in their own direction.
