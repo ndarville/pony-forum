@@ -1,0 +1,56 @@
+/** Credit to http://dyslexicfonts.com/plugin/easyread.css 
+    Rehosted and -formatted to not be a bandwidth mooch.
+*/
+
+@font-face{
+    font-family: "opendyslexic";
+    src: url(/static/typefaces/OpenDyslexic-Regular.otf);
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face{
+    font-family: "opendyslexic";
+    src: url(/static/typefaces/OpenDyslexic-Italic.otf);
+    font-style: italic;
+    font-weight: normal;
+}
+
+@font-face{
+    font-family: "opendyslexic";
+    src: url(/static/typefaces/OpenDyslexic-Bold.otf);
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: "opendyslexic";
+    src: url(/static/typefaces/OpenDyslexic-BoldItalic.otf);
+    font-weight: bold;
+    font-style: italic;
+}
+
+body {
+    background-color: #F4F4FA !important;
+    background-image: url(/static/images/dyslexia_cross_scratches.png) !important;
+    background-repeat: repeat !important;
+    color: #191A42;
+    font-family: opendyslexic !important;
+    
+}
+
+p:nth-child(even), li:nth-child(even) {
+    background-color: rgba(0,0,0, .03) !important;
+}
+
+p:hover, li:hover {
+   background-color: rgba(0,0,0, .1) !important;
+}
+
+* {
+    font-family: opendyslexic !important;
+}
+
+input, textarea {
+    font-family: opendyslexic !important;
+}

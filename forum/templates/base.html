@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/reset.css" />
         <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/style.css" />
         <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="{{ STATIC_URL }}css/iphone.css" />
-    {% if user.is_dyslexic %}
+    {% if user.get_profile.has_dyslexia == 'Y' %}
         <link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/dyslexia.css" />
     {% endif %}
     {% block js %}{% endblock %}
