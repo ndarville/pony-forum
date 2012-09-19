@@ -22,7 +22,7 @@
     {#  <li><a href="http://pony-forum.com/guide/"><span>Guide</span></a></li> #}
     {#  <li><a href="/search/"><span>Search</span></a></li> #}
     {% if user.get_profile.has_dyslexia != 'N' %}
-        <li><a href="javascript:if(typeof WZXYxe58==typeof alert)WZXYxe58();(function(){var s=document.createElement('link');s.setAttribute('href','http://dyslexicfonts.com/plugin/easyread.css');s.setAttribute('rel','stylesheet');s.setAttribute('type','text/css');document.getElementsByTagName('head')[0].appendChild(s);})();"><span>Dyslexia Mode</span></a></li>
+        <li><a href="javascript:if(typeof WZXYxe58==typeof alert)WZXYxe58();(function(){var s=document.createElement('link');s.setAttribute('href','{{ STATIC_URL }}css/dyslexia.css');s.setAttribute('rel','stylesheet');s.setAttribute('type','text/css');document.getElementsByTagName('head')[0].appendChild(s);})();"><span>Dyslexia Mode</span></a></li>
     {% endif %}
         <li class="last"><a href="{% url logout %}"><span>Log Out</span></a></li>
 {% else %}
@@ -30,7 +30,7 @@
     {#  <li><a href="http://pony-forum.com/rules/"><span>Rules</span></a></li> #}
     {#  <li><a href="http://pony-forum.com/guide/"><span>Guide</span></a></li> #}
     {#  <li><a href="{% url search %}"><span>Search</span></a></li> #}
-        <li><a href="javascript:if(typeof WZXYxe58==typeof alert)WZXYxe58();(function(){var s=document.createElement('link');s.setAttribute('href','http://dyslexicfonts.com/plugin/easyread.css');s.setAttribute('rel','stylesheet');s.setAttribute('type','text/css');document.getElementsByTagName('head')[0].appendChild(s);})();"><span>Dyslexia Mode</span></a></li>
+        <li><a href="javascript:if(typeof WZXYxe58==typeof alert)WZXYxe58();(function(){var s=document.createElement('link');s.setAttribute('href','{{ STATIC_URL }}css/dyslexia.css');s.setAttribute('rel','stylesheet');s.setAttribute('type','text/css');document.getElementsByTagName('head')[0].appendChild(s);})();"><span>Dyslexia Mode</span></a></li>
         <li class="last"><a href="{% url register %}"><span>Register</span></a></li>
 {% endif %}
 </ul>
