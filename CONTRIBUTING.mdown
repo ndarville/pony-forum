@@ -1,2 +1,20 @@
 Contribution Guidelines
 =======================
+
+Issues
+------
+This project is in its infancy, to say the least. Because of this, inundating me with feature suggestions that will have to be implemented six months from now will mainly serve to clutter the Issues, or worse, clog it, rendering it useless.
+
+This preliminary phase is focused on implementing what can best be described as basic features. What constitutes a basic feature can be hard to define, but for the time being, I defer to your own best judgement.
+
+The most important issue is to iron out any bugs that may exist in the current code—which is not at all hard to imagine, considering that I haven‘t had any time clean up my code.
+
+Pull Requests
+-------------
+Pull requests will be submitted to a high level of *automated* scrutiny at a later time, but for the time being, any pull request must pass the very lenient Travis CI test. The `.travis.yml` file can be found [here](https://github.com/ndarville/dotcloud-django/blob/master/.travis.yml). You will also receive an automated response to your pull request that will tell you whether you submitted build fails or not.
+
+If the build fails, it is expected that you will amend the error—assuming you are able—to expedite the process.
+
+I will later create Travis tests that try to strike a balance between catching errors, before they enter the code, and penalize contributors for pedantic reasons. Nevertheless, the script exists to catch errors and make it more effortless and time-consuming for everyone involved to contribute to the project.
+
+Please don‘t take it personally, if your contribution is rejected. It is incredibly strenuous and time-consuming to manage a project of this magnitude without succumbing to feature creep, design by committee, and people who feel entitled to appropriate the project and make the decisions. Such users are welcome to fork the project and take it in their own direction.
