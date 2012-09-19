@@ -10,11 +10,6 @@
     </p>
 
     <p>
-        <label for="avatar">Avatar</label>
-        <input type="file" name="avatar">
-    </p>
-
-    <p>
         <label for="has_dyslexia">I have dyslexia:</label>
         <select size="1">
             <option value="U"{% if user.get_profile.has_dyslexia == 'U' %} selected{% endif %}>Undecided</option>
