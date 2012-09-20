@@ -162,6 +162,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'forum',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -170,7 +171,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles', 
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'forum',
     'django.contrib.markup',
     'django.contrib.humanize',
     'registration',
