@@ -114,6 +114,24 @@ This is a much better security solution, because it is much easier to shut down 
 
 After you have changed and saved your new settings in `settings.py`, run the `dotcloud push ponyforum` command again, and your new settings will be (derp) pushed to your instance. If nothing happens, follow it up with the command `dotcloud restart ponyforum.www`.
 
+#### Postponing the Set-Up ####
+
+Last of all, there's another way out to avoid e-mail validation altogether for people on local servers. In `urls.py`, replace the line
+
+~~~python
+url(r'^accounts/',  include('registration.backends.default.urls')),
+~~~
+
+with this
+
+~~~python
+url(r'^accounts/',  include('registration.backends.simple.urls')),
+~~~
+
+In other words, replace `default` with `simple`. This allows your registration to work right away; don't worry about providing the right e-mail address nor setting up your e-mail server. If you want to read more about this, check out the [documentation](https://bitbucket.org/ubernostrum/django-registration/src/27bccd108cde/docs/simple-backend.rst) for the registration back-end.
+
+Note that if you use this "trick" and are logged in as admin, you might still get a configuration error ("please set up your site/e-mail settings"), but because there is no e-mail server the configuration addresses, you are free to ignore the warnings.
+
 ### DEBUG = True or False? ###
 While you're still in `settings.py`, you might consider changing the value of DEBUG, whether it is set to `True` or `False`.
 
