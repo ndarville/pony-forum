@@ -586,6 +586,9 @@ def edit(request, post_id):
 
 
 def subscription_js(request):
+    """Lets users subscribe to and unsubscribe from threads
+    in the subscription views.
+    """
     if request.is_ajax() and request.method == "POST":
         thread_id = request.POST['thread_id']
         action    = request.POST['action'].lower()
@@ -603,6 +606,14 @@ def subscription_js(request):
 
 # @login_required(login_url=LOGIN_URL)  # Doesn't work
 def thread_js(request):
+    """Lets users
+    1. Bookmark threads
+    2. Subscribe to threads
+
+    3. Agree with posts
+    4. Thank users for posts
+    5. Save posts
+    """
     if request.is_ajax() and request.method == "POST":
         # if not logged in ...
       
@@ -665,6 +676,7 @@ def thread_js(request):
 
 # @login_required(login_url=LOGIN_URL)  # Doesn't work
 def user_js(request):
+    """Lets users follow and ignore other users."""
     if request.is_ajax() and request.method == "POST":     
         person_id = request.POST['person_id']
         text      = request.POST['text'].lower()
@@ -692,7 +704,7 @@ def lock_thread(request, thread_id):
     """Lets the permitted user lock a thread,
     i.e., prevent people from posting in it.
 
-    Also allows an undo by choosing to unlock it.
+    Also allows the opposite action, i.e. to unlock it.
     """
     thread = get_object_or_404(Thread, pk=thread_id)
 
@@ -717,7 +729,7 @@ def sticky_thread(request, thread_id):
     """Lets the permitted user sticky a thread,
     thereby sticking it to the top of the thread list.
 
-    Also allows an undo by choosing to unsticky it.
+    Also allows the opposite action, i.e. to unsticky it.
     """
     thread = get_object_or_404(Thread, pk=thread_id)
 
@@ -741,9 +753,9 @@ def sticky_thread(request, thread_id):
 def merge_thread(request, thread_id):
     """Merge the posts of two threads into one single thread.
 
-    The posts are ordered chronologically in the new thread,
-    the old threads are locked, and a notification post is created
-    in all three threads.
+    1. The posts are ordered chronologically in the new thread.
+    2. The old threads are locked.
+    3. A notification post is created in all three threads.
     """
     thread          = get_object_or_404(Thread, pk=thread_id)
     new_title_plain = thread.title_plain
@@ -916,7 +928,7 @@ def report(request, object_id, object_type):
    
     if request.method == 'POST':  # Form has been submitted
         title = request.POST['title']
-        if "content" in request.POST:  # elaboration provided
+        if "content" in request.POST:  # Elaboration provided
             text = sanitized_smartdown(request.POST['content'])
         if "submit" in request.POST:  # "submit" button pressed
             if len(title) > MAX_THREAD_TITLE_LENGTH:
@@ -982,6 +994,7 @@ def search(request):
 
 
 def custom_login(request, **kwargs):
+    """Logs in users and redirects those who are already authenticated."""
     if request.user.is_authenticated():
         return HttpResponseRedirect(LOGIN_REDIRECT_URL)
     else:
@@ -990,6 +1003,7 @@ def custom_login(request, **kwargs):
 
 
 def custom_logout(request):
+    """Logs out the user with a message confirmation."""
     if request.user.is_authenticated():  # User logged in
         auth.logout(request)
     messages.success(request, "Logged out successfully.")
@@ -997,6 +1011,7 @@ def custom_logout(request):
 
 
 def custom_register(request, **kwargs):
+    """Registers users and redirects those who are already authenticated."""
     if request.user.is_authenticated():
         return HttpResponseRedirect(LOGIN_REDIRECT_URL)
     else:
@@ -1018,7 +1033,7 @@ def custom_register(request, **kwargs):
 
 @login_required(login_url=LOGIN_URL)
 def settings(request):
-    """Place for the user to change and manage his or her user settings."""
+    """Here the user can manage his or her user settings."""
     if request.method == "POST":  # Changes submitted
         profile = request.user.get_profile()
         profile.has_dyslexia = request.POST['has_dyslexia']
@@ -1031,6 +1046,7 @@ def settings(request):
 
 @login_required(login_url=LOGIN_URL)
 def site_configuration(request):
+    """Displays all configurable environment variables to admins."""
     if not request.user.is_staff:
         messages.error(request,
             "You need staff status to configure the site.")
