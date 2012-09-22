@@ -35,7 +35,7 @@ code {
 }
 
 pre {
-	font: 0.8125em/1.8462em Consolas, Monaco, monospace;
+    font: 0.8125em/1.8462em Consolas, Monaco, monospace;
     display: block;
     margin: 1em 1px; /** 1px to offset the border */
     padding: 5px 15px;
@@ -89,12 +89,16 @@ table {
 }
 
 #alert.info {
-    background: lightblue;
+    background-color: lightblue;
+}
+
+#alert.success {
+    background-color: #90EE90;
 }
 
 #alert.error,
 #js-blocked-warning {
-    background: #EE3B3B;
+    background-color: #EE3B3B;
 }
 
 /** All side panels */
@@ -600,6 +604,24 @@ span#error {
     margin: 1.5em 15px;
 }
 
+#board .words table,
+#content-body table {
+    font: 0.8125em/1.8462em Consolas, Monaco, monospace;
+    display: block;
+    margin: 1em 1px; /** 1px to offset the border */
+    padding: 5px 15px;
+    background-color: #F7F7F7;
+    border: 1px solid #D1D1D1;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+    caption {
+        caption-side: top;
+        text-align: center;
+    }
+
 #breadcrumbs {
     margin-bottom: 1.5em; /** Recalcuate. Depends on button size */
     padding: 10px;
@@ -875,11 +897,16 @@ textarea,
 #markdown blockquote {
     border-left: 2px solid #000;
     padding-left: 5px;
+    margin: 0;
 }
 
 #markdown ol,
 #markdown ul {
     margin-left: 1.5em;
+}
+
+#markdown pre {
+    margin: 0;
 }
 
 #markdown table {

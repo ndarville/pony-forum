@@ -8,43 +8,48 @@
         Required settings
     </caption>
     <thead>
-        <td>Key</td>
-        <td>Configured?</td>
-        <td>Value</td>
+        <th>Key</th>
+        <th>Configured?</th>
+        <th>Value</th>
     </thead>
-    <tr>
-        <td>Site name</td>
-        <td>{% if HAS_SITE_NAME %}Yes{% else %}<strong>No</strong><a href="/admin/sites/site/1/">&mdash;fix here{% endif %}</td>
-        <td><i>{{ SITE_NAME }}</i></td>
-    </tr>
-    <tr>
-        <td>Site domain</td>
-        <td>{% if HAS_SITE_DOMAIN %}Yes{% else %}<strong>No</strong><a href="/admin/sites/site/1/">&mdash;fix here{% endif %}</td>
-        <td><i>{{ SITE_DOMAIN }}</i></td>
-    </tr>
-    <tr>
-        <td>Username</td>
-        <td>{% if EMAIL_HOST_USER %}Yes{% else %}<strong>No.</strong> <a href="http://ndarville.github.com/dotcloud-django/#after-installation-instructions/setting-up-an-e-mail-server">(More info.)</a>{% endif %}</td>
-        <td>{% if EMAIL_HOST_USER %}(Value hidden){% else %}myusername@gmail.com{% endif %}</td>
-    </tr>
-    <tr>
-        <td>Password</td>
-        <td>{% if EMAIL_HOST_PASSWORD %}Yes{% else %}<strong>No.</strong> <a href="http://ndarville.github.com/dotcloud-django/#after-installation-instructions/setting-up-an-e-mail-server">(More info.)</a>{% endif %}</td>
-        <td>{% if EMAIL_HOST_PASSWORD %}(Value hidden){% else %}mypassword{% endif %}</td>
-    </tr>
+    <tbody>
+        <tr>
+            <td>Site name</td>
+            <td>{% if HAS_SITE_NAME %}Yes{% else %}<strong>No</strong><a href="/admin/sites/site/1/">&mdash;fix here{% endif %}</td>
+            <td><i>{{ SITE_NAME }}</i></td>
+        </tr>
+        <tr>
+            <td>Site domain</td>
+            <td>{% if HAS_SITE_DOMAIN %}Yes{% else %}<strong>No</strong><a href="/admin/sites/site/1/">&mdash;fix here{% endif %}</td>
+            <td><i>{{ SITE_DOMAIN }}</i></td>
+        </tr>
+        <tr>
+            <td>Username</td>
+            <td>{% if EMAIL_HOST_USER %}Yes{% else %}<strong>No.</strong> <a href="http://ndarville.github.com/dotcloud-django/#after-installation-instructions/setting-up-an-e-mail-server">(More info.)</a>{% endif %}</td>
+            <td>{% if EMAIL_HOST_USER %}(Value hidden){% else %}myusername@gmail.com{% endif %}</td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>{% if EMAIL_HOST_PASSWORD %}Yes{% else %}<strong>No.</strong> <a href="http://ndarville.github.com/dotcloud-django/#after-installation-instructions/setting-up-an-e-mail-server">(More info.)</a>{% endif %}</td>
+            <td>{% if EMAIL_HOST_PASSWORD %}(Value hidden){% else %}mypassword{% endif %}</td>
+        </tr>
+    </tbody>
+</table>
 
 <table>
     <caption>
         More e-mail settings
     </caption>
-    <tr>
-        <td>Use TLS?</td>
-        <td>{{ EMAIL_USE_TLS }}</td>
-    </tr>
-    <tr>
-        <td>From e-mail</td>
-        <td>{{ DEFAULT_FROM_EMAIL }}</td>
-    </tr>
+    <tbody>
+        <tr>
+            <td>Use TLS?</td>
+            <td>{{ EMAIL_USE_TLS }}</td>
+        </tr>
+        <tr>
+            <td>From e-mail</td>
+            <td>{{ DEFAULT_FROM_EMAIL }}</td>
+        </tr>
+    </tbody>
 </table>
 
 <table>
@@ -52,25 +57,27 @@
         Other settings
     </caption>
     <thead>
-        <td>Key</td>
-        <td>Value</td>
+        <th>Key</th>
+        <th>Value</th>
     </thead>
-    <tr>
-        <td>Time zone</td>
-        <td>{{ TIME_ZONE }}</td>
-    </tr>
-    <tr>
-        <td>Language code</td>
-        <td>{{ LANGUAGE_CODE }}</td>
-    </tr>
-    <tr>
-        <td>Account activation days</td>
-        <td>{{ ACCOUNT_ACTIVATION_DAYS }}</td>
-    </tr>
-    <tr>
-        <td>Registrations open?</td>
-        <td>{{ REGISTRATION_OPEN }}</td>
-    </tr>
+    <tbody>
+        <tr>
+            <td>Time zone</td>
+            <td>{{ TIME_ZONE }}</td>
+        </tr>
+        <tr>
+            <td>Language code</td>
+            <td>{{ LANGUAGE_CODE }}</td>
+        </tr>
+        <tr>
+            <td>Account activation days</td>
+            <td>{{ ACCOUNT_ACTIVATION_DAYS }}</td>
+        </tr>
+        <tr>
+            <td>Registrations open?</td>
+            <td>{{ REGISTRATION_OPEN }}</td>
+        </tr>
+    </tbody>
 </table>
 
 <table>
@@ -78,37 +85,39 @@
         Pagination settings
     </caption>
     <thead>
-        <td>Key</td>
-        <td>Value</td>
+        <th>Key</th>
+        <th>Value</th>
     </thead>
-    <tr>
-        <td>Posts per page</td>
-        <td>{{ POSTS_PER_PAGE }}</td>
-    </tr>
-    <tr>
-        <td>Threads per page</td>
-        <td>{{ THREADS_PER_PAGE }}</td>
-    </tr>
-    <tr>
-        <td>User posts per page</td>
-        <td>{{ USER_POSTS_PER_PAGE }}</td>
-    </tr>
-    <tr>
-        <td>User threads per page</td>
-        <td>{{ USER_THREADS_PER_PAGE }}</td>
-    </tr>
-    <tr>
-        <td>Subscriptions per page</td>
-        <td>{{ SUBSCRIPTIONS_PER_PAGE }}</td>
-    </tr>
-    <tr>
-        <td>Bookmarks per page</td>
-        <td>{{ BOOKMARKS_PER_PAGE }}</td>
-    </tr>
-    <tr>
-        <td>Saves per page</td>
-        <td>{{ SAVES_PER_PAGE }}</td>
-    </tr>
+    <tbody>
+        <tr>
+            <td>Posts per page</td>
+            <td>{{ POSTS_PER_PAGE }}</td>
+        </tr>
+        <tr>
+            <td>Threads per page</td>
+            <td>{{ THREADS_PER_PAGE }}</td>
+        </tr>
+        <tr>
+            <td>User posts per page</td>
+            <td>{{ USER_POSTS_PER_PAGE }}</td>
+        </tr>
+        <tr>
+            <td>User threads per page</td>
+            <td>{{ USER_THREADS_PER_PAGE }}</td>
+        </tr>
+        <tr>
+            <td>Subscriptions per page</td>
+            <td>{{ SUBSCRIPTIONS_PER_PAGE }}</td>
+        </tr>
+        <tr>
+            <td>Bookmarks per page</td>
+            <td>{{ BOOKMARKS_PER_PAGE }}</td>
+        </tr>
+        <tr>
+            <td>Saves per page</td>
+            <td>{{ SAVES_PER_PAGE }}</td>
+        </tr>
+    </tbody>
 </table>
 {% if LOCAL_DEVELOPMENT %}
     <p>You can change or override these values in your <code>local_settings.py</code> file.</p>
