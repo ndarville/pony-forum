@@ -1019,9 +1019,12 @@ def custom_register(request, **kwargs):
 @login_required(login_url=LOGIN_URL)
 def settings(request):
     """Place for the user to change and manage his or her user settings."""
-    if request.is_ajax() and request.method == "POST":  # Changes submitted
+    if request.method == "POST":  # Changes submitted
+        profile = request.user.get_profile()
+        profile.has_dyslexia = request.POST['has_dyslexia']
+        profile.auto_subscribe = request.POST['auto_subscribe'] == "True"
+        profile.save()
         messages.success(request, "New settings saved.")
-        HttpResponse("Done!")
     
     return render(request, 'settings.html', {})
 

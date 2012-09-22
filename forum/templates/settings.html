@@ -2,34 +2,31 @@
 
 {% block title %}Manage Settings{% endblock %}
 {% block canonical_url %}{% url forum.views.settings %}{% endblock %}
-
 {% block content_body %}
-    <p>
-    {#  <a class="button" href="/accounts/{{ user.username }}/edit/">Edit profile</a> | #}
-    {#  <a class="button" href="/accounts/{{ user.username }}/email/">Change e-mail</a> | #}
-    </p>
+    {% with profile=user.get_profile %}
+    <form action="{% url forum.views.settings %}" method="post">
+        {% csrf_token %}
+        <p>
+            <label for="has_dyslexia">I have dyslexia:</label>
+            <select size="1" name="has_dyslexia">
+                <option value="U"{% if profile.has_dyslexia == "U" %} selected{% endif %}>Undecided</option>
+                <option value="Y"{% if profile.has_dyslexia == "Y" %} selected{% endif %}>Yes</option>
+                <option value="N"{% if profile.has_dyslexia == "N" %} selected{% endif %}>No</option>
+            </select>
+        </p>
+        <p>
+            <label for="auto_subscribe">Autosubscribe after posting:</label>
+            <select size="1" name="auto_subscribe">
+                <option value="True"{% if profile.auto_subscribe %} selected{% endif %}>Yes</option>
+                <option value="False"{% if not profile.auto_subscribe %} selected{% endif %}>No </option>
+            </select>
+    	</p>
+        <div id="button-group">
+            <input type="submit" name="submit" id="submit" value="Save Settings" />
 
-    <p>
-        <label for="has_dyslexia">I have dyslexia:</label>
-        <select size="1">
-            <option value="U"{% if user.get_profile.has_dyslexia == 'U' %} selected{% endif %}>Undecided</option>
-            <option value="Y"{% if user.get_profile.has_dyslexia == 'Y' %} selected{% endif %}>Yes</option>
-            <option value="N"{% if user.get_profile.has_dyslexia == 'N' %} selected{% endif %}>No</option>
-        </select>
-    </p>
-
-	<p>
-	   <label for="autosubscribe">Autosubscribe after posting</label>
-	   <input type="checkbox" name="autosubscribe">
-	</p>
-
-    <div id="button-group">
-        <a class="button" href="#" class="js" id="">Save settings</a>
-        <a class="button" href="{% url auth_password_change %}">Change password</a>
-    </div>
+            <a class="button" href="{% url auth_password_change %}">Change password</a>
+        </div>
+    </form>
+    {% endwith %}
 {% endblock %}
 {% block credits-border %}<hr />{% endblock %}
-{% block js %}
-        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
-        <script type="text/javascript" src="{{ STATIC_URL }}js/settings-js.js"></script>
-{% endblock %}
