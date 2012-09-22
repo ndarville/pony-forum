@@ -450,22 +450,6 @@ legend {
     padding: 5px 5px;
 }
 
-/** Problematic
-th#thread-category:first-child,
-th#category-title {
-    -moz-border-top-left-radius: 5px;
-    -webkit-border-top-left-radius: 5px;
-    border-top-left-radius: 5px;
-}
-
-th#posts-in-category,
-th#latest-post {
-    -moz-border-top-right-radius: 5px !important;
-    -webkit-border-top-right-radius: 5px;
-    border-top-right-radius: 5px;
-}
-*/
-
 #content .categories thead,
 #content .threads thead,
 #content .categories th,
@@ -474,18 +458,6 @@ th#latest-post {
     background: #FFB;
     font-weight: bold;
     text-align: left;
-}
-
-#content .categories th:first-child {
-    -webkit-border-top-left-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    border-top-left-radius: 5px;
-}
-
-#content .categories th:last-child {
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topright: 5px;
-    border-top-right-radius: 5px;
 }
 
 #content .threads .locked {
@@ -509,26 +481,6 @@ th#latest-post {
 #threadbar li:hover,
 #navigation li:hover {
     background-color: yellow;
-}
-
-/** #content table tr:last-child, */
-#threadbar li:last-child,
-#navigation .last {
-    -webkit-border-bottom-right-radius: 5px;
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-radius-bottomright: 5px;
-    -moz-border-radius-bottomleft: 5px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-
-#navigation .first {
-    -webkit-border-top-left-radius: 5px ;
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    -moz-border-radius-topright: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
 }
 
 #content table.hide {
@@ -956,4 +908,69 @@ textarea,
 #credits span {
     white-space: nowrap;
 }
+/**** * ****/
+
+/****       *****
+***** FIXES *****
+*****       ****/
+
+/*** Unrounded Corners Fix ***/
+    /** Upper left AND right **/
+        #navigation .first {
+            -webkit-border-top-left-radius: 5px ;
+            -webkit-border-top-right-radius: 5px;
+            -moz-border-radius-topleft: 5px;
+            -moz-border-radius-topright: 5px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+    /** Bottom left AND right **/
+        #threadbar li:last-child,
+        #navigation .last {
+            -webkit-border-bottom-right-radius: 5px;
+            -webkit-border-bottom-left-radius: 5px;
+            -moz-border-radius-bottomright: 5px;
+            -moz-border-radius-bottomleft: 5px;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+    /** Upper left **/
+        #board .words th:first-child,
+        #content-body th:first-child,
+        #content .categories th:first-child {
+            -webkit-border-top-left-radius: 5px ;
+            -moz-border-radius-topleft: 5px;
+            border-top-left-radius: 5px;
+        }
+
+    /** Upper right **/
+        #board .words th:last-child,
+        #content-body th:last-child,
+        #content .categories th:last-child {
+            -webkit-border-top-right-radius: 5px ;
+            -moz-border-radius-topright: 5px;
+            border-top-right-radius: 5px;
+        }
+
+    /** Lower left **/
+        .categories tr:last-child td:first-child,
+        .threads tr:last-child td:first-child,
+        #board .words tr:last-child td:first-child,
+        #content-body tr:last-child td:first-child {
+            -webkit-border-bottom-left-radius: 5px;
+            -moz-border-radius-bottomleft: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+    /** Lower right **/
+        .categories tr:last-child td:last-child,
+        .threads tr:last-child td:last-child,
+        #board .words tr:last-child td:last-child,
+        #content-body tr:last-child td:last-child {
+            -webkit-border-bottom-right-radius: 5px;
+            -moz-border-radius-bottomright: 5px;
+            border-bottom-right-radius: 5px;
+        }
 /**** * ****/
