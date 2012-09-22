@@ -8,19 +8,21 @@
         Required settings
     </caption>
     <thead>
-        <th>Key</th>
-        <th>Configured?</th>
-        <th>Value</th>
+        <tr>
+            <th>Key</th>
+            <th>Configured?</th>
+            <th>Value</th>
+        </tr>
     </thead>
     <tbody>
         <tr>
             <td>Site name</td>
-            <td>{% if HAS_SITE_NAME %}Yes{% else %}<strong>No</strong><a href="/admin/sites/site/1/">&mdash;fix here{% endif %}</td>
+            <td>{% if HAS_SITE_NAME %}Yes{% else %}<strong>No</strong><a href="/admin/sites/site/1/">&mdash;fix here</a>{% endif %}</td>
             <td><i>{{ SITE_NAME }}</i></td>
         </tr>
         <tr>
             <td>Site domain</td>
-            <td>{% if HAS_SITE_DOMAIN %}Yes{% else %}<strong>No</strong><a href="/admin/sites/site/1/">&mdash;fix here{% endif %}</td>
+            <td>{% if HAS_SITE_DOMAIN %}Yes{% else %}<strong>No</strong><a href="/admin/sites/site/1/">&mdash;fix here</a>{% endif %}</td>
             <td><i>{{ SITE_DOMAIN }}</i></td>
         </tr>
         <tr>
@@ -57,8 +59,10 @@
         Other settings
     </caption>
     <thead>
-        <th>Key</th>
-        <th>Value</th>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
     </thead>
     <tbody>
         <tr>
@@ -85,8 +89,10 @@
         Pagination settings
     </caption>
     <thead>
-        <th>Key</th>
-        <th>Value</th>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
     </thead>
     <tbody>
         <tr>
@@ -123,6 +129,5 @@
     <p>You can change or override these values in your <code>local_settings.py</code> file.</p>
 {% else %}
     <p>You can change these values in your dotCloud environment. To find out how, read <a href="http://ndarville.github.com/dotcloud-django/#after-installation-instructions/setting-up-an-e-mail-server">this</a>.</p>
-{% endif %}
-</form>  
+{% endif %}  
 {% endblock %}
