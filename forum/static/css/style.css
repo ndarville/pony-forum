@@ -504,7 +504,8 @@ th#latest-post {
     background: #FFF7F7;
 }
 
-#content tr:hover,
+#content .categories tr:hover,
+#content .threads tr:hover,
 #threadbar li:hover,
 #navigation li:hover {
     background-color: yellow;
@@ -610,7 +611,6 @@ span#error {
     display: inline-block;
     font: 0.8125em/1.8462em Consolas, Monaco, monospace;
     margin: 1em 1px; /** 1px to offset the border */
-    padding: 5px 15px;
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
     -webkit-border-radius: 5px;
@@ -621,13 +621,25 @@ span#error {
     caption {
         caption-side: top;
         text-align: center;
+        font: small-caps 1.25em Helvetica;
         border-bottom: solid 1px #CCC;
     }
 
     #board .words th,
     #content-body th {
         font: bold small-caps 1.25em Georgia;
+        background-color: #FFF;
     }
+
+    #board .words td,
+    #content-body td {
+        padding: 8px;
+    }
+
+    #board .words tr:nth-child(even),
+    #content-body tr:nth-child(even) {
+    background-color: #FFF; /** Breaks corners */
+}
 
 #breadcrumbs {
     margin-bottom: 1.5em; /** Recalcuate. Depends on button size */
@@ -768,19 +780,17 @@ span#error {
     font-family: Georgia;
 }
 
-.body table, #example table {
+#example table {
     font: 0.9em/1.35em Consolas, Inconsolata, monospace;
     border: 1px solid black;
     width: 90%;
     margin: 0 auto 1.5em; /** Recalculate */
 }
 
-.body tr:hover,
-.body thead:hover {
+.body tr:hover {
     background-color: pink;
 }
 
-.body th:hover,
 .body td:hover {
     background-color: yellow;
 }
