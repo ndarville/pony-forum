@@ -245,7 +245,7 @@ if not LOCAL_DEVELOPMENT:
     EMAIL_HOST_USER     = env.get('EMAIL_HOST_USER', 'myusername@gmail.com')
     EMAIL_HOST_PASSWORD = env.get('EMAIL_HOST_PASSWORD', 'mypassword')
     EMAIL_PORT          = int(env.get('EMAIL_PORT', '587'))
-    EMAIL_USE_TLS       = bool(env.get('EMAIL_USE_TLS', 'True'))
+    EMAIL_USE_TLS       = env.get('EMAIL_USE_TLS', 'True') == 'True'
     DEFAULT_FROM_EMAIL  = env.get('DEFAULT_FROM_EMAIL',
                                   'noreply@equestria.pony')
 #    EMAIL_SUBJECT_PREFIX = ""  # Doesn't work, optional
@@ -257,7 +257,7 @@ if LOCAL_DEVELOPMENT:
     REGISTRATION_OPEN = True
 else:
     ACCOUNT_ACTIVATION_DAYS = int(env.get('ACCOUNT_ACTIVATION_DAYS', '7'))
-    REGISTRATION_OPEN = bool(env.get('REGISTRATION_OPEN', 'True'))
+    REGISTRATION_OPEN = env.get('REGISTRATION_OPEN', 'True') == 'True'
 ###
 
 ### DJANGO-SECURE HTTPS
@@ -287,7 +287,7 @@ except NameError:
         pass
 
 if not LOCAL_DEVELOPMENT:
-    DEBUG = bool(env.get('DEBUG', 'False'))
+    DEBUG = env.get('DEBUG', 'False') == 'True'
 TEMPLATE_DEBUG = DEBUG
 
 ### DJANGO-DEBUG-TOOLBAR
