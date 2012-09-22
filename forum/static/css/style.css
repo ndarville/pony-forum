@@ -480,7 +480,7 @@ legend {
 #content .threads tr:hover,
 #threadbar li:hover,
 #navigation li:hover {
-    background-color: yellow;
+    background-color: rgba(0,0,0, .1);
 }
 
 #content table.hide {
@@ -592,8 +592,18 @@ span#error {
 
     #board .words tr:nth-child(even),
     #content-body tr:nth-child(even) {
-    background-color: #FFF; /** Breaks corners */
-}
+        background-color: #FFF;
+    }
+
+    #board .words tr:hover,
+    #content-body tr:hover {
+        background-color: #FF9;
+    }
+
+    #board .words td:hover,
+    #content-body td:hover {
+        background-color: pink;
+    }
 
 #breadcrumbs {
     margin-bottom: 1.5em; /** Recalcuate. Depends on button size */
@@ -739,14 +749,6 @@ span#error {
     border: 1px solid black;
     width: 90%;
     margin: 0 auto 1.5em; /** Recalculate */
-}
-
-.body tr:hover {
-    background-color: pink;
-}
-
-.body td:hover {
-    background-color: yellow;
 }
 
 /** Buttons and submit input */
