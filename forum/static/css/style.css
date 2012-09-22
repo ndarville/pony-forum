@@ -584,7 +584,9 @@ span#error {
     }
 
     #board .words td,
-    #content-body td {
+    #board .words th,
+    #content-body td,
+    #content-body th {
         padding: 8px;
     }
 
