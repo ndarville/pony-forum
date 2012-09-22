@@ -438,7 +438,8 @@ legend {
     float: left;
 }
 
-#content table {
+#content table.categories,
+#content table.threads {
     width: 100%;
     border-collapse: separate; /** Allows round corners
     cf. http://vamin.net/examples/rounded_tables2.html */
@@ -606,8 +607,8 @@ span#error {
 
 #board .words table,
 #content-body table {
+    display: inline-block;
     font: 0.8125em/1.8462em Consolas, Monaco, monospace;
-    display: block;
     margin: 1em 1px; /** 1px to offset the border */
     padding: 5px 15px;
     background-color: #F7F7F7;
@@ -620,6 +621,7 @@ span#error {
     caption {
         caption-side: top;
         text-align: center;
+        border-bottom: solid 1px #CCC;
     }
 
 #breadcrumbs {
