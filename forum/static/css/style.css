@@ -501,7 +501,7 @@ th#latest-post {
 }
 
 #content .threads .subscribed {
-    background: orange;
+    background: #FFF7F7;
 }
 
 #content tr:hover,
@@ -622,6 +622,11 @@ span#error {
         caption-side: top;
         text-align: center;
         border-bottom: solid 1px #CCC;
+    }
+
+    #board .words th,
+    #content-body th {
+        font: bold small-caps 1.25em Georgia;
     }
 
 #breadcrumbs {
