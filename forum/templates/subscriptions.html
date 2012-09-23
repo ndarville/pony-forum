@@ -1,38 +1,22 @@
-{% extends "base.html" %}
+{% extends "page.html" %}
 
-{% block title %}Your Subscriptions{% endblock %}
-{% block canonical_url %}{% url forum.views.subscriptions %}{% endblock %}
-{% block threadbar %}
-            {% include "includes/threadbar.html" %}
-{% endblock %}
-{% block content %}
-            <div id="content">
-        {% if has_subs %}
-                <table class="subscriptions">
-            {% if updated_subs %}
-                {% for sub in updated_subs %}
-                    <tr>
-                        <td><a href="" title="">Title</a></td>
-                        <td><a href="" title="">Number of updates</a></td>
-                        <td><a title="Hide categories in the list" href="#">Unsubscribe</a></td>
-                    </tr>
-                {% endfor %}
-            {% endif %}
-            {% if inactive_subs %}
-                {% for sub in inactive_subs %}
-                    <tr>
-                        <td><a href="" title="">Title</a></td>
-                        <td><a href="" title="">Number of updates</a></td>
-                        <td><a title="Hide categories in the list" href="#">Unsubscribe</a></td>
-                    </tr>
-                {% endfor %}
-            {% endif %}
-        {% endif %}
-                </table>
-            </div>
-{% endblock %}
-{% block credits-border %}<hr />{% endblock %}
-{% block js %}
-        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
-        <script type="text/javascript" src="{{ STATIC_URL }}js/subscriptions-js.js"></script>
+{% block title %}Subscriptions{% endblock %}
+{% block canonical_url %}{% url subscriptions %}{% endblock %}
+{% block content_body %}
+    <ul>
+    {% for thread in objects.object_list %}
+        <li><a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a></li>
+    {% empty %}
+        <p>You have no subscriptions.</p>
+    {% endfor %}
+    </ul>
+
+{% with current_page=objects.number %}
+{% with total_pages=objects.paginator.num_pages %}
+{% with page=objects %}
+    {% include "includes/pagination.html" %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+
 {% endblock %}
