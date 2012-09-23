@@ -445,8 +445,8 @@ legend {
     text-decoration: underline;
 }
 
-#profile-information { float: left;  width: 50%; }
-#profile-interaction { float: right; width: 50%; }
+#profile-information { float: left;  width: 60%; }
+#profile-interaction { float: right; width: 40%; }
 /**** * ****/
 
 /****          *****
