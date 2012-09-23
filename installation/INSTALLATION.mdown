@@ -40,6 +40,6 @@ Here is a long, step-by-step installation guide that everyone should be able to 
 
     ![Push success](https://github.com/ndarville/dotcloud-django/raw/master/installation/screenshots/7-success.png)
 
-That’s it! Feel free to play around with your new forum and check out the [README](http://ndarville.github.com/dotcloud-django/). Bear in mind that this is just a sandbox applications. More on this [at dotCloud](http://docs.dotcloud.com/0.4/guides/flavors/).
+That’s it! Feel free to play around with your new forum and check out the [README](http://ndarville.github.com/dotcloud-django/). Bear in mind that this is just a sandbox application. More on this [at dotCloud](http://docs.dotcloud.com/0.4/guides/flavors/).
 
 ![Tada!](https://github.com/ndarville/dotcloud-django/raw/master/installation/screenshots/8-tada.png)
