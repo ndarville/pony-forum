@@ -347,7 +347,7 @@ input[type="submit"]:active {
 
 .pagination li {
     padding: 0 0.5em;
-    border: 1px solid #CCC;
+    border: 1px solid #D1D1D1;
     display: inline-block;
     background-color: #F7F7F7;
 }
