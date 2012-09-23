@@ -16,6 +16,8 @@ Here is a long, step-by-step installation guide that everyone should be able to 
 
     ![Downloading the project](https://github.com/ndarville/dotcloud-django/raw/master/installation/screenshots/3-download.png)
 
+    If you want to just play around, you can download it as a plain compressed file [here](https://github.com/ndarville/dotcloud-django/downloads).
+
 5. Move the folder to any preferred project folder, if you want. We’ll just use the desktop in this guide.
 
 6. Create your dotCloud app. You can name it whatever you want.
@@ -29,6 +31,12 @@ Here is a long, step-by-step installation guide that everyone should be able to 
     `dotcloud push <app_name>`
 
     ![Pushing the project to the app](https://github.com/ndarville/dotcloud-django/raw/master/installation/screenshots/5-push.png)
+
+    If you downloaded the project as a compressed file, you push your project to your app like this:
+
+    `dotcloud push --all <app_name`
+
+    Note that this means *all* the files in your current working directory will be copied, which will often involve a lot of additional, unrelated files getting copied. Pushing using git only uploads the `dotcloud-django` files and folders that were committed.
 
 8. A lot of stuff will be run now, as the project is installed to your dotCloud app. If you have connection problems because of a wonky internet connection, you might get an error with something like `postinstall` and `chmod` in it.
 
