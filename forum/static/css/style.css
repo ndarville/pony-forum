@@ -341,10 +341,6 @@ input[type="submit"]:active {
     border: none;
 }
 
-.pagination a {
-    display: block;
-}
-
 .pagination li {
     padding: 0 0.5em;
     border: 1px solid #D1D1D1;
@@ -374,6 +370,14 @@ input[type="submit"]:active {
     -moz-border-radius-bottomright: 5px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.pagination a {
+    display: block;
+}
+
+.pagination .current_page {
+    background-color: #FF9;
 }
 
 .screenreader-only {
