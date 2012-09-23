@@ -342,7 +342,7 @@ input[type="submit"]:active {
 #thread-mod-buttons-top li,
 #thread-buttons-bottom li,
 #thread-mod-buttons-bottom li {
-    padding: 0 0.5em;
+    /** padding: 0 0.5em; */
     border: 1px solid #D1D1D1;
     display: inline-block;
     background-color: #F7F7F7;
@@ -361,7 +361,6 @@ input[type="submit"]:active {
 #thread-mod-buttons-top li:first-child,
 #thread-buttons-bottom li:first-child,
 #thread-mod-buttons-bottom li:first-child {
-    padding-left: 0.75em;
     -webkit-border-top-left-radius: 5px;
     -webkit-border-bottom-left-radius: 5px;
     -moz-border-radius-topleft: 5px;
@@ -370,12 +369,19 @@ input[type="submit"]:active {
     border-bottom-left-radius: 5px;
 }
 
+.pagination li:first-child a,
+#thread-buttons-top li:first-child a,
+#thread-mod-buttons-top li:first-child a,
+#thread-buttons-bottom li:first-child a,
+#thread-mod-buttons-bottom li:first-child a {
+    padding-left: 0.75em;
+}
+
 .pagination li:last-child,
 #thread-buttons-top li:last-child,
 #thread-mod-buttons-top li:last-child,
 #thread-buttons-bottom li:last-child,
 #thread-mod-buttons-bottom li:last-child {
-    padding-right: 0.75em;
     -webkit-border-top-right-radius: 5px;
     -webkit-border-bottom-right-radius: 5px;
     -moz-border-radius-topright: 5px;
@@ -384,12 +390,21 @@ input[type="submit"]:active {
     border-bottom-right-radius: 5px;
 }
 
+.pagination li:last-child a,
+#thread-buttons-top li:last-child a,
+#thread-mod-buttons-top li:last-child a,
+#thread-buttons-bottom li:last-child a,
+#thread-mod-buttons-bottom li:last-child a {
+    padding-right: 0.75em;
+}
+
 .pagination a,
 #thread-buttons-top a,
 #thread-mod-buttons-top a,
 #thread-buttons-bottom a,
 #thread-mod-buttons-bottom a {
     display: block;
+    padding: 0 0.5em;
 }
 
 .pagination .current_page {
