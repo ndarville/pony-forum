@@ -263,10 +263,6 @@ table {
 /** */
 
 #content a.button,
-#thread-buttons-top a.button,
-#thread-buttons-bottom a.button,
-#thread-mod-buttons-top a.button,
-#thread-mod-buttons-bottom a.button,
 input[type="submit"] {
     color: #484848;
     font: bold 12px monospace, sans-serif;
@@ -297,10 +293,6 @@ input[type="submit"] {
 }
 
 #content a.button:hover,
-#thread-buttons-top a.button:hover,
-#thread-buttons-bottom a.button:hover,
-#thread-mod-buttons-top a.button:hover,
-#thread-mod-buttons-bottom a.button:hover,
 input[type="submit"]:hover {
     border: solid 1px #333;
     color: #282828;
@@ -311,10 +303,6 @@ input[type="submit"]:hover {
 }
 
 #content a.button:active,
-#thread-buttons-top a.button:active,
-#thread-buttons-bottom a.button:active,
-#thread-mod-buttons-top a.button:active,
-#thread-mod-buttons-bottom a.button:active,
 input[type="submit"]:active {
     border: solid 1px #7f7f7f;
     background: #d0d0d0;
@@ -326,7 +314,11 @@ input[type="submit"]:active {
     background: -o-linear-gradient(top, #a8a8a8, #c6c6c6 15%, #d8d8d8);
 }
 
-.pagination {
+.pagination,
+#thread-buttons-top,
+#thread-mod-buttons-top,
+#thread-buttons-bottom,
+#thread-mod-buttons-bottom {
     font-family: Georgia, serif;
     font-variant: small-caps;
     margin: 1.5em 0;
@@ -334,25 +326,41 @@ input[type="submit"]:active {
     clear: both;
 }
 
-#board .pagination {
+#board .pagination,
+#thread-buttons-top,
+#thread-mod-buttons-top,
+#thread-buttons-bottom,
+#thread-mod-buttons-bottom {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
     border: none;
 }
 
-.pagination li {
+.pagination li,
+#thread-buttons-top li,
+#thread-mod-buttons-top li,
+#thread-buttons-bottom li,
+#thread-mod-buttons-bottom li {
     padding: 0 0.5em;
     border: 1px solid #D1D1D1;
     display: inline-block;
     background-color: #F7F7F7;
 }
 
-.pagination li:hover {
+.pagination li:hover,
+#thread-buttons-top li:hover,
+#thread-mod-buttons-top li:hover,
+#thread-buttons-bottom li:hover,
+#thread-mod-buttons-bottom li:hover {
     background-color: rgba(0,0,0, .1);
 }
 
-.pagination li:first-child {
+.pagination li:first-child,
+#thread-buttons-top li:first-child,
+#thread-mod-buttons-top li:first-child,
+#thread-buttons-bottom li:first-child,
+#thread-mod-buttons-bottom li:first-child {
     padding-left: 0.75em;
     -webkit-border-top-left-radius: 5px;
     -webkit-border-bottom-left-radius: 5px;
@@ -362,7 +370,11 @@ input[type="submit"]:active {
     border-bottom-left-radius: 5px;
 }
 
-.pagination li:last-child {
+.pagination li:last-child,
+#thread-buttons-top li:last-child,
+#thread-mod-buttons-top li:last-child,
+#thread-buttons-bottom li:last-child,
+#thread-mod-buttons-bottom li:last-child {
     padding-right: 0.75em;
     -webkit-border-top-right-radius: 5px;
     -webkit-border-bottom-right-radius: 5px;
@@ -372,7 +384,11 @@ input[type="submit"]:active {
     border-bottom-right-radius: 5px;
 }
 
-.pagination a {
+.pagination a,
+#thread-buttons-top a,
+#thread-mod-buttons-top a,
+#thread-buttons-bottom a,
+#thread-mod-buttons-bottom  {
     display: block;
 }
 
@@ -657,32 +673,6 @@ span#error {
     clear: both;
 }
 
-#thread-buttons-top,
-#thread-mod-buttons-top {
-    margin-bottom: 4em;    /** Recalcuate. Depends on button size */
-}
-
-#thread-buttons-bottom,
-#thread-mod-buttons-bottom {
-    margin-top: 3em;    /** Recalcuate. Depends on button size */
-}
-
-#thread-buttons-top,
-#thread-buttons-bottom,
-#thread-mod-buttons-top,
-#thread-mod-buttons-bottom {
-    padding: 0 10px;
-}
-
-#thread-buttons-top,
-#thread-buttons-bottom,
-#thread-mod-buttons-top,
-#thread-mod-buttons-bottom,
-.post-top {
-    clear: both;
-    background-color: orange;
-}
-
 .postdate {
     font-size: 0.85em;
 }
@@ -743,15 +733,16 @@ span#error {
     margin-bottom: 1em;
 }
 
+.post-top {
+    clear: both;
+    background-color: orange;
+}
+
 .post-bottom {
     clear: both;
     background-color: pink;
 }
 
-#thread-buttons-top a.button,
-#thread-buttons-bottom a.button,
-#thread-mod-buttons-top a.button,
-#thread-mod-buttons-bottom a.button,
 .post-bottom .right-buttons a.button {
     float: right;
     margin-left: 10px;
