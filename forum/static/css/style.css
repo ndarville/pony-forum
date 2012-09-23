@@ -718,7 +718,7 @@ span#error {
 .user,
 .op {
     float: left;
-    width: 100px; /** Recalculate */
+    width: 150px; /** Recalculate */
 }
 
 .op .username {
@@ -739,7 +739,7 @@ span#error {
 
 .words {
     float: right;
-    width: 550px; /** Recalculate */
+    width: 500px; /** Recalculate */
 }
 
 .words p,
@@ -771,7 +771,7 @@ span#error {
 .post-bottom .left-buttons,
 .post-bottom .agreeers,
 .post-bottom .thankers {
-    margin-left: 110px; /** Recalculate */
+    margin-left: 160px; /** Recalculate */
 }
 
 .agreeers,
