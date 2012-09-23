@@ -34,8 +34,10 @@ body {
     background-color: #F4F4FA !important;
     background-image: url(/static/images/dyslexia_cross_scratches.png) !important;
     background-repeat: repeat !important;
-    color: #191A42;
+    color: #191A42 !important;
     font-family: opendyslexic !important;
+    font-variant: normal !important;
+    text-transform: none !important;
     
 }
 
@@ -49,6 +51,8 @@ p:hover, li:hover {
 
 * {
     font-family: opendyslexic !important;
+    font-variant: normal !important;
+    text-transform: none !important;
 }
 
 input, textarea {
