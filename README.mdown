@@ -63,13 +63,13 @@ If you need to change these two fields---for instance, if you were to give your 
 
 Using [sontek's intelligible guide](http://sontek.net/using-gmail-to-send-e-mails-from-django), if you use a Gmail e-mail account, you can define your own e-mail server by entering these credentials:
 
-~~~python
+```python
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'user@gmail.com'
 EMAIL_HOST_PASSWORD = 'password'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-~~~
+```
 
 (If you use a Gmail e-mail, you just need to change the username and password, as the default values for the other keys will work fine.)
 
@@ -79,26 +79,26 @@ EMAIL_USE_TLS = True
 
 2. If you are setting up your forum on dotCloud, follow [their guide to environmental variables](http://docs.dotcloud.com/guides/environment/) and, instead, enter the information like environment variables like so:
 
-~~~sh
+```sh
 dotcloud var set ponyforum EMAIL_HOST_USER=your_user_name@gmail.com
 dotcloud var set ponyforum EMAIL_HOST_PASSWORD=your_password
-~~~
+```
 
 The problem with this method, is that dotCloud restarts your server, which takes a while, so to save your time, you can also do it like this on some operating systems:
 
-~~~sh
+```sh
 dotcloud var set ponyforum \
     'EMAIL_HOST_USER=your_user_name@gmail.com' \
     'EMAIL_HOST_PASSWORD=your_password'
-~~~
+```
 
 I think the last one is the easiest one, but choose whichever you prefer.
 
 All dotCloud environment variables for your app can be viewed with
 
-~~~sh
+```sh
 dotcloud var list ponyforum
-~~~
+```
 
 If you have an admin user, you can also view these key/values in your `configuration` view located by default at `/accounts/configuration/`.
 
@@ -106,9 +106,9 @@ If you have an admin user, you can also view these key/values in your `configura
 
 This should set up your e-mail server. At any point, you can alter the values by the approaches above. You can remove any erroneous environment variables entirely using
 
-~~~sh
+```sh
 dotcloud var unset ponyforum EMAIL_HOST_PASSWORD
-~~~
+```
 
 Obviously, you need to change the `USER` and `PASSWORD` fields to your own. Also note that if you are using Google's [two-factor authentication](https://accounts.google.com/SmsAuthConfig), you default password will not work, because you need to create a designated application password for it [here](https://accounts.google.com/IssuedAuthSubTokens). The reason is that if you use two-factor authentication, you will not use the password for your actual account outside of Google's own sites, but an application password. The advantage of this is that you can remove this application in your Google account settings right away, if you accidentally share it through GitHub or elsewhere.
 
@@ -120,15 +120,15 @@ After you have changed and saved your new settings in `settings.py`, run the `do
 
 Last of all, there's another way out to avoid e-mail validation altogether for people on local servers. In `urls.py`, replace the line
 
-~~~python
+```python
 url(r'^accounts/',  include('registration.backends.default.urls')),
-~~~
+```
 
 with this
 
-~~~python
+```python
 url(r'^accounts/',  include('registration.backends.simple.urls')),
-~~~
+```
 
 In other words, replace `default` with `simple`. This allows your registration to work right away; don't worry about providing the right e-mail address nor setting up your e-mail server. If you want to read more about this, check out the [documentation](https://bitbucket.org/ubernostrum/django-registration/src/27bccd108cde/docs/simple-backend.rst) for the registration back-end.
 
