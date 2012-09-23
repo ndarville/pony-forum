@@ -990,7 +990,8 @@ textarea,
     /** Upper left **/
         #board .words th:first-child,
         #content-body th:first-child,
-        #content .categories th:first-child {
+        #content .categories th:first-child,
+        #content .threads th:first-child {
             -webkit-border-top-left-radius: 5px ;
             -moz-border-radius-topleft: 5px;
             border-top-left-radius: 5px;
@@ -999,7 +1000,8 @@ textarea,
     /** Upper right **/
         #board .words th:last-child,
         #content-body th:last-child,
-        #content .categories th:last-child {
+        #content .categories th:last-child,
+        #content .threads th:last-child {
             -webkit-border-top-right-radius: 5px ;
             -moz-border-radius-topright: 5px;
             border-top-right-radius: 5px;
