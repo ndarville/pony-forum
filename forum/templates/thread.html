@@ -18,87 +18,87 @@
         {% endwith %}
 
             {% if not thread.is_removed %}
-                <div id="thread-buttons-top">
+                <ul id="thread-buttons-top">
                 {% if not thread.is_locked %}
-                    <a class="button" href="{% url forum.views.reply thread.id %}">
-                    Reply</a>
-                    <a class="button" href="{% url report_thread thread.id %}">Report</a>
+                    <li><a href="{% url forum.views.reply thread.id %}">
+                    Reply</a></li>
+                    <li><a href="{% url report_thread thread.id %}">Report</a></li>
                 {% else %}
-                    <a class="button" href="#">Locked</a>
+                    <li><a href="#">Locked</a></li>
                 {% endif %}
-                {#  <a class="button js" id="{{ thread.id }}" href="#">{% if thread in user.bookmarks.all %}Unbookmark{% else %}Bookmark{% endif %}</a> #}
-                    <a class="button js" id="{{ thread.id }}" href="#">{% if thread in user.subscriptions.all %}Unsubscribe{% else %}Subscribe{% endif %}</a>
-                </div>
+                {#  <li><a class="js" id="{{ thread.id }}" href="#">{% if thread in user.bookmarks.all %}Unbookmark{% else %}Bookmark{% endif %}</a></li> #}
+                    <li><a class="js" id="{{ thread.id }}" href="#">{% if thread in user.subscriptions.all %}Unsubscribe{% else %}Subscribe{% endif %}</a></li>
+                </ul>
             {% endif %}
 
-                <div id="thread-mod-buttons-top">
+                <ul id="thread-mod-buttons-top">
             {% if thread.is_removed and perms.forum.remove_thread %}
-                    <a class="button" href="{% url remove_thread thread.id %}">Restore</a>
+                    <li><a href="{% url remove_thread thread.id %}">Restore</a></li>
             {% else %}
                 {% if perms.forum.lock_thread %}
-                    <a class="button" href="{% url forum.views.lock_thread thread.id %}">{% if thread.is_locked %}Unlock{% else %}Lock{% endif %}</a>
+                    <li><a href="{% url forum.views.lock_thread thread.id %}">{% if thread.is_locked %}Unlock{% else %}Lock{% endif %}</a></li>
                 {% endif %}
                 {% if perms.forum.change_thread %}
-                    <a class="button" href="{% url forum.views.moderate_thread thread.id %}">Moderate</a>
+                    <li><a href="{% url forum.views.moderate_thread thread.id %}">Moderate</a></li>
                 {% endif %}
                 {% if perms.forum.move_thread %}
-                    <a class="button" href="{% url forum.views.move_thread thread.id %}">Move</a>
+                    <li><a href="{% url forum.views.move_thread thread.id %}">Move</a></li>
                 {% endif %}
                 {% if perms.forum.sticky_thread %}
-                    <a class="button" href="{% url forum.views.sticky_thread thread.id %}">{% if thread.is_sticky %}Unsticky{% else %}Sticky{% endif %}</a>
+                    <li><a href="{% url forum.views.sticky_thread thread.id %}">{% if thread.is_sticky %}Unsticky{% else %}Sticky{% endif %}</a></li>
                 {% endif %}
                 {% if perms.forum.merge_thread %}
-                    <a class="button" href="{% url forum.views.merge_thread thread.id %}">Merge</a>
+                    <li><a href="{% url forum.views.merge_thread thread.id %}">Merge</a></li>
                 {% endif %}
                 {% if perms.forum.remove_thread %}
-                    <a class="button" href="{% url remove_thread thread.id %}">Remove</a>
+                    <li><a href="{% url remove_thread thread.id %}">Remove</a></li>
                 {% endif %}
             {% endif %}
                 <!-- appoint_threadmin -->
-                </div>
+                </ul>
 
             {% for post in posts.object_list %} <!-- exclude is_removed -->
                 {% include "includes/entries.html" %}
             {% endfor %}
 
-                <div id="thread-mod-buttons-bottom">
+                <ul id="thread-mod-buttons-bottom">
             {% if thread.is_removed and perms.forum.remove_thread %}
-                    <a class="button" href="{% url remove_thread thread.id %}">Restore</a>
+                    <li><a href="{% url remove_thread thread.id %}">Restore</a></li>
             {% else %}
                 {% if perms.forum.lock_thread %}
-                    <a class="button" href="{% url forum.views.lock_thread thread.id %}">{% if thread.is_locked %}Unlock{% else %}Lock{% endif %}</a>
+                    <li><a href="{% url forum.views.lock_thread thread.id %}">{% if thread.is_locked %}Unlock{% else %}Lock{% endif %}</a></li>
                 {% endif %}
                 {% if perms.forum.change_thread %}
-                    <a class="button" href="{% url forum.views.moderate_thread thread.id %}">Moderate</a>
+                    <li><a href="{% url forum.views.moderate_thread thread.id %}">Moderate</a></li>
                 {% endif %}
                 {% if perms.forum.move_thread %}
-                    <a class="button" href="{% url forum.views.move_thread thread.id %}">Move</a>
+                    <li><a href="{% url forum.views.move_thread thread.id %}">Move</a></li>
                 {% endif %}
                 {% if perms.forum.sticky_thread %}
-                    <a class="button" href="{% url forum.views.sticky_thread thread.id %}">{% if thread.is_sticky %}Unsticky{% else %}Sticky{% endif %}</a>
+                    <li><a href="{% url forum.views.sticky_thread thread.id %}">{% if thread.is_sticky %}Unsticky{% else %}Sticky{% endif %}</a></li>
                 {% endif %}
                 {% if perms.forum.merge_thread %}
-                    <a class="button" href="{% url forum.views.merge_thread thread.id %}">Merge</a>
+                    <li><a href="{% url forum.views.merge_thread thread.id %}">Merge</a></li>
                 {% endif %}
                 {% if perms.forum.remove_thread %}
-                    <a class="button" href="{% url remove_thread thread.id %}">Remove</a>
+                    <li><a href="{% url remove_thread thread.id %}">Remove</a></li>
                 {% endif %}
             {% endif %}
                 <!-- appoint_threadmin -->
-                </div>
+                </ul>
 
             {% if not thread.is_removed %}
-                <div id="thread-buttons-bottom">
+                <ul id="thread-buttons-bottom">
                 {% if not thread.is_locked %}
-                    <a class="button" href="{% url forum.views.reply thread.id %}">
-                    Reply</a>
-                    <a class="button" href="{% url report_thread thread.id %}">Report</a>
+                    <li><a href="{% url forum.views.reply thread.id %}">
+                    Reply</a></li>
+                    <li><a href="{% url report_thread thread.id %}">Report</a></li>
                 {% else %}
-                    <a class="button" href="#">Locked</a>
+                    <li><a href="#">Locked</a></li>
                 {% endif %}
-                {#  <a class="button js" id="{{ thread.id }}" href="#">{% if thread in user.bookmarks.all %}Unbookmark{% else %}Bookmark{% endif %}</a> #}
-                    <a class="button js" id="{{ thread.id }}" href="#">{% if thread in user.subscriptions.all %}Unsubscribe{% else %}Subscribe{% endif %}</a>
-                </div>
+                {#  <li><a class="js" id="{{ thread.id }}" href="#">{% if thread in user.bookmarks.all %}Unbookmark{% else %}Bookmark{% endif %}</a></li> #}
+                    <li><a class="js" id="{{ thread.id }}" href="#">{% if thread in user.subscriptions.all %}Unsubscribe{% else %}Subscribe{% endif %}</a></li>
+                </ul>
             {% endif %}
 
         {% with current_page=posts.number %}
