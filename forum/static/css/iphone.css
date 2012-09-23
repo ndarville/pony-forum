@@ -89,3 +89,13 @@
 .words {
     width: 83%;
 }
+
+.post-bottom .left-buttons a.button + a.button {
+    margin-right: 10px;
+}
+
+.post-bottom .left-buttons,
+.post-bottom .agreeers,
+.post-bottom .thankers {
+    margin-left: 17%;  /** .user width */
+}
