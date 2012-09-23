@@ -388,7 +388,7 @@ input[type="submit"]:active {
 #thread-buttons-top a,
 #thread-mod-buttons-top a,
 #thread-buttons-bottom a,
-#thread-mod-buttons-bottom  {
+#thread-mod-buttons-bottom a {
     display: block;
 }
 
