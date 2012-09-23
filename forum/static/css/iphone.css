@@ -97,5 +97,5 @@
 .post-bottom .left-buttons,
 .post-bottom .agreeers,
 .post-bottom .thankers {
-    margin-left: 17%;  /** .user width */
+    margin-left: 17%;  /** 100% - .words width */
 }
