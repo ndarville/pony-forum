@@ -27,12 +27,12 @@
         </tr>
         <tr>
             <td>Username</td>
-            <td>{% if EMAIL_HOST_USER %}Yes{% else %}<strong>No.</strong> <a href="http://ndarville.github.com/dotcloud-django/#after-installation-instructions/setting-up-an-e-mail-server">(More info.)</a>{% endif %}</td>
+            <td>{% if EMAIL_HOST_USER %}Yes{% else %}<strong>No.</strong> <a href="http://ndarville.github.com/pony-forum/#after-installation-instructions/setting-up-an-e-mail-server">(More info.)</a>{% endif %}</td>
             <td>{% if EMAIL_HOST_USER %}(Value hidden){% else %}myusername@gmail.com{% endif %}</td>
         </tr>
         <tr>
             <td>Password</td>
-            <td>{% if EMAIL_HOST_PASSWORD %}Yes{% else %}<strong>No.</strong> <a href="http://ndarville.github.com/dotcloud-django/#after-installation-instructions/setting-up-an-e-mail-server">(More info.)</a>{% endif %}</td>
+            <td>{% if EMAIL_HOST_PASSWORD %}Yes{% else %}<strong>No.</strong> <a href="http://ndarville.github.com/pony-forum/#after-installation-instructions/setting-up-an-e-mail-server">(More info.)</a>{% endif %}</td>
             <td>{% if EMAIL_HOST_PASSWORD %}(Value hidden){% else %}mypassword{% endif %}</td>
         </tr>
     </tbody>
@@ -128,6 +128,6 @@
 {% if LOCAL_DEVELOPMENT %}
     <p>You can change or override these values in your <code>local_settings.py</code> file.</p>
 {% else %}
-    <p>You can change these values in your dotCloud environment. To find out how, read <a href="http://ndarville.github.com/dotcloud-django/#after-installation-instructions/setting-up-an-e-mail-server">this</a>.</p>
+    <p>You can change these values in your dotCloud environment. To find out how, read <a href="http://ndarville.github.com/pony-forum/#after-installation-instructions/setting-up-an-e-mail-server">this</a>.</p>
 {% endif %}  
 {% endblock %}

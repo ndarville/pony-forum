@@ -11,7 +11,7 @@ The most important issue is to iron out any bugs that may exist in the current c
 
 Pull Requests
 -------------
-Pull requests will be submitted to a high level of *automated* scrutiny at a later time, but for the time being, any pull request must pass the very lenient Travis CI test. The `.travis.yml` file can be found [here](https://github.com/ndarville/dotcloud-django/blob/master/.travis.yml). You will also receive an automated response to your pull request that will tell you whether you submitted build fails or not.
+Pull requests will be submitted to a high level of *automated* scrutiny at a later time, but for the time being, any pull request must pass the very lenient Travis CI test. The `.travis.yml` file can be found [here](https://github.com/ndarville/pony-forum/blob/master/.travis.yml). You will also receive an automated response to your pull request that will tell you whether you submitted build fails or not.
 
 If the build fails, it is expected that you will amend the error—assuming you are able—to expedite the process.
 

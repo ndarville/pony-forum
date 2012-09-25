@@ -4,19 +4,19 @@ Here is a long, step-by-step installation guide that everyone should be able to 
 
 1. Sign up for a dotCloud account
 
-    ![dotCloud sign-up](https://github.com/ndarville/dotcloud-django/raw/master/installation/screenshots/1-sign-up.png)
+    ![dotCloud sign-up](https://github.com/ndarville/pony-forum/raw/master/installation/screenshots/1-sign-up.png)
 
 2. Copy-paste the API key in your settings tab
 
-    ![API key](https://github.com/ndarville/dotcloud-django/raw/master/installation/screenshots/2-api-key.png)
+    ![API key](https://github.com/ndarville/pony-forum/raw/master/installation/screenshots/2-api-key.png)
 
 3. Use [dotCloud’s guide](http://docs.dotcloud.com/0.4/firststeps/install/) for installing the command-line interface and entering your API key you copied to your clipboard in step 2.
 
-4. Download the most recent version of `dotcloud-django`. It is preferred that you use git and GitHub in order to stay up-to-date with fixes and improvements. More info [here](https://help.github.com/).
+4. Download the most recent version of `pony-forum`. It is preferred that you use git and GitHub in order to stay up-to-date with fixes and improvements. More info [here](https://help.github.com/).
 
-    ![Downloading the project](https://github.com/ndarville/dotcloud-django/raw/master/installation/screenshots/3-download.png)
+    ![Downloading the project](https://github.com/ndarville/pony-forum/raw/master/installation/screenshots/3-download.png)
 
-    If you want to just play around, you can download it as a plain compressed file [here](https://github.com/ndarville/dotcloud-django/downloads).
+    If you want to just play around, you can download it as a plain compressed file [here](https://github.com/ndarville/pony-forum/downloads).
 
 5. Move the folder to any preferred project folder, if you want. We’ll just use the desktop in this guide.
 
@@ -24,30 +24,30 @@ Here is a long, step-by-step installation guide that everyone should be able to 
 
     `dotcloud create <app_name>`
 
-    ![Creaing the app](https://github.com/ndarville/dotcloud-django/raw/master/installation/screenshots/4-create.png)
+    ![Creaing the app](https://github.com/ndarville/pony-forum/raw/master/installation/screenshots/4-create.png)
 
 7. Push your downloaded project to your new dotCloud app. We prefer to use dotCloud‘s git-based push, which is the default for now.
 
     `dotcloud push <app_name>`
 
-    ![Pushing the project to the app](https://github.com/ndarville/dotcloud-django/raw/master/installation/screenshots/5-push.png)
+    ![Pushing the project to the app](https://github.com/ndarville/pony-forum/raw/master/installation/screenshots/5-push.png)
 
     If you downloaded the project as a compressed file, you push your project to your app like this:
 
     `dotcloud push --all <app_name`
 
-    Note that this means *all* the files in your current working directory will be copied, which will often involve a lot of additional, unrelated files getting copied. Pushing using git only uploads the `dotcloud-django` files and folders that were committed.
+    Note that this means *all* the files in your current working directory will be copied, which will often involve a lot of additional, unrelated files getting copied. Pushing using git only uploads the `pony-forum` files and folders that were committed.
 
 8. A lot of stuff will be run now, as the project is installed to your dotCloud app. If you have connection problems because of a wonky internet connection, you might get an error with something like `postinstall` and `chmod` in it.
 
-    ![Push error](https://github.com/ndarville/dotcloud-django/raw/master/installation/screenshots/6-error.png)
+    ![Push error](https://github.com/ndarville/pony-forum/raw/master/installation/screenshots/6-error.png)
 
     This seems to be caused by dotCloud intolerance of poor internet connections. You should be able to circumvent this by performing step 7, until the deployment is successful. I hate this as much as you do—probably even more, since I had to figure out what the hell caused it.
 
 9. Your app should now be available at `https://<app_name>-<username>.dotcloud.com`.
 
-    ![Push success](https://github.com/ndarville/dotcloud-django/raw/master/installation/screenshots/7-success.png)
+    ![Push success](https://github.com/ndarville/pony-forum/raw/master/installation/screenshots/7-success.png)
 
-That’s it! Feel free to play around with your new forum and check out the [README](http://ndarville.github.com/dotcloud-django/). Bear in mind that this is just a sandbox application. More on this [at dotCloud](http://docs.dotcloud.com/0.4/guides/flavors/).
+That’s it! Feel free to play around with your new forum and check out the [README](http://ndarville.github.com/pony-forum/). Bear in mind that this is just a sandbox application. More on this [at dotCloud](http://docs.dotcloud.com/0.4/guides/flavors/).
 
-![Tada!](https://github.com/ndarville/dotcloud-django/raw/master/installation/screenshots/8-tada.png)
+![Tada!](https://github.com/ndarville/pony-forum/raw/master/installation/screenshots/8-tada.png)

@@ -1,6 +1,6 @@
 Pony Forum on dotCloud
 ======================
-[![Build Status](https://secure.travis-ci.org/ndarville/dotcloud-django.png)](http://travis-ci.org/ndarville/dotcloud-django)
+[![Build Status](https://secure.travis-ci.org/ndarville/pony-forum.png)](http://travis-ci.org/ndarville/pony-forum)
 
 Pony Forum is a forum (also known as a bulletin board) written in Python for the Django framework. It is intended as a replacement of the decade-old forums like vBulletin, PHPBB, etc.---and a free one easy to deploy at that.
 
@@ -8,7 +8,7 @@ Installation
 ------------
 One of the ideas behind Pony Forum was to create a forum that is *easily* deployed with little head-scratching. At the moment [dotCloud](https://dotcloud.com) accommodates this goal and allows us to deploy a whole working forum to a dotCloud instance using only these three terminal commands:
 
-    git clone git@github.com:ndarville/dotcloud-django.git
+    git clone git@github.com:ndarville/pony-forum.git
     dotcloud create ponyforum
     dotcloud push ponyforum
 
@@ -24,12 +24,12 @@ If you want to use your forum locally, remember that you need to install the nee
 
 As said, Windows is a very, very wonky experience, and it seems to take issue with the `PIL` package most of the time for reasons beyond my scant knowledge.
 
-A thorough step-by-step installation guide is available [here](https://github.com/ndarville/dotcloud-django/blob/master/installation/INSTALLATION.mdown). Look below for how to configure your installed dotCloud app.
+A thorough step-by-step installation guide is available [here](https://github.com/ndarville/pony-forum/blob/master/installation/INSTALLATION.mdown). Look below for how to configure your installed dotCloud app.
 
 After-Installation Instructions
 -------------------------------
 ### The Default "Admin" ###
-When the forum is first deployed on dotCloud, an `admin` user is created and assigned a default password (wait for it): `"password"`. This is done through the [mkadmin.py](https://github.com/ndarville/dotcloud-django/blob/master/_postisntall/mkadmin.py) script, which is called by [postinstall](https://github.com/ndarville/dotcloud-django/blob/master/postinstall) if you want have a look under the bonnet.
+When the forum is first deployed on dotCloud, an `admin` user is created and assigned a default password (wait for it): `"password"`. This is done through the [mkadmin.py](https://github.com/ndarville/pony-forum/blob/master/_postisntall/mkadmin.py) script, which is called by [postinstall](https://github.com/ndarville/pony-forum/blob/master/postinstall) if you want have a look under the bonnet.
 
 Normally, you get to create your own admin, when the database is created, but since this happens automagically behind the scenes, you will not be able to enter your own credentials. Instead, you will have to change the password and details for the `admin` user to suit your own needs or create your own user(s) and dispose of the default admin user.
 
@@ -47,7 +47,7 @@ Speaking of automatic changes, Pony Forum guesses the name and domain of your we
 1. Your dotCloud project name
 2. The URL for you dotCloud instance
 
-How all this is done can be seen in [definesite.py](https://github.com/ndarville/dotcloud-django/blob/master/_postinstall/definesite.py), which is (also) called in `postinstall`.
+How all this is done can be seen in [definesite.py](https://github.com/ndarville/pony-forum/blob/master/_postinstall/definesite.py), which is (also) called in `postinstall`.
 
 "So what?" you ask; what are these used for? As it happens, as of this writing, the name of your site is only relevant, if you want the name to appear in the header in the top middle of your forum<sup>**1**</sup> Besides that, it doesn't appear anywhere, really.
 
@@ -75,7 +75,7 @@ EMAIL_USE_TLS = True
 
 *However!* Putting this kind of configuration information in a place that may end up in a publically viewable place is not adviseable. Instead:
 
-1. If you are working in a local development environment, add above information to your `local_settings.py`. The file does not come with `dotcloud-django` for good reasons, but you can create it by renaming the templated and [included](https://github.com/ndarville/dotcloud-django/blob/master/ponyforum/example_local_settings.py)`example_local_settings.py` to `local_settings.py` and change the relevant values there.
+1. If you are working in a local development environment, add above information to your `local_settings.py`. The file does not come with `pony-forum` for good reasons, but you can create it by renaming the templated and [included](https://github.com/ndarville/pony-forum/blob/master/ponyforum/example_local_settings.py)`example_local_settings.py` to `local_settings.py` and change the relevant values there.
 
 2. If you are setting up your forum on dotCloud, follow [their guide to environmental variables](http://docs.dotcloud.com/guides/environment/) and, instead, enter the information like environment variables like so:
 
@@ -232,11 +232,11 @@ And much, much more.
 **1:** This has been disabled for the time being.
 
 [music]:        http://soundcloud.com/pluxemburg/first-floor-power-to-do-list-akamu-remix
-[subscription]: https://github.com/ndarville/dotcloud-django/issues/39
-[bans]:         https://github.com/ndarville/dotcloud-django/issues/40
-[avatars]:      https://github.com/ndarville/dotcloud-django/issues/41
+[subscription]: https://github.com/ndarville/pony-forum/issues/39
+[bans]:         https://github.com/ndarville/pony-forum/issues/40
+[avatars]:      https://github.com/ndarville/pony-forum/issues/41
 [timezones]:    https://docs.djangoproject.com/en/dev/topics/i18n/timezones/#time-zones
-[mobile]:       https://github.com/ndarville/dotcloud-django/tree/adaptive
+[mobile]:       https://github.com/ndarville/pony-forum/tree/adaptive
 [testing]:      http://docs.python-guide.org/en/latest/writing/tests/
 [logging]:      http://packages.python.org/Logbook/
 [ordering]:     https://github.com/jpwatts/django-positions#readme
@@ -250,6 +250,6 @@ And much, much more.
 [video]:        http://code.google.com/p/python-markdown-video/
 [latex-mathml]: http://mathjax.org
 [+filters]:     https://tools.ietf.org/html/rfc3696
-[ios-icon]:     https://github.com/ndarville/dotcloud-django/issues/54
+[ios-icon]:     https://github.com/ndarville/pony-forum/issues/54
 [sep-email]:    https://twitter.com/mikko/status/231726890933698560
 [implicit-pwd]: https://www.schneier.com/blog/archives/2012/07/implicit_passwo.html
