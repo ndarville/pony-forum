@@ -8,10 +8,6 @@ Pony Forum on dotCloud
 
 ![The forum on an iPhone #2](https://github.com/ndarville/pony-forum/raw/master/screenshots/iphone-2.png)
 
-![The forum on an iPhone #3](https://github.com/ndarville/pony-forum/raw/master/screenshots/iphone-3.png)
-
-![The forum on an iPhone #4](https://github.com/ndarville/pony-forum/raw/master/screenshots/iphone-4.png)
-
 Pony Forum is a forum (also known as a bulletin board) written in Python for the Django framework. It is intended as a replacement of the decade-old forums like vBulletin, PHPBB, etc.---and a free one easy to deploy at that.
 
 Installation
@@ -53,7 +49,7 @@ Just make sure you have another admin-like user ready, so you don't lock yoursel
 dotcloud destroy ponyforum
 dotcloud create ponyforum
 dotcloud push ponyforum
-```
+``
 
 ### Your Site Name ###
 Speaking of automatic changes, Pony Forum guesses the name and domain of your website based on respectively
