@@ -18,9 +18,11 @@ Installation
 ------------
 One of the ideas behind Pony Forum was to create a forum that is *easily* deployed with little head-scratching. At the moment [dotCloud](https://dotcloud.com) accommodates this goal and allows us to deploy a whole working forum to a dotCloud instance using only these three terminal commands:
 
-    git clone git@github.com:ndarville/pony-forum.git
-    dotcloud create ponyforum
-    dotcloud push ponyforum
+```sh
+git clone git@github.com:ndarville/pony-forum.git
+dotcloud create ponyforum
+dotcloud push ponyforum
+```
 
 The `ponyforum` name is temporary and can be replaced with any other name. In the future, it will be probably be renamed to `forum` or `pony forum` in the future.
 
@@ -47,9 +49,11 @@ The important thing here is to tell you that **all deployed pony forums will hav
 
 Just make sure you have another admin-like user ready, so you don't lock yourself out. If you do, you can always wipe and recreate the forum with these commands:
 
-    dotcloud destroy ponyforum
-    dotcloud create ponyforum
-    dotcloud push ponyforum
+```sh
+dotcloud destroy ponyforum
+dotcloud create ponyforum
+dotcloud push ponyforum
+```
 
 ### Your Site Name ###
 Speaking of automatic changes, Pony Forum guesses the name and domain of your website based on respectively
