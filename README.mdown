@@ -2,6 +2,16 @@ Pony Forum on dotCloud
 ======================
 [![Build Status](https://secure.travis-ci.org/ndarville/pony-forum.png)](http://travis-ci.org/ndarville/pony-forum)
 
+![The forum on laptop](https://github.com/ndarville/pony-forum/raw/master/screenshots/regular.png)
+
+![The forum on an iPhone #1](https://github.com/ndarville/pony-forum/raw/master/screenshots/iphone-1.png)
+
+![The forum on an iPhone #2](https://github.com/ndarville/pony-forum/raw/master/screenshots/iphone-2.png)
+
+![The forum on an iPhone #3](https://github.com/ndarville/pony-forum/raw/master/screenshots/iphone-3.png)
+
+![The forum on an iPhone #4](https://github.com/ndarville/pony-forum/raw/master/screenshots/iphone-4.png)
+
 Pony Forum is a forum (also known as a bulletin board) written in Python for the Django framework. It is intended as a replacement of the decade-old forums like vBulletin, PHPBB, etc.---and a free one easy to deploy at that.
 
 Installation
