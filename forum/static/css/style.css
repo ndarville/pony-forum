@@ -150,7 +150,7 @@ table {
     width: 210px;
     float: left;
     margin: 1.5em 15px;
-    background: lightgreen;
+    background: #98FB98;
 }
 
 #navigation li {
@@ -533,11 +533,11 @@ legend {
 }
 
 #content .threads .locked {
-    background: beige;
+    background: #F5F5C0;
 }
 
 #content .threads .removed {
-    background: red;
+    background: #F08080;
 }
 
 #content .threads .stickied {
@@ -577,7 +577,7 @@ legend {
 }
 
 .threadsort {
-    background-color: grey;
+    background-color: #A9A9A9;
     font-weight: bold;
     display: block;
     padding: 5px 0;
@@ -591,7 +591,7 @@ legend {
 }
 
 #recent {
-    background: lightblue;
+    background: #B0E0E6;
 }
 
 td,
