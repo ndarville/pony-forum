@@ -199,8 +199,6 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 * Consolidate POST templates (and templates?) to fewer
     * Throw moderation-based templates in a separate folder
     * Rename prepend `_` to `_base.html` and `_page.html`?
-    
-* [Internationalization][international]
 
 * CSS
     * General
@@ -209,6 +207,9 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 * Maintenance
     * [Unit testing][testing]
     * [Logging][logging]
+    * [Database optimization][db]
+
+* [Internationalization][international]
 
 * Registration
     * Finite log-in attempts
@@ -226,7 +227,6 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
     * Members-only threads, categories, and forums
     * Threadmins and moderator groups
 
-* [Database optimization][db]
 * [Caching][caching]
 
 * Embedding
@@ -284,11 +284,11 @@ And much, much more.
 [subscription]: https://github.com/ndarville/pony-forum/issues/39
 [bans]:         https://github.com/ndarville/pony-forum/issues/40
 [avatars]:      https://github.com/ndarville/pony-forum/issues/41
-[international]:https://github.com/ndarville/pony-forum/issues?milestone=4&state=open
 [testing]:      http://docs.python-guide.org/en/latest/writing/tests/
 [logging]:      http://packages.python.org/Logbook/
-[ordering]:     https://github.com/jpwatts/django-positions#readme
 [db]:           http://lukeplant.me.uk/blog/posts/some-quick-django-optimisation-lessons/
+[international]:https://github.com/ndarville/pony-forum/issues?milestone=4&state=open
+[ordering]:     https://github.com/jpwatts/django-positions#readme
 [caching]:      http://docs.dotcloud.com/tutorials/python/django/#caching
 [gist]:         https://github.com/blog/122-embedded-gists
 [tweets]:       https://dev.twitter.com/docs/embedded-tweets
