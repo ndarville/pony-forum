@@ -717,6 +717,8 @@ span#error {
 .op {
     float: left;
     width: 150px; /** Recalculate */
+    font-size: 0.83em;
+    line-height: 1.835em;
 }
 
 .op .username {
@@ -1104,8 +1106,6 @@ textarea,
     .user,
     .op {
         width: 23%;
-        font-size: 0.83em;
-        line-height: 1.835em;
     }
 
     .words {
