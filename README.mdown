@@ -17,9 +17,11 @@ Pony Forum features such niceties as:
 * [Installed][_installation] in few easy steps on [dotCloud][dotcloud]
 * Written in Python and uses the popular Django framework
 * Mobile CSS that adapts the layout to your iPhone
-* Simple [Markdown][markdown]-based formatting ...
-* ... with automatic, typography-friendly [SmartyPants][smartypants] conversion
 * Experimental [dyslexia support][dyslexia]
+* A powerful editor for writing and creating content:
+    * Super simple [Markdown][markdown]-based formatting learnt in no time ...
+    * ... with automatic, typography-friendly [SmartyPants][smartypants] conversion
+    * You can even create [tables][tables] for data- and fact-based discussions!
 * Values security and privacy with such things as:
     * SSL support
     * [PBKDF2][pbkdf2] password-hashing
@@ -261,9 +263,10 @@ And much, much more.
 [screenshot2]:  https://github.com/ndarville/pony-forum/raw/master/_screenshots/iphone-2.png
 [screenshot3]:  https://github.com/ndarville/pony-forum/raw/master/_screenshots/iphone-1.png
 [dotcloud]:     https://dotcloud.com/
+[dyslexia]:     http://dyslexicfonts.com/
 [markdown]:     http://daringfireball.net/projects/markdown/
 [smartypants]:  http://daringfireball.net/projects/smartypants/
-[dyslexia]:     http://dyslexicfonts.com/
+[tables]:       http://www.freewisdom.org/projects/python-markdown/Tables
 [pbkdf2]:       https://docs.djangoproject.com/en/1.4/releases/1.4/#improved-password-hashing
 [django-secure]:https://github.com/carljm/django-secure
 [dc-install]:   http://docs.dotcloud.com/firststeps/install/
