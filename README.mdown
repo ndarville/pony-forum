@@ -95,7 +95,7 @@ dotcloud var set ponyforum EMAIL_HOST_USER=your_user_name@gmail.com
 dotcloud var set ponyforum EMAIL_HOST_PASSWORD=your_password
 ```
 
-The problem with this method, is that dotCloud restarts your server, which takes a while, so to save your time, you can also do it like this on some operating systems:
+The problem with this method is that dotCloud restarts your server, which takes a while, so to save your time, you can also do it like this on some operating systems:
 
 ```sh
 dotcloud var set ponyforum \
