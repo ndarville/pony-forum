@@ -187,7 +187,6 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 * CSS
     * General
-    * [Mobile][mobile]
     * Print
 
 * Maintenance
@@ -264,7 +263,6 @@ And much, much more.
 [bans]:         https://github.com/ndarville/pony-forum/issues/40
 [avatars]:      https://github.com/ndarville/pony-forum/issues/41
 [timezones]:    https://docs.djangoproject.com/en/dev/topics/i18n/timezones/#time-zones
-[mobile]:       https://github.com/ndarville/pony-forum/tree/adaptive
 [testing]:      http://docs.python-guide.org/en/latest/writing/tests/
 [logging]:      http://packages.python.org/Logbook/
 [ordering]:     https://github.com/jpwatts/django-positions#readme
