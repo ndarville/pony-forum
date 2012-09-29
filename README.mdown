@@ -15,14 +15,14 @@ Features
 Pony Forum features such niceties as:
 
 * [Installed][_installation] in few easy steps on [dotCloud][dotcloud]
-* Written in Python and uses the popular Django framework
-* Mobile CSS that adapts the layout to your iPhone
+* Written in **Python** and uses the popular **Django** framework
+* **Mobile CSS** that adapts the layout to your iPhone
 * Experimental [dyslexia support][dyslexia]
-* A powerful editor for writing and creating content:
+* A **powerful editor** for writing and creating content:
     * Super simple [Markdown][markdown]-based formatting learnt in no time ...
     * ... with automatic, typography-friendly [SmartyPants][smartypants] conversion
     * You can even create [tables][tables] for data- and fact-based discussions!
-* Values security and privacy with such things as:
+* Values **security** and **privacy** with such things as:
     * SSL support
     * [PBKDF2][pbkdf2] password-hashing
     * [django-secure][django-secure] vetting
