@@ -1034,6 +1034,10 @@ textarea,
 
 /** iPhone */
 @media only screen and (max-device-width: 480px) {
+    body {
+        font: 12px/1.5em Helvetica, "Helvetica Neue", sans-serif;
+    }
+
     #container {
         width: 100%;
     }
@@ -1096,16 +1100,18 @@ textarea,
     /**
         #board: 680px
             .post:  660px
-                .user:  100px (15.15...%)
-                .words: 550px (83.33...%)
+                .user:  150px (22.72...%)
+                .words: 500px (75.75...%)
     */
     .user,
     .op {
-        width: 15%;
+        width: 23%;
+        font-size: 0.83em;
+        line-height: 1.835em;
     }
 
     .words {
-        width: 83%;
+        width: 76%;
     }
 
     .post-bottom .left-buttons a.button + a.button {
@@ -1115,7 +1121,7 @@ textarea,
     .post-bottom .left-buttons,
     .post-bottom .agreeers,
     .post-bottom .thankers {
-        margin-left: 17%;  /** 100% - .words width */
+        margin-left: 24%;  /** 100% - .words width */
     }
 }
 /**** * ****/
