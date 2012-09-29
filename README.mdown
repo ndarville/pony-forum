@@ -84,7 +84,7 @@ EMAIL_USE_TLS = True
 
 (If you use a Gmail e-mail, you just need to change the username and password, as the default values for the other keys will work fine.)
 
-*However!* Putting this kind of configuration information in a place that may end up in a publically viewable place is not adviseable. Instead:
+*However!* Putting this kind of configuration information in a place that may end up in a publicly viewable place is not adviseable. Instead:
 
 1. If you are working in a local development environment, add above information to your `local_settings.py`. The file does not come with `pony-forum` for good reasons, but you can create it by renaming the templated and [included][ex-local] `example_local_settings.py` to `local_settings.py` and change the relevant values there.
 
