@@ -2,20 +2,22 @@ Pony Forum on dotCloud
 ======================
 [![Build Status](https://secure.travis-ci.org/ndarville/pony-forum.png)](http://travis-ci.org/ndarville/pony-forum)
 
-![The forum on laptop](https://github.com/ndarville/pony-forum/raw/master/screenshots/regular.png)
+![The forum on laptop][screenshot1]
 
-![The forum on an iPhone in landscape mode](https://github.com/ndarville/pony-forum/raw/master/screenshots/iphone-2.png)
+![The forum on an iPhone in landscape mode][screenshot2]
 
-![The forum on an iPhone in portrait mode](https://github.com/ndarville/pony-forum/raw/master/screenshots/iphone-1.png)
+![The forum on an iPhone in portrait mode][screenshot3]
 
 Pony Forum is a forum (also known as a bulletin board) written in Python for the Django framework. It is intended as a replacement of the decade-old forums like vBulletin, PHPBB, etc.---and a free one easy to deploy at that.
 
 Installation
 ------------
-One of the ideas behind Pony Forum was to create a forum that is *easily* deployed with little head-scratching. At the moment [dotCloud](https://dotcloud.com) accommodates this goal and allows us to deploy a whole working forum to a dotCloud instance using only these three terminal commands:
+One of the ideas behind Pony Forum was to create a forum that is *easily* deployed with little head-scratching. At the moment [dotCloud](https://dotcloud.com) accommodates this goal and allows us to deploy a whole working forum to a dotCloud instance using only these terminal commands:
 
 ```sh
 git clone git@github.com:ndarville/pony-forum.git
+cd pony-forum
+sudo chmod +x postinstall
 dotcloud create ponyforum
 dotcloud push ponyforum
 ```
@@ -24,20 +26,20 @@ The `ponyforum` name is temporary and can be replaced with any other name. In th
 
 You will also need to set up an e-mail server (which is very, very easy), all of which is explained in *Setting Up an E-Mail Server* later on in this README. Fret not.
 
-The results on Windows 7 have been uneven at best, but if you want to try your luck, you can install the dotCloud dependencies dotCloud can be installed using either [dotCloud's own installation instructions](http://docs.dotcloud.com/firststeps/install/) (not recommended) compared to just downloading and executing [DotCloudWin](https://github.com/speier/DotCloudWin/downloads). Users on other platforms can use dotCloud's installation guide to set it up with no hitches.
+The results on Windows 7 have been uneven at best, but if you want to try your luck, you can install the dotCloud dependencies dotCloud can be installed using either [dotCloud's own installation instructions][dc-install] (not recommended) compared to just downloading and executing [DotCloudWin][dotcloudwin]. Users on other platforms can use dotCloud's installation guide to set it up with no hitches.
 
-Remember to [sign up](https://www.dotcloud.com/accounts/register/) for free on dotCloud, if you don't already have an account, in order to retrieve your API key.
+Remember to [sign up][registration] for free on dotCloud, if you don't already have an account, in order to retrieve your API key.
 
 If you want to use your forum locally, remember that you need to install the needed packages. If you have already installed `pip`, you can go to the directory of `requirements.txt` and type `pip install -r requirements.txt` in the terminal (`sudo pip install -r requirements.txt`, if you aren't on Windows), and all the packages will be downloaded and installed on you local development computer.
 
 As said, Windows is a very, very wonky experience, and it seems to take issue with the `PIL` package most of the time for reasons beyond my scant knowledge.
 
-A thorough step-by-step installation guide is available [here](https://github.com/ndarville/pony-forum/blob/master/installation/INSTALLATION.mdown). Look below for how to configure your installed dotCloud app.
+A thorough step-by-step installation guide is available [here][_installation]. Look below for how to configure your installed dotCloud app.
 
 After-Installation Instructions
 -------------------------------
 ### The Default "Admin" ###
-When the forum is first deployed on dotCloud, an `admin` user is created and assigned a default password (wait for it): `"password"`. This is done through the [mkadmin.py](https://github.com/ndarville/pony-forum/blob/master/_postisntall/mkadmin.py) script, which is called by [postinstall](https://github.com/ndarville/pony-forum/blob/master/postinstall) if you want have a look under the bonnet.
+When the forum is first deployed on dotCloud, an `admin` user is created and assigned a default password (wait for it): `"password"`. This is done through the [mkadmin.py][mkadmin] script, which is called by [postinstall][postinstall] if you want have a look under the bonnet.
 
 Normally, you get to create your own admin, when the database is created, but since this happens automagically behind the scenes, you will not be able to enter your own credentials. Instead, you will have to change the password and details for the `admin` user to suit your own needs or create your own user(s) and dispose of the default admin user.
 
@@ -57,7 +59,7 @@ Speaking of automatic changes, Pony Forum guesses the name and domain of your we
 1. Your dotCloud project name
 2. The URL for you dotCloud instance
 
-How all this is done can be seen in [definesite.py](https://github.com/ndarville/pony-forum/blob/master/_postinstall/definesite.py), which is (also) called in `postinstall`.
+How all this is done can be seen in [definesite.py][definesite], which is (also) called in `postinstall`.
 
 "So what?" you ask; what are these used for? As it happens, as of this writing, the name of your site is only relevant, if you want the name to appear in the header in the top middle of your forum<sup>**1**</sup> Besides that, it doesn't appear anywhere, really.
 
@@ -71,7 +73,7 @@ If you need to change these two fields---for instance, if you were to give your 
 
 *Speakiiing* of activation e-mails, you need to, you know, send e-mails. "Jesus &"¤!#! Christ!" you think to yourself, but if you use a Gmail account, it's all actually quite easy! (I was surprised, too.)
 
-Using [sontek's intelligible guide](http://sontek.net/using-gmail-to-send-e-mails-from-django), if you use a Gmail e-mail account, you can define your own e-mail server by entering these credentials:
+Using [sontek's intelligible guide][email-guide], if you use a Gmail e-mail account, you can define your own e-mail server by entering these credentials:
 
 ```python
 EMAIL_HOST = 'smtp.gmail.com'
@@ -85,9 +87,9 @@ EMAIL_USE_TLS = True
 
 *However!* Putting this kind of configuration information in a place that may end up in a publically viewable place is not adviseable. Instead:
 
-1. If you are working in a local development environment, add above information to your `local_settings.py`. The file does not come with `pony-forum` for good reasons, but you can create it by renaming the templated and [included](https://github.com/ndarville/pony-forum/blob/master/ponyforum/example_local_settings.py)`example_local_settings.py` to `local_settings.py` and change the relevant values there.
+1. If you are working in a local development environment, add above information to your `local_settings.py`. The file does not come with `pony-forum` for good reasons, but you can create it by renaming the templated and [included][ex-local] `example_local_settings.py` to `local_settings.py` and change the relevant values there.
 
-2. If you are setting up your forum on dotCloud, follow [their guide to environmental variables](http://docs.dotcloud.com/guides/environment/) and, instead, enter the information like environment variables like so:
+2. If you are setting up your forum on dotCloud, follow [their guide to environmental variables][environments] and, instead, enter the information like environment variables like so:
 
 ```sh
 dotcloud var set ponyforum EMAIL_HOST_USER=your_user_name@gmail.com
@@ -120,7 +122,7 @@ This should set up your e-mail server. At any point, you can alter the values by
 dotcloud var unset ponyforum EMAIL_HOST_PASSWORD
 ```
 
-Obviously, you need to change the `USER` and `PASSWORD` fields to your own. Also note that if you are using Google's [two-factor authentication](https://accounts.google.com/SmsAuthConfig), you default password will not work, because you need to create a designated application password for it [here](https://accounts.google.com/IssuedAuthSubTokens). The reason is that if you use two-factor authentication, you will not use the password for your actual account outside of Google's own sites, but an application password. The advantage of this is that you can remove this application in your Google account settings right away, if you accidentally share it through GitHub or elsewhere.
+Obviously, you need to change the `USER` and `PASSWORD` fields to your own. Also note that if you are using Google's [two-factor authentication][tfa], you default password will not work, because you need to create a designated application password for it [here][app-password]. The reason is that if you use two-factor authentication, you will not use the password for your actual account outside of Google's own sites, but an application password. The advantage of this is that you can remove this application in your Google account settings right away, if you accidentally share it through GitHub or elsewhere.
 
 This is a much better security solution, because it is much easier to shut down a compromised application password by just removing it in your account settings than replacing your general password and playing cat and mouse with any potential hacker, as well as trying to recall your mother's middle name. If you aren't already using two-factor authentication, I urge you to do it to improve your Google and Gmail security significantly. Not because of Pony Forum, but the general security advantages it affods you. 
 
@@ -140,7 +142,7 @@ with this
 url(r'^accounts/',  include('registration.backends.simple.urls')),
 ```
 
-In other words, replace `default` with `simple`. This allows your registration to work right away; don't worry about providing the right e-mail address nor setting up your e-mail server. If you want to read more about this, check out the [documentation](https://bitbucket.org/ubernostrum/django-registration/src/27bccd108cde/docs/simple-backend.rst) for the registration back-end.
+In other words, replace `default` with `simple`. This allows your registration to work right away; don't worry about providing the right e-mail address nor setting up your e-mail server. If you want to read more about this, check out the [documentation][reg-backend] for the registration back-end.
 
 Note that if you use this "trick" and are logged in as admin, you might still get a configuration error ("please set up your site/e-mail settings"), but because there is no e-mail server the configuration addresses, you are free to ignore the warnings.
 
@@ -241,6 +243,22 @@ And much, much more.
 
 **1:** This has been disabled for the time being.
 
+[screenshot1]:  https://github.com/ndarville/pony-forum/raw/master/_screenshots/regular.png
+[screenshot2]:  https://github.com/ndarville/pony-forum/raw/master/_screenshots/iphone-2.png
+[screenshot3]:  https://github.com/ndarville/pony-forum/raw/master/_screenshots/iphone-1.png
+[dc-install]:   http://docs.dotcloud.com/firststeps/install/
+[dotcloudwin]:  https://github.com/speier/DotCloudWin/downloads
+[registration]: https://www.dotcloud.com/accounts/register/
+[_instllation]: https://github.com/ndarville/pony-forum/blob/master/_installation/INSTALLATION.mdown
+[mkadmin]:      https://github.com/ndarville/pony-forum/blob/master/_postisntall/mkadmin.py
+[postinstall]:  https://github.com/ndarville/pony-forum/blob/master/postinstall
+[definesite]:   https://github.com/ndarville/pony-forum/blob/master/_postinstall/definesite.py
+[email-guide]:  http://sontek.net/using-gmail-to-send-e-mails-from-django
+[ex-local]:     https://github.com/ndarville/pony-forum/blob/master/ponyforum/example_local_settings.py
+[environments]: http://docs.dotcloud.com/guides/environment/
+[tfa]:          https://accounts.google.com/SmsAuthConfig
+[app-password]: https://accounts.google.com/IssuedAuthSubTokens
+[reg-backend]:  https://bitbucket.org/ubernostrum/django-registration/src/27bccd108cde/docs/simple-backend.rst
 [music]:        http://soundcloud.com/pluxemburg/first-floor-power-to-do-list-akamu-remix
 [subscription]: https://github.com/ndarville/pony-forum/issues/39
 [bans]:         https://github.com/ndarville/pony-forum/issues/40
