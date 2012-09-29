@@ -12,7 +12,7 @@ Here is a long, step-by-step installation guide that everyone should be able to 
 
 3. Use [dotCloud’s guide][dc-install] for installing the command-line interface and entering your API key you copied to your clipboard in step 2.
 
-4. Download the most recent version of `pony-forum`. It is preferred that you use git and GitHub in order to stay up-to-date with fixes and improvements. More info [here](https://help.github.com/).
+4. Download the most recent version of `pony-forum`. It is preferred that you use git and GitHub in order to stay up-to-date with fixes and improvements. More info [here][github-help].
 
     ![Downloading the project][3-download]
 
@@ -56,6 +56,7 @@ That’s it! Feel free to play around with your new forum and check out the [REA
 [1-sign-up]:    https://github.com/ndarville/pony-forum/raw/master/_installation/screenshots/1-sign-up.png
 [2-api-key]:    https://github.com/ndarville/pony-forum/raw/master/_installation/screenshots/2-api-key.png
 [dc-install]:   http://docs.dotcloud.com/0.4/firststeps/install/
+[github-help]:  https://help.github.com/
 [3-download]:   https://github.com/ndarville/pony-forum/raw/master/_installation/screenshots/3-download.png
 [download]:     https://github.com/ndarville/pony-forum/downloads
 [4-create]:     https://github.com/ndarville/pony-forum/raw/master/_installation/screenshots/4-create.png
