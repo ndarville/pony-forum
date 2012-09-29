@@ -17,7 +17,6 @@ One of the ideas behind Pony Forum was to create a forum that is *easily* deploy
 ```sh
 git clone git@github.com:ndarville/pony-forum.git
 cd pony-forum
-sudo chmod +x postinstall
 dotcloud create ponyforum
 dotcloud push ponyforum
 ```
