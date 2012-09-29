@@ -249,7 +249,7 @@ And much, much more.
 [dc-install]:   http://docs.dotcloud.com/firststeps/install/
 [dotcloudwin]:  https://github.com/speier/DotCloudWin/downloads
 [registration]: https://www.dotcloud.com/accounts/register/
-[_instllation]: https://github.com/ndarville/pony-forum/blob/master/_installation/INSTALLATION.mdown
+[_installation]:https://github.com/ndarville/pony-forum/blob/master/_installation/INSTALLATION.mdown
 [mkadmin]:      https://github.com/ndarville/pony-forum/blob/master/_postisntall/mkadmin.py
 [postinstall]:  https://github.com/ndarville/pony-forum/blob/master/postinstall
 [definesite]:   https://github.com/ndarville/pony-forum/blob/master/_postinstall/definesite.py
