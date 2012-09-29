@@ -260,6 +260,7 @@ And much, much more.
 [screenshot1]:  https://github.com/ndarville/pony-forum/raw/master/_screenshots/regular.png
 [screenshot2]:  https://github.com/ndarville/pony-forum/raw/master/_screenshots/iphone-2.png
 [screenshot3]:  https://github.com/ndarville/pony-forum/raw/master/_screenshots/iphone-1.png
+[dotcloud]:     https://dotcloud.com/
 [markdown]:     http://daringfireball.net/projects/markdown/
 [smartypants]:  http://daringfireball.net/projects/smartypants/
 [dyslexia]:     http://dyslexicfonts.com/
