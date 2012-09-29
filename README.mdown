@@ -10,9 +10,24 @@ Pony Forum on dotCloud
 
 Pony Forum is a forum (also known as a bulletin board) written in Python for the Django framework. It is intended as a replacement of the decade-old forums like vBulletin, PHPBB, etc.---and a free one easy to deploy at that.
 
+Features
+--------
+Pony forum features such niceties as:
+
+* [Installed][_installation] in few easy steps on [dotCloud][dotcloud]
+* Written in Python and uses the popular Django framework
+* Mobile CSS that adapts the layout to your iPhone
+* Simple [Markdown][markdown]-based formatting ...
+* ... with automatic, typography-friendly [SmartyPants][smartypants] conversion
+* Experimental [dyslexia support][dyslexia]
+* Values security and privacy with such things as:
+    * SSL support
+    * [PBKDF2][pbkdf2] password-hashing
+    * [django-secure][django-secure] vetting
+
 Installation
 ------------
-One of the ideas behind Pony Forum was to create a forum that is *easily* deployed with little head-scratching. At the moment [dotCloud](https://dotcloud.com) accommodates this goal and allows us to deploy a whole working forum to a dotCloud instance using only these terminal commands:
+One of the ideas behind Pony Forum was to create a forum that is *easily* deployed with little head-scratching. At the moment [dotCloud][dotcloud] accommodates this goal and allows us to deploy a whole working forum to a dotCloud instance using only these terminal commands:
 
 ```sh
 git clone git@github.com:ndarville/pony-forum.git
@@ -183,7 +198,7 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
     * Throw moderation-based templates in a separate folder
     * Rename prepend `_` to `_base.html` and `_page.html`?
     
-* UTC-based datetimes (wait for [Django 1.4][timezones]))
+* [Internationalization][international]
 
 * CSS
     * General
@@ -245,6 +260,11 @@ And much, much more.
 [screenshot1]:  https://github.com/ndarville/pony-forum/raw/master/_screenshots/regular.png
 [screenshot2]:  https://github.com/ndarville/pony-forum/raw/master/_screenshots/iphone-2.png
 [screenshot3]:  https://github.com/ndarville/pony-forum/raw/master/_screenshots/iphone-1.png
+[markdown]:     http://daringfireball.net/projects/markdown/
+[smartypants]:  http://daringfireball.net/projects/smartypants/
+[dyslexia]:     http://dyslexicfonts.com/
+[pbkdf2]:       https://docs.djangoproject.com/en/1.4/releases/1.4/#improved-password-hashing
+[django-secure]:https://github.com/carljm/django-secure
 [dc-install]:   http://docs.dotcloud.com/firststeps/install/
 [dotcloudwin]:  https://github.com/speier/DotCloudWin/downloads
 [registration]: https://www.dotcloud.com/accounts/register/
@@ -262,7 +282,7 @@ And much, much more.
 [subscription]: https://github.com/ndarville/pony-forum/issues/39
 [bans]:         https://github.com/ndarville/pony-forum/issues/40
 [avatars]:      https://github.com/ndarville/pony-forum/issues/41
-[timezones]:    https://docs.djangoproject.com/en/dev/topics/i18n/timezones/#time-zones
+[international]:https://github.com/ndarville/pony-forum/issues?milestone=4&state=open
 [testing]:      http://docs.python-guide.org/en/latest/writing/tests/
 [logging]:      http://packages.python.org/Logbook/
 [ordering]:     https://github.com/jpwatts/django-positions#readme
