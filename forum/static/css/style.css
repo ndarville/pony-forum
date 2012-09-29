@@ -454,9 +454,7 @@ legend {
     margin-top: 3em;
 }
 
-#latest-posts a,
-#profile-information a,
-#profile-interaction a {
+#content-body a {
     text-decoration: underline;
 }
 
