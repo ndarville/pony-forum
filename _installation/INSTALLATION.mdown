@@ -65,4 +65,4 @@ That’s it! Feel free to play around with your new forum and check out the [REA
 [7-success]:    https://github.com/ndarville/pony-forum/raw/master/_installation/screenshots/7-success.png
 [readme]:       http://ndarville.github.com/pony-forum/
 [flavors]:      http://docs.dotcloud.com/0.4/guides/flavors/
-[tada]:         https://github.com/ndarville/pony-forum/raw/master/_installation/screenshots/8-tada.png
+[tada]:         https://github.com/ndarville/pony-forum/raw/master/_screenshots/regular.png
