@@ -196,7 +196,8 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 * Registration
     * Finite log-in attempts
-    * Invitation-based sign-up
+    * [Invitation-based sign-up][reg-backend]
+    * [Two-factor authentication][reg-backend]
 
 ### Eventual, Not Impending, Features ###
 * [Category-ordering][ordering]
