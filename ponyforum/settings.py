@@ -175,6 +175,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'registration',
     'djangosecure',
+    'south',
 )
 
 # Extension of the User model with forum-related fields in models.py
