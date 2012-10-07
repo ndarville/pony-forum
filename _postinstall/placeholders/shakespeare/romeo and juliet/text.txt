@@ -234,9 +234,7 @@ ROMEO
     Too flattering-sweet to be substantial.
 
 JULIET
-    <i>Re-enters, above</i>
-
-JULIET
+    <p><i>Re-enters, above</i></p>
     Three words, dear Romeo, and good night indeed.
     If that thy bent of love be honourable,
     Thy purpose marriage, send me word to-morrow,
