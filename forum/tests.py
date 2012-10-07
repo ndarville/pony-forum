@@ -1,16 +1,23 @@
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
-"""
-
 from django.test import TestCase
+from django.utils import timezone
+from forum.models import Category
 
+class CategoryModelTest(TestCase):
+    def test_add_category(self):
+        # Create Category object
+        c = Category()
+        title = "Test Category"
+        c.title_plain, c.title_html = title, title
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+        # Save
+        c.save()
+
+        # Retrieve category from database
+        all_categories = Category.objects.all()
+        self.assertEquals(len(all_categories), 1)
+        only_category_in_db = all_categories[0]
+        self.assertEquals(only_category_in_db, c)
+
+        # Check the two saved fields from before
+        self.assertEquals(only_category_in_db.title_plain, title)
+        self.assertEquals(only_category_in_db.title_html, title)
