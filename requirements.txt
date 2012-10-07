@@ -11,7 +11,7 @@ markdown==2.1.1
 bleach==1.1.1
 
 # User models and registration
-# PIL==1.1.7
+##PIL==1.1.7
 django-registration==0.8
 
 django-secure==0.1.2
@@ -20,8 +20,9 @@ django-secure==0.1.2
 django-debug-toolbar==0.9.1
 
 # Database:
-# psycopg2
+##psycopg2
 south
 
 # Testing:
 selenium
+##Firefox - install this yourself
