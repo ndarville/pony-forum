@@ -30,6 +30,7 @@ script:
 
 after_script:
   - python manage.py test forum
+  - python manage.py test fts
 
 notifications:
   email:
