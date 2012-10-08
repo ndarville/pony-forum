@@ -65,7 +65,7 @@ def mkpost(content="Test post.",
 class CategoryModelTest(TestCase):
     """Tests Category object."""
     def test_add_category(self):
-        """Test the creation of a object."""
+        """Test the creation of a Category object."""
         # Create Category object
         title = "Test Category"
         c = mkcategory(title)
@@ -84,7 +84,7 @@ class CategoryModelTest(TestCase):
 class ThreadModelTest(TestCase):
     """Tests Thread object."""
     def test_create_thread(self):
-        """Test the creation of a thread object."""
+        """Test the creation of a Thread object."""
         title = "Test Thread"
         now = datetime.datetime.now()
         t = mkthread(title, now, now)
@@ -105,7 +105,7 @@ class ThreadModelTest(TestCase):
 class PostModelTest(TestCase):
     """Tests Post object."""
     def test_create_post(self):
-        """Test the creation of a post object."""
+        """Test the creation of a Post object."""
         content = "Test post."
         now = datetime.datetime.now()
         p = mkpost(content, now)
