@@ -27,18 +27,24 @@ Pony Forum features such niceties as:
     * [PBKDF2][pbkdf2] password-hashing
     * [django-secure][django-secure] vetting
 
+Requirements
+------------
+To use the app on dotCloud:
+
+* dotCloud's CLI and a dotCloud account for deploying to their platform (see below)
+
+To run it on your own computer:
+
+* Python 2.6 or 2.7
+* postgreSQL
+* All packages in `requirements.txt`
+* Firefox if you want to run the optional tests
+
 Compatibility
 -------------
 Works on Ubuntu and the latest version of OS X.
 
 At the moment, Windows 7 breaks during testing and dotCloud deployment. It is my intention to get Pony Forum working on Windows 7, but some of the required packages such as `PIP` often break on the operating system.
-
-Requirements
-------------
-* dotCloud's CLI and a dotCloud account for deploying to their platform (see below)
-* Firefox if you want to run the optional tests
-* All packages in `requirements.txt` for local development.
-    * Install these by installing `pip` and running `pip install -r requirements.txt`
 
 Installation
 ------------
