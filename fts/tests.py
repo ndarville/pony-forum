@@ -1,3 +1,5 @@
+import os
+
 from django.test import LiveServerTestCase
 
 from pyvirtualdisplay import Display
@@ -10,10 +12,11 @@ class SiteAdminLoginTest(LiveServerTestCase):
     fixtures = ['admin_user.json']
 
     def setUp(self):
-        # Initialize hidden display for Firefox.
-        # Less annoying and allows remote execution.
-        display = Display(visible=0, size=(800, 600))
-        display.start()
+        if 'TRAVIS' in os.environ:
+            # Initialize hidden display for Firefox.
+            # Less annoying and allows remote execution.
+            display = Display(visible=0, size=(800, 600))
+            display.start()
 
         self.browser = webdriver.Firefox()
         self.browser.implicitly_wait(3)
