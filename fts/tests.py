@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 class SiteAdminLoginTest(LiveServerTestCase):
-    """Foo."""
+    """Simulates an admin logging in to Site Administration in Firefox."""
     fixtures = ['admin_user.json']
 
     def setUp(self):
@@ -13,7 +13,7 @@ class SiteAdminLoginTest(LiveServerTestCase):
     def tearDown(self):
         self.browser.quit()
 
-    def test_can_create_new_polls_via_admin_site(self):
+    def test_can_log_in_to_site_administration(self):
         # Opens webbrowser, go to admin page
         self.browser.get(self.live_server_url + '/admin/')
 
@@ -37,6 +37,3 @@ class SiteAdminLoginTest(LiveServerTestCase):
         # directing user to site administration page
         body = self.browser.find_element_by_tag_name('body')
         self.assertIn('Site administration', body.text)
-
-        # TODO: use the admin site to create a Polls
-        self.fail('Finish this test')
