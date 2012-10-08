@@ -212,7 +212,7 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 * [Internationalization][international]
 
 * Registration
-    * Finite log-in attempts
+    * [Finite log-in attempts][attempts] (Django 1.5)
     * [Invitation-based sign-up][reg-backend]
     * [Two-factor authentication][reg-backend]
 
@@ -288,6 +288,7 @@ And much, much more.
 [logging]:      http://packages.python.org/Logbook/
 [db]:           http://lukeplant.me.uk/blog/posts/some-quick-django-optimisation-lessons/
 [international]:https://github.com/ndarville/pony-forum/issues?milestone=4&state=open
+[attempts]:     https://docs.djangoproject.com/en/dev/topics/auth/#django.contrib.auth.signals.user_login_failed
 [ordering]:     https://github.com/jpwatts/django-positions#readme
 [caching]:      http://docs.dotcloud.com/tutorials/python/django/#caching
 [gist]:         https://github.com/blog/122-embedded-gists
