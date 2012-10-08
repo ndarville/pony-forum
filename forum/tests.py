@@ -1,3 +1,7 @@
+"""Unit tests for the `forum` app.
+
+Currently verifies that creation of the three major model classes
+works within a Django shell (i.e. not through `views.py`)."""
 import datetime
 
 from django.contrib.auth.models import User
@@ -9,7 +13,6 @@ from forum.models import Category, Thread, Post
 
 def mkuser():
     """Helper function for making users."""
-
     u, created = User.objects.get_or_create(username='admin')
     if created:
         u.set_password('password')
@@ -21,7 +24,6 @@ def mkuser():
 
 def mkcategory(title="Test Category"):
     """Helper function for making categories."""
-
     c = Category()
 
     c.title_plain, c.title_html = title, title
@@ -33,7 +35,6 @@ def mkthread(title="Test Thread",
              creation_date=datetime.datetime.now(),
              latest_reply_date=datetime.datetime.now()):
     """Helper function for making threads."""
-
     t = Thread()
 
     t.title_plain, t.title_html = title, title
@@ -48,7 +49,6 @@ def mkthread(title="Test Thread",
 def mkpost(content="Test post.",
            creation_date=datetime.datetime.now()):
     """Helper function for making posts."""
-
     p = Post()
 
     # _plain == _html, since the conversion happens in views.py,
@@ -64,7 +64,6 @@ def mkpost(content="Test post.",
 
 class CategoryModelTest(TestCase):
     """Tests Category object."""
-
     def test_add_category(self):
         """Test the creation of a object."""
         # Create Category object
@@ -84,7 +83,6 @@ class CategoryModelTest(TestCase):
 
 class ThreadModelTest(TestCase):
     """Tests Thread object."""
-
     def test_create_thread(self):
         """Test the creation of a thread object."""
         title = "Test Thread"
@@ -106,7 +104,6 @@ class ThreadModelTest(TestCase):
 
 class PostModelTest(TestCase):
     """Tests Post object."""
-
     def test_create_post(self):
         """Test the creation of a post object."""
         content = "Test post."
