@@ -1,7 +1,8 @@
 """Unit tests for the `forum` app.
 
 Currently verifies that creation of the three major model classes
-works within a Django shell (i.e. not through `views.py`)."""
+works within a Django shell (i.e. not through `views.py`).
+"""
 import datetime
 
 from django.contrib.auth.models import User

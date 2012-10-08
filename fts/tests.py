@@ -7,22 +7,35 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 
+def startBrowser(self):
+    """Helper function. Starts the test browser.
+    Called by setUp at the start of a test.
+    """
+    if 'TRAVIS' in os.environ:
+        # Initialize hidden display for Firefox.
+        # Less annoying and allows remote execution.
+        display = Display(visible=0, size=(800, 600))
+        display.start()
+
+    self.browser = webdriver.Firefox()
+    self.browser.implicitly_wait(3)
+
+def stopBrowser(self):
+    """Helper function. Stops the test browser.
+    Called by setUp at the end of a test.
+    """
+    self.browser.quit()
+
+
 class SiteAdminLoginTest(LiveServerTestCase):
     """Simulates an admin logging in to Site Administration in Firefox."""
     fixtures = ['admin_user.json']
 
     def setUp(self):
-        if 'TRAVIS' in os.environ:
-            # Initialize hidden display for Firefox.
-            # Less annoying and allows remote execution.
-            display = Display(visible=0, size=(800, 600))
-            display.start()
-
-        self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(3)
+        startBrowser(self)
 
     def tearDown(self):
-        self.browser.quit()
+        stopBrowser(self)
 
     def test_can_log_in_to_site_administration(self):
         # Opens webbrowser, go to admin page
