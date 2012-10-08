@@ -26,3 +26,4 @@ south
 # Testing:
 selenium
 ##Firefox - install this yourself
+pyvirtualdisplay

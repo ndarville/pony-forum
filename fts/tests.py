@@ -1,12 +1,20 @@
 from django.test import LiveServerTestCase
+
+from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+
 
 class SiteAdminLoginTest(LiveServerTestCase):
     """Simulates an admin logging in to Site Administration in Firefox."""
     fixtures = ['admin_user.json']
 
     def setUp(self):
+        # Initialize hidden display for Firefox.
+        # Less annoying and allows remote execution.
+        display = Display(visible=0, size=(800, 600))
+        display.start()
+
         self.browser = webdriver.Firefox()
         self.browser.implicitly_wait(3)
 
