@@ -286,15 +286,3 @@ except NameError:
         from local_settings import *
     except ImportError:
         pass
-
-if not LOCAL_DEVELOPMENT:
-    DEBUG = env.get('DEBUG', 'False') == 'True'
-TEMPLATE_DEBUG = DEBUG
-
-### DJANGO-DEBUG-TOOLBAR
-if DEBUG:
-    INSTALLED_APPS += ('debug_toolbar',)
-    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-    if LOCAL_DEVELOPMENT:
-        INTERNAL_IPS = ('127.0.0.1',)
-###
