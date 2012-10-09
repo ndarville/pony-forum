@@ -6,8 +6,9 @@ works within a Django shell (i.e. not through `views.py`).
 import datetime
 
 from django.contrib.auth.models import User
-from django.test import TestCase
 from django.utils import timezone
+
+from django_nose import FastFixtureTestCase as TestCase
 
 from forum.models import Category, Thread, Post
 
