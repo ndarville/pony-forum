@@ -29,7 +29,7 @@ script:
   - python _postinstall/mkplaceholders.py
 
 after_script:
-  - python manage.py test --with-progressive
+  - python manage.py test
 
 notifications:
   email:
