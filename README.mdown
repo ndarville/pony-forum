@@ -10,6 +10,24 @@ Pony Forum on dotCloud
 
 Pony Forum is a forum (also known as a bulletin board) written in Python for the Django framework. It is intended as a replacement of the decade-old forums like vBulletin, PHPBB, etc.---and a free one easy to deploy at that.
 
+Table of Content
+----------------
+1. [Features](#features)
+2. [Requirements](#requirements)
+3. [Compatibility](#compatibility)
+4. [Installation](#installation)
+5. [After-Installation Instructions](#after-installation-instructions)
+    * [The Default Admin](#the-default-admin)
+    * [Your Site Name](#your-site-name)
+    * [Setting Up an E-Mail Server](#setting-up-an-e-mail-server)
+    * [Postponing the Set-Up](#postponing-the-set-up)
+    * [DEBUG = True or False?](#debug--true-or-false)
+    * [Aaand You're Done!](#aaand-youre-done)
+6. [License](#license)
+7. [To-Do List](#to-do-list)
+    * [Eventual, Not Impending, Features](#eventual-not-impending-features)
+    * [Features Under Consideration](#features-under-consideration)
+
 Features
 --------
 Pony Forum features such niceties as:
@@ -105,7 +123,6 @@ But how does Pony Forum know which site the link points to? You guessed it, it u
 If you need to change these two fields---for instance, if you were to give your forum a better-looking URL---you will need to change the `domain` field. This can be done at `/admin/sites/site/1/`.
 
 ### Setting Up an E-Mail Server ###
-
 *Speakiiing* of activation e-mails, you need to, you know, send e-mails. "Jesus &"¤!#! Christ!" you think to yourself, but if you use a Gmail account, it's all actually quite easy! (I was surprised, too.)
 
 Using [sontek's intelligible guide][email-guide], if you use a Gmail e-mail account, you can define your own e-mail server by entering these credentials:
