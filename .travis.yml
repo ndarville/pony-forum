@@ -28,6 +28,9 @@ script:
   - python _postinstall/definesite.py
   - python _postinstall/mkplaceholders.py
 
+after_script:
+  - python manage.py test --with-fixture-bundling
+
 notifications:
   email:
     on_success: change
