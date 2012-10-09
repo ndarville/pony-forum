@@ -175,8 +175,9 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.humanize',
     'registration',
-    'djangosecure',
     'south',
+    'django_nose',
+    'djangosecure',
 )
 
 # Extension of the User model with forum-related fields in models.py
@@ -278,6 +279,10 @@ if not LOCAL_DEVELOPMENT:
 ### Secure Django (Native Features)
     # SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
         # Disable for dotCloud
+###
+
+### DJANGO-NOSE
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 ###
 
 try:

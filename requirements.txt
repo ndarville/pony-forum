@@ -27,3 +27,5 @@ south
 selenium
 ##Firefox - install this yourself
 pyvirtualdisplay
+django-nose
+nose-progressive
