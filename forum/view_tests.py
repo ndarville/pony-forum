@@ -1,3 +1,4 @@
+"""Tests the views in views.py through the admin interface."""
 import os
 
 from django.test import LiveServerTestCase
