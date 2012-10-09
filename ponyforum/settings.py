@@ -163,7 +163,6 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'forum',
-    'fts',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
