@@ -2,6 +2,8 @@ INSTALLATION
 ============
 Here is a long, step-by-step installation guide that everyone should be able to follow.
 
+*(Since this installation guide was first made, the project name has been changed from `dotcloud-django` to `pony-forum`. The screenshots below still have the old name, so you should replace all instances of the old name with the new one. I will get around to changing the examples to reflect the new name soon.)*
+
 1. Sign up for a dotCloud account
 
     ![dotCloud sign-up][1-sign-up]
