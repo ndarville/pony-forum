@@ -224,7 +224,6 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
     * Print
 
 * Maintenance
-    * [Unit testing][testing]
     * [Logging][logging]
     * [Database optimization][db]
 
@@ -303,7 +302,6 @@ And much, much more.
 [subscription]: https://github.com/ndarville/pony-forum/issues/39
 [bans]:         https://github.com/ndarville/pony-forum/issues/40
 [avatars]:      https://github.com/ndarville/pony-forum/issues/41
-[testing]:      http://docs.python-guide.org/en/latest/writing/tests/
 [logging]:      http://packages.python.org/Logbook/
 [db]:           http://lukeplant.me.uk/blog/posts/some-quick-django-optimisation-lessons/
 [international]:https://github.com/ndarville/pony-forum/issues?milestone=4&state=open
