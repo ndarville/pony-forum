@@ -1,0 +1,2370 @@
+[
+  {
+    "pk": 1, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Would you tell me, please, which way I ought to go from here?\n", 
+      "thread": 1, 
+      "author": 3, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.021", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Would you tell me, please, which way I ought to go from here?</p>"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "That depends a good deal on where you want to get to.\n", 
+      "thread": 1, 
+      "author": 4, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.039", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>That depends a good deal on where you want to get to.</p>"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I don't much care where---\n", 
+      "thread": 1, 
+      "author": 3, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.046", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I don&#8217;t much care where&#8211;</p>"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Then it doesn't matter which way you go.\n", 
+      "thread": 1, 
+      "author": 4, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.052", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Then it doesn&#8217;t matter which way you go.</p>"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "---so long as I get *somewhere*.\n", 
+      "thread": 1, 
+      "author": 3, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.058", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>&#8211;so long as I get <em>somewhere</em>.</p>"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Oh, you're sure to do that, if you only walk long enough.\n", 
+      "thread": 1, 
+      "author": 4, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.063", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Oh, you&#8217;re sure to do that, if you only walk long enough.</p>"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Now, tell me thou---not in many words, but briefly---knewest thou that an edict had forbidden this?\n", 
+      "thread": 2, 
+      "author": 8, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.897", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Now, tell me thou&#8211;not in many words, but briefly&#8211;knewest thou that an edict had forbidden this?</p>"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I knew it: could I help it? It was public.\n", 
+      "thread": 2, 
+      "author": 7, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.902", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I knew it: could I help it? It was public.</p>"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "And thou didst indeed dare to transgress that law?\n", 
+      "thread": 2, 
+      "author": 8, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.909", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>And thou didst indeed dare to transgress that law?</p>"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "<p>Yes; for it was not Zeus that had published me that edict; not such are the laws set among men by the justice who dwells with the gods below; nor deemed I that thy decrees were of such force, that a mortal could override the unwritten and unfailing statutes of heaven. For their life is not of to-day or yesterday, but from all time, and no man knows when they were first put forth.</p>\n<p>Not through dread of any human pride could I answer to the gods for breaking these. Die I must,---I knew that well (how should I not?)---even without thy edicts. But if I am to die before my time, I count that a gain: for when any one lives, as I do, compassed about with evils, can such an one find aught but gain in death?</p>\n<p>So for me to meet this doom is trifling grief; but if I had suffered my mother's son to lie in death an unburied corpse, that would have grieved me; for this, I am not grieved. And if my present deeds are foolish in thy sight, it may be that a foolish judge arraigns my folly.</p>\n", 
+      "thread": 2, 
+      "author": 7, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.917", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Yes; for it was not Zeus that had published me that edict; not such are the laws set among men by the justice who dwells with the gods below; nor deemed I that thy decrees were of such force, that a mortal could override the unwritten and unfailing statutes of heaven. For their life is not of to-day or yesterday, but from all time, and no man knows when they were first put forth.</p>\n\n<p>Not through dread of any human pride could I answer to the gods for breaking these. Die I must,&#8211;I knew that well (how should I not?)&#8211;even without thy edicts. But if I am to die before my time, I count that a gain: for when any one lives, as I do, compassed about with evils, can such an one find aught but gain in death?</p>\n\n<p>So for me to meet this doom is trifling grief; but if I had suffered my mother&#8217;s son to lie in death an unburied corpse, that would have grieved me; for this, I am not grieved. And if my present deeds are foolish in thy sight, it may be that a foolish judge arraigns my folly.</p>"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "<p>Yet I would have thee know that o'er---stubborn spirits are most often humbled; 'tis the stiffest iron, baked to hardness in the fire, that thou shalt oftenest see snapped and shivered; and I have known horses that show temper brought to order by a little curb; there is no room for pride when thou art thy neighbour's slave.---This girl was already versed in insolence when she transgressed the laws that had been set forth; and, that done, lo, a second insult,---to vaunt of this, and exult in her deed.</p>\n<p>Now verily I am no man, she is the man, if this victory shall rest with her, and bring no penalty. No! be she sister's child, or nearer to me in blood than any that worships Zeus at the altar of our house,---she and her kinsfolk shall not avoid a doom most dire; for indeed I charge that other with a like share in the plotting of this burial.</p>\n<p>And summon her---for I saw her e'en now within,---raving, and not mistress of her wits. So oft, before the deed, the mind stands self-convicted in its treason, when folks are plotting mischief in the dark. But verily this, too, is hateful,---when one who hath been caught in wickednes then seeks to make the crime a glory.</p>\n", 
+      "thread": 2, 
+      "author": 8, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.925", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Yet I would have thee know that o&#8217;er&#8211;stubborn spirits are most often humbled; &#8216;tis the stiffest iron, baked to hardness in the fire, that thou shalt oftenest see snapped and shivered; and I have known horses that show temper brought to order by a little curb; there is no room for pride when thou art thy neighbour&#8217;s slave.&#8211;This girl was already versed in insolence when she transgressed the laws that had been set forth; and, that done, lo, a second insult,&#8211;to vaunt of this, and exult in her deed.</p>\n\n<p>Now verily I am no man, she is the man, if this victory shall rest with her, and bring no penalty. No! be she sister&#8217;s child, or nearer to me in blood than any that worships Zeus at the altar of our house,&#8211;she and her kinsfolk shall not avoid a doom most dire; for indeed I charge that other with a like share in the plotting of this burial.</p>\n\n<p>And summon her&#8211;for I saw her e&#8217;en now within,&#8211;raving, and not mistress of her wits. So oft, before the deed, the mind stands self-convicted in its treason, when folks are plotting mischief in the dark. But verily this, too, is hateful,&#8211;when one who hath been caught in wickednes then seeks to make the crime a glory.</p>"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Wouldst thou do more than take and slay me?\n", 
+      "thread": 2, 
+      "author": 7, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.931", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Wouldst thou do more than take and slay me?</p>"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "No more, indeed; having that, I have all.\n", 
+      "thread": 2, 
+      "author": 8, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.937", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>No more, indeed; having that, I have all.</p>"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Why then dost thou delay? In thy discourse there is nought that pleases me,---never may there be!---and so my words must needs be unpleasing to thee. And yet, for glory---whence could I have won a nobler, than by giving burial to mine own brother? All here would own that they thought it well, were not their lips sealed by fear. But royalty, blest in so much besides, hath the power to do and say what it will.\n", 
+      "thread": 2, 
+      "author": 7, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.943", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Why then dost thou delay? In thy discourse there is nought that pleases me,&#8211;never may there be!&#8211;and so my words must needs be unpleasing to thee. And yet, for glory&#8211;whence could I have won a nobler, than by giving burial to mine own brother? All here would own that they thought it well, were not their lips sealed by fear. But royalty, blest in so much besides, hath the power to do and say what it will.</p>"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Thou differest from all these Thebans in that view.\n", 
+      "thread": 2, 
+      "author": 8, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.950", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Thou differest from all these Thebans in that view.</p>"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "These also share it; but they curb their tongues for thee.\n", 
+      "thread": 2, 
+      "author": 7, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.955", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>These also share it; but they curb their tongues for thee.</p>"
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "And art thou not ashamed to act apart from them?\n", 
+      "thread": 2, 
+      "author": 8, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.961", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>And art thou not ashamed to act apart from them?</p>"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "No; there is nothing shameful in piety to a brother.\n", 
+      "thread": 2, 
+      "author": 7, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:54.967", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>No; there is nothing shameful in piety to a brother.</p>"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "He jests at scars that never felt a wound.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.648", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>He jests at scars that never felt a wound.</p>"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "<i>Appears above at a window</i>\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.654", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p><i>Appears above at a window</i></p>"
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "But, soft! what light through yonder window breaks?\nIt is the east, and Juliet is the sun.\nArise, fair sun, and kill the envious moon,\nWho is already sick and pale with grief,\nThat thou her maid art far more fair than she:\nBe not her maid, since she is envious;\nHer vestal livery is but sick and green\nAnd none but fools do wear it; cast it off.\nIt is my lady, O, it is my love!\nO, that she knew she were!\nShe speaks yet she says nothing: what of that?\nHer eye discourses; I will answer it.\nI am too bold, 'tis not to me she speaks:\nTwo of the fairest stars in all the heaven,\nHaving some business, do entreat her eyes\nTo twinkle in their spheres till they return.\nWhat if her eyes were there, they in her head?\nThe brightness of her cheek would shame those stars,\nAs daylight doth a lamp; her eyes in heaven\nWould through the airy region stream so bright\nThat birds would sing and think it were not night.\nSee, how she leans her cheek upon her hand!\nO, that I were a glove upon that hand,\nThat I might touch that cheek!\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.664", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>But, soft! what light through yonder window breaks?<br />\nIt is the east, and Juliet is the sun.<br />\nArise, fair sun, and kill the envious moon,<br />\nWho is already sick and pale with grief,<br />\nThat thou her maid art far more fair than she:<br />\nBe not her maid, since she is envious;<br />\nHer vestal livery is but sick and green<br />\nAnd none but fools do wear it; cast it off.<br />\nIt is my lady, O, it is my love!<br />\nO, that she knew she were!<br />\nShe speaks yet she says nothing: what of that?<br />\nHer eye discourses; I will answer it.<br />\nI am too bold, &#8216;tis not to me she speaks:<br />\nTwo of the fairest stars in all the heaven,<br />\nHaving some business, do entreat her eyes<br />\nTo twinkle in their spheres till they return.<br />\nWhat if her eyes were there, they in her head?<br />\nThe brightness of her cheek would shame those stars,<br />\nAs daylight doth a lamp; her eyes in heaven<br />\nWould through the airy region stream so bright<br />\nThat birds would sing and think it were not night.<br />\nSee, how she leans her cheek upon her hand!<br />\nO, that I were a glove upon that hand,<br />\nThat I might touch that cheek!</p>"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Ay me!\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.670", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Ay me!</p>"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "She speaks:\nO, speak again, bright angel! for thou art\nAs glorious to this night, being o'er my head\nAs is a winged messenger of heaven\nUnto the white-upturned wondering eyes\nOf mortals that fall back to gaze on him\nWhen he bestrides the lazy-pacing clouds\nAnd sails upon the bosom of the air.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.677", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>She speaks:<br />\nO, speak again, bright angel! for thou art<br />\nAs glorious to this night, being o&#8217;er my head<br />\nAs is a winged messenger of heaven<br />\nUnto the white-upturned wondering eyes<br />\nOf mortals that fall back to gaze on him<br />\nWhen he bestrides the lazy-pacing clouds<br />\nAnd sails upon the bosom of the air.</p>"
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "O Romeo, Romeo! wherefore art thou Romeo?\nDeny thy father and refuse thy name;\nOr, if thou wilt not, be but sworn my love,\nAnd I'll no longer be a Capulet.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.683", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>O Romeo, Romeo! wherefore art thou Romeo?<br />\nDeny thy father and refuse thy name;<br />\nOr, if thou wilt not, be but sworn my love,<br />\nAnd I&#8217;ll no longer be a Capulet.</p>"
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "[Aside] Shall I hear more, or shall I speak at this?\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.689", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>[Aside] Shall I hear more, or shall I speak at this?</p>"
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "'Tis but thy name that is my enemy;\nThou art thyself, though not a Montague.\nWhat's Montague? it is nor hand, nor foot,\nNor arm, nor face, nor any other part\nBelonging to a man. O, be some other name!\nWhat's in a name? that which we call a rose\nBy any other name would smell as sweet;\nSo Romeo would, were he not Romeo call'd,\nRetain that dear perfection which he owes\nWithout that title. Romeo, doff thy name,\nAnd for that name which is no part of thee\nTake all myself.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.697", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>&#8216;Tis but thy name that is my enemy;<br />\nThou art thyself, though not a Montague.<br />\nWhat&#8217;s Montague? it is nor hand, nor foot,<br />\nNor arm, nor face, nor any other part<br />\nBelonging to a man. O, be some other name!<br />\nWhat&#8217;s in a name? that which we call a rose<br />\nBy any other name would smell as sweet;<br />\nSo Romeo would, were he not Romeo call&#8217;d,<br />\nRetain that dear perfection which he owes<br />\nWithout that title. Romeo, doff thy name,<br />\nAnd for that name which is no part of thee<br />\nTake all myself.</p>"
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I take thee at thy word:\nCall me but love, and I'll be new baptized;\nHenceforth I never will be Romeo.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.703", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I take thee at thy word:<br />\nCall me but love, and I&#8217;ll be new baptized;<br />\nHenceforth I never will be Romeo.</p>"
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "What man art thou that thus bescreen'd in night\nSo stumblest on my counsel?\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.709", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>What man art thou that thus bescreen&#8217;d in night<br />\nSo stumblest on my counsel?</p>"
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "By a name\nI know not how to tell thee who I am:\nMy name, dear saint, is hateful to myself,\nBecause it is an enemy to thee;\nHad I it written, I would tear the word.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.716", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>By a name<br />\nI know not how to tell thee who I am:<br />\nMy name, dear saint, is hateful to myself,<br />\nBecause it is an enemy to thee;<br />\nHad I it written, I would tear the word.</p>"
+    }
+  }, 
+  {
+    "pk": 30, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "My ears have not yet drunk a hundred words\nOf that tongue's utterance, yet I know the sound:\nArt thou not Romeo and a Montague?\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.722", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>My ears have not yet drunk a hundred words<br />\nOf that tongue&#8217;s utterance, yet I know the sound:<br />\nArt thou not Romeo and a Montague?</p>"
+    }
+  }, 
+  {
+    "pk": 31, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Neither, fair saint, if either thee dislike.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.727", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Neither, fair saint, if either thee dislike.</p>"
+    }
+  }, 
+  {
+    "pk": 32, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "How camest thou hither, tell me, and wherefore?\nThe orchard walls are high and hard to climb,\nAnd the place death, considering who thou art,\nIf any of my kinsmen find thee here.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.734", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>How camest thou hither, tell me, and wherefore?<br />\nThe orchard walls are high and hard to climb,<br />\nAnd the place death, considering who thou art,<br />\nIf any of my kinsmen find thee here.</p>"
+    }
+  }, 
+  {
+    "pk": 33, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "With love's light wings did I o'er-perch these walls;\nFor stony limits cannot hold love out,\nAnd what love can do that dares love attempt;\nTherefore thy kinsmen are no let to me.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.740", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>With love&#8217;s light wings did I o&#8217;er-perch these walls;<br />\nFor stony limits cannot hold love out,<br />\nAnd what love can do that dares love attempt;<br />\nTherefore thy kinsmen are no let to me.</p>"
+    }
+  }, 
+  {
+    "pk": 34, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "If they do see thee, they will murder thee.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.746", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>If they do see thee, they will murder thee.</p>"
+    }
+  }, 
+  {
+    "pk": 35, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Alack, there lies more peril in thine eye\nThan twenty of their swords: look thou but sweet,\nAnd I am proof against their enmity.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.752", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Alack, there lies more peril in thine eye<br />\nThan twenty of their swords: look thou but sweet,<br />\nAnd I am proof against their enmity.</p>"
+    }
+  }, 
+  {
+    "pk": 36, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I would not for the world they saw thee here.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.757", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I would not for the world they saw thee here.</p>"
+    }
+  }, 
+  {
+    "pk": 37, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I have night's cloak to hide me from their sight;\nAnd but thou love me, let them find me here:\nMy life were better ended by their hate,\nThan death prorogued, wanting of thy love.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.763", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I have night&#8217;s cloak to hide me from their sight;<br />\nAnd but thou love me, let them find me here:<br />\nMy life were better ended by their hate,<br />\nThan death prorogued, wanting of thy love.</p>"
+    }
+  }, 
+  {
+    "pk": 38, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "By whose direction found'st thou out this place?\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.769", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>By whose direction found&#8217;st thou out this place?</p>"
+    }
+  }, 
+  {
+    "pk": 39, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "By love, who first did prompt me to inquire;\nHe lent me counsel and I lent him eyes.\nI am no pilot; yet, wert thou as far\nAs that vast shore wash'd with the farthest sea,\nI would adventure for such merchandise.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.776", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>By love, who first did prompt me to inquire;<br />\nHe lent me counsel and I lent him eyes.<br />\nI am no pilot; yet, wert thou as far<br />\nAs that vast shore wash&#8217;d with the farthest sea,<br />\nI would adventure for such merchandise.</p>"
+    }
+  }, 
+  {
+    "pk": 40, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Thou know'st the mask of night is on my face,\nElse would a maiden blush bepaint my cheek\nFor that which thou hast heard me speak to-night\nFain would I dwell on form, fain, fain deny\nWhat I have spoke: but farewell compliment!\nDost thou love me? I know thou wilt say 'Ay,'\nAnd I will take thy word: yet if thou swear'st,\nThou mayst prove false; at lovers' perjuries\nThen say, Jove laughs. O gentle Romeo,\nIf thou dost love, pronounce it faithfully:\nOr if thou think'st I am too quickly won,\nI'll frown and be perverse an say thee nay,\nSo thou wilt woo; but else, not for the world.\nIn truth, fair Montague, I am too fond,\nAnd therefore thou mayst think my 'havior light:\nBut trust me, gentleman, I'll prove more true\nThan those that have more cunning to be strange.\nI should have been more strange, I must confess,\nBut that thou overheard'st, ere I was ware,\nMy true love's passion: therefore pardon me,\nAnd not impute this yielding to light love,\nWhich the dark night hath so discovered.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.787", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Thou know&#8217;st the mask of night is on my face,<br />\nElse would a maiden blush bepaint my cheek<br />\nFor that which thou hast heard me speak to-night<br />\nFain would I dwell on form, fain, fain deny<br />\nWhat I have spoke: but farewell compliment!<br />\nDost thou love me? I know thou wilt say &#8216;Ay,&#8217;<br />\nAnd I will take thy word: yet if thou swear&#8217;st,<br />\nThou mayst prove false; at lovers&#8217; perjuries<br />\nThen say, Jove laughs. O gentle Romeo,<br />\nIf thou dost love, pronounce it faithfully:<br />\nOr if thou think&#8217;st I am too quickly won,<br />\nI&#8217;ll frown and be perverse an say thee nay,<br />\nSo thou wilt woo; but else, not for the world.<br />\nIn truth, fair Montague, I am too fond,<br />\nAnd therefore thou mayst think my &#8216;havior light:<br />\nBut trust me, gentleman, I&#8217;ll prove more true<br />\nThan those that have more cunning to be strange.<br />\nI should have been more strange, I must confess,<br />\nBut that thou overheard&#8217;st, ere I was ware,<br />\nMy true love&#8217;s passion: therefore pardon me,<br />\nAnd not impute this yielding to light love,<br />\nWhich the dark night hath so discovered.</p>"
+    }
+  }, 
+  {
+    "pk": 41, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Lady, by yonder blessed moon I swear\nThat tips with silver all these fruit-tree tops--\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.792", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Lady, by yonder blessed moon I swear<br />\nThat tips with silver all these fruit-tree tops&#8212;</p>"
+    }
+  }, 
+  {
+    "pk": 42, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "O, swear not by the moon, the inconstant moon,\nThat monthly changes in her circled orb,\nLest that thy love prove likewise variable.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.799", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>O, swear not by the moon, the inconstant moon,<br />\nThat monthly changes in her circled orb,<br />\nLest that thy love prove likewise variable.</p>"
+    }
+  }, 
+  {
+    "pk": 43, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "What shall I swear by?\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.804", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>What shall I swear by?</p>"
+    }
+  }, 
+  {
+    "pk": 44, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Do not swear at all;\nOr, if thou wilt, swear by thy gracious self,\nWhich is the god of my idolatry,\nAnd I'll believe thee.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.810", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Do not swear at all;<br />\nOr, if thou wilt, swear by thy gracious self,<br />\nWhich is the god of my idolatry,<br />\nAnd I&#8217;ll believe thee.</p>"
+    }
+  }, 
+  {
+    "pk": 45, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "If my heart's dear love--\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.816", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>If my heart&#8217;s dear love&#8212;</p>"
+    }
+  }, 
+  {
+    "pk": 46, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Well, do not swear: although I joy in thee,\nI have no joy of this contract to-night:\nIt is too rash, too unadvised, too sudden;\nToo like the lightning, which doth cease to be\nEre one can say 'It lightens.' Sweet, good night!\nThis bud of love, by summer's ripening breath,\nMay prove a beauteous flower when next we meet.\nGood night, good night! as sweet repose and rest\nCome to thy heart as that within my breast!\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.825", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Well, do not swear: although I joy in thee,<br />\nI have no joy of this contract to-night:<br />\nIt is too rash, too unadvised, too sudden;<br />\nToo like the lightning, which doth cease to be<br />\nEre one can say &#8216;It lightens.&#8217; Sweet, good night!<br />\nThis bud of love, by summer&#8217;s ripening breath,<br />\nMay prove a beauteous flower when next we meet.<br />\nGood night, good night! as sweet repose and rest<br />\nCome to thy heart as that within my breast!</p>"
+    }
+  }, 
+  {
+    "pk": 47, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "O, wilt thou leave me so unsatisfied?\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.830", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>O, wilt thou leave me so unsatisfied?</p>"
+    }
+  }, 
+  {
+    "pk": 48, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "What satisfaction canst thou have to-night?\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.836", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>What satisfaction canst thou have to-night?</p>"
+    }
+  }, 
+  {
+    "pk": 49, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "The exchange of thy love's faithful vow for mine.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.841", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>The exchange of thy love&#8217;s faithful vow for mine.</p>"
+    }
+  }, 
+  {
+    "pk": 50, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I gave thee mine before thou didst request it:\nAnd yet I would it were to give again.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.847", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I gave thee mine before thou didst request it:<br />\nAnd yet I would it were to give again.</p>"
+    }
+  }, 
+  {
+    "pk": 51, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Wouldst thou withdraw it? for what purpose, love?\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.853", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Wouldst thou withdraw it? for what purpose, love?</p>"
+    }
+  }, 
+  {
+    "pk": 52, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "But to be frank, and give it thee again.\nAnd yet I wish but for the thing I have:\nMy bounty is as boundless as the sea,\nMy love as deep; the more I give to thee,\nThe more I have, for both are infinite.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.859", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>But to be frank, and give it thee again.<br />\nAnd yet I wish but for the thing I have:<br />\nMy bounty is as boundless as the sea,<br />\nMy love as deep; the more I give to thee,<br />\nThe more I have, for both are infinite.</p>"
+    }
+  }, 
+  {
+    "pk": 53, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "<i>Calls within</i>\n", 
+      "thread": 3, 
+      "author": 13, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.865", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p><i>Calls within</i></p>"
+    }
+  }, 
+  {
+    "pk": 54, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I hear some noise within; dear love, adieu!\nAnon, good nurse! Sweet Montague, be true.\nStay but a little, I will come again.\n<p><i>Exits, above</i></p>\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.871", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I hear some noise within; dear love, adieu!<br />\nAnon, good nurse! Sweet Montague, be true.<br />\nStay but a little, I will come again.<br />\n<p><i>Exits, above</i></p></p>"
+    }
+  }, 
+  {
+    "pk": 55, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "O blessed, blessed night! I am afeard.\nBeing in night, all this is but a dream,\nToo flattering-sweet to be substantial.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.877", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>O blessed, blessed night! I am afeard.<br />\nBeing in night, all this is but a dream,<br />\nToo flattering-sweet to be substantial.</p>"
+    }
+  }, 
+  {
+    "pk": 56, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "<i>Re-enters, above</i>\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.883", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p><i>Re-enters, above</i></p>"
+    }
+  }, 
+  {
+    "pk": 57, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Three words, dear Romeo, and good night indeed.\nIf that thy bent of love be honourable,\nThy purpose marriage, send me word to-morrow,\nBy one that I'll procure to come to thee,\nWhere and what time thou wilt perform the rite;\nAnd all my fortunes at thy foot I'll lay\nAnd follow thee my lord throughout the world.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.890", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Three words, dear Romeo, and good night indeed.<br />\nIf that thy bent of love be honourable,<br />\nThy purpose marriage, send me word to-morrow,<br />\nBy one that I&#8217;ll procure to come to thee,<br />\nWhere and what time thou wilt perform the rite;<br />\nAnd all my fortunes at thy foot I&#8217;ll lay<br />\nAnd follow thee my lord throughout the world.</p>"
+    }
+  }, 
+  {
+    "pk": 58, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "[Within] Madam!\n", 
+      "thread": 3, 
+      "author": 13, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.895", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>[Within] Madam!</p>"
+    }
+  }, 
+  {
+    "pk": 59, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I come, anon.--But if thou mean'st not well,\nI do beseech thee--\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.901", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I come, anon.&#8212;But if thou mean&#8217;st not well,<br />\nI do beseech thee&#8212;</p>"
+    }
+  }, 
+  {
+    "pk": 60, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "By and by, I come:--\nTo cease thy suit, and leave me to my grief:\nTo-morrow will I send.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.909", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>By and by, I come:&#8212;<br />\nTo cease thy suit, and leave me to my grief:<br />\nTo-morrow will I send.</p>"
+    }
+  }, 
+  {
+    "pk": 61, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "So thrive my soul--\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.914", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>So thrive my soul&#8212;</p>"
+    }
+  }, 
+  {
+    "pk": 62, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "A thousand times good night!\n<p><i>Exits, above</i></p>\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.920", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>A thousand times good night!<br />\n<p><i>Exits, above</i></p></p>"
+    }
+  }, 
+  {
+    "pk": 63, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "A thousand times the worse, to want thy light.\nLove goes toward love, as schoolboys from\ntheir books,\nBut love from love, toward school with heavy looks.\n<p><i>Retiring</i></p>\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.927", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>A thousand times the worse, to want thy light.<br />\nLove goes toward love, as schoolboys from<br />\ntheir books,<br />\nBut love from love, toward school with heavy looks.<br />\n<p><i>Retiring</i></p></p>"
+    }
+  }, 
+  {
+    "pk": 64, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "<p><i>Re-enters, above</i></p>\nHist! Romeo, hist! O, for a falconer's voice,\nTo lure this tassel-gentle back again!\nBondage is hoarse, and may not speak aloud;\nElse would I tear the cave where Echo lies,\nAnd make her airy tongue more hoarse than mine,\nWith repetition of my Romeo's name.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.935", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p><i>Re-enters, above</i></p>\n\n<p>Hist! Romeo, hist! O, for a falconer&#8217;s voice,<br />\nTo lure this tassel-gentle back again!<br />\nBondage is hoarse, and may not speak aloud;<br />\nElse would I tear the cave where Echo lies,<br />\nAnd make her airy tongue more hoarse than mine,<br />\nWith repetition of my Romeo&#8217;s name.</p>"
+    }
+  }, 
+  {
+    "pk": 65, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "It is my soul that calls upon my name:\nHow silver-sweet sound lovers' tongues by night,\nLike softest music to attending ears!\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.941", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>It is my soul that calls upon my name:<br />\nHow silver-sweet sound lovers&#8217; tongues by night,<br />\nLike softest music to attending ears!</p>"
+    }
+  }, 
+  {
+    "pk": 66, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Romeo!\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.946", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Romeo!</p>"
+    }
+  }, 
+  {
+    "pk": 67, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "My dear?\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.952", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>My dear?</p>"
+    }
+  }, 
+  {
+    "pk": 68, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "At what o'clock to-morrow\nShall I send to thee?\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.958", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>At what o&#8217;clock to-morrow<br />\nShall I send to thee?</p>"
+    }
+  }, 
+  {
+    "pk": 69, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "At the hour of nine.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.963", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>At the hour of nine.</p>"
+    }
+  }, 
+  {
+    "pk": 70, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I will not fail: 'tis twenty years till then.\nI have forgot why I did call thee back.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.969", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I will not fail: &#8216;tis twenty years till then.<br />\nI have forgot why I did call thee back.</p>"
+    }
+  }, 
+  {
+    "pk": 71, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Let me stand here till thou remember it.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.975", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Let me stand here till thou remember it.</p>"
+    }
+  }, 
+  {
+    "pk": 72, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I shall forget, to have thee still stand there,\nRemembering how I love thy company.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.981", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I shall forget, to have thee still stand there,<br />\nRemembering how I love thy company.</p>"
+    }
+  }, 
+  {
+    "pk": 73, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "And I'll still stay, to have thee still forget,\nForgetting any other home but this.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.987", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>And I&#8217;ll still stay, to have thee still forget,<br />\nForgetting any other home but this.</p>"
+    }
+  }, 
+  {
+    "pk": 74, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "'Tis almost morning; I would have thee gone:\nAnd yet no further than a wanton's bird;\nWho lets it hop a little from her hand,\nLike a poor prisoner in his twisted gyves,\nAnd with a silk thread plucks it back again,\nSo loving-jealous of his liberty.\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.994", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>&#8216;Tis almost morning; I would have thee gone:<br />\nAnd yet no further than a wanton&#8217;s bird;<br />\nWho lets it hop a little from her hand,<br />\nLike a poor prisoner in his twisted gyves,<br />\nAnd with a silk thread plucks it back again,<br />\nSo loving-jealous of his liberty.</p>"
+    }
+  }, 
+  {
+    "pk": 75, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I would I were thy bird.\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:55.999", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I would I were thy bird.</p>"
+    }
+  }, 
+  {
+    "pk": 76, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Sweet, so would I:\nYet I should kill thee with much cherishing.\nGood night, good night! parting is such\nsweet sorrow,\nThat I shall say good night till it be morrow.\n<p><i>Exits above</i></p>\n", 
+      "thread": 3, 
+      "author": 12, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.006", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Sweet, so would I:<br />\nYet I should kill thee with much cherishing.<br />\nGood night, good night! parting is such<br />\nsweet sorrow,<br />\nThat I shall say good night till it be morrow.<br />\n<p><i>Exits above</i></p></p>"
+    }
+  }, 
+  {
+    "pk": 77, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Sleep dwell upon thine eyes, peace in thy breast!\nWould I were sleep and peace, so sweet to rest!\nHence will I to my ghostly father's cell,\nHis help to crave, and my dear hap to tell.\n<p><i>Exits</i></p>\n", 
+      "thread": 3, 
+      "author": 11, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.013", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Sleep dwell upon thine eyes, peace in thy breast!<br />\nWould I were sleep and peace, so sweet to rest!<br />\nHence will I to my ghostly father&#8217;s cell,<br />\nHis help to crave, and my dear hap to tell.<br />\n<p><i>Exits</i></p></p>"
+    }
+  }, 
+  {
+    "pk": 78, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "But, O! my beloved Socrates, let me entreat you once more to take my advice and escape. For if you die I shall not only lose a friend who can never be replaced, but there is another evil: people who do not know you and me will believe that I might have saved you if I had been willing to give money, but that I did not care. Now, can there be a worse disgrace than this- that I should be thought to value money more than the life of a friend? For the many will not be persuaded that I wanted you to escape, and that you refused.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.845", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>But, O! my beloved Socrates, let me entreat you once more to take my advice and escape. For if you die I shall not only lose a friend who can never be replaced, but there is another evil: people who do not know you and me will believe that I might have saved you if I had been willing to give money, but that I did not care. Now, can there be a worse disgrace than this- that I should be thought to value money more than the life of a friend? For the many will not be persuaded that I wanted you to escape, and that you refused.</p>"
+    }
+  }, 
+  {
+    "pk": 79, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "But why, my dear Crito, should we care about the opinion of the many? Good men, and they are the only persons who are worth considering, will think of these things truly as they happened.\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.851", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>But why, my dear Crito, should we care about the opinion of the many? Good men, and they are the only persons who are worth considering, will think of these things truly as they happened.</p>"
+    }
+  }, 
+  {
+    "pk": 80, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "But do you see. Socrates, that the opinion of the many must be regarded, as is evident in your own case, because they can do the very greatest evil to anyone who has lost their good opinion?\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.856", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>But do you see. Socrates, that the opinion of the many must be regarded, as is evident in your own case, because they can do the very greatest evil to anyone who has lost their good opinion?</p>"
+    }
+  }, 
+  {
+    "pk": 81, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I only wish, Crito, that they could; for then they could also do the greatest good, and that would be well. But the truth is, that they can do neither good nor evil: they cannot make a man wise or make him foolish; and whatever they do is the result of chance.\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.863", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I only wish, Crito, that they could; for then they could also do the greatest good, and that would be well. But the truth is, that they can do neither good nor evil: they cannot make a man wise or make him foolish; and whatever they do is the result of chance.</p>"
+    }
+  }, 
+  {
+    "pk": 82, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Well, I will not dispute about that; but please to tell me, Socrates, whether you are not acting out of regard to me and your other friends: are you not afraid that if you escape hence we may get into trouble with the informers for having stolen you away, and lose either the whole or a great part of our property; or that even a worse evil may happen to us? Now, if this is your fear, be at ease; for in order to save you, we ought surely to run this or even a greater risk; be persuaded, then, and do as I say.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.869", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Well, I will not dispute about that; but please to tell me, Socrates, whether you are not acting out of regard to me and your other friends: are you not afraid that if you escape hence we may get into trouble with the informers for having stolen you away, and lose either the whole or a great part of our property; or that even a worse evil may happen to us? Now, if this is your fear, be at ease; for in order to save you, we ought surely to run this or even a greater risk; be persuaded, then, and do as I say.</p>"
+    }
+  }, 
+  {
+    "pk": 83, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Yes, Crito, that is one fear which you mention, but by no means the only one.\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.875", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Yes, Crito, that is one fear which you mention, but by no means the only one.</p>"
+    }
+  }, 
+  {
+    "pk": 84, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Fear not. There are persons who at no great cost are willing to save you and bring you out of prison; and as for the informers, you may observe that they are far from being exorbitant in their demands; a little money will satisfy them. My means, which, as I am sure, are ample, are at your service, and if you have a scruple about spending all mine, here are strangers who will give you the use of theirs; and one of them, Simmias the Theban, has brought a sum of money for this very purpose; and Cebes and many others are willing to spend their money too. I say, therefore, do not on that account hesitate about making your escape, and do not say, as you did in the court, that you will have a difficulty in knowing what to do with yourself if you escape. For men will love you in other places to which you may go, and not in Athens only; there are friends of mine in Thessaly, if you like to go to them, who will value and protect you, and no Thessalian will give you any trouble. Nor can I think that you are justified, Socrates, in betraying your own life when you might be saved; this is playing into the hands of your enemies and destroyers; and moreover I should say that you were betraying your children; for you might bring them up and educate them; instead of which you go away and leave them, and they will have to take their chance; and if they do not meet with the usual fate of orphans, there will be small thanks to you. No man should bring children into the world who is unwilling to persevere to the end in their nurture and education. But you are choosing the easier part, as I think, not the better and manlier, which would rather have become one who professes virtue in all his actions, like yourself. And, indeed, I am ashamed not only of you, but of us who are your friends, when I reflect that this entire business of yours will be attributed to our want of courage. The trial need never have come on, or might have been brought to another issue; and the end of all, which is the crowning absurdity, will seem to have been permitted by us, through cowardice and baseness, who might have saved you, as you might have saved yourself, if we had been good for anything (for there was no difficulty in escaping); and we did not see how disgraceful, Socrates, and also miserable all this will be to us as well as to you. Make your mind up then, or rather have your mind already made up, for the time of deliberation is over, and there is only one thing to be done, which must be done, if at all, this very night, and which any delay will render all but impossible; I beseech you therefore, Socrates, to be persuaded by me, and to do as I say.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.883", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Fear not. There are persons who at no great cost are willing to save you and bring you out of prison; and as for the informers, you may observe that they are far from being exorbitant in their demands; a little money will satisfy them. My means, which, as I am sure, are ample, are at your service, and if you have a scruple about spending all mine, here are strangers who will give you the use of theirs; and one of them, Simmias the Theban, has brought a sum of money for this very purpose; and Cebes and many others are willing to spend their money too. I say, therefore, do not on that account hesitate about making your escape, and do not say, as you did in the court, that you will have a difficulty in knowing what to do with yourself if you escape. For men will love you in other places to which you may go, and not in Athens only; there are friends of mine in Thessaly, if you like to go to them, who will value and protect you, and no Thessalian will give you any trouble. Nor can I think that you are justified, Socrates, in betraying your own life when you might be saved; this is playing into the hands of your enemies and destroyers; and moreover I should say that you were betraying your children; for you might bring them up and educate them; instead of which you go away and leave them, and they will have to take their chance; and if they do not meet with the usual fate of orphans, there will be small thanks to you. No man should bring children into the world who is unwilling to persevere to the end in their nurture and education. But you are choosing the easier part, as I think, not the better and manlier, which would rather have become one who professes virtue in all his actions, like yourself. And, indeed, I am ashamed not only of you, but of us who are your friends, when I reflect that this entire business of yours will be attributed to our want of courage. The trial need never have come on, or might have been brought to another issue; and the end of all, which is the crowning absurdity, will seem to have been permitted by us, through cowardice and baseness, who might have saved you, as you might have saved yourself, if we had been good for anything (for there was no difficulty in escaping); and we did not see how disgraceful, Socrates, and also miserable all this will be to us as well as to you. Make your mind up then, or rather have your mind already made up, for the time of deliberation is over, and there is only one thing to be done, which must be done, if at all, this very night, and which any delay will render all but impossible; I beseech you therefore, Socrates, to be persuaded by me, and to do as I say.</p>"
+    }
+  }, 
+  {
+    "pk": 85, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Dear Crito, your zeal is invaluable, if a right one; but if wrong, the greater the zeal the greater the evil; and therefore we ought to consider whether these things shall be done or not. For I am and always have been one of those natures who must be guided by reason, whatever the reason may be which upon reflection appears to me to be the best; and now that this fortune has come upon me, I cannot put away the reasons which I have before given: the principles which I have hitherto honored and revered I still honor, and unless we can find other and better principles on the instant, I am certain not to agree with you; no, not even if the power of the multitude could inflict many more imprisonments, confiscations, deaths, frightening us like children with hobgoblin terrors. But what will be the fairest way of considering the question? Shall I return to your old argument about the opinions of men, some of which are to be regarded, and others, as we were saying, are not to be regarded? Now were we right in maintaining this before I was condemned? And has the argument which was once good now proved to be talk for the sake of talking; in fact an amusement only, and altogether vanity? That is what I want to consider with your help, Crito: whether, under my present circumstances, the argument appears to be in any way different or not; and is to be allowed by me or disallowed. That argument, which, as I believe, is maintained by many who assume to be authorities, was to the effect, as I was saying, that the opinions of some men are to be regarded, and of other men not to be regarded. Now you, Crito, are a disinterested person who are not going to die to-morrow- at least, there is no human probability of this, and you are therefore not liable to be deceived by the circumstances in which you are placed. Tell me, then, whether I am right in saying that some opinions, and the opinions of some men only, are to be valued, and other opinions, and the opinions of other men, are not to be valued. I ask you whether I was right in maintaining this?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.892", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Dear Crito, your zeal is invaluable, if a right one; but if wrong, the greater the zeal the greater the evil; and therefore we ought to consider whether these things shall be done or not. For I am and always have been one of those natures who must be guided by reason, whatever the reason may be which upon reflection appears to me to be the best; and now that this fortune has come upon me, I cannot put away the reasons which I have before given: the principles which I have hitherto honored and revered I still honor, and unless we can find other and better principles on the instant, I am certain not to agree with you; no, not even if the power of the multitude could inflict many more imprisonments, confiscations, deaths, frightening us like children with hobgoblin terrors. But what will be the fairest way of considering the question? Shall I return to your old argument about the opinions of men, some of which are to be regarded, and others, as we were saying, are not to be regarded? Now were we right in maintaining this before I was condemned? And has the argument which was once good now proved to be talk for the sake of talking; in fact an amusement only, and altogether vanity? That is what I want to consider with your help, Crito: whether, under my present circumstances, the argument appears to be in any way different or not; and is to be allowed by me or disallowed. That argument, which, as I believe, is maintained by many who assume to be authorities, was to the effect, as I was saying, that the opinions of some men are to be regarded, and of other men not to be regarded. Now you, Crito, are a disinterested person who are not going to die to-morrow- at least, there is no human probability of this, and you are therefore not liable to be deceived by the circumstances in which you are placed. Tell me, then, whether I am right in saying that some opinions, and the opinions of some men only, are to be valued, and other opinions, and the opinions of other men, are not to be valued. I ask you whether I was right in maintaining this?</p>"
+    }
+  }, 
+  {
+    "pk": 86, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Certainly.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.898", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Certainly.</p>"
+    }
+  }, 
+  {
+    "pk": 87, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "The good are to be regarded, and not the bad?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.904", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>The good are to be regarded, and not the bad?</p>"
+    }
+  }, 
+  {
+    "pk": 88, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Yes.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.909", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Yes.</p>"
+    }
+  }, 
+  {
+    "pk": 89, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "And the opinions of the wise are good, and the opinions of the unwise are evil?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.915", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>And the opinions of the wise are good, and the opinions of the unwise are evil?</p>"
+    }
+  }, 
+  {
+    "pk": 90, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "And what was said about another matter? Was the disciple in gymnastics supposed to attend to the praise and blame and opinion of every man, or of one man only- his physician or trainer, whoever that was?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.922", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>And what was said about another matter? Was the disciple in gymnastics supposed to attend to the praise and blame and opinion of every man, or of one man only- his physician or trainer, whoever that was?</p>"
+    }
+  }, 
+  {
+    "pk": 91, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Of one man only.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.928", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Of one man only.</p>"
+    }
+  }, 
+  {
+    "pk": 92, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "And he ought to fear the censure and welcome the praise of that one only, and not of the many?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.934", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>And he ought to fear the censure and welcome the praise of that one only, and not of the many?</p>"
+    }
+  }, 
+  {
+    "pk": 93, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "That is clear.\nAnd he ought to live and train, and eat and drink in the way which seems good to his single master who has understanding, rather than according to the opinion of all other men put together?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.939", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>That is clear.<br />\nAnd he ought to live and train, and eat and drink in the way which seems good to his single master who has understanding, rather than according to the opinion of all other men put together?</p>"
+    }
+  }, 
+  {
+    "pk": 94, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "True.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.945", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>True.</p>"
+    }
+  }, 
+  {
+    "pk": 95, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "And if he disobeys and disregards the opinion and approval of the one, and regards the opinion of the many who have no understanding, will he not suffer evil?\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.953", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>And if he disobeys and disregards the opinion and approval of the one, and regards the opinion of the many who have no understanding, will he not suffer evil?</p>"
+    }
+  }, 
+  {
+    "pk": 96, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Certainly he will.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.959", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Certainly he will.</p>"
+    }
+  }, 
+  {
+    "pk": 97, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "And what will the evil be, whither tending and what affecting, in the disobedient person?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.964", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>And what will the evil be, whither tending and what affecting, in the disobedient person?</p>"
+    }
+  }, 
+  {
+    "pk": 98, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Clearly, affecting the body; that is what is destroyed by the evil.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.970", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Clearly, affecting the body; that is what is destroyed by the evil.</p>"
+    }
+  }, 
+  {
+    "pk": 99, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Very good; and is not this true, Crito, of other things which we need not separately enumerate? In the matter of just and unjust, fair and foul, good and evil, which are the subjects of our present consultation, ought we to follow the opinion of the many and to fear them; or the opinion of the one man who has understanding, and whom we ought to fear and reverence more than all the rest of the world: and whom deserting we shall destroy and injure that principle in us which may be assumed to be improved by justice and deteriorated by injustice; is there not such a principle?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.976", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Very good; and is not this true, Crito, of other things which we need not separately enumerate? In the matter of just and unjust, fair and foul, good and evil, which are the subjects of our present consultation, ought we to follow the opinion of the many and to fear them; or the opinion of the one man who has understanding, and whom we ought to fear and reverence more than all the rest of the world: and whom deserting we shall destroy and injure that principle in us which may be assumed to be improved by justice and deteriorated by injustice; is there not such a principle?</p>"
+    }
+  }, 
+  {
+    "pk": 100, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Certainly there is, Socrates.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.982", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Certainly there is, Socrates.</p>"
+    }
+  }, 
+  {
+    "pk": 101, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Take a parallel instance; if, acting under the advice of men who have no understanding, we destroy that which is improvable by health and deteriorated by disease- when that has been destroyed, I say, would life be worth having? And that is- the body?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.988", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Take a parallel instance; if, acting under the advice of men who have no understanding, we destroy that which is improvable by health and deteriorated by disease- when that has been destroyed, I say, would life be worth having? And that is- the body?</p>"
+    }
+  }, 
+  {
+    "pk": 102, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Could we live, having an evil and corrupted body?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:56.996", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Could we live, having an evil and corrupted body?</p>"
+    }
+  }, 
+  {
+    "pk": 103, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Certainly not.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.002", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Certainly not.</p>"
+    }
+  }, 
+  {
+    "pk": 104, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "And will life be worth having, if that higher part of man be depraved, which is improved by justice and deteriorated by injustice? Do we suppose that principle, whatever it may be in man, which has to do with justice and injustice, to be inferior to the body?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.007", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>And will life be worth having, if that higher part of man be depraved, which is improved by justice and deteriorated by injustice? Do we suppose that principle, whatever it may be in man, which has to do with justice and injustice, to be inferior to the body?</p>"
+    }
+  }, 
+  {
+    "pk": 105, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "More honored, then?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.014", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>More honored, then?</p>"
+    }
+  }, 
+  {
+    "pk": 106, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Far more honored.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.020", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Far more honored.</p>"
+    }
+  }, 
+  {
+    "pk": 107, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Then, my friend, we must not regard what the many say of us: but what he, the one man who has understanding of just and unjust, will say, and what the truth will say. And therefore you begin in error when you suggest that we should regard the opinion of the many about just and unjust, good and evil, honorable and dishonorable. Well, someone will say, \"But the many can kill us.\"\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.026", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Then, my friend, we must not regard what the many say of us: but what he, the one man who has understanding of just and unjust, will say, and what the truth will say. And therefore you begin in error when you suggest that we should regard the opinion of the many about just and unjust, good and evil, honorable and dishonorable. Well, someone will say, &#8220;But the many can kill us.&#8221;</p>"
+    }
+  }, 
+  {
+    "pk": 108, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Yes, Socrates; that will clearly be the answer.\nThat is true; but still I find with surprise that the old argument is, as I conceive, unshaken as ever. And I should like to know Whether I may say the same of another proposition- that not life, but a good life, is to be chiefly valued?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.032", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Yes, Socrates; that will clearly be the answer.<br />\nThat is true; but still I find with surprise that the old argument is, as I conceive, unshaken as ever. And I should like to know Whether I may say the same of another proposition- that not life, but a good life, is to be chiefly valued?</p>"
+    }
+  }, 
+  {
+    "pk": 109, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Yes, that also remains.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.038", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Yes, that also remains.</p>"
+    }
+  }, 
+  {
+    "pk": 110, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "And a good life is equivalent to a just and honorable one- that holds also?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.044", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>And a good life is equivalent to a just and honorable one- that holds also?</p>"
+    }
+  }, 
+  {
+    "pk": 111, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Yes, that holds.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.050", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Yes, that holds.</p>"
+    }
+  }, 
+  {
+    "pk": 112, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "From these premises I proceed to argue the question whether I ought or ought not to try to escape without the consent of the Athenians: and if I am clearly right in escaping, then I will make the attempt; but if not, I will abstain. The other considerations which you mention, of money and loss of character, and the duty of educating children, are, I fear, only the doctrines of the multitude, who would be as ready to call people to life, if they were able, as they are to put them to death- and with as little reason. But now, since the argument has thus far prevailed, the only question which remains to be considered is, whether we shall do rightly either in escaping or in suffering others to aid in our escape and paying them in money and thanks, or whether we shan not do rightly; and if the latter, then death or any other calamity which may ensue on my remaining here must not be allowed to enter into the calculation.\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.057", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>From these premises I proceed to argue the question whether I ought or ought not to try to escape without the consent of the Athenians: and if I am clearly right in escaping, then I will make the attempt; but if not, I will abstain. The other considerations which you mention, of money and loss of character, and the duty of educating children, are, I fear, only the doctrines of the multitude, who would be as ready to call people to life, if they were able, as they are to put them to death- and with as little reason. But now, since the argument has thus far prevailed, the only question which remains to be considered is, whether we shall do rightly either in escaping or in suffering others to aid in our escape and paying them in money and thanks, or whether we shan not do rightly; and if the latter, then death or any other calamity which may ensue on my remaining here must not be allowed to enter into the calculation.</p>"
+    }
+  }, 
+  {
+    "pk": 113, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I think that you are right, Socrates; how then shall we proceed?\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.062", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I think that you are right, Socrates; how then shall we proceed?</p>"
+    }
+  }, 
+  {
+    "pk": 114, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Let us consider the matter together, and do you either refute me if you can, and I will be convinced; or else cease, my dear friend, from repeating to me that I ought to escape against the wishes of the Athenians: for I am extremely desirous to be persuaded by you, but not against my own better judgment. And now please to consider my first position, and do your best to answer me.\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.068", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Let us consider the matter together, and do you either refute me if you can, and I will be convinced; or else cease, my dear friend, from repeating to me that I ought to escape against the wishes of the Athenians: for I am extremely desirous to be persuaded by you, but not against my own better judgment. And now please to consider my first position, and do your best to answer me.</p>"
+    }
+  }, 
+  {
+    "pk": 115, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I will do my best.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.074", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I will do my best.</p>"
+    }
+  }, 
+  {
+    "pk": 116, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Are we to say that we are never intentionally to do wrong, or that in one way we ought and in another way we ought not to do wrong, or is doing wrong always evil and dishonorable, as I was just now saying, and as has been already acknowledged by us? Are all our former admissions which were made within a few days to be thrown away? And have we, at our age, been earnestly discoursing with one another all our life long only to discover that we are no better than children? Or are we to rest assured, in spite of the opinion of the many, and in spite of consequences whether better or worse, of the truth of what was then said, that injustice is always an evil and dishonor to him who acts unjustly? Shall we affirm that?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.080", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Are we to say that we are never intentionally to do wrong, or that in one way we ought and in another way we ought not to do wrong, or is doing wrong always evil and dishonorable, as I was just now saying, and as has been already acknowledged by us? Are all our former admissions which were made within a few days to be thrown away? And have we, at our age, been earnestly discoursing with one another all our life long only to discover that we are no better than children? Or are we to rest assured, in spite of the opinion of the many, and in spite of consequences whether better or worse, of the truth of what was then said, that injustice is always an evil and dishonor to him who acts unjustly? Shall we affirm that?</p>"
+    }
+  }, 
+  {
+    "pk": 117, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Then we must do no wrong?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.087", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Then we must do no wrong?</p>"
+    }
+  }, 
+  {
+    "pk": 118, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Nor when injured injure in return, as the many imagine; for we must injure no one at all?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.094", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Nor when injured injure in return, as the many imagine; for we must injure no one at all?</p>"
+    }
+  }, 
+  {
+    "pk": 119, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Clearly not.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.100", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Clearly not.</p>"
+    }
+  }, 
+  {
+    "pk": 120, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Again, Crito, may we do evil?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.105", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Again, Crito, may we do evil?</p>"
+    }
+  }, 
+  {
+    "pk": 121, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Surely not, Socrates.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.111", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Surely not, Socrates.</p>"
+    }
+  }, 
+  {
+    "pk": 122, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "And what of doing evil in return for evil, which is the morality of the many-is that just or not?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.117", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>And what of doing evil in return for evil, which is the morality of the many-is that just or not?</p>"
+    }
+  }, 
+  {
+    "pk": 123, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Not just.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.122", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Not just.</p>"
+    }
+  }, 
+  {
+    "pk": 124, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "For doing evil to another is the same as injuring him?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.128", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>For doing evil to another is the same as injuring him?</p>"
+    }
+  }, 
+  {
+    "pk": 125, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Very true.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.134", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Very true.</p>"
+    }
+  }, 
+  {
+    "pk": 126, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Then we ought not to retaliate or render evil for evil to anyone, whatever evil we may have suffered from him. But I would have you consider, Crito, whether you really mean what you are saying. For this opinion has never been held, and never will be held, by any considerable number of persons; and those who are agreed and those who are not agreed upon this point have no common ground, and can only despise one another, when they see how widely they differ. Tell me, then, whether you agree with and assent to my first principle, that neither injury nor retaliation nor warding off evil by evil is ever right. And shall that be the premise of our agreement? Or do you decline and dissent from this? For this has been of old and is still my opinion; but, if you are of another opinion, let me hear what you have to say. If, however, you remain of the same mind as formerly, I will proceed to the next step.\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.141", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Then we ought not to retaliate or render evil for evil to anyone, whatever evil we may have suffered from him. But I would have you consider, Crito, whether you really mean what you are saying. For this opinion has never been held, and never will be held, by any considerable number of persons; and those who are agreed and those who are not agreed upon this point have no common ground, and can only despise one another, when they see how widely they differ. Tell me, then, whether you agree with and assent to my first principle, that neither injury nor retaliation nor warding off evil by evil is ever right. And shall that be the premise of our agreement? Or do you decline and dissent from this? For this has been of old and is still my opinion; but, if you are of another opinion, let me hear what you have to say. If, however, you remain of the same mind as formerly, I will proceed to the next step.</p>"
+    }
+  }, 
+  {
+    "pk": 127, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "You may proceed, for I have not changed my mind.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.146", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>You may proceed, for I have not changed my mind.</p>"
+    }
+  }, 
+  {
+    "pk": 128, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Then I will proceed to the next step, which may be put in the form of a question: Ought a man to do what he admits to be right, or ought he to betray the right?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.152", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Then I will proceed to the next step, which may be put in the form of a question: Ought a man to do what he admits to be right, or ought he to betray the right?</p>"
+    }
+  }, 
+  {
+    "pk": 129, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "He ought to do what he thinks right.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.158", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>He ought to do what he thinks right.</p>"
+    }
+  }, 
+  {
+    "pk": 130, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "But if this is true, what is the application? In leaving the prison against the will of the Athenians, do I wrong any? or rather do I not wrong those whom I ought least to wrong? Do I not desert the principles which were acknowledged by us to be just? What do you say?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.163", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>But if this is true, what is the application? In leaving the prison against the will of the Athenians, do I wrong any? or rather do I not wrong those whom I ought least to wrong? Do I not desert the principles which were acknowledged by us to be just? What do you say?</p>"
+    }
+  }, 
+  {
+    "pk": 131, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I cannot tell, Socrates, for I do not know.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.169", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I cannot tell, Socrates, for I do not know.</p>"
+    }
+  }, 
+  {
+    "pk": 132, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Then consider the matter in this way: Imagine that I am about to play truant (you may call the proceeding by any name which you like), and the laws and the government come and interrogate me: \"Tell us, Socrates,\" they say; \"what are you about? are you going by an act of yours to overturn us- the laws and the whole State, as far as in you lies? Do you imagine that a State can subsist and not be overthrown, in which the decisions of law have no power, but are set aside and overthrown by individuals?\" What will be our answer, Crito, to these and the like words? Anyone, and especially a clever rhetorician, will have a good deal to urge about the evil of setting aside the law which requires a sentence to be carried out; and we might reply, \"Yes; but the State has injured us and given an unjust sentence.\" Suppose I say that?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.175", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Then consider the matter in this way: Imagine that I am about to play truant (you may call the proceeding by any name which you like), and the laws and the government come and interrogate me: &#8220;Tell us, Socrates,&#8221; they say; &#8220;what are you about? are you going by an act of yours to overturn us- the laws and the whole State, as far as in you lies? Do you imagine that a State can subsist and not be overthrown, in which the decisions of law have no power, but are set aside and overthrown by individuals?&#8221; What will be our answer, Crito, to these and the like words? Anyone, and especially a clever rhetorician, will have a good deal to urge about the evil of setting aside the law which requires a sentence to be carried out; and we might reply, &#8220;Yes; but the State has injured us and given an unjust sentence.&#8221; Suppose I say that?</p>"
+    }
+  }, 
+  {
+    "pk": 133, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Very good, Socrates.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.181", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Very good, Socrates.</p>"
+    }
+  }, 
+  {
+    "pk": 134, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "\"And was that our agreement with you?\" the law would say, \"or were you to abide by the sentence of the State?\" And if I were to express astonishment at their saying this, the law would probably add: \"Answer, Socrates, instead of opening your eyes: you are in the habit of asking and answering questions. Tell us what complaint you have to make against us which justifies you in attempting to destroy us and the State? In the first place did we not bring you into existence? Your father married your mother by our aid and begat you. Say whether you have any objection to urge against those of us who regulate marriage?\" None, I should reply. \"Or against those of us who regulate the system of nurture and education of children in which you were trained? Were not the laws, who have the charge of this, right in commanding your father to train you in music and gymnastic?\" Right, I should reply. \"Well, then, since you were brought into the world and nurtured and educated by us, can you deny in the first place that you are our child and slave, as your fathers were before you? And if this is true you are not on equal terms with us; nor can you think that you have a right to do to us what we are doing to you. Would you have any right to strike or revile or do any other evil to a father or to your master, if you had one, when you have been struck or reviled by him, or received some other evil at his hands?- you would not say this? And because we think right to destroy you, do you think that you have any right to destroy us in return, and your country as far as in you lies? And will you, O professor of true virtue, say that you are justified in this? Has a philosopher like you failed to discover that our country is more to be valued and higher and holier far than mother or father or any ancestor, and more to be regarded in the eyes of the gods and of men of understanding? also to be soothed, and gently and reverently entreated when angry, even more than a father, and if not persuaded, obeyed? And when we are punished by her, whether with imprisonment or stripes, the punishment is to be endured in silence; and if she leads us to wounds or death in battle, thither we follow as is right; neither may anyone yield or retreat or leave his rank, but whether in battle or in a court of law, or in any other place, he must do what his city and his country order him; or he must change their view of what is just: and if he may do no violence to his father or mother, much less may he do violence to his country.\" What answer shall we make to this, Crito? Do the laws speak truly, or do they not?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.190", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>&#8220;And was that our agreement with you?&#8221; the law would say, &#8220;or were you to abide by the sentence of the State?&#8221; And if I were to express astonishment at their saying this, the law would probably add: &#8220;Answer, Socrates, instead of opening your eyes: you are in the habit of asking and answering questions. Tell us what complaint you have to make against us which justifies you in attempting to destroy us and the State? In the first place did we not bring you into existence? Your father married your mother by our aid and begat you. Say whether you have any objection to urge against those of us who regulate marriage?&#8221; None, I should reply. &#8220;Or against those of us who regulate the system of nurture and education of children in which you were trained? Were not the laws, who have the charge of this, right in commanding your father to train you in music and gymnastic?&#8221; Right, I should reply. &#8220;Well, then, since you were brought into the world and nurtured and educated by us, can you deny in the first place that you are our child and slave, as your fathers were before you? And if this is true you are not on equal terms with us; nor can you think that you have a right to do to us what we are doing to you. Would you have any right to strike or revile or do any other evil to a father or to your master, if you had one, when you have been struck or reviled by him, or received some other evil at his hands?- you would not say this? And because we think right to destroy you, do you think that you have any right to destroy us in return, and your country as far as in you lies? And will you, O professor of true virtue, say that you are justified in this? Has a philosopher like you failed to discover that our country is more to be valued and higher and holier far than mother or father or any ancestor, and more to be regarded in the eyes of the gods and of men of understanding? also to be soothed, and gently and reverently entreated when angry, even more than a father, and if not persuaded, obeyed? And when we are punished by her, whether with imprisonment or stripes, the punishment is to be endured in silence; and if she leads us to wounds or death in battle, thither we follow as is right; neither may anyone yield or retreat or leave his rank, but whether in battle or in a court of law, or in any other place, he must do what his city and his country order him; or he must change their view of what is just: and if he may do no violence to his father or mother, much less may he do violence to his country.&#8221; What answer shall we make to this, Crito? Do the laws speak truly, or do they not?</p>"
+    }
+  }, 
+  {
+    "pk": 135, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I think that they do.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.195", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I think that they do.</p>"
+    }
+  }, 
+  {
+    "pk": 136, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Then the laws will say: \"Consider, Socrates, if this is true, that in your present attempt you are going to do us wrong. For, after having brought you into the world, and nurtured and educated you, and given you and every other citizen a share in every good that we had to give, we further proclaim and give the right to every Athenian, that if he does not like us when he has come of age and has seen the ways of the city, and made our acquaintance, he may go where he pleases and take his goods with him; and none of us laws will forbid him or interfere with him. Any of you who does not like us and the city, and who wants to go to a colony or to any other city, may go where he likes, and take his goods with him. But he who has experience of the manner in which we order justice and administer the State, and still remains, has entered into an implied contract that he will do as we command him. And he who disobeys us is, as we maintain, thrice wrong: first, because in disobeying us he is disobeying his parents; secondly, because we are the authors of his education; thirdly, because he has made an agreement with us that he will duly obey our commands; and he neither obeys them nor convinces us that our commands are wrong; and we do not rudely impose them, but give him the alternative of obeying or convincing us; that is what we offer and he does neither. These are the sort of accusations to which, as we were saying, you, Socrates, will be exposed if you accomplish your intentions; you, above all other Athenians.\" Suppose I ask, why is this? they will justly retort upon me that I above all other men have acknowledged the agreement. \"There is clear proof,\" they will say, \"Socrates, that we and the city were not displeasing to you. Of all Athenians you have been the most constant resident in the city, which, as you never leave, you may be supposed to love. For you never went out of the city either to see the games, except once when you went to the Isthmus, or to any other place unless when you were on military service; nor did you travel as other men do. Nor had you any curiosity to know other States or their laws: your affections did not go beyond us and our State; we were your especial favorites, and you acquiesced in our government of you; and this is the State in which you begat your children, which is a proof of your satisfaction. Moreover, you might, if you had liked, have fixed the penalty at banishment in the course of the trial-the State which refuses to let you go now would have let you go then. But you pretended that you preferred death to exile, and that you were not grieved at death. And now you have forgotten these fine sentiments, and pay no respect to us, the laws, of whom you are the destroyer; and are doing what only a miserable slave would do, running away and turning your back upon the compacts and agreements which you made as a citizen. And first of all answer this very question: Are we right in saying that you agreed to be governed according to us in deed, and not in word only? Is that true or not?\" How shall we answer that, Crito? Must we not agree?\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.205", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Then the laws will say: &#8220;Consider, Socrates, if this is true, that in your present attempt you are going to do us wrong. For, after having brought you into the world, and nurtured and educated you, and given you and every other citizen a share in every good that we had to give, we further proclaim and give the right to every Athenian, that if he does not like us when he has come of age and has seen the ways of the city, and made our acquaintance, he may go where he pleases and take his goods with him; and none of us laws will forbid him or interfere with him. Any of you who does not like us and the city, and who wants to go to a colony or to any other city, may go where he likes, and take his goods with him. But he who has experience of the manner in which we order justice and administer the State, and still remains, has entered into an implied contract that he will do as we command him. And he who disobeys us is, as we maintain, thrice wrong: first, because in disobeying us he is disobeying his parents; secondly, because we are the authors of his education; thirdly, because he has made an agreement with us that he will duly obey our commands; and he neither obeys them nor convinces us that our commands are wrong; and we do not rudely impose them, but give him the alternative of obeying or convincing us; that is what we offer and he does neither. These are the sort of accusations to which, as we were saying, you, Socrates, will be exposed if you accomplish your intentions; you, above all other Athenians.&#8221; Suppose I ask, why is this? they will justly retort upon me that I above all other men have acknowledged the agreement. &#8220;There is clear proof,&#8221; they will say, &#8220;Socrates, that we and the city were not displeasing to you. Of all Athenians you have been the most constant resident in the city, which, as you never leave, you may be supposed to love. For you never went out of the city either to see the games, except once when you went to the Isthmus, or to any other place unless when you were on military service; nor did you travel as other men do. Nor had you any curiosity to know other States or their laws: your affections did not go beyond us and our State; we were your especial favorites, and you acquiesced in our government of you; and this is the State in which you begat your children, which is a proof of your satisfaction. Moreover, you might, if you had liked, have fixed the penalty at banishment in the course of the trial-the State which refuses to let you go now would have let you go then. But you pretended that you preferred death to exile, and that you were not grieved at death. And now you have forgotten these fine sentiments, and pay no respect to us, the laws, of whom you are the destroyer; and are doing what only a miserable slave would do, running away and turning your back upon the compacts and agreements which you made as a citizen. And first of all answer this very question: Are we right in saying that you agreed to be governed according to us in deed, and not in word only? Is that true or not?&#8221; How shall we answer that, Crito? Must we not agree?</p>"
+    }
+  }, 
+  {
+    "pk": 137, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "There is no help, Socrates.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.212", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>There is no help, Socrates.</p>"
+    }
+  }, 
+  {
+    "pk": 138, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "<p>Then will they not say: \"You, Socrates, are breaking the covenants and agreements which you made with us at your leisure, not in any haste or under any compulsion or deception, but having had seventy years to think of them, during which time you were at liberty to leave the city, if we were not to your mind, or if our covenants appeared to you to be unfair. You had your choice, and might have gone either to Lacedaemon or Crete, which you often praise for their good government, or to some other Hellenic or foreign State. Whereas you, above all other Athenians, seemed to be so fond of the State, or, in other words, of us her laws (for who would like a State that has no laws?), that you never stirred out of her: the halt, the blind, the maimed, were not more stationary in her than you were. And now you run away and forsake your agreements. Not so, Socrates, if you will take our advice; do not make yourself ridiculous by escaping out of the city.</p>\n<p>\"For just consider, if you transgress and err in this sort of way, what good will you do, either to yourself or to your friends? That your friends will be driven into exile and deprived of citizenship, or will lose their property, is tolerably certain; and you yourself, if you fly to one of the neighboring cities, as, for example, Thebes or Megara, both of which are well-governed cities, will come to them as an enemy, Socrates, and their government will be against you, and all patriotic citizens will cast an evil eye upon you as a subverter of the laws, and you will confirm in the minds of the judges the justice of their own condemnation of you. For he who is a corrupter of the laws is more than likely to be corrupter of the young and foolish portion of mankind. Will you then flee from well-ordered cities and virtuous men? and is existence worth having on these terms? Or will you go to them without shame, and talk to them, Socrates? And what will you say to them? What you say here about virtue and justice and institutions and laws being the best things among men? Would that be decent of you? Surely not. But if you go away from well-governed States to Crito's friends in Thessaly, where there is great disorder and license, they will be charmed to have the tale of your escape from prison, set off with ludicrous particulars of the manner in which you were wrapped in a goatskin or some other disguise, and metamorphosed as the fashion of runaways is- that is very likely; but will there be no one to remind you that in your old age you violated the most sacred laws from a miserable desire of a little more life? Perhaps not, if you keep them in a good temper; but if they are out of temper you will hear many degrading things; you will live, but how?- as the flatterer of all men, and the servant of all men; and doing what?- eating and drinking in Thessaly, having gone abroad in order that you may get a dinner. And where will be your fine sentiments about justice and virtue then? Say that you wish to live for the sake of your children, that you may bring them up and educate them- will you take them into Thessaly and deprive them of Athenian citizenship? Is that the benefit which you would confer upon them? Or are you under the impression that they will be better cared for and educated here if you are still alive, although absent from them; for that your friends will take care of them? Do you fancy that if you are an inhabitant of Thessaly they will take care of them, and if you are an inhabitant of the other world they will not take care of them? Nay; but if they who call themselves friends are truly friends, they surely will.</p>\n<blockquote>Listen, then, Socrates, to us who have brought you up. Think not of life and children first, and of justice afterwards, but of justice first, that you may be justified before the princes of the world below. For neither will you nor any that belong to you be happier or holier or juster in this life, or happier in another, if you do as Crito bids. Now you depart in innocence, a sufferer and not a doer of evil; a victim, not of the laws, but of men. But if you go forth, returning evil for evil, and injury for injury, breaking the covenants and agreements which you have made with us, and wronging those whom you ought least to wrong, that is to say, yourself, your friends, your country, and us, we shall be angry with you while you live, and our brethren, the laws in the world below, will receive you as an enemy; for they will know that you have done your best to destroy us. Listen, then, to us and not to Crito.</blockquote>\n<p>This is the voice which I seem to hear murmuring in my ears, like the sound of the flute in the ears of the mystic; that voice, I say, is humming in my ears, and prevents me from hearing any other. And I know that anything more which you will say will be in vain. Yet speak, if you have anything to say.</p>\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.221", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Then will they not say: &#8220;You, Socrates, are breaking the covenants and agreements which you made with us at your leisure, not in any haste or under any compulsion or deception, but having had seventy years to think of them, during which time you were at liberty to leave the city, if we were not to your mind, or if our covenants appeared to you to be unfair. You had your choice, and might have gone either to Lacedaemon or Crete, which you often praise for their good government, or to some other Hellenic or foreign State. Whereas you, above all other Athenians, seemed to be so fond of the State, or, in other words, of us her laws (for who would like a State that has no laws?), that you never stirred out of her: the halt, the blind, the maimed, were not more stationary in her than you were. And now you run away and forsake your agreements. Not so, Socrates, if you will take our advice; do not make yourself ridiculous by escaping out of the city.</p>\n\n<p>&#8220;For just consider, if you transgress and err in this sort of way, what good will you do, either to yourself or to your friends? That your friends will be driven into exile and deprived of citizenship, or will lose their property, is tolerably certain; and you yourself, if you fly to one of the neighboring cities, as, for example, Thebes or Megara, both of which are well-governed cities, will come to them as an enemy, Socrates, and their government will be against you, and all patriotic citizens will cast an evil eye upon you as a subverter of the laws, and you will confirm in the minds of the judges the justice of their own condemnation of you. For he who is a corrupter of the laws is more than likely to be corrupter of the young and foolish portion of mankind. Will you then flee from well-ordered cities and virtuous men? and is existence worth having on these terms? Or will you go to them without shame, and talk to them, Socrates? And what will you say to them? What you say here about virtue and justice and institutions and laws being the best things among men? Would that be decent of you? Surely not. But if you go away from well-governed States to Crito&#8217;s friends in Thessaly, where there is great disorder and license, they will be charmed to have the tale of your escape from prison, set off with ludicrous particulars of the manner in which you were wrapped in a goatskin or some other disguise, and metamorphosed as the fashion of runaways is- that is very likely; but will there be no one to remind you that in your old age you violated the most sacred laws from a miserable desire of a little more life? Perhaps not, if you keep them in a good temper; but if they are out of temper you will hear many degrading things; you will live, but how?- as the flatterer of all men, and the servant of all men; and doing what?- eating and drinking in Thessaly, having gone abroad in order that you may get a dinner. And where will be your fine sentiments about justice and virtue then? Say that you wish to live for the sake of your children, that you may bring them up and educate them- will you take them into Thessaly and deprive them of Athenian citizenship? Is that the benefit which you would confer upon them? Or are you under the impression that they will be better cared for and educated here if you are still alive, although absent from them; for that your friends will take care of them? Do you fancy that if you are an inhabitant of Thessaly they will take care of them, and if you are an inhabitant of the other world they will not take care of them? Nay; but if they who call themselves friends are truly friends, they surely will.</p>\n\n<blockquote>Listen, then, Socrates, to us who have brought you up. Think not of life and children first, and of justice afterwards, but of justice first, that you may be justified before the princes of the world below. For neither will you nor any that belong to you be happier or holier or juster in this life, or happier in another, if you do as Crito bids. Now you depart in innocence, a sufferer and not a doer of evil; a victim, not of the laws, but of men. But if you go forth, returning evil for evil, and injury for injury, breaking the covenants and agreements which you have made with us, and wronging those whom you ought least to wrong, that is to say, yourself, your friends, your country, and us, we shall be angry with you while you live, and our brethren, the laws in the world below, will receive you as an enemy; for they will know that you have done your best to destroy us. Listen, then, to us and not to Crito.</blockquote>\n\n<p>This is the voice which I seem to hear murmuring in my ears, like the sound of the flute in the ears of the mystic; that voice, I say, is humming in my ears, and prevents me from hearing any other. And I know that anything more which you will say will be in vain. Yet speak, if you have anything to say.</p>"
+    }
+  }, 
+  {
+    "pk": 139, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I have nothing to say, Socrates.\n", 
+      "thread": 4, 
+      "author": 18, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.228", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I have nothing to say, Socrates.</p>"
+    }
+  }, 
+  {
+    "pk": 140, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Then let me follow the intimations of the will of God.\n", 
+      "thread": 4, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.233", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Then let me follow the intimations of the will of God.</p>"
+    }
+  }, 
+  {
+    "pk": 141, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "I am afraid to say, Socrates, that I have nothing to answer, because you rebuked me just now for making this excuse; but I certainly cannot undertake to argue that madmen or dreamers think truly, when they imagine, some of them that they are gods, and others that they can fly, and are flying in their sleep. \n", 
+      "thread": 5, 
+      "author": 19, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.410", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>I am afraid to say, Socrates, that I have nothing to answer, because you rebuked me just now for making this excuse; but I certainly cannot undertake to argue that madmen or dreamers think truly, when they imagine, some of them that they are gods, and others that they can fly, and are flying in their sleep. </p>"
+    }
+  }, 
+  {
+    "pk": 142, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Do you see another question which can be raised about these phenomena, notably about dreaming and waking?\n", 
+      "thread": 5, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.415", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Do you see another question which can be raised about these phenomena, notably about dreaming and waking?</p>"
+    }
+  }, 
+  {
+    "pk": 143, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "What question?\n", 
+      "thread": 5, 
+      "author": 19, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.421", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>What question?</p>"
+    }
+  }, 
+  {
+    "pk": 144, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "A question which I think that you must often have heard persons ask: How can you determine whether at this moment we are sleeping, and all our thoughts are a dream; or whether we are awake, and talking to one another in the waking state?\n", 
+      "thread": 5, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.428", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>A question which I think that you must often have heard persons ask: How can you determine whether at this moment we are sleeping, and all our thoughts are a dream; or whether we are awake, and talking to one another in the waking state?</p>"
+    }
+  }, 
+  {
+    "pk": 145, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Indeed, Socrates, I do not know how to prove the one any more than the other, for in both cases the facts precisely correspond;-and there is no difficulty in supposing that during all this discussion we have been talking to one another in a dream; and when in a dream we seem to be narrating dreams, the resemblance of the two states is quite astonishing.\n", 
+      "thread": 5, 
+      "author": 19, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.434", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Indeed, Socrates, I do not know how to prove the one any more than the other, for in both cases the facts precisely correspond;-and there is no difficulty in supposing that during all this discussion we have been talking to one another in a dream; and when in a dream we seem to be narrating dreams, the resemblance of the two states is quite astonishing.</p>"
+    }
+  }, 
+  {
+    "pk": 146, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "You see, then, that a doubt about the reality of sense is easily raised, since there may even be a doubt whether we are awake or in a dream. And as our time is equally divided between sleeping and waking, in either sphere of existence the soul contends that the thoughts which are present to our minds at the time are true; and during one half of our lives we affirm the truth of the one, and, during the other half, of the other; and are equally confident of both.\n", 
+      "thread": 5, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.441", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>You see, then, that a doubt about the reality of sense is easily raised, since there may even be a doubt whether we are awake or in a dream. And as our time is equally divided between sleeping and waking, in either sphere of existence the soul contends that the thoughts which are present to our minds at the time are true; and during one half of our lives we affirm the truth of the one, and, during the other half, of the other; and are equally confident of both.</p>"
+    }
+  }, 
+  {
+    "pk": 147, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "Most true.\n", 
+      "thread": 5, 
+      "author": 19, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.446", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>Most true.</p>"
+    }
+  }, 
+  {
+    "pk": 148, 
+    "model": "forum.post", 
+    "fields": {
+      "content_plain": "And may not the same be said of madness and other disorders? the difference is only that the times are not equal.\n", 
+      "thread": 5, 
+      "author": 17, 
+      "saves": [], 
+      "agrees": [], 
+      "creation_date": "2012-10-08T14:58:57.452", 
+      "is_removed": false, 
+      "thanks": [], 
+      "co_editors": [], 
+      "content_html": "<p>And may not the same be said of madness and other disorders? the difference is only that the times are not equal.</p>"
+    }
+  }
+]
