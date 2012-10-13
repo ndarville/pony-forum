@@ -36,7 +36,7 @@ Here is a long, step-by-step installation guide that everyone should be able to 
 
     If you downloaded the project as a compressed file, you push your project to your app like this:
 
-    `dotcloud push --all <app_name`
+    `dotcloud push --all <app_name>`
 
     Note that this means *all* the files in your current working directory will be copied, which will often involve a lot of additional, unrelated files getting copied. Pushing using git only uploads the `pony-forum` files and folders that were committed.
 
