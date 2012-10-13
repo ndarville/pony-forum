@@ -174,7 +174,7 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.humanize',
     'registration',
-    'cache_panel',
+#   'cache_panel',
     'south',
     'django_nose',
     'djangosecure',
