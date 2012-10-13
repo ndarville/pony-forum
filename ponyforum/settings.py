@@ -1,13 +1,14 @@
 import os
 
-
-try:
+if 'DOTCLOUD_ENVIRONMENT' in os.environ:
     import json
+
     with open('/home/dotcloud/environment.json') as f:
         env = json.load(f)
     LOCAL_DEVELOPMENT = False
-except IOError:  # Local development---not on DotCloud
+else:
     LOCAL_DEVELOPMENT = True
+
 
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 DEBUG = False

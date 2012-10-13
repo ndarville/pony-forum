@@ -1,16 +1,14 @@
 #!/usr/bin/env python
-"""
-Saves the domain and name of your project as Site variables.
+"""Saves the domain and name of your project as Site variables.
 Capitalizes the first letter of the project name during this.
 """
-try:
-    import json
+if 'DOTCLOUD_ENVIRONMENT' in os.environ:
+    import json    
+    from wsgi import *        
+    
+    from django.contrib.sites.models import Site
+
     with open('/home/dotcloud/environment.json') as f:
-        from wsgi import *
-        
-        from django.contrib.sites.models import Site
-
-
         env = json.load(f)
         name = env['DOTCLOUD_PROJECT']
 
@@ -18,5 +16,3 @@ try:
         s.domain = unicode(env['DOTCLOUD_WWW_HTTP_URL'])
         s.name   = unicode(name.capitalize())
         s.save()
-except IOError:  # Development---not on DotCloud
-    pass

@@ -1,4 +1,4 @@
-"WSGI handler for dotCloud."
+"""WSGI handler for dotCloud."""
 import os
 import sys
 
