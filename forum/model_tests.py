@@ -1,7 +1,7 @@
-"""Unit tests for the `forum` app.
+"""Model tests for the `forum` app.
 
 Currently verifies that creation of the three major model classes
-works within a Django shell (i.e. not through `views.py`).
+works. Tests `models.py`.
 """
 import datetime
 
