@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 """Creates a default category with a thread and post."""
 import datetime
+import os
 
 from django.contrib.auth.models import User
 

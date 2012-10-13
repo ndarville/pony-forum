@@ -2,6 +2,8 @@
 """Saves the domain and name of your project as Site variables.
 Capitalizes the first letter of the project name during this.
 """
+import os
+
 if 'DOTCLOUD_ENVIRONMENT' in os.environ:
     import json    
     from wsgi import *        

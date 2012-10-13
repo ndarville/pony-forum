@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import os 
+
 from django.contrib.auth.models import User
 
 if 'DOTCLOUD_ENVIRONMENT' in os.environ:
