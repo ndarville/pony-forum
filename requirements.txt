@@ -30,3 +30,4 @@ selenium
 pyvirtualdisplay
 django-nose
 nose-progressive
+coverage

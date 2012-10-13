@@ -282,6 +282,15 @@ if not LOCAL_DEVELOPMENT:
 ###
 
 ### DJANGO-NOSE
+NOSE_ARGS = [
+    '--with-fixture-bundling',
+    '--with-coverage',
+    '--cover-tests',
+    '--cover-package=forum.view_tests,forum.model_tests'
+]
+NOSE_PLUGINS = [
+    'nose.plugins.cover.Coverage'
+]
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 ###
 
