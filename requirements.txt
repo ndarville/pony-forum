@@ -18,6 +18,7 @@ django-secure==0.1.2
 
 # Debugging
 django-debug-toolbar==0.9.1
+django-cache-panel
 
 # Database:
 ##psycopg2

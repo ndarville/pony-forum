@@ -174,6 +174,7 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.humanize',
     'registration',
+    'cache_panel',
     'south',
     'django_nose',
     'djangosecure',
@@ -291,3 +292,11 @@ except NameError:
         from local_settings import *
     except ImportError:
         pass
+
+### DJANGO-DEBUG-TOOLBAR
+if DEBUG:
+    INSTALLED_APPS += ('debug_toolbar',)
+    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+    if LOCAL_DEVELOPMENT:
+        INTERNAL_IPS = ('127.0.0.1',)
+###
