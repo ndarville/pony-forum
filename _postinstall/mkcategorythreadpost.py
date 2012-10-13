@@ -3,16 +3,16 @@
 import datetime
 import os
 
-from django.contrib.auth.models import User
-
-from forum.models import Category, Thread, Post
-
 if 'DOTCLOUD_ENVIRONMENT' in os.environ:
     import json
     from wsgi import *
 
     with open('/home/dotcloud/environment.json') as f:
         env = json.load(f)
+
+from django.contrib.auth.models import User
+
+from forum.models import Category, Thread, Post
 
 
 c, created = Category.objects.get_or_create(pk=1)

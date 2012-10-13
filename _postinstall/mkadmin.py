@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-import os 
-
-from django.contrib.auth.models import User
+import os
 
 if 'DOTCLOUD_ENVIRONMENT' in os.environ:
     import json
@@ -9,6 +7,8 @@ if 'DOTCLOUD_ENVIRONMENT' in os.environ:
 
     with open('/home/dotcloud/environment.json') as f:
         env = json.load(f)
+
+from django.contrib.auth.models import User
 
 
 u, created = User.objects.get_or_create(username='admin')

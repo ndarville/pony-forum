@@ -4,18 +4,19 @@ import datetime
 import os
 import random
 
-from django.contrib.auth.models import User
-from forum.models import Category, Thread, Post
-
-from markdown import markdown as md
-from smartypants import smartyPants as sp
-
 if 'DOTCLOUD_ENVIRONMENT' in os.environ:
     import json
     from wsgi import *
 
     with open('/home/dotcloud/environment.json') as f:
         env = json.load(f)
+
+from markdown import markdown as md
+from smartypants import smartyPants as sp
+
+from django.contrib.auth.models import User
+
+from forum.models import Category, Thread, Post
 
 
 PATH = os.path.join(os.curdir, "_postinstall", "placeholders")
