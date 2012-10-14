@@ -716,8 +716,12 @@ def lock_thread(request, thread_id):
 
     if request.method == 'POST':  # Form has been submitted
         if 'lock' in request.POST:  # Lock command
+            if thread.is_locked:
+                messages.info(request, "The thread was already locked.")
             thread.is_locked = True
         else:  # Unlock command
+            if not thread.is_locked:
+                messages.info(request, "The thread was already not locked.")
             thread.is_locked = False
         
         thread.save()
@@ -745,8 +749,12 @@ def sticky_thread(request, thread_id):
 
     if request.method == 'POST':  # Form has been submitted
         if 'sticky' in request.POST:  # Lock command
+            if thread.is_sticky:
+                messages.info(request, "The thread was already sticky.")
             thread.is_sticky = True
-        else:  # Unlock command
+        else:  # Unsticky command
+            if not thread.is_sticky:
+                messages.info(request, "The thread was already not sticky.")
             thread.is_sticky = False
         
         thread.save()
@@ -844,8 +852,8 @@ def moderate_thread(request, thread_id):
             else:
                 return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     return render(request, 'moderate.html',
-                          {'thread'  : thread,
-                           'title'   : title_plain})
+                          {'thread': thread,
+                           'title' : title_plain})
 
 
 @permission_required('forum.move_thread', login_url=LOGIN_URL)
@@ -886,8 +894,12 @@ def remove(request, object_id, object_type):
 
     if request.method == 'POST':  # Form has been submitted
         if 'remove' in request.POST:  # Remove command
+            if obj.is_removed:
+                messages.info(request, "The %s was already removed." % object_type)
             obj.is_removed = True
         else:  # Restore command
+            if not obj.is_removed:
+                messages.info(request, "The %s was already not removed." % object_type)
             obj.is_removed = False
         obj.save()
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
