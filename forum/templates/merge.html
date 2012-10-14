@@ -20,7 +20,9 @@
 
                     <input type="text" x-webkit-speech name="new-thread-title" id="title-form" value="{{ new_title }}" placeholder="Use a descriptive title here." required />
                     
-                    <input type="submit" name="merge" id="submit" value="Merge" />
+                    <div id="button-group">
+                        <input type="submit" name="merge" id="submit" value="Merge" />
+                    </div>
                 </form>
             {% else %}
                 <form action="{% url forum.views.merge_thread thread.id %}" method="post" id="reply" name="reply-form">
