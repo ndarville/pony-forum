@@ -695,7 +695,7 @@ def user_js(request):
             request.user.get_profile().ignores.add(person)
             new_text = "Remove user from shit list"
         elif text.startswith("remove"):
-            request.user.get_profile().ignores.add(person)
+            request.user.get_profile().ignores.remove(person)
             new_text = "Add user to shit list"
 
         return HttpResponse(new_text)
