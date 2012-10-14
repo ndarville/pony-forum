@@ -62,7 +62,7 @@
                         {% endif %}
                     {% if user != post.author %}
                         {% if not post.thread.is_locked %}
-                            <a class="button" id="{{ post.id }}" href="{% url report_post post.id %}">Report</a>
+                        {#  <a class="button" id="{{ post.id }}" href="{% url report_post post.id %}">Report</a> #}
                         {% endif %}
                     {% endif %}
                         {% if perms.forum.remove_post %}
