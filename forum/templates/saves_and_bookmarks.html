@@ -1,0 +1,57 @@
+{% extends "page.html" %}
+
+{% block title %}{{ type|capfirst }}s{% endblock %}
+{% block canonical_url %}{% if type == "bookmark" %}{% url bookmarks %}{% else %}{% url saves %}{% endif %}{% endblock %}
+{% block threadbar %}
+            {% include "includes/threadbar.html" %}
+{% endblock %}
+
+{% block content_body %}
+    <table>
+{% if type == "bookmark" %}
+        <thead>
+            <th>Title</th>
+            <th>Created</th>
+            <th>Remove</th>
+        </thead>
+        <tbody>
+    {% for thread in objects.object_list %}
+            <tr>
+                <td><a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a></td>
+                <td>{{ thread.relative_date }}</td>
+                <td><a href="" title="Remove &ldquo;{{ thread.title_html|safe }}&rdquo; from bookmarks">[X]</a></td>
+            </tr>
+    {% empty %}
+        <p>You haven&rsquo;t bookmarked any threads yet.</p>
+    {% endfor %}
+        </tbody>
+{% else %}
+        <thead>
+            <th>Thread</th>
+            <th>Author</th>
+            <th>Created</th>
+            <th>Remove</th>
+        </thead>
+        <tbody>
+    {% for post in objects.object_list %}
+            <tr>
+                <td><a href="{% url forum.views.post post.id %}">{{ post.thread.title_html|safe }}</a></td>
+                <td>{{ post.author }}
+                <td>{{ post.relative_date }}</td>
+                <td><a href="" title="Remove post from saves">[X]</a></td>
+            </tr>
+    {% empty %}
+        <p>You haven&rsquo;t saved any posts yet.</p>
+    {% endfor %}
+{% endif %}
+    </table>
+
+{% with current_page=objects.number %}
+{% with total_pages=objects.paginator.num_pages %}
+{% with page=objects %}
+    {% include "includes/pagination.html" %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+
+{% endblock %}

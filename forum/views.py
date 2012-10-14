@@ -76,6 +76,8 @@ POSTS_PER_PAGE            = getattr(project_settings, "POSTS_PER_PAGE", 25)
 THREADS_PER_PAGE          = getattr(project_settings, "THREADS_PER_PAGE", 25)
 USER_POSTS_PER_PAGE       = getattr(project_settings, "USER_CONTENT_PER_PAGE", 10)
 USER_THREADS_PER_PAGE     = getattr(project_settings, "USER_CONTENT_PER_PAGE", 25)
+BOOKMARKS_PER_PAGE        = getattr(project_settings, "BOOKMARKS_PER_PAGE", 35)
+SAVES_PER_PAGE            = getattr(project_settings, "SAVES_PER_PAGE", 10)
 
 
 long_title_error  = "Your chosen title was too long. Keep it under %i characters."
@@ -1088,13 +1090,13 @@ def saves_and_bookmarks(request, object_type):
     if object_type == "save":
         objects    = request.user.saves.all()\
                      .exclude(thread__is_removed__exact=True)
-        USER_CONTENT_PER_PAGE = USER_POSTS_PER_PAGE
+        USER_CONTENT_PER_PAGE = SAVES_PER_PAGE
     else:  #   ... == "bookmark"
         objects    = request.user.bookmarks.all()
-        USER_CONTENT_PER_PAGE = USER_THREADS_PER_PAGE
+        USER_CONTENT_PER_PAGE = BOOKMARKS_PER_PAGE
     # objects = objects.order_by("-creation_date") -saved_date
     objects = paginate(request, objects, USER_CONTENT_PER_PAGE)
 
-    return render(request, 'saved_content.html',
+    return render(request, 'saves_and_bookmarks.html',
                           {'type'   : object_type,
                            'objects': objects})

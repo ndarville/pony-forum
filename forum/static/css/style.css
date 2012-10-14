@@ -632,7 +632,7 @@ span#error {
 #content-body table {
     display: inline-block;
     font: 0.8125em/1.8462em Consolas, Monaco, monospace;
-    margin: 1em 1px; /** 1px to offset the border */
+    margin: 0 1px 1em; /** 1px to offset the border */
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
     -webkit-border-radius: 5px;

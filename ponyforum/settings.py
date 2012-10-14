@@ -220,7 +220,7 @@ if LOCAL_DEVELOPMENT:
     USER_POSTS_PER_PAGE    = 10
     USER_THREADS_PER_PAGE  = 25
     SUBSCRIPTIONS_PER_PAGE = 25
-    BOOKMARKS_PER_PAGE     = 50
+    BOOKMARKS_PER_PAGE     = 35
     SAVES_PER_PAGE         = 10 
 else:
     POSTS_PER_PAGE         = int(env.get('POSTS_PER_PAGE', '25'))
@@ -228,7 +228,7 @@ else:
     USER_POSTS_PER_PAGE    = int(env.get('USER_POSTS_PER_PAGE', '10'))
     USER_THREADS_PER_PAGE  = int(env.get('USER_THREADS_PER_PAGE', '25'))
     SUBSCRIPTIONS_PER_PAGE = int(env.get('SUBSCRIPTIONS_PER_PAGE', '25'))
-    BOOKMARKS_PER_PAGE     = int(env.get('BOOKMARKS_PER_PAGE', '50'))
+    BOOKMARKS_PER_PAGE     = int(env.get('BOOKMARKS_PER_PAGE', '35'))
     SAVES_PER_PAGE         = int(env.get('SAVES_PER_PAGE', '10'))
 
 # If you change these default values without changing the URLs style.css,
