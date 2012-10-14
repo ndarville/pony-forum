@@ -723,7 +723,11 @@ def lock_thread(request, thread_id):
         thread.save()
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'lock.html', {'thread': thread})
+        return render(request, 'simple_mod_action.html',
+                              {'thread'     : thread,
+                               'obj'        : thread,
+                               'object_type': 'thread',
+                               'action'     : 'lock'})
 
 
 @permission_required('forum.sticky_thread', login_url=LOGIN_URL)
@@ -748,7 +752,11 @@ def sticky_thread(request, thread_id):
         thread.save()
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'sticky.html', {'thread': thread})
+        return render(request, 'simple_mod_action.html',
+                              {'thread'     : thread,
+                               'obj'        : thread,
+                               'object_type': 'thread',
+                               'action'     : 'sticky'})
 
 
 @permission_required('forum.merge_thread', login_url=LOGIN_URL)
@@ -884,10 +892,11 @@ def remove(request, object_id, object_type):
         obj.save()
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:
-        return render(request, 'remove.html',
-                              {'type'  : object_type,
-                               'obj'   : obj,
-                               'thread': thread})
+        return render(request, 'simple_mod_action.html',
+                              {'object_type': object_type,
+                               'obj'        : obj,
+                               'thread'     : thread,
+                               'action'     : 'remove'})
 
 
 @login_required(login_url=LOGIN_URL)

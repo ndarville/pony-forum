@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ thread.title_html|safe }}: {{ action|capfirst }} {{ type|capfirst }}{% endblock %}
+{% block canonical_url %}
+    {% if action == "sticky" %}{% url forum.views.sticky_thread obj.id %}
+    {% elif action == "lock" %}{% url forum.views.lock_thread obj.id %}
+    {% else %} {# action == "remove" #}
+        {% if object_type == "thread" %}{% url remove_thread obj.id %}
+        {% else %}{% url remove_post obj.id %}
+        {% endif %}
+    {% endif %}
+{% endblock %}
+{% block content %}
+            <div id="board">
+                <div id="breadcrumbs">
+                    <a href="{% url forum.views.home %}">Overview</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.category thread.category.id %}">{{ thread.category.title_html|safe }}</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a>{% if type == "post" %}&nbsp;&raquo;&nbsp;<a href="{% url forum.views.post obj.id %}">{{ obj.author }}&rsquo;s Post</a>{% endif %}
+                </div>
+
+                <form action="
+                {% if action == "sticky" %}{% url forum.views.sticky_thread obj.id %}
+                {% elif action == "lock" %}{% url forum.views.lock_thread obj.id %}
+                {% else %} {# action == "remove" #}
+                    {% if object_type == "thread" %}{% url remove_thread obj.id %}
+                    {% else %}{% url remove_post obj.id %}
+                    {% endif %}
+                {% endif %}
+                " method="post">
+                    {% csrf_token %}
+
+                    <div id="button-group">
+                        <input type="submit" name="{{ action }}" value="{{ action|capfirst }}" />
+                    {% if action != "remove" %}
+                        <input type="submit" name="un{{ action }}" value="Un{{ action }}" />
+                    {% else %} {# action == "remove" #}
+                        <input type="submit" name="restore" value="Restore" />
+                    {% endif %}
+                    </div>
+                </form>
+            </div>
+{% endblock %}

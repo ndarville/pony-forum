@@ -232,10 +232,6 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 4. Moderator management interface w/ back-end
 5. Better report system
 
-* Consolidate POST templates (and templates?) to fewer
-    * Throw moderation-based templates in a separate folder
-    * Rename prepend `_` to `_base.html` and `_page.html`?
-
 * CSS
     * General
     * Print
