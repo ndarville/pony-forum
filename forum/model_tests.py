@@ -10,7 +10,7 @@ from django.utils import timezone
 
 from django_nose import FastFixtureTestCase as TestCase
 
-from forum.models import Category, Thread, Post
+from forum.models import Category, Thread, Post, Report
 
 
 def mkuser():
@@ -62,6 +62,18 @@ def mkpost(content="Test post.",
     p.save()
 
     return p
+
+def mkreport(reason="Iiiinsolence!",
+             creation_date=datetime.datetime.now()):
+    """Helper function for making reports."""
+    r = Report()
+    r.reason_short = reason
+    r.creation_date = creation_date
+    r.author = mkuser()
+    r.thread = mkthread()
+    r.save()
+
+    return r
 
 
 class CategoryModelTest(TestCase):
@@ -122,3 +134,22 @@ class PostModelTest(TestCase):
         self.assertEquals(only_post_in_db.content_plain, content)
         self.assertEquals(only_post_in_db.content_html, content)
         self.assertEquals(only_post_in_db.creation_date, now)
+
+
+class ReportModelTest(TestCase):
+    """Tests Report object."""
+    def test_create_report(self):
+        """Test the creation of a Report object."""
+        reason = "Iiiinsolence!"
+        now = datetime.datetime.now()
+        r = mkreport(reason, now)
+
+        # Retrieve reports from database
+        all_reports = Report.objects.all()
+        self.assertEquals(len(all_reports), 1)
+        only_report_in_db = all_reports[0]
+        self.assertEquals(only_report_in_db, r)
+
+        # Check the two saved fields from before
+        self.assertEquals(only_report_in_db.reason_short, reason)
+        self.assertEquals(only_report_in_db.creation_date, now)
