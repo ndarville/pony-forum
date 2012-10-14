@@ -49,16 +49,16 @@
                         </div>
 
                         <div class="left-buttons">
-                            <a class="button js" id="{{ post.id }}" href="#">{% if post in user.saves.all %}Unsave{% else %}Save{% endif %}</a>
+                            <a class="button js" id="{{ post.id }}" href="#{{ post.id }}">{% if post in user.saves.all %}Unsave{% else %}Save{% endif %}</a>
                         {% if user != post.author %}
-                            <a class="button js" id="{{ post.id }}" href="#">{% if post in user.thanks.all %}Unthank{% else %}Thank{% endif %}</a>
-                            <a class="button js" id="{{ post.id }}" href="#">{% if post in user.agrees.all %}Unagree{% else %}Agree{% endif %}</a>
+                            <a class="button js" id="{{ post.id }}" href="#{{ post.id }}">{% if post in user.thanks.all %}Unthank{% else %}Thank{% endif %}</a>
+                            <a class="button js" id="{{ post.id }}" href="#{{ post.id }}">{% if post in user.agrees.all %}Unagree{% else %}Agree{% endif %}</a>
                         {% endif %}
                         {% if post.thanks.all %}
-                            <a class="button thanks" href="#">Thanked</a>
+                            <a class="button thanks" href="#{{ post.id }}">Thanked</a>
                         {% endif %}
                         {% if post.agrees.all %}
-                            <a class="button agrees" href="#">Has Agrees</a>
+                            <a class="button agrees" href="#{{ post.id }}">Has Agrees</a>
                         {% endif %}
                     {% if user != post.author %}
                         {% if not post.thread.is_locked %}
