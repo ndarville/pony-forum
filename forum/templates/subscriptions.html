@@ -11,12 +11,8 @@
     {% endfor %}
     </ul>
 
-{% with current_page=objects.number %}
-{% with total_pages=objects.paginator.num_pages %}
-{% with page=objects %}
+{% with current_page=objects.number total_pages=objects.paginator.num_pages page=objects %}
     {% include "includes/pagination.html" %}
-{% endwith %}
-{% endwith %}
 {% endwith %}
 
 {% endblock %}
