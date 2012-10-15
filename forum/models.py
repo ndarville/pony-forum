@@ -48,8 +48,9 @@ def relative_date(date):
 
 class Category(models.Model):
     """Contains threads."""
-    title_plain  = models.CharField(max_length=50, unique=True)
-    title_html   = models.TextField()
+    title_plain  = models.CharField(max_length=50, unique=True,
+                                    verbose_name="Plain title")
+    title_html   = models.TextField(verbose_name="Formatted title")
 ##  description  = models.CharField(max_length=70)
 #   thread_count = models.IntegerField(default=0) 
 #   post_count   = models.IntegerField(default=0)

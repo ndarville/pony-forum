@@ -1,9 +1,21 @@
-from forum.models   import Category, Thread, Post, Report, Subscription
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
+
+from forum.models import Category, Thread, Post
+
+
+class CustomUserAdmin(UserAdmin):
+    """Redesigns the default user administration."""
+    fields = ['password']
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    fields = ['title_plain']
+
 
 class ThreadAdmin(admin.ModelAdmin):
-    "Thread layout in the admin control panel."
-
+    """Thread layout in the admin control panel."""
 # Actions
     def admin_lock(self, request, queryset):
         rows_updated = queryset.update(is_locked=True)
@@ -66,9 +78,9 @@ class ThreadAdmin(admin.ModelAdmin):
     list_filter    = ('category',) # Doesn't work
     search_fields  = ['title_html', 'author']
 
-class PostAdmin(admin.ModelAdmin):
-    "Post layout in the admin control panel."
 
+class PostAdmin(admin.ModelAdmin):
+    """Post layout in the admin control panel."""
 # Actions
     def admin_remove(self, request, queryset):
         rows_updated = queryset.update(is_removed=True)
@@ -111,9 +123,9 @@ class PostAdmin(admin.ModelAdmin):
     list_filter    = ('thread',)
     search_fields  = ['thread', 'author']
 
-admin.site.register(Category)
-admin.site.register(Thread, ThreadAdmin)
-admin.site.register(Post, PostAdmin)
-admin.site.register(Report)
-admin.site.register(Subscription)
-# admin.site.register(Ban)
+# admin.site.register(Category, CategoryAdmin)
+# admin.site.register(Thread, ThreadAdmin)
+# admin.site.register(Post, PostAdmin)
+
+# admin.site.unregister(User)
+# admin.site.register(User, CustomUserAdmin)
