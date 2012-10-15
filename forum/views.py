@@ -108,35 +108,6 @@ S/he might want to contact the site&rsquo;s host in return.</p>
 """
 
 
-def email_is_taken(email):
-    """Checks whether the e-mail submitted is already in user by someone
-    in the database.
-
-    Also checks whether the user uses a +filter as supported in Gmail.
-    More info: 
-    """
-    if "+" in email:
-        # Get the part "example+" of "name+filter@example.com"
-        email_head = email.split("+")[0] + "+"
-        # Get the second part, "@example.com"
-        email_tail = email.split("@")[1]
-        # Check if it matches "name+" and "@example.com",
-        # thus disregarding the +filters
-        try:
-            User.objects.get(email__startswith=email_head,
-                             email__endswith=email_tail)
-        except UserDoesNotExist:
-            pass
-        else:
-            return True
-    try:
-        User.objects.get(email__exact=email)
-    except User.DoesNotExist:
-        return False
-    else:
-        return True
-
-
 def paginate(request, items, num_items):
     """Create and return a paginator."""
     paginator = Paginator(items, num_items)
@@ -264,15 +235,6 @@ def sanitized_smartdown(string):
                                              safe_mode=True),\
                                     "2"),\
                         tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES)
-
-
-def username_is_taken(username):
-    try:
-        User.objects.get(username__exact=username)
-    except User.DoesNotExist:
-        return False
-    else:
-        return True
 
 
 def home(request):
