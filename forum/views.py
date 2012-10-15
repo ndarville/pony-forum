@@ -964,16 +964,6 @@ def reports(request):
     return render(request, 'reports.html', {'reports': reports})
 
 
-# def search(request):
-#     query     = request.GET['q']
-#     results = []
-#     if query:
-#         results = Post.objects.filter(content_plain__icontains=query)
-#     return render('search/search.html',
-#                  {'query'   : query,
-#                   'results' : results})
-
-
 def search(request):
     return render(request, 'placeholder.html', {})
 
