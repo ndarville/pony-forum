@@ -458,6 +458,10 @@ legend {
     text-decoration: underline;
 }
 
+#content-body a.button {
+    text-decoration: none;
+}
+
 #profile-information { float: left;  width: 60%; }
 #profile-interaction { float: right; width: 40%; }
 /**** * ****/
