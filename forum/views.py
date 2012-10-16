@@ -354,9 +354,7 @@ def post(request, post_id):
         if not post.is_removed\
            or request.user.has_perm('forum.remove_thread')\
            or request.user.has_perm('forum.remove_post'):
-            return render(request, 'post.html',
-                                  {'post_id': post_id,
-                                   'post'   : post})
+            return render(request, 'post.html', {'post': post})
         else:
             messages.info(request, "The post by %s has been removed and no longer available." % post.author)
             return HttpResponseRedirect(reverse('forum.views.thread', args=(post.thread.id,)))
