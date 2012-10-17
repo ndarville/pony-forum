@@ -42,9 +42,9 @@ $(document).ready(function() {
 // Upon success, the `text()` inside the element is replaced with the opposite action provided by the Django view. E.g.: 
 // <a href="#" id="123">Like</a> ->
 // <a href="#" id="123">Remove like</a>
-    $('.js').on('click', function(e) { e.preventDefault(); });
+    $('.js').on('click', function(e) {
+        e.preventDefault();
 
-    $(".change-subscription").click(function() {
         var $this     = $(this);
         var object_id = this.id;
         var action    = $this.text();

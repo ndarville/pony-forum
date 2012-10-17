@@ -44,9 +44,9 @@ $(document).ready(function() {
 // the opposite action provided by the Django view. E.g.: 
 // <a href="#" id="123">Like</a> ->
 // <a href="#" id="123">Remove like</a>
-    $('.js').on('click', function(e) { e.preventDefault(); });
-    
-    $(".js").click(function() {
+    $('.js').on('click', function(e) {
+        e.preventDefault();
+
         var $this     = $(this);
         var person_id = this.id;
         var text      = $this.text();
