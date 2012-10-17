@@ -1,5 +1,5 @@
 ### Pony-Forum
-Django==1.4.1
+Django==1.4.2
 
 # Admin documentation
 docutils==0.8.1
