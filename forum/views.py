@@ -564,6 +564,16 @@ def subscription_js(request):
         HttpResponse(new_action)
 
 
+def user_nonjs(request, user_id):
+    """An HTML fall-back for `subscription_js()`, in case the user
+    has disabled JavaScript in their browser.
+    """
+    person = get_object_or_404(User, pk=user_id)
+
+    messages.info(request, "The thread %s has been removed and no longer available." % thread.title_html)
+    return HttpResponseRedirect(reverse('forum.views.user', args=(user_id,)))
+
+
 # @login_required(login_url=LOGIN_URL)  # Doesn't work
 def thread_js(request):
     """Lets users
@@ -634,6 +644,55 @@ def thread_js(request):
 #            success = action + "ed"
 
 
+@login_required(login_url=LOGIN_URL)
+def thread_nonjs(request, object_id, action, current_page):
+    """An HTML fall-back for `thread_js()`, in case the user
+    has disabled JavaScript in their browser.
+    """
+    if "bookmark" in action or "subscribe" in action:
+        obj = get_object_or_404(Thread, pk=object_id)
+    else:
+        obj = get_object_or_404(Post, pk=object_id)
+
+    if "agree" in action:
+        if action == "agree":
+            obj.agrees.add(request.user)
+            messages.info(request, "Agreed with the post.")
+        else:
+            obj.agrees.remove(request.user)
+            messages.info(request, "Cancelled agree.")
+    elif "bookmark" in action:
+        if action == "bookmark":
+            obj.bookmarker.add(request.user)
+            messages.info(request, "Bookmarked thread.")
+        else:
+            obj.bookmarker.remove(request.user)
+            messages.info(request, "Removed bookmark.")
+    elif "save" in action:
+        if action == "save":
+            obj.saves.add(request.user)
+            messages.info(request, "Saved post.")
+        else:
+            obj.saves.remove(request.user)
+            messages.info(request, "Post is no longer saved.")
+    elif "subscribe" in action:
+        if action == "subscribe":
+            obj.subscriber.add(request.user)
+            messages.info(request, "Subscribed to thread.")
+        else:
+            obj.subscriber.remove(request.user)
+            messages.info(request, "Unsubscribed from thread.")
+    elif "thank" in action:
+        if action == "thank":
+            obj.thanks.add(request.user)
+            messages.info(request, "Thanked the user of the post.")
+        else:
+            obj.thanks.remove(request.user)
+            messages.info(request, "Removed thank-you for the post.")
+
+    return HttpResponseRedirect(reverse('forum.views.thread',
+        args=(user_id,))+'?page='+current_page)
+
 # @login_required(login_url=LOGIN_URL)  # Doesn't work
 def user_js(request):
     """Lets users follow and ignore other users."""
@@ -657,6 +716,30 @@ def user_js(request):
             new_text = "Add user to shit list"
 
         return HttpResponse(new_text)
+
+
+@login_required(login_url=LOGIN_URL)
+def user_nonjs(request, user_id, action):
+    """An HTML fall-back for `user_js()`, in case the user
+    has disabled JavaScript in their browser.
+    """
+    person = get_object_or_404(User, pk=user_id)
+
+    if action == "follow":
+        request.user.get_profile().follows.add(person)
+        messages.success(request, "Now following %s." % person.username)
+    elif action == "unfollow":
+        request.user.get_profile().follows.remove(person)
+        messages.success(request, "Unfollowed %s." % person.username)
+
+    elif action == "add":
+        request.user.get_profile().ignores.add(person)
+        messages.success(request, "Added %s to shit list." % person.username)
+    elif action == "remove":
+        request.user.get_profile().ignores.remove(person)
+        messages.success(request, "Removed %s from shit list." % person.username)
+
+    return HttpResponseRedirect(reverse('forum.views.user', args=(user_id,)))
 
 
 @permission_required('forum.lock_thread', login_url=LOGIN_URL)
