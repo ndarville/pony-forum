@@ -22,12 +22,12 @@ django-debug-toolbar==0.9.1
 
 # Database:
 ##psycopg2
-south
+South==0.7.6
 
 # Testing:
-selenium
+selenium==2.25.0
 ##Firefox - install this yourself
-pyvirtualdisplay
-django-nose
-nose-progressive
+PyVirtualDisplay==0.1.0
+django-nose==1.1
+nose-progressive==1.3
 coverage
