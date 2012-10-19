@@ -37,7 +37,7 @@ $(document).ready(function() {
         }
     });
 
-// Makes a POST request to a view at "/user/js/" that takes the arguments
+// Makes a POST request to a view at "/user/" that takes the arguments
 // `object_id` and `action` representing the object ID and the operation.
 //
 // Upon success, the `text()` inside the element is replaced with
@@ -51,7 +51,7 @@ $(document).ready(function() {
         var person_id = this.id;
         var text      = $this.text();
 
-        $.post("/user/js/", {
+        $.post("/user/"+person_id+"/", {
             person_id: person_id,
             text:      text
             },

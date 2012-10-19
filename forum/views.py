@@ -47,7 +47,6 @@ from registration                   import views as registration_views
 ##  settings_js
 ##  subscription_js
 ##  thread_js
-##  user_js
 #
 ##  moderate_thread
 ##  merge_thread
@@ -371,6 +370,28 @@ def user(request, user_id):
 
     `latest_posts_amount` determines the amount of latest posts to show.
     """
+    # AJAX request
+    if request.is_ajax() and request.method == "POST":
+        person_id = request.POST['person_id']
+        text      = request.POST['text'].lower()
+        person    = get_object_or_404(User, pk=person_id)
+
+        if text.startswith("follow"):
+            request.user.get_profile().follows.add(person)
+            new_text = "Unfollow user"
+        elif text.startswith("unfollow"):
+            request.user.get_profile().follows.remove(person)
+            new_text = "Follow user"
+
+        elif text.startswith("add"):
+            request.user.get_profile().ignores.add(person)
+            new_text = "Remove user from shit list"
+        elif text.startswith("remove"):
+            request.user.get_profile().ignores.remove(person)
+            new_text = "Add user to shit list"
+
+        return HttpResponse(new_text)
+
     person = get_object_or_404(User, pk=user_id)
     posts  = person.post_set.all()\
              .exclude(is_removed__exact=True)\
@@ -692,30 +713,6 @@ def thread_nonjs(request, object_id, action, current_page):
 
     return HttpResponseRedirect(reverse('forum.views.thread',
         args=(user_id,))+'?page='+current_page)
-
-# @login_required(login_url=LOGIN_URL)  # Doesn't work
-def user_js(request):
-    """Lets users follow and ignore other users."""
-    if request.is_ajax() and request.method == "POST":     
-        person_id = request.POST['person_id']
-        text      = request.POST['text'].lower()
-        person    = get_object_or_404(User, pk=person_id)
-
-        if text.startswith("follow"):
-            request.user.get_profile().follows.add(person)
-            new_text = "Unfollow user"
-        elif text.startswith("unfollow"):
-            request.user.get_profile().follows.remove(person)
-            new_text = "Follow user"
-
-        elif text.startswith("add"):
-            request.user.get_profile().ignores.add(person)
-            new_text = "Remove user from shit list"
-        elif text.startswith("remove"):
-            request.user.get_profile().ignores.remove(person)
-            new_text = "Add user to shit list"
-
-        return HttpResponse(new_text)
 
 
 @login_required(login_url=LOGIN_URL)
