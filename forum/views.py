@@ -400,6 +400,30 @@ def user(request, user_id):
     return render(request, 'user.html', {'person': person, 'posts': posts})
 
 
+@login_required(login_url=LOGIN_URL)
+def user_nonjs(request, user_id, action):
+    """An HTML fall-back for `user_js()`, in case the user
+    has disabled JavaScript in their browser.
+    """
+    person = get_object_or_404(User, pk=user_id)
+
+    if action == "follow":
+        request.user.get_profile().follows.add(person)
+        messages.success(request, "Now following %s." % person.username)
+    elif action == "unfollow":
+        request.user.get_profile().follows.remove(person)
+        messages.success(request, "Unfollowed %s." % person.username)
+
+    elif action == "add":
+        request.user.get_profile().ignores.add(person)
+        messages.success(request, "Added %s to shit list." % person.username)
+    elif action == "remove":
+        request.user.get_profile().ignores.remove(person)
+        messages.success(request, "Removed %s from shit list." % person.username)
+
+    return HttpResponseRedirect(reverse('forum.views.user', args=(user_id,)))
+
+
 def user_content(request, user_id, object_type):
     """Shows all posts or threads by specific user."""
     person = get_object_or_404(User, pk=user_id)
@@ -703,30 +727,6 @@ def thread_nonjs(request, object_id, action, current_page):
 
     return HttpResponseRedirect(reverse('forum.views.thread',
         args=(user_id,))+'?page='+current_page)
-
-
-@login_required(login_url=LOGIN_URL)
-def user_nonjs(request, user_id, action):
-    """An HTML fall-back for `user_js()`, in case the user
-    has disabled JavaScript in their browser.
-    """
-    person = get_object_or_404(User, pk=user_id)
-
-    if action == "follow":
-        request.user.get_profile().follows.add(person)
-        messages.success(request, "Now following %s." % person.username)
-    elif action == "unfollow":
-        request.user.get_profile().follows.remove(person)
-        messages.success(request, "Unfollowed %s." % person.username)
-
-    elif action == "add":
-        request.user.get_profile().ignores.add(person)
-        messages.success(request, "Added %s to shit list." % person.username)
-    elif action == "remove":
-        request.user.get_profile().ignores.remove(person)
-        messages.success(request, "Removed %s from shit list." % person.username)
-
-    return HttpResponseRedirect(reverse('forum.views.user', args=(user_id,)))
 
 
 @permission_required('forum.lock_thread', login_url=LOGIN_URL)
