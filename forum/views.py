@@ -585,16 +585,6 @@ def subscription_js(request):
         HttpResponse(new_action)
 
 
-def user_nonjs(request, user_id):
-    """An HTML fall-back for `subscription_js()`, in case the user
-    has disabled JavaScript in their browser.
-    """
-    person = get_object_or_404(User, pk=user_id)
-
-    messages.info(request, "The thread %s has been removed and no longer available." % thread.title_html)
-    return HttpResponseRedirect(reverse('forum.views.user', args=(user_id,)))
-
-
 # @login_required(login_url=LOGIN_URL)  # Doesn't work
 def thread_js(request):
     """Lets users
