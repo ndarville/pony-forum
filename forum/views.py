@@ -31,22 +31,24 @@ from registration                   import views as registration_views
 #
 ##  home
 ##  subscriptions
+##      subscriptions_js
+##      subscriptionsnon_js
 #
 ##  category
 ##  thread
+##      thread_js
+##      thread_nonjs
 ##  post
 #
 ##  user
+##      user_js
+##      user_nonjs
 ##  user_content
 #
 ##  add
 ##  create
 ##  reply
 ##  edit
-#
-##  settings_js
-##  subscription_js
-##  thread_js
 #
 ##  moderate_thread
 ##  merge_thread
@@ -291,6 +293,25 @@ def subscriptions(request):
                            'inactive_subs': inactive_subs})
 
 
+def subscriptions_js(request):
+    """Lets users subscribe to and unsubscribe from threads
+    in the subscription views.
+    """
+    if request.is_ajax() and request.method == "POST":
+        thread_id = request.POST['thread_id']
+        action    = request.POST['action'].lower()
+        thread    = get_object_or_404(Thread, pk=thread_id)
+
+        if action == "unsubscribe":
+            thread.subscriber.remove(request.user)
+            new_action = "Subscribe"
+        else:
+            thread.subscriber.add(request.user)
+            new_action = "Unsubscribe"
+
+        HttpResponse(new_action)
+
+
 def category(request, category_id):
     """Category with threads ordered by latest posts."""
     category         = get_object_or_404(Category, pk=category_id)
@@ -345,6 +366,126 @@ def thread(request, thread_id, author_id):
         return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category.id,)))
 
 
+# @login_required(login_url=LOGIN_URL)  # Doesn't work
+def thread_js(request):
+    """Lets users
+    1. Bookmark threads
+    2. Subscribe to threads
+
+    3. Agree with posts
+    4. Thank users for posts
+    5. Save posts
+    """
+    if request.is_ajax() and request.method == "POST":
+        # if not logged in ...
+      
+        object_id = request.POST['object_id']
+        action    = request.POST['action'].lower()
+
+        if "bookmark" in action or "subscribe" in action:
+            obj = get_object_or_404(Thread, pk=object_id)
+        else:
+            obj = get_object_or_404(Post, pk=object_id)
+
+        # Check that it exists before adding and not when removing
+        if "agree" in action:
+            if action == "agree":
+                obj.agrees.add(request.user)
+                new_action = "Unagree"
+            else:
+                obj.agrees.remove(request.user)
+                new_action = "Agree"
+
+        elif "bookmark" in action:
+            if action == "bookmark":
+                obj.bookmarker.add(request.user)
+                new_action = "Unbookmark"
+            else:
+                obj.bookmarker.remove(request.user)
+                new_action = "Bookmark"
+
+        elif "save" in action:
+            if action == "save":
+                obj.saves.add(request.user)
+                new_action = "Unsave"
+            else:
+                obj.saves.remove(request.user)
+                new_action = "Save"
+
+        elif "subscribe" in action:
+            if action == "subscribe":
+                obj.subscriber.add(request.user)
+                new_action = "Unsubscribe"
+            else:
+                obj.subscriber.remove(request.user)
+                new_action = "Subscribe"
+
+        elif "thank" in action:
+            if action == "thank":
+                obj.thanks.add(request.user)
+                new_action = "Unthank"
+            else:
+                obj.thanks.remove(request.user)
+                new_action = "Thank"
+
+        return HttpResponse(new_action)
+
+#        if action.endswith("e"):
+#            success = action + "d"
+#        else:
+#            success = action + "ed"
+
+
+@login_required(login_url=LOGIN_URL)
+def thread_nonjs(request, object_id, action, current_page):
+    """An HTML fall-back for `thread_js()`, in case the user
+    has disabled JavaScript in their browser.
+    """
+    if "bookmark" in action or "subscribe" in action:
+        obj = get_object_or_404(Thread, pk=object_id)
+    else:
+        obj = get_object_or_404(Post, pk=object_id)
+
+    if "agree" in action:
+        if action == "agree":
+            obj.agrees.add(request.user)
+            messages.info(request, "Agreed with the post.")
+        else:
+            obj.agrees.remove(request.user)
+            messages.info(request, "Cancelled agree.")
+    elif "bookmark" in action:
+        if action == "bookmark":
+            obj.bookmarker.add(request.user)
+            messages.info(request, "Bookmarked thread.")
+        else:
+            obj.bookmarker.remove(request.user)
+            messages.info(request, "Removed bookmark.")
+    elif "save" in action:
+        if action == "save":
+            obj.saves.add(request.user)
+            messages.info(request, "Saved post.")
+        else:
+            obj.saves.remove(request.user)
+            messages.info(request, "Post is no longer saved.")
+    elif "subscribe" in action:
+        if action == "subscribe":
+            obj.subscriber.add(request.user)
+            messages.info(request, "Subscribed to thread.")
+        else:
+            obj.subscriber.remove(request.user)
+            messages.info(request, "Unsubscribed from thread.")
+    elif "thank" in action:
+        if action == "thank":
+            obj.thanks.add(request.user)
+            messages.info(request, "Thanked the user of the post.")
+        else:
+            obj.thanks.remove(request.user)
+            messages.info(request, "Removed thank-you for the post.")
+
+    return HttpResponseRedirect(reverse('forum.views.thread',
+        args=(user_id,))+'?page='+current_page)
+
+
 def post(request, post_id):
     """View a single post object."""
     post = get_object_or_404(Post, pk=post_id)
@@ -370,7 +511,17 @@ def user(request, user_id):
 
     `latest_posts_amount` determines the amount of latest posts to show.
     """
-    # AJAX request
+    person = get_object_or_404(User, pk=user_id)
+    posts  = person.post_set.all()\
+             .exclude(is_removed__exact=True)\
+             .exclude(thread__is_removed__exact=True)\
+             .order_by("-creation_date")[:10]
+    return render(request, 'user.html', {'person': person, 'posts': posts})
+
+
+# @login_required(login_url=LOGIN_URL)  # Doesn't work
+def user_js(request):
+    """Lets users follow and ignore other users."""
     if request.is_ajax() and request.method == "POST":
         person_id = request.POST['person_id']
         text      = request.POST['text'].lower()
@@ -391,13 +542,6 @@ def user(request, user_id):
             new_text = "Add user to shit list"
 
         return HttpResponse(new_text)
-
-    person = get_object_or_404(User, pk=user_id)
-    posts  = person.post_set.all()\
-             .exclude(is_removed__exact=True)\
-             .exclude(thread__is_removed__exact=True)\
-             .order_by("-creation_date")[:10]
-    return render(request, 'user.html', {'person': person, 'posts': posts})
 
 
 @login_required(login_url=LOGIN_URL)
@@ -588,145 +732,6 @@ def edit(request, post_id):
                           {'post'         : post,
                            'preview_plain': preview_plain,
                            'preview_html' : preview_html})
-
-
-def subscription_js(request):
-    """Lets users subscribe to and unsubscribe from threads
-    in the subscription views.
-    """
-    if request.is_ajax() and request.method == "POST":
-        thread_id = request.POST['thread_id']
-        action    = request.POST['action'].lower()
-        thread    = get_object_or_404(Thread, pk=thread_id)
-
-        if action == "unsubscribe":
-            thread.subscriber.remove(request.user)
-            new_action = "Subscribe"
-        else:
-            thread.subscriber.add(request.user)
-            new_action = "Unsubscribe"
-
-        HttpResponse(new_action)
-
-
-# @login_required(login_url=LOGIN_URL)  # Doesn't work
-def thread_js(request):
-    """Lets users
-    1. Bookmark threads
-    2. Subscribe to threads
-
-    3. Agree with posts
-    4. Thank users for posts
-    5. Save posts
-    """
-    if request.is_ajax() and request.method == "POST":
-        # if not logged in ...
-      
-        object_id = request.POST['object_id']
-        action    = request.POST['action'].lower()
-
-        if "bookmark" in action or "subscribe" in action:
-            obj = get_object_or_404(Thread, pk=object_id)
-        else:
-            obj = get_object_or_404(Post, pk=object_id)
-
-        # Check that it exists before adding and not when removing
-        if "agree" in action:
-            if action == "agree":
-                obj.agrees.add(request.user)
-                new_action = "Unagree"
-            else:
-                obj.agrees.remove(request.user)
-                new_action = "Agree"
-
-        elif "bookmark" in action:
-            if action == "bookmark":
-                obj.bookmarker.add(request.user)
-                new_action = "Unbookmark"
-            else:
-                obj.bookmarker.remove(request.user)
-                new_action = "Bookmark"
-
-        elif "save" in action:
-            if action == "save":
-                obj.saves.add(request.user)
-                new_action = "Unsave"
-            else:
-                obj.saves.remove(request.user)
-                new_action = "Save"
-
-        elif "subscribe" in action:
-            if action == "subscribe":
-                obj.subscriber.add(request.user)
-                new_action = "Unsubscribe"
-            else:
-                obj.subscriber.remove(request.user)
-                new_action = "Subscribe"
-
-        elif "thank" in action:
-            if action == "thank":
-                obj.thanks.add(request.user)
-                new_action = "Unthank"
-            else:
-                obj.thanks.remove(request.user)
-                new_action = "Thank"
-
-        return HttpResponse(new_action)
-
-#        if action.endswith("e"):
-#            success = action + "d"
-#        else:
-#            success = action + "ed"
-
-
-@login_required(login_url=LOGIN_URL)
-def thread_nonjs(request, object_id, action, current_page):
-    """An HTML fall-back for `thread_js()`, in case the user
-    has disabled JavaScript in their browser.
-    """
-    if "bookmark" in action or "subscribe" in action:
-        obj = get_object_or_404(Thread, pk=object_id)
-    else:
-        obj = get_object_or_404(Post, pk=object_id)
-
-    if "agree" in action:
-        if action == "agree":
-            obj.agrees.add(request.user)
-            messages.info(request, "Agreed with the post.")
-        else:
-            obj.agrees.remove(request.user)
-            messages.info(request, "Cancelled agree.")
-    elif "bookmark" in action:
-        if action == "bookmark":
-            obj.bookmarker.add(request.user)
-            messages.info(request, "Bookmarked thread.")
-        else:
-            obj.bookmarker.remove(request.user)
-            messages.info(request, "Removed bookmark.")
-    elif "save" in action:
-        if action == "save":
-            obj.saves.add(request.user)
-            messages.info(request, "Saved post.")
-        else:
-            obj.saves.remove(request.user)
-            messages.info(request, "Post is no longer saved.")
-    elif "subscribe" in action:
-        if action == "subscribe":
-            obj.subscriber.add(request.user)
-            messages.info(request, "Subscribed to thread.")
-        else:
-            obj.subscriber.remove(request.user)
-            messages.info(request, "Unsubscribed from thread.")
-    elif "thank" in action:
-        if action == "thank":
-            obj.thanks.add(request.user)
-            messages.info(request, "Thanked the user of the post.")
-        else:
-            obj.thanks.remove(request.user)
-            messages.info(request, "Removed thank-you for the post.")
-
-    return HttpResponseRedirect(reverse('forum.views.thread',
-        args=(user_id,))+'?page='+current_page)
 
 
 @permission_required('forum.lock_thread', login_url=LOGIN_URL)
