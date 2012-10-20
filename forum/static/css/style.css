@@ -262,6 +262,9 @@ table {
 }
 /** */
 
+/****         *****
+***** BUTTONS *****
+*****         ****/
 .pagination,
 #thread-buttons-top,
 #thread-mod-buttons-top,
@@ -376,6 +379,7 @@ input[type="submit"] {
 .pagination .current_page {
     background-color: #FF9;
 }
+/**** * ****/
 
 .screenreader-only {
     position: absolute;
@@ -386,8 +390,9 @@ input[type="submit"] {
     overflow: hidden;
 }
 
-/****           *****
-***** ACCOUNTS ****/
+/****          *****
+***** ACCOUNTS *****
+*****          ****/
 form p.checkbox { }
 form p.checkbox label {
     width: 90%;
@@ -404,10 +409,9 @@ legend {
 }
 /**** * ****/
 
-
-/****          *****
+/****         *****
 ***** PROFILE *****
-*****          ****/
+*****         ****/
 #profile-information .info {
     font-weight: bold;
     float: left;
@@ -435,7 +439,6 @@ legend {
 /****          *****
 ***** REPORTS *****
 *****          ****/
-
 .report {
     margin-bottom: 1.5em;
 }
@@ -466,7 +469,6 @@ legend {
 .report th {
     text-align: left;
 }
-
 /**** * ****/
 
 /****          *****
@@ -767,12 +769,6 @@ span#error {
     width: 90%;
     margin: 0 auto 1.5em; /** Recalculate */
 }
-
-/** Buttons and submit input 
-input[type="submit"] {
-    display: inline;
-}
-*/
 
 #board input[type="submit"] + input[type="submit"] {
     margin-left: 3em;
