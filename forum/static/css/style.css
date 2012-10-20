@@ -379,6 +379,10 @@ input[type="submit"] {
 .pagination .current_page {
     background-color: #FF9;
 }
+
+#content-body input[type="submit"] {
+    margin-top: 0;
+}
 /**** * ****/
 
 .screenreader-only {

@@ -62,8 +62,7 @@ urlpatterns = patterns('forum.views',
 
 #   User
     (r'^user/js/$',                              'user_js'),
-    (r'^user/nonjs/(?P<user_id>\d+)/(?P<action>\w+)/$',
-                                                 'user_nonjs'),
+    (r'^user/nonjs/$',                           'user_nonjs'),
     (r'^user/(?P<user_id>\d+)/threads/$',        'user_content',
                                                      {'object_type': 'thread'},
                                                      'user_threads'),

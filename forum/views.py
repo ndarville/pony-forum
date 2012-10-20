@@ -545,27 +545,29 @@ def user_js(request):
 
 
 @login_required(login_url=LOGIN_URL)
-def user_nonjs(request, user_id, action):
+def user_nonjs(request):
     """An HTML fall-back for `user_js()`, in case the user
     has disabled JavaScript in their browser.
     """
-    person = get_object_or_404(User, pk=user_id)
+    if request.method == 'POST':
+        person = get_object_or_404(User, pk=request.POST['user_id'])
+        action = request.POST['action']
 
-    if action == "follow":
-        request.user.get_profile().follows.add(person)
-        messages.success(request, "Now following %s." % person.username)
-    elif action == "unfollow":
-        request.user.get_profile().follows.remove(person)
-        messages.success(request, "Unfollowed %s." % person.username)
+        if action == "follow":
+            request.user.get_profile().follows.add(person)
+            messages.success(request, "Now following %s." % person.username)
+        elif action == "unfollow":
+            request.user.get_profile().follows.remove(person)
+            messages.success(request, "Unfollowed %s." % person.username)
 
-    elif action == "add":
-        request.user.get_profile().ignores.add(person)
-        messages.success(request, "Added %s to shit list." % person.username)
-    elif action == "remove":
-        request.user.get_profile().ignores.remove(person)
-        messages.success(request, "Removed %s from shit list." % person.username)
+        elif action == "add":
+            request.user.get_profile().ignores.add(person)
+            messages.success(request, "Added %s to shit list." % person.username)
+        elif action == "remove":
+            request.user.get_profile().ignores.remove(person)
+            messages.success(request, "Removed %s from shit list." % person.username)
 
-    return HttpResponseRedirect(reverse('forum.views.user', args=(user_id,)))
+    return HttpResponseRedirect(reverse('forum.views.user', args=(person.id,)))
 
 
 def user_content(request, user_id, object_type):
