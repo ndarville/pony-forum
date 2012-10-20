@@ -262,63 +262,15 @@ table {
 }
 /** */
 
-#content a.button,
-input[type="submit"] {
-    color: #484848;
-    font: bold 12px monospace, sans-serif;
-    /** Modified */
-    line-height: 25px; height: 25px; 
-    text-shadow: 0 1px 0 #fff;
-    background: #f0f0f0;
-    background: -webkit-linear-gradient(top, #f7f7f7, #d1d1d1);
-    background: -moz-linear-gradient(top, #f7f7f7, #d1d1d1);
-    background: -ms-linear-gradient(top, #f7f7f7, #d1d1d1);
-    background: -o-linear-gradient(top, #f7f7f7, #d1d1d1);
-    border: solid 1px #7f7f7f;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -moz-box-shadow: 1px 1px 5px #888;
-    -webkit-box-shadow: 1px 1px 5px #888;
-    box-shadow: 1px 1px 5px #888;
-    -webkit-appearance: none; /** fixes box-shadows on iOS */
-    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=90, Color='#ffffff')";
-    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=90, Color='#ffffff');
-    -webkit-transition: border-color .218s;
-    -moz-transition: border .218s;
-    -o-transition: border-color .218s;
-    transition: border-color .218s;
-    display: block;
-    padding: 0 10px;
-}
-
-#content a.button:hover,
-input[type="submit"]:hover {
-    border: solid 1px #333;
-    color: #282828;
-    background: -webkit-linear-gradient(top, #ffffff, #dfdfdf);
-    background: -moz-linear-gradient(top, #ffffff, #dfdfdf);
-    background: -ms-linear-gradient(top, #ffffff, #dfdfdf);
-    background: -o-linear-gradient(top, #ffffff, #dfdfdf);
-}
-
-#content a.button:active,
-input[type="submit"]:active {
-    border: solid 1px #7f7f7f;
-    background: #d0d0d0;
-    background: -webkit-gradient(linear, left top, left bottom, 
-                    from(#a8a8a8), color-stop(0.15, #c6c6c6), to(#d8d8d8));
-    background: -webkit-linear-gradient(top, #a8a8a8, #c6c6c6 15%, #d8d8d8);
-    background: -moz-linear-gradient(top, #a8a8a8, #c6c6c6 15%, #d8d8d8);
-    background: -ms-linear-gradient(top, #a8a8a8, #c6c6c6 15%, #d8d8d8);
-    background: -o-linear-gradient(top, #a8a8a8, #c6c6c6 15%, #d8d8d8);
-}
-
 .pagination,
 #thread-buttons-top,
 #thread-mod-buttons-top,
 #thread-buttons-bottom,
-#thread-mod-buttons-bottom {
+#thread-mod-buttons-bottom,
+#content a.button,
+input[type="submit"] {
+    font-size: 1em; /** Addresses weird font-size for <input> */
+    font-height: 1.5em;
     font-family: Georgia, serif;
     font-variant: small-caps;
     margin: 1.5em 0;
@@ -330,7 +282,9 @@ input[type="submit"]:active {
 #thread-buttons-top,
 #thread-mod-buttons-top,
 #thread-buttons-bottom,
-#thread-mod-buttons-bottom {
+#thread-mod-buttons-bottom,
+#content a.button,
+input[type="submit"] {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
@@ -341,7 +295,9 @@ input[type="submit"]:active {
 #thread-buttons-top li,
 #thread-mod-buttons-top li,
 #thread-buttons-bottom li,
-#thread-mod-buttons-bottom li {
+#thread-mod-buttons-bottom li,
+#content a.button,
+input[type="submit"] {
     /** padding: 0 0.5em; */
     border: 1px solid #D1D1D1;
     display: inline-block;
@@ -352,7 +308,9 @@ input[type="submit"]:active {
 #thread-buttons-top li:hover,
 #thread-mod-buttons-top li:hover,
 #thread-buttons-bottom li:hover,
-#thread-mod-buttons-bottom li:hover {
+#thread-mod-buttons-bottom li:hover,
+#content a.button:hover,
+input[type="submit"]:hover {
     background-color: rgba(0,0,0, .1);
 }
 
@@ -360,7 +318,9 @@ input[type="submit"]:active {
 #thread-buttons-top li:first-child,
 #thread-mod-buttons-top li:first-child,
 #thread-buttons-bottom li:first-child,
-#thread-mod-buttons-bottom li:first-child {
+#thread-mod-buttons-bottom li:first-child,
+#content a.button,
+input[type="submit"] {
     -webkit-border-top-left-radius: 5px;
     -webkit-border-bottom-left-radius: 5px;
     -moz-border-radius-topleft: 5px;
@@ -373,7 +333,9 @@ input[type="submit"]:active {
 #thread-buttons-top li:first-child a,
 #thread-mod-buttons-top li:first-child a,
 #thread-buttons-bottom li:first-child a,
-#thread-mod-buttons-bottom li:first-child a {
+#thread-mod-buttons-bottom li:first-child a,
+#content a.button,
+input[type="submit"] {
     padding-left: 0.75em;
 }
 
@@ -381,7 +343,9 @@ input[type="submit"]:active {
 #thread-buttons-top li:last-child,
 #thread-mod-buttons-top li:last-child,
 #thread-buttons-bottom li:last-child,
-#thread-mod-buttons-bottom li:last-child {
+#thread-mod-buttons-bottom li:last-child,
+#content a.button,
+input[type="submit"] {
     -webkit-border-top-right-radius: 5px;
     -webkit-border-bottom-right-radius: 5px;
     -moz-border-radius-topright: 5px;
@@ -394,7 +358,9 @@ input[type="submit"]:active {
 #thread-buttons-top li:last-child a,
 #thread-mod-buttons-top li:last-child a,
 #thread-buttons-bottom li:last-child a,
-#thread-mod-buttons-bottom li:last-child a {
+#thread-mod-buttons-bottom li:last-child a,
+#content a.button,
+input[type="submit"] {
     padding-right: 0.75em;
 }
 
@@ -802,10 +768,11 @@ span#error {
     margin: 0 auto 1.5em; /** Recalculate */
 }
 
-/** Buttons and submit input */
+/** Buttons and submit input 
 input[type="submit"] {
     display: inline;
 }
+*/
 
 #board input[type="submit"] + input[type="submit"] {
     margin-left: 3em;
