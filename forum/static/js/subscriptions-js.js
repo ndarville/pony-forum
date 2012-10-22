@@ -43,6 +43,8 @@ $(document).ready(function() {
 // <a href="#" id="123">Like</a> ->
 // <a href="#" id="123">Remove like</a>
     $('.js').on('click', function(e) {
+        // Overrule the default nonjs action when the submit button is clicked.
+        // This allows us to handle the logic with our JavaScript instead.
         e.preventDefault();
 
         var $this     = $(this);
