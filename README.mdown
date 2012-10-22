@@ -10,8 +10,8 @@ Pony Forum on dotCloud
 
 Pony Forum is a forum (also known as a bulletin board) written in Python for the Django framework. It is intended as a replacement of the decade-old forums like vBulletin, PHPBB, etc.---and a free one easy to deploy at that.
 
-Table of Content
-----------------
+[Table of Contents](#table-of-contents)
+-------------------
 1. [Features](#features)
 2. [Requirements](#requirements)
 3. [Compatibility](#compatibility)
@@ -28,8 +28,8 @@ Table of Content
     * [Eventual, Not Impending, Features](#eventual-not-impending-features)
     * [Features Under Consideration](#features-under-consideration)
 
-Features
---------
+[Features](#features)
+----------
 Pony Forum features such niceties as:
 
 * [Installed][_installation] in few easy steps on [dotCloud][dotcloud]
@@ -45,8 +45,8 @@ Pony Forum features such niceties as:
     * [PBKDF2][pbkdf2] password-hashing
     * [django-secure][django-secure] vetting
 
-Requirements
-------------
+[Requirements](#requirements)
+--------------
 To use the app on dotCloud:
 
 * dotCloud's CLI and a dotCloud account for deploying to their platform (see below)
@@ -58,14 +58,14 @@ To run it on your own computer:
 * All packages in `requirements.txt`
 * Firefox if you want to run the optional tests
 
-Compatibility
--------------
+[Compatibility](#compatibility)
+---------------
 Works on Ubuntu and the latest version of OS X.
 
 At the moment, Windows 7 breaks during testing and dotCloud deployment. It is my intention to get Pony Forum working on Windows 7, but some of the required packages such as `PIP` often break on the operating system.
 
-Installation
-------------
+[Installation](#installation)
+--------------
 One of the ideas behind Pony Forum was to create a forum that is *easily* deployed with little head-scratching. At the moment [dotCloud][dotcloud] accommodates this goal and allows us to deploy a whole working forum to a dotCloud instance using only these terminal commands:
 
 ```sh
@@ -89,9 +89,9 @@ As said, Windows is a very, very wonky experience, and it seems to take issue wi
 
 A thorough step-by-step installation guide is available [here][_installation]. Look below for how to configure your installed dotCloud app.
 
-After-Installation Instructions
--------------------------------
-### The Default "Admin" ###
+[After-Installation Instructions](#after-installation-instructions)
+---------------------------------
+### [The Default "Admin"](#the-default-admin) ###
 When the forum is first deployed on dotCloud, an `admin` user is created and assigned a default password (wait for it): `"password"`. This is done through the [mkadmin.py][mkadmin] script, which is called by [postinstall][postinstall] if you want have a look under the bonnet.
 
 Normally, you get to create your own admin, when the database is created, but since this happens automagically behind the scenes, you will not be able to enter your own credentials. Instead, you will have to change the password and details for the `admin` user to suit your own needs or create your own user(s) and dispose of the default admin user.
@@ -106,7 +106,7 @@ dotcloud create ponyforum
 dotcloud push ponyforum
 ```
 
-### Your Site Name ###
+### [Your Site Name](#your-site-name) ###
 Speaking of automatic changes, Pony Forum guesses the name and domain of your website based on respectively
 
 1. Your dotCloud project name
@@ -122,7 +122,7 @@ But how does Pony Forum know which site the link points to? You guessed it, it u
 
 If you need to change these two fields---for instance, if you were to give your forum a better-looking URL---you will need to change the `domain` field. This can be done at `/admin/sites/site/1/`.
 
-### Setting Up an E-Mail Server ###
+### [Setting Up an E-Mail Server](#setting-up-an-e-mail-server) ###
 *Speakiiing* of activation e-mails, you need to, you know, send e-mails. "Jesus &"¤!#! Christ!" you think to yourself, but if you use a Gmail account, it's all actually quite easy! (I was surprised, too.)
 
 Using [sontek's intelligible guide][email-guide], if you use a Gmail e-mail account, you can define your own e-mail server by entering these credentials:
@@ -180,8 +180,7 @@ This is a much better security solution, because it is much easier to shut down 
 
 After you have changed and saved your new settings in `settings.py`, run the `dotcloud push ponyforum` command again, and your new settings will be (derp) pushed to your instance. If nothing happens, follow it up with the command `dotcloud restart ponyforum.www`.
 
-#### Postponing the Set-Up ####
-
+#### [Postponing the Set-Up](#postponing-the-set-up) ####
 Last of all, there's another way out to avoid e-mail validation altogether for people on local servers. In `urls.py`, replace the line
 
 ```python
@@ -198,14 +197,14 @@ In other words, replace `default` with `simple`. This allows your registration t
 
 Note that if you use this "trick" and are logged in as admin, you might still get a configuration error ("please set up your site/e-mail settings"), but because there is no e-mail server the configuration addresses, you are free to ignore the warnings.
 
-### DEBUG = True or False? ###
+### [DEBUG = True or False?](#debug--true-or-false) ###
 While you're still in `settings.py`, you might consider changing the value of DEBUG, whether it is set to `True` or `False`.
 
 It all depends on where you are in your development cycle, but remember to flip it off, once you open it to the public---and on, if you are testing your site.
 
 Set it to `True`, if you are customizing it yourself, but set it to `False`, once you launch your site. By default, `DEBUG` is set to `False`, but you can alter this by changing the value of your `DEBUG` key in your dotCLoud environment variable.
 
-### Aaand You're Done! ###
+### [Aaand You're Done!](#aaand-youre-done) ###
 Let's recapitulate the adjustments needed to set up Pony Forum:
 
 1. Clone, create, push.
@@ -216,12 +215,12 @@ Let's recapitulate the adjustments needed to set up Pony Forum:
 
 Boom! You're done.
 
-License
--------
+[License](#license)
+---------
 *(To be decided.)*
 
-To-Do List
-----------
+[To-Do List](#to-do-list)
+------------
 Fire up [some music][music] and let's take a look at what I hope to get to at some point.
 
 I want to implement Markdown footnotes, but as of now, they get identical anchor IDs, which breaks the links (since they all point to the same). I hope to find something that will work in the end, because I regard this as a very important feature to a forum that encourages long-form discussion.
