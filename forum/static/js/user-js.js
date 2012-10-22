@@ -40,7 +40,7 @@ $(document).ready(function() {
 // Makes a POST request to a view at "/user/js/" that takes the arguments
 // `object_id` and `action` representing the object ID and the operation.
 //
-// Upon success, the `text()` inside the element is replaced with
+// Upon success, the `val()` inside the element is replaced with
 // the opposite action provided by the Django view. E.g.: 
 // <a href="#" id="123">Like</a> ->
 // <a href="#" id="123">Remove like</a>
@@ -49,14 +49,14 @@ $(document).ready(function() {
 
         var $this     = $(this);
         var person_id = this.id;
-        var text      = $this.text();
+        var text      = $this.val();
 
         $.post("/user/js/", {
             person_id: person_id,
             text:      text
             },
             function(data) {
-                $this.text(data);
+                $this.val(data);
         });
     });
 });

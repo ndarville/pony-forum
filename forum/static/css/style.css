@@ -20,7 +20,7 @@ a:visited {
 blockquote {
     padding: 0 10px;
     border-left: 1px solid #444;
-    /** 1px left offsets the 1px border above */
+/** 1px left offsets the 1px border above */
     margin: 1em 1px 0;
 }
 
@@ -66,6 +66,7 @@ table {
     margin: 1.5em auto;
 }
 
+/** Warnings */
 #alert,
 #configuration-warning {
     position: relative;
@@ -100,6 +101,7 @@ table {
 #js-blocked-warning {
     background-color: #EE3B3B;
 }
+/* * */
 
 /** All side panels */
 #header,
@@ -113,17 +115,10 @@ table {
     -moz-box-shadow: 1px 1px 5px #888;
     -webkit-box-shadow: 1px 1px 5px #888;
     box-shadow: 1px 1px 5px #888;
-    -webkit-appearance: none; /** fixes box-shadows on iOS */
+    -webkit-appearance: none; /** Fixes box-shadows on iOS */
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
-    /**
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    */
-    /**
-    border-top: 1px solid #bbb; border-left: 1px solid #bbb;
-    border-right: 1px solid #888; border-bottom: 1px solid #888;
-    */
 }
 
 #header,
@@ -156,19 +151,6 @@ table {
 #navigation li {
     padding-left: 10px;
 }
-
-/*
-#navigation li:hover {
-    color: #3985a8;
-    text-shadow: 0 1px #fff;
-    background: #ddeef6;
-    box-shadow: inset 0 1px 3px #fff, 
-                inset 0 -15px #cbe6f2,
-                0 0 3px #8ec1da;
-    -webkit-box-shadow: inset 0 1px 3px #fff, inset 0 -15px #cbe6f2, 0 0 3px #8ec1da;
-    -moz-box-shadow: inset 0 1px 3px #fff, inset 0 -15px #cbe6f2, 0 0 3px #8ec1da;
-}
-*/
 
 #navigation li a {
     display: block;
@@ -260,7 +242,7 @@ table {
 #popular {
     background: pink;
 }
-/** */
+/* * */
 
 /****         *****
 ***** BUTTONS *****
@@ -301,7 +283,7 @@ input[type="submit"] {
 #thread-mod-buttons-bottom li,
 #content a.button,
 input[type="submit"] {
-    /** padding: 0 0.5em; */
+/** padding: 0 0.5em; */
     border: 1px solid #D1D1D1;
     display: inline-block;
     background-color: #F7F7F7;
@@ -378,6 +360,10 @@ input[type="submit"] {
 
 .pagination .current_page {
     background-color: #FF9;
+}
+
+#content-body input[type="submit"] {
+    margin-top: 0;
 }
 /**** * ****/
 
@@ -543,7 +529,7 @@ legend {
     position: relative;
     display: block;
     padding: 5px 3em 5px 10px;
-/**    margin: 0.5em 0 0.5em 0;*/
+/** margin: 0.5em 0 0.5em 0; */
 }
 
 .threadsort {
@@ -576,7 +562,7 @@ th {
     color: pink;
 }
 
-/*
+/**
 table, td, tr {
     border-collapse: separate; Allows rounded corners. cf. http://vamin.net/examples/rounded_tables.html, http://vamin.net/examples/rounded_tables2.html, http://stackoverflow.com/questions/628301/css3s-border-radius-property-and-border-collapsecollapse-dont-mix-how-can-i-u#635863 
 }
@@ -757,7 +743,6 @@ span#error {
 .thankers li {
     list-style: none;
 }
-/** * **/
 
 .body {
     font-family: Georgia;
@@ -795,23 +780,16 @@ nor with different rules */
 }
 /**** * ****/
 
-/****                       *****
+/****                      *****
 ***** CREATE, REPLY & EDIT *****
-*****                          ****/
+*****                      ****/
 input[type=email],
-/**
-input[type=file],
-*/
 input[type=password],
 input[type=text],
 textarea,
 #title-form,
 #id-form { 
     border: none;
-    /**
-    border-right: 1px solid yellow;
-    border-bottom: 1px solid yellow;
-    */
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -822,13 +800,10 @@ textarea,
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;    /** May not work for IE7- */
+    -ms-box-sizing: border-box; /** May not work for IE7- */
 }
 
 input[type=email],
-/**
-input[type=file],
-*/
 input[type=password],
 input[type=text],
 textarea,
@@ -836,20 +811,7 @@ textarea,
 #id-form {
     padding: 5px;
     font-size: 0.9em; line-height: 1.35em;
-/** border: 1px solid #F5F5DC; */
 }
-
-/**
-input[type=email]:focus,
-input[type=file]:focus,
-input[type=password]:focus,
-input[type=text]:focus,
-textarea:focus,
-#title-form:focus,
-#id-form:focus {
-    border: 1px solid black;
-}
-*/
 
 #id-form {
     width: 35%;
@@ -1035,14 +997,14 @@ textarea,
         #navigation li a[href] {
             background-position: center;
         }
-        /** */
+        /* * */
 
         /** Hide text */
         #navigation span {
             display: none;
         }
-        /** */
-    /** */
+        /* * */
+    /* * */
 
     /** Adapt to mobile viewport */
     #board,
@@ -1056,7 +1018,7 @@ textarea,
         float: none;
         clear: both;
     }
-    /** */
+    /* * */
 
     /** Hide threadbar */
     #threadbar {
