@@ -2,7 +2,7 @@
                 <ul class="pagination">
         <!-- Older page -->
                     {% if page.has_previous %}
-                        <li><a href="?page={{ page.previous_page_number }}" title="Go to the older threads.">&lt;&nbsp;Older</a></li>
+                        <li><a rel="prev" title="Go to previous page" href="?page={{ page.previous_page_number }}" title="Go to the older threads.">&lt;&nbsp;Older</a></li>
                     {% endif %}
 
             <!-- First page -->
@@ -52,7 +52,7 @@
 
         <!-- Newer page -->
                     {% if page.has_next %}
-                        <li><a href="?page={{ page.next_page_number }}" title="Go to the newer threads.">Newer&nbsp;&gt;</a></li>
+                        <li><a rel="next" title="Go to next page" href="?page={{ page.next_page_number }}" title="Go to the newer threads.">Newer&nbsp;&gt;</a></li>
                     {% endif %}
                 </ul>
             {% endif %}
