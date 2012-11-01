@@ -75,11 +75,9 @@ dotcloud create ponyforum
 dotcloud push ponyforum
 ```
 
-The `ponyforum` name is temporary and can be replaced with any other name. In the future, it will be probably be renamed to `forum` or `pony forum` in the future.
-
 You will also need to set up an e-mail server (which is very, very easy), all of which is explained in *Setting Up an E-Mail Server* later on in this README. Fret not.
 
-The results on Windows 7 have been uneven at best, but if you want to try your luck, you can install the dotCloud dependencies dotCloud can be installed using either [dotCloud's own installation instructions][dc-install] (not recommended) compared to just downloading and executing [DotCloudWin][dotcloudwin]. Users on other platforms can use dotCloud's installation guide to set it up with no hitches.
+The results on Windows 7 have been uneven at best, but if you want to try your luck, you can install the dotCloud CLI (command line interface) using either [dotCloud's own installation instructions][dc-install] or [DotCloudWin][dotcloudwin]. Users on other platforms should use dotCloud's installation guide to set it up with no hitches.
 
 Remember to [sign up][registration] for free on dotCloud, if you don't already have an account, in order to retrieve your API key.
 
