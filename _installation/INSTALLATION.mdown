@@ -2,17 +2,15 @@ INSTALLATION
 ============
 Here is a long, step-by-step installation guide that everyone should be able to follow.
 
-*(Since this installation guide was first made, the project name has been changed from `dotcloud-django` to `pony-forum`. The screenshots below still have the old name, so you should replace all instances of the old name with the new one. I will get around to changing the examples to reflect the new name soon.)*
-
 1. Sign up for a dotCloud account
 
     ![dotCloud sign-up][1-sign-up]
 
-2. Copy-paste the API key in your settings tab
+2. Use [dotCloud’s guide][dc-install] to install the command-line interface.
 
-    ![API key][2-api-key]
+3. Write `dotcloud setup` and enter your credentials:
 
-3. Use [dotCloud’s guide][dc-install] for installing the command-line interface and entering your API key you copied to your clipboard in step 2.
+    ![dotCloud set-up][2-set-up]
 
 4. Download the most recent version of `pony-forum`. It is preferred that you use git and GitHub in order to stay up-to-date with fixes and improvements. More info [here][github-help].
 
@@ -28,23 +26,40 @@ Here is a long, step-by-step installation guide that everyone should be able to 
 
     ![Creating the app][4-create]
 
-7. Push your downloaded project to your new dotCloud app. We prefer to use dotCloud‘s git-based push, which is the default for now.
+    dotCloud will ask you whether you want to “connect” to the current directory. This means tying the folder to the dotCloud app you just created. That way, you won‘t have to specify the app, every time you interact with it through the CLI.
 
-    `dotcloud push <app_name>`
+    We are going to say *n(o)* this time around. But go with what works for you. You connect your folder to the app with `dotcloud connect <app_name>`, if you change your mind.
+
+7. Push your downloaded project to your new dotCloud app. We prefer to use dotCloud‘s git-based push, so here goes.
+
+    `dotcloud push --application <app_name> --git`
 
     ![Pushing the project to the app][5-push]
 
+    What a weird command, right? Let‘s break it down:
+
+    1. `dotcloud push`
+        * Push the following to dotCloud.
+    2. `--application <app_name>`
+        * Use the app `<app_name>`. In the future, use `-A` instead of `--application` as a shorthand.
+    3. `--git`
+        * Upload *only* the files and folders we cloned from the GitHub repo.
+
     If you downloaded the project as a compressed file, you push your project to your app like this:
 
-    `dotcloud push --all <app_name>`
+    `dotcloud push -A <app_name>`
 
-    Note that this means *all* the files in your current working directory will be copied, which will often involve a lot of additional, unrelated files getting copied. Pushing using git only uploads the `pony-forum` files and folders that were committed.
+    The difference here is that `--git` is omitted from the request, since this method (God knows why) is the new default in dotCloud‘s CLI.
+
+    Note that this means *all* the files in your current working directory will be copied, which will often involve a lot of additional, unrelated files getting copied. Mind what you put in your folder when running this command.
 
 8. A lot of stuff will be run now, as the project is installed to your dotCloud app. If you have connection problems because of a wonky internet connection, you might get an error with something like `postinstall` and `chmod` in it.
 
     ![Push error][6-error]
 
     This seems to be caused by dotCloud intolerance of poor internet connections. You should be able to circumvent this by performing step 7, until the deployment is successful. I hate this as much as you do—probably even more, since I had to figure out what the hell caused it.
+
+    *(NB: This was an error that occurred before version 0.9 of the dotCloud CLI. I have not been able to reproduce the error since, but I leave this part here, in case someone encounters it.)
 
 9. Your app should now be available at `https://<app_name>-<username>.dotcloud.com`.
 
@@ -56,8 +71,8 @@ That’s it! Feel free to play around with your new forum and check out the [REA
 
 
 [1-sign-up]:    https://github.com/ndarville/pony-forum/raw/master/_installation/screenshots/1-sign-up.png
-[2-api-key]:    https://github.com/ndarville/pony-forum/raw/master/_installation/screenshots/2-api-key.png
-[dc-install]:   http://docs.dotcloud.com/0.4/firststeps/install/
+[2-set-up]:     https://github.com/ndarville/pony-forum/raw/master/_installation/screenshots/2-set-up.png
+[dc-install]:   http://docs.dotcloud.com/0.9/firststeps/install/
 [github-help]:  https://help.github.com/
 [3-download]:   https://github.com/ndarville/pony-forum/raw/master/_installation/screenshots/3-download.png
 [download]:     https://github.com/ndarville/pony-forum/downloads
