@@ -30,13 +30,13 @@ Here is a long, step-by-step installation guide that everyone should be able to 
 
     We are going to say *n(o)* this time around. But go with what works for you. You connect your folder to the app with `dotcloud connect <app_name>`, if you change your mind.
 
-7. Push your downloaded project to your new dotCloud app. We prefer to use dotCloud‘s git-based push, so here goes.
+7. Push your downloaded project to your new dotCloud app. We prefer to use dotCloud’s git-based push, so here goes.
 
     `dotcloud push --application <app_name> --git`
 
     ![Pushing the project to the app][5-push]
 
-    What a weird command, right? Let‘s break it down:
+    What a weird command, right? Let’s break it down:
 
     1. `dotcloud push`
         * Push the following to dotCloud.
@@ -49,7 +49,7 @@ Here is a long, step-by-step installation guide that everyone should be able to 
 
     `dotcloud push -A <app_name>`
 
-    The difference here is that `--git` is omitted from the request, since this method (God knows why) is the new default in dotCloud‘s CLI.
+    The difference here is that `--git` is omitted from the request, since this method (God knows why) is the new default in dotCloud’s CLI.
 
     Note that this means *all* the files in your current working directory will be copied, which will often involve a lot of additional, unrelated files getting copied. Mind what you put in your folder when running this command.
 
