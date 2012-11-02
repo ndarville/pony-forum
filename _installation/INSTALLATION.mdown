@@ -59,7 +59,7 @@ Here is a long, step-by-step installation guide that everyone should be able to 
 
     This seems to be caused by dotCloud intolerance of poor internet connections. You should be able to circumvent this by performing step 7, until the deployment is successful. I hate this as much as you do—probably even more, since I had to figure out what the hell caused it.
 
-    *(NB: This was an error that occurred before version 0.9 of the dotCloud CLI. I have not been able to reproduce the error since, but I leave this part here, in case someone encounters it.)
+    *(NB: This was an error that occurred before version 0.9 of the dotCloud CLI. I have not been able to reproduce the error since, but I leave this part here, in case someone encounters it.)*
 
 9. Your app should now be available at `https://<app_name>-<username>.dotcloud.com`.
 
