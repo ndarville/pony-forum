@@ -1,7 +1,8 @@
 ### Pony-Forum
 Django==1.4.2
 
-# Admin documentation
+# Admin
+django-admin-bootstrapped
 docutils==0.8.1
 
 # Title and post formatting
