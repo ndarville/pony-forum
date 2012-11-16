@@ -35,6 +35,7 @@ Pony Forum features such niceties as:
 * [Installed][_installation] in few easy steps on [dotCloud][dotcloud]
 * Written in **Python** and uses the popular **Django** framework
 * **Mobile CSS** that adapts the layout to your iPhone
+* A redesigned, mobile-friendly [admin interface][new-admin]
 * Experimental [dyslexia support][dyslexia]
 * A **powerful editor** for writing and creating content:
     * Super simple [Markdown][markdown]-based formatting learnt in no time ...
@@ -289,6 +290,7 @@ And much, much more.
 [screenshot2]:  https://github.com/ndarville/pony-forum/raw/master/_screenshots/iphone-2.png
 [screenshot3]:  https://github.com/ndarville/pony-forum/raw/master/_screenshots/iphone-1.png
 [dotcloud]:     https://dotcloud.com/
+[new-admin]:    https://github.com/riccardo-forina/django-admin-bootstrapped
 [dyslexia]:     http://dyslexicfonts.com/
 [markdown]:     http://daringfireball.net/projects/markdown/
 [smartypants]:  http://daringfireball.net/projects/smartypants/
