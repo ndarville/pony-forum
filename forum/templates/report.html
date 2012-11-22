@@ -16,7 +16,7 @@
                     <input type="text" x-webkit-speech name="title" id="title-form" value="{% if title %}{{ title }}{% endif %}" placeholder="Summarize the infraction very briefly." required />
                     <textarea
                         rows="10" name="content" placeholder="Write an optional elaboration. No edits.">{% if preview %}{{ preview }}{% endif %}</textarea>
-                    
+
                     <div id="button-group">
                         <input type="submit" name="submit" id="submit" value="Report" />
                         <input type="submit" name="preview" id="preview" value="Preview" />

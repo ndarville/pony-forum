@@ -16,7 +16,7 @@ def relative_date(date):
     delta = datetime.datetime.now() - date  # UTC?
     s = delta.seconds
     d = delta.days
-    
+
     if d == 0:
         if s < 60:
             return "Just now"
@@ -52,7 +52,7 @@ class Category(models.Model):
                                     verbose_name="Plain title")
     title_html   = models.TextField(verbose_name="Formatted title")
 ##  description  = models.CharField(max_length=70)
-#   thread_count = models.IntegerField(default=0) 
+#   thread_count = models.IntegerField(default=0)
 #   post_count   = models.IntegerField(default=0)
     #: The sequential placement of the category in the "home" page
 ##  position     = models.AutoField(unique=True)
@@ -88,7 +88,7 @@ class Thread(models.Model):
                                                related_name="bookmarks")
     subscriber        = models.ManyToManyField(User, null=True, blank=True,
                                                related_name="subscriptions")
-    #: Users granted moderator rights on a per-thread basis    
+    #: Users granted moderator rights on a per-thread basis
 #   threadmins        = models.ManyToManyField(User, null=True, blank=True)
 
     class Meta:
@@ -112,7 +112,7 @@ class Thread(models.Model):
     def relative_date(self):
         """Shows the time since the last post in a thread."""
         return relative_date(self.latest_reply_date)
-        
+
 ##    def create(self, *args, **kwargs):
 ##        """Alters the default create method for Thread."""
 ##        now = datetime.datetime.now()
@@ -129,7 +129,7 @@ class Thread(models.Model):
 ##        self.latest_reply_date = now
 ##        self.title_html = prettify_title(self.title_plain)
 ##        super(Thread, self).create(*args, **kwargs)
-        
+
     relative_date.short_description = "Latest post"
 
 
@@ -166,7 +166,7 @@ class Post(models.Model):
         between now and creation_date.
         """
         return relative_date(self.creation_date)
-        
+
 #    def create(self, *args, **kwargs):
 #        """Alters the default create method for Post."""
 #        # https://docs.djangoproject.com/en/1.3/topics/db/managers/
@@ -202,7 +202,7 @@ class Subscription(models.Model):
 class Report(models.Model):
     """Model for filing reports against the posts and threads of users."""
     creation_date  = models.DateTimeField(default=datetime.datetime.now())
-    reason_short   = models.CharField(max_length=80)                                
+    reason_short   = models.CharField(max_length=80)
     reason_long    = models.TextField(blank=True)
     author         = models.ForeignKey(User, related_name="reporter")
     thread         = models.ForeignKey(Thread, related_name="thread_reports")

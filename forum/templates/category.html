@@ -48,7 +48,7 @@
                     {% endfor %}
                 <tbody>
                 </table>
-                
+
             {% with current_page=category_threads.number total_pages=category_threads.paginator.num_pages page=category_threads %}
                 {% include "includes/pagination.html" %}
             {% endwith %}

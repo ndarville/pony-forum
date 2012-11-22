@@ -111,7 +111,7 @@ table {
 #subscribed,
 #popular,
 #content table.categories,
-#content table.threads { 
+#content table.threads {
     -moz-box-shadow: 1px 1px 5px #888;
     -webkit-box-shadow: 1px 1px 5px #888;
     box-shadow: 1px 1px 5px #888;
@@ -564,7 +564,7 @@ th {
 
 /**
 table, td, tr {
-    border-collapse: separate; Allows rounded corners. cf. http://vamin.net/examples/rounded_tables.html, http://vamin.net/examples/rounded_tables2.html, http://stackoverflow.com/questions/628301/css3s-border-radius-property-and-border-collapsecollapse-dont-mix-how-can-i-u#635863 
+    border-collapse: separate; Allows rounded corners. cf. http://vamin.net/examples/rounded_tables.html, http://vamin.net/examples/rounded_tables2.html, http://stackoverflow.com/questions/628301/css3s-border-radius-property-and-border-collapsecollapse-dont-mix-how-can-i-u#635863
 }
 */
 
@@ -788,7 +788,7 @@ input[type=password],
 input[type=text],
 textarea,
 #title-form,
-#id-form { 
+#id-form {
     border: none;
     border-radius: 5px;
     -moz-border-radius: 5px;

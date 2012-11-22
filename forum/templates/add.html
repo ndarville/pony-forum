@@ -8,7 +8,7 @@
                     {% csrf_token %}
 
                     <input type="text" x-webkit-speech name="title" id="title-form" value="{% if title %}{{ title }}{% endif %}" placeholder="Use a descriptive title here." autofocus required />
-                    
+
                     <div id="button-group">
                         <input type="submit" name="submit" id="submit" value="Add" />
                     </div>

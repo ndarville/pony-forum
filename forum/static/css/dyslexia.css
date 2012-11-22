@@ -1,4 +1,4 @@
-/** Credit to http://dyslexicfonts.com/plugin/easyread.css 
+/** Credit to http://dyslexicfonts.com/plugin/easyread.css
     Rehosted and -formatted to not be a bandwidth mooch.
 */
 
@@ -38,7 +38,7 @@ body {
     font-family: opendyslexic !important;
     font-variant: normal !important;
     text-transform: none !important;
-    
+
 }
 
 p:nth-child(even), li:nth-child(even) {

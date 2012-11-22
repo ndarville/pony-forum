@@ -113,7 +113,7 @@ S/he might want to contact the site&rsquo;s host in return.</p>
 def paginate(request, items, num_items):
     """Create and return a paginator."""
     paginator = Paginator(items, num_items)
-    
+
     try:
         page = int(request.GET.get('page', '1'))
     except ValueError:
@@ -123,7 +123,7 @@ def paginate(request, items, num_items):
         items = paginator.page(page)
     except (InvalidPage, EmptyPage):
         items = paginator.page(paginator.num_pages)
-    
+
     return items
 
 
@@ -326,7 +326,7 @@ def category(request, category_id):
     # Threadbar code from home()
     subscribed_threads = False
     threads     = Thread.objects.exclude(is_removed__exact=True)
-    new_threads = threads[:5]    
+    new_threads = threads[:5]
 
     if not request.user.is_anonymous() and request.user.subscriptions.all():
         subscribed_threads = threads.filter(subscriber__exact=request.user)[:5]
@@ -379,7 +379,7 @@ def thread_js(request):
     """
     if request.is_ajax() and request.method == "POST":
         # if not logged in ...
-      
+
         object_id = request.POST['object_id']
         action    = request.POST['action'].lower()
 
@@ -502,7 +502,7 @@ def post(request, post_id):
     else:
         messages.info(request, "The thread %s has been removed and no longer available." % post.thread.title_html)
         return HttpResponseRedirect(reverse('forum.views.category', args=(post.thread.category.id,)))
-    
+
 
 def user(request, user_id):
     """Shows another user's profile.
@@ -644,7 +644,7 @@ def create(request, category_id):
                     t.subscriber.add(user)
                 except:
                     pass
-                else: # After successful submission                   
+                else: # After successful submission
                     return HttpResponseRedirect(reverse('forum.views.thread', args=(t.id,)))
         elif "preview" in request.POST:  # "preview" button pressed
             preview_plain = text_plain
@@ -685,12 +685,12 @@ def reply(request, thread_id):
             html = sanitized_smartdown(text)
             Post.objects.create(\
                 thread=thread, author=user, creation_date=now,
-                content_plain=text, content_html=html)            
+                content_plain=text, content_html=html)
             if request.user.get_profile().auto_subscribe:
                 thread.subscriber.add(request.user)
             thread.latest_reply_date = now
             thread.save()
-                
+
             return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
         elif "preview" in request.POST:  # "preview" button pressed
             preview_plain = text
@@ -759,7 +759,7 @@ def lock_thread(request, thread_id):
             if not thread.is_locked:
                 messages.info(request, "The thread was already not locked.")
             thread.is_locked = False
-        
+
         thread.save()
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:  # Otherwise, show clean, normal page with no populated data
@@ -792,7 +792,7 @@ def sticky_thread(request, thread_id):
             if not thread.is_sticky:
                 messages.info(request, "The thread was already not sticky.")
             thread.is_sticky = False
-        
+
         thread.save()
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:  # Otherwise, show clean, normal page with no populated data
@@ -850,9 +850,9 @@ def merge_thread(request, thread_id):
                              t.get_absolute_url(),
                              end)
             html = sanitized_smartdown(message)
-            Post.objects.create(creation_date=now, author=user, thread=t, 
+            Post.objects.create(creation_date=now, author=user, thread=t,
                                 content_plain=message, content_html=html)
-            Post.objects.create(creation_date=now, author=user, thread=thread, 
+            Post.objects.create(creation_date=now, author=user, thread=thread,
                                 content_plain=message, content_html=html)
             Post.objects.create(creation_date=now, author=user, thread=other_thread,
                                 content_plain=message, content_html=html)
@@ -984,7 +984,7 @@ def report(request, object_id, object_type):
                            .filter(post__exact=obj):
             messages.info(request, "This %s has already been reported by you." % object_type)
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
-   
+
     if request.method == 'POST':  # Form has been submitted
         title = request.POST['title']
         if "content" in request.POST:  # Elaboration provided
@@ -1089,7 +1089,7 @@ def settings(request):
         profile.auto_subscribe = request.POST['auto_subscribe'] == "True"
         profile.save()
         messages.success(request, "New settings saved.")
-    
+
     return render(request, 'settings.html', {})
 
 

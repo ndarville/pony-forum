@@ -10,7 +10,7 @@
 
                 <form action="{% url forum.views.move_thread thread.id %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
-                    
+
                 {% for category in categories %}
                     <input type="radio" name="category" value="{{ category.id }}" {% if category == thread.category %}checked{% endif %} />{{ category.title_html|safe }}<br />
                 {% endfor %}

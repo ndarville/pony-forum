@@ -5,9 +5,9 @@ Capitalizes the first letter of the project name during this.
 import os
 
 if 'DOTCLOUD_ENVIRONMENT' in os.environ:
-    import json    
-    from wsgi import *        
-    
+    import json
+    from wsgi import *
+
     from django.contrib.sites.models import Site
 
     with open('/home/dotcloud/environment.json') as f:

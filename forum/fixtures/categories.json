@@ -1,17 +1,17 @@
 [
   {
-    "pk": 1, 
-    "model": "forum.category", 
+    "pk": 1,
+    "model": "forum.category",
     "fields": {
-      "title_html": "Discussions", 
+      "title_html": "Discussions",
       "title_plain": "Discussions"
     }
-  }, 
+  },
   {
-    "pk": 2, 
-    "model": "forum.category", 
+    "pk": 2,
+    "model": "forum.category",
     "fields": {
-      "title_html": "The Forum", 
+      "title_html": "The Forum",
       "title_plain": "The Forum"
     }
   }

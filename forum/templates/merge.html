@@ -19,7 +19,7 @@
                     <input type="number" name="other-thread-id" id="id-form" value="{% if other_thread %}{{ other_thread.id }}{% endif %}" min="1" step="1" placeholder="Enter the ID of the other thread." required />
 
                     <input type="text" x-webkit-speech name="new-thread-title" id="title-form" value="{{ new_title }}" placeholder="Use a descriptive title here." required />
-                    
+
                     <div id="button-group">
                         <input type="submit" name="merge" id="submit" value="Merge" />
                     </div>
@@ -34,7 +34,7 @@
                         <li><i>{{ other_thread.title_html|safe }}</i></li>
                     </ul>
                     <p>Merging them will show the posts in both in chronological order in one single thread named <i>{{ new_title_html|safe }}</i>.</p>
-                    
+
                     <div id="button-group">
                         <input type="submit" name="confirm" id="submit" value="Yes, merge them" />
                         <input type="submit" name="cancel" id="submit" value="Cancel" />

@@ -31,7 +31,7 @@
             {% if not categories %}
                 <p>This forum currently does not have any categories&mdash;and the threads and posts to go with them. {% if user.is_staff %}You should get right on that.{% endif %}{% if not user.is_authenticated %}If you have the permissions, you should <a href="{% url forum.views.add %}">log in and get started</a>.{% endif %}</p>
             {% endif %}
-                
+
             {% if perms.forum.add_category %}
                 <div id="button-group">
                     <a class="button" href="{% url forum.views.add %}">Add a new category</a>

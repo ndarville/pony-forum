@@ -1,6 +1,22 @@
 Contribution Guidelines
 =======================
 
+Pedantic Style Guidelines
+-------------------------
+* End all files in a newline. Exceptions are files where it affects the execution:
+    * `.txt` files
+
+Tips
+----
+If you use Sublime Text 2 as an editor, set these two settings to `True` in your default settings:
+
+* `"trim_trailing_white_space_on_save"`
+* `"ensure_newline_at_eof_on_save"`
+
+This makes your editor do this automatically with you having to worry about cleaning up your code and making it comply with the Pedantic Style Guidelines(TM).
+
+There is a rub, though: you will have to turn off `"ensure_newline_at_eof_on_save"` when editing the files exempt from the newline rule.
+
 Issues
 ------
 This project is in its infancy, to say the least. Because of this, inundating me with feature suggestions that will have to be implemented six months from now will mainly serve to clutter the Issues, or worse, clog it, rendering it useless.

@@ -11,7 +11,7 @@ b, i,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-canvas, details, figcaption, figure, 
+canvas, details, figcaption, figure,
 summary,
 time, mark, audio, video {
     margin: 0;
@@ -43,7 +43,7 @@ a {
 
 mark {
     background-color: #ff9;
-    color: #000; 
+    color: #000;
 }
 
 del {
@@ -63,7 +63,7 @@ table {
 hr {
     display: block;
     height: 1px;
-    border: 0;   
+    border: 0;
     border-top: 1px solid #cccccc;
     margin: 1em 0;
     padding: 0;
@@ -115,7 +115,7 @@ html {
     -ms-text-size-adjust: 100%; /* 3 */
 }
 
-/* 
+/*
  * Addresses font-family inconsistency between 'textarea' and other form elements.
  */
 body,
@@ -154,9 +154,9 @@ a:active {
 /*
  * Addresses style set to 'bolder' in FF3/4, S4/5, Chrome
 */
-b, 
-strong { 
-    font-weight: bold; 
+b,
+strong {
+    font-weight: bold;
 }
 
 /*
@@ -235,7 +235,7 @@ img {
 }
 
 /*
- * Corrects overflow displayed oddly in IE9 
+ * Corrects overflow displayed oddly in IE9
  */
 svg:not(:root) {
     overflow: hidden;
@@ -282,8 +282,8 @@ table input {
  * 2. Corrects inability to style clickable 'input' types in iOS
  */
 button,
-html input[type="button"], 
-input[type="reset"], 
+html input[type="button"],
+input[type="reset"],
 input[type="submit"] {
     cursor: pointer; /* 1 */
     -webkit-appearance: button; /* 2 */

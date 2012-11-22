@@ -41,7 +41,7 @@ $(document).ready(function() {
 // `object_id` and `action` representing the object ID and the operation.
 //
 // Upon success, the `val()` inside the element is replaced with
-// the opposite action provided by the Django view. E.g.: 
+// the opposite action provided by the Django view. E.g.:
 // <a href="#" id="123">Like</a> ->
 // <a href="#" id="123">Remove like</a>
     $('.js').on('click', function(e) {

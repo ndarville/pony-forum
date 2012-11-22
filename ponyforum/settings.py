@@ -222,7 +222,7 @@ if LOCAL_DEVELOPMENT:
     USER_THREADS_PER_PAGE  = 25
     SUBSCRIPTIONS_PER_PAGE = 25
     BOOKMARKS_PER_PAGE     = 35
-    SAVES_PER_PAGE         = 10 
+    SAVES_PER_PAGE         = 10
 else:
     POSTS_PER_PAGE         = int(env.get('POSTS_PER_PAGE', '25'))
     THREADS_PER_PAGE       = int(env.get('THREADS_PER_PAGE', '25'))
