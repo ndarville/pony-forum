@@ -2,7 +2,6 @@
 set -e # stops execution on error
 python manage.py syncdb --noinput
 python _postinstall/mkadmin.py
-python manage.py test
 python _postinstall/definesite.py
 python _postinstall/mkplaceholders.py
 mkdir -p /home/dotcloud/data/media /home/dotcloud/data/static
