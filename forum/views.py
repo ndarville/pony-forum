@@ -19,6 +19,7 @@ from django.shortcuts               import render, get_object_or_404
 
 from forum.models                   import Category, Post, Report,\
                                            Subscription, Thread, UserProfile
+from forum.forms                    import CustomRegistrationForm
 from registration                   import views as registration_views
 
 

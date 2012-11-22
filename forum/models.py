@@ -266,7 +266,7 @@ class UserProfile(models.Model):
 
 def create_user_profile(sender, instance, created, **kwargs):
     """Used to extend User using aforementioned UserProfile model."""
-    if created:
+    if created and not kwargs.get('raw', False):
         UserProfile.objects.create(user=instance)
 
 post_save.connect(create_user_profile, sender=User)

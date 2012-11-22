@@ -3,6 +3,8 @@ from django.conf.urls.defaults   import patterns, include, url
 from django.contrib              import admin
 from django.views.generic.simple import redirect_to
 
+from forum.forms import CustomRegistrationForm
+
 
 admin.autodiscover()
 
@@ -83,6 +85,8 @@ urlpatterns = patterns('forum.views',
     url(r'^' + getattr(project_settings, 'REGISTRATION_URL',
                                                  '/accounts/register/')[1:] + '$',
                                                  'custom_register',
+                                                {'form_class':
+                                                  CustomRegistrationForm},
                                                   name='register'),
     (r'^accounts/settings/$',                    'settings'),
 )
