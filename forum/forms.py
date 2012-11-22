@@ -30,6 +30,7 @@ class CustomRegistrationForm(RegistrationFormUniqueEmail):
                                            attrs_dict,
                                            maxlength=75)),
                                         label=_("E-mail"))
+
     def clean_email(self):
         """Validate that the supplied e-mail address is unique for the
         site.
