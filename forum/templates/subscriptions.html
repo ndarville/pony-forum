@@ -3,13 +3,15 @@
 {% block title %}Subscriptions{% endblock %}
 {% block canonical_url %}{% url subscriptions %}{% endblock %}
 {% block content_body %}
-    <ul>
-    {% for thread in objects.object_list %}
-        <li><a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a></li>
-    {% empty %}
-        <p>You have no subscriptions.</p>
-    {% endfor %}
-    </ul>
+    {% if object_list %}
+        <ul>
+        {% for thread in objects.object_list %}
+            <li><a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a></li>
+        {% empty %}
+            <p>You have no subscriptions.</p>
+        {% endfor %}
+        </ul>
+    {% endif %}
 
 {% with current_page=objects.number total_pages=objects.paginator.num_pages page=objects %}
     {% include "includes/pagination.html" %}
