@@ -3,19 +3,46 @@ Contribution Guidelines
 
 Pedantic Style Guidelines
 -------------------------
-* End all files in a newline. Exceptions are files where it affects the execution:
+1. End all files in a newline. Exceptions are files where it affects the execution:
     * `.txt` files
+
+2. Line endings must be Unix line endings.
+
+3. Tabs must be four characters of space in the following filetypes:
+    * `.py`
+    * `.html`
+    * `.txt`
+    * `.mdown`
+    * `sh` scripts
+
+    I am currently undecided on whether to use 2 or 4 spaces for a tab in `.css`, `.js` and `.json` files.
+
+In general writing, I use my own variant of the Oxford style.
+
+I only mention this to pre-empt annoying pull requests for asinine corrections. It is not something you should concern yourself with when contributing.
 
 Tips
 ----
-If you use Sublime Text 2 as an editor, set these two settings to `True` in your default settings:
+If you use Sublime Text 2 as an editor, you can adjust your settings to conform with the style guidelines.
 
-* `"trim_trailing_white_space_on_save"`
-* `"ensure_newline_at_eof_on_save"`
+### Conforming with `1`
+* `"trim_trailing_white_space_on_save": True`
+* `"ensure_newline_at_eof_on_save": True`
 
-This makes your editor do this automatically with you having to worry about cleaning up your code and making it comply with the Pedantic Style Guidelines(TM).
+This makes you code fit the guideline automatically, and removes the need to worry about cleaning up your code and complying with the Pedantic Style Guidelines(TM).
 
-There is a rub, though: you will have to turn off `"ensure_newline_at_eof_on_save"` when editing the files exempt from the newline rule.
+There is a rub, though; you have to turn off `"ensure_newline_at_eof_on_save"` when editing the files exempt from the newline rule.
+
+### Conforming with `2`
+* `"default_line_ending": "unix"`
+
+### Conforming with `3`
+* `"tab_size": 4`
+* `"translate_tabs_to_spaces": True`
+
+Sublime Text 2 will again make your code conform with the guidelines automatically.
+
+It will however *not* convert existing non-space tabs to space-based tabs. This should not be too much of a concern in an instance where you are editing the code of this project, though.
 
 Issues
 ------
