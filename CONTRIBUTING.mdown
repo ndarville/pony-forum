@@ -44,6 +44,8 @@ Sublime Text 2 will again make your code conform with the guidelines automatical
 
 It will however *not* convert existing non-space tabs to space-based tabs. This should not be too much of a concern in an instance where you are editing the code of this project, though.
 
+You can find my own Sublime Text 2 user settings in [this gist](https://gist.github.com/4140423). Maybe it can be of use to you.
+
 Issues
 ------
 This project is in its infancy, to say the least. Because of this, inundating me with feature suggestions that will have to be implemented six months from now will mainly serve to clutter the Issues, or worse, clog it, rendering it useless.
