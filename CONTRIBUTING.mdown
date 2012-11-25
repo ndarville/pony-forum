@@ -26,19 +26,25 @@ Tips
 If you use Sublime Text 2 as an editor, you can adjust your settings to conform with the style guidelines.
 
 ### Conforming with `1`
-* `"trim_trailing_white_space_on_save": true`
-* `"ensure_newline_at_eof_on_save": true`
+```js
+"trim_trailing_white_space_on_save": true,
+"ensure_newline_at_eof_on_save": true
+```
 
 This makes your code fit the guideline automatically, and removes the need to worry about cleaning up your code and complying with the Pedantic Style Guidelines(TM).
 
 There is a rub, though; you have to turn off `"ensure_newline_at_eof_on_save"` when editing the files exempt from the newline rule.
 
 ### Conforming with `2`
-* `"default_line_ending": "unix"`
+```js
+"default_line_ending": "unix"
+```
 
 ### Conforming with `3`
-* `"tab_size": 4`
-* `"translate_tabs_to_spaces": true`
+```js
+"tab_size": 4,
+"translate_tabs_to_spaces": true
+```
 
 Sublime Text 2 will again make your code conform with the guidelines automatically.
 
