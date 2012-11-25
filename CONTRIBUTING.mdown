@@ -25,6 +25,16 @@ Basic Guidelines
 
     [Imgur](http://imgur.com/) is a fine service to upload them. Because of the image optimizations they apply, you should not use their service in cases where image quality loss is a problem. In those cases, you can use [Minus](http://minus.com).
 
+5. Respect the concept of “officially supported”:
+
+           Stacks      |            Compatible
+    :------------------|:---------------------------------
+     Operating Systems | OS X and Ubuntu (latest versions)
+     Python            | `2.6` and `2.7`
+     Databases         | PostgreSQL
+
+    So if something does not work on your Windows installation, it should come as no surprise. Do not be discouraged from contributing solutions to make Pony Forum compatible on more stacks and platforms, though. It is the intention to make Pony Forum available on Windows at some point.
+
 Pedantic Style Guidelines
 -------------------------
 1. End all files in a newline. Exceptions are files where it affects the execution:
