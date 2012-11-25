@@ -27,7 +27,7 @@ Basic Guidelines
 
 5. Respect the concept of “officially supported”:
 
-           Stacks      |            Compatible
+           Stacks      |       Officially Supported
     :------------------|:---------------------------------
      Operating Systems | OS X and Ubuntu (latest versions)
      Python            | `2.6` and `2.7`
