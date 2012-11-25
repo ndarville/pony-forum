@@ -9,13 +9,13 @@ Basic Guidelines
 
     There are even people who [do the job for you](http://border-radius.com/).
 
-2. Limit your Pull Requests to a single issue.
+2. Limit your pull requests to a single issue.
 
     I consider this a guideline more than law of the land. There will probably be exceptions where it makes sense to bundle related issues, but keep this guideline in mind as a rule of thumb.
 
 3. Limit your commits to a single type of improvement:
 
-    To reapply rule #2 to commits and not just Pull Requests, do not merge commits with different purposes such as spelling, newline, whitespace, and other improvements.
+    To reapply rule #2 to commits and not just pull requests, do not merge commits with different purposes such as spelling, newline, whitespace, and other improvements.
 
     This also improves the quality of your commits significantly.
 
