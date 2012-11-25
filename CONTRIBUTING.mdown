@@ -37,6 +37,8 @@ Pedantic Style Guidelines
 
     I am currently undecided on whether to use 2 or 4 spaces for a tab in `.css`, `.js` and `.json` files.
 
+4. There will eventually, but not currently, be some clearer guidelines for when and when not to use single and double quotes. Be mindful of how you use them and try to use them consistently in your commits.
+
 In general writing, I use my own variant of the Oxford style.
 
 I only mention this to pre-empt annoying pull requests for asinine corrections. It is not something you should concern yourself with when contributing.
@@ -93,3 +95,5 @@ And for the love of Linus Torvalds, write *descriptive*, *succinct* commit messa
 Finally—and Most Important
 --------------------------
 Please don‘t take it personally, if your suggestion or contribution is rejected. It is incredibly strenuous and time-consuming to manage a project of this magnitude without succumbing to feature creep, design by committee, and people who feel entitled to appropriate the project and make the decisions. Such users are welcome to fork the project and take it in their own direction.
+
+Last, but not least: we are all fallible, and I am going to fall victim to my own guidelines time after time after time. I do not expect anyone to always get it right; it’s not like we stop coding, after fatigue and madness set in.
