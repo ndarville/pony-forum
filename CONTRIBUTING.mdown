@@ -15,7 +15,7 @@ Basic Guidelines
 
 3. Limit your commits to a single type of improvement:
 
-    To reapply rule #2 to commits and not just pull requests, do not merge commits with different purposes such as spelling, newline, whitespace, and other improvements.
+    To reapply rule #2 to commits and not just pull requests, do not merge commits with different purposes such as spelling, newline, whitespace corrections, as well as any other improvements.
 
     This also improves the quality of your commits significantly.
 
