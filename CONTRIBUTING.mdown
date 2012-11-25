@@ -1,6 +1,26 @@
 Contribution Guidelines
 =======================
 
+Basic Guidelines
+----------------
+1. Your code must work in browsers Opera, Chrome, Firefox, Safari, and later, sane versions of Internet Explorer.
+
+    I do not suffer smartasses who only submit stylesheets with vendour prefixes for the two or three browsers they like, because all the others “suck”, and “only stupid people use those browsers”.
+
+    There are even people who [do the job for you](http://border-radius.com/).
+
+2. Limit your Pull Requests to a single issue.
+
+    I consider this a guideline more than law of the land. There will probably be exceptions where it makes sense to bundle related issues, but keep this guideline in mind as a rule of thumb.
+
+3. Limit your commits to a single type of improvement:
+
+    To reapply rule #2 to commits and not just Pull Requests, do not merge commits with different purposes such as spelling, newline, whitespace, and other improvements.
+
+    This also improves the quality of your commits significantly.
+
+    There is harm in making a Pull Request containing several commits.
+
 Pedantic Style Guidelines
 -------------------------
 1. End all files in a newline. Exceptions are files where it affects the execution:
@@ -23,7 +43,7 @@ I only mention this to pre-empt annoying pull requests for asinine corrections. 
 
 Tips
 ----
-If you use Sublime Text 2 as an editor, you can adjust your settings to conform with the style guidelines.
+If you use Sublime Text 2 as an editor, you can adjust your settings to conform with the Pedantic Style Guidelines(TM):
 
 ### Conforming with `1`
 ```js
@@ -54,7 +74,7 @@ You can find my own Sublime Text 2 user settings in [this gist](https://gist.git
 
 Issues
 ------
-**This project is in its infancy**, to say the least. Because of this, inundating me with feature suggestions that will have to be implemented six months from now will mainly serve to clutter the Issues, or worse, clog it, rendering it useless.
+**This project is in its infancy**, to say the least. Because of this, inundating me with feature suggestions that will have to be implemented six months from now will mainly serve to clutter the issues, or worse, clog it, rendering it useless.
 
 This preliminary phase is focused on implementing what can best be described as basic features. What constitutes a basic feature can be hard to define, but for the time being, I defer to your own best judgement.
 
