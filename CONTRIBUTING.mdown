@@ -54,7 +54,7 @@ You can find my own Sublime Text 2 user settings in [this gist](https://gist.git
 
 Issues
 ------
-This project is in its infancy, to say the least. Because of this, inundating me with feature suggestions that will have to be implemented six months from now will mainly serve to clutter the Issues, or worse, clog it, rendering it useless.
+**This project is in its infancy**, to say the least. Because of this, inundating me with feature suggestions that will have to be implemented six months from now will mainly serve to clutter the Issues, or worse, clog it, rendering it useless.
 
 This preliminary phase is focused on implementing what can best be described as basic features. What constitutes a basic feature can be hard to define, but for the time being, I defer to your own best judgement.
 
@@ -67,6 +67,8 @@ Pull requests will be submitted to a high level of *automated* scrutiny at a lat
 If the build fails, it is expected that you will amend the error—assuming you are able—to expedite the process.
 
 I will later create Travis tests to strike a balance between catching errors, before they enter the code, and penalize contributors for pedantic reasons. Nevertheless, the script exists to catch errors and make it more effortless and less time-consuming for everyone involved to contribute to the project.
+
+And for the love of Linus Torvalds, write *descriptive*, *succinct* commit messages with appropriate spelling and capitalization of the first letter when applicable in a way  that does not make people mistake you for a bot.
 
 Finally—and Most Important
 --------------------------
