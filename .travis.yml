@@ -21,7 +21,7 @@ install:
 # - pip install pip-tools --quiet
 
 before_script:
-  - psql -c "CREATE DATABASE ponydb;" -U postgres
+  - psql -c "CREATE DATABASE travisdb;" -U postgres
 
 script:
   - python manage.py syncdb --noinput
