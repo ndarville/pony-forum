@@ -3,6 +3,7 @@
 *.pot
 *.pyc
 build/
+forum/migrations/
 notes/
 venv/
 .DS_Store
