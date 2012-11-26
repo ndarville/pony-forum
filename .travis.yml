@@ -25,6 +25,8 @@ before_script:
 
 script:
   - python manage.py syncdb --noinput
+  - python manage.py schemamigration forum --initial
+  - python manage.py migrate forum --fake
   - python _postinstall/mkadmin.py
   - python _postinstall/definesite.py
   - python _postinstall/mkplaceholders.py
