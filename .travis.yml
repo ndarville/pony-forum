@@ -8,6 +8,10 @@ services: postgresql
 
 env:
   - DJANGO=1.4.2
+  - TEST=forum.view_tests
+  - TEST=forum.model_tests
+  - TEST=forum.form_tests
+  - TEST=forum.installed_apps_order_tests
 
 before_install:
   - export DJANGO_SETTINGS_MODULE=ponyforum.settings
@@ -33,7 +37,7 @@ script:
 
 after_script:
 # - pip-review
-  - python manage.py test
+  - python manage.py test --cover-package=$TEST
 
 notifications:
   email:
