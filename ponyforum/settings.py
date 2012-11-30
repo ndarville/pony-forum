@@ -287,16 +287,12 @@ if not LOCAL_DEVELOPMENT:
 NOSE_ARGS = [
     '--with-fixture-bundling',
     '--with-coverage',
-    '--cover-tests'
+    '--cover-tests',
+    '--cover-package=forum.view_tests,\
+    forum.model_tests,\
+    forum.form_tests,\
+    forum.installed_apps_order_tests'
 ]
-
-if not 'TRAVIS' in os.environ:
-    NOSE_ARGS += [
-        '--cover-package=forum.view_tests,\
-        forum.model_tests,\
-        forum.form_tests,\
-        forum.installed_apps_order_tests'
-    ]
 
 NOSE_PLUGINS = [
     'nose.plugins.cover.Coverage'
