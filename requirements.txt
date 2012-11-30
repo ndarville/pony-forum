@@ -22,7 +22,7 @@ django-debug-toolbar==0.9.1
 ##django-cache-panel
 
 # Database:
-##psycopg2
+psycopg2
 South==0.7.6
 
 # Testing:
