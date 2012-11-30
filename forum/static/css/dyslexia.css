@@ -2,28 +2,28 @@
     Rehosted and -formatted to not be a bandwidth mooch.
 */
 
-@font-face{
+@font-face {
     font-family: "opendyslexic";
     src: url(/static/typefaces/OpenDyslexic-Regular.otf);
     font-style: normal;
     font-weight: normal;
 }
 
-@font-face{
+@font-face {
     font-family: "opendyslexic";
     src: url(/static/typefaces/OpenDyslexic-Italic.otf);
     font-style: italic;
     font-weight: normal;
 }
 
-@font-face{
+@font-face {
     font-family: "opendyslexic";
     src: url(/static/typefaces/OpenDyslexic-Bold.otf);
     font-weight: bold;
     font-style: normal;
 }
 
-@font-face{
+@font-face {
     font-family: "opendyslexic";
     src: url(/static/typefaces/OpenDyslexic-BoldItalic.otf);
     font-weight: bold;
