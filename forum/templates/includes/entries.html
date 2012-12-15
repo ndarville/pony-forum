@@ -1,22 +1,23 @@
 {% load humanize %}
-
+            {% with post_author=post.author %}
+            {% with post_count=post_author.post_set.all %}
                 <div class="post" id="{{ post.id }}">
-                    {% if post.author == post.thread.author %}
+                    {% if post_author == post.thread.author %}
                     <div class="op">
                     {% else %}
                     <div class="user">
                     {% endif %}
                         <span class="username">
-                            <a href="{% url forum.views.user post.author.id %}">{{ post.author.username }}</a>
+                            <a href="{% url forum.views.user post_author.id %}">{{ post_author.username }}</a>
                         </span>
 
                         <p class="user-title"></p>
                     <!--
-                        <a class="avatar" href="{% url forum.views.user post.author.id %}">
+                        <a class="avatar" href="{% url forum.views.user post_author.id %}">
                             <img src="#" />
                         </a>
                     -->
-                        <p>Post{{ post.author.post_set.all|length|pluralize }}: {{ post.author.post_set.all.count|intcomma }}</p>
+                        <p>Post{{ post_count|pluralize }}: {{ post_count|intcomma }}</p>
                     <!--
                     {% if user.is_authenticated %}
                         <p><a href="#">Send PM</a></p>
@@ -29,7 +30,7 @@
                             <!-- Anchor number borked -->
                             <a class="anchor" href="{% url forum.views.thread post.thread.id %}?page={{ posts.number }}#{{ post.id }}">#</a>
                             <a class="permalink" title="View this post by itself at its own link" href="{% url forum.views.post post.id %}">&infin;</a>
-                            <a class="postsinthread" title="View all posts by the {{ post.author.username }} in this thread" href="{% url forum.views.thread thread_id=post.thread.id author_id=post.author.id %}">&Phi;</a>
+                            <a class="postsinthread" title="View all posts by the {{ post_author.username }} in this thread" href="{% url forum.views.thread thread_id=post.thread.id author_id=post_author.id %}">&Phi;</a>
                         </div>
                         <div class="body">{{ post.content_html|safe }}</div>
                     </div>
@@ -39,10 +40,10 @@
                             <a class="button" href="{% url forum.views.reply post.thread.id %}">Reply</a>
                         {% endif %}
                     {% if user.is_authenticated %}
-                        {% if user == post.author %}
+                        {% if user == post_author %}
                             <a class="button" href="{% url forum.views.edit post.id %}">Edit</a>
                         {% endif %}
-                        {% if user == post.author and forloop.first %}
+                        {% if user == post_author and forloop.first %}
                             <a class="button" href="/thread/{{ thread.id }}/co-editor">Manage Co-Editors</a>
                         {% endif %}
                     {% endif %}
@@ -51,7 +52,7 @@
                         <div class="left-buttons">
                             <a class="button js" id="{{ post.id }}" href="#">{% if post in user.saves.all %}Unsave{% else %}Save{% endif %}</a>
                     {% comment %}
-                        {% if user != post.author %}
+                        {% if user != post_author %}
                             <a class="button js" id="{{ post.id }}" href="#">{% if post in user.thanks.all %}Unthank{% else %}Thank{% endif %}</a>
                             <a class="button js" id="{{ post.id }}" href="#">{% if post in user.agrees.all %}Unagree{% else %}Agree{% endif %}</a>
                         {% endif %}}
@@ -62,7 +63,7 @@
                             <a class="button agrees" href="#">Has Agrees</a>
                         {% endif %}
                     {% endcomment %}
-                    {% if user != post.author %}
+                    {% if user != post_author %}
                         {% if not post.thread.is_locked %}
                         {#  <a class="button" id="{{ post.id }}" href="{% url report_post post.id %}">Report</a> #}
                         {% endif %}
@@ -71,6 +72,8 @@
                             <a class="button" href="{% url remove_post post.id %}">Remove</a>
                         {% endif %}
                         </div>
+            {% endwith %} {# post_count #}
+            {% endwith %} {# post_author #}
 
                 {% comment %}
                 {# Three cases: 1) The first person 2) Everyone between 3) The last person #}
