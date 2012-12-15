@@ -247,6 +247,7 @@ def home(request):
     categories  = Category.objects.all()
     threads     = Thread.objects.exclude(is_removed__exact=True)
     new_threads = threads[:5]
+    site        = Site.objects.get_current()
 
     if not request.user.is_anonymous() and request.user.subscriptions.all():
         subscribed_threads = threads.filter(subscriber__exact=request.user)[:5]
@@ -259,8 +260,7 @@ def home(request):
 
     site_config_error, email_config_error = False, False
     if request.user.is_staff:
-        if Site.objects.get_current().domain == "example.com"\
-        or Site.objects.get_current().name == "example.com":
+        if site.domain == "example.com" or site.name == "example.com":
             site_config_error = True
         if project_settings.EMAIL_HOST_USER == "myusername@gmail.com":
             email_config_error = True
@@ -1061,12 +1061,13 @@ def custom_logout(request):
 
 def custom_register(request, **kwargs):
     """Registers users and redirects those who are already authenticated."""
+    site = Site.objects.get_current()
+
     if request.user.is_authenticated():
         return HttpResponseRedirect(LOGIN_REDIRECT_URL)
     else:
         site_config_error, email_config_error = False, False
-        if Site.objects.get_current().domain == "example.com"\
-        or Site.objects.get_current().name == "example.com":
+        if site.domain == "example.com" or site.name == "example.com":
             site_config_error = True
         if project_settings.EMAIL_HOST_USER == "myusername@gmail.com":
             email_config_error = True
@@ -1101,11 +1102,13 @@ def site_configuration(request):
             "You need staff status to configure the site.")
         return HttpResponseRedirect(LOGIN_REDIRECT_URL)
 
+    site = Site.objects.get_current()
+
     HOST_USER = project_settings.EMAIL_HOST_USER != "myusername@gmail.com"
     HOST_PASSWORD = project_settings.EMAIL_HOST != "mypassword"
     PORT = project_settings.EMAIL_PORT
-    HAS_SITE_NAME = Site.objects.get_current().name != "example.com"
-    HAS_SITE_DOMAIN = Site.objects.get_current().domain != "example.com"
+    HAS_SITE_NAME = site.name != "example.com"
+    HAS_SITE_DOMAIN = site.domain != "example.com"
 
     return render(request, 'site_configuration.html', {
         'EMAIL_HOST_USER'        : HOST_USER,
@@ -1126,8 +1129,8 @@ def site_configuration(request):
         'DEFAULT_FROM_EMAIL'     : project_settings.DEFAULT_FROM_EMAIL,
         'HAS_SITE_NAME'          : HAS_SITE_NAME,
         'HAS_SITE_DOMAIN'        : HAS_SITE_DOMAIN,
-        'SITE_NAME'              : Site.objects.get_current().name,
-        'SITE_DOMAIN'            : Site.objects.get_current().domain
+        'SITE_NAME'              : site.name,
+        'SITE_DOMAIN'            : site.domain
         })
 
 
