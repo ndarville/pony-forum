@@ -320,20 +320,10 @@ def category(request, category_id):
     category_threads = paginate(request, category_threads, THREADS_PER_PAGE)
     stickies         = all_threads.exclude(is_sticky__exact=False)
 
-    # Threadbar code from home()
-    subscribed_threads = False
-    threads     = Thread.objects.exclude(is_removed__exact=True)
-    new_threads = threads[:5]
-
-    if not request.user.is_anonymous() and request.user.subscriptions.all():
-        subscribed_threads = threads.filter(subscriber__exact=request.user)[:5]
-
     return render(request, 'category.html',
                           {'category'        : category,
                            'category_threads': category_threads,
-                           'stickies'        : stickies,
-                           'new_threads'     : new_threads,
-                           'subs'            : subscribed_threads})
+                           'stickies'        : stickies})
 
 
 def thread(request, thread_id, author_id):
