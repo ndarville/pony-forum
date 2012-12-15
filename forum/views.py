@@ -478,7 +478,7 @@ def post(request, post_id):
     """View a single post object."""
     post = get_object_or_404(Post, pk=post_id)
 
-    if not post.thread.is_removed or request.user.has_perm('forum.remove_thread'):
+    if request.user.has_perm('forum.remove_thread') or not post.thread.is_removed:
         if not post.is_removed\
            or request.user.has_perm('forum.remove_thread')\
            or request.user.has_perm('forum.remove_post'):
@@ -902,7 +902,7 @@ def remove(request, object_id, object_type):
     A database deletion is not performed upon removal;
     the post or thread is merely hidden in the template.
 
-    An actual deletion has to be done manually in the admin settings or shell.
+    An actual deletion has to be done manually in the admin settings or Django shell.
     """
     if object_type == "post":
         obj    = get_object_or_404(Post, pk=object_id)
