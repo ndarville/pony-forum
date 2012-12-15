@@ -1104,15 +1104,10 @@ def site_configuration(request):
 
     site = Site.objects.get_current()
 
-    HOST_USER = project_settings.EMAIL_HOST_USER != "myusername@gmail.com"
-    HOST_PASSWORD = project_settings.EMAIL_HOST != "mypassword"
-    PORT = project_settings.EMAIL_PORT
-    HAS_SITE_NAME = site.name != "example.com"
-    HAS_SITE_DOMAIN = site.domain != "example.com"
-
     return render(request, 'site_configuration.html', {
-        'EMAIL_HOST_USER'        : HOST_USER,
-        'EMAIL_HOST_PASSWORD'    : HOST_PASSWORD,
+        'EMAIL_HOST_USER'        : \
+            project_settings.EMAIL_HOST_USER != "myusername@gmail.com",
+        'EMAIL_HOST_PASSWORD'    : project_settings.EMAIL_HOST != "mypassword",
         'EMAIL_USE_TLS'          : project_settings.EMAIL_USE_TLS,
         'LOCAL_DEVELOPMENT'      : project_settings.LOCAL_DEVELOPMENT,
         'TIME_ZONE'              : project_settings.TIME_ZONE,
@@ -1127,8 +1122,8 @@ def site_configuration(request):
         'BOOKMARKS_PER_PAGE'     : project_settings.BOOKMARKS_PER_PAGE,
         'SAVES_PER_PAGE'         : project_settings.SAVES_PER_PAGE,
         'DEFAULT_FROM_EMAIL'     : project_settings.DEFAULT_FROM_EMAIL,
-        'HAS_SITE_NAME'          : HAS_SITE_NAME,
-        'HAS_SITE_DOMAIN'        : HAS_SITE_DOMAIN,
+        'HAS_SITE_NAME'          : site.name != "example.com",
+        'HAS_SITE_DOMAIN'        : site.domain != "example.com",
         'SITE_NAME'              : site.name,
         'SITE_DOMAIN'            : site.domain
         })
