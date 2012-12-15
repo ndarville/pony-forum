@@ -80,6 +80,7 @@ USER_POSTS_PER_PAGE       = getattr(project_settings, "USER_CONTENT_PER_PAGE", 1
 USER_THREADS_PER_PAGE     = getattr(project_settings, "USER_CONTENT_PER_PAGE", 25)
 BOOKMARKS_PER_PAGE        = getattr(project_settings, "BOOKMARKS_PER_PAGE", 35)
 SAVES_PER_PAGE            = getattr(project_settings, "SAVES_PER_PAGE", 10)
+SUBSCRIPTIONS_PER_PAGE    = getattr(project_settings, "SUBSCRIPTIONS_PER_PAGE", 25)
 
 
 long_title_error  = "Your chosen title was too long. Keep it under %i characters."
@@ -276,22 +277,18 @@ def home(request):
 @login_required(login_url=LOGIN_URL)
 def subscriptions(request):
     """Manage and observe all your subscriptions to threads with new posts."""
-    has_subs      = False
-    updated_subs  = False
-    inactive_subs = False
     threads       = Thread.objects.exclude(is_removed__exact=True)
     new_threads   = threads[:5]
 
-    if request.user.subscriptions.all():
-        has_subs      = True
-        updated_subs  = threads.filter(subscriber__exact=request.user)[:5]
-        inactive_subs = False
+    objects       = threads.filter(subscriber__exact=request.user)
+    new_subs      = objects[:5]
+  # unread_subs   = Replace news_subs with this one
+    objects       = paginate(request, objects, SUBSCRIPTIONS_PER_PAGE)
 
-    return render(request, 'placeholder.html',
-                          {'new_threads'  : new_threads,
-                           'has_subs'     : has_subs,
-                           'updated_subs' : updated_subs,
-                           'inactive_subs': inactive_subs})
+    return render(request, 'subscriptions.html',
+                          {'new_threads': new_threads,
+                           'new_subs'   : new_subs,
+                           'objects'    : objects})
 
 
 def subscriptions_js(request):
