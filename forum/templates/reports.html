@@ -5,28 +5,29 @@
 {% block canonical_url %}{% url forum.views.reports %}{% endblock %}
 {% block content_body %}
             {% for report in reports %}
-            {% if report.post and request.user != report.post.author or report.thread %}
+            {% with post=report.post thread=report.thread %}
+            {% if post and request.user != post.author or thread %}
                 <div class="report">
                     <div class="report-top">
                         <span class="report-date">Submitted {{ report.relative_date }}</span>
-                        <span class="report-link">(<a href="{% if report.post %}{% url forum.views.post report.post.id %}{% else %}{% url forum.views.thread report.thread.id %}{% endif %}">Link</a>)</span>
+                        <span class="report-link">(<a href="{% if post %}{% url forum.views.post post.id %}{% else %}{% url forum.views.thread thread.id %}{% endif %}">Link</a>)</span>
                     </div>
                     <table>
                         <tr>
                             <th>Type:</th>
-                            <td>{% if report.post %}Post{% else %}Thread{% endif %}</td>
+                            <td>{% if post %}Post{% else %}Thread{% endif %}</td>
                         </tr>
                         <tr>
                             <th>Thread:</th>
-                            <td><a href="{% url forum.views.thread report.thread.id %}">{{ report.thread.title_html|safe }}</a></td>
+                            <td><a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a></td>
                         </tr>
                         <tr>
                             <th>Category:</th>
-                            <td><a href="{% url forum.views.category report.thread.category.id %}">{{ report.thread.category.title_html|safe }}</a></td>
+                            <td><a href="{% url forum.views.category thread.category.id %}">{{ thread.category.title_html|safe }}</a></td>
                         </tr>
                         <tr>
                             <th>Author:</th>
-                            <td>{% if report.post %}<a href="{% url forum.views.user report.post.author.id %}">{{ report.post.author }}</a>{% else %}<a href="{% url forum.views.user report.thread.author.id %}">{{ report.thread.author }}</a>{% endif %}</td>
+                            <td>{% if post %}<a href="{% url forum.views.user post.author.id %}">{{ post.author }}</a>{% else %}<a href="{% url forum.views.user thread.author.id %}">{{ thread.author }}</a>{% endif %}</td>
                         </tr>
                         <tr>
                             <th>Submitted by:</th> <td><a href="{% url forum.views.user report.author.id %}">{{ report.author }}</a></td>
@@ -49,6 +50,7 @@
                     <input type="hidden" name="report-id" value="{{ report.id }}" />
                 </form>
                 </div>
+            {% endwith %}
             {% endif %}
             {% endfor %}
 {% endblock %}
