@@ -840,9 +840,9 @@ def merge_thread(request, thread_id):
             html = sanitized_smartdown(message)
             Post.objects.bulk_create([
                 Post(creation_date=now, author=user, thread=t,
-                     content_plain=message, content_html=html)
+                     content_plain=message, content_html=html),
                 Post(creation_date=now, author=user, thread=thread,
-                     content_plain=message, content_html=html)
+                     content_plain=message, content_html=html),
                 Post(creation_date=now, author=user, thread=other_thread,
                      content_plain=message, content_html=html)
             ])
