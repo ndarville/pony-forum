@@ -21,7 +21,7 @@
                         <tr>
                         {% url forum.views.category category.id as category_url %}
                             <td><a href="{{ category_url }}" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.title_html|safe }}</a></td>
-                            <td><a href="{{ category_url }}" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.thread_set.all.count|intcomma }}</a></td>
+                            <td><a href="{{ category_url }}" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.thread_count|intcomma }}</a></td>
                             <td><a href="{{ category_url }}" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.post_count|intcomma }}</a></td>
                         </tr>
                     {% endfor %}

@@ -67,9 +67,13 @@ class Category(models.Model):
     def __unicode__(self):
         return self.title_plain
 
+    def thread_count(self):
+        """Shows the number of threads in a category."""
+        return Thread.objects.filter(category__exact=self).count()
+
     def post_count(self):
-        """Shows the number of posts in an entire category."""
-        return Post.objects.filter(thread__category = self.id).count()
+        """Shows the number of posts in a category."""
+        return Post.objects.filter(thread__category__exact=self).count()
 
 
 class Thread(models.Model):
@@ -108,6 +112,10 @@ class Thread(models.Model):
 
     def __unicode__(self):
         return self.title_plain
+
+    def post_count(self):
+        """Shows the number of posts in a category."""
+        return Post.objects.filter(thread__exact=self).count()
 
     def relative_date(self):
         """Shows the time since the last post in a thread."""
@@ -265,7 +273,7 @@ class UserProfile(models.Model):
         return "%s's profile" % self.user
 
     def thread_count(self):
-        """Shows the number of posts by a user."""
+        """Shows the number of threads by a user."""
         return Thread.objects.filter(author__exact=self.user).count()
 
     def post_count(self):
