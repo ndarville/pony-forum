@@ -1,5 +1,6 @@
 {% load humanize %}
-            {% with thread=post.thread post_author=post.author post_count=post.author.get_profile.post_count post_thanks=post.thanks.all post_agrees=post.agrees.all %}
+            {% with thread=post.thread post_author=post.author post_count=post.author.get_profile.post_count %}
+            {% with post_thanks=post.thanks.all post_agrees=post.agrees.all %}
                 <div class="post" id="{{ post.id }}">
                     {% if post_author == thread.author %}
                     <div class="op">
@@ -50,7 +51,7 @@
 
                         <div class="left-buttons">
                             <a class="button js" id="{{ post.id }}" href="#">{% if post in user.saves.all %}Unsave{% else %}Save{% endif %}</a> {# Expensive #}
-                    {% comment %}
+
                         {% if user != post_author %}
                             <a class="button js" id="{{ post.id }}" href="#">{% if post in user.thanks.all %}Unthank{% else %}Thank{% endif %}</a> {# Expensive #}
                             <a class="button js" id="{{ post.id }}" href="#">{% if post in user.agrees.all %}Unagree{% else %}Agree{% endif %}</a> {# Expensive #}
@@ -83,4 +84,5 @@
                 {% endcomment %}
                     </div>
                 </div>
+        {% endwith %}
         {% endwith %}
