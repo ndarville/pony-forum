@@ -121,23 +121,6 @@ class Thread(models.Model):
         """Shows the time since the last post in a thread."""
         return relative_date(self.latest_reply_date)
 
-##    def create(self, *args, **kwargs):
-##        """Alters the default create method for Thread."""
-##        now = datetime.datetime.now()
-#       self.author = self.request.user
-#       self.author.thread_count += 1
-#       self.author.save()
-#
-#       self.category = category # wrong
-#       self.category.thread_count +=1
-#       self.category.save()
-#
-#       self.subscriber.add(self.author)
-##        self.creation_date = now
-##        self.latest_reply_date = now
-##        self.title_html = prettify_title(self.title_plain)
-##        super(Thread, self).create(*args, **kwargs)
-
     relative_date.short_description = "Latest post"
 
 
@@ -174,26 +157,6 @@ class Post(models.Model):
         between now and creation_date.
         """
         return relative_date(self.creation_date)
-
-#    def create(self, *args, **kwargs):
-#        """Alters the default create method for Post."""
-#        # https://docs.djangoproject.com/en/1.3/topics/db/managers/
-##        now = datetime.datetime.now()
-#       self.author = self.request.user
-#       self.author.post_count += 1
-#       self.author.save()
-#
-#       if not self.thread:
-#           self.thread = thread # wrong
-#       self.thread.thread_count +=1
-#       self.thread.save()
-#
-##        self.creation_date = now
-#        self.content_plain="The code worked."
-#        self.content_html = prettify_title(self.content_plain)
-#        if request.user.auto_subscribe:
-#            thread.subscriber.add(request.user)
-#        super(Post, self).create(*args, **kwargs)
 
 
 class Subscription(models.Model):
