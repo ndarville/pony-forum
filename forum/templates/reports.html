@@ -23,14 +23,14 @@
                         </tr>
                         <tr>
                             <th>Category:</th>
-                            <td><a href="{% url forum.views.category thread.category.id %}">{{ thread.category.title_html|safe }}</a></td>
+                            <td><a href="{% url forum.views.category thread.category_id %}">{{ thread.category.title_html|safe }}</a></td>
                         </tr>
                         <tr>
                             <th>Author:</th>
-                            <td>{% if post %}<a href="{% url forum.views.user post.author.id %}">{{ post.author }}</a>{% else %}<a href="{% url forum.views.user thread.author.id %}">{{ thread.author }}</a>{% endif %}</td>
+                            <td>{% if post %}<a href="{% url forum.views.user post.author_id %}">{{ post.author }}</a>{% else %}<a href="{% url forum.views.user thread.author_id %}">{{ thread.author }}</a>{% endif %}</td>
                         </tr>
                         <tr>
-                            <th>Submitted by:</th> <td><a href="{% url forum.views.user report.author.id %}">{{ report.author }}</a></td>
+                            <th>Submitted by:</th> <td><a href="{% url forum.views.user report.author_id %}">{{ report.author }}</a></td>
                         </tr>
                     </table>
 

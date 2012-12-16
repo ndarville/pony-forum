@@ -351,7 +351,7 @@ def thread(request, thread_id, author_id):
                                'anchor_number': anchor_number})
     else:
         messages.info(request, "The thread %s has been removed and no longer available." % thread.title_html)
-        return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category.id,)))
+        return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
 
 
 # @login_required(login_url=LOGIN_URL)  # Doesn't work
@@ -477,18 +477,19 @@ def thread_nonjs(request, object_id, action, current_page):
 def post(request, post_id):
     """View a single post object."""
     post = get_object_or_404(Post, pk=post_id)
+    thread = post.thread
 
-    if request.user.has_perm('forum.remove_thread') or not post.thread.is_removed:
+    if request.user.has_perm('forum.remove_thread') or not thread.is_removed:
         if not post.is_removed\
            or request.user.has_perm('forum.remove_thread')\
            or request.user.has_perm('forum.remove_post'):
-            return render(request, 'post.html', {'post': post})
+            return render(request, 'post.html', {'post': post, 'thread': thread})
         else:
             messages.info(request, "The post by %s has been removed and no longer available." % post.author)
-            return HttpResponseRedirect(reverse('forum.views.thread', args=(post.thread.id,)))
+            return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:
-        messages.info(request, "The thread %s has been removed and no longer available." % post.thread.title_html)
-        return HttpResponseRedirect(reverse('forum.views.category', args=(post.thread.category.id,)))
+        messages.info(request, "The thread %s has been removed and no longer available." % thread.title_html)
+        return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
 
 
 def user(request, user_id):
@@ -662,7 +663,7 @@ def reply(request, thread_id):
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     elif thread.is_removed:
         messages.info(request, "The thread %s has been removed and is no longer available." % thread.title_html)
-        return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category.id,)))
+        return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
 
     if request.method == 'POST':  # Form been submitted
         text = request.POST['content']
@@ -698,17 +699,17 @@ def edit(request, post_id):
 
     if post.thread.is_removed:
         messages.info(request, "The thread %s has been removed and is no longer available." % post.thread.title_html)
-        return HttpResponseRedirect(reverse('forum.views.category', args=(post.thread.category.id,)))
+        return HttpResponseRedirect(reverse('forum.views.category', args=(post.thread.category_id,)))
     elif post.is_removed:
         messages.info(request, "Your post has been removed and is no longer available.")
-        return HttpResponseRedirect(reverse('forum.views.thread', args=(post.thread.id,)))
+        return HttpResponseRedirect(reverse('forum.views.thread', args=(post.thread_id,)))
 
     if request.method == 'POST':  # Form has been submitted
         if "submit" in request.POST:  # "submit" button pressed
             post.content_plain = request.POST['content']
             post.content_html  = sanitized_smartdown(post.content_plain)
             post.save()
-            return HttpResponseRedirect(reverse('forum.views.thread', args=(post.thread.id,)))
+            return HttpResponseRedirect(reverse('forum.views.thread', args=(post.thread_id,)))
         elif "preview" in request.POST:  # "preview" button pressed
             preview_plain = request.POST['content']
             preview_html  = sanitized_smartdown(preview_plain)
@@ -735,7 +736,7 @@ def lock_thread(request, thread_id):
 
     if thread.is_removed and not request.user.has_perm('forum.remove_thread'):
         messages.info(request, "The has thread been removed.")
-        return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category.id,)))
+        return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
 
     if request.method == 'POST':  # Form has been submitted
         if 'lock' in request.POST:  # Lock command
@@ -768,7 +769,7 @@ def sticky_thread(request, thread_id):
 
     if thread.is_removed and not request.user.has_perm('forum.remove_thread'):
         messages.info(request, "The has thread been removed.")
-        return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category.id,)))
+        return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
 
     if request.method == 'POST':  # Form has been submitted
         if 'sticky' in request.POST:  # Lock command
@@ -946,7 +947,7 @@ def report(request, object_id, object_type):
     # Check for reasons not to let the user file a report
         if obj.is_removed:
             messages.info(request, "The thread %s has been removed and is no longer available." % thread.title_html)
-            return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category.id,)))
+            return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
         elif thread.is_locked:
             messages.info(request, "The thread %s has been locked and can not be reported." % thread.title_html)
         # Thread already reported AND unaddressed by moderator
@@ -954,7 +955,7 @@ def report(request, object_id, object_type):
                            .filter(thread__exact=obj)\
                            .filter(was_addressed__exact=False):
             messages.info(request, "This %s has already been reported by you." % object_type)
-            return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
+            return HttpResponseRedirect(reverse('forum.views.thread', args=(thread_id,)))
     else:  # ... == post
         obj    = get_object_or_404(Post, pk=object_id)
         thread = obj.thread
@@ -970,7 +971,7 @@ def report(request, object_id, object_type):
         elif Report.objects.filter(author__exact=request.user)\
                            .filter(post__exact=obj):
             messages.info(request, "This %s has already been reported by you." % object_type)
-        return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
+        return HttpResponseRedirect(reverse('forum.views.thread', args=(thread_id,)))
 
     if request.method == 'POST':  # Form has been submitted
         title = request.POST['title']

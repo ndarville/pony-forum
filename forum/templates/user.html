@@ -74,7 +74,7 @@
         <strong>Ten latest posts:</strong>
         <ul>
         {% for post in posts %}
-            <li><a href="{% url forum.views.thread post.thread.id %}#{{ post.id }}">{{ post.thread.title_html|safe }}</a></li>
+            <li><a href="{% url forum.views.thread post.thread_id %}#{{ post.id }}">{{ post.thread.title_html|safe }}</a></li>
         {% endfor %}
         </ul>
     {% else %}
