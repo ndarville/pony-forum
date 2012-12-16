@@ -4,9 +4,9 @@
 {% block canonical_url %}{% url forum.views.create category.id %}{% endblock %}
 {% block content %}
             <div id="board">
-                <div id="breadcrumbs">
-                    <a href="{% url forum.views.home %}">Overview</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.category category.id %}">{{ category.title_html|safe }}</a>
-                </div>
+                {% with category=category %}
+                    {% include "includes/breadcrumbs.html" %}
+                {% endwith %}
 
                 {% include "includes/preview.html" %}
 

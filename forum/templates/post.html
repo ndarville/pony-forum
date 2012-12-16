@@ -5,9 +5,9 @@
 {# block js-blocked-warning #}{# include "includes/js-blocked-warning.html" #}{# endblock #}
 {% block content %}
             <div id="board">
-                <div id="breadcrumbs">
-                    <a href="{% url forum.views.home %}">Overview</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.category post.thread.category.id %}">{{ post.thread.category.title_html }}</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.thread post.thread.id %}">{{ post.thread.title_html }}{% if post.thread.is_locked %}&nbsp;(LOCKED){% endif %}</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.post post.id %}">{{ post.author }}&rsquo;s Post</a>
-                </div>
+                {% with post=post thread=post.thread category=post.thread.category %}
+                    {% include "includes/breadcrumbs.html" %}
+                {% endwith %}
 
                 {% include "includes/entries.html" %}
 

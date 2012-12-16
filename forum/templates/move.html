@@ -4,9 +4,9 @@
 {% block canonical_url %}{% url forum.views.move_thread thread.id %}{% endblock %}
 {% block content %}
             <div id="board">
-                <div id="breadcrumbs">
-                    <a href="{% url forum.views.home %}">Overview</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.category thread.category.id %}">{{ thread.category.title_html|safe }}</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a>
-                </div>
+                {% with thread=thread category=thread.category %}
+                    {% include "includes/breadcrumbs.html" %}
+                {% endwith %}
 
                 <form action="{% url forum.views.move_thread thread.id %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
