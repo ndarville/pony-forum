@@ -82,8 +82,7 @@ table {
     text-decoration: underline;
 }
 
-#alert,
-#js-blocked-warning {
+#alert {
     width: 100%;
     text-align: center;
     font-family: Georgia;
@@ -97,8 +96,7 @@ table {
     background-color: #90EE90;
 }
 
-#alert.error,
-#js-blocked-warning {
+#alert.error {
     background-color: #EE3B3B;
 }
 /* * */

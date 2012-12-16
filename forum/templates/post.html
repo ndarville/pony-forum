@@ -2,7 +2,6 @@
 
 {% block title %}{{ post.thread.title_html|safe }}: Post by {{ post.author }}{% endblock %}
 {% block canonical_url %}{% url forum.views.post post.id %}{% endblock %}
-{# block js-blocked-warning #}{# include "includes/js-blocked-warning.html" #}{# endblock #}
 {% block content %}
             <div id="board">
                 {% with post=post thread=post.thread category=post.thread.category %}
