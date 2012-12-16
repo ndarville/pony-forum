@@ -71,7 +71,6 @@
                             <a class="button" href="{% url remove_post post.id %}">Remove</a>
                         {% endif %}
                         </div>
-            {% endwith %} {# post_count, post_author #}
 
                 {% comment %}
                 {# Three cases: 1) The first person 2) Everyone between 3) The last person #}
@@ -84,3 +83,4 @@
                 {% endcomment %}
                     </div>
                 </div>
+        {% endwith %}
