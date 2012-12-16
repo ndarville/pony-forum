@@ -331,7 +331,7 @@ def thread(request, thread_id, author_id):
     thread = get_object_or_404(Thread, pk=thread_id)
 
     if not thread.is_removed or request.user.has_perm('forum.remove_thread'):
-        posts = thread.post_set.all()
+        posts = thread.post_set.all().select_related()
 
         if not request.user.has_perm('forum.remove_thread') or not request.user.has_perm('forum.remove_post'):
             posts     = posts.exclude(is_removed__exact=True)
