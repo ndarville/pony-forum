@@ -7,44 +7,48 @@
 {% endblock %}
 
 {% block content_body %}
-    <table>
 {% if objects.object_list %}
+    <table>
     {% if type == "bookmark" %}
-            <thead>
+        <thead>
+            <tr>
                 <th>Title</th>
                 <th>Created</th>
                 <th>Remove</th>
-            </thead>
-            <tbody>
+            </tr>
+        </thead>
+        <tbody>
         {% for thread in objects.object_list %}
-                <tr>
-                    <td><a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a></td>
-                    <td>{{ thread.relative_date }}</td>
-                    <td><a href="" title="Remove &ldquo;{{ thread.title_html|safe }}&rdquo; from bookmarks">[X]</a></td>
-                </tr>
+            <tr>
+                <td><a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a></td>
+                <td>{{ thread.relative_date }}</td>
+                <td><a href="" title="Remove &ldquo;{{ thread.title_html|safe }}&rdquo; from bookmarks">[X]</a></td>
+            </tr>
         {% endfor %}
-            </tbody>
+        </tbody>
     {% else %}
-            <thead>
+        <thead>
+            <tr>
                 <th>Thread</th>
                 <th>Author</th>
                 <th>Created</th>
                 <th>Remove</th>
-            </thead>
-            <tbody>
+            </tr>
+        </thead>
+        <tbody>
         {% for post in objects.object_list %}
-                <tr>
-                    <td><a href="{% url forum.views.post post.id %}">{{ post.thread.title_html|safe }}</a></td>
-                    <td>{{ post.author }}
-                    <td>{{ post.relative_date }}</td>
-                    <td><a href="" title="Remove post from saves">[X]</a></td>
-                </tr>
+            <tr>
+                <td><a href="{% url forum.views.post post.id %}">{{ post.thread.title_html|safe }}</a></td>
+                <td>{{ post.author }}
+                <td>{{ post.relative_date }}</td>
+                <td><a href="" title="Remove post from saves">[X]</a></td>
+            </tr>
         {% endfor %}
     {% endif %}
+    </table>
 {% else %}
     <p>You have yet to {{ type }} anything.</p>
 {% endif %}
-    </table>
 
 {% with current_page=objects.number total_pages=objects.paginator.num_pages page=objects %}
     {% include "includes/pagination.html" %}

@@ -1,17 +1,34 @@
 {% extends "page.html" %}
 
+{% load humanize %}
+
 {% block title %}Subscriptions{% endblock %}
 {% block canonical_url %}{% url forum.views.subscriptions %}{% endblock %}
 {% block content_body %}
-    {% if objects.object_list %}
-        <ul>
-        {% for thread in objects.object_list %}
-            <li><a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a></li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>You have no subscriptions.</p>
-    {% endif %}
+    <table>
+{% if objects.object_list %}
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Posts</th>
+                <th>Unread Posts</th>
+                <th>Unsubscribe</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for thread in objects.object_list %}
+            <tr>
+                <td><a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a></td>
+                <td>{{ thread.post_count|intcomma }}</td>
+                <td>{{ 1000|intcomma }}</td>
+                <td><a href="" title="Remove &ldquo;{{ thread.title_html|safe }}&rdquo; from bookmarks">[X]</a></td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>You have no subscriptions (of unremoved threads).</p>
+{% endif %}
 
     {% with current_page=objects.number total_pages=objects.paginator.num_pages page=objects %}
         {% include "includes/pagination.html" %}
