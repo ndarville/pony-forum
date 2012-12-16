@@ -1123,7 +1123,7 @@ def site_configuration(request):
 def saves_and_bookmarks(request, object_type):
     """Shows the user's saved posts and/or bookmarked threads."""
     if object_type == "save":
-        objects    = request.user.saves.all()\
+        objects    = request.user.saves.all().select_related()\
                      .exclude(thread__is_removed__exact=True)
         USER_CONTENT_PER_PAGE = SAVES_PER_PAGE
     else:  #   ... == "bookmark"
