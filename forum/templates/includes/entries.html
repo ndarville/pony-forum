@@ -1,5 +1,5 @@
 {% load humanize %}
-            {% with thread=post.thread post_author=post.author post_count=post.author.get_profile.post_count %}
+            {% with thread=post.thread post_author=post.author post_count=post_author.get_profile.post_count %}
             {% with post_thanks=post.thanks.all post_agrees=post.agrees.all %}
                 <div class="post" id="{{ post.id }}">
                     {% if post_author == thread.author %}
