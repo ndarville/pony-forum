@@ -501,7 +501,7 @@ def user(request, user_id):
     `latest_posts_amount` determines the amount of latest posts to show.
     """
     person = get_object_or_404(User, pk=user_id)
-    posts  = person.post_set.all()\
+    posts  = person.post_set.all().select_related()\
              .exclude(is_removed__exact=True)\
              .exclude(thread__is_removed__exact=True)\
              .order_by("-creation_date")[:10]
