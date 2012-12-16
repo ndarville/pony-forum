@@ -568,7 +568,7 @@ def user_content(request, user_id, object_type):
                      .exclude(thread__is_removed__exact=True)
         USER_CONTENT_PER_PAGE = USER_POSTS_PER_PAGE
     else:  #   ... == "thread"
-        objects    = person.thread_set.all().select_related()\
+        objects    = person.thread_set.all()\
                      .exclude(is_removed__exact=True)
         USER_CONTENT_PER_PAGE = USER_THREADS_PER_PAGE
     objects = objects.order_by("-creation_date")
