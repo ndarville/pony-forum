@@ -476,7 +476,7 @@ def thread_nonjs(request, object_id, action, current_page):
 
 def post(request, post_id):
     """View a single post object."""
-    post = get_object_or_404(Post, pk=post_id)
+    post = get_object_or_404(Post.objects.select_related(), pk=post_id)
     thread = post.thread
 
     if request.user.has_perm('forum.remove_thread') or not thread.is_removed:
