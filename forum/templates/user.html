@@ -61,7 +61,7 @@
 {% endif %}
     </div>
 
-{% with post_count=person.post_set.all.count thread_count=person.thread_set.all.count %}
+{% with post_count=person.get_profile.post_count thread_count=person.get_profile.thread_count %}
     <div id="profile-information">
         <p><span class="info">Name:</span> {{ person.username }}</p>
         <p><span class="info">Joined:</span> {{ person.date_joined|timesince }} ago</p>

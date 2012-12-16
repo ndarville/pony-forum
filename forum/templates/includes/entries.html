@@ -1,6 +1,6 @@
 {% load humanize %}
             {% with post_author=post.author %}
-            {% with post_count=post_author.post_set.all %}
+            {% with post_count=post_author.get_profile.post_count %}
                 <div class="post" id="{{ post.id }}">
                     {% if post_author == post.thread.author %}
                     <div class="op">

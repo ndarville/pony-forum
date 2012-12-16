@@ -234,8 +234,8 @@ class UserProfile(models.Model):
     "forum.UserProfile" in settings.py to support it.
     """
     user            = models.OneToOneField(User, related_name="profile")
-    post_count      = models.IntegerField(default=0)
-    thread_count    = models.IntegerField(default=0)
+  # post_count      = models.IntegerField(default=1)
+  # thread_count    = models.IntegerField(default=1)
     #! http://lightbird.net/dbe/forum2.html
     # avatar          = models.ImageField(null=True, blank=True,
     #                                     upload_to="images/avatars/")
@@ -263,6 +263,14 @@ class UserProfile(models.Model):
 
     def __unicode__(self):
         return "%s's profile" % self.user
+
+    def thread_count(self):
+        """Shows the number of posts by a user."""
+        return Thread.objects.filter(author__exact=self.user).count()
+
+    def post_count(self):
+        """Shows the number of posts by a user."""
+        return Post.objects.filter(author__exact=self.user).count()
 
 def create_user_profile(sender, instance, created, **kwargs):
     """Used to extend User using aforementioned UserProfile model."""
