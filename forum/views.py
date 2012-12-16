@@ -835,7 +835,7 @@ def merge_thread(request, thread_id):
                              other_thread.title_html,
                              user.username,
                              new_title_html,
-                             t.get_absolute_url(),
+                             reverse('forum.views.thread', args=(t.id,)),
                              end)
             html = sanitized_smartdown(message)
             Post.objects.bulk_create([
