@@ -1,5 +1,5 @@
 {% load humanize %}
-            {% with post_author=post.author post_count=post.author.get_profile.post_count %}
+            {% with post_author=post.author post_count=post.author.get_profile.post_count post_thanks=post.thanks.all post_agrees=post.agrees.all %}
                 <div class="post" id="{{ post.id }}">
                     {% if post_author == post.thread.author %}
                     <div class="op">
@@ -49,16 +49,16 @@
                         </div>
 
                         <div class="left-buttons">
-                            <a class="button js" id="{{ post.id }}" href="#">{% if post in user.saves.all %}Unsave{% else %}Save{% endif %}</a>
+                            <a class="button js" id="{{ post.id }}" href="#">{% if post in user.saves.all %}Unsave{% else %}Save{% endif %}</a> {# Expensive #}
                     {% comment %}
                         {% if user != post_author %}
-                            <a class="button js" id="{{ post.id }}" href="#">{% if post in user.thanks.all %}Unthank{% else %}Thank{% endif %}</a>
-                            <a class="button js" id="{{ post.id }}" href="#">{% if post in user.agrees.all %}Unagree{% else %}Agree{% endif %}</a>
+                            <a class="button js" id="{{ post.id }}" href="#">{% if post in user.thanks.all %}Unthank{% else %}Thank{% endif %}</a> {# Expensive #}
+                            <a class="button js" id="{{ post.id }}" href="#">{% if post in user.agrees.all %}Unagree{% else %}Agree{% endif %}</a> {# Expensive #}
                         {% endif %}}
-                        {% if post.thanks.all %}
+                        {% if post_thanks %}
                             <a class="button thanks" href="#">Thanked</a>
                         {% endif %}
-                        {% if post.agrees.all %}
+                        {% if post_agrees %}
                             <a class="button agrees" href="#">Has Agrees</a>
                         {% endif %}
                     {% endcomment %}
@@ -75,11 +75,11 @@
 
                 {% comment %}
                 {# Three cases: 1) The first person 2) Everyone between 3) The last person #}
-                    {% if post.thanks.all %}
-                        <div class="thankers">Thanked by: <i>{% for person in post.thanks.all %}{% if forloop.first and not forloop.last %}<a href="{% url forums.views.user person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}</a>{% endif %}{% if not forloop.first and not forloop.last %}<a href="{% url forums.views.user person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}, </a>{% endif %}{% if forloop.last and not forloop.first %}and <a href="{% url forums.views.user person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}</a>{% endif %}{#<a href="{% url forums.views.user person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}</a>#}{% endfor %}.</i></div>
+                    {% if post_thanks %} {# Expensive #}
+                        <div class="thankers">Thanked by: <i>{% for person in post_thanks %}{% if forloop.first and not forloop.last %}<a href="{% url forums.views.user person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}</a>{% endif %}{% if not forloop.first and not forloop.last %}<a href="{% url forums.views.user person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}, </a>{% endif %}{% if forloop.last and not forloop.first %}and <a href="{% url forums.views.user person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}</a>{% endif %}{#<a href="{% url forums.views.user person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}</a>#}{% endfor %}.</i></div>
                     {% endif %}
-                    {% if post.agrees.all %}
-                        <div class="agreeers">These people agree: <i>{% for person in post.agrees.all %}{% if forloop.first and not forloop.last %}<a href="{% url forums.views.user person.id %}" title="See the people who agreed with this post">{{ person.username }}</a>{% endif %}{% if not forloop.first and not forloop.last %}<a href="{% url forums.views.user person.id %}" title="See the people who agreed with this post">{{ person.username }}, </a>{% endif %}{% if forloop.last and not forloop.first %}and <a href="{% url forums.views.user person.id %}" title="See the people who agreed with this post">{{ person.username }}</a>{% endif %}{#<a href="{% url forums.views.user person.id %}" title="See the people who agreed with this post">{{ person.username }}</a>#}{% endfor %}.</i></div>
+                    {% if post_agrees %} {# Expensive #}
+                        <div class="agreeers">These people agree: <i>{% for person in post_agrees %}{% if forloop.first and not forloop.last %}<a href="{% url forums.views.user person.id %}" title="See the people who agreed with this post">{{ person.username }}</a>{% endif %}{% if not forloop.first and not forloop.last %}<a href="{% url forums.views.user person.id %}" title="See the people who agreed with this post">{{ person.username }}, </a>{% endif %}{% if forloop.last and not forloop.first %}and <a href="{% url forums.views.user person.id %}" title="See the people who agreed with this post">{{ person.username }}</a>{% endif %}{#<a href="{% url forums.views.user person.id %}" title="See the people who agreed with this post">{{ person.username }}</a>#}{% endfor %}.</i></div>
                     {% endif %}
                 {% endcomment %}
                     </div>
