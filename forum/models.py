@@ -51,11 +51,11 @@ class Category(models.Model):
     title_plain  = models.CharField(max_length=50, unique=True,
                                     verbose_name="Plain title")
     title_html   = models.TextField(verbose_name="Formatted title")
-##  description  = models.CharField(max_length=70)
-#   thread_count = models.IntegerField(default=0)
-#   post_count   = models.IntegerField(default=0)
+    thread_count = models.IntegerField(default=1)
+    post_count   = models.IntegerField(default=1)
+#   description  = models.CharField(max_length=70)
     #: The sequential placement of the category in the "home" page
-##  position     = models.AutoField(unique=True)
+#   position     = models.AutoField(unique=True)
 
     class Meta:
         verbose_name_plural = "categories"
@@ -67,14 +67,6 @@ class Category(models.Model):
     def __unicode__(self):
         return self.title_plain
 
-    def thread_count(self):
-        """Shows the number of threads in a category."""
-        return Thread.objects.filter(category__exact=self).count()
-
-    def post_count(self):
-        """Shows the number of posts in a category."""
-        return Post.objects.filter(thread__category__exact=self).count()
-
 
 class Thread(models.Model):
     """Contains posts."""
@@ -84,6 +76,7 @@ class Thread(models.Model):
     title_html        = models.TextField()
     category          = models.ForeignKey(Category)
     author            = models.ForeignKey(User)
+    post_count        = models.IntegerField(default=1)
     is_sticky         = models.BooleanField(default=False)
     is_locked         = models.BooleanField(default=False)
     is_removed        = models.BooleanField(default=False)
@@ -112,10 +105,6 @@ class Thread(models.Model):
 
     def __unicode__(self):
         return self.title_plain
-
-    def post_count(self):
-        """Shows the number of posts in a category."""
-        return Post.objects.filter(thread__exact=self).count()
 
     def relative_date(self):
         """Shows the time since the last post in a thread."""
@@ -205,8 +194,8 @@ class UserProfile(models.Model):
     "forum.UserProfile" in settings.py to support it.
     """
     user            = models.OneToOneField(User, related_name="profile")
-  # post_count      = models.IntegerField(default=1)
-  # thread_count    = models.IntegerField(default=1)
+    thread_count    = models.IntegerField(default=1)
+    post_count      = models.IntegerField(default=1)
     #! http://lightbird.net/dbe/forum2.html
     # avatar          = models.ImageField(null=True, blank=True,
     #                                     upload_to="images/avatars/")
@@ -234,14 +223,6 @@ class UserProfile(models.Model):
 
     def __unicode__(self):
         return "%s's profile" % self.user
-
-    def thread_count(self):
-        """Shows the number of threads by a user."""
-        return Thread.objects.filter(author__exact=self.user).count()
-
-    def post_count(self):
-        """Shows the number of posts by a user."""
-        return Post.objects.filter(author__exact=self.user).count()
 
 def create_user_profile(sender, instance, created, **kwargs):
     """Used to extend User using aforementioned UserProfile model."""

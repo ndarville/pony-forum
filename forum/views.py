@@ -592,6 +592,7 @@ def add(request):
             messages.error(request, long_title_error % MAX_CATEGORY_TITLE_LENGTH)
         else:
             Category.objects.create(title_plain=title_plain, title_html=title_html)
+            request.user.save()
             return HttpResponseRedirect("/")
     return render(request, 'add.html', {'title': title_plain})
 
@@ -633,6 +634,14 @@ def create(request, category_id):
                 except:
                     pass
                 else: # After successful submission
+                    category.thread_count += 1
+                    category.post_count += 1
+                    t.post_count += 1
+                    request.user.get_profile().thread_count =+ 1
+                    request.user.get_profile().post_count =+ 1
+                    category.save()
+                    t.save()
+                    request.user.save()
                     return HttpResponseRedirect(reverse('forum.views.thread', args=(t.id,)))
         elif "preview" in request.POST:  # "preview" button pressed
             preview_plain = text_plain
@@ -677,7 +686,13 @@ def reply(request, thread_id):
             if request.user.get_profile().auto_subscribe:
                 thread.subscriber.add(request.user)
             thread.latest_reply_date = now
+
+            thread.category.post_count += 1
+            thread.post_count += 1
+            request.user.get_profile().post_count += 1
+            thread.category.save()
             thread.save()
+            request.user.save()
 
             return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
         elif "preview" in request.POST:  # "preview" button pressed

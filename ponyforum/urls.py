@@ -6,7 +6,7 @@ from django.views.generic.simple import redirect_to
 from forum.forms import CustomRegistrationForm
 
 
-admin.autodiscover()
+# admin.autodiscover()
 
 urlpatterns = patterns('forum.views',
     (r'^$',                                      'home'),
@@ -92,7 +92,7 @@ urlpatterns = patterns('forum.views',
 )
 
 urlpatterns += patterns('',
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/',     include(admin.site.urls)),
+#   url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+#   url(r'^admin/',     include(admin.site.urls)),
     url(r'^accounts/',  include('registration.backends.default.urls')),
 )
