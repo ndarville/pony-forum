@@ -119,7 +119,7 @@ The *domain* on the other hand is much more important. It is used, amongst other
 
 But how does Pony Forum know which site the link points to? You guessed it, it uses the `domain` defined by `definesite.py`.
 
-If you need to change these two fields---for instance, if you were to give your forum a better-looking URL---you will need to change the `domain` field. This can be done at `/admin/sites/site/1/`.
+If you need to change these two fields---for instance, if you were to give your forum a better-looking URL---you will need to change the `domain` field. This can be done at `/configuration/`.
 
 ### [Setting Up an E-Mail Server](#setting-up-an-e-mail-server) ###
 *Speakiiing* of activation e-mails, you need to, you know, send e-mails. "Jesus &"¤!#! Christ!" you think to yourself, but if you use a Gmail account, it's all actually quite easy! (I was surprised, too.)

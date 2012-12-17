@@ -66,6 +66,7 @@ from registration                   import views as registration_views
 ##  settings
 #
 ##  site_configuration
+##  site_change
 #
 ##  saves_and_bookmarks
 
@@ -1108,6 +1109,12 @@ def site_configuration(request):
         return HttpResponseRedirect(LOGIN_REDIRECT_URL)
 
     site = Site.objects.get_current()
+
+    if request.method == "POST":  # Changes submitted
+        site.name = request.POST['site_name']
+        site.domain = request.POST['site_domain']
+        site.save()
+        messages.success(request, "New settings saved.")
 
     return render(request, 'site_configuration.html', {
         'EMAIL_HOST_USER'        : \
