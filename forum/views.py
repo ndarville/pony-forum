@@ -637,11 +637,11 @@ def create(request, category_id):
                     category.thread_count += 1
                     category.post_count += 1
                     t.post_count += 1
-                    request.user.get_profile().thread_count =+ 1
-                    request.user.get_profile().post_count =+ 1
+                    request.user.get_profile().thread_count += 1
+                    request.user.get_profile().post_count += 1
                     category.save()
                     t.save()
-                    request.user.save()
+                    request.user.get_profile().save()
                     return HttpResponseRedirect(reverse('forum.views.thread', args=(t.id,)))
         elif "preview" in request.POST:  # "preview" button pressed
             preview_plain = text_plain
@@ -692,7 +692,7 @@ def reply(request, thread_id):
             request.user.get_profile().post_count += 1
             thread.category.save()
             thread.save()
-            request.user.save()
+            request.user.get_profile().save()
 
             return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
         elif "preview" in request.POST:  # "preview" button pressed

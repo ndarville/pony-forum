@@ -52,6 +52,14 @@ def mktitle(line):
             title_html=sp(categories["TITLE"]),
             author=categories["AUTHOR"], category=c)
 
+    if created:
+        t.author.get_profile().thread_count += 1
+        c.thread_count += 1
+        categories["AUTHOR"].get_profile().thread_count += 1
+        t.save()
+        c.save()
+        categories["AUTHOR"].get_profile().save()
+
 def mkcharacters(line):
     global characters
     characters[line.strip()] = mkuser(line)
@@ -65,6 +73,13 @@ def parse_speaker(speaker, content):
         p.content_html = sp(md(text=content, extensions=["nl2br"]))
         p.creation_date = datetime.datetime.now()  # UTC?
         p.save()
+
+        t.post_count += 1
+        t.category.post_count += 1
+        characters[speaker].get_profile().post_count += 1
+        t.save()
+        t.category.save()
+        characters[speaker].get_profile().save()
 
 def parse_manuscript(text):
     global categories
