@@ -119,7 +119,7 @@ The *domain* on the other hand is much more important. It is used, amongst other
 
 But how does Pony Forum know which site the link points to? You guessed it, it uses the `domain` defined by `definesite.py`.
 
-If you need to change these two fields---for instance, if you were to give your forum a better-looking URL---you will need to change the `domain` field. This can be done at `/admin/sites/site/1/`.
+If you need to change these two fields---for instance, if you were to give your forum a better-looking URL---you will need to change the `domain` field. This can be done at `/configuration/`.
 
 ### [Setting Up an E-Mail Server](#setting-up-an-e-mail-server) ###
 *Speakiiing* of activation e-mails, you need to, you know, send e-mails. "Jesus &"¤!#! Christ!" you think to yourself, but if you use a Gmail account, it's all actually quite easy! (I was surprised, too.)
@@ -163,7 +163,7 @@ All dotCloud environment variables for your app can be viewed with
 dotcloud var list ponyforum
 ```
 
-If you have an admin user, you can also view these key/values in your `configuration` view located by default at `/accounts/configuration/`.
+If you have an admin user, you can also view these key/values in your `configuration` view located by default at `/configuration/`.
 
 **NOTE!** If you are having problems with this, do *not* post the entirety of what this command returns, as it contains sensitive information that would jeopardize your app---and potentialy e-mail---security. It is better to engage in a yes-no dialogue with the people asking you what values are present in the list, and what they contain.
 
@@ -236,7 +236,6 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 * Maintenance
     * [Logging][logging]
-    * [Database optimization][db]
 
 * [Internationalization][international]
 
@@ -315,7 +314,6 @@ And much, much more.
 [bans]:         https://github.com/ndarville/pony-forum/issues/40
 [avatars]:      https://github.com/ndarville/pony-forum/issues/41
 [logging]:      http://packages.python.org/Logbook/
-[db]:           http://lukeplant.me.uk/blog/posts/some-quick-django-optimisation-lessons/
 [international]:https://github.com/ndarville/pony-forum/issues?milestone=4&state=open
 [attempts]:     https://docs.djangoproject.com/en/dev/topics/auth/#django.contrib.auth.signals.user_login_failed
 [ordering]:     https://github.com/jpwatts/django-positions#readme

@@ -183,7 +183,7 @@ table {
     background: url(/static/glyphish/18-envelope.png) no-repeat left;
 }
 
-#navigation li a[href$="/admin/"] {
+#navigation li a[href$="/configuration/"] {
     background: url(/static/glyphish/158-wrench-2.png) no-repeat left;
 }
 
