@@ -66,7 +66,6 @@ from registration                   import views as registration_views
 ##  settings
 #
 ##  site_configuration
-##  site_change
 #
 ##  saves_and_bookmarks
 
