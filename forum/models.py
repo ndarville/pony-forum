@@ -51,8 +51,8 @@ class Category(models.Model):
     title_plain  = models.CharField(max_length=50, unique=True,
                                     verbose_name="Plain title")
     title_html   = models.TextField(verbose_name="Formatted title")
-    thread_count = models.IntegerField(default=1)
-    post_count   = models.IntegerField(default=1)
+    thread_count = models.IntegerField(default=0)
+    post_count   = models.IntegerField(default=0)
 #   description  = models.CharField(max_length=70)
     #: The sequential placement of the category in the "home" page
 #   position     = models.AutoField(unique=True)
@@ -76,7 +76,7 @@ class Thread(models.Model):
     title_html        = models.TextField()
     category          = models.ForeignKey(Category)
     author            = models.ForeignKey(User)
-    post_count        = models.IntegerField(default=1)
+    post_count        = models.IntegerField(default=0)
     is_sticky         = models.BooleanField(default=False)
     is_locked         = models.BooleanField(default=False)
     is_removed        = models.BooleanField(default=False)
@@ -194,8 +194,8 @@ class UserProfile(models.Model):
     "forum.UserProfile" in settings.py to support it.
     """
     user            = models.OneToOneField(User, related_name="profile")
-    thread_count    = models.IntegerField(default=1)
-    post_count      = models.IntegerField(default=1)
+    thread_count    = models.IntegerField(default=0)
+    post_count      = models.IntegerField(default=0)
     #! http://lightbird.net/dbe/forum2.html
     # avatar          = models.ImageField(null=True, blank=True,
     #                                     upload_to="images/avatars/")
