@@ -71,7 +71,7 @@
     </div>
 
     <div id="latest-posts">
-    {% if post_count > 0 %}
+    {% if post_count != 0 %}
         <strong>Ten latest posts:</strong>
         <ul>
         {% for post in posts %}
