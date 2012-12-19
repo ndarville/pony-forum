@@ -245,6 +245,7 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
     * [Two-factor authentication][reg-backend]
 
 ### Eventual, Not Impending, Features ###
+* [Migration jQuery to 1.9][jquery].
 * [Category-ordering][ordering]
 
 * Thread polls
@@ -262,7 +263,10 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
     * [Tweets][tweets]
     * [U.S. states][states]
 
-* Replacement of URLs with secure ones (secure, https, etc.)
+* Replacement of URLs
+    * Secure ones (secure, SSL, etc.)
+
+* Read-only mode
 
 ### Features Under Consideration ###
 * [Search][search]
@@ -316,6 +320,7 @@ And much, much more.
 [logging]:      http://packages.python.org/Logbook/
 [international]:https://github.com/ndarville/pony-forum/issues?milestone=4&state=open
 [attempts]:     https://docs.djangoproject.com/en/dev/topics/auth/#django.contrib.auth.signals.user_login_failed
+[jquery]:       http://jquery.com/upgrade-guide/1.9/
 [ordering]:     https://github.com/jpwatts/django-positions#readme
 [caching]:      http://docs.dotcloud.com/tutorials/python/django/#caching
 [gist]:         https://github.com/blog/122-embedded-gists
