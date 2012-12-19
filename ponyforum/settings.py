@@ -288,10 +288,10 @@ NOSE_ARGS = [
     '--with-fixture-bundling',
     '--with-coverage',
     '--cover-tests',
-    '--cover-package=forum.view_tests,\
-    forum.model_tests,\
-    forum.form_tests,\
-    forum.installed_apps_order_tests'
+    '--cover-package=\
+        forum.model_tests,\
+        forum.form_tests,\
+        forum.installed_apps_order_tests'
 ]
 
 NOSE_PLUGINS = [
