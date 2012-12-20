@@ -53,8 +53,7 @@ class LoginTest(TestCase):
                 {'username': 'admin', 'password': 'password'},
                 follow=True
             ).status_code,
-            200
-        )
+            200)
 
 
 class CategoryTests(TestCase):
@@ -65,8 +64,7 @@ class CategoryTests(TestCase):
         self.client = logIn()
         self.client.post(
             reverse('forum.views.add', args=()),
-            {'title': 'Test Category'}
-        )
+            {'title': 'Test Category'})
 
 
 class PostTests(TestCase):
@@ -81,16 +79,14 @@ class PostTests(TestCase):
         self.client = logIn()
         self.client.post(
             reverse('forum.views.reply', args=(test_thread_id,)),
-            {'content': test_post_text}
-        )
+            {'content': test_post_text})
 
     def test_edit(self):
         """Tests editing of a post object."""
         self.client = logIn()
         self.client.post(
             reverse('forum.views.edit', args=(test_post_id,)),
-            {'content': test_post_text}
-        )
+            {'content': test_post_text})
 
     def test_remove(self):
         """Tests removal of a post object."""
@@ -99,5 +95,4 @@ class PostTests(TestCase):
             reverse(
                 'forum.views.remove',
                 kwargs={'object_id': test_post_id, 'object_type': 'post'}),
-            {'remove': 'Remove'}
-        )
+            {'remove': 'Remove'})
