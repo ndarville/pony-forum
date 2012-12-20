@@ -1,4 +1,5 @@
 """Tests the views in views.py by passing their functions test arguments."""
+import json
 import os
 
 from django.core.urlresolvers       import reverse
@@ -10,11 +11,19 @@ from forum.models                   import Category, Thread, Post, Report
 
 #! TODO abstract
 test_thread_id = 3
-#! TODO abstract
 test_post_id = 3
+
 test_post_text = "Howdy ho."
-#! TODO calculate with fixtures
-test_post_count = 3
+
+with open('forum_example.json') as f:
+    output = json.load(f)
+
+    test_thread_count = 0
+    test_post_count = 0
+
+    for x in output:
+        if x['model'] == 'forum.thread': test_thread_count += 1
+        elif x['model'] == 'forum.post': test_post_count += 1
 
 def logIn(username='admin', password='password'):
     """Log in a user on a test client."""
