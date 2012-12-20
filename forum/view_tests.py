@@ -2,12 +2,12 @@
 import json
 import os
 
-from django.core.urlresolvers       import reverse
-from django.test.client             import Client
+from django.core.urlresolvers import reverse
+from django.test.client       import Client
 
-from django_nose                    import FastFixtureTestCase as TestCase
+from django_nose              import FastFixtureTestCase as TestCase
 
-from forum.models                   import Category, Thread, Post, Report
+from forum.models             import Category, Thread, Post, Report
 
 
 test_post_text = "Howdy ho."
