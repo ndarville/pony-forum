@@ -39,6 +39,18 @@ class LoginTest(TestCase):
         )
 
 
+class CategoryTests(TestCase):
+    """Tests operations with category objects."""
+    fixtures = ['admin_user.json']
+
+    def test_add(self):
+        self.client = logIn()
+        self.client.post(
+            reverse('forum.views.add', args=()),
+            {'title': 'Test Category'}
+        )
+
+
 class PostTests(TestCase):
     """Test operations with post objects."""
     fixtures = ['forum_example.json']
