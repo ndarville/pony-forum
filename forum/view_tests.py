@@ -6,10 +6,15 @@ from django.test.client             import Client
 
 from django_nose                    import FastFixtureTestCase as TestCase
 
+from forum.models                   import Category, Thread, Post, Report
 
+#! TODO abstract
 test_thread_id = 3
+#! TODO abstract
 test_post_id = 3
 test_post_text = "Howdy ho."
+#! TODO calculate with fixtures
+test_post_count = 3
 
 def logIn(username='admin', password='password'):
     """Log in a user on a test client."""
