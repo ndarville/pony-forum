@@ -91,3 +91,13 @@ class PostTests(TestCase):
             reverse('forum.views.edit', args=(test_post_id,)),
             {'content': test_post_text}
         )
+
+    def test_remove(self):
+        """Tests removal of a post object."""
+        self.client = logIn()
+        self.client.post(
+            reverse(
+                'forum.views.remove',
+                kwargs={'object_id': test_post_id, 'object_type': 'post'}),
+            {'remove': 'Remove'}
+        )
