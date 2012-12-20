@@ -8,6 +8,7 @@ from django_nose                    import FastFixtureTestCase as TestCase
 
 
 test_thread_id = 3
+test_post_id = 3
 
 def logIn(username='admin', password='password'):
     """Log in a user on a test client."""
@@ -63,5 +64,13 @@ class PostTests(TestCase):
         self.client = logIn()
         self.client.post(
             reverse('forum.views.reply', args=(test_thread_id,)),
+            {'content': 'Howdy ho.'}
+        )
+
+    def test_edit(self):
+        """Tests editing of a post object."""
+        self.client = logIn()
+        self.client.post(
+            reverse('forum.views.edit', args=(test_post_id,)),
             {'content': 'Howdy ho.'}
         )
