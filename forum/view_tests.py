@@ -76,21 +76,18 @@ class PostTests(TestCase):
 
     def test_reply(self):
         """Tests creation of a post object."""
-        self.client = logIn()
         self.client.post(
             reverse('forum.views.reply', args=(test_thread_id,)),
             {'content': test_post_text})
 
     def test_edit(self):
         """Tests editing of a post object."""
-        self.client = logIn()
         self.client.post(
             reverse('forum.views.edit', args=(test_post_id,)),
             {'content': test_post_text})
 
     def test_remove(self):
         """Tests removal of a post object."""
-        self.client = logIn()
         self.client.post(
             reverse(
                 'forum.views.remove',
