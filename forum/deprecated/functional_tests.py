@@ -8,6 +8,22 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 
+def logIn(self, username='admin', password='password'):
+    """Logs in the user. Big surprise, huh?"""
+    # Open webbrowser, go to admin page
+    self.browser.get(self.live_server_url + '/accounts/login/')
+
+    # Enter username in log-in form
+    username_field = self.browser.find_element_by_name('username')
+    username_field.send_keys(username)
+
+    # Enter password
+    password_field = self.browser.find_element_by_name('password')
+    password_field.send_keys('password')
+
+    # Submit
+    password_field.send_keys(Keys.RETURN)
+
 def startBrowser(self):
     """Helper function. Starts the test browser.
     Called by setUp at the start of a test.
