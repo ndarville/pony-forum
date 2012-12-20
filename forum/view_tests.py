@@ -9,21 +9,23 @@ from django_nose                    import FastFixtureTestCase as TestCase
 
 from forum.models                   import Category, Thread, Post, Report
 
-#! TODO abstract
-test_thread_id = 3
-test_post_id = 3
 
 test_post_text = "Howdy ho."
 
-with open('forum_example.json') as f:
-    output = json.load(f)
+# Determines count of thread and post objects
+# and ID of test thread and post
+with open('forum/fixtures/forum_example.json') as f:
+    test_thread_count, test_post_count = 0, 0
 
-    test_thread_count = 0
-    test_post_count = 0
+    for x in json.load(f):
+        if x['model'] == 'forum.thread':
+            test_thread_count += 1
+        elif x['model'] == 'forum.post':
+            test_post_count += 1
+            if x['fields']['content_plain'].startswith('Test post'):
+                test_post_id = x['pk']
+                test_thread_id = x['fields']['thread']
 
-    for x in output:
-        if x['model'] == 'forum.thread': test_thread_count += 1
-        elif x['model'] == 'forum.post': test_post_count += 1
 
 def logIn(username='admin', password='password'):
     """Log in a user on a test client."""
