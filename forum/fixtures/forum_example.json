@@ -132,7 +132,7 @@
     "pk": 3,
     "model": "forum.post",
     "fields": {
-      "content_plain": "Test post. This thread and its posts will be subjected to the following operations:\r\n\r\nThread\r\n----------\r\n* Lock\r\n* Merge\r\n* Moderate\r\n* Remove\r\n* Sticky\r\n\r\nPost\r\n-------\r\n* Edit\r\n* Reply\r\n* Remove",
+      "content_plain": "Test post. This thread and its posts will be subjected to the following operations:\r\n\r\nThread\r\n----------\r\n* Create\r\n* Lock\r\n* Merge\r\n* Moderate\r\n* Remove\r\n* Sticky\r\n\r\nPost\r\n-------\r\n* Edit\r\n* Reply\r\n* Remove",
       "thread": 3,
       "author": 1,
       "saves": [],

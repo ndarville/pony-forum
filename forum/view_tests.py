@@ -10,15 +10,17 @@ from django_nose              import FastFixtureTestCase as TestCase
 from forum.models             import Category, Thread, Post, Report
 
 
-test_post_text = "Howdy ho."
+test_text = "Howdy ho."
 
 # Determines count of thread and post objects
-# and ID of test thread and post
+# and ID of test category, thread and post
 with open('forum/fixtures/forum_example.json') as f:
     test_thread_count, test_post_count = 0, 0
 
     for x in json.load(f):
-        if x['model'] == 'forum.thread':
+        if x['model'] == 'forum.category':
+            test_category_id = x['pk']
+        elif x['model'] == 'forum.thread':
             test_thread_count += 1
         elif x['model'] == 'forum.post':
             test_post_count += 1
@@ -64,7 +66,21 @@ class CategoryTests(TestCase):
         self.client = logIn()
         self.client.post(
             reverse('forum.views.add', args=()),
-            {'title': 'Test Category'})
+            {'title': test_text})
+
+
+class ThreadTests(TestCase):
+    """Tests operations with thread objects."""
+    fixtures = ['forum_example.json']
+
+    def setUp(self):
+        self.client = logIn()
+
+    def test_create(self):
+        """Tests creation of thread object."""
+        self.client.post(
+            reverse('forum.views.create', args=(test_category_id,)),
+            {'title': test_text, 'content': test_text})
 
 
 class PostTests(TestCase):
@@ -78,13 +94,13 @@ class PostTests(TestCase):
         """Tests creation of a post object."""
         self.client.post(
             reverse('forum.views.reply', args=(test_thread_id,)),
-            {'content': test_post_text})
+            {'content': test_text})
 
     def test_edit(self):
         """Tests editing of a post object."""
         self.client.post(
             reverse('forum.views.edit', args=(test_post_id,)),
-            {'content': test_post_text})
+            {'content': test_text})
 
     def test_remove(self):
         """Tests removal of a post object."""
