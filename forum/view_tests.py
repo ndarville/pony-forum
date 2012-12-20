@@ -7,6 +7,8 @@ from django.test.client             import Client
 from django_nose                    import FastFixtureTestCase as TestCase
 
 
+test_thread_id = 3
+
 def logIn(username='admin', password='password'):
     """Log in a user on a test client."""
     client = Client()
@@ -39,21 +41,15 @@ class LoginTest(TestCase):
 
 class PostTests(TestCase):
     """Test operations with post objects."""
-    fixtures = [
-        'admin_user.json',
-        'users.json',
-        'categories.json',
-        'threads.json',
-        'posts.json'
-    ]
+    fixtures = ['forum_example.json']
 
     def setUp(self):
         self.client = logIn()
 
     def test_reply(self):
+        """Tests creation of a post object."""
         self.client = logIn()
-        thread_id = 5
         self.client.post(
-            reverse('forum.views.reply', args=(thread_id,)),
+            reverse('forum.views.reply', args=(test_thread_id,)),
             {'content': 'Howdy ho.'}
         )
