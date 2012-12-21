@@ -197,6 +197,26 @@ class UserTests(TestCase):
             reverse('forum.views.user_content', args=(test_user_id,)))
 
 
+class SettingsConfigurationTests(TestCase):
+    """Test operations related to the settings view."""
+    fixtures = ['admin_user.json']
+
+    def setUp(self):
+        self.client = logIn()
+
+    def test_get_request(self):
+        """Tests the behaviour of the view when people visit it."""
+        self.client.get(reverse('forum.views.settings'))
+
+    def test_post_request(self):
+        """Tests the behaviour of a view when a POST request is submitted."""
+        self.client.post(
+            reverse('forum.views.settings'),
+            #! TODO
+            #  Different variations of settings
+            {'has_dyslexia': 'Y', 'auto_subscribe': 'N'})
+
+
 class SiteConfigurationTests(TestCase):
     """Test operations related to the site configuration view."""
     fixtures = ['admin_user.json']
@@ -224,5 +244,4 @@ class SiteConfigurationTests(TestCase):
 # * subscription
 # * report
 # * reports
-# * settings
 # * saves_and_bookmarks
