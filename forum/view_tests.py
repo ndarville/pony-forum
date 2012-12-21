@@ -92,6 +92,9 @@ class ThreadTests(TestCase):
             reverse('forum.views.lock_thread', args=(test_thread_id,)),
             {'lock': 'Lock'})
 
+ #! TODO
+ #  def test_unlock
+
     def test_merge(self):
         """Tests locking of thread object."""
         self.client.post(
@@ -114,11 +117,17 @@ class ThreadTests(TestCase):
                 kwargs={'object_id': test_thread_id, 'object_type': 'thread'}),
             {'remove': 'Remove'})
 
+ #! TODO
+ #  def test_restore
+
     def test_sticky(self):
         """Tests stickification of thread object."""
         self.client.post(
             reverse('forum.views.sticky_thread', args=(test_thread_id,)),
             {'sticky' : 'Sticky'})
+
+ #! TODO
+ #  def test_unsticky
 
 
 class PostTests(TestCase):
@@ -147,3 +156,6 @@ class PostTests(TestCase):
                 'forum.views.remove',
                 kwargs={'object_id': test_post_id, 'object_type': 'post'}),
             {'remove': 'Remove'})
+
+ #! TODO
+ #  def test_restore
