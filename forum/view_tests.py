@@ -64,7 +64,13 @@ class LoginTest(TestCase):
 
 class CategoryTests(TestCase):
     """Tests operations with category objects."""
-    fixtures = ['admin_user.json']
+    fixtures = ['admin_user.json', 'forum_example.json']
+
+    def test_get(self):
+        """Tests the display of a category object."""
+        self.client.get(
+            reverse('forum.views.category',
+            args=(test_category_id,)))
 
     def test_add(self):
         self.client = logIn()
@@ -79,6 +85,10 @@ class ThreadTests(TestCase):
 
     def setUp(self):
         self.client = logIn()
+
+    def test_get(self):
+        """Tests the display of a thread object."""
+        self.client.get(reverse('forum.views.thread', args=(test_thread_id,)))
 
     def test_create(self):
         """Tests creation of thread object."""
@@ -136,6 +146,10 @@ class PostTests(TestCase):
 
     def setUp(self):
         self.client = logIn()
+
+    def test_get(self):
+        """Tests the display of a post object."""
+        self.client.get(reverse('forum.views.post', args=(test_post_id,)))
 
     def test_reply(self):
         """Tests creation of a post object."""
