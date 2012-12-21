@@ -258,3 +258,8 @@ class SiteConfigurationTests(TestCase):
 # * report
 # * reports
 # * saves_and_bookmarks
+#
+# * Different types of visitors:
+#     * Admin
+#     * Regular, authorized user
+#     * Anonymous, unauthorized visitor
