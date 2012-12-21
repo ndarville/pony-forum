@@ -157,5 +157,35 @@ class PostTests(TestCase):
                 kwargs={'object_id': test_post_id, 'object_type': 'post'}),
             {'remove': 'Remove'})
 
+
+class SiteConfigurationTests(TestCase):
+    """Test operations related to the site configuration view."""
+    fixtures = ['admin_user.json']
+
+    def setUp(self):
+        self.client = logIn()
+
+    def test_get_request(self):
+        """Tests the behaviour of the view when people visit it."""
+        self.client.get(reverse('site_configuration'))
+
+    def test_post_request(self):
+        """Tests the behaviour of a view when a POST request is submitted."""
+        self.client.post(
+            reverse('site_configuration'),
+            {'site_name': test_text, 'site_domain': test_text})
+
  #! TODO
  #  def test_restore
+
+
+#! TODO
+#
+# * home
+# * subscription
+# * user
+# * user_content
+# * report
+# * reports
+# * settings
+# * saves_and_bookmarks
