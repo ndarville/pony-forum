@@ -179,6 +179,20 @@ class PostTests(TestCase):
             {'remove': 'Remove'})
 
 
+class HomeTests(TestCase):
+    """Test displays of the home view."""
+    fixtures = ['admin_user.json', 'forum_example.json']
+
+    def test_home_admin_user(self):
+        """Tests the behaviour of the view when a logged-in admin visits."""
+        self.client = logIn(username='admin', password='password')
+        self.client.get(reverse('forum.views.home'))
+
+    def test_home_anonymous_user(self):
+        """Tests the behaviour of the view when a logged-in admin visits."""
+        self.client.get(reverse('forum.views.home'))
+
+
 class UserTests(TestCase):
     """Tests display of user and overview of user contens."""
     fixtures = ['forum_example.json']
@@ -240,7 +254,6 @@ class SiteConfigurationTests(TestCase):
 
 #! TODO
 #
-# * home
 # * subscription
 # * report
 # * reports
