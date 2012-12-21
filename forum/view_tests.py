@@ -31,6 +31,7 @@ with open('forum/fixtures/forum_example.json') as f:
             if x['fields']['content_plain'].startswith('Test post'):
                 test_post_id = x['pk']
                 test_thread_id = x['fields']['thread']
+                test_user_id = x['fields']['author']
 
 
 def logIn(username='admin', password='password'):
@@ -89,6 +90,12 @@ class ThreadTests(TestCase):
     def test_get(self):
         """Tests the display of a thread object."""
         self.client.get(reverse('forum.views.thread', args=(test_thread_id,)))
+
+    def test_show_posts_by_author(self):
+        """Tests the display of posts by a specific user in a thread."""
+        self.client.get(
+            reverse('forum.views.thread',
+            args=(test_category_id, test_user_id,)))
 
     def test_create(self):
         """Tests creation of thread object."""
