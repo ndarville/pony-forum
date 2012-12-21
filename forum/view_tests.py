@@ -13,7 +13,7 @@ from forum.models             import Category, Thread, Post, Report
 test_text = "Howdy ho."
 
 # Determines count of thread and post objects
-# and ID of test category, thread and post
+# and ID of test category, threads, and post
 with open('forum/fixtures/forum_example.json') as f:
     test_thread_count, test_post_count = 0, 0
 
