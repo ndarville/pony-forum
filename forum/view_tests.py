@@ -179,6 +179,24 @@ class PostTests(TestCase):
             {'remove': 'Remove'})
 
 
+class UserTests(TestCase):
+    """Tests display of user and overview of user contens."""
+    fixtures = ['forum_example.json']
+
+    def setUp(self):
+        self.client = logIn()
+
+    def test_user(self):
+        """Tests the display of a user's page."""
+        self.client.get(
+            reverse('forum.views.user', args=(test_user_id,)))
+
+    def test_user_content(self):
+        """Tests the display of a user's contens."""
+        self.client.get(
+            reverse('forum.views.user_content', args=(test_user_id,)))
+
+
 class SiteConfigurationTests(TestCase):
     """Test operations related to the site configuration view."""
     fixtures = ['admin_user.json']
@@ -204,8 +222,6 @@ class SiteConfigurationTests(TestCase):
 #
 # * home
 # * subscription
-# * user
-# * user_content
 # * report
 # * reports
 # * settings
