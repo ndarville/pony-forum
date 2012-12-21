@@ -22,6 +22,10 @@ with open('forum/fixtures/forum_example.json') as f:
             test_category_id = x['pk']
         elif x['model'] == 'forum.thread':
             test_thread_count += 1
+            if x['fields']['title_plain'] == 'Merge Thread 1':
+                merge_thread_1_id = x['pk']
+            elif x['fields']['title_plain'] == 'Merge Thread 2':
+                merge_thread_2_id = x['pk']
         elif x['model'] == 'forum.post':
             test_post_count += 1
             if x['fields']['content_plain'].startswith('Test post'):
@@ -81,6 +85,40 @@ class ThreadTests(TestCase):
         self.client.post(
             reverse('forum.views.create', args=(test_category_id,)),
             {'title': test_text, 'content': test_text})
+
+    def test_lock(self):
+        """Tests locking of thread object."""
+        self.client.post(
+            reverse('forum.views.lock_thread', args=(test_thread_id,)),
+            {'lock': 'Lock'})
+
+    def test_merge(self):
+        """Tests locking of thread object."""
+        self.client.post(
+            reverse('forum.views.merge_thread', args=(merge_thread_1_id,)),
+            {'other-thread-id':   merge_thread_2_id,
+             'new-thread-title': 'Merge Thread 3'})
+
+    def test_moderate(self):
+        """Tests moderation of thread object."""
+        self.client.post(
+            reverse('forum.views.moderate_thread', args=(test_thread_id,)),
+            {'lock' : 'Lock',
+             'title':  test_text})
+
+    def test_remove(self):
+        """Tests removal of a thread object."""
+        self.client.post(
+            reverse(
+                'forum.views.remove',
+                kwargs={'object_id': test_thread_id, 'object_type': 'thread'}),
+            {'remove': 'Remove'})
+
+    def test_sticky(self):
+        """Tests stickification of thread object."""
+        self.client.post(
+            reverse('forum.views.sticky_thread', args=(test_thread_id,)),
+            {'sticky' : 'Sticky'})
 
 
 class PostTests(TestCase):
