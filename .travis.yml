@@ -31,7 +31,7 @@ script:
   - python _postinstall/definesite.py
   - python _postinstall/mkplaceholders.py
 
-after_script:
+after_success:
 # - pip-review
   - python manage.py test
 
