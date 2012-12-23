@@ -116,7 +116,7 @@ class ThreadTests(TestCase):
         """Tests locking of thread object."""
         self.client.post(
             reverse('forum.views.merge_thread', args=(merge_thread_1_id,)),
-            {'other-thread-id':   merge_thread_2_id,
+            {'other-thread-id' :   merge_thread_2_id,
              'new-thread-title': 'Merge Thread 3'})
 
     def test_moderate(self):
