@@ -137,6 +137,14 @@ class ThreadTests(TestCase):
  #! TODO
  #  def test_restore
 
+    def test_report(self):
+         """Tests reporting of a thread object."""
+         self.client.post(
+             reverse(
+                 'forum.views.report',
+                 kwargs={'object_id': test_thread_id, 'object_type': 'thread'}),
+             {'title': test_text, 'content': test_text})
+
     def test_sticky(self):
         """Tests stickification of thread object."""
         self.client.post(
@@ -177,6 +185,24 @@ class PostTests(TestCase):
                 'forum.views.remove',
                 kwargs={'object_id': test_post_id, 'object_type': 'post'}),
             {'remove': 'Remove'})
+
+    def test_report(self):
+        """Tests reporting of a post object."""
+        self.client.post(
+            reverse(
+                'forum.views.report',
+                kwargs={'object_id': test_post_id, 'object_type': 'post'}),
+            {'title': test_text, 'content': test_text})
+
+
+class ReportTests(TestCase):
+    """Tests operations related to reports."""
+    fixtures = ['admin_user.json', 'forum_example.json']
+
+    def test_get(self):
+        """Tests the display of reports."""
+        self.client = logIn()
+        self.client.get(reverse('forum.views.reports'))
 
 
 class HomeTests(TestCase):
