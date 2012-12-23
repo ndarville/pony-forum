@@ -204,6 +204,12 @@ class ReportTests(TestCase):
         self.client = logIn()
         self.client.get(reverse('forum.views.reports'))
 
+    # def test_post(self):
+    #     """Tests the dismissal of a report."""
+    #     self.client = logIn()
+    #     self.client.post(
+    #         reverse('forum.views.report'), {'report-id': test_report_id})
+
 
 class HomeTests(TestCase):
     """Test displays of the home view."""
