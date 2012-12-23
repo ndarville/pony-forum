@@ -3,34 +3,54 @@
 {% block title %}Log In{% endblock %}
 {% block canonical_url %}{% url login %}{% endblock %}
 {% block content_body %}
-                <form action="{% url auth_login %}" method="post">
-                    {% csrf_token %}
-                    <label for="username">Username:</label>
-                    <input
-                        type="text"
-                        name="username"
-                        id="username"
-                        required autofocus
-                    /><br />
+    {% if form.errors %}
+        <ul class="errorlist">
+        {% for field in form %}
+            {% if field.errors %}
+                <li>{{ field.errors }}</li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% if form.non_field_errors %}
+        <ul class="errorlist">
+        {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
 
-                    <label for="password">Password:</label>
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        required
-                    /><br />
+    <form action="{% url auth_login %}" method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input
+            id="username"
+            {% if form.username.errors %}class="input-error"{% endif %}
+            type="text"
+            name="username"
+            value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
+            required autofocus
+        /><br />
 
-                    <label for="remember-password">Remember password:</label>
-                    <input
-                        type="checkbox"
-                        id="remember-password"
-                    />
+        <label for="password">Password:</label>
+        <input
+            id="password"
+            {% if form.password.errors %}class="input-error"{% endif %}
+            type="password"
+            name="password"
+            required
+        /><br />
 
-                    <p><a href="{% url auth_password_reset %}">I forgot my password</a> :(</p>
+        <label for="remember-password">Remember password:</label>
+        <input
+            type="checkbox"
+            id="remember-password"
+        />
 
-                    <div id="button-group">
-                        <input type="submit" value="Submit" />
-                    </div>
-                </form>
+        <p><a href="{% url auth_password_reset %}">I forgot my password</a> :(</p>
+
+        <div id="button-group">
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
 {% endblock %}

@@ -1086,8 +1086,10 @@ def custom_register(request, **kwargs):
             backend='registration.backends.default.DefaultBackend',
             template_name='registration/registration_form.html',
             extra_context={
-                'site_config_error' : site_config_error,
-                'email_config_error': email_config_error},
+                'site_config_error'  : site_config_error,
+                'email_config_error' : email_config_error,
+                'max_username_length': \
+                    User._meta.get_field("username").max_length},
             **kwargs)
 
 

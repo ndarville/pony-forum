@@ -41,8 +41,7 @@ class CustomRegistrationForm(RegistrationFormUniqueEmail):
         if "+" in self.cleaned_data['email']:
             raise forms.ValidationError(_(
                 "We currently do not support +filters in e-mail addresses. \
-                Understand that we are very sorry about this and are working \
-                on fixing this."))
+                We plan to support them as soon as possible."))
         elif User.objects.filter(email__iexact=self.cleaned_data['email']):
             raise forms.ValidationError(_(error_message))
         # # If the address is of the type name+filter@example.com
