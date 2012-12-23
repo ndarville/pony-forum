@@ -52,5 +52,7 @@
                 </div>
             {% endif %}
             {% endwith %}
+            {% empty %}
+                <p>No reports, good job!</p>
             {% endfor %}
 {% endblock %}
