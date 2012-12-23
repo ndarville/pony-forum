@@ -5,11 +5,28 @@
 {% block content_body %}
                 <form action="{% url auth_login %}" method="post">
                     {% csrf_token %}
-                    <label for="username">Username:</label><input type="text"     name="username" id="username" required autofocus><br />
-                    <label for="password">Password:</label><input type="password" name="password" id="password" required><br />
+                    <label for="username">Username:</label>
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        required autofocus
+                    /><br />
+
+                    <label for="password">Password:</label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        required
+                    /><br />
 
                     <label for="remember-password">Remember password:</label>
-                    <input type="checkbox" id="remember-password">
+                    <input
+                        type="checkbox"
+                        id="remember-password"
+                    />
+
                     <p><a href="{% url auth_password_reset %}">I forgot my password</a> :(</p>
 
                     <div id="button-group">
