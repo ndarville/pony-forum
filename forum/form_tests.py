@@ -58,6 +58,7 @@ mismatched_passwords = {
         'password2': 'password2'
 }
 
+
 class RegistrationTest(TestCase):
     """Tests registration scenarios."""
     fixtures = ['registered_users.json']
