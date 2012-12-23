@@ -10,9 +10,9 @@
         <li class="first"><strong><a href="{% url forum.views.user user.id %}" title="Inspect your own user profile"><span>{{ user.username }}</span></a></strong></li>
         <li><a href="{% url forum.views.settings %}" title="Change and check your settings"><span>Settings</span></a></li>
         <li><a href="{% url saves %}" title="See your saved posts"><span>Saves</span></a></li>
-    {# if perms.report.use_report #}
-    {#  <li><a href="{% url forum.views.reports %}"><span>Reports</span></a></li> #}
-    {# endif #}
+    {% if perms.report.use_report %}
+        <li><a href="{% url forum.views.reports %}"><span>Reports</span></a></li>
+    {% endif %}
         <li><a href="{% url bookmarks %}" title="See your bookmarked threads"><span>Bookmarks</span></a></li>
     {#  <li><a href="{% url forum.views.subscriptions %}" title="View your subscriptions"><span>Subscriptions</span></a></li> #}
     {% if user.is_staff %}

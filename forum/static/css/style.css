@@ -423,33 +423,6 @@ legend {
 /****          *****
 ***** REPORTS *****
 *****          ****/
-.report {
-    margin-bottom: 1.5em;
-}
-
-.report-top {
-    background: orange;
-    clear: both;
-}
-
-.report-date {
-    display: block;
-}
-
-.report-link { /** Rewrite */
-    float: right;
-    display: block;
-}
-
-.report-link a {
-    text-decoration: underline;
-}
-
-#content .report table {
-    width: 50% !important;
-    margin-left: auto; margin-right: auto;
-}
-
 .report th {
     text-align: left;
 }

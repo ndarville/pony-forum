@@ -161,16 +161,17 @@ class Subscription(models.Model):
 
 class Report(models.Model):
     """Model for filing reports against the posts and threads of users."""
-    creation_date  = models.DateTimeField(default=datetime.datetime.now())
-    reason_short   = models.CharField(max_length=80)
-    reason_long    = models.TextField(blank=True)
-    author         = models.ForeignKey(User, related_name="reporter")
-    thread         = models.ForeignKey(Thread, related_name="thread_reports")
-    post           = models.ForeignKey(Post, null=True, blank=True,
-                                       related_name="post_reports")
-    was_addressed  = models.BooleanField(default=False)
-    addressed_by   = models.ForeignKey(User, null=True, blank=True)
-    date_addressed = models.DateTimeField(null=True, blank=True)
+    creation_date     = models.DateTimeField(default=datetime.datetime.now())
+    reason_short      = models.CharField(max_length=80)
+    reason_long_plain = models.TextField(blank=True)
+    reason_long_html  = models.TextField(blank=True)
+    author            = models.ForeignKey(User, related_name="reporter")
+    thread            = models.ForeignKey(Thread, related_name="thread_reports")
+    post              = models.ForeignKey(Post, null=True, blank=True,
+                                                related_name="post_reports")
+    was_addressed     = models.BooleanField(default=False)
+    addressed_by      = models.ForeignKey(User, null=True, blank=True)
+    date_addressed    = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         ordering = ["thread", "creation_date"]

@@ -996,11 +996,12 @@ def report(request, object_id, object_type):
     if request.method == 'POST':  # Form has been submitted
         title = request.POST['title']
         if "content" in request.POST:  # Elaboration provided
-            text = sanitized_smartdown(request.POST['content'])
+            text_plain = request.POST['content']
+            text_html  = sanitized_smartdown(text_plain)
         if "submit" in request.POST:  # "submit" button pressed
             if len(title) > MAX_THREAD_TITLE_LENGTH:
                 messages.error(request, long_title_error % MAX_THREAD_TITLE_LENGTH)
-                preview_html = text  # buggy if no content?
+                preview_html = text_html  # buggy if no content?
             else:
                 user = request.user
                 now  = datetime.datetime.now()  # UTC?
@@ -1009,7 +1010,8 @@ def report(request, object_id, object_type):
                             creation_date=now, author=user,
                             reason_short=title, thread=thread)
                     if "content" in request.POST:
-                        r.reason_long = text
+                        r.reason_long_plain = text_plain
+                        r.reason_long_html  = text_html
                     if object_type == "post":
                         r.post = obj
                     r.save()
@@ -1020,7 +1022,7 @@ def report(request, object_id, object_type):
                     return HttpResponseRedirect(reverse('forum.views.thread',
                         args=(thread.id,)))
         elif "preview" in request.POST:  # "preview" button pressed
-            preview_html = text  # buggy if no content?
+            preview_html = text_html  # buggy if no content?
     return render(request, 'report.html',
                           {'obj'         : obj,
                            'type'        : object_type,
