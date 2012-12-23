@@ -3,17 +3,46 @@
 {% block title %}Register Your Account{% endblock %}
 {% block canonical_url %}{% url register %}{% endblock %}
 {% block content_body %}
-                <form action="" method="post">
-                    {% csrf_token %}
-                    <label for="id_username">Username:</label>         <input id="id_username"  type="text"     name="username"  maxlength="30" autofocus required /><br />
-                    <label for="id_email">E-mail address:</label>      <input id="id_email"     type="email"    name="email"     maxlength="75" required /><br />
-                    <label for="id_password1">Password:</label>        <input id="id_password1" type="password" name="password1" required /><br />
-                    <label for="id_password2">Repeat password:</label> <input id="id_password2" type="password" name="password2" required /><br />
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="id_username">Username:</label>
+        <input
+            id="id_username"
+            type="text"
+            name="username"
+            maxlength="30"
+            autofocus required
+        /><br />
 
-                    <div id="button-group">
-                        <input type="submit" value="Send activation e-mail" />
-                    </div>
-                </form>
+        <label for="id_email">E-mail address:</label>
+        <input
+            id="id_email"
+            type="email"
+            name="email"
+            maxlength="75"
+            required
+        /><br />
+
+        <label for="id_password1">Password:</label>
+        <input
+            id="id_password1"
+            type="password"
+            name="password1"
+            required
+        /><br />
+
+        <label for="id_password2">Repeat password:</label>
+        <input
+            id="id_password2"
+            type="password"
+            name="password2"
+            required
+        /><br />
+
+        <div id="button-group">
+            <input type="submit" value="Send activation e-mail" />
+        </div>
+    </form>
 {% endblock %}
 {% block configuration-warning %}
     {% include "includes/configuration-warning.html" %}
