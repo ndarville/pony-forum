@@ -972,23 +972,26 @@ def report(request, object_id, object_type):
                            .filter(thread__exact=obj)\
                            .filter(was_addressed__exact=False):
             messages.info(request, "This %s has already been reported by you." % object_type)
-            return HttpResponseRedirect(reverse('forum.views.thread', args=(thread_id,)))
+            return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:  # ... == post
         obj    = get_object_or_404(Post, pk=object_id)
         thread = obj.thread
     # Check for reasons not to let the user file a report
         if obj.is_removed:
             messages.info(request, "The post has been removed and is no longer available.")
+            return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
         elif request.user == obj.author:
             messages.error(request, "You cannot report your own posts, silly goose.")
+            return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
         elif obj.author.is_staff:
             messages.info(request, "The author of the reported post is an admin. \
             You should contact them directly, if you take issue with their content.")
+            return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
         # Post already reported by user
         elif Report.objects.filter(author__exact=request.user)\
                            .filter(post__exact=obj):
             messages.info(request, "This %s has already been reported by you." % object_type)
-        return HttpResponseRedirect(reverse('forum.views.thread', args=(thread_id,)))
+            return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
 
     if request.method == 'POST':  # Form has been submitted
         title = request.POST['title']
