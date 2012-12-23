@@ -68,6 +68,8 @@ def mkreport(reason="Iiiinsolence!",
     """Helper function for making reports."""
     r = Report()
     r.reason_short = reason
+    r.reason_long_plain = reason+"111"
+    r.reason_long_html = "<p>"+reason+"111"+"</p>"
     r.creation_date = creation_date
     r.author = mkuser()
     r.thread = mkthread()
@@ -152,4 +154,7 @@ class ReportModelTest(TestCase):
 
         # Check the two saved fields from before
         self.assertEquals(only_report_in_db.reason_short, reason)
+        self.assertEquals(only_report_in_db.reason_long_plain, reason+"111")
+        self.assertEquals(only_report_in_db.reason_long_html,
+            "<p>"+reason+"111"+"</p>")
         self.assertEquals(only_report_in_db.creation_date, now)
