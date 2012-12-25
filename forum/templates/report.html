@@ -4,9 +4,9 @@
 {% block canonical_url %}{% if type == "thread" %}{% url report_thread obj.id %}{% else %}{% url report_post obj.id %}{% endif %}{% endblock %}
 {% block content %}
             <div id="board">
-                <div id="breadcrumbs">
-                    <a href="{% url forum.views.home %}">Overview</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.category thread.category.id %}">{{ thread.category.title_html|safe }}</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.thread obj.id %}">{{ thread.title_html|safe }}</a>{% if type == "post" %}&nbsp;&raquo;&nbsp;<a href="{% url forum.views.post obj.id %}">{{ obj.author }}&rsquo;s Post</a>{% endif %}
-                </div>
+                {% with post=post_obj thread=thread category=thread.category %}
+                    {% include "includes/breadcrumbs.html" %}
+                {% endwith %}
 
                 {% include "includes/preview.html" %}
 

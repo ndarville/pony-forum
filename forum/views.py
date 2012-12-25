@@ -923,13 +923,15 @@ def remove(request, object_id, object_type):
     An actual deletion has to be done manually in the admin settings or Django shell.
     """
     if object_type == "post":
-        obj    = get_object_or_404(Post, pk=object_id)
-        thread = obj.thread
+        obj      = get_object_or_404(Post, pk=object_id)
+        thread   = obj.thread
+        post_obj = obj
         if not request.user.has_perm('forum.remove_post'):
             return HttpResponseRedirect(reverse('forum.views.post', args=(obj.id,)))
     else:  # ... == thread
-        obj    = get_object_or_404(Thread, pk=object_id)
-        thread = obj
+        obj      = get_object_or_404(Thread, pk=object_id)
+        thread   = obj
+        post_obj = None
         if not request.user.has_perm('forum.remove_thread'):
             return HttpResponseRedirect(reverse('forum.views.thread', args=(obj.id,)))
 
@@ -949,6 +951,7 @@ def remove(request, object_id, object_type):
                               {'object_type': object_type,
                                'obj'        : obj,
                                'thread'     : thread,
+                               'post_obj'   : post_obj,
                                'action'     : 'remove'})
 
 
@@ -959,8 +962,9 @@ def report(request, object_id, object_type):
     preview_html = False
 
     if object_type == "thread":
-        obj    = get_object_or_404(Thread, pk=object_id)
-        thread = obj
+        obj      = get_object_or_404(Thread, pk=object_id)
+        thread   = obj
+        post_obj = None
     # Check for reasons not to let the user file a report
         if obj.is_removed:
             messages.info(request, "The thread %s has been removed and is no longer available." % thread.title_html)
@@ -974,8 +978,9 @@ def report(request, object_id, object_type):
             messages.info(request, "This %s has already been reported by you." % object_type)
             return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:  # ... == post
-        obj    = get_object_or_404(Post, pk=object_id)
-        thread = obj.thread
+        obj      = get_object_or_404(Post, pk=object_id)
+        thread   = obj.thread
+        post_obj = obj
     # Check for reasons not to let the user file a report
         if obj.is_removed:
             messages.info(request, "The post has been removed and is no longer available.")
@@ -1027,6 +1032,7 @@ def report(request, object_id, object_type):
                           {'obj'         : obj,
                            'type'        : object_type,
                            'thread'      : thread,
+                           'post_obj'    : post_obj,
                            'title'       : title,
                            'preview_html': preview_html})
 
