@@ -4,13 +4,13 @@
 {% block canonical_url %}{% url login %}{% endblock %}
 {% block content_body %}
     {% if form.errors %}
-        <ul class="errorlist">
         {% for field in form %}
             {% if field.errors %}
-                <li>{{ field.errors }}</li>
+                {% for error in field.errors %}
+                    {{ field.errors }}
+                {% endfor %}
             {% endif %}
         {% endfor %}
-        </ul>
     {% endif %}
     {% if form.non_field_errors %}
         <ul class="errorlist">
