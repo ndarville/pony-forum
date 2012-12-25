@@ -7,7 +7,7 @@
     <form action="{% url forum.views.settings %}" method="post">
         {% csrf_token %}
         <p>
-            <label for="has_dyslexia">I have dyslexia:</label>
+            <label for="has_dyslexia">I have dyslexia</label>
             <select size="1" name="has_dyslexia">
                 <option value="U"{% if profile.has_dyslexia == "U" %} selected{% endif %}>Undecided</option>
                 <option value="Y"{% if profile.has_dyslexia == "Y" %} selected{% endif %}>Yes</option>
@@ -15,7 +15,7 @@
             </select>
         </p>
         <p>
-            <label for="auto_subscribe">Autosubscribe after posting:</label>
+            <label for="auto_subscribe">Autosubscribe after posting</label>
             <select size="1" name="auto_subscribe">
                 <option value="True"{% if profile.auto_subscribe %} selected{% endif %}>Yes</option>
                 <option value="False"{% if not profile.auto_subscribe %} selected{% endif %}>No </option>
