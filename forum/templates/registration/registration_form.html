@@ -22,7 +22,7 @@
 
     <form action="" method="post">
         {% csrf_token %}
-        <label for="id_username">Username:</label>
+        <label for="id_username">Username</label>
         <input
             id="id_username"
             {% if form.username.errors %}class="input-error"{% endif %}
@@ -33,7 +33,7 @@
             {% if not form.username.errors %}autofocus{% endif %} required
         /><br />
 
-        <label for="id_email">E-mail address:</label>
+        <label for="id_email">E-mail address</label>
         <input
             id="id_email"
             {% if form.email.errors %}class="input-error"{% endif %}
@@ -43,7 +43,7 @@
             required
         /><br />
 
-        <label for="id_password1">Password:</label>
+        <label for="id_password1">Password</label>
         <input
             id="id_password1"
             {% if form.password1.errors %}class="input-error"{% endif %}
@@ -52,7 +52,7 @@
             required
         /><br />
 
-        <label for="id_password2">Repeat password:</label>
+        <label for="id_password2">Repeat password</label>
         <input
             id="id_password2"
             {% if form.password2.errors %}class="input-error"{% endif %}

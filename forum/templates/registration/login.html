@@ -22,7 +22,7 @@
 
     <form action="{% url auth_login %}" method="post">
         {% csrf_token %}
-        <label for="username">Username:</label>
+        <label for="username">Username</label>
         <input
             id="username"
             {% if form.username.errors %}class="input-error"{% endif %}
@@ -32,7 +32,7 @@
             {% if not form.username.errors %}autofocus{% endif %} required
         /><br />
 
-        <label for="password">Password:</label>
+        <label for="password">Password</label>
         <input
             id="password"
             {% if form.password.errors %}class="input-error"{% endif %}
@@ -41,7 +41,7 @@
             required
         /><br />
 
-        <label for="remember-password">Remember password:</label>
+        <label for="remember-password">Remember password</label>
         <input
             type="checkbox"
             id="remember-password"
