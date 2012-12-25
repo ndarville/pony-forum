@@ -12,7 +12,7 @@
             {% endif %}
         {% endfor %}
     {% endif %}
-    {% if form.non_field_errors %}
+    {% if form.non_field_errors %} {# Password mismatch #}
         <ul class="errorlist">
         {% for error in form.non_field_errors %}
             <li>{{ error }}</li>
@@ -37,12 +37,12 @@
         <label for="password">Password</label>
         <input
             id="password"
-            {% if form.password.errors %}class="input-error"{% endif %}
+            {% if form.non_field_errors %}class="input-error"{% endif %}
             type="password"
             name="password"
             required
         />
-            {% if form.password.errors %}<span class="input-error-indicator">&larr;</span>{% endif %}
+            {% if form.non_field_errors %}<span class="input-error-indicator">&larr;</span>{% endif %}
         <br />
 
         <label for="remember-password">Remember password</label>
