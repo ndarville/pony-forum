@@ -34,10 +34,6 @@ code {
     border-radius: 5px;
 }
 
-input, label {
-    margin: 3px 0;
-}
-
 pre {
     font: 0.8125em/1.8462em Consolas, Monaco, monospace;
     display: block;
