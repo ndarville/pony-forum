@@ -49,3 +49,15 @@ class CustomRegistrationForm(RegistrationFormUniqueEmail):
         #     email__startswith=self.cleaned_data['email'].split("+")[0],
         #     email__endswith='@'+self.cleaned_data['email'].split("@")[1]):
         #     raise forms.ValidationError(_(error_message))
+
+    def clean(self):
+        """Verifiy that the values entered into the two password fields
+        match.
+
+        Note that an error here will end up in `non_field_errors()`,
+        because it doesn't apply to a single field.
+        """
+        if 'password1' in self.cleaned_data and 'password2' in self.cleaned_data:
+            if self.cleaned_data['password1'] != self.cleaned_data['password2']:
+                raise forms.ValidationError(_("Your two passwords did not match."))
+        return self.cleaned_data
