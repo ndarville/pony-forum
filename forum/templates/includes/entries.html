@@ -28,8 +28,9 @@
                     <div class="words">
                         <div class="post-top">
                             <span class="postdate">{{ post.relative_date }}</span>
-                            <!-- Anchor number borked -->
+                        {% comment %}
                             <a class="anchor" href="{% url forum.views.thread thread.id %}?page={{ posts.number }}#{{ post.id }}">#</a>
+                        {% endcomment %}
                             <a class="permalink" title="View this post by itself at its own link" href="{% url forum.views.post post.id %}">&infin;</a>
                             <a class="postsinthread" title="View all posts by the {{ post_author.username }} in this thread" href="{% url forum.views.thread thread_id=thread.id author_id=post_author.id %}">&Phi;</a>
                         </div>
