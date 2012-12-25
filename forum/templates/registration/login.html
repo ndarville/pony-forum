@@ -12,7 +12,7 @@
             {% endif %}
         {% endfor %}
     {% endif %}
-    {% if form.non_field_errors %} {# Password mismatch #}
+    {% if form.non_field_errors %} {# Auth problem #}
         <ul class="errorlist">
         {% for error in form.non_field_errors %}
             <li>{{ error }}</li>
@@ -31,7 +31,6 @@
             value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
             {% if not form.username.errors %}autofocus{% endif %} required
         />
-            {% if form.username.errors %}<span class="input-error-indicator">&larr;</span>{% endif %}
         <br />
 
         <label for="password">Password</label>
@@ -42,7 +41,6 @@
             name="password"
             required
         />
-            {% if form.non_field_errors %}<span class="input-error-indicator">&larr;</span>{% endif %}
         <br />
 
         <label for="remember-password">Remember password</label>
