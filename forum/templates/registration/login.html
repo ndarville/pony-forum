@@ -30,7 +30,9 @@
             name="username"
             value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
             {% if not form.username.errors %}autofocus{% endif %} required
-        /><br />
+        />
+            {% if form.username.errors %}<span class="input-error-indicator">&larr;</span>{% endif %}
+        <br />
 
         <label for="password">Password</label>
         <input
@@ -39,7 +41,9 @@
             type="password"
             name="password"
             required
-        /><br />
+        />
+            {% if form.password.errors %}<span class="input-error-indicator">&larr;</span>{% endif %}
+        <br />
 
         <label for="remember-password">Remember password</label>
         <input

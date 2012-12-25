@@ -73,6 +73,11 @@ input, select {
     vertical-align: middle;
 }
 
+label {
+    cursor: pointer;
+    float: left;
+}
+
 /***** Normalize.css *****/
 
 /*

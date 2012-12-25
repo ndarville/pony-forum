@@ -392,10 +392,13 @@ form p.checkbox label {
     border: 1px solid #B94A48;  /** cf. Bootstrap */
 }
 
-label {
-    cursor: pointer;
-    float: left;
-    width: 45%;
+#content-body span.input-error-indicator {
+    color: #B94A48;
+}
+
+#content-body label {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    width: 33%;
 }
 
 legend {
