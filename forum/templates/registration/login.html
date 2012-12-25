@@ -29,7 +29,7 @@
             type="text"
             name="username"
             value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
-            required autofocus
+            {% if not form.username.errors %}autofocus{% endif %} required
         /><br />
 
         <label for="password">Password:</label>

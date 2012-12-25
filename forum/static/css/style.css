@@ -377,9 +377,19 @@ input[type="submit"] {
 /****          *****
 ***** ACCOUNTS *****
 *****          ****/
+
 form p.checkbox { }
 form p.checkbox label {
     width: 90%;
+}
+
+#content-body input {
+    border: 1px solid #D1D1D1;
+    box-shadow: none;
+}
+
+#content-body input.input-error {
+    border: 1px solid #B94A48;  /** cf. Bootstrap */
 }
 
 label {
