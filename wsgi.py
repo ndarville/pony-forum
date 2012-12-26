@@ -1,7 +1,7 @@
-"""WSGI handler for dotCloud."""
+"""WSGI handler for dotCloud and default set-ups."""
 import os
 
-if 'DOTCLOUD' in os.environ:
+if 'DOTCLOUD_ENVIRONMENT' in os.environ:
     import sys
     import django.core.handlers.wsgi
 
