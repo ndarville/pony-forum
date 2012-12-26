@@ -247,6 +247,8 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 ### Eventual, Not Impending, Features ###
 * [+filters in e-mails][filters] allowed
 
+* Support for analytics code
+
 * [Migration jQuery to 1.9][jquery]
 * [Category-ordering][ordering]
 
