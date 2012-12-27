@@ -579,6 +579,47 @@ span#error {
     margin: 1.5em 15px;
 }
 
+#board .words h1,
+#example h1 {
+    font-size: 3em;
+    margin-top: 0.5em; /** Arbitrary; recalculate */
+    margin-bottom: 0.75em; /** Arbitrary; recalculate */
+}
+
+#board .words h2,
+#example h2 {
+    font-size: 1.5em;
+    font-variant: small-caps;
+    margin-bottom: 0.75em;
+    text-decoration: none;
+    display: block;
+}
+
+#board .words h3,
+#example h3 {
+   font-size: 1.125em; /* 18px */
+   line-height: 1.3333em; /* 24px */
+   margin-top: 1.3333em;
+   margin-bottom: 0.3333em; /* 0em; */
+   font-variant: small-caps;
+   font-weight: bold;
+}
+
+#board .words h4,
+#example h4 {
+   font-size: 0.8125em; /* 13px */
+   line-height: 1.8462em; /* 24px */
+   margin-top: 1.8462em;
+   margin-bottom: 0.8462em; /* 0em; */
+   font-style: italic;
+   font-weight: bold;
+}
+
+#board .words h5,
+#example h5 {
+    text-transform: uppercase;
+}
+
 #board .words img, #example img {
     margin: 1em auto;
     border: 1px solid #D1D1D1;
