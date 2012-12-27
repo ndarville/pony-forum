@@ -217,7 +217,7 @@ def sanitized_smartdown(string):
                           'h3':      ['id'],
                           'h4':      ['id'],
                           'h5':      ['id'],
-                          'img':     ['id']
+                          'img':     ['id', 'src']
                          }
 
     MD_EXTENSIONS = [
