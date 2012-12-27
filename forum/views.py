@@ -71,7 +71,6 @@ from registration                   import views as registration_views
 
 
 LOGIN_URL                 = getattr(project_settings, "LOGIN_URL", "/accounts/login/")  # revize
-LOGIN_REDIRECT_URL        = getattr(project_settings, "LOGIN_REDIRECT_URL", "/")
 MAX_THREAD_TITLE_LENGTH   = Thread._meta.get_field("title_plain").max_length
 MAX_CATEGORY_TITLE_LENGTH = Category._meta.get_field("title_plain").max_length
 POSTS_PER_PAGE            = getattr(project_settings, "POSTS_PER_PAGE", 25)
@@ -1057,22 +1056,21 @@ def reports(request):
 def search(request):
     return render(request, 'placeholder.html', {})
 
-
 def custom_login(request, **kwargs):
     """Logs in users and redirects those who are already authenticated."""
     if request.user.is_authenticated():
-        return HttpResponseRedirect(LOGIN_REDIRECT_URL)
+        HttpResponseRedirect(reverse('forum.views.home', args=()))
     else:
         return auth.views.login(
             request, 'registration/login.html', **kwargs)
-
 
 def custom_logout(request):
     """Logs out the user with a message confirmation."""
     if request.user.is_authenticated():  # User logged in
         auth.logout(request)
     messages.success(request, "Logged out successfully.")
-    return HttpResponseRedirect(LOGIN_REDIRECT_URL)
+
+    return HttpResponseRedirect(reverse('forum.views.home', args=()))
 
 
 def custom_register(request, **kwargs):
@@ -1080,7 +1078,7 @@ def custom_register(request, **kwargs):
     site = Site.objects.get_current()
 
     if request.user.is_authenticated():
-        return HttpResponseRedirect(LOGIN_REDIRECT_URL)
+        return HttpResponseRedirect(reverse('forum.views.home', args=()))
     else:
         site_config_error, email_config_error = False, False
         if site.domain == "example.com" or site.name == "example.com":
@@ -1118,7 +1116,7 @@ def site_configuration(request):
     if not request.user.is_staff:
         messages.error(request,
             "You need staff status to configure the site.")
-        return HttpResponseRedirect(LOGIN_REDIRECT_URL)
+        return HttpResponseRedirect(reverse('forum.views.home', args=()))
 
     site = Site.objects.get_current()
 
