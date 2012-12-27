@@ -61,7 +61,7 @@ from registration                   import views as registration_views
 #
 ##  pm
 #
-##  custom_login
+##  custom_logout
 ##  custom_register
 ##  settings
 #
