@@ -579,6 +579,12 @@ span#error {
     margin: 1.5em 15px;
 }
 
+#board .words img, #example img {
+    margin: 1em auto;
+    border: 1px solid #D1D1D1;
+    display: block;
+}
+
 #board .words table,
 #content-body table {
     display: inline-block;
