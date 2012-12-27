@@ -235,6 +235,7 @@ else:
 # the icons will break, because their URLs are hardcoded.
 #
 # You will have to change them in the CSS manually for now.
+LOGIN_REDIRECT_URL     = '/'
 LOGIN_URL              = '/accounts/login/'
 LOGOUT_URL             = '/accounts/logout/'
 REGISTRATION_URL       = '/accounts/register/'
