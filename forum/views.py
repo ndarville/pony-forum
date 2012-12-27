@@ -70,7 +70,6 @@ from registration                   import views as registration_views
 ##  saves_and_bookmarks
 
 
-LOGIN_URL                 = getattr(project_settings, "LOGIN_URL", "/accounts/login/")  # revize
 MAX_THREAD_TITLE_LENGTH   = Thread._meta.get_field("title_plain").max_length
 MAX_CATEGORY_TITLE_LENGTH = Category._meta.get_field("title_plain").max_length
 POSTS_PER_PAGE            = getattr(project_settings, "POSTS_PER_PAGE", 25)
@@ -273,7 +272,7 @@ def home(request):
                            'email_config_error': email_config_error})
 
 
-@login_required(login_url=LOGIN_URL)
+@login_required()
 def subscriptions(request):
     """Manage and observe all your subscriptions to threads with new posts."""
     threads       = Thread.objects.exclude(is_removed__exact=True)
@@ -353,7 +352,7 @@ def thread(request, thread_id, author_id):
         return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
 
 
-# @login_required(login_url=LOGIN_URL)  # Doesn't work
+# @login_required()  # Doesn't work
 def thread_js(request):
     """Lets users
     1. Bookmark threads
@@ -423,7 +422,7 @@ def thread_js(request):
 #            success = action + "ed"
 
 
-@login_required(login_url=LOGIN_URL)
+@login_required()
 def thread_nonjs(request, object_id, action, current_page):
     """An HTML fall-back for `thread_js()`, in case the user
     has disabled JavaScript in their browser.
@@ -507,7 +506,7 @@ def user(request, user_id):
     return render(request, 'user.html', {'person': person, 'posts': posts})
 
 
-# @login_required(login_url=LOGIN_URL)  # Doesn't work
+# @login_required()  # Doesn't work
 def user_js(request):
     """Lets users follow and ignore other users."""
     if request.is_ajax() and request.method == "POST":
@@ -532,7 +531,7 @@ def user_js(request):
         return HttpResponse(new_text)
 
 
-@login_required(login_url=LOGIN_URL)
+@login_required()
 def user_nonjs(request):
     """An HTML fall-back for `user_js()`, in case the user
     has disabled JavaScript in their browser.
@@ -579,7 +578,7 @@ def user_content(request, user_id, object_type):
                            'objects': objects})
 
 
-@permission_required('forum.add_category', login_url=LOGIN_URL)
+@permission_required('forum.add_category')
 def add(request):
     """Add a new category."""
     title_plain = False
@@ -596,7 +595,7 @@ def add(request):
     return render(request, 'add.html', {'title': title_plain})
 
 
-@login_required(login_url=LOGIN_URL)
+@login_required()
 def create(request, category_id):
     """Creation of a new thread from a category id.
 
@@ -653,7 +652,7 @@ def create(request, category_id):
                            'preview_html' : preview_html})
 
 
-@login_required(login_url=LOGIN_URL)
+@login_required()
 def reply(request, thread_id):
     """Grabs the contents of the <textarea> in the reply,
     gets the author id, slaps on the time stamp,
@@ -704,7 +703,7 @@ def reply(request, thread_id):
                            'preview_html' : preview_html})
 
 
-@login_required(login_url=LOGIN_URL)
+@login_required()
 def edit(request, post_id):
     """Lets the author edit his or her post."""
     post          = get_object_or_404(Post, pk=post_id)
@@ -739,7 +738,7 @@ def edit(request, post_id):
                            'preview_html' : preview_html})
 
 
-@permission_required('forum.lock_thread', login_url=LOGIN_URL)
+@permission_required('forum.lock_thread')
 def lock_thread(request, thread_id):
     """Lets the permitted user lock a thread,
     i.e., prevent people from posting in it.
@@ -772,7 +771,7 @@ def lock_thread(request, thread_id):
                                'action'     : 'lock'})
 
 
-@permission_required('forum.sticky_thread', login_url=LOGIN_URL)
+@permission_required('forum.sticky_thread')
 def sticky_thread(request, thread_id):
     """Lets the permitted user sticky a thread,
     thereby sticking it to the top of the thread list.
@@ -805,7 +804,7 @@ def sticky_thread(request, thread_id):
                                'action'     : 'sticky'})
 
 
-@permission_required('forum.merge_thread', login_url=LOGIN_URL)
+@permission_required('forum.merge_thread')
 def merge_thread(request, thread_id):
     """Merge the posts of two threads into one single thread.
 
@@ -873,7 +872,7 @@ def merge_thread(request, thread_id):
                            'new_title'   : new_title_plain})
 
 
-@permission_required('forum.change_thread', login_url=LOGIN_URL)
+@permission_required('forum.change_thread')
 def moderate_thread(request, thread_id):
     """Change the title of a thread."""
     thread      = get_object_or_404(Thread, pk=thread_id)
@@ -896,7 +895,7 @@ def moderate_thread(request, thread_id):
                            'title' : title_plain})
 
 
-@permission_required('forum.move_thread', login_url=LOGIN_URL)
+@permission_required('forum.move_thread')
 def move_thread(request, thread_id):
     """Move a thread to another category."""
     thread     = get_object_or_404(Thread, pk=thread_id)
@@ -912,7 +911,7 @@ def move_thread(request, thread_id):
                                'categories': categories})
 
 
-@login_required(login_url=LOGIN_URL)
+@login_required()
 def remove(request, object_id, object_type):
     """Lets the permitted user remove a post or thread.
 
@@ -954,7 +953,7 @@ def remove(request, object_id, object_type):
                                'action'     : 'remove'})
 
 
-@login_required(login_url=LOGIN_URL)
+@login_required()
 def report(request, object_id, object_type):
     """Report a post or thread infraction to the moderators."""
     title        = False
@@ -1036,7 +1035,7 @@ def report(request, object_id, object_type):
                            'preview_html': preview_html})
 
 
-@permission_required('forum.use_report', login_url=LOGIN_URL)
+@permission_required('forum.use_report')
 def reports(request):
     """Inspect and act on filed reports on threads and posts."""
 # Hide reports that have been addressed
@@ -1099,7 +1098,7 @@ def custom_register(request, **kwargs):
             **kwargs)
 
 
-@login_required(login_url=LOGIN_URL)
+@login_required()
 def settings(request):
     """Here the user can manage his or her user settings."""
     if request.method == "POST":  # Changes submitted
@@ -1112,7 +1111,7 @@ def settings(request):
     return render(request, 'settings.html', {})
 
 
-@login_required(login_url=LOGIN_URL)
+@login_required()
 def site_configuration(request):
     """Displays all configurable environment variables to admins."""
     if not request.user.is_staff:
@@ -1153,7 +1152,7 @@ def site_configuration(request):
         })
 
 
-@login_required(login_url=LOGIN_URL)
+@login_required()
 def saves_and_bookmarks(request, object_type):
     """Shows the user's saved posts and/or bookmarked threads."""
     if object_type == "save":
