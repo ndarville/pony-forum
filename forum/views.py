@@ -1056,15 +1056,6 @@ def search(request):
     return render(request, 'placeholder.html', {})
 
 
-def custom_login(request, **kwargs):
-    """Logs in users and redirects those who are already authenticated."""
-    if request.user.is_authenticated():
-        HttpResponseRedirect(reverse('forum.views.home', args=()))
-    else:
-        return auth.views.login(
-            request, 'registration/login.html', **kwargs)
-
-
 def custom_logout(request):
     """Logs out the user with a message confirmation."""
     if request.user.is_authenticated():  # User logged in

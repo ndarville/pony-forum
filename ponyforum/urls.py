@@ -1,6 +1,5 @@
 from django.conf                 import settings as project_settings
 from django.conf.urls.defaults   import patterns, include, url
-from django.contrib              import admin
 from django.views.generic.simple import redirect_to
 
 from forum.forms import CustomRegistrationForm
@@ -74,10 +73,6 @@ urlpatterns = patterns('forum.views',
     (r'^user/(?P<user_id>\d+)/$',                'user'),
 
 #   Accounts
-    url(r'^' + getattr(project_settings, 'LOGIN_URL',
-                                                 '/accounts/login/')[1:] + '$',
-                                                 'custom_login',
-                                                  name='login'),
     url(r'^' + getattr(project_settings, 'LOGOUT_URL',
                                                  '/accounts/logout/')[1:] + '$',
                                                  'custom_logout',
@@ -89,6 +84,13 @@ urlpatterns = patterns('forum.views',
                                                   CustomRegistrationForm},
                                                   name='register'),
     (r'^accounts/settings/$',                    'settings'),
+)
+
+urlpatterns += patterns('',
+    url(r'^' + getattr(project_settings, 'LOGIN_URL',
+                                                 '/accounts/login/')[1:] + '$',
+                                                  'django.contrib.auth.views.login',
+                                                  name='login'),
 )
 
 urlpatterns += patterns('',
