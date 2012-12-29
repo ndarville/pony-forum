@@ -25,7 +25,6 @@
         <label for="username">Username</label>
         <input
             id="username"
-            {% if form.username.errors %}class="input-error"{% endif %}
             type="text"
             name="username"
             value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
@@ -36,7 +35,6 @@
         <label for="password">Password</label>
         <input
             id="password"
-            {% if form.non_field_errors %}class="input-error"{% endif %}
             type="password"
             name="password"
             required
