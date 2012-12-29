@@ -3,7 +3,7 @@
 {% block title %}Report {{ type|capfirst }}{% if type == "post" %} by {{ obj.author }}{% endif %}{% endblock %}
 {% block canonical_url %}{% if type == "thread" %}{% url report_thread obj.id %}{% else %}{% url report_post obj.id %}{% endif %}{% endblock %}
 {% block content %}
-    <div id="board">
+    <div id="board" role="main">
         {% with post=post_obj thread=thread category=thread.category %}
             {% include "includes/breadcrumbs.html" %}
         {% endwith %}

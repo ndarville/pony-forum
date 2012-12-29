@@ -3,7 +3,7 @@
 {% block title %}{{ thread.title_html|safe }}: Move Thread{% endblock %}
 {% block canonical_url %}{% url forum.views.move_thread thread.id %}{% endblock %}
 {% block content %}
-    <div id="board">
+    <div id="board" role="main">
         {% with thread=thread category=thread.category %}
             {% include "includes/breadcrumbs.html" %}
         {% endwith %}

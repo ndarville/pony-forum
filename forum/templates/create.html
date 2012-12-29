@@ -3,7 +3,7 @@
 {% block title %}Create new thread in {{ category.title_html|safe }}{% endblock %}
 {% block canonical_url %}{% url forum.views.create category.id %}{% endblock %}
 {% block content %}
-    <div id="board">
+    <div id="board" role="main">
         {% with category=category %}
             {% include "includes/breadcrumbs.html" %}
         {% endwith %}

@@ -11,7 +11,7 @@
     {% endif %}
 {% endblock %}
 {% block content %}
-    <div id="board">
+    <div id="board" role="main">
         {% with post=post_obj thread=thread category=thread.category %}
             {% include "includes/breadcrumbs.html" %}
         {% endwith %}
