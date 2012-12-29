@@ -1,3 +1,3 @@
-<div id="breadcrumbs">
+<div id="breadcrumbs" role="navigation">
     <a href="{% url forum.views.home %}">Overview</a>&nbsp;&raquo;&nbsp;<a href="{% url forum.views.category category.id %}">{{ category.title_html|safe }}</a>{% if thread %}&nbsp;&raquo;&nbsp;<a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}{% if thread.is_locked %}&nbsp;(LOCKED){% endif %}</a>{% endif %}{% if post %}&nbsp;&raquo;&nbsp;<a href="{% url forum.views.post post.id %}">{{ post.author }}&rsquo;s Post</a>{% endif %}
 </div>

@@ -21,20 +21,20 @@
 {% block alert %}
     {% if messages %}
         {% for message in messages %}
-            <div id="alert"{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            <div id="alert"{% if message.tags %} class="{{ message.tags }}"{% endif %} role="region">
                 {{ message }}
             </div>
         {% endfor %}
     {% endif %}
 {% endblock %}
-            <div id="header"><a href="/" title="Return to home page">Forum</a></div>
-            <div id="navigation">
+            <div id="header" role="header"><a href="/" title="Return to home page">Forum</a></div>
+            <div id="navigation" role="navigation">
                 {% include "includes/navigation.html" %}
             </div>
 {# banners #}{# endblock #}
 {% block threadbar %}{% endblock %}
 {% block content %}{% endblock %}
-            <div id="credits">
+            <div id="credits" role="complimentary">
 {% block credits-border %}{% endblock %}
 {% block credits %}
                 <span>The forum is powered by <a href="http://pony-forum.com/">Pony Forum</a>, which was made by <a href="http://me.niclasdarville.com/">Niclas Darville</a>.</span> <span>Icons by <a href="http://glyphish.com/">Glyphish</a>.</span> <span>Dyslexia mode by <a href="http://dyslexicfonts.com/">Open-Dyslexic</a>.</span>
