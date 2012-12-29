@@ -16,7 +16,7 @@
         <form action="{% url forum.views.user_nonjs %}" method="post">
             {% csrf_token %}
 
-            <input type="submit" class="js" id="{{ person.id }}" value="Unfollow user" />
+            <input type="submit" class="js" id="{{ person.id }}" value="Unfollow user" role="button" />
             <input type="hidden" name="user_id" value="{{ person.id }}" />
             <input type="hidden" name="action" value="unfollow" />
         </form>
@@ -24,7 +24,7 @@
         <form action="{% url forum.views.user_nonjs %}" method="post">
             {% csrf_token %}
 
-            <input type="submit" class="js" id="{{ person.id }}" value="Follow user" />
+            <input type="submit" class="js" id="{{ person.id }}" value="Follow user" role="button" />
             <input type="hidden" name="user_id" value="{{ person.id }}" />
             <input type="hidden" name="action" value="follow" />
         </form>
@@ -33,7 +33,7 @@
         <form action="{% url forum.views.user_nonjs %}" method="post">
             {% csrf_token %}
 
-            <input type="submit" class="js" id="{{ person.id }}" value="Remove user from shit list" />
+            <input type="submit" class="js" id="{{ person.id }}" value="Remove user from shit list" role="button" />
             <input type="hidden" name="user_id" value="{{ person.id }}" />
             <input type="hidden" name="action" value="remove" />
         </form>
@@ -41,7 +41,7 @@
         <form action="{% url forum.views.user_nonjs %}" method="post">
             {% csrf_token %}
 
-            <input type="submit" class="js" id="{{ person.id }}" value="Add user to shit list" />
+            <input type="submit" class="js" id="{{ person.id }}" value="Add user to shit list" role="button" />
             <input type="hidden" name="user_id" value="{{ person.id }}" />
             <input type="hidden" name="action" value="add" />
         </form>
