@@ -11,30 +11,30 @@
     {% endif %}
 {% endblock %}
 {% block content %}
-            <div id="board">
-                {% with post=post_obj thread=thread category=thread.category %}
-                    {% include "includes/breadcrumbs.html" %}
-                {% endwith %}
+    <div id="board">
+        {% with post=post_obj thread=thread category=thread.category %}
+            {% include "includes/breadcrumbs.html" %}
+        {% endwith %}
 
-                <form action="
-                {% if action == "sticky" %}{% url forum.views.sticky_thread obj.id %}
-                {% elif action == "lock" %}{% url forum.views.lock_thread obj.id %}
-                {% else %} {# action == "remove" #}
-                    {% if object_type == "thread" %}{% url remove_thread obj.id %}
-                    {% else %}{% url remove_post obj.id %}
-                    {% endif %}
-                {% endif %}
-                " method="post">
-                    {% csrf_token %}
+        <form action="
+        {% if action == "sticky" %}{% url forum.views.sticky_thread obj.id %}
+        {% elif action == "lock" %}{% url forum.views.lock_thread obj.id %}
+        {% else %} {# action == "remove" #}
+            {% if object_type == "thread" %}{% url remove_thread obj.id %}
+            {% else %}{% url remove_post obj.id %}
+            {% endif %}
+        {% endif %}
+        " method="post">
+            {% csrf_token %}
 
-                    <div id="button-group">
-                        <input type="submit" name="{{ action }}" value="{{ action|capfirst }}" />
-                    {% if action != "remove" %}
-                        <input type="submit" name="un{{ action }}" value="Un{{ action }}" />
-                    {% else %} {# action == "remove" #}
-                        <input type="submit" name="restore" value="Restore" />
-                    {% endif %}
-                    </div>
-                </form>
+            <div id="button-group">
+                <input type="submit" name="{{ action }}" value="{{ action|capfirst }}" />
+            {% if action != "remove" %}
+                <input type="submit" name="un{{ action }}" value="Un{{ action }}" />
+            {% else %} {# action == "remove" #}
+                <input type="submit" name="restore" value="Restore" />
+            {% endif %}
             </div>
+        </form>
+    </div>
 {% endblock %}

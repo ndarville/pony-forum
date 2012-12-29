@@ -3,25 +3,25 @@
 {% block title %}{{ post.thread.title_html|safe }}: Edit Post{% endblock %}
 {% block canonical_url %}{% url forum.views.edit post.id %}{% endblock %}
 {% block content %}
-            <div id="board">
-                {% with post=post thread=post.thread category=post.thread.category %}
-                    {% include "includes/breadcrumbs.html" %}
-                {% endwith %}
+    <div id="board">
+        {% with post=post thread=post.thread category=post.thread.category %}
+            {% include "includes/breadcrumbs.html" %}
+        {% endwith %}
 
-                {% include "includes/preview.html" %}
+        {% include "includes/preview.html" %}
 
-                <form action="{% url forum.views.edit post.id %}" method="post" id="reply" name="reply-form">
-                    {% csrf_token %}
+        <form action="{% url forum.views.edit post.id %}" method="post" id="reply" name="reply-form">
+            {% csrf_token %}
 
-                    <textarea
-                        rows="10" name="content" autofocus required>{% if preview_plain %}{{ preview_plain }}{% else %}{{ post.content_plain }}{% endif %}</textarea>
+            <textarea
+                rows="10" name="content" autofocus required>{% if preview_plain %}{{ preview_plain }}{% else %}{{ post.content_plain }}{% endif %}</textarea>
 
-                    <div id="button-group">
-                        <input type="submit" name="submit" id="submit" value="Edit" />
-                        <input type="submit" name="preview" id="preview" value="Preview" />
-                    </div>
-                </form>
-
-                {% include "includes/markdown.html" %}
+            <div id="button-group">
+                <input type="submit" name="submit" id="submit" value="Edit" />
+                <input type="submit" name="preview" id="preview" value="Preview" />
             </div>
+        </form>
+
+        {% include "includes/markdown.html" %}
+    </div>
 {% endblock %}

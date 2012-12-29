@@ -3,43 +3,43 @@
 {% block title %}{{ thread.title_html|safe }}{% if thread.is_locked %}&nbsp;(LOCKED){% endif %}{% endblock %}
 {% block canonical_url %}{% url forum.views.thread thread.id %}{% endblock %}
 {% block content %}
-            <div id="board">
-            {% with thread=thread category=thread.category %}
-                {% include "includes/breadcrumbs.html" %}
-            {% endwith %}
+    <div id="board">
+    {% with thread=thread category=thread.category %}
+        {% include "includes/breadcrumbs.html" %}
+    {% endwith %}
 
-        {% with current_page=posts.number total_pages=posts.paginator.num_pages page=posts %}
-            {% include "includes/pagination.html" %}
-        {% endwith %}
+{% with current_page=posts.number total_pages=posts.paginator.num_pages page=posts %}
+    {% include "includes/pagination.html" %}
+{% endwith %}
 
-            {% if not thread.is_removed %}
-                <ul id="thread-buttons-top">
-                    {% include "includes/thread-buttons.html" %}
-                </ul>
-            {% endif %}
+    {% if not thread.is_removed %}
+        <ul id="thread-buttons-top">
+            {% include "includes/thread-buttons.html" %}
+        </ul>
+    {% endif %}
 
-                <ul id="thread-mod-buttons-top">
-                    {% include "includes/thread-mod-buttons.html" %}
-                </ul>
+        <ul id="thread-mod-buttons-top">
+            {% include "includes/thread-mod-buttons.html" %}
+        </ul>
 
-            {% for post in posts.object_list %} <!-- exclude is_removed -->
-                {% include "includes/entries.html" %}
-            {% endfor %}
+    {% for post in posts.object_list %} <!-- exclude is_removed -->
+        {% include "includes/entries.html" %}
+    {% endfor %}
 
-                <ul id="thread-mod-buttons-bottom">
-                    {% include "includes/thread-mod-buttons.html" %}
-                </ul>
+        <ul id="thread-mod-buttons-bottom">
+            {% include "includes/thread-mod-buttons.html" %}
+        </ul>
 
-            {% if not thread.is_removed %}
-                <ul id="thread-buttons-bottom">
-                    {% include "includes/thread-buttons.html" %}
-                </ul>
-            {% endif %}
+    {% if not thread.is_removed %}
+        <ul id="thread-buttons-bottom">
+            {% include "includes/thread-buttons.html" %}
+        </ul>
+    {% endif %}
 
-        {% with current_page=posts.number total_pages=posts.paginator.num_pages page=posts %}
-            {% include "includes/pagination.html" %}
-        {% endwith %}
-            </div>
+{% with current_page=posts.number total_pages=posts.paginator.num_pages page=posts %}
+    {% include "includes/pagination.html" %}
+{% endwith %}
+    </div>
 {% endblock %}
 {% block js %}
         {% include "includes/jquery.html" %}

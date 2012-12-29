@@ -3,21 +3,21 @@
 {% block title %}{{ thread.title_html|safe }}: Move Thread{% endblock %}
 {% block canonical_url %}{% url forum.views.move_thread thread.id %}{% endblock %}
 {% block content %}
-            <div id="board">
-                {% with thread=thread category=thread.category %}
-                    {% include "includes/breadcrumbs.html" %}
-                {% endwith %}
+    <div id="board">
+        {% with thread=thread category=thread.category %}
+            {% include "includes/breadcrumbs.html" %}
+        {% endwith %}
 
-                <form action="{% url forum.views.move_thread thread.id %}" method="post" id="reply" name="reply-form">
-                    {% csrf_token %}
+        <form action="{% url forum.views.move_thread thread.id %}" method="post" id="reply" name="reply-form">
+            {% csrf_token %}
 
-                {% for category in categories %}
-                    <input type="radio" name="category" value="{{ category.id }}" {% if category == thread.category %}checked{% endif %} />{{ category.title_html|safe }}<br />
-                {% endfor %}
+        {% for category in categories %}
+            <input type="radio" name="category" value="{{ category.id }}" {% if category == thread.category %}checked{% endif %} />{{ category.title_html|safe }}<br />
+        {% endfor %}
 
-                <div id="button-group">
-                    <input type="submit" name="move" value="Move" />
-                </div>
-                </form>
-            </div>
+        <div id="button-group">
+            <input type="submit" name="move" value="Move" />
+        </div>
+        </form>
+    </div>
 {% endblock %}

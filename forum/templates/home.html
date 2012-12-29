@@ -7,37 +7,37 @@
             {% include "includes/threadbar.html" %}
 {% endblock %}
 {% block content %}
-            <div id="content" role="main">
-                <table class="categories">
-                    <thead>
-                        <tr>
-                            <th id="thread-category">Category</th>
-                            <th id="category-threads">Threads</th>
-                            <th id="posts-in-category">Posts</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for category in categories %}
-                        <tr>
-                        {% url forum.views.category category.id as category_url %}
-                            <td><a href="{{ category_url }}" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.title_html|safe }}</a></td>
-                            <td><a href="{{ category_url }}" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.thread_count|intcomma }}</a></td>
-                            <td><a href="{{ category_url }}" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.post_count|intcomma }}</a></td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+    <div id="content" role="main">
+        <table class="categories">
+            <thead>
+                <tr>
+                    <th id="thread-category">Category</th>
+                    <th id="category-threads">Threads</th>
+                    <th id="posts-in-category">Posts</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                {% url forum.views.category category.id as category_url %}
+                    <td><a href="{{ category_url }}" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.title_html|safe }}</a></td>
+                    <td><a href="{{ category_url }}" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.thread_count|intcomma }}</a></td>
+                    <td><a href="{{ category_url }}" title="See the list of threads in the category &ldquo;{{ category.title_html|safe }}&rdquo;">{{ category.post_count|intcomma }}</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-            {% if not categories %}
-                <p>This forum currently does not have any categories&mdash;and the threads and posts to go with them. {% if user.is_staff %}You should get right on that.{% endif %}{% if not user.is_authenticated %}If you have the permissions, you should <a href="{% url forum.views.add %}">log in and get started</a>.{% endif %}</p>
-            {% endif %}
+    {% if not categories %}
+        <p>This forum currently does not have any categories&mdash;and the threads and posts to go with them. {% if user.is_staff %}You should get right on that.{% endif %}{% if not user.is_authenticated %}If you have the permissions, you should <a href="{% url forum.views.add %}">log in and get started</a>.{% endif %}</p>
+    {% endif %}
 
-            {% if perms.forum.add_category %}
-                <div id="button-group">
-                    <a class="button" href="{% url forum.views.add %}">Add a new category</a>
-                </div>
-            {% endif %}
-            </div>
+    {% if perms.forum.add_category %}
+        <div id="button-group">
+            <a class="button" href="{% url forum.views.add %}">Add a new category</a>
+        </div>
+    {% endif %}
+    </div>
 {% endblock %}
 {% block configuration-warning %}
     {% include "includes/configuration-warning.html" %}

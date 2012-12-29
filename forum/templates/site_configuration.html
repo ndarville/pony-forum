@@ -3,151 +3,151 @@
 {% block title %}Site Configuration{% endblock %}
 {% block canonical_url %}{% url site_configuration %}{% endblock %}
 {% block content_body %}
-<table>
-    <caption>
-        Required settings
-    </caption>
-    <thead>
-        <tr>
-            <th>Key</th>
-            <th>Configured?</th>
-            <th>Value</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Site name</td>
-            <td>{% if HAS_SITE_NAME %}Yes{% else %}<strong>No</strong>&mdash;see below{% endif %}</td>
-            <td><i>{{ SITE_NAME }}</i></td>
-        </tr>
-        <tr>
-            <td>Site domain</td>
-            <td>{% if HAS_SITE_DOMAIN %}Yes{% else %}<strong>No</strong>&mdash;see below{% endif %}</td>
-            <td><i>{{ SITE_DOMAIN }}</i></td>
-        </tr>
-        <tr>
-            <td>E-mail username</td>
-            <td>{% if EMAIL_HOST_USER %}Yes{% else %}<strong>No.</strong> <a href="http://ndarville.github.com/pony-forum/#after-installation-instructions/setting-up-an-e-mail-server">(More info.)</a>{% endif %}</td>
-            <td>{% if EMAIL_HOST_USER %}(Value hidden){% else %}myusername@gmail.com{% endif %}</td>
-        </tr>
-        <tr>
-            <td>E-mail password</td>
-            <td>{% if EMAIL_HOST_PASSWORD %}Yes{% else %}<strong>No.</strong> <a href="http://ndarville.github.com/pony-forum/#after-installation-instructions/setting-up-an-e-mail-server">(More info.)</a>{% endif %}</td>
-            <td>{% if EMAIL_HOST_PASSWORD %}(Value hidden){% else %}mypassword{% endif %}</td>
-        </tr>
-    </tbody>
-</table>
+    <table>
+        <caption>
+            Required settings
+        </caption>
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Configured?</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Site name</td>
+                <td>{% if HAS_SITE_NAME %}Yes{% else %}<strong>No</strong>&mdash;see below{% endif %}</td>
+                <td><i>{{ SITE_NAME }}</i></td>
+            </tr>
+            <tr>
+                <td>Site domain</td>
+                <td>{% if HAS_SITE_DOMAIN %}Yes{% else %}<strong>No</strong>&mdash;see below{% endif %}</td>
+                <td><i>{{ SITE_DOMAIN }}</i></td>
+            </tr>
+            <tr>
+                <td>E-mail username</td>
+                <td>{% if EMAIL_HOST_USER %}Yes{% else %}<strong>No.</strong> <a href="http://ndarville.github.com/pony-forum/#after-installation-instructions/setting-up-an-e-mail-server">(More info.)</a>{% endif %}</td>
+                <td>{% if EMAIL_HOST_USER %}(Value hidden){% else %}myusername@gmail.com{% endif %}</td>
+            </tr>
+            <tr>
+                <td>E-mail password</td>
+                <td>{% if EMAIL_HOST_PASSWORD %}Yes{% else %}<strong>No.</strong> <a href="http://ndarville.github.com/pony-forum/#after-installation-instructions/setting-up-an-e-mail-server">(More info.)</a>{% endif %}</td>
+                <td>{% if EMAIL_HOST_PASSWORD %}(Value hidden){% else %}mypassword{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
 
-<table>
-    <caption>
-        More e-mail settings
-    </caption>
-    <tbody>
-        <tr>
-            <td>Use TLS?</td>
-            <td>{{ EMAIL_USE_TLS }}</td>
-        </tr>
-        <tr>
-            <td>From e-mail</td>
-            <td>{{ DEFAULT_FROM_EMAIL }}</td>
-        </tr>
-    </tbody>
-</table>
+    <table>
+        <caption>
+            More e-mail settings
+        </caption>
+        <tbody>
+            <tr>
+                <td>Use TLS?</td>
+                <td>{{ EMAIL_USE_TLS }}</td>
+            </tr>
+            <tr>
+                <td>From e-mail</td>
+                <td>{{ DEFAULT_FROM_EMAIL }}</td>
+            </tr>
+        </tbody>
+    </table>
 
-<table>
-    <caption>
-        Other settings
-    </caption>
-    <thead>
-        <tr>
-            <th>Key</th>
-            <th>Value</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Time zone</td>
-            <td>{{ TIME_ZONE }}</td>
-        </tr>
-        <tr>
-            <td>Language code</td>
-            <td>{{ LANGUAGE_CODE }}</td>
-        </tr>
-        <tr>
-            <td>Account activation days</td>
-            <td>{{ ACCOUNT_ACTIVATION_DAYS }}</td>
-        </tr>
-        <tr>
-            <td>Registrations open?</td>
-            <td>{{ REGISTRATION_OPEN }}</td>
-        </tr>
-    </tbody>
-</table>
+    <table>
+        <caption>
+            Other settings
+        </caption>
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Time zone</td>
+                <td>{{ TIME_ZONE }}</td>
+            </tr>
+            <tr>
+                <td>Language code</td>
+                <td>{{ LANGUAGE_CODE }}</td>
+            </tr>
+            <tr>
+                <td>Account activation days</td>
+                <td>{{ ACCOUNT_ACTIVATION_DAYS }}</td>
+            </tr>
+            <tr>
+                <td>Registrations open?</td>
+                <td>{{ REGISTRATION_OPEN }}</td>
+            </tr>
+        </tbody>
+    </table>
 
-<table>
-    <caption>
-        Pagination settings
-    </caption>
-    <thead>
-        <tr>
-            <th>Key</th>
-            <th>Value</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Posts per page</td>
-            <td>{{ POSTS_PER_PAGE }}</td>
-        </tr>
-        <tr>
-            <td>Threads per page</td>
-            <td>{{ THREADS_PER_PAGE }}</td>
-        </tr>
-        <tr>
-            <td>User posts per page</td>
-            <td>{{ USER_POSTS_PER_PAGE }}</td>
-        </tr>
-        <tr>
-            <td>User threads per page</td>
-            <td>{{ USER_THREADS_PER_PAGE }}</td>
-        </tr>
-        <tr>
-            <td>Subscriptions per page</td>
-            <td>{{ SUBSCRIPTIONS_PER_PAGE }}</td>
-        </tr>
-        <tr>
-            <td>Bookmarks per page</td>
-            <td>{{ BOOKMARKS_PER_PAGE }}</td>
-        </tr>
-        <tr>
-            <td>Saves per page</td>
-            <td>{{ SAVES_PER_PAGE }}</td>
-        </tr>
-    </tbody>
-</table>
-{% if LOCAL_DEVELOPMENT %}
-    <p>You can change or override these values in your <code>local_settings.py</code> file.</p>
-{% else %}
-    <p>You can change these values in your dotCloud environment. To find out how, read <a href="http://ndarville.github.com/pony-forum/#after-installation-instructions/setting-up-an-e-mail-server">this</a>.</p>
-{% endif %}
-<p>Your Site settings, however, will have to be configured by a superuser{% if user.is_superuser %} here{% endif %}.</p>
+    <table>
+        <caption>
+            Pagination settings
+        </caption>
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Posts per page</td>
+                <td>{{ POSTS_PER_PAGE }}</td>
+            </tr>
+            <tr>
+                <td>Threads per page</td>
+                <td>{{ THREADS_PER_PAGE }}</td>
+            </tr>
+            <tr>
+                <td>User posts per page</td>
+                <td>{{ USER_POSTS_PER_PAGE }}</td>
+            </tr>
+            <tr>
+                <td>User threads per page</td>
+                <td>{{ USER_THREADS_PER_PAGE }}</td>
+            </tr>
+            <tr>
+                <td>Subscriptions per page</td>
+                <td>{{ SUBSCRIPTIONS_PER_PAGE }}</td>
+            </tr>
+            <tr>
+                <td>Bookmarks per page</td>
+                <td>{{ BOOKMARKS_PER_PAGE }}</td>
+            </tr>
+            <tr>
+                <td>Saves per page</td>
+                <td>{{ SAVES_PER_PAGE }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% if LOCAL_DEVELOPMENT %}
+        <p>You can change or override these values in your <code>local_settings.py</code> file.</p>
+    {% else %}
+        <p>You can change these values in your dotCloud environment. To find out how, read <a href="http://ndarville.github.com/pony-forum/#after-installation-instructions/setting-up-an-e-mail-server">this</a>.</p>
+    {% endif %}
+    <p>Your Site settings, however, will have to be configured by a superuser{% if user.is_superuser %} here{% endif %}.</p>
 
-<hr />
+    <hr />
 
-{% if user.is_superuser %}
-    <form action="{% url forum.views.site_configuration %}" method="post">
-        {% csrf_token %}
-        <p>
-            <label for="site_name">Site name:</label>
-            <input type="text" name="site_name" value="{{ SITE_NAME }}" />
-        </p>
-        <p>
-            <label for="site_domain">Site domain:</label>
-            <input type="text" name="site_domain" value="{{ SITE_DOMAIN }}" />
-        </p>
-        <div id="button-group">
-            <input type="submit" name="submit" id="submit" value="Submit" />
-        </div>
-    </form>
-{% endif %}
+    {% if user.is_superuser %}
+        <form action="{% url forum.views.site_configuration %}" method="post">
+            {% csrf_token %}
+            <p>
+                <label for="site_name">Site name:</label>
+                <input type="text" name="site_name" value="{{ SITE_NAME }}" />
+            </p>
+            <p>
+                <label for="site_domain">Site domain:</label>
+                <input type="text" name="site_domain" value="{{ SITE_DOMAIN }}" />
+            </p>
+            <div id="button-group">
+                <input type="submit" name="submit" id="submit" value="Submit" />
+            </div>
+        </form>
+    {% endif %}
 {% endblock %}

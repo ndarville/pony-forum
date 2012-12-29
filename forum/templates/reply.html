@@ -3,25 +3,25 @@
 {% block title %}{{ thread.title_html|safe }}: Reply{% endblock %}
 {% block canonical_url %}{% url forum.views.reply thread.id %}{% endblock %}
 {% block content %}
-            <div id="board">
-                {% with thread=thread category=thread.category %}
-                    {% include "includes/breadcrumbs.html" %}
-                {% endwith %}
+    <div id="board">
+        {% with thread=thread category=thread.category %}
+            {% include "includes/breadcrumbs.html" %}
+        {% endwith %}
 
-                {% include "includes/preview.html" %}
+        {% include "includes/preview.html" %}
 
-                <form action="{% url forum.views.reply thread.id %}" method="post" id="reply" name="reply-form">
-                    {% csrf_token %}
+        <form action="{% url forum.views.reply thread.id %}" method="post" id="reply" name="reply-form">
+            {% csrf_token %}
 
-                    <textarea
-                        rows="10" name="content" autofocus required>{% if preview_plain %}{{ preview_plain }}{% endif %}</textarea>
+            <textarea
+                rows="10" name="content" autofocus required>{% if preview_plain %}{{ preview_plain }}{% endif %}</textarea>
 
-                    <div id="button-group">
-                        <input type="submit" name="submit" id="submit" value="Reply" />
-                        <input type="submit" name="preview" id="preview" value="Preview" />
-                    </div>
-                </form>
-
-                {% include "includes/markdown.html" %}
+            <div id="button-group">
+                <input type="submit" name="submit" id="submit" value="Reply" />
+                <input type="submit" name="preview" id="preview" value="Preview" />
             </div>
+        </form>
+
+        {% include "includes/markdown.html" %}
+    </div>
 {% endblock %}

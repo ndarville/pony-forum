@@ -3,23 +3,23 @@
 {% block title %}{{ thread.title_html|safe }}: Moderate Thread{% endblock %}
 {% block canonical_url %}{% url forum.views.moderate_thread thread.id %}{% endblock %}
 {% block content %}
-            <div id="board">
-            {% with thread=thread category=thread.category %}
-                {% include "includes/breadcrumbs.html" %}
-            {% endwith %}
+    <div id="board">
+    {% with thread=thread category=thread.category %}
+        {% include "includes/breadcrumbs.html" %}
+    {% endwith %}
 
-                {% if has_long_title %}
-                    Your chosen title was too long. Keep it under characters.
-                {% endif %}
+        {% if has_long_title %}
+            Your chosen title was too long. Keep it under characters.
+        {% endif %}
 
-                <form action="{% url forum.views.moderate_thread thread.id %}" method="post" id="reply" name="reply-form">
-                    {% csrf_token %}
+        <form action="{% url forum.views.moderate_thread thread.id %}" method="post" id="reply" name="reply-form">
+            {% csrf_token %}
 
-                    <input type="text" x-webkit-speech name="title" id="title-form" value="{{ title }}" placeholder="Use a descriptive title here." required />
+            <input type="text" x-webkit-speech name="title" id="title-form" value="{{ title }}" placeholder="Use a descriptive title here." required />
 
-                    <div id="button-group">
-                        <input type="submit" name="moderate" id="submit" value="Moderate" />
-                    </div>
-                </form>
+            <div id="button-group">
+                <input type="submit" name="moderate" id="submit" value="Moderate" />
             </div>
+        </form>
+    </div>
 {% endblock %}
