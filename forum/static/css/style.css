@@ -25,7 +25,7 @@ blockquote {
 }
 
 code {
-    font-family: Consolas, Monaco, monospace;
+    font-family: "Lucida Grande", Consolas, monospace;
     padding: 0 0.25em;
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
@@ -35,7 +35,7 @@ code {
 }
 
 pre {
-    font: 0.8125em/1.8462em Consolas, Monaco, monospace;
+    font: 0.8125em/1.8462em "Lucida Grande", Consolas, monospace;
     display: block;
     margin: 1em 1px; /** 1px to offset the border */
     padding: 5px 15px;
@@ -505,7 +505,7 @@ legend {
 }
 
 #content table.hide {
-    font: 0.6em/1.2em Consolas, monospace;
+    font: 0.6em/1.2em "Lucida Grande", Consolas, monospace;
 }
 /**** * ****/
 
@@ -633,7 +633,7 @@ span#error {
 #board .words table,
 #content-body table {
     display: inline-block;
-    font: 0.8125em/1.8462em Consolas, Monaco, monospace;
+    font: 0.8125em/1.8462em "Lucida Grande", Consolas, monospace;
     margin: 0 1px 1em; /** 1px to offset the border */
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
@@ -793,7 +793,7 @@ span#error {
 }
 
 #example table {
-    font: 0.9em/1.35em Consolas, Inconsolata, monospace;
+    font: 0.9em/1.35em "Lucida Grande", Consolas, Inconsolata, monospace;
     border: 1px solid black;
     width: 90%;
     margin: 0 auto 1.5em; /** Recalculate */
