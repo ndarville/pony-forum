@@ -5,6 +5,8 @@
     {% if action == "sticky" %}{% url forum.views.sticky_thread obj.id %}
     {% elif action == "lock" %}{% url forum.views.lock_thread obj.id %}
     {% elif action == "subscribe" %}{% url forum.views.subscriptions_nonjs obj.id %}
+    {% elif action == "bookmark" %}{% url forum.views.bookmarks_nonjs obj.id %}
+    {% elif action == "save" %}{% url forum.views.saves_nonjs obj.id %}
     {% else %} {# action == "remove" #}
         {% if object_type == "thread" %}{% url remove_thread obj.id %}
         {% else %}{% url remove_post obj.id %}
@@ -21,6 +23,8 @@
         {% if action == "sticky" %}{% url forum.views.sticky_thread obj.id %}
         {% elif action == "lock" %}{% url forum.views.lock_thread obj.id %}
         {% elif action == "subscribe" %}{% url forum.views.subscriptions_nonjs obj.id %}
+        {% elif action == "bookmark" %}{% url forum.views.bookmarks_nonjs obj.id %}
+        {% elif action == "save" %}{% url forum.views.saves_nonjs obj.id %}
         {% else %} {# action == "remove" #}
             {% if object_type == "thread" %}{% url remove_thread obj.id %}
             {% else %}{% url remove_post obj.id %}

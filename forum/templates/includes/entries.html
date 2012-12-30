@@ -53,7 +53,7 @@
         </div>
 
         <div class="left-buttons">
-            <a class="button js" id="{{ post.id }}" href="#">{% if post in user.saves.all %}Unsave{% else %}Save{% endif %}</a> {# Expensive #}
+            <a class="button js" id="{{ post.id }}" href="{% url forum.views.saves_nonjs post.id %}">{% if post in user.saves.all %}Unsave{% else %}Save{% endif %}</a> {# Expensive #}
     {% comment %}
         {% if user != post_author %}
             <a class="button js" id="{{ post.id }}" href="#" role="button">{% if post in user.thanks.all %}Unthank{% else %}Thank{% endif %}</a> {# Expensive #}

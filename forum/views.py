@@ -69,6 +69,7 @@ from registration                   import views as registration_views
 ##  site_configuration
 #
 ##  saves_and_bookmarks
+##      saves_nonjs
 ##      bookmarks_nonjs
 
 
@@ -1187,3 +1188,56 @@ def saves_and_bookmarks(request, object_type):
     return render(request, 'saves_and_bookmarks.html',
                           {'type'   : object_type,
                            'objects': objects})
+
+
+@login_required()
+def saves_nonjs(request, post_id):
+    """An HTML fall-back for `save_js()`, in case the user
+    has disabled JavaScript in their browser.
+    """
+    post   = get_object_or_404(Post, pk=post_id)
+    thread = post.thread
+
+    if request.method == 'POST':  # Form has been submitted
+        if 'save' in request.POST:  # Save command
+            post.saves.add(request.user)
+            messages.info(request, "Saved post.")
+        else:  # Unsave command
+            post.saves.remove(request.user)
+            messages.info(request, "Unsaved post.")
+        thread.save()
+
+        return HttpResponseRedirect(request.POST['next'])
+    else:  # Otherwise, show clean, normal page with no populated data
+        return render(request, 'simple_mod_action.html',
+                              {'thread'     : thread,
+                               'obj'        : post,
+                               'object_type': 'post',
+                               'action'     : 'save',
+                               'request'    : request})
+
+
+@login_required()
+def bookmarks_nonjs(request, thread_id):
+    """An HTML fall-back for `bookmark_js()`, in case the user
+    has disabled JavaScript in their browser.
+    """
+    thread = get_object_or_404(Thread, pk=thread_id)
+
+    if request.method == 'POST':  # Form has been submitted
+        if 'bookmark' in request.POST:  # Bookmark command
+            thread.bookmarker.add(request.user)
+            messages.info(request, "Bookmarked thread.")
+        else:  # Unbookmark command
+            thread.bookmarker.remove(request.user)
+            messages.info(request, "Unbookmarked thread.")
+        thread.save()
+
+        return HttpResponseRedirect(request.POST['next'])
+    else:  # Otherwise, show clean, normal page with no populated data
+        return render(request, 'simple_mod_action.html',
+                              {'thread'     : thread,
+                               'obj'        : thread,
+                               'object_type': 'thread',
+                               'action'     : 'bookmark',
+                               'request'    : request})
