@@ -280,17 +280,26 @@ class SiteConfigurationTests(TestCase):
             reverse('site_configuration'),
             {'site_name': test_text, 'site_domain': test_text})
 
- #! TODO
- #  def test_restore
-
-
 #! TODO
-#
-# * subscription
+#  def test_restore
+#  def test_unlock
+#  def test_unsticky
+
+# * Non JS
+#     * subscribe
+#         * from thread
+#         * from subscription list
+#     * bookmark
+#         * from thread
+#         * from bookmark list
+#     * save
+#         * from thread/post
+#         * from saves list
+#     * thank, agree
+
 # * report
-# * reports
-# * saves_and_bookmarks
-#
+# * reports (GET, POST to dismiss)
+
 # * Different types of visitors:
 #     * Admin
 #     * Regular, authorized user
