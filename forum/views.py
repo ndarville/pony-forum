@@ -72,6 +72,7 @@ from registration                   import views as registration_views
 ##  nonjs
 ##      subscribe
 ##      bookmark
+##      sticky
 ##      save
 
 
@@ -776,39 +777,6 @@ def lock_thread(request, thread_id):
                                'action'     : 'lock'})
 
 
-@permission_required('forum.sticky_thread')
-def sticky_thread(request, thread_id):
-    """Lets the permitted user sticky a thread,
-    thereby sticking it to the top of the thread list.
-
-    Also allows the opposite action, i.e. to unsticky it.
-    """
-    thread = get_object_or_404(Thread, pk=thread_id)
-
-    if thread.is_removed and not request.user.has_perm('forum.remove_thread'):
-        messages.info(request, "The has thread been removed.")
-        return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
-
-    if request.method == 'POST':  # Form has been submitted
-        if 'sticky' in request.POST:  # Lock command
-            if thread.is_sticky:
-                messages.info(request, "The thread was already sticky.")
-            thread.is_sticky = True
-        else:  # Unsticky command
-            if not thread.is_sticky:
-                messages.info(request, "The thread was already not sticky.")
-            thread.is_sticky = False
-
-        thread.save()
-        return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
-    else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'simple_action.html',
-                              {'thread'     : thread,
-                               'obj'        : thread,
-                               'object_type': 'thread',
-                               'action'     : 'sticky'})
-
-
 @permission_required('forum.merge_thread')
 def merge_thread(request, thread_id):
     """Merge the posts of two threads into one single thread.
@@ -1183,7 +1151,7 @@ def nonjs(request, action, object_id):
         object_type = 'thread'
 
     if request.method == 'POST':  # Form has been submitted
-        if request.method == 'POST':  # Form has been submitted
+        if 'bookmark' in action:
             if 'subscribe' in request.POST:  # Subscribe command
                 thread.subscriber.add(request.user)
                 messages.info(request, "Subscribed to thread.")
@@ -1191,6 +1159,7 @@ def nonjs(request, action, object_id):
                 thread.subscriber.remove(request.user)
                 messages.info(request, "Unsubscribed from thread.")
             thread.save()
+
         elif 'bookmark' in action:
             if 'bookmark' in request.POST:  # Bookmark command
                 thread.bookmarker.add(request.user)
@@ -1199,25 +1168,51 @@ def nonjs(request, action, object_id):
                 thread.bookmarker.remove(request.user)
                 messages.info(request, "Unbookmarked thread.")
             thread.save()
+
         elif 'lock' in action:
             pass
+
         elif 'sticky' in action:
-            pass
+            # Lets the permitted user sticky a thread,
+            # thereby sticking it to the top of the thread list.
+            #
+            # Also allows the opposite action, i.e. to unsticky it.
+            if thread.is_removed and not request.user.has_perm('forum.remove_thread'):
+                messages.info(request, "The has thread been removed.")
+                return HttpResponseRedirect(reverse('forum.views.category',
+                    args=(thread.category_id,)))
+            if not request.user.has_perm('forum.sticky_thread'):
+                messages.error(request,
+                    "You do not have permission to sticky and unsticky threads.")
+                return HttpResponseRedirect(next)
+            if 'sticky' in request.POST:  # Lock command
+                if thread.is_sticky:
+                    messages.info(request, "The thread was already sticky.")
+                thread.is_sticky = True
+                messages.info(request, "Thread was stickied.")
+            else:  # Unsticky command
+                if not thread.is_sticky:
+                    messages.info(request, "The thread was already not sticky.")
+                thread.is_sticky = False
+                messages.info(request, "Thread was unstickied.")
+            thread.save()
+
         elif 'save' in action:
-            if request.method == 'POST':  # Form has been submitted
-                if 'save' in request.POST:  # Save command
-                    post.saves.add(request.user)
-                    messages.info(request, "Saved post.")
-                else:  # Unsave command
-                    post.saves.remove(request.user)
-                    messages.info(request, "Unsaved post.")
-                thread.save()
+            if 'save' in request.POST:  # Save command
+                post.saves.add(request.user)
+                messages.info(request, "Saved post.")
+            else:  # Unsave command
+                post.saves.remove(request.user)
+                messages.info(request, "Unsaved post.")
+            thread.save()
+
         elif 'thank' in action:
             pass
+
         elif 'agree' in action:
             pass
 
-        return HttpResponseRedirect(request.POST['next'])
+        return HttpResponseRedirect(next)
     else:  # Otherwise, show clean, normal page with no populated data
         canonical_url = reverse('forum.views.nonjs', args=(action, object_id))
         return render(request, 'simple_action.html',
