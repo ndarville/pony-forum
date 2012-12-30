@@ -290,23 +290,24 @@ def subscriptions(request):
                            'objects'    : objects})
 
 
+# @login_required()  # Doesn't work
 def subscriptions_js(request):
     """Lets users subscribe to and unsubscribe from threads
     in the subscription views.
     """
     if request.is_ajax() and request.method == "POST":
-        thread_id = request.POST['thread_id']
+        thread_id = request.POST['object_id']
         action    = request.POST['action'].lower()
         thread    = get_object_or_404(Thread, pk=thread_id)
 
-        if action == "unsubscribe":
+        if action == "unsubscribed":
             thread.subscriber.remove(request.user)
-            new_action = "Subscribe"
+            new_action = "Re-subscribe"
         else:
             thread.subscriber.add(request.user)
-            new_action = "Unsubscribe"
+            new_action = "Unsubscribed"
 
-        HttpResponse(new_action)
+        return HttpResponse(new_action)
 
 
 @login_required()
@@ -394,8 +395,6 @@ def thread_js(request):
     5. Save posts
     """
     if request.is_ajax() and request.method == "POST":
-        # if not logged in ...
-
         object_id = request.POST['object_id']
         action    = request.POST['action'].lower()
 
