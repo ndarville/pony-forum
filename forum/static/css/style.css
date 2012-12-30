@@ -982,7 +982,7 @@ textarea,
 /*** Unrounded Corners Fix ***/
     /** Upper left AND right **/
         #navigation .first {
-            -webkit-border-top-left-radius: 5px ;
+            -webkit-border-top-left-radius: 5px;
             -webkit-border-top-right-radius: 5px;
             -moz-border-radius-topleft: 5px;
             -moz-border-radius-topright: 5px;
@@ -1006,7 +1006,7 @@ textarea,
         #content-body th:first-child,
         #content .categories th:first-child,
         #content .threads th:first-child {
-            -webkit-border-top-left-radius: 5px ;
+            -webkit-border-top-left-radius: 5px;
             -moz-border-radius-topleft: 5px;
             border-top-left-radius: 5px;
         }
@@ -1016,7 +1016,7 @@ textarea,
         #content-body th:last-child,
         #content .categories th:last-child,
         #content .threads th:last-child {
-            -webkit-border-top-right-radius: 5px ;
+            -webkit-border-top-right-radius: 5px;
             -moz-border-radius-topright: 5px;
             border-top-right-radius: 5px;
         }
