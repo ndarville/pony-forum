@@ -2,7 +2,7 @@
         <li><a href="{% url remove_thread thread.id %}">Restore</a></li>
 {% else %}
     {% if perms.forum.lock_thread %}
-        <li><a href="{% url forum.views.lock_thread thread.id %}">{% if thread.is_locked %}Unlock{% else %}Lock{% endif %}</a></li>
+        <li><a href="{% url forum.views.nonjs 'lock' thread.id %}">{% if thread.is_locked %}Unlock{% else %}Lock{% endif %}</a></li>
     {% endif %}
     {% if perms.forum.change_thread %}
         <li><a href="{% url forum.views.moderate_thread thread.id %}">Moderate</a></li>

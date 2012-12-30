@@ -54,7 +54,6 @@ from registration                   import views as registration_views
 ##  moderate_thread
 ##  merge_thread
 ##  move_thread
-##  lock_thread
 ##  remove
 ##  report
 ##  reports
@@ -72,6 +71,7 @@ from registration                   import views as registration_views
 ##  nonjs
 ##      subscribe
 ##      bookmark
+##      lock
 ##      sticky
 ##      save
 
@@ -744,39 +744,6 @@ def edit(request, post_id):
                            'preview_html' : preview_html})
 
 
-@permission_required('forum.lock_thread')
-def lock_thread(request, thread_id):
-    """Lets the permitted user lock a thread,
-    i.e., prevent people from posting in it.
-
-    Also allows the opposite action, i.e. to unlock it.
-    """
-    thread = get_object_or_404(Thread, pk=thread_id)
-
-    if thread.is_removed and not request.user.has_perm('forum.remove_thread'):
-        messages.info(request, "The has thread been removed.")
-        return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
-
-    if request.method == 'POST':  # Form has been submitted
-        if 'lock' in request.POST:  # Lock command
-            if thread.is_locked:
-                messages.info(request, "The thread was already locked.")
-            thread.is_locked = True
-        else:  # Unlock command
-            if not thread.is_locked:
-                messages.info(request, "The thread was already not locked.")
-            thread.is_locked = False
-
-        thread.save()
-        return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
-    else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'simple_action.html',
-                              {'thread'     : thread,
-                               'obj'        : thread,
-                               'object_type': 'thread',
-                               'action'     : 'lock'})
-
-
 @permission_required('forum.merge_thread')
 def merge_thread(request, thread_id):
     """Merge the posts of two threads into one single thread.
@@ -1170,7 +1137,29 @@ def nonjs(request, action, object_id):
             thread.save()
 
         elif 'lock' in action:
-            pass
+            # Lets the permitted user lock a thread,
+            # i.e., prevent people from posting in it.
+            #
+            # Also allows the opposite action, i.e. to unlock it.
+            if thread.is_removed and not request.user.has_perm('forum.remove_thread'):
+                messages.info(request, "The has thread been removed.")
+                return HttpResponseRedirect(reverse('forum.views.category',
+                    args=(thread.category_id,)))
+            if not request.user.has_perm('forum.lock_thread'):
+                messages.error(request,
+                    "You do not have permission to lock and unlock threads.")
+                return HttpResponseRedirect(next)
+            if 'lock' in request.POST:  # Lock command
+                if thread.is_locked:
+                    messages.info(request, "The thread was already locked.")
+                thread.is_locked = True
+                messages.info(request, "Thread was locked.")
+            else:  # Unlock command
+                if not thread.is_locked:
+                    messages.info(request, "The thread was already not locked.")
+                thread.is_locked = False
+                messages.info(request, "Thread was unlocked.")
+            thread.save()
 
         elif 'sticky' in action:
             # Lets the permitted user sticky a thread,

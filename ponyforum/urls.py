@@ -36,7 +36,6 @@ urlpatterns = patterns('forum.views',
 #   Thread
     (r'^thread/(?P<thread_id>\d+)/reply/$',      'reply'),
     (r'^thread/js/$',                            'thread_js'),
-    (r'^thread/(?P<thread_id>\d+)/lock/$',       'lock_thread'),
     (r'^thread/(?P<thread_id>\d+)/merge/$',      'merge_thread'),
     (r'^thread/(?P<thread_id>\d+)/move/$',       'move_thread'),
     (r'^thread/(?P<thread_id>\d+)/moderate/$',   'moderate_thread'),
