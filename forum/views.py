@@ -329,7 +329,7 @@ def subscriptions_nonjs(request, thread_id):
          #  return to specific page in thread
       # if directed from a subscriptions list
          #  return to a specific page in subscriptions list
-         return HttpResponseRedirect(reverse(
+        return HttpResponseRedirect(reverse(
             'forum.views.subscriptions', args=()))
     else:  # Otherwise, show clean, normal page with no populated data
         return render(request, 'simple_mod_action.html',
