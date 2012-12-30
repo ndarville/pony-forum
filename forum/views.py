@@ -34,7 +34,7 @@ from registration                   import views as registration_views
 #
 ##  subscriptions
 ##      subscriptions_js
-##      subscriptionsnon_js
+##      subscriptions_non_js
 #
 ##  category
 ##  thread
@@ -325,10 +325,12 @@ def subscriptions_nonjs(request, thread_id):
             messages.info(request, "Unsubscribed from thread.")
         thread.save()
 
-        # if directed from a a thread:
+      # if directed from a a thread:
          #  return to specific page in thread
-        # if directed from a subscriptions list
+      # if directed from a subscriptions list
          #  return to a specific page in subscriptions list
+         return HttpResponseRedirect(reverse(
+            'forum.views.subscriptions', args=()))
     else:  # Otherwise, show clean, normal page with no populated data
         return render(request, 'simple_mod_action.html',
                               {'thread'     : thread,
