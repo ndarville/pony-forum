@@ -45,6 +45,7 @@ Pony Forum features such niceties as:
     * SSL support
     * [PBKDF2][pbkdf2] password-hashing
     * [django-secure][django-secure] vetting
+* Fully works even when JavaScript is disabled or blocked (with NoScript and such) thanks to complete HTML fall-back. Put *that* in your pipe and smoke it.
 
 [Requirements](#requirements)
 --------------
