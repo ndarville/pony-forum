@@ -36,7 +36,7 @@
             {% endif %}
             </div>
         {% if request %}
-            <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}" />
+            <input type="hidden" name="next" value="{{ next }}" />
         {% endif %}
         </form>
     </div>
