@@ -450,6 +450,40 @@ legend {
 }
 /**** * ****/
 
+/****               *****
+***** SUBSCRIPTIONS *****
+*****               ****/
+.unread {
+    text-align: center;
+}
+
+#content-body .unsubscribe,
+#content-body .count {
+    padding: 0.25em 0.75em;
+    background-color: #FFF;
+    border: 1px solid #D1D1D1;
+    text-decoration: none;
+}
+
+#content-body .unsubscribe {
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#content-body .count {
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-right-radius: 5px;
+}
+/**** * ****/
+
 /****          *****
 ***** THREADS *****
 *****          ****/
@@ -569,9 +603,9 @@ span#error {
 */
 /**** * ****/
 
-/****                         *****
+/****                        *****
 ***** THREAD & POST template *****
-*****                         ****/
+*****                        ****/
 #board {
     background-color: #FF9;
     width: 680px;
