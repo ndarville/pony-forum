@@ -1,5 +1,5 @@
-    <li><a class="js" id="{{ thread.id }}" href="{% url forum.views.subscriptions_nonjs thread.id %}" role="button">{% if thread in user.subscriptions.all %}Unsubscribe{% else %}Subscribe{% endif %}</a></li>
-    <li><a class="js" id="{{ thread.id }}" href="{% url forum.views.bookmarks_nonjs thread.id %}" role="button">{% if thread in user.bookmarks.all %}Unbookmark{% else %}Bookmark{% endif %}</a></li>
+    <li><a class="js" id="{{ thread.id }}" href="{% url forum.views.nonjs 'subscribe' thread.id %}" role="button">{% if thread in user.subscriptions.all %}Unsubscribe{% else %}Subscribe{% endif %}</a></li>
+    <li><a class="js" id="{{ thread.id }}" href="{% url forum.views.nonjs 'bookmark' thread.id %}" role="button">{% if thread in user.bookmarks.all %}Unbookmark{% else %}Bookmark{% endif %}</a></li>
 {% if not thread.is_locked %}
     <li><a href="{% url report_thread thread.id %}">Report</a></li>
     <li><a href="{% url forum.views.reply thread.id %}">

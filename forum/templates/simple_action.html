@@ -2,15 +2,12 @@
 
 {% block title %}{{ thread.title_html|safe }}: {{ action|capfirst }} {{ type|capfirst }}{% endblock %}
 {% block canonical_url %}
-    {% if action == "sticky" %}{% url forum.views.sticky_thread obj.id %}
-    {% elif action == "lock" %}{% url forum.views.lock_thread obj.id %}
-    {% elif action == "subscribe" %}{% url forum.views.subscriptions_nonjs obj.id %}
-    {% elif action == "bookmark" %}{% url forum.views.bookmarks_nonjs obj.id %}
-    {% elif action == "save" %}{% url forum.views.saves_nonjs obj.id %}
-    {% else %} {# action == "remove" #}
+    {% if action == "remove" %}
         {% if object_type == "thread" %}{% url remove_thread obj.id %}
         {% else %}{% url remove_post obj.id %}
         {% endif %}
+    {% else %}
+        {{ absolute_url }}
     {% endif %}
 {% endblock %}
 {% block content %}
@@ -20,15 +17,12 @@
         {% endwith %}
 
         <form action="
-        {% if action == "sticky" %}{% url forum.views.sticky_thread obj.id %}
-        {% elif action == "lock" %}{% url forum.views.lock_thread obj.id %}
-        {% elif action == "subscribe" %}{% url forum.views.subscriptions_nonjs obj.id %}
-        {% elif action == "bookmark" %}{% url forum.views.bookmarks_nonjs obj.id %}
-        {% elif action == "save" %}{% url forum.views.saves_nonjs obj.id %}
-        {% else %} {# action == "remove" #}
+        {% if action == "remove" %}
             {% if object_type == "thread" %}{% url remove_thread obj.id %}
             {% else %}{% url remove_post obj.id %}
             {% endif %}
+        {% else %}
+            {% url forum.views.nonjs action object_id %}
         {% endif %}
         " method="post">
             {% csrf_token %}

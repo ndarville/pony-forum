@@ -34,7 +34,6 @@ from registration                   import views as registration_views
 #
 ##  subscriptions
 ##      subscriptions_js
-##      subscriptions_nonjs
 #
 ##  category
 ##  thread
@@ -69,8 +68,11 @@ from registration                   import views as registration_views
 ##  site_configuration
 #
 ##  saves_and_bookmarks
-##      saves_nonjs
-##      bookmarks_nonjs
+#
+##  nonjs
+##      subscribe
+##      bookmark
+##      save
 
 
 MAX_THREAD_TITLE_LENGTH   = Thread._meta.get_field("title_plain").max_length
@@ -311,32 +313,6 @@ def subscriptions_js(request):
             new_action = "Re-subscribe"
 
         return HttpResponse(new_action)
-
-
-@login_required()
-def subscriptions_nonjs(request, thread_id):
-    """An HTML fall-back for `subscription_js()`, in case the user
-    has disabled JavaScript in their browser.
-    """
-    thread = get_object_or_404(Thread, pk=thread_id)
-
-    if request.method == 'POST':  # Form has been submitted
-        if 'subscribe' in request.POST:  # Subscribe command
-            thread.subscriber.add(request.user)
-            messages.info(request, "Subscribed to thread.")
-        else:  # Unsubscribe command
-            thread.subscriber.remove(request.user)
-            messages.info(request, "Unsubscribed from thread.")
-        thread.save()
-
-        return HttpResponseRedirect(request.POST['next'])
-    else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'simple_action.html',
-                              {'thread'     : thread,
-                               'obj'        : thread,
-                               'object_type': 'thread',
-                               'action'     : 'subscribe',
-                               'request'    : request})
 
 
 def category(request, category_id):
@@ -1191,53 +1167,62 @@ def saves_and_bookmarks(request, object_type):
 
 
 @login_required()
-def saves_nonjs(request, post_id):
-    """An HTML fall-back for `save_js()`, in case the user
-    has disabled JavaScript in their browser.
+def nonjs(request, action, object_id):
+    """An HTML fall-back for when the JavaScript required
+    for some views is off.
     """
-    post   = get_object_or_404(Post, pk=post_id)
-    thread = post.thread
+    if action in ['save', 'thank', 'agree']:
+        obj = get_object_or_404(Post, pk=object_id)
+        thread = obj.thread
+        object_type = 'post'
+    else:
+        obj = get_object_or_404(Thread, pk=object_id)
+        thread = obj
+        object_type = 'thread'
 
     if request.method == 'POST':  # Form has been submitted
-        if 'save' in request.POST:  # Save command
-            post.saves.add(request.user)
-            messages.info(request, "Saved post.")
-        else:  # Unsave command
-            post.saves.remove(request.user)
-            messages.info(request, "Unsaved post.")
-        thread.save()
+        if request.method == 'POST':  # Form has been submitted
+            if 'subscribe' in request.POST:  # Subscribe command
+                thread.subscriber.add(request.user)
+                messages.info(request, "Subscribed to thread.")
+            else:  # Unsubscribe command
+                thread.subscriber.remove(request.user)
+                messages.info(request, "Unsubscribed from thread.")
+            thread.save()
+        elif 'bookmark' in action:
+            if 'bookmark' in request.POST:  # Bookmark command
+                thread.bookmarker.add(request.user)
+                messages.info(request, "Bookmarked thread.")
+            else:  # Unbookmark command
+                thread.bookmarker.remove(request.user)
+                messages.info(request, "Unbookmarked thread.")
+            thread.save()
+        elif 'lock' in action:
+            pass
+        elif 'sticky' in action:
+            pass
+        elif 'save' in action:
+            if request.method == 'POST':  # Form has been submitted
+                if 'save' in request.POST:  # Save command
+                    post.saves.add(request.user)
+                    messages.info(request, "Saved post.")
+                else:  # Unsave command
+                    post.saves.remove(request.user)
+                    messages.info(request, "Unsaved post.")
+                thread.save()
+        elif 'thank' in action:
+            pass
+        elif 'agree' in action:
+            pass
 
         return HttpResponseRedirect(request.POST['next'])
     else:  # Otherwise, show clean, normal page with no populated data
+        canonical_url = reverse('forum.views.nonjs', args=(action, object_id))
         return render(request, 'simple_action.html',
-                              {'thread'     : thread,
-                               'obj'        : post,
-                               'object_type': 'post',
-                               'action'     : 'save',
-                               'request'    : request})
-
-
-@login_required()
-def bookmarks_nonjs(request, thread_id):
-    """An HTML fall-back for `bookmark_js()`, in case the user
-    has disabled JavaScript in their browser.
-    """
-    thread = get_object_or_404(Thread, pk=thread_id)
-
-    if request.method == 'POST':  # Form has been submitted
-        if 'bookmark' in request.POST:  # Bookmark command
-            thread.bookmarker.add(request.user)
-            messages.info(request, "Bookmarked thread.")
-        else:  # Unbookmark command
-            thread.bookmarker.remove(request.user)
-            messages.info(request, "Unbookmarked thread.")
-        thread.save()
-
-        return HttpResponseRedirect(request.POST['next'])
-    else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'simple_mod_action.html',
-                              {'thread'     : thread,
-                               'obj'        : thread,
-                               'object_type': 'thread',
-                               'action'     : 'bookmark',
-                               'request'    : request})
+                              {'thread'       : thread,
+                               'obj'          : obj,
+                               'object_type'  : object_type,
+                               'action'       : action,
+                               'object_id'    : object_id,
+                               'canonical_url': canonical_url,
+                               'request'      : request})
