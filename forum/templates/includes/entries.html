@@ -57,7 +57,7 @@
     {% comment %}
         {% if user != post_author %}
             <a class="button js" id="{{ post.id }}" href="forum.views.nonjs 'thank' post.id" role="button">{% if post in user.thanks.all %}Unthank{% else %}Thank{% endif %}</a> {# Expensive #}
-            <a class="button js" id="{{ post.id }}" href="forum.views.nonjs 'thank' thread.id">{% if post in user.agrees.all %}Unagree{% else %}Agree{% endif %}</a> {# Expensive #}
+            <a class="button js" id="{{ post.id }}" href="forum.views.nonjs 'agree' post.id">{% if post in user.agrees.all %}Unagree{% else %}Agree{% endif %}</a> {# Expensive #}
         {% endif %}}
         {% if post_thanks %}
             <a class="button thanks" href="#" role="button">Thanked</a>

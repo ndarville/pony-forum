@@ -74,6 +74,8 @@ from registration                   import views as registration_views
 ##      lock
 ##      sticky
 ##      save
+##      thank
+##      agree
 
 
 MAX_THREAD_TITLE_LENGTH   = Thread._meta.get_field("title_plain").max_length
@@ -1193,13 +1195,25 @@ def nonjs(request, action, object_id):
             else:  # Unsave command
                 post.saves.remove(request.user)
                 messages.info(request, "Unsaved post.")
-            thread.save()
+            post.save()
 
         elif 'thank' in action:
-            pass
+            if 'thank' in request.POST:  # Thank command
+                post.thanks.add(request.user)
+                messages.info(request, "Thanked author of the post.")
+            else:  # Unthank command
+                post.thanks.remove(request.user)
+                messages.info(request, "Unthanked author of the post.")
+            post.save()
 
         elif 'agree' in action:
-            pass
+            if 'agree' in request.POST:  # Agree command
+                post.agrees.add(request.user)
+                messages.info(request, "Agreed with the author in the post.")
+            else:  # Unagree command
+                post.agrees.remove(request.user)
+                messages.info(request, "Unagreed with the author of the post.")
+            post.save()
 
         return HttpResponseRedirect(next)
     else:  # Otherwise, show clean, normal page with no populated data
