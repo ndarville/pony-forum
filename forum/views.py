@@ -34,7 +34,7 @@ from registration                   import views as registration_views
 #
 ##  subscriptions
 ##      subscriptions_js
-##      subscriptions_non_js
+##      subscriptions_nonjs
 #
 ##  category
 ##  thread
@@ -69,6 +69,7 @@ from registration                   import views as registration_views
 ##  site_configuration
 #
 ##  saves_and_bookmarks
+##      bookmarks_nonjs
 
 
 MAX_THREAD_TITLE_LENGTH   = Thread._meta.get_field("title_plain").max_length
