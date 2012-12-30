@@ -331,7 +331,7 @@ def subscriptions_nonjs(request, thread_id):
 
         return HttpResponseRedirect(request.POST['next'])
     else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'simple_mod_action.html',
+        return render(request, 'simple_action.html',
                               {'thread'     : thread,
                                'obj'        : thread,
                                'object_type': 'thread',
@@ -793,7 +793,7 @@ def lock_thread(request, thread_id):
         thread.save()
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'simple_mod_action.html',
+        return render(request, 'simple_action.html',
                               {'thread'     : thread,
                                'obj'        : thread,
                                'object_type': 'thread',
@@ -826,7 +826,7 @@ def sticky_thread(request, thread_id):
         thread.save()
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'simple_mod_action.html',
+        return render(request, 'simple_action.html',
                               {'thread'     : thread,
                                'obj'        : thread,
                                'object_type': 'thread',
@@ -974,7 +974,7 @@ def remove(request, object_id, object_type):
         obj.save()
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:
-        return render(request, 'simple_mod_action.html',
+        return render(request, 'simple_action.html',
                               {'object_type': object_type,
                                'obj'        : obj,
                                'thread'     : thread,
@@ -1209,7 +1209,7 @@ def saves_nonjs(request, post_id):
 
         return HttpResponseRedirect(request.POST['next'])
     else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'simple_mod_action.html',
+        return render(request, 'simple_action.html',
                               {'thread'     : thread,
                                'obj'        : post,
                                'object_type': 'post',
