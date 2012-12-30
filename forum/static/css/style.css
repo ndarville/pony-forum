@@ -450,15 +450,22 @@ legend {
 }
 /**** * ****/
 
-/****               *****
-***** SUBSCRIPTIONS *****
-*****               ****/
-.unread {
+/****                        *****
+***** SUBS, SAVES, BOOKMARKS *****
+*****                        ****/
+.unread, .removal {
     text-align: center;
 }
 
+.remove {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
 #content-body .unsubscribe,
-#content-body .count {
+#content-body .count,
+#content-body .remove {
     padding: 0.25em 0.75em;
     background-color: #FFF;
     border: 1px solid #D1D1D1;

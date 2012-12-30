@@ -2,7 +2,7 @@
         <li><a href="{% url remove_thread thread.id %}">Restore</a></li>
 {% else %}
     {% if perms.forum.lock_thread %}
-        <li><a href="{% url forum.views.lock_thread thread.id %}">{% if thread.is_locked %}Unlock{% else %}Lock{% endif %}</a></li>
+        <li><a href="{% url forum.views.nonjs 'lock' thread.id %}">{% if thread.is_locked %}Unlock{% else %}Lock{% endif %}</a></li>
     {% endif %}
     {% if perms.forum.change_thread %}
         <li><a href="{% url forum.views.moderate_thread thread.id %}">Moderate</a></li>
@@ -11,7 +11,7 @@
         <li><a href="{% url forum.views.move_thread thread.id %}">Move</a></li>
     {% endif %}
     {% if perms.forum.sticky_thread %}
-        <li><a href="{% url forum.views.sticky_thread thread.id %}">{% if thread.is_sticky %}Unsticky{% else %}Sticky{% endif %}</a></li>
+        <li><a href="{% url forum.views.nonjs 'sticky' thread.id %}">{% if thread.is_sticky %}Unsticky{% else %}Sticky{% endif %}</a></li>
     {% endif %}
     {% if perms.forum.merge_thread %}
         <li><a href="{% url forum.views.merge_thread thread.id %}">Merge</a></li>

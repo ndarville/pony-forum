@@ -31,9 +31,9 @@ from registration                   import views as registration_views
 ##  helper functions
 #
 ##  home
+#
 ##  subscriptions
 ##      subscriptions_js
-##      subscriptionsnon_js
 #
 ##  category
 ##  thread
@@ -54,7 +54,6 @@ from registration                   import views as registration_views
 ##  moderate_thread
 ##  merge_thread
 ##  move_thread
-##  lock_thread
 ##  remove
 ##  report
 ##  reports
@@ -68,6 +67,17 @@ from registration                   import views as registration_views
 ##  site_configuration
 #
 ##  saves_and_bookmarks
+##      bookmarks_js
+##      saves_js
+#
+##  nonjs
+##      subscribe
+##      bookmark
+##      lock
+##      sticky
+##      save
+##      thank
+##      agree
 
 
 MAX_THREAD_TITLE_LENGTH   = Thread._meta.get_field("title_plain").max_length
@@ -289,23 +299,25 @@ def subscriptions(request):
                            'objects'    : objects})
 
 
+# @login_required()  # Doesn't work
 def subscriptions_js(request):
     """Lets users subscribe to and unsubscribe from threads
     in the subscription views.
     """
     if request.is_ajax() and request.method == "POST":
-        thread_id = request.POST['thread_id']
+        object_id = request.POST['object_id']
         action    = request.POST['action'].lower()
-        thread    = get_object_or_404(Thread, pk=thread_id)
+        thread    = get_object_or_404(Thread, pk=object_id)
 
-        if action == "unsubscribe":
-            thread.subscriber.remove(request.user)
-            new_action = "Subscribe"
-        else:
+        if action == "re-subscribe":
             thread.subscriber.add(request.user)
             new_action = "Unsubscribe"
 
-        HttpResponse(new_action)
+        else:
+            thread.subscriber.remove(request.user)
+            new_action = "Re-subscribe"
+
+        return HttpResponse(new_action)
 
 
 def category(request, category_id):
@@ -363,8 +375,6 @@ def thread_js(request):
     5. Save posts
     """
     if request.is_ajax() and request.method == "POST":
-        # if not logged in ...
-
         object_id = request.POST['object_id']
         action    = request.POST['action'].lower()
 
@@ -469,7 +479,7 @@ def thread_nonjs(request, object_id, action, current_page):
             messages.info(request, "Removed thank-you for the post.")
 
     return HttpResponseRedirect(reverse('forum.views.thread',
-        args=(user_id,))+'?page='+current_page)
+        args=(object_id,))+'?page='+current_page)
 
 
 def post(request, post_id):
@@ -738,72 +748,6 @@ def edit(request, post_id):
                            'preview_html' : preview_html})
 
 
-@permission_required('forum.lock_thread')
-def lock_thread(request, thread_id):
-    """Lets the permitted user lock a thread,
-    i.e., prevent people from posting in it.
-
-    Also allows the opposite action, i.e. to unlock it.
-    """
-    thread = get_object_or_404(Thread, pk=thread_id)
-
-    if thread.is_removed and not request.user.has_perm('forum.remove_thread'):
-        messages.info(request, "The has thread been removed.")
-        return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
-
-    if request.method == 'POST':  # Form has been submitted
-        if 'lock' in request.POST:  # Lock command
-            if thread.is_locked:
-                messages.info(request, "The thread was already locked.")
-            thread.is_locked = True
-        else:  # Unlock command
-            if not thread.is_locked:
-                messages.info(request, "The thread was already not locked.")
-            thread.is_locked = False
-
-        thread.save()
-        return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
-    else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'simple_mod_action.html',
-                              {'thread'     : thread,
-                               'obj'        : thread,
-                               'object_type': 'thread',
-                               'action'     : 'lock'})
-
-
-@permission_required('forum.sticky_thread')
-def sticky_thread(request, thread_id):
-    """Lets the permitted user sticky a thread,
-    thereby sticking it to the top of the thread list.
-
-    Also allows the opposite action, i.e. to unsticky it.
-    """
-    thread = get_object_or_404(Thread, pk=thread_id)
-
-    if thread.is_removed and not request.user.has_perm('forum.remove_thread'):
-        messages.info(request, "The has thread been removed.")
-        return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
-
-    if request.method == 'POST':  # Form has been submitted
-        if 'sticky' in request.POST:  # Lock command
-            if thread.is_sticky:
-                messages.info(request, "The thread was already sticky.")
-            thread.is_sticky = True
-        else:  # Unsticky command
-            if not thread.is_sticky:
-                messages.info(request, "The thread was already not sticky.")
-            thread.is_sticky = False
-
-        thread.save()
-        return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
-    else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'simple_mod_action.html',
-                              {'thread'     : thread,
-                               'obj'        : thread,
-                               'object_type': 'thread',
-                               'action'     : 'sticky'})
-
-
 @permission_required('forum.merge_thread')
 def merge_thread(request, thread_id):
     """Merge the posts of two threads into one single thread.
@@ -945,7 +889,7 @@ def remove(request, object_id, object_type):
         obj.save()
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:
-        return render(request, 'simple_mod_action.html',
+        return render(request, 'simple_action.html',
                               {'object_type': object_type,
                                'obj'        : obj,
                                'thread'     : thread,
@@ -1159,3 +1103,173 @@ def saves_and_bookmarks(request, object_type):
     return render(request, 'saves_and_bookmarks.html',
                           {'type'   : object_type,
                            'objects': objects})
+
+
+# @login_required()  # Doesn't work
+def bookmarks_js(request):
+    """Lets users bookmark and unbookmark threads
+    from the bookmarks view.
+    """
+    if request.is_ajax() and request.method == "POST":
+        object_id = request.POST['object_id']
+        action    = request.POST['action'].lower()
+        thread    = get_object_or_404(Thread, pk=object_id)
+
+        if action == "re-bookmark":
+            thread.bookmarker.add(request.user)
+            new_action = "Unbookmark"
+
+        else:
+            thread.bookmarker.remove(request.user)
+            new_action = "Re-bookmark"
+
+        return HttpResponse(new_action)
+
+
+# @login_required()  # Doesn't work
+def saves_js(request):
+    """Lets users save and unsave posts
+    from the saves view.
+    """
+    if request.is_ajax() and request.method == "POST":
+        object_id = request.POST['object_id']
+        action    = request.POST['action'].lower()
+        post      = get_object_or_404(Post, pk=object_id)
+
+        if action == "re-save":
+            post.saves.add(request.user)
+            new_action = "Remove"
+
+        else:
+            post.saves.remove(request.user)
+            new_action = "Re-save"
+
+        return HttpResponse(new_action)
+
+
+@login_required()
+def nonjs(request, action, object_id):
+    """An HTML fall-back for when the JavaScript required
+    for some views is off.
+    """
+    next = request.META.get('HTTP_REFERER', '')
+
+    if action in ['save', 'thank', 'agree']:
+        obj = get_object_or_404(Post, pk=object_id)
+        thread = obj.thread
+        object_type = 'post'
+        post_obj = obj
+    else:
+        obj = get_object_or_404(Thread, pk=object_id)
+        thread = obj
+        object_type = 'thread'
+        post_obj = None
+
+    if request.method == 'POST':  # Form has been submitted
+        if 'bookmark' in action:
+            if 'subscribe' in request.POST:  # Subscribe command
+                thread.subscriber.add(request.user)
+                messages.info(request, "Subscribed to thread.")
+            else:  # Unsubscribe command
+                thread.subscriber.remove(request.user)
+                messages.info(request, "Unsubscribed from thread.")
+            thread.save()
+
+        elif 'bookmark' in action:
+            if 'bookmark' in request.POST:  # Bookmark command
+                thread.bookmarker.add(request.user)
+                messages.info(request, "Bookmarked thread.")
+            else:  # Unbookmark command
+                thread.bookmarker.remove(request.user)
+                messages.info(request, "Unbookmarked thread.")
+            thread.save()
+
+        elif 'lock' in action:
+            # Lets the permitted user lock a thread,
+            # i.e., prevent people from posting in it.
+            #
+            # Also allows the opposite action, i.e. to unlock it.
+            if thread.is_removed and not request.user.has_perm('forum.remove_thread'):
+                messages.info(request, "The has thread been removed.")
+                return HttpResponseRedirect(reverse('forum.views.category',
+                    args=(thread.category_id,)))
+            if not request.user.has_perm('forum.lock_thread'):
+                messages.error(request,
+                    "You do not have permission to lock and unlock threads.")
+                return HttpResponseRedirect(next)
+            if 'lock' in request.POST:  # Lock command
+                if thread.is_locked:
+                    messages.info(request, "The thread was already locked.")
+                thread.is_locked = True
+                messages.info(request, "Thread was locked.")
+            else:  # Unlock command
+                if not thread.is_locked:
+                    messages.info(request, "The thread was already not locked.")
+                thread.is_locked = False
+                messages.info(request, "Thread was unlocked.")
+            thread.save()
+
+        elif 'sticky' in action:
+            # Lets the permitted user sticky a thread,
+            # thereby sticking it to the top of the thread list.
+            #
+            # Also allows the opposite action, i.e. to unsticky it.
+            if thread.is_removed and not request.user.has_perm('forum.remove_thread'):
+                messages.info(request, "The has thread been removed.")
+                return HttpResponseRedirect(reverse('forum.views.category',
+                    args=(thread.category_id,)))
+            if not request.user.has_perm('forum.sticky_thread'):
+                messages.error(request,
+                    "You do not have permission to sticky and unsticky threads.")
+                return HttpResponseRedirect(next)
+            if 'sticky' in request.POST:  # Lock command
+                if thread.is_sticky:
+                    messages.info(request, "The thread was already sticky.")
+                thread.is_sticky = True
+                messages.info(request, "Thread was stickied.")
+            else:  # Unsticky command
+                if not thread.is_sticky:
+                    messages.info(request, "The thread was already not sticky.")
+                thread.is_sticky = False
+                messages.info(request, "Thread was unstickied.")
+            thread.save()
+
+        elif 'save' in action:
+            if 'save' in request.POST:  # Save command
+                post.saves.add(request.user)
+                messages.info(request, "Saved post.")
+            else:  # Unsave command
+                post.saves.remove(request.user)
+                messages.info(request, "Unsaved post.")
+            post.save()
+
+        elif 'thank' in action:
+            if 'thank' in request.POST:  # Thank command
+                post.thanks.add(request.user)
+                messages.info(request, "Thanked author of the post.")
+            else:  # Unthank command
+                post.thanks.remove(request.user)
+                messages.info(request, "Unthanked author of the post.")
+            post.save()
+
+        elif 'agree' in action:
+            if 'agree' in request.POST:  # Agree command
+                post.agrees.add(request.user)
+                messages.info(request, "Agreed with the author in the post.")
+            else:  # Unagree command
+                post.agrees.remove(request.user)
+                messages.info(request, "Unagreed with the author of the post.")
+            post.save()
+
+        return HttpResponseRedirect(next)
+    else:  # Otherwise, show clean, normal page with no populated data
+        canonical_url = reverse('forum.views.nonjs', args=(action, object_id))
+        return render(request, 'simple_action.html',
+                              {'thread'       : thread,
+                               'obj'          : obj,
+                               'post_obj'     : post_obj,
+                               'object_type'  : object_type,
+                               'action'       : action,
+                               'object_id'    : object_id,
+                               'canonical_url': canonical_url,
+                               'next'         : next})

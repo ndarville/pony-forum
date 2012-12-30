@@ -37,15 +37,15 @@ $(document).ready(function() {
         }
     });
 
-// Makes a POST request to a view at "/subscriptions/js/"
+// Makes a POST request to a view at "/bookmarks/js/"
 // that takes the arguments `object_id` and `action` representing
 // the object ID and the operation.
 //
 // Upon success, the `text()` inside the element is replaced with
 // the opposite action provided by the Django view. E.g.:
-// <a href="..." id="123">Re-subscribe</a> ->
-// <a href="..." id="123">Unsubscribe</a>
-    $('.unsubscribe').on('click', function(e) {
+// <a href="..." id="123">Re-save</a> ->
+// <a href="..." id="123">Remove</a>
+    $('.remove').on('click', function(e) {
         // Overrule the default nonjs action when the submit button is clicked.
         // This allows us to handle the logic with our JavaScript instead.
         e.preventDefault();
@@ -54,7 +54,7 @@ $(document).ready(function() {
         var object_id = this.id;
         var action    = $this.text();
 
-        $.post("/subscriptions/js/", {
+        $.post("/saves/js/", {
             object_id: object_id,
             action:    action
             },
