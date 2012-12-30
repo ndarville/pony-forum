@@ -300,12 +300,13 @@ def subscriptions_js(request):
         action    = request.POST['action'].lower()
         thread    = get_object_or_404(Thread, pk=thread_id)
 
-        if action == "unsubscribed":
+        if action == "re-subscribe":
+            thread.subscriber.add(request.user)
+            new_action = "Unsubscribe"
+
+        else:
             thread.subscriber.remove(request.user)
             new_action = "Re-subscribe"
-        else:
-            thread.subscriber.add(request.user)
-            new_action = "Unsubscribed"
 
         return HttpResponse(new_action)
 
