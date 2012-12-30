@@ -43,8 +43,8 @@ $(document).ready(function() {
 //
 // Upon success, the `text()` inside the element is replaced with
 // the opposite action provided by the Django view. E.g.:
-// <a href="#" id="123">Like</a> ->
-// <a href="#" id="123">Remove like</a>
+// <a href="..." id="123">Re-subscribe</a> ->
+// <a href="..." id="123">Unsubscribe</a>
     $('.unsubscribe').on('click', function(e) {
         // Overrule the default nonjs action when the submit button is clicked.
         // This allows us to handle the logic with our JavaScript instead.
