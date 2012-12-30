@@ -1114,10 +1114,12 @@ def nonjs(request, action, object_id):
         obj = get_object_or_404(Post, pk=object_id)
         thread = obj.thread
         object_type = 'post'
+        post_obj = obj
     else:
         obj = get_object_or_404(Thread, pk=object_id)
         thread = obj
         object_type = 'thread'
+        post_obj = None
 
     if request.method == 'POST':  # Form has been submitted
         if 'bookmark' in action:
@@ -1221,6 +1223,7 @@ def nonjs(request, action, object_id):
         return render(request, 'simple_action.html',
                               {'thread'       : thread,
                                'obj'          : obj,
+                               'post_obj'     : post_obj,
                                'object_type'  : object_type,
                                'action'       : action,
                                'object_id'    : object_id,
