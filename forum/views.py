@@ -327,18 +327,14 @@ def subscriptions_nonjs(request, thread_id):
             messages.info(request, "Unsubscribed from thread.")
         thread.save()
 
-      # if directed from a a thread:
-         #  return to specific page in thread
-      # if directed from a subscriptions list
-         #  return to a specific page in subscriptions list
-        return HttpResponseRedirect(reverse(
-            'forum.views.subscriptions', args=()))
+        return HttpResponseRedirect(request.POST['next'])
     else:  # Otherwise, show clean, normal page with no populated data
         return render(request, 'simple_mod_action.html',
                               {'thread'     : thread,
                                'obj'        : thread,
                                'object_type': 'thread',
-                               'action'     : 'subscribe'})
+                               'action'     : 'subscribe',
+                               'request'    : request})
 
 
 def category(request, category_id):

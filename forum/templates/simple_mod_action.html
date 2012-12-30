@@ -36,6 +36,9 @@
                 <input type="submit" name="restore" value="Restore" />
             {% endif %}
             </div>
+        {% if request %}
+            <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}" />
+        {% endif %}
         </form>
     </div>
 {% endblock %}
