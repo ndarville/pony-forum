@@ -1,4 +1,4 @@
-{#  <li><a class="js" id="{{ thread.id }}" href="#" role="button">{% if thread in user.subscriptions.all %}Unsubscribe{% else %}Subscribe{% endif %}</a></li> #}
+    <li><a class="js" id="{{ thread.id }}" href="#" role="button">{% if thread in user.subscriptions.all %}Unsubscribe{% else %}Subscribe{% endif %}</a></li>
     <li><a class="js" id="{{ thread.id }}" href="#" role="button">{% if thread in user.bookmarks.all %}Unbookmark{% else %}Bookmark{% endif %}</a></li>
 {% if not thread.is_locked %}
     <li><a href="{% url report_thread thread.id %}">Report</a></li>

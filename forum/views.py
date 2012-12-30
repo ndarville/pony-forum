@@ -31,6 +31,7 @@ from registration                   import views as registration_views
 ##  helper functions
 #
 ##  home
+#
 ##  subscriptions
 ##      subscriptions_js
 ##      subscriptionsnon_js
@@ -308,6 +309,34 @@ def subscriptions_js(request):
         HttpResponse(new_action)
 
 
+@login_required()
+def subscriptions_nonjs(request, thread_id):
+    """An HTML fall-back for `subscription_js()`, in case the user
+    has disabled JavaScript in their browser.
+    """
+    thread = get_object_or_404(Thread, pk=thread_id)
+
+    if request.method == 'POST':  # Form has been submitted
+        if 'subscribe' in request.POST:  # Subscribe command
+            thread.subscriber.add(request.user)
+            messages.info(request, "Subscribed to thread.")
+        else:  # Unsubscribe command
+            thread.subscriber.remove(request.user)
+            messages.info(request, "Unsubscribed from thread.")
+        thread.save()
+
+        # if directed from a a thread:
+         #  return to specific page in thread
+        # if directed from a subscriptions list
+         #  return to a specific page in subscriptions list
+    else:  # Otherwise, show clean, normal page with no populated data
+        return render(request, 'simple_mod_action.html',
+                              {'thread'     : thread,
+                               'obj'        : thread,
+                               'object_type': 'thread',
+                               'action'     : 'subscribe'})
+
+
 def category(request, category_id):
     """Category with threads ordered by latest posts."""
     category         = get_object_or_404(Category, pk=category_id)
@@ -469,7 +498,7 @@ def thread_nonjs(request, object_id, action, current_page):
             messages.info(request, "Removed thank-you for the post.")
 
     return HttpResponseRedirect(reverse('forum.views.thread',
-        args=(user_id,))+'?page='+current_page)
+        args=(object_id,))+'?page='+current_page)
 
 
 def post(request, post_id):
