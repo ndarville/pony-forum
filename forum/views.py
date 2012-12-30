@@ -1106,7 +1106,7 @@ def nonjs(request, action, object_id):
     """An HTML fall-back for when the JavaScript required
     for some views is off.
     """
-    next = request.META['HTTP_REFERER'] if 'HTTP_REFERER' in request.META else ""
+    next = request.META.get('HTTP_REFERER', '')
 
     if action in ['save', 'thank', 'agree']:
         obj = get_object_or_404(Post, pk=object_id)
@@ -1211,4 +1211,4 @@ def nonjs(request, action, object_id):
                                'action'       : action,
                                'object_id'    : object_id,
                                'canonical_url': canonical_url,
-                               'next'         : request})
+                               'next'         : next})
