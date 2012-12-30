@@ -67,6 +67,8 @@ from registration                   import views as registration_views
 ##  site_configuration
 #
 ##  saves_and_bookmarks
+##      bookmarks_js
+##      saves_js
 #
 ##  nonjs
 ##      subscribe
@@ -303,9 +305,9 @@ def subscriptions_js(request):
     in the subscription views.
     """
     if request.is_ajax() and request.method == "POST":
-        thread_id = request.POST['object_id']
+        object_id = request.POST['object_id']
         action    = request.POST['action'].lower()
-        thread    = get_object_or_404(Thread, pk=thread_id)
+        thread    = get_object_or_404(Thread, pk=object_id)
 
         if action == "re-subscribe":
             thread.subscriber.add(request.user)
@@ -1101,6 +1103,48 @@ def saves_and_bookmarks(request, object_type):
     return render(request, 'saves_and_bookmarks.html',
                           {'type'   : object_type,
                            'objects': objects})
+
+
+# @login_required()  # Doesn't work
+def bookmarks_js(request):
+    """Lets users bookmark and unbookmark threads
+    from the bookmarks view.
+    """
+    if request.is_ajax() and request.method == "POST":
+        object_id = request.POST['object_id']
+        action    = request.POST['action'].lower()
+        thread    = get_object_or_404(Thread, pk=object_id)
+
+        if action == "re-bookmark":
+            thread.bookmarker.add(request.user)
+            new_action = "Unbookmark"
+
+        else:
+            thread.bookmarker.remove(request.user)
+            new_action = "Re-bookmark"
+
+        return HttpResponse(new_action)
+
+
+# @login_required()  # Doesn't work
+def saves_js(request):
+    """Lets users save and unsave posts
+    from the saves view.
+    """
+    if request.is_ajax() and request.method == "POST":
+        object_id = request.POST['object_id']
+        action    = request.POST['action'].lower()
+        post      = get_object_or_404(Post, pk=object_id)
+
+        if action == "re-save":
+            post.saves.add(request.user)
+            new_action = "Remove"
+
+        else:
+            post.saves.remove(request.user)
+            new_action = "Re-save"
+
+        return HttpResponse(new_action)
 
 
 @login_required()
