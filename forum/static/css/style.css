@@ -673,9 +673,8 @@ span#error {
 
 #board .words table,
 #content-body table {
-    display: inline-block;
     font: 0.8125em/1.8462em "Lucida Grande", Consolas, monospace;
-    margin: 0 1px 1em; /** 1px to offset the border */
+    margin: 0 auto 1em; /** 1px to offset the border */
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
     -webkit-border-radius: 5px;
@@ -687,7 +686,6 @@ span#error {
         caption-side: top;
         text-align: center;
         font: small-caps 1.25em Helvetica;
-        border-bottom: solid 1px #CCC;
     }
 
     #board .words th,
