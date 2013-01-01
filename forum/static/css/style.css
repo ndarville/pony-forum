@@ -707,12 +707,12 @@ span#error {
 
     #board .words tr:hover,
     #content-body tr:hover {
-        background-color: #FF9;
+        background-color: rgba(0,0,0, .1);
     }
 
     #board .words td:hover,
     #content-body td:hover {
-        background-color: pink;
+        background-color: #FF9;
     }
 
 #breadcrumbs {
