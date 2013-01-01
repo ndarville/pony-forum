@@ -2,6 +2,14 @@
 
 {% block title %}{{ type|capfirst }}s by {{ person.username }}{% endblock %}
 {% block canonical_url %}{% if type == "thread" %}{% url user_threads person.id %}{% else %}{% url user_posts person.id %}{% endif %}{% endblock %}
+{% block rel_attributes %}
+    {% if objects.has_previous %}
+        <link rel="prev" href="?page={{ objects.previous_page_number }}" />
+    {% endif %}
+    {% if objects.has_next %}
+        <link rel="next" href="?page={{ objects.next_page_number }}" />
+    {% endif %}
+{% endblock %}
 {% block threadbar %}
             {% include "includes/threadbar.html" %}
 {% endblock %}

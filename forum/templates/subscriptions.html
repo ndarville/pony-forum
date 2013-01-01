@@ -4,7 +4,14 @@
 
 {% block title %}Subscriptions{% endblock %}
 {% block canonical_url %}{% url forum.views.subscriptions %}{% endblock %}
-{% block content_body %}
+{% block rel_attributes %}
+    {% if objects.has_previous %}
+        <link rel="prev" href="?page={{ objects.previous_page_number }}" />
+    {% endif %}
+    {% if objects.has_next %}
+        <link rel="next" href="?page={{ objects.next_page_number }}" />
+    {% endif %}
+{% endblock %}{% block content_body %}
 {% if objects.object_list %}
     <table>
         <thead>
