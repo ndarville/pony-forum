@@ -503,8 +503,6 @@ legend {
 #content table.categories,
 #content table.threads {
     width: 100%;
-    border-collapse: separate; /** Allows round corners
-    cf. http://vamin.net/examples/rounded_tables2.html */
 }
 
 #content a.button {
@@ -673,9 +671,8 @@ span#error {
 
 #board .words table,
 #content-body table {
-    display: inline-block;
     font: 0.8125em/1.8462em "Lucida Grande", Consolas, monospace;
-    margin: 0 1px 1em; /** 1px to offset the border */
+    margin: 0 auto 1em; /** 1px to offset the border */
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
     -webkit-border-radius: 5px;
@@ -687,7 +684,7 @@ span#error {
         caption-side: top;
         text-align: center;
         font: small-caps 1.25em Helvetica;
-        border-bottom: solid 1px #CCC;
+
     }
 
     #board .words th,
@@ -710,12 +707,12 @@ span#error {
 
     #board .words tr:hover,
     #content-body tr:hover {
-        background-color: #FF9;
+        background-color: rgba(0,0,0, .1);
     }
 
     #board .words td:hover,
     #content-body td:hover {
-        background-color: pink;
+        background-color: #FF9;
     }
 
 #breadcrumbs {
@@ -979,7 +976,14 @@ textarea,
 ***** FIXES *****
 *****       ****/
 
-/*** Unrounded Corners Fix ***/
+/*** Unrounded Corners with Fixes ***/
+    #content-body table,
+    #board .words table {
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+    }
+
     /** Upper left AND right **/
         #navigation .first {
             -webkit-border-top-left-radius: 5px;
@@ -1001,45 +1005,51 @@ textarea,
             border-bottom-left-radius: 5px;
         }
 
-    /** Upper left **/
-        #board .words th:first-child,
-        #content-body th:first-child,
-        #content .categories th:first-child,
-        #content .threads th:first-child {
-            -webkit-border-top-left-radius: 5px;
-            -moz-border-radius-topleft: 5px;
-            border-top-left-radius: 5px;
-        }
+    /** Tables */
+        /** cf. http://vamin.net/examples/rounded_tables2.html */
+            table {
+                border-collapse: separate;
+            }
 
-    /** Upper right **/
-        #board .words th:last-child,
-        #content-body th:last-child,
-        #content .categories th:last-child,
-        #content .threads th:last-child {
-            -webkit-border-top-right-radius: 5px;
-            -moz-border-radius-topright: 5px;
-            border-top-right-radius: 5px;
-        }
+        /** Upper left **/
+            #content-body th:first-child,
+            #board .words th:first-child,
+            #content .categories th:first-child,
+            #content .threads th:first-child {
+                -webkit-border-top-left-radius: 5px;
+                -moz-border-radius-topleft: 5px;
+                border-top-left-radius: 5px;
+            }
 
-    /** Lower left **/
-        .categories tr:last-child td:first-child,
-        .threads tr:last-child td:first-child,
-        #board .words tr:last-child td:first-child,
-        #content-body tr:last-child td:first-child {
-            -webkit-border-bottom-left-radius: 5px;
-            -moz-border-radius-bottomleft: 5px;
-            border-bottom-left-radius: 5px;
-        }
+        /** Upper right **/
+            #content-body th:last-child,
+            #board .words th:last-child,
+            #content .categories th:last-child,
+            #content .threads th:last-child {
+                -webkit-border-top-right-radius: 5px;
+                -moz-border-radius-topright: 5px;
+                border-top-right-radius: 5px;
+            }
 
-    /** Lower right **/
-        .categories tr:last-child td:last-child,
-        .threads tr:last-child td:last-child,
-        #board .words tr:last-child td:last-child,
-        #content-body tr:last-child td:last-child {
-            -webkit-border-bottom-right-radius: 5px;
-            -moz-border-radius-bottomright: 5px;
-            border-bottom-right-radius: 5px;
-        }
+        /** Lower left **/
+            .categories tr:last-child td:first-child,
+            .threads tr:last-child td:first-child,
+            #board .words tr:last-child td:first-child,
+            #content-body tr:last-child td:first-child {
+                -webkit-border-bottom-left-radius: 5px;
+                -moz-border-radius-bottomleft: 5px;
+                border-bottom-left-radius: 5px;
+            }
+
+        /** Lower right **/
+            .categories tr:last-child td:last-child,
+            .threads tr:last-child td:last-child,
+            #board .words tr:last-child td:last-child,
+            #content-body tr:last-child td:last-child {
+                -webkit-border-bottom-right-radius: 5px;
+                -moz-border-radius-bottomright: 5px;
+                border-bottom-right-radius: 5px;
+            }
 /**** * ****/
 
 /****               *****
