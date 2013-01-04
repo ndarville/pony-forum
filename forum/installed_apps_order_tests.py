@@ -28,8 +28,8 @@ class AppOrderTest(TestCase):
         """'django_nose' comes after 'South' cf.
         https://github.com/jbalogh/django-nose/blob/master/README.rst#using-with-south.
         """
-        if 'django_nose' in self.apps and 'South' in self.apps:
-            self.assertTrue(self.apps['django_nose'] > self.apps['South'])
+        if 'django_nose' in self.apps and 'south' in self.apps:
+            self.assertTrue(self.apps['django_nose'] > self.apps['south'])
 
     def test_django_admin_bootstrapped(self):
         """'django_admin_bootstrapped comes before 'django.contrib.admin' cf.
