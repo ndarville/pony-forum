@@ -1183,30 +1183,30 @@ def nonjs(request, action, object_id):
 
         elif 'save' in action:
             if 'save' in request.POST:  # Save command
-                post.saves.add(request.user)
+                obj.saves.add(request.user)
                 messages.info(request, "Saved post.")
             else:  # Unsave command
-                post.saves.remove(request.user)
+                obj.saves.remove(request.user)
                 messages.info(request, "Unsaved post.")
-            post.save()
+            obj.save()
 
         elif 'thank' in action:
             if 'thank' in request.POST:  # Thank command
-                post.thanks.add(request.user)
+                obj.thanks.add(request.user)
                 messages.info(request, "Thanked author of the post.")
             else:  # Unthank command
-                post.thanks.remove(request.user)
+                obj.thanks.remove(request.user)
                 messages.info(request, "Unthanked author of the post.")
-            post.save()
+            obj.save()
 
         elif 'agree' in action:
             if 'agree' in request.POST:  # Agree command
-                post.agrees.add(request.user)
+                obj.agrees.add(request.user)
                 messages.info(request, "Agreed with the author in the post.")
             else:  # Unagree command
-                post.agrees.remove(request.user)
+                obj.agrees.remove(request.user)
                 messages.info(request, "Unagreed with the author of the post.")
-            post.save()
+            obj.save()
 
         return HttpResponseRedirect(next)
     else:  # Otherwise, show clean, normal page with no populated data
