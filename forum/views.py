@@ -299,7 +299,6 @@ def subscriptions(request):
                            'objects'    : objects})
 
 
-# @login_required()  # Doesn't work
 def subscriptions_js(request):
     """Lets users subscribe to and unsubscribe from threads
     in the subscription views.
@@ -1105,7 +1104,6 @@ def saves_and_bookmarks(request, object_type):
                            'objects': objects})
 
 
-# @login_required()  # Doesn't work
 def bookmarks_js(request):
     """Lets users bookmark and unbookmark threads
     from the bookmarks view.
@@ -1126,7 +1124,6 @@ def bookmarks_js(request):
         return HttpResponse(new_action)
 
 
-# @login_required()  # Doesn't work
 def saves_js(request):
     """Lets users save and unsave posts
     from the saves view.
