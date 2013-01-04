@@ -190,7 +190,7 @@ class ReportTests(TestCase):
     #     """Tests the dismissal of a report."""
     #     self.client = logIn()
     #     self.client.post(
-    #         reverse('forum.views.report'), {'report-id': test_report_id})
+    #         reverse('forum.views.reports'), {'report-id': test_report_id})
 
 
 class HomeTests(TestCase):
@@ -249,6 +249,142 @@ class UserTests(TestCase):
     #         {'user_id': test_user_id, 'action': 'remove'})
 
 
+class NonJsTests(TestCase):
+    """Tests operations related to the nonjs view."""
+    fixtures = ['admin_user.json', 'forum_example.json']
+
+    def setUp(self):
+        self.client = logIn()
+
+    def test_sticky(self):
+        """Tests the stickying of a thread."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('sticky', test_thread_id,)),
+            {'action': 'sticky'})
+
+    # def test_unsticky(self):
+    #     """Tests the unstickying of a thread."""
+    #     self.client.post(
+    #         reverse(
+    #             'forum.views.nonjs',
+    #             args=('sticky', test_thread_id,)),
+    #         {'action': 'unsticky'})
+
+    def test_lock(self):
+        """Tests the locking of a thread."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('lock', test_thread_id,)),
+            {'action': 'lock'})
+
+    # def test_unlock(self):
+    #     """Tests the unlocking of a thread."""
+    #     self.client.post(
+    #         reverse(
+    #             'forum.views.nonjs',
+    #             args=('lock', test_thread_id,)),
+    #         {'action': 'unlock'})
+
+    def test_subscribe(self):
+        """Tests the subscription of a thread."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('subscribe', test_thread_id,)),
+            {'action': 'subscribe'})
+
+    # def test_unsubscribe(self):
+    #     """Tests the unsubscription of a thread."""
+    #     self.client.post(
+    #         reverse(
+    #             'forum.views.nonjs',
+    #             args=('subscribe', test_thread_id,)),
+    #         {'action': 'unsubscribe'})
+
+    def test_bookmark(self):
+        """Tests the bookmarking of a thread."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('bookmark', test_thread_id,)),
+            {'action': 'bookmark'})
+
+    # def test_unbookmark(self):
+    #     """Tests the unbookmarking of a thread."""
+    #     self.client.post(
+    #         reverse(
+    #             'forum.views.nonjs',
+    #             args=('bookmark', test_thread_id,)),
+    #         {'action': 'unbookmark'})
+
+    def test_save(self):
+        """Tests the saving of a post."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('save', test_post_id,)),
+            {'action': 'save'})
+
+    # def test_unsave(self):
+    #     """Tests the unsaving of a post."""
+    #     self.client.post(
+    #         reverse(
+    #             'forum.views.nonjs',
+    #             args=('save', test_post_id,)),
+    #         {'action': 'unsave'})
+
+    def test_thank(self):
+        """Tests the thanking of an author for a post."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('thank', test_post_id,)),
+            {'action': 'thank'})
+
+    # def test_unthank(self):
+    #     """Tests the unthanking of an author for a post."""
+    #     self.client.post(
+    #         reverse(
+    #             'forum.views.nonjs',
+    #             args=('thank', test_post_id,)),
+    #         {'action': 'unthank'})
+
+    def test_agree(self):
+        """Tests the agreeing with an author for a post."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('agree', test_post_id,)),
+            {'action': 'agree'})
+
+    # def test_unagree(self):
+    #     """Tests the unagreeing with an author for a post."""
+    #     self.client.post(
+    #         reverse(
+    #             'forum.views.nonjs',
+    #             args=('agree', test_post_id,)),
+    #         {'action': 'unagree'})
+
+    def test_bookmark(self):
+        """Tests the bookmarking of a thread."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('bookmark', test_thread_id,)),
+            {'action': 'bookmark'})
+
+    # def test_unbookmark(self):
+    #     """Tests the unbookmarking of a thread."""
+    #     self.client.post(
+    #         reverse(
+    #             'forum.views.nonjs',
+    #             args=('bookmark', test_thread_id,)),
+    #         {'action': 'unbookmark'})
+
+
 class SettingsConfigurationTests(TestCase):
     """Test operations related to the settings view."""
     fixtures = ['admin_user.json']
@@ -286,24 +422,17 @@ class SiteConfigurationTests(TestCase):
             reverse('site_configuration'),
             {'site_name': test_text, 'site_domain': test_text})
 
+
 #! TODO
 #  def test_restore
-#  def test_unlock
-#  def test_unsticky
 
 # * Non JS
-#     * (un)sticky
-#     * (un)lock
-#     * (un)subscribe
-#         * from thread
-#         * from subscription list
-#     * (un)bookmark
-#         * from thread
-#         * from bookmark list
-#     * (un)save
-#         * from thread/post
-#         * from saves list
-#     * (un)thank, (un)agree
+#     * unsticky
+#     * unlock
+#     * unsubscribe
+#     * unbookmark
+#     * unsave
+#     * unthank, unagree
 #     * user
 #         * unfollow user
 #         * unignore user
