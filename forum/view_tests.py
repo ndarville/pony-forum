@@ -64,11 +64,11 @@ class LoginTest(TestCase):
 
 
 class CategoryTests(TestCase):
-    """Tests operations with category objects."""
+    """Tests operations with categories."""
     fixtures = ['admin_user.json', 'forum_example.json']
 
     def test_get(self):
-        """Tests the display of a category object."""
+        """Tests the display of a category."""
         self.client.get(
             reverse('forum.views.category',
             args=(test_category_id,)))
@@ -81,14 +81,14 @@ class CategoryTests(TestCase):
 
 
 class ThreadTests(TestCase):
-    """Tests operations with thread objects."""
+    """Tests operations with threads."""
     fixtures = ['forum_example.json']
 
     def setUp(self):
         self.client = logIn()
 
     def test_get(self):
-        """Tests the display of a thread object."""
+        """Tests the display of a thread."""
         self.client.get(reverse('forum.views.thread', args=(test_thread_id,)))
 
     def test_show_posts_by_author(self):
@@ -98,27 +98,27 @@ class ThreadTests(TestCase):
             args=(test_category_id, test_user_id,)))
 
     def test_create(self):
-        """Tests creation of thread object."""
+        """Tests creation of thread."""
         self.client.post(
             reverse('forum.views.create', args=(test_category_id,)),
             {'title': test_text, 'content': test_text})
 
     def test_merge(self):
-        """Tests locking of thread object."""
+        """Tests locking of thread."""
         self.client.post(
             reverse('forum.views.merge_thread', args=(merge_thread_1_id,)),
             {'other-thread-id' :   merge_thread_2_id,
              'new-thread-title': 'Merge Thread 3'})
 
     def test_moderate(self):
-        """Tests moderation of thread object."""
+        """Tests moderation of thread."""
         self.client.post(
             reverse('forum.views.moderate_thread', args=(test_thread_id,)),
             {'lock' : 'Lock',
              'title':  test_text})
 
     def test_remove(self):
-        """Tests removal of a thread object."""
+        """Tests removal of a thread."""
         self.client.post(
             reverse(
                 'forum.views.remove',
@@ -128,69 +128,71 @@ class ThreadTests(TestCase):
  #! TODO
  #  def test_restore
 
-    def test_report(self):
-         """Tests reporting of a thread object."""
-         self.client.post(
-             reverse(
-                 'forum.views.report',
-                 kwargs={'object_id': test_thread_id, 'object_type': 'thread'}),
-             {'title': test_text, 'content': test_text})
-
 
 class PostTests(TestCase):
-    """Test operations with post objects."""
+    """Test operations with posts."""
     fixtures = ['forum_example.json']
 
     def setUp(self):
         self.client = logIn()
 
     def test_get(self):
-        """Tests the display of a post object."""
+        """Tests the display of a post."""
         self.client.get(reverse('forum.views.post', args=(test_post_id,)))
 
     def test_reply(self):
-        """Tests creation of a post object."""
+        """Tests creation of a post."""
         self.client.post(
             reverse('forum.views.reply', args=(test_thread_id,)),
             {'content': test_text})
 
     def test_edit(self):
-        """Tests editing of a post object."""
+        """Tests editing of a post."""
         self.client.post(
             reverse('forum.views.edit', args=(test_post_id,)),
             {'content': test_text})
 
     def test_remove(self):
-        """Tests removal of a post object."""
+        """Tests removal of a post."""
         self.client.post(
             reverse(
                 'forum.views.remove',
                 kwargs={'object_id': test_post_id, 'object_type': 'post'}),
             {'remove': 'Remove'})
 
-    def test_report(self):
-        """Tests reporting of a post object."""
-        self.client.post(
-            reverse(
-                'forum.views.report',
-                kwargs={'object_id': test_post_id, 'object_type': 'post'}),
-            {'title': test_text, 'content': test_text})
-
 
 class ReportTests(TestCase):
     """Tests operations related to reports."""
     fixtures = ['admin_user.json', 'forum_example.json']
 
+    def setUp(self):
+        self.client = logIn()
+
+    def test_report_thread(self):
+        """Tests the reporting of a thread."""
+        self.client.post(
+            reverse(
+               'forum.views.report',
+               kwargs={'object_id': test_thread_id, 'object_type': 'thread'}),
+            {'title': test_text, 'content': test_text, 'submit': 'submit'})
+
+    def test_report_post(self):
+        """Tests the reporting of a post."""
+        self.client.post(
+            reverse(
+                'forum.views.report',
+                kwargs={'object_id': test_post_id, 'object_type': 'post'}),
+            {'title': test_text, 'content': test_text, 'submit': 'submit'})
+
     def test_get(self):
         """Tests the display of reports."""
-        self.client = logIn()
         self.client.get(reverse('forum.views.reports'))
 
-    # def test_post(self):
-    #     """Tests the dismissal of a report."""
-    #     self.client = logIn()
-    #     self.client.post(
-    #         reverse('forum.views.reports'), {'report-id': test_report_id})
+    # def test_dismiss_thread_report(self):
+    #     """Tests the dismissal of a thread report."""
+
+    # def test_dismiss_post_report(self):
+    #     """Tests the dismissal of a post report."""
 
 
 class HomeTests(TestCase):
@@ -424,7 +426,7 @@ class SiteConfigurationTests(TestCase):
 
 
 #! TODO
-#  def test_restore
+#  test_restore
 
 # * Non JS
 #     * unsticky
@@ -437,8 +439,7 @@ class SiteConfigurationTests(TestCase):
 #         * unfollow user
 #         * unignore user
 
-# * report
-# * reports (POST to dismiss)
+# * report dismissal
 
 # * Different types of visitors:
 #     * Admin
