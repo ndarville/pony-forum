@@ -431,56 +431,6 @@ def thread_js(request):
 #            success = action + "ed"
 
 
-@login_required()
-def thread_nonjs(request, object_id, action, current_page):
-    """An HTML fall-back for `thread_js()`, in case the user
-    has disabled JavaScript in their browser.
-    """
-    if "bookmark" in action or "subscribe" in action:
-        obj = get_object_or_404(Thread, pk=object_id)
-    else:
-        obj = get_object_or_404(Post, pk=object_id)
-
-    if "agree" in action:
-        if action == "agree":
-            obj.agrees.add(request.user)
-            messages.info(request, "Agreed with the post.")
-        else:
-            obj.agrees.remove(request.user)
-            messages.info(request, "Cancelled agree.")
-    elif "bookmark" in action:
-        if action == "bookmark":
-            obj.bookmarker.add(request.user)
-            messages.info(request, "Bookmarked thread.")
-        else:
-            obj.bookmarker.remove(request.user)
-            messages.info(request, "Removed bookmark.")
-    elif "save" in action:
-        if action == "save":
-            obj.saves.add(request.user)
-            messages.info(request, "Saved post.")
-        else:
-            obj.saves.remove(request.user)
-            messages.info(request, "Post is no longer saved.")
-    elif "subscribe" in action:
-        if action == "subscribe":
-            obj.subscriber.add(request.user)
-            messages.info(request, "Subscribed to thread.")
-        else:
-            obj.subscriber.remove(request.user)
-            messages.info(request, "Unsubscribed from thread.")
-    elif "thank" in action:
-        if action == "thank":
-            obj.thanks.add(request.user)
-            messages.info(request, "Thanked the user of the post.")
-        else:
-            obj.thanks.remove(request.user)
-            messages.info(request, "Removed thank-you for the post.")
-
-    return HttpResponseRedirect(reverse('forum.views.thread',
-        args=(object_id,))+'?page='+current_page)
-
-
 def post(request, post_id):
     """View a single post object."""
     post = get_object_or_404(Post.objects.select_related(), pk=post_id)
