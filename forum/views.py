@@ -1113,7 +1113,7 @@ def nonjs(request, action, object_id):
         post_obj = None
 
     if request.method == 'POST':  # Form has been submitted
-        if 'bookmark' in action:
+        if 'subscribe' in action:
             if 'subscribe' in request.POST:  # Subscribe command
                 thread.subscriber.add(request.user)
                 messages.info(request, "Subscribed to thread.")
