@@ -133,6 +133,12 @@ class ThreadTests(TestCase):
                 kwargs={'object_id': test_thread_id, 'object_type': 'thread'}),
             {'restore': 'Restore'})
 
+    def test_lock(self):
+        """Tests locking of thread object."""
+        self.client.post(
+            reverse('forum.views.lock_thread', args=(test_thread_id,)),
+            {'lock': 'Lock'})
+
 
 class PostTests(TestCase):
     """Test operations with posts."""
