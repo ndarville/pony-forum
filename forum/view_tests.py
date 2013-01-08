@@ -375,22 +375,6 @@ class NonJsTests(TestCase):
                 args=('agree', test_post_id,)),
             {'action': 'unagree'})
 
-    def test_bookmark(self):
-        """Tests the bookmarking of a thread."""
-        self.client.post(
-            reverse(
-                'forum.views.nonjs',
-                args=('bookmark', test_thread_id,)),
-            {'action': 'bookmark'})
-
-    def test_unbookmark(self):
-        """Tests the unbookmarking of a thread."""
-        self.client.post(
-            reverse(
-                'forum.views.nonjs',
-                args=('bookmark', test_thread_id,)),
-            {'action': 'unbookmark'})
-
 
 class SettingsConfigurationTests(TestCase):
     """Test operations related to the settings view."""
