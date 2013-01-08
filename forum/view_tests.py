@@ -125,8 +125,13 @@ class ThreadTests(TestCase):
                 kwargs={'object_id': test_thread_id, 'object_type': 'thread'}),
             {'remove': 'Remove'})
 
- #! TODO
- #  def test_restore
+    def test_restore(self):
+        """Tests restore of a thread."""
+        self.client.post(
+            reverse(
+                'forum.views.remove',
+                kwargs={'object_id': test_thread_id, 'object_type': 'thread'}),
+            {'restore': 'Restore'})
 
 
 class PostTests(TestCase):
@@ -232,11 +237,11 @@ class UserTests(TestCase):
             reverse('forum.views.user_nonjs'),
             {'user_id': test_user_id, 'action': 'follow'})
 
-    # def test_user_unfollow_nonjs(self):
-    #     """Tests unfollowing a user using the nonjs view."""
-    #     self.client.post(
-    #         reverse('forum.views.user_nonjs'),
-    #         {'user_id': test_user_id, 'action': 'unfollow'})
+    def test_user_unfollow_nonjs(self):
+        """Tests unfollowing a user using the nonjs view."""
+        self.client.post(
+            reverse('forum.views.user_nonjs'),
+            {'user_id': test_user_id, 'action': 'unfollow'})
 
     def test_user_add_nonjs(self):
         """Tests adding a user to shit list using the nonjs view."""
@@ -244,11 +249,11 @@ class UserTests(TestCase):
             reverse('forum.views.user_nonjs'),
             {'user_id': test_user_id, 'action': 'add'})
 
-    # def test_user_remove_nonjs(self):
-    #     """Tests removing a user from shit list using the nonjs view."""
-    #     self.client.post(
-    #         reverse('forum.views.user_nonjs'),
-    #         {'user_id': test_user_id, 'action': 'remove'})
+    def test_user_remove_nonjs(self):
+        """Tests removing a user from shit list using the nonjs view."""
+        self.client.post(
+            reverse('forum.views.user_nonjs'),
+            {'user_id': test_user_id, 'action': 'remove'})
 
 
 class NonJsTests(TestCase):
@@ -266,13 +271,13 @@ class NonJsTests(TestCase):
                 args=('sticky', test_thread_id,)),
             {'action': 'sticky'})
 
-    # def test_unsticky(self):
-    #     """Tests the unstickying of a thread."""
-    #     self.client.post(
-    #         reverse(
-    #             'forum.views.nonjs',
-    #             args=('sticky', test_thread_id,)),
-    #         {'action': 'unsticky'})
+    def test_unsticky(self):
+        """Tests the unstickying of a thread."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('sticky', test_thread_id,)),
+            {'action': 'unsticky'})
 
     def test_lock(self):
         """Tests the locking of a thread."""
@@ -282,13 +287,13 @@ class NonJsTests(TestCase):
                 args=('lock', test_thread_id,)),
             {'action': 'lock'})
 
-    # def test_unlock(self):
-    #     """Tests the unlocking of a thread."""
-    #     self.client.post(
-    #         reverse(
-    #             'forum.views.nonjs',
-    #             args=('lock', test_thread_id,)),
-    #         {'action': 'unlock'})
+    def test_unlock(self):
+        """Tests the unlocking of a thread."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('lock', test_thread_id,)),
+            {'action': 'unlock'})
 
     def test_subscribe(self):
         """Tests the subscription of a thread."""
@@ -298,13 +303,13 @@ class NonJsTests(TestCase):
                 args=('subscribe', test_thread_id,)),
             {'action': 'subscribe'})
 
-    # def test_unsubscribe(self):
-    #     """Tests the unsubscription of a thread."""
-    #     self.client.post(
-    #         reverse(
-    #             'forum.views.nonjs',
-    #             args=('subscribe', test_thread_id,)),
-    #         {'action': 'unsubscribe'})
+    def test_unsubscribe(self):
+        """Tests the unsubscription of a thread."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('subscribe', test_thread_id,)),
+            {'action': 'unsubscribe'})
 
     def test_bookmark(self):
         """Tests the bookmarking of a thread."""
@@ -314,13 +319,13 @@ class NonJsTests(TestCase):
                 args=('bookmark', test_thread_id,)),
             {'action': 'bookmark'})
 
-    # def test_unbookmark(self):
-    #     """Tests the unbookmarking of a thread."""
-    #     self.client.post(
-    #         reverse(
-    #             'forum.views.nonjs',
-    #             args=('bookmark', test_thread_id,)),
-    #         {'action': 'unbookmark'})
+    def test_unbookmark(self):
+        """Tests the unbookmarking of a thread."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('bookmark', test_thread_id,)),
+            {'action': 'unbookmark'})
 
     def test_save(self):
         """Tests the saving of a post."""
@@ -330,13 +335,13 @@ class NonJsTests(TestCase):
                 args=('save', test_post_id,)),
             {'action': 'save'})
 
-    # def test_unsave(self):
-    #     """Tests the unsaving of a post."""
-    #     self.client.post(
-    #         reverse(
-    #             'forum.views.nonjs',
-    #             args=('save', test_post_id,)),
-    #         {'action': 'unsave'})
+    def test_unsave(self):
+        """Tests the unsaving of a post."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('save', test_post_id,)),
+            {'action': 'unsave'})
 
     def test_thank(self):
         """Tests the thanking of an author for a post."""
@@ -346,13 +351,13 @@ class NonJsTests(TestCase):
                 args=('thank', test_post_id,)),
             {'action': 'thank'})
 
-    # def test_unthank(self):
-    #     """Tests the unthanking of an author for a post."""
-    #     self.client.post(
-    #         reverse(
-    #             'forum.views.nonjs',
-    #             args=('thank', test_post_id,)),
-    #         {'action': 'unthank'})
+    def test_unthank(self):
+        """Tests the unthanking of an author for a post."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('thank', test_post_id,)),
+            {'action': 'unthank'})
 
     def test_agree(self):
         """Tests the agreeing with an author for a post."""
@@ -362,13 +367,13 @@ class NonJsTests(TestCase):
                 args=('agree', test_post_id,)),
             {'action': 'agree'})
 
-    # def test_unagree(self):
-    #     """Tests the unagreeing with an author for a post."""
-    #     self.client.post(
-    #         reverse(
-    #             'forum.views.nonjs',
-    #             args=('agree', test_post_id,)),
-    #         {'action': 'unagree'})
+    def test_unagree(self):
+        """Tests the unagreeing with an author for a post."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('agree', test_post_id,)),
+            {'action': 'unagree'})
 
     def test_bookmark(self):
         """Tests the bookmarking of a thread."""
@@ -378,13 +383,13 @@ class NonJsTests(TestCase):
                 args=('bookmark', test_thread_id,)),
             {'action': 'bookmark'})
 
-    # def test_unbookmark(self):
-    #     """Tests the unbookmarking of a thread."""
-    #     self.client.post(
-    #         reverse(
-    #             'forum.views.nonjs',
-    #             args=('bookmark', test_thread_id,)),
-    #         {'action': 'unbookmark'})
+    def test_unbookmark(self):
+        """Tests the unbookmarking of a thread."""
+        self.client.post(
+            reverse(
+                'forum.views.nonjs',
+                args=('bookmark', test_thread_id,)),
+            {'action': 'unbookmark'})
 
 
 class SettingsConfigurationTests(TestCase):
@@ -424,20 +429,6 @@ class SiteConfigurationTests(TestCase):
             reverse('site_configuration'),
             {'site_name': test_text, 'site_domain': test_text})
 
-
-#! TODO
-#  test_restore
-
-# * Non JS
-#     * unsticky
-#     * unlock
-#     * unsubscribe
-#     * unbookmark
-#     * unsave
-#     * unthank, unagree
-#     * user
-#         * unfollow user
-#         * unignore user
 
 # * report dismissal
 
