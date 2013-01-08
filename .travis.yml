@@ -23,16 +23,16 @@ install:
 
 before_script:
   - psql -c "CREATE DATABASE travisdb;" -U postgres
-
-script:
   - python manage.py syncdb --noinput
   - python manage.py schemamigration forum --initial
   - python manage.py migrate forum --fake
+
+script:
   - python _postinstall/mkadmin.py
   - python _postinstall/definesite.py
   - python _postinstall/mkplaceholders.py
 
-after_success:
+after_script:
 # - pip-review
   - python manage.py test
 
