@@ -55,7 +55,7 @@ To use the app on dotCloud:
 
 To run it on your own computer:
 
-* Python 2.6 or 2.7
+* Python 2.7
 * postgreSQL
 * All packages in `requirements.txt`
 * Firefox if you want to run the optional tests
@@ -64,7 +64,7 @@ To run it on your own computer:
 ---------------
 Works on Ubuntu and the latest version of OS X.
 
-At the moment, Windows 7 breaks during testing and dotCloud deployment. It is my intention to get Pony Forum working on Windows 7, but some of the required packages such as `PIP` often break on the operating system.
+At the moment, Windows 7/8 break during testing and dotCloud deployment. It is my intention to get Pony Forum working on Windows 7/8, but some of the required packages such as `PIL` (the imaging library) often break on the operating system.
 
 [Installation](#installation)
 --------------
