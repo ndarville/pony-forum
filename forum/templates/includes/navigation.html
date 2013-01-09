@@ -14,7 +14,7 @@
         <li><a href="{% url forum.views.reports %}"><span>Reports</span></a></li>
     {% endif %}
         <li><a href="{% url bookmarks %}" title="See your bookmarked threads"><span>Bookmarks</span></a></li>
-        <li><a href="{% url forum.views.subscriptions %}" title="View your subscriptions"><span>Subscriptions</span></a></li>
+    {#  <li><a href="{% url forum.views.subscriptions %}" title="View your subscriptions"><span>Subscriptions</span></a></li> #}
     {% if user.is_staff %}
         <li><a href="{% url forum.views.site_configuration %}"><span>Site Configuration</span></a></li>
     {% endif %}
