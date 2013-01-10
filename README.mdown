@@ -245,6 +245,8 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
     * [Invitation-based sign-up][reg-backend]
     * [Two-factor authentication][reg-backend]
 
+* Versioning system with upgrade notification
+
 ### Eventual, Not Impending, Features ###
 * [+filters in e-mails][filters] allowed
 
