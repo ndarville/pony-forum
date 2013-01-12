@@ -304,7 +304,7 @@ And much, much more.
 [dyslexia]:     http://dyslexicfonts.com/
 [markdown]:     http://daringfireball.net/projects/markdown/
 [smartypants]:  http://daringfireball.net/projects/smartypants/
-[tables]:       http://www.freewisdom.org/projects/python-markdown/Tables
+[tables]:       http://packages.python.org/Markdown/extensions/tables.html
 [pbkdf2]:       https://docs.djangoproject.com/en/1.4/releases/1.4/#improved-password-hashing
 [django-secure]:https://github.com/carljm/django-secure
 [dc-install]:   http://docs.dotcloud.com/firststeps/install/
