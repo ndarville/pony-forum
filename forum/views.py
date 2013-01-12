@@ -363,7 +363,6 @@ def thread(request, thread_id, author_id):
         return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
 
 
-# @login_required()  # Doesn't work
 def thread_js(request):
     """Lets users
     1. Bookmark threads
@@ -465,7 +464,6 @@ def user(request, user_id):
     return render(request, 'user.html', {'person': person, 'posts': posts})
 
 
-# @login_required()  # Doesn't work
 def user_js(request):
     """Lets users follow and ignore other users."""
     if request.is_ajax() and request.method == "POST":
