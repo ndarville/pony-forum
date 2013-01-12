@@ -46,20 +46,22 @@ $(document).ready(function() {
 // <a href="..." id="123">Re-subscribe</a> ->
 // <a href="..." id="123">Unsubscribe</a>
     $('.unsubscribe').on('click', function(e) {
-        // Overrule the default nonjs action when the submit button is clicked.
-        // This allows us to handle the logic with our JavaScript instead.
-        e.preventDefault();
+        if ($('.last:contains("Log Out")').length) {
+            // Overrule the default nonjs action when the submit button is clicked.
+            // This allows us to handle the logic with our JavaScript instead.
+            e.preventDefault();
 
-        var $this     = $(this);
-        var object_id = this.id;
-        var action    = $this.text();
+            var $this     = $(this);
+            var object_id = this.id;
+            var action    = $this.text();
 
-        $.post("/subscriptions/js/", {
-            object_id: object_id,
-            action:    action
-            },
-            function(data) {
-                $this.text(data);
-        });
+            $.post("/subscriptions/js/", {
+                object_id: object_id,
+                action:    action
+                },
+                function(data) {
+                    $this.text(data);
+            });
+        }
     });
 });

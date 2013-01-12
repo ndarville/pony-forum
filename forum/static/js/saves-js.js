@@ -46,20 +46,22 @@ $(document).ready(function() {
 // <a href="..." id="123">Re-save</a> ->
 // <a href="..." id="123">Remove</a>
     $('.remove').on('click', function(e) {
-        // Overrule the default nonjs action when the submit button is clicked.
-        // This allows us to handle the logic with our JavaScript instead.
-        e.preventDefault();
+        if ($('.last:contains("Log Out")').length) {
+            // Overrule the default nonjs action when the submit button is clicked.
+            // This allows us to handle the logic with our JavaScript instead.
+            e.preventDefault();
 
-        var $this     = $(this);
-        var object_id = this.id;
-        var action    = $this.text();
+            var $this     = $(this);
+            var object_id = this.id;
+            var action    = $this.text();
 
-        $.post("/saves/js/", {
-            object_id: object_id,
-            action:    action
-            },
-            function(data) {
-                $this.text(data);
-        });
+            $.post("/saves/js/", {
+                object_id: object_id,
+                action:    action
+                },
+                function(data) {
+                    $this.text(data);
+            });
+        }
     });
 });

@@ -45,20 +45,22 @@ $(document).ready(function() {
 // <a href="#" id="123">Like</a> ->
 // <a href="#" id="123">Remove like</a>
     $('.js').on('click', function(e) {
-        // Overrule the default nonjs action when the submit button is clicked.
-        // This allows us to handle the logic with our JavaScript instead.
-        e.preventDefault();
+        if ($('.last:contains("Log Out")').length) {
+            // Overrule the default nonjs action when the submit button is clicked.
+            // This allows us to handle the logic with our JavaScript instead.
+            e.preventDefault();
 
-        var $this     = $(this);
-        var person_id = this.id;
-        var text      = $this.val();
+            var $this     = $(this);
+            var person_id = this.id;
+            var text      = $this.val();
 
-        $.post("/user/js/", {
-            person_id: person_id,
-            text:      text
-            },
-            function(data) {
-                $this.val(data);
-        });
+            $.post("/user/js/", {
+                person_id: person_id,
+                text:      text
+                },
+                function(data) {
+                    $this.val(data);
+            });
+        }
     });
 });
