@@ -13,38 +13,14 @@
 {% if person != user %}
     {#  <p><a href="#">Send PM</a></p> #}
     {% if person in user.get_profile.follows.all %}
-        <form action="{% url forum.views.user_nonjs %}" method="post">
-            {% csrf_token %}
-
-            <input type="submit" class="js" id="{{ person.id }}" value="Unfollow user" role="button" />
-            <input type="hidden" name="user_id" value="{{ person.id }}" />
-            <input type="hidden" name="action" value="unfollow" />
-        </form>
+        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'follow' person.id %}" role="buton">Unfollow user</a></p>
     {% else %}
-        <form action="{% url forum.views.user_nonjs %}" method="post">
-            {% csrf_token %}
-
-            <input type="submit" class="js" id="{{ person.id }}" value="Follow user" role="button" />
-            <input type="hidden" name="user_id" value="{{ person.id }}" />
-            <input type="hidden" name="action" value="follow" />
-        </form>
+        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'follow' person.id %}" role="buton">Follow user</a></p>
     {% endif %}
     {% if person in user.get_profile.ignores.all %}
-        <form action="{% url forum.views.user_nonjs %}" method="post">
-            {% csrf_token %}
-
-            <input type="submit" class="js" id="{{ person.id }}" value="Remove user from shit list" role="button" />
-            <input type="hidden" name="user_id" value="{{ person.id }}" />
-            <input type="hidden" name="action" value="remove" />
-        </form>
+        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'ignore' person.id %}" role="buton">Remove user from shit list</a></p>
     {% else %}
-        <form action="{% url forum.views.user_nonjs %}" method="post">
-            {% csrf_token %}
-
-            <input type="submit" class="js" id="{{ person.id }}" value="Add user to shit list" role="button" />
-            <input type="hidden" name="user_id" value="{{ person.id }}" />
-            <input type="hidden" name="action" value="add" />
-        </form>
+        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'ignore' person.id %}" role="buton">Add user to shit list</a></p>
     {% endif %}
 {% comment %}
     {% if forum.perms.ban_user %}
@@ -87,5 +63,5 @@
 {% endblock %}
 {% block js %}
         {% include "includes/jquery.html" %}
-        <script type="text/javascript" src="{{ STATIC_URL }}js/user-js.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/simple-js.js"></script>
 {% endblock %}

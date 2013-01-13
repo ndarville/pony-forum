@@ -12,9 +12,11 @@
 {% endblock %}
 {% block content %}
     <div id="board" role="main">
+    {% if object_type != "user" %}
         {% with post=post_obj thread=thread category=thread.category %}
             {% include "includes/breadcrumbs.html" %}
         {% endwith %}
+    {% endif %}
 
         <form action="
         {% if action == "remove" %}

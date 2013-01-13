@@ -231,30 +231,6 @@ class UserTests(TestCase):
         self.client.get(
             reverse('forum.views.user_content', args=(test_user_id,)))
 
-    def test_user_follow_nonjs(self):
-        """Tests following a user using the nonjs view."""
-        self.client.post(
-            reverse('forum.views.user_nonjs'),
-            {'user_id': test_user_id, 'action': 'follow'})
-
-    def test_user_unfollow_nonjs(self):
-        """Tests unfollowing a user using the nonjs view."""
-        self.client.post(
-            reverse('forum.views.user_nonjs'),
-            {'user_id': test_user_id, 'action': 'unfollow'})
-
-    def test_user_add_nonjs(self):
-        """Tests adding a user to shit list using the nonjs view."""
-        self.client.post(
-            reverse('forum.views.user_nonjs'),
-            {'user_id': test_user_id, 'action': 'add'})
-
-    def test_user_remove_nonjs(self):
-        """Tests removing a user from shit list using the nonjs view."""
-        self.client.post(
-            reverse('forum.views.user_nonjs'),
-            {'user_id': test_user_id, 'action': 'remove'})
-
 
 class NonJsTests(TestCase):
     """Tests operations related to the nonjs view."""
@@ -262,6 +238,34 @@ class NonJsTests(TestCase):
 
     def setUp(self):
         self.client = logIn()
+
+    def test_user_follow_nonjs(self):
+        """Tests following a user."""
+        self.client.post(
+            reverse('forum.views.nonjs',
+                args=('follow', test_user_id,)),
+            {'action': 'follow'})
+
+    def test_user_unfollow_nonjs(self):
+        """Tests unfollowing a user."""
+        self.client.post(
+            reverse('forum.views.nonjs',
+                args=('follow', test_user_id,)),
+            {'action': 'unfollow'})
+
+    def test_user_ignore_nonjs(self):
+        """Tests adding a user to shit list."""
+        self.client.post(
+            reverse('forum.views.nonjs',
+                args=('ignore', test_user_id,)),
+            {'action': 'ignore'})
+
+    def test_user_unignore_nonjs(self):
+        """Tests removing a user from shit list."""
+        self.client.post(
+            reverse('forum.views.nonjs',
+                args=('ignore', test_user_id,)),
+            {'action': 'unignore'})
 
     def test_sticky(self):
         """Tests the stickying of a thread."""

@@ -39,8 +39,6 @@ from registration                   import views as registration_views
 ##  post
 #
 ##  user
-##      user_js
-##      user_nonjs
 ##  user_content
 #
 ##  add
@@ -372,56 +370,6 @@ def user(request, user_id):
              .exclude(thread__is_removed__exact=True)\
              .order_by("-creation_date")[:10]
     return render(request, 'user.html', {'person': person, 'posts': posts})
-
-
-def user_js(request):
-    """Lets users follow and ignore other users."""
-    if request.is_ajax() and request.method == "POST":
-        person_id = request.POST['person_id']
-        text      = request.POST['text'].lower()
-        person    = get_object_or_404(User, pk=person_id)
-
-        if text.startswith("follow"):
-            request.user.get_profile().follows.add(person)
-            new_text = "Unfollow user"
-        elif text.startswith("unfollow"):
-            request.user.get_profile().follows.remove(person)
-            new_text = "Follow user"
-
-        elif text.startswith("add"):
-            request.user.get_profile().ignores.add(person)
-            new_text = "Remove user from shit list"
-        elif text.startswith("remove"):
-            request.user.get_profile().ignores.remove(person)
-            new_text = "Add user to shit list"
-
-        return HttpResponse(new_text)
-
-
-@login_required()
-def user_nonjs(request):
-    """An HTML fall-back for `user_js()`, in case the user
-    has disabled JavaScript in their browser.
-    """
-    if request.method == 'POST':
-        person = get_object_or_404(User, pk=request.POST['user_id'])
-        action = request.POST['action']
-
-        if action == "follow":
-            request.user.get_profile().follows.add(person)
-            messages.success(request, "Now following %s." % person.username)
-        elif action == "unfollow":
-            request.user.get_profile().follows.remove(person)
-            messages.success(request, "Unfollowed %s." % person.username)
-
-        elif action == "add":
-            request.user.get_profile().ignores.add(person)
-            messages.success(request, "Added %s to shit list." % person.username)
-        elif action == "remove":
-            request.user.get_profile().ignores.remove(person)
-            messages.success(request, "Removed %s from shit list." % person.username)
-
-    return HttpResponseRedirect(reverse('forum.views.user', args=(person.id,)))
 
 
 def user_content(request, user_id, object_type):
@@ -965,6 +913,11 @@ def saves_and_bookmarks(request, object_type):
 def simple_js(request):
     """Lets users do one of the following:
 
+    From the user view:
+
+    * follow a user
+    * add a user to a shit list
+
     From the thread or post view:
 
     * bookmark threads
@@ -985,81 +938,98 @@ def simple_js(request):
         action    = request.POST['action'].lower()
         href      = request.POST['href']
 
-        if 'bookmark' in href or 'subscribe' in href:
-            obj = get_object_or_404(Thread, pk=object_id)
+        if 'follow' in href or 'ignore' in href:
+            person = get_object_or_404(User, pk=object_id)
+        elif 'bookmark' in href or 'subscribe' in href:
+            thread = get_object_or_404(Thread, pk=object_id)
         elif 'save' in href or 'thank' in href or 'agree' in href:
-            obj = get_object_or_404(Post, pk=object_id)
+            post = get_object_or_404(Post, pk=object_id)
 
+        # User JS
+        if "follow" in href:
+            if action.startswith("follow"):
+                request.user.get_profile().follows.add(person)
+                new_action = "Unfollow user"
+            else:
+                request.user.get_profile().follows.remove(person)
+                new_action = "Follow user"
+        elif "ignore" in href:
+            if action.startswith("add"):
+                request.user.get_profile().ignores.add(person)
+                new_action = "Remove user from shit list"
+            else:
+                request.user.get_profile().ignores.remove(person)
+                new_action = "Add user to shit list"
         # Thread JS
-        if "bookmark" in action:
+        elif "bookmark" in action:
             # Not to be confused with the action related
             # to the bookmark view
             if action == "bookmark":
-                obj.bookmarker.add(request.user)
+                thread.bookmarker.add(request.user)
                 new_action = "Unbookmark"
             else:
-                obj.bookmarker.remove(request.user)
+                thread.bookmarker.remove(request.user)
                 new_action = "Bookmark"
 
         elif "subscribe" in action:
             # Not to be confused with the action related
             # to the subscriptions view
             if action == "subscribe":
-                obj.subscriber.add(request.user)
+                thread.subscriber.add(request.user)
                 new_action = "Unsubscribe"
             else:
-                obj.subscriber.remove(request.user)
+                thread.subscriber.remove(request.user)
                 new_action = "Subscribe"
 
         elif "agree" in action:
             if action == "agree":
-                obj.agrees.add(request.user)
+                post.agrees.add(request.user)
                 new_action = "Unagree"
             else:
-                obj.agrees.remove(request.user)
+                post.agrees.remove(request.user)
                 new_action = "Agree"
 
         elif "save" in action:
             if action == "save":
-                obj.saves.add(request.user)
+                post.saves.add(request.user)
                 new_action = "Unsave"
             else:
-                obj.saves.remove(request.user)
+                post.saves.remove(request.user)
                 new_action = "Save"
 
         elif "thank" in action:
             if action == "thank":
-                obj.thanks.add(request.user)
+                post.thanks.add(request.user)
                 new_action = "Unthank"
             else:
-                obj.thanks.remove(request.user)
+                post.thanks.remove(request.user)
                 new_action = "Thank"
 
         # Bookmarks JS
         elif "bookmark" in href:
             if action == "re-bookmark":
-                obj.bookmarker.add(request.user)
+                thread.bookmarker.add(request.user)
                 new_action = "Unbookmark"
             else:
-                obj.bookmarker.remove(request.user)
+                thread.bookmarker.remove(request.user)
                 new_action = "Re-bookmark"
 
         # Saves JS
         elif "save" in href:
             if action == "re-save":
-                obj.saves.add(request.user)
+                post.saves.add(request.user)
                 new_action = "Remove"
             else:
-                obj.saves.remove(request.user)
+                post.saves.remove(request.user)
                 new_action = "Re-save"
 
         # Subscriptions JS
         elif "subscribe" in href:
             if action == "re-subscribe":
-                obj.subscriber.add(request.user)
+                thread.subscriber.add(request.user)
                 new_action = "Unsubscribe"
             else:
-                obj.subscriber.remove(request.user)
+                thread.subscriber.remove(request.user)
                 new_action = "Re-subscribe"
 
         return HttpResponse(new_action)
@@ -1072,19 +1042,42 @@ def nonjs(request, action, object_id):
     """
     next = request.META.get('HTTP_REFERER', '')
 
-    if action in ['save', 'thank', 'agree']:
+    if action in ['follow', 'ignore']:
+        obj = get_object_or_404(User, pk=object_id)
+        object_type = 'user'
+        thread = None
+        post_obj = None
+    elif action in ['save', 'thank', 'agree']:
         obj = get_object_or_404(Post, pk=object_id)
-        thread = obj.thread
         object_type = 'post'
+        thread = obj.thread
         post_obj = obj
     else:
         obj = get_object_or_404(Thread, pk=object_id)
-        thread = obj
         object_type = 'thread'
+        thread = obj
         post_obj = None
 
     if request.method == 'POST':  # Form has been submitted
-        if 'subscribe' in action:
+        if 'follow' in action:
+            if 'follow' in request.POST:  # Follow command
+                request.user.get_profile().follows.add(obj)
+                messages.info(request, "Now following %s." % obj.username)
+            else:
+                request.user.get_profile().follows.remove(obj)
+                messages.info(request, "Unfollowed %s." % obj.username)
+
+        elif 'ignore' in action:
+            if 'ignore' in request.POST:  # Ignore command
+                request.user.get_profile().ignores.add(obj)
+                messages.info(request,
+                    "Added %s to shit list." % obj.username)
+            else:
+                request.user.get_profile().ignores.remove(obj)
+                messages.info(request,
+                    "Removed %s from shit list." % obj.username)
+
+        elif 'subscribe' in action:
             if 'subscribe' in request.POST:  # Subscribe command
                 thread.subscriber.add(request.user)
                 messages.info(request, "Subscribed to thread.")
