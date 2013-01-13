@@ -227,9 +227,8 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 1. [Subscriptions][subscription]
 2. [Bans][bans]
-3. [Avatars][avatars]
-4. Moderator management interface w/ back-end
-5. Better report system
+3. Moderator management interface w/ back-end
+4. Better report system
 
 * CSS
     * General
@@ -248,6 +247,8 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 * Versioning system with upgrade notification
 
 ### Eventual, Not Impending, Features ###
+* [Avatars][avatars]
+
 * [+filters in e-mails][filters] allowed
 
 * Support for analytics code
