@@ -7,7 +7,7 @@
         {% else %}{% url remove_post obj.id %}
         {% endif %}
     {% else %}
-        {{ absolute_url }}
+        {{ canonical_url }}
     {% endif %}
 {% endblock %}
 {% block content %}
