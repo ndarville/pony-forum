@@ -13,14 +13,14 @@
 {% if person != user %}
     {#  <p><a href="#">Send PM</a></p> #}
     {% if person in user.get_profile.follows.all %}
-        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'follow' person.id %}" role="buton">Unfollow user</a></p>
+        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'follow' person.id %}" role="buton">Unfollow</a></p>
     {% else %}
-        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'follow' person.id %}" role="buton">Follow user</a></p>
+        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'follow' person.id %}" role="buton">Follow</a></p>
     {% endif %}
     {% if person in user.get_profile.ignores.all %}
-        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'ignore' person.id %}" role="buton">Remove user from shit list</a></p>
+        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'ignore' person.id %}" role="buton">Remove from shit list</a></p>
     {% else %}
-        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'ignore' person.id %}" role="buton">Add user to shit list</a></p>
+        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'ignore' person.id %}" role="buton">Add to shit list</a></p>
     {% endif %}
 {% comment %}
     {% if forum.perms.ban_user %}

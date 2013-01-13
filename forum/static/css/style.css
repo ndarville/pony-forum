@@ -438,6 +438,10 @@ legend {
 
 #profile-information { float: left;  width: 60%; }
 #profile-interaction { float: right; width: 40%; }
+
+#profile-interaction p + p {
+    margin-top: 1.5em;
+}
 /**** * ****/
 
 /****          *****
