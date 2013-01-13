@@ -27,7 +27,7 @@
                 <td><a href="{% url forum.views.thread thread.id %}" title="Go to first post in &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ thread.title_html|safe }}</a></td>
                 <td>{{ thread.post_count|intcomma }}</td>
                 <td class="unread">
-                    <a class="unsubscribe" id="{{ thread.id }}" href="{% url forum.views.nonjs 'subscribe' thread.id %}" title="Unsubscribe from thread" role="button">X</a><a class="count" href="#" title="Go to last unread post in &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ 1000|intcomma }}</a>
+                    <a class="unsubscribe js" id="{{ thread.id }}" href="{% url forum.views.nonjs 'subscribe' thread.id %}" title="Unsubscribe from thread" role="button">X</a><a class="count" href="#" title="Go to last unread post in &ldquo;{{ thread.title_html|safe }}&rdquo;">{{ 1000|intcomma }}</a>
                 </td>
             </tr>
     {% endfor %}
@@ -43,5 +43,5 @@
 {% endblock %}
 {% block js %}
         {% include "includes/jquery.html" %}
-        <script type="text/javascript" src="{{ STATIC_URL }}js/subscriptions-js.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/simple-js.js"></script>
 {% endblock %}

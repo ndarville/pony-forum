@@ -31,7 +31,7 @@
             <tr>
                 <td><a href="{% url forum.views.thread thread.id %}">{{ thread.title_html|safe }}</a></td>
                 <td>{{ thread.relative_date }}</td>
-                <td class="removal"><a class="remove" id="{{ thread.id }}" href="{% url forum.views.nonjs 'bookmark' thread.id %}" title="Remove &ldquo;{{ thread.title_html|safe }}&rdquo; from bookmarks" role="button">X</a></td>
+                <td class="removal"><a class="remove js" id="{{ thread.id }}" href="{% url forum.views.nonjs 'bookmark' thread.id %}" title="Remove &ldquo;{{ thread.title_html|safe }}&rdquo; from bookmarks" role="button">X</a></td>
             </tr>
         {% endfor %}
         </tbody>
@@ -50,7 +50,7 @@
                 <td><a href="{% url forum.views.post post.id %}">{{ post.thread.title_html|safe }}</a></td>
                 <td>{{ post.author }}
                 <td>{{ post.relative_date }}</td>
-                <td class="removal"><a class="remove" id="{{ post.id }}" href="{% url forum.views.nonjs 'save' post.id %}" title="Remove post from saves" role="button">X</a></td>
+                <td class="removal"><a class="remove js" id="{{ post.id }}" href="{% url forum.views.nonjs 'save' post.id %}" title="Remove post from saves" role="button">X</a></td>
             </tr>
         {% endfor %}
     {% endif %}
@@ -65,9 +65,5 @@
 {% endblock %}
 {% block js %}
         {% include "includes/jquery.html" %}
-        {% if type == "bookmarks" %}
-            <script type="text/javascript" src="{{ STATIC_URL }}js/bookmarks-js.js"></script>
-        {% else %}
-            <script type="text/javascript" src="{{ STATIC_URL }}js/saves-js.js"></script>
-        {% endif %}
+            <script type="text/javascript" src="{{ STATIC_URL }}js/simple-js.js"></script>
 {% endblock %}

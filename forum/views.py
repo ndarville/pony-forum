@@ -33,12 +33,9 @@ from registration                   import views as registration_views
 ##  home
 #
 ##  subscriptions
-##      subscriptions_js
 #
 ##  category
 ##  thread
-##      thread_js
-##      thread_nonjs
 ##  post
 #
 ##  user
@@ -67,9 +64,8 @@ from registration                   import views as registration_views
 ##  site_configuration
 #
 ##  saves_and_bookmarks
-##      bookmarks_js
-##      saves_js
 #
+##  simple_js
 ##  nonjs
 ##      subscribe
 ##      bookmark
@@ -299,26 +295,6 @@ def subscriptions(request):
                            'objects'    : objects})
 
 
-def subscriptions_js(request):
-    """Lets users subscribe to and unsubscribe from threads
-    in the subscription views.
-    """
-    if request.is_ajax() and request.method == "POST":
-        object_id = request.POST['object_id']
-        action    = request.POST['action'].lower()
-        thread    = get_object_or_404(Thread, pk=object_id)
-
-        if action == "re-subscribe":
-            thread.subscriber.add(request.user)
-            new_action = "Unsubscribe"
-
-        else:
-            thread.subscriber.remove(request.user)
-            new_action = "Re-subscribe"
-
-        return HttpResponse(new_action)
-
-
 def category(request, category_id):
     """Category with threads ordered by latest posts."""
     category         = get_object_or_404(Category, pk=category_id)
@@ -362,72 +338,6 @@ def thread(request, thread_id, author_id):
         messages.info(request, "The thread %s has been removed and no longer available." % thread.title_html)
         return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
 
-
-def thread_js(request):
-    """Lets users
-    1. Bookmark threads
-    2. Subscribe to threads
-
-    3. Agree with posts
-    4. Thank users for posts
-    5. Save posts
-    """
-    if request.is_ajax() and request.method == "POST":
-        object_id = request.POST['object_id']
-        action    = request.POST['action'].lower()
-
-        if "bookmark" in action or "subscribe" in action:
-            obj = get_object_or_404(Thread, pk=object_id)
-        else:
-            obj = get_object_or_404(Post, pk=object_id)
-
-        # Check that it exists before adding and not when removing
-        if "agree" in action:
-            if action == "agree":
-                obj.agrees.add(request.user)
-                new_action = "Unagree"
-            else:
-                obj.agrees.remove(request.user)
-                new_action = "Agree"
-
-        elif "bookmark" in action:
-            if action == "bookmark":
-                obj.bookmarker.add(request.user)
-                new_action = "Unbookmark"
-            else:
-                obj.bookmarker.remove(request.user)
-                new_action = "Bookmark"
-
-        elif "save" in action:
-            if action == "save":
-                obj.saves.add(request.user)
-                new_action = "Unsave"
-            else:
-                obj.saves.remove(request.user)
-                new_action = "Save"
-
-        elif "subscribe" in action:
-            if action == "subscribe":
-                obj.subscriber.add(request.user)
-                new_action = "Unsubscribe"
-            else:
-                obj.subscriber.remove(request.user)
-                new_action = "Subscribe"
-
-        elif "thank" in action:
-            if action == "thank":
-                obj.thanks.add(request.user)
-                new_action = "Unthank"
-            else:
-                obj.thanks.remove(request.user)
-                new_action = "Thank"
-
-        return HttpResponse(new_action)
-
-#        if action.endswith("e"):
-#            success = action + "d"
-#        else:
-#            success = action + "ed"
 
 
 def post(request, post_id):
@@ -1052,42 +962,105 @@ def saves_and_bookmarks(request, object_type):
                            'objects': objects})
 
 
-def bookmarks_js(request):
-    """Lets users bookmark and unbookmark threads
-    from the bookmarks view.
+def simple_js(request):
+    """Lets users do one of the following:
+
+    From the thread or post view:
+
+    * bookmark threads
+    * subscribe to threads
+
+    * agree with posts
+    * thank users for posts
+    * save posts
+
+    or
+
+    * bookmark and unbookmark threads from the bookmarks view
+    * save and unsave posts from the saves view
+    * subscribe to and unsubscribe from threads in the subscription view
     """
     if request.is_ajax() and request.method == "POST":
         object_id = request.POST['object_id']
         action    = request.POST['action'].lower()
-        thread    = get_object_or_404(Thread, pk=object_id)
+        href      = request.POST['href']
 
-        if action == "re-bookmark":
-            thread.bookmarker.add(request.user)
-            new_action = "Unbookmark"
+        if 'bookmark' in href or 'subscribe' in href:
+            obj = get_object_or_404(Thread, pk=object_id)
+        elif 'save' in href or 'thank' in href or 'agree' in href:
+            obj = get_object_or_404(Post, pk=object_id)
 
-        else:
-            thread.bookmarker.remove(request.user)
-            new_action = "Re-bookmark"
+        # Thread JS
+        if "bookmark" in action:
+            # Not to be confused with the action related
+            # to the bookmark view
+            if action == "bookmark":
+                obj.bookmarker.add(request.user)
+                new_action = "Unbookmark"
+            else:
+                obj.bookmarker.remove(request.user)
+                new_action = "Bookmark"
 
-        return HttpResponse(new_action)
+        elif "subscribe" in action:
+            # Not to be confused with the action related
+            # to the subscriptions view
+            if action == "subscribe":
+                obj.subscriber.add(request.user)
+                new_action = "Unsubscribe"
+            else:
+                obj.subscriber.remove(request.user)
+                new_action = "Subscribe"
 
+        elif "agree" in action:
+            if action == "agree":
+                obj.agrees.add(request.user)
+                new_action = "Unagree"
+            else:
+                obj.agrees.remove(request.user)
+                new_action = "Agree"
 
-def saves_js(request):
-    """Lets users save and unsave posts
-    from the saves view.
-    """
-    if request.is_ajax() and request.method == "POST":
-        object_id = request.POST['object_id']
-        action    = request.POST['action'].lower()
-        post      = get_object_or_404(Post, pk=object_id)
+        elif "save" in action:
+            if action == "save":
+                obj.saves.add(request.user)
+                new_action = "Unsave"
+            else:
+                obj.saves.remove(request.user)
+                new_action = "Save"
 
-        if action == "re-save":
-            post.saves.add(request.user)
-            new_action = "Remove"
+        elif "thank" in action:
+            if action == "thank":
+                obj.thanks.add(request.user)
+                new_action = "Unthank"
+            else:
+                obj.thanks.remove(request.user)
+                new_action = "Thank"
 
-        else:
-            post.saves.remove(request.user)
-            new_action = "Re-save"
+        # Bookmarks JS
+        elif "bookmark" in href:
+            if action == "re-bookmark":
+                obj.bookmarker.add(request.user)
+                new_action = "Unbookmark"
+            else:
+                obj.bookmarker.remove(request.user)
+                new_action = "Re-bookmark"
+
+        # Saves JS
+        elif "save" in href:
+            if action == "re-save":
+                obj.saves.add(request.user)
+                new_action = "Remove"
+            else:
+                obj.saves.remove(request.user)
+                new_action = "Re-save"
+
+        # Subscriptions JS
+        elif "subscribe" in href:
+            if action == "re-subscribe":
+                obj.subscriber.add(request.user)
+                new_action = "Unsubscribe"
+            else:
+                obj.subscriber.remove(request.user)
+                new_action = "Re-subscribe"
 
         return HttpResponse(new_action)
 
