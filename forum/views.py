@@ -956,10 +956,10 @@ def simple_js(request):
         elif "ignore" in href:
             if action.startswith("add"):
                 request.user.get_profile().ignores.add(person)
-                new_action = "Remove user from shit list"
+                new_action = "Remove from shit list"
             else:
                 request.user.get_profile().ignores.remove(person)
-                new_action = "Add user to shit list"
+                new_action = "Add to shit list"
         # Thread JS
         elif "bookmark" in action:
             # Not to be confused with the action related
