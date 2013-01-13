@@ -354,6 +354,10 @@ input[type="submit"] {
     background-color: #FF9;
 }
 
+#content-body .pagination a {
+    text-decoration: none;
+}
+
 #content-body input[type="submit"] {
     margin-top: 0;
 }
