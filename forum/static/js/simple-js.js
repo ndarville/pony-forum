@@ -51,10 +51,10 @@ $(document).ready(function() {
             // This allows us to handle the logic with our JavaScript instead.
             e.preventDefault();
 
-            var $this = $(this),
-            object_id = this.id,
-            action    = $this.text(),
-            href      = this.href;
+            var $this     = $(this),
+                object_id = this.id,
+                action    = $this.text(),
+                href      = this.href;
 
             $.post("/js/", {
                 object_id: object_id,
