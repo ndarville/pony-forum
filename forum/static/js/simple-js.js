@@ -18,10 +18,10 @@ $(document).ready(function() {
         }
         function sameOrigin(url) {
             // url could be relative or scheme relative or absolute
-            var host = document.location.host; // host + port
-            var protocol = document.location.protocol;
-            var sr_origin = '//' + host;
-            var origin = protocol + sr_origin;
+            var host = document.location.host, // host + port
+                protocol = document.location.protocol,
+                sr_origin = '//' + host,
+                origin = protocol + sr_origin;
             // Allow absolute or scheme relative URLs to same origin
             return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
                 (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
@@ -51,10 +51,10 @@ $(document).ready(function() {
             // This allows us to handle the logic with our JavaScript instead.
             e.preventDefault();
 
-            var $this     = $(this);
-            var object_id = this.id;
-            var action    = $this.text();
-            var href      = this.href;
+            var $this = $(this),
+            object_id = this.id,
+            action    = $this.text(),
+            href      = this.href;
 
             $.post("/js/", {
                 object_id: object_id,
