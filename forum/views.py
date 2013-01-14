@@ -215,13 +215,14 @@ def sanitized_smartdown(string):
                           'acronym': ['title'],
                           'abbr':    ['title'],
                           'img':     ['alt', 'src'],
-                      ### Attribute List:
                           'h1':      ['id'],
                           'h2':      ['id'],
                           'h3':      ['id'],
                           'h4':      ['id'],
                           'h5':      ['id'],
-                          'img':     ['id', 'src']
+                          'img':     ['id', 'src'],
+                          'th':      ['colspan', 'rowspan'],
+                          'td':      ['colspan', 'rowspan']
                          }
 
     MD_EXTENSIONS = [
