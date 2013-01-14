@@ -37,18 +37,31 @@ $(document).ready(function() {
         }
     });
 
+// Display list of people who have thanked and agreed with a post,
+// when user clicks the button in the post.
+    // $(".agrees").click(function() {
+    //     $(this).parent().siblings(".agreeers").toggle();
+    // });
+
+    // $(".thanks").click(function() {
+    //     $(this).parent().siblings(".thankers").toggle();
+    // });
+
 // Makes a POST request to a view at "/js/"
 // that takes the arguments `object_id` and `action` representing
 // the object ID and the operation.
 //
 // Upon success, the `text()` inside the element is replaced with
 // the opposite action provided by the Django view. E.g.:
+//
 // <a href="..." id="123">Re-subscribe</a> ->
 // <a href="..." id="123">Unsubscribe</a>
     $('.js').on('click', function(e) {
+        // Only perform the following if user is logged in,
+        // detected by checking for a "Log out" in navigation.
         if ($('.last:contains("Log Out")').length) {
-            // Overrule the default nonjs action when the submit button is clicked.
-            // This allows us to handle the logic with our JavaScript instead.
+            // Overrule default nonjs action when submit button is clicked
+            // to allow handling the the logic with our JavaScript instead.
             e.preventDefault();
 
             var $this     = $(this),
