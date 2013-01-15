@@ -23,7 +23,7 @@ Basic Guidelines
 
 4. Include screenshots, whenever relevant.
 
-    [Imgur](http://imgur.com/) is a fine service to upload them. Because of the image optimizations they apply, you should not use their service in cases where image quality loss is a problem. In those cases, you can use [Minus](http://minus.com).
+    Use GitHub’s built-in [image attachment system](https://github.com/blog/1347-issue-attachments) instead of services like Imgur and Minus.
 
 5. Respect the concept of “officially supported”:
 
