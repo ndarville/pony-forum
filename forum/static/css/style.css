@@ -685,7 +685,7 @@ span#error {
     caption {
         caption-side: top;
         text-align: center;
-        font: small-caps 1.25em Helvetica;
+        font: small-caps 1.25em "Helvetica Neue", Helvetica, sans-serif;
 
     }
 
@@ -833,7 +833,7 @@ span#error {
 }
 
 #example table {
-    font: 0.9em/1.35em "Lucida Grande", Consolas, Inconsolata, monospace;
+    font: 0.9em/1.35em "Lucida Grande", Consolas, monospace;
     border: 1px solid black;
     width: 90%;
     margin: 0 auto 1.5em; /** Recalculate */
@@ -1061,7 +1061,7 @@ textarea,
 /** iPhone */
 @media only screen and (max-device-width: 480px) {
     body {
-        font: 12px/1.5em Helvetica, "Helvetica Neue", sans-serif;
+        font: 12px/1.5em "Helvetica Neue", Helvetica, sans-serif;
     }
 
     #container {
