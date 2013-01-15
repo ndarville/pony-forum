@@ -19,7 +19,7 @@ Basic Guidelines
 
     This also improves the quality of your commits significantly.
 
-    There is harm in making a Pull Request containing several commits.
+    There is no harm in making a Pull Request containing several commits.
 
 4. Include screenshots, whenever relevant.
 
