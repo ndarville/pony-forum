@@ -53,6 +53,8 @@ Pedantic Style Guidelines
 
 4. There will eventually, but not currently, be some clearer guidelines for when and when not to use single and double quotes. Be mindful of how you use them and try to use them consistently in your commits.
 
+5. Avoid lines longer than 78 characters as a rule of thumb.
+
 In general writing, I use my own variant of the Oxford style.
 
 I only mention this to pre-empt annoying pull requests for asinine corrections. It is not something you should concern yourself with when contributing.
