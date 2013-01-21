@@ -404,7 +404,6 @@ ul.errorlist li {
 }
 
 #content-body label {
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
     width: 33%;
 }
 
@@ -685,7 +684,7 @@ span#error {
     caption {
         caption-side: top;
         text-align: center;
-        font: small-caps 1.25em "Helvetica Neue", Helvetica, sans-serif;
+        font: small-caps 1.25em "Helvetica Neue", Helvetica, Verdana;
 
     }
 
@@ -1061,7 +1060,8 @@ textarea,
 /** iPhone */
 @media only screen and (max-device-width: 480px) {
     body {
-        font: 12px/1.5em "Helvetica Neue", Helvetica;
+        font-size: 12px;
+        line-height: 1.5em;
     }
 
     #container {
