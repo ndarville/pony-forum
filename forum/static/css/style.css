@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    font: 14px/1.5em Helvetica, "Helvetica Neue", sans-serif;
+    font: 14px/1.5em "Helvetica Neue", Helvetica, sans-serif;
 }
 
 a {
@@ -25,7 +25,7 @@ blockquote {
 }
 
 code {
-    font-family: "Lucida Grande", Consolas, monospace;
+    font-family: monospace;
     padding: 0 0.25em;
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
@@ -35,7 +35,7 @@ code {
 }
 
 pre {
-    font: 0.8125em/1.8462em "Lucida Grande", Consolas, monospace;
+    font: 0.8125em/1.8462em monospace;
     display: block;
     margin: 1em 1px; /** 1px to offset the border */
     padding: 5px 15px;
@@ -248,7 +248,7 @@ table {
 input[type="submit"] {
     font-size: 1em; /** Addresses weird font-size for <input> */
     font-height: 1.5em;
-    font-family: Georgia, serif;
+    font-family: Georgia;
     font-variant: small-caps;
     margin: 1.5em 0;
     text-align: center;
@@ -546,7 +546,7 @@ legend {
 }
 
 #content table.hide {
-    font: 0.6em/1.2em "Lucida Grande", Consolas, monospace;
+    font-size: 0.6em/1.2em Georgia;
 }
 /**** * ****/
 
@@ -673,7 +673,7 @@ span#error {
 
 #board .words table,
 #content-body table {
-    font: 0.8125em/1.8462em "Lucida Grande", Consolas, monospace;
+    font: 0.8125em/1.8462em Verdana;
     margin: 0 auto 1em; /** 1px to offset the border */
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
@@ -833,7 +833,7 @@ span#error {
 }
 
 #example table {
-    font: 0.9em/1.35em "Lucida Grande", Consolas, monospace;
+    font: 0.9em/1.35em Verdana;
     border: 1px solid black;
     width: 90%;
     margin: 0 auto 1.5em; /** Recalculate */
@@ -956,7 +956,7 @@ textarea,
 ***** CREDITS *****
 *****         ****/
 #credits {
-    font-family: "Helvetica Neue", "Helvetica", "Verdana", sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Verdana;
     font-size: 0.75em;
     line-height: 2em;
     width: 450px;
@@ -1061,7 +1061,7 @@ textarea,
 /** iPhone */
 @media only screen and (max-device-width: 480px) {
     body {
-        font: 12px/1.5em "Helvetica Neue", Helvetica, sans-serif;
+        font: 12px/1.5em "Helvetica Neue", Helvetica;
     }
 
     #container {
