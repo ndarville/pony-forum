@@ -27,6 +27,7 @@
             id="id_username"
             {% if form.username.errors %}class="input-error"{% endif %}
             type="text"
+            x-webkit-speech
             name="username"
             value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
             {% if max_username_length %}maxlength="{{ max_username_length }}"{% endif %}
