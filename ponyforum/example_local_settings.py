@@ -19,6 +19,10 @@ import os
 LOCAL_SETTINGS = True
 DEBUG = True
 
+ADMINS = (
+  ("Django Pony", "djangopony+ponyforum@equestria.com"),
+)
+
 ### DATABASES
 # These are example databases that don't work out of the box.
 # You will have to configure your own.
