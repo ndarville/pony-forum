@@ -2,6 +2,7 @@
 *.log
 *.pot
 *.pyc
+.dotcloud/
 build/
 forum/migrations/
 notes/
