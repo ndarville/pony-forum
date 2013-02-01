@@ -3,19 +3,13 @@ from django.conf import settings
 from django_nose import FastFixtureTestCase as TestCase
 
 
-def get_apps():
-    apps = {}
-
-    for i, app in enumerate(settings.INSTALLED_APPS):
-        apps[app] = i
-    return apps
-
-
 class AppOrderTest(TestCase):
     """Ensures the apps are in the order as required by their authors."""
 
     def setUp(self):
-        self.apps = get_apps()
+        self.apps = {
+            app: order for order, app in enumerate(settings.INSTALLED_APPS)
+        }
 
     def test_forum(self):
         """'forum' goes at the beginning cf.
