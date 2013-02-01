@@ -4,7 +4,10 @@ html {
     margin-bottom: 1px;
 }
 
-body {
+body,
+button,
+input,
+select {
     font: 14px/1.5em "Helvetica Neue", Helvetica, sans-serif;
 }
 
@@ -894,6 +897,10 @@ textarea,
 #id-form {
     padding: 5px;
     font-size: 0.9em; line-height: 1.35em;
+}
+
+textarea {
+    font-family: Verdana;
 }
 
 #id-form {

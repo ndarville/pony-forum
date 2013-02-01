@@ -120,17 +120,6 @@ html {
     -ms-text-size-adjust: 100%; /* 3 */
 }
 
-/*
- * Addresses font-family inconsistency between 'textarea' and other form elements.
- */
-body,
-button,
-input,
-select,
-textarea {
-    font-family: sans-serif;
-}
-
 a {
     color: #00e;
 }
