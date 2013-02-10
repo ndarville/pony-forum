@@ -338,7 +338,6 @@ def thread(request, thread_id, author_id):
         return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
 
 
-
 def post(request, post_id):
     """View a single post object."""
     post = get_object_or_404(Post.objects.select_related(), pk=post_id)
