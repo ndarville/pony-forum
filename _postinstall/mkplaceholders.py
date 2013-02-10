@@ -24,7 +24,7 @@ categories, characters = {}, {}
 PASSWORD = ''.join([random.SystemRandom().choice(
     'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(128)])
 c, created = Category.objects.get_or_create(
-        title_plain="Discussions", title_html="Discussions")
+    title_plain="Discussions", title_html="Discussions")
 
 def mkuser(line):
     name = line.strip().lower().title()
@@ -48,9 +48,9 @@ def mktitle(line):
     global t
     categories["TITLE"] = line.strip()
     t, created = Thread.objects.get_or_create(
-            title_plain=categories["TITLE"],
-            title_html=sp(categories["TITLE"]),
-            author=categories["AUTHOR"], category=c)
+        title_plain=categories["TITLE"],
+        title_html=sp(categories["TITLE"]),
+        author=categories["AUTHOR"], category=c)
 
     if created:
         t.author.get_profile().thread_count += 1
@@ -67,8 +67,8 @@ def mkcharacters(line):
 def parse_speaker(speaker, content):
     speaker = speaker.lower().title()
     p, created = Post.objects.get_or_create(
-            thread=t, author=characters[speaker],
-            content_plain=content)
+        thread=t, author=characters[speaker],
+        content_plain=content)
     if created:
         p.content_html = sp(md(text=content, extensions=["nl2br"]))
         p.creation_date = datetime.datetime.now()  # UTC?

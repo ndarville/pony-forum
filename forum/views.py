@@ -134,8 +134,8 @@ def prettify_title(title):
     """Sanitizes all (ALL) HTML elements in titles while prettifying the quotes
     and dashes used in the titles of threads and categories.
     """
-    return bleach.clean(\
-                        smartypants(title, "2"),\
+    return bleach.clean(
+                        smartypants(title, "2"),
                         tags=[], attributes={})
 
 
@@ -231,15 +231,15 @@ def sanitized_smartdown(string):
                      'tables'
                     ]
 
-    return bleach.clean(\
-                        smartypants(\
-                                    markdown(\
+    return bleach.clean(
+                        smartypants(
+                                    markdown(
                                              text=string,
                                              extensions=MD_EXTENSIONS,
                                              #output_format='html5',
                                              #lazy_ol=True,
-                                             safe_mode=True),\
-                                    "2"),\
+                                             safe_mode=True),
+                                    "2"),
                         tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES)
 
 
@@ -437,17 +437,17 @@ def create(request, category_id):
                 now       = datetime.datetime.now()  # UTC?
                 text_html = sanitized_smartdown(text_plain)
                 try:
-                    t = Thread.objects.create(\
+                    t = Thread.objects.create(
                             title_plain=title_plain, title_html=title_html,
                             author=user, category=category,
                             creation_date=now, latest_reply_date=now)
-                    Post.objects.create(\
+                    Post.objects.create(
                             thread=t, creation_date=now, author=user,
                             content_plain=text_plain, content_html=text_html)
                     t.subscriber.add(user)
                 except:
                     pass
-                else: # After successful submission
+                else:  # After successful submission
                     category.thread_count += 1
                     category.post_count += 1
                     t.post_count += 1
@@ -494,7 +494,7 @@ def reply(request, thread_id):
             user = request.user
             now  = datetime.datetime.now()  # UTC?
             html = sanitized_smartdown(text)
-            Post.objects.create(\
+            Post.objects.create(
                 thread=thread, author=user, creation_date=now,
                 content_plain=text, content_html=html)
             if request.user.get_profile().auto_subscribe:
@@ -579,7 +579,7 @@ def merge_thread(request, thread_id):
         elif request.method == 'POST' and "confirm" in request.POST:
             now  = datetime.datetime.now()  # UTC?
             user = request.user
-            t    = Thread.objects.create(\
+            t    = Thread.objects.create(
                        title_plain=new_title_plain, title_html=new_title_html,
                        creation_date=now, author=user, category=thread.category,
                        latest_reply_date=now)
@@ -759,7 +759,7 @@ def report(request, object_id, object_type):
                 user = request.user
                 now  = datetime.datetime.now()  # UTC?
                 try:
-                    r = Report.objects.create(\
+                    r = Report.objects.create(
                             creation_date=now, author=user,
                             reason_short=title, thread=thread)
                     if "content" in request.POST:
@@ -834,7 +834,7 @@ def custom_register(request, **kwargs):
             extra_context={
                 'site_config_error'  : site_config_error,
                 'email_config_error' : email_config_error,
-                'max_username_length': \
+                'max_username_length':
                     User._meta.get_field("username").max_length},
             **kwargs)
 
@@ -869,7 +869,7 @@ def site_configuration(request):
         messages.success(request, "New settings saved.")
 
     return render(request, 'site_configuration.html', {
-        'EMAIL_HOST_USER'        : \
+        'EMAIL_HOST_USER'        :
             project_settings.EMAIL_HOST_USER != "myusername@gmail.com",
         'EMAIL_HOST_PASSWORD'    : project_settings.EMAIL_HOST != "mypassword",
         'EMAIL_USE_TLS'          : project_settings.EMAIL_USE_TLS,

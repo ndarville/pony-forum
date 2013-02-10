@@ -46,7 +46,7 @@ urlpatterns = patterns('forum.views',
                                                     'remove_thread'),
     (r'^thread/(?P<thread_id>\d+)/$',            'thread',
                                                     {'author_id': 'Everyone'}),
-	(r'^thread/(?P<thread_id>\d+)/author/(?P<author_id>\d+)/$', 'thread'),
+    (r'^thread/(?P<thread_id>\d+)/author/(?P<author_id>\d+)/$', 'thread'),
 
 #   Post
     (r'^post/(?P<post_id>\d+)/edit/$',           'edit'),
