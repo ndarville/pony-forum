@@ -75,7 +75,7 @@ class ThreadAdmin(admin.ModelAdmin):
     date_hierarchy =  'creation_date'
     list_display   = ('title_html', 'category', 'author',
                       'relative_date', 'creation_date')
-    list_filter    = ('category',) # Doesn't work
+    list_filter    = ('category',)  # Doesn't work
     search_fields  = ['title_html', 'author']
 
 

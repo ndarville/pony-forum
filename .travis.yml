@@ -34,7 +34,7 @@ script:
   - python manage.py test
 
 after_success:
-- "pep8 --statistics -qq --exclude=venv,virtualenv"
+- "pep8 --statistics --first --format=pylint --exclude=venv,virtualenv,migrations"
 
 notifications:
   email:
