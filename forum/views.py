@@ -270,11 +270,11 @@ def home(request):
             email_config_error = True
 
     return render(request, 'home.html',
-                          {'categories' : categories,
-                           'new_threads': new_threads,
-                           'subs'       : subscribed_threads,
-                           'site_config_error' : site_config_error,
-                           'email_config_error': email_config_error})
+                  {'categories':         categories,
+                   'new_threads':        new_threads,
+                   'subs':               subscribed_threads,
+                   'site_config_error':  site_config_error,
+                   'email_config_error': email_config_error})
 
 
 @login_required()
@@ -289,9 +289,9 @@ def subscriptions(request):
     objects       = paginate(request, objects, SUBSCRIPTIONS_PER_PAGE)
 
     return render(request, 'subscriptions.html',
-                          {'new_threads': new_threads,
-                           'new_subs'   : new_subs,
-                           'objects'    : objects})
+                  {'new_threads': new_threads,
+                   'new_subs':    new_subs,
+                   'objects':     objects})
 
 
 def category(request, category_id):
@@ -305,9 +305,9 @@ def category(request, category_id):
     stickies         = all_threads.exclude(is_sticky__exact=False)
 
     return render(request, 'category.html',
-                          {'category'        : category,
-                           'category_threads': category_threads,
-                           'stickies'        : stickies})
+                  {'category':         category,
+                   'category_threads': category_threads,
+                   'stickies':         stickies})
 
 
 def thread(request, thread_id, author_id):
@@ -329,10 +329,10 @@ def thread(request, thread_id, author_id):
         anchor_number = '???'
 
         return render(request, 'thread.html',
-                              {'thread_id'    : thread_id,
-                               'thread'       : thread,
-                               'posts'        : posts,
-                               'anchor_number': anchor_number})
+                      {'thread_id':     thread_id,
+                       'thread':        thread,
+                       'posts':         posts,
+                       'anchor_number': anchor_number})
     else:
         messages.info(request, "The thread %s has been removed and no longer available." % thread.title_html)
         return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
@@ -388,9 +388,9 @@ def user_content(request, user_id, object_type):
     objects = paginate(request, objects, USER_CONTENT_PER_PAGE)
 
     return render(request, 'user_content.html',
-                          {'type'   : object_type,
-                           'person' : person,
-                           'objects': objects})
+                  {'type':    object_type,
+                   'person':  person,
+                   'objects': objects})
 
 
 @permission_required('forum.add_category')
@@ -461,10 +461,10 @@ def create(request, category_id):
             preview_html  = sanitized_smartdown(text_plain)
 
     return render(request, 'create.html',
-                          {'category'     : category,
-                           'title'        : title_plain,
-                           'preview_plain': preview_plain,
-                           'preview_html' : preview_html})
+                  {'category':      category,
+                   'title':         title_plain,
+                   'preview_plain': preview_plain,
+                   'preview_html':  preview_html})
 
 
 @login_required()
@@ -513,9 +513,9 @@ def reply(request, thread_id):
             preview_html  = sanitized_smartdown(text)
 
     return render(request, 'reply.html',
-                          {'thread'       : thread,
-                           'preview_plain': preview_plain,
-                           'preview_html' : preview_html})
+                  {'thread':        thread,
+                   'preview_plain': preview_plain,
+                   'preview_html':  preview_html})
 
 
 @login_required()
@@ -548,9 +548,9 @@ def edit(request, post_id):
         return HttpResponseRedirect(reverse('forum.views.post', args=(post.id,)))
 
     return render(request, 'edit.html',
-                          {'post'         : post,
-                           'preview_plain': preview_plain,
-                           'preview_html' : preview_html})
+                  {'post':          post,
+                   'preview_plain': preview_plain,
+                   'preview_html':  preview_html})
 
 
 @permission_required('forum.merge_thread')
@@ -616,9 +616,9 @@ def merge_thread(request, thread_id):
             return HttpResponseRedirect(reverse('forum.views.thread', args=(t.id,)))
 
     return render(request, 'merge.html',
-                          {'thread'      : thread,
-                           'other_thread': other_thread,
-                           'new_title'   : new_title_plain})
+                  {'thread':       thread,
+                   'other_thread': other_thread,
+                   'new_title':    new_title_plain})
 
 
 @permission_required('forum.change_thread')
@@ -640,8 +640,8 @@ def moderate_thread(request, thread_id):
             else:
                 return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     return render(request, 'moderate.html',
-                          {'thread': thread,
-                           'title' : title_plain})
+                  {'thread': thread,
+                   'title':  title_plain})
 
 
 @permission_required('forum.move_thread')
@@ -656,8 +656,8 @@ def move_thread(request, thread_id):
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:  # Otherwise, show clean, normal page with no populated data
         return render(request, 'move.html',
-                              {'thread'    : thread,
-                               'categories': categories})
+                      {'thread':     thread,
+                       'categories': categories})
 
 
 @login_required()
@@ -695,11 +695,11 @@ def remove(request, object_id, object_type):
         return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     else:
         return render(request, 'simple_action.html',
-                              {'object_type': object_type,
-                               'obj'        : obj,
-                               'thread'     : thread,
-                               'post_obj'   : post_obj,
-                               'action'     : 'remove'})
+                      {'object_type': object_type,
+                       'obj':         obj,
+                       'thread':      thread,
+                       'post_obj':    post_obj,
+                       'action':     'remove'})
 
 
 @login_required()
@@ -772,16 +772,16 @@ def report(request, object_id, object_type):
                 else:
                     # After successful submission
                     return HttpResponseRedirect(reverse('forum.views.thread',
-                        args=(thread.id,)))
+                                                        args=(thread.id,)))
         elif "preview" in request.POST:  # "preview" button pressed
             preview_html = text_html  # buggy if no content?
     return render(request, 'report.html',
-                          {'obj'         : obj,
-                           'type'        : object_type,
-                           'thread'      : thread,
-                           'post_obj'    : post_obj,
-                           'title'       : title,
-                           'preview_html': preview_html})
+                  {'obj':          obj,
+                   'type':         object_type,
+                   'thread':       thread,
+                   'post_obj':     post_obj,
+                   'title':        title,
+                   'preview_html': preview_html})
 
 
 @permission_required('forum.use_report')
@@ -831,8 +831,8 @@ def custom_register(request, **kwargs):
             backend='registration.backends.default.DefaultBackend',
             template_name='registration/registration_form.html',
             extra_context={
-                'site_config_error'  : site_config_error,
-                'email_config_error' : email_config_error,
+                'site_config_error':  site_config_error,
+                'email_config_error': email_config_error,
                 'max_username_length':
                     User._meta.get_field("username").max_length},
             **kwargs)
@@ -856,7 +856,7 @@ def site_configuration(request):
     """Displays all configurable environment variables to admins."""
     if not request.user.is_staff:
         messages.error(request,
-            "You need staff status to configure the site.")
+                       "You need staff status to configure the site.")
         return HttpResponseRedirect(reverse('forum.views.home', args=()))
 
     site = Site.objects.get_current()
@@ -868,28 +868,28 @@ def site_configuration(request):
         messages.success(request, "New settings saved.")
 
     return render(request, 'site_configuration.html', {
-        'EMAIL_HOST_USER'        :
+        'EMAIL_HOST_USER':
             project_settings.EMAIL_HOST_USER != "myusername@gmail.com",
-        'EMAIL_HOST_PASSWORD'    : project_settings.EMAIL_HOST != "mypassword",
-        'EMAIL_USE_TLS'          : project_settings.EMAIL_USE_TLS,
-        'LOCAL_DEVELOPMENT'      : project_settings.LOCAL_DEVELOPMENT,
-        'TIME_ZONE'              : project_settings.TIME_ZONE,
-        'LANGUAGE_CODE'          : project_settings.LANGUAGE_CODE,
+        'EMAIL_HOST_PASSWORD':     project_settings.EMAIL_HOST != "mypassword",
+        'EMAIL_USE_TLS':           project_settings.EMAIL_USE_TLS,
+        'LOCAL_DEVELOPMENT':       project_settings.LOCAL_DEVELOPMENT,
+        'TIME_ZONE':               project_settings.TIME_ZONE,
+        'LANGUAGE_CODE':           project_settings.LANGUAGE_CODE,
         'ACCOUNT_ACTIVATION_DAYS': project_settings.ACCOUNT_ACTIVATION_DAYS,
-        'REGISTRATION_OPEN'      : project_settings.REGISTRATION_OPEN,
-        'POSTS_PER_PAGE'         : project_settings.POSTS_PER_PAGE,
-        'THREADS_PER_PAGE'       : project_settings.THREADS_PER_PAGE,
-        'USER_POSTS_PER_PAGE'    : project_settings.USER_POSTS_PER_PAGE,
-        'USER_THREADS_PER_PAGE'  : project_settings.USER_THREADS_PER_PAGE,
-        'SUBSCRIPTIONS_PER_PAGE' : project_settings.SUBSCRIPTIONS_PER_PAGE,
-        'BOOKMARKS_PER_PAGE'     : project_settings.BOOKMARKS_PER_PAGE,
-        'SAVES_PER_PAGE'         : project_settings.SAVES_PER_PAGE,
-        'DEFAULT_FROM_EMAIL'     : project_settings.DEFAULT_FROM_EMAIL,
-        'HAS_SITE_NAME'          : site.name != "example.com",
-        'HAS_SITE_DOMAIN'        : site.domain != "example.com",
-        'SITE_NAME'              : site.name,
-        'SITE_DOMAIN'            : site.domain
-        })
+        'REGISTRATION_OPEN':       project_settings.REGISTRATION_OPEN,
+        'POSTS_PER_PAGE':          project_settings.POSTS_PER_PAGE,
+        'THREADS_PER_PAGE':        project_settings.THREADS_PER_PAGE,
+        'USER_POSTS_PER_PAGE':     project_settings.USER_POSTS_PER_PAGE,
+        'USER_THREADS_PER_PAGE':   project_settings.USER_THREADS_PER_PAGE,
+        'SUBSCRIPTIONS_PER_PAGE':  project_settings.SUBSCRIPTIONS_PER_PAGE,
+        'BOOKMARKS_PER_PAGE':      project_settings.BOOKMARKS_PER_PAGE,
+        'SAVES_PER_PAGE':          project_settings.SAVES_PER_PAGE,
+        'DEFAULT_FROM_EMAIL':      project_settings.DEFAULT_FROM_EMAIL,
+        'HAS_SITE_NAME':           site.name != "example.com",
+        'HAS_SITE_DOMAIN':         site.domain != "example.com",
+        'SITE_NAME':               site.name,
+        'SITE_DOMAIN':             site.domain
+    })
 
 
 @login_required()
@@ -906,8 +906,8 @@ def saves_and_bookmarks(request, object_type):
     objects = paginate(request, objects, USER_CONTENT_PER_PAGE)
 
     return render(request, 'saves_and_bookmarks.html',
-                          {'type'   : object_type,
-                           'objects': objects})
+                  {'type':    object_type,
+                   'objects': objects})
 
 
 def simple_js(request):
@@ -1071,11 +1071,11 @@ def nonjs(request, action, object_id):
             if 'ignore' in request.POST:  # Ignore command
                 request.user.get_profile().ignores.add(obj)
                 messages.info(request,
-                    "Added %s to shit list." % obj.username)
+                              "Added %s to shit list." % obj.username)
             else:
                 request.user.get_profile().ignores.remove(obj)
                 messages.info(request,
-                    "Removed %s from shit list." % obj.username)
+                              "Removed %s from shit list." % obj.username)
 
         elif 'subscribe' in action:
             if 'subscribe' in request.POST:  # Subscribe command
@@ -1176,11 +1176,11 @@ def nonjs(request, action, object_id):
     else:  # Otherwise, show clean, normal page with no populated data
         canonical_url = reverse('forum.views.nonjs', args=(action, object_id))
         return render(request, 'simple_action.html',
-                              {'thread'       : thread,
-                               'obj'          : obj,
-                               'post_obj'     : post_obj,
-                               'object_type'  : object_type,
-                               'action'       : action,
-                               'object_id'    : object_id,
-                               'canonical_url': canonical_url,
-                               'next'         : next})
+                      {'thread':        thread,
+                       'obj':           obj,
+                       'post_obj':      post_obj,
+                       'object_type':   object_type,
+                       'action':        action,
+                       'object_id':     object_id,
+                       'canonical_url': canonical_url,
+                       'next':          next})
