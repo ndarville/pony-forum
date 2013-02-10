@@ -135,8 +135,8 @@ def prettify_title(title):
     and dashes used in the titles of threads and categories.
     """
     return bleach.clean(
-                        smartypants(title, "2"),
-                        tags=[], attributes={})
+        smartypants(title, "2"),
+        tags=[], attributes={})
 
 
 def sanitized_smartdown(string):
@@ -176,71 +176,72 @@ def sanitized_smartdown(string):
         If you are using a different character encoding, you should convert
         from a bytestring to unicode before passing the text to Bleach.
     """
-    ALLOWED_TAGS       = [
-                          'a',
-                          'abbr',
-                          'acronym',
-                          'blockquote',
-                          'code',
-                          'del',
-                          'em',
-                          'h1',
-                          'h2',
-                          'h3',
-                          'h4',
-                          'h5',
-                          'i',
-                          'img',
-                          'ins',
-                          'li',
-                          'ol',
-                          'p',
-                          'pre',
-                          'strong',
-                          'sub',
-                          'sup',
-                          'ul',
-                      ### Tables:
-                          'table',
-                          'caption',
-                          'thead',
-                          'tbody',
-                          'tfoot',
-                          'tr',
-                          'th',
-                          'td'
-                         ]
+    ALLOWED_TAGS = [
+        'a',
+        'abbr',
+        'acronym',
+        'blockquote',
+        'code',
+        'del',
+        'em',
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5',
+        'i',
+        'img',
+        'ins',
+        'li',
+        'ol',
+        'p',
+        'pre',
+        'strong',
+        'sub',
+        'sup',
+        'ul',
+    # Tables:
+        'table',
+        'caption',
+        'thead',
+        'tbody',
+        'tfoot',
+        'tr',
+        'th',
+        'td'
+    ]
+
     ALLOWED_ATTRIBUTES = {
-                          'a':       ['href', 'title'],
-                          'acronym': ['title'],
-                          'abbr':    ['title'],
-                          'img':     ['alt', 'src'],
-                          'h1':      ['id'],
-                          'h2':      ['id'],
-                          'h3':      ['id'],
-                          'h4':      ['id'],
-                          'h5':      ['id'],
-                          'img':     ['id', 'src'],
-                          'th':      ['colspan', 'rowspan'],
-                          'td':      ['colspan', 'rowspan']
-                         }
+        'a':       ['href', 'title'],
+        'acronym': ['title'],
+        'abbr':    ['title'],
+        'img':     ['alt', 'src'],
+        'h1':      ['id'],
+        'h2':      ['id'],
+        'h3':      ['id'],
+        'h4':      ['id'],
+        'h5':      ['id'],
+        'img':     ['id', 'src'],
+        'th':      ['colspan', 'rowspan'],
+        'td':      ['colspan', 'rowspan']
+    }
 
     MD_EXTENSIONS = [
-                     'attr_list',
-                     'fenced_code',
-                     'tables'
-                    ]
+        'attr_list',
+        'fenced_code',
+        'tables'
+    ]
 
     return bleach.clean(
-                        smartypants(
-                                    markdown(
-                                             text=string,
-                                             extensions=MD_EXTENSIONS,
-                                             #output_format='html5',
-                                             #lazy_ol=True,
-                                             safe_mode=True),
-                                    "2"),
-                        tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES)
+        smartypants(
+            markdown(
+                text=string,
+                extensions=MD_EXTENSIONS,
+                #output_format='html5',
+                #lazy_ol=True,
+                safe_mode=True),
+            "2"),
+        tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES)
 
 
 def home(request):
@@ -579,9 +580,9 @@ def merge_thread(request, thread_id):
             now  = datetime.datetime.now()  # UTC?
             user = request.user
             t    = Thread.objects.create(
-                       title_plain=new_title_plain, title_html=new_title_html,
-                       creation_date=now, author=user, category=thread.category,
-                       latest_reply_date=now)
+                title_plain=new_title_plain, title_html=new_title_html,
+                creation_date=now, author=user, category=thread.category,
+                latest_reply_date=now)
         # Update posts in two threads to point to new thread t
             thread.post_set.all().update(thread=t.id)
             other_thread.post_set.all().update(thread=t.id)
@@ -592,13 +593,13 @@ def merge_thread(request, thread_id):
                 end = "."
             else:
                 end = ""
-            message = "(*%s* was merged with *%s* by *%s* into *[%s](%s)*%s)" % \
-                            (thread.title_html,
-                             other_thread.title_html,
-                             user.username,
-                             new_title_html,
-                             reverse('forum.views.thread', args=(t.id,)),
-                             end)
+            message = "(*%s* was merged with *%s* by *%s* into *[%s](%s)*%s)" % (
+                thread.title_html,
+                other_thread.title_html,
+                user.username,
+                new_title_html,
+                reverse('forum.views.thread', args=(t.id,)),
+                end)
             html = sanitized_smartdown(message)
             Post.objects.bulk_create([
                 Post(creation_date=now, author=user, thread=t,
@@ -759,8 +760,8 @@ def report(request, object_id, object_type):
                 now  = datetime.datetime.now()  # UTC?
                 try:
                     r = Report.objects.create(
-                            creation_date=now, author=user,
-                            reason_short=title, thread=thread)
+                        creation_date=now, author=user,
+                        reason_short=title, thread=thread)
                     if "content" in request.POST:
                         r.reason_long_plain = text_plain
                         r.reason_long_html  = text_html
