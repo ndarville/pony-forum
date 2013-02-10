@@ -20,7 +20,7 @@ LOCAL_SETTINGS = True
 DEBUG = True
 
 ADMINS = (
-  ("Django Pony", "djangopony+ponyforum@equestria.com"),
+    ("Django Pony", "djangopony+ponyforum@equestria.com"),
 )
 
 ### DATABASES
@@ -42,9 +42,9 @@ ADMINS = (
 LOCAL_DB_MYSQL = {
     'default': {
         'ENGINE':   'django.db.backends.mysql',
-        'NAME':     'mydb',        ## Change this value to your own
+        'NAME':     'mydb',        # Change this value to your own
         'USER':     'root',
-        'PASSWORD': 'mypassword',  ## Change this value to your own
+        'PASSWORD': 'mypassword',  # Change this value to your own
         'HOST':     '',
         'PORT':     '',
     }
@@ -53,12 +53,12 @@ LOCAL_DB_MYSQL = {
 LOCAL_DB_POSTGRESQL = {
     'default': {
         'ENGINE':   'django.db.backends.postgresql_psycopg2',
-        'NAME':     'mydb',       # Change this value to your own;
-                                  #     leave blank on OS X
-        'USER':     'postgres',   # Leave blank on OS X
-        'PASSWORD': 'mypassword', # Change this value to your own;
-                                  #     leave blank on OS X
-        'HOST':     'localhost',  # Remember this part!
+        'NAME':     'mydb',        # Change this value to your own;
+                                   #     leave blank on OS X
+        'USER':     'postgres',    # Leave blank on OS X
+        'PASSWORD': 'mypassword',  # Change this value to your own;
+                                   #     leave blank on OS X
+        'HOST':     'localhost',   # Remember this part!
         'PORT':     '',
     }
 }

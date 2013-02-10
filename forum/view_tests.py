@@ -174,8 +174,8 @@ class ReportTests(TestCase):
         """Tests the reporting of a thread."""
         self.client.post(
             reverse(
-               'forum.views.report',
-               kwargs={'object_id': test_thread_id, 'object_type': 'thread'}),
+                'forum.views.report',
+                kwargs={'object_id': test_thread_id, 'object_type': 'thread'}),
             {'title': test_text, 'content': test_text, 'submit': 'submit'})
 
     def test_report_post(self):
