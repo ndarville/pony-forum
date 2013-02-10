@@ -9,53 +9,53 @@ from django_nose import FastFixtureTestCase as TestCase
 
 # Valid inputs
 valid_regular = {
-        'username':  'test user 1',
-        'email':     'test1@mail.com',
-        'password1': 'password',
-        'password2': 'password'
+    'username':  'test user 1',
+    'email':     'test1@mail.com',
+    'password1': 'password',
+    'password2': 'password'
 }
 
 # valid_with_email_filter = {
-#         'username':  'test user 2',
-#         'email':     'test2+filter@mail.com',
-#         'password1': 'password',
-#         'password2': 'password'
+#     'username':  'test user 2',
+#     'email':     'test2+filter@mail.com',
+#     'password1': 'password',
+#     'password2': 'password'
 # }
 
 # Invalid inputs
 duplicate_email_without_email_filters = {
-        'username':  'test user 3',
-        'email':     'taken_address@mail.com',
-        'password1': 'password',
-        'password2': 'password'
+    'username':  'test user 3',
+    'email':     'taken_address@mail.com',
+    'password1': 'password',
+    'password2': 'password'
 }
 
 with_email_filter = {  # delete after +filter enabled
-        'username':  'test user 2',
-        'email':     'test2+filter@mail.com',
-        'password1': 'password',
-        'password2': 'password'
+    'username':  'test user 2',
+    'email':     'test2+filter@mail.com',
+    'password1': 'password',
+    'password2': 'password'
 }
 
 # duplicate_email_with_one_email_filter = {
-#         'username':  'test user 4',
-#         'email':     'taken_address+anotherfilter@mail.com',
-#         'password1': 'password',
-#         'password2': 'password'
+#     'username':  'test user 4',
+#     'email':     'taken_address+anotherfilter@mail.com',
+#     'password1': 'password',
+#     'password2': 'password'
 # }
 
 # duplicate_email_with_two_email_filters = {
-#         'username':  'test user 4',
-#         'email':     'another_taken_address+anotherfilter@mail.com',
-#         'password1': 'password',
-#         'password2': 'password'
+#     'username':  'test user 4',
+#     'email':     'another_taken_address+anotherfilter@mail.com',
+#     'password1': 'password',
+#     'password2': 'password'
 # }
 
 mismatched_passwords = {
-        'username':  'test user 4',
-        'email':     'test3@mail.com',
-        'password1': 'password1',
-        'password2': 'password2'
+    'username':  'test user 4',
+    'email':     'test3@mail.com',
+    'password1': 'password1',
+    'password2': 'password2'
 }
 
 
