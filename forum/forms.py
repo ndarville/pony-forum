@@ -17,19 +17,20 @@ class CustomEmailInput(Input):
 class CustomRegistrationForm(RegistrationFormUniqueEmail):
     """Extends a django-registration form."""
     attrs_dict = {
-                  'class':    'required',
-                  'required': 'required'
-                 }
+        'class':    'required',
+        'required': 'required'
+    }
     username = forms.CharField(max_length=30,
                                widget=forms.TextInput(
                                    attrs=attrs_dict),  # add autofocus
                                label=_("Username"))
 
-    email = forms.EmailField(widget=CustomEmailInput(
-                                        attrs=dict(
-                                           attrs_dict,
-                                           maxlength=75)),
-                                        label=_("E-mail"))
+    email = forms.EmailField(
+        widget=CustomEmailInput(
+            attrs=dict(
+                attrs_dict,
+                maxlength=75)),
+        label=_("E-mail"))
 
     def clean_email(self):
         """Validate that the supplied e-mail address is unique for the

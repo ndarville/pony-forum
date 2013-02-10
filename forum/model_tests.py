@@ -155,6 +155,7 @@ class ReportModelTest(TestCase):
         # Check the two saved fields from before
         self.assertEquals(only_report_in_db.reason_short, reason)
         self.assertEquals(only_report_in_db.reason_long_plain, reason+"111")
-        self.assertEquals(only_report_in_db.reason_long_html,
+        self.assertEquals(
+            only_report_in_db.reason_long_html,
             "<p>"+reason+"111"+"</p>")
         self.assertEquals(only_report_in_db.creation_date, now)

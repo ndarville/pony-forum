@@ -345,9 +345,9 @@ def post(request, post_id):
     thread = post.thread
 
     if request.user.has_perm('forum.remove_thread') or not thread.is_removed:
-        if not post.is_removed\
-           or request.user.has_perm('forum.remove_thread')\
-           or request.user.has_perm('forum.remove_post'):
+        if (not post.is_removed or
+                request.user.has_perm('forum.remove_thread') or
+                request.user.has_perm('forum.remove_post')):
             return render(request, 'post.html', {'post': post, 'thread': thread})
         else:
             messages.info(request, "The post by %s has been removed and no longer available." % post.author)
@@ -438,12 +438,12 @@ def create(request, category_id):
                 text_html = sanitized_smartdown(text_plain)
                 try:
                     t = Thread.objects.create(
-                            title_plain=title_plain, title_html=title_html,
-                            author=user, category=category,
-                            creation_date=now, latest_reply_date=now)
+                        title_plain=title_plain, title_html=title_html,
+                        author=user, category=category,
+                        creation_date=now, latest_reply_date=now)
                     Post.objects.create(
-                            thread=t, creation_date=now, author=user,
-                            content_plain=text_plain, content_html=text_html)
+                        thread=t, creation_date=now, author=user,
+                        content_plain=text_plain, content_html=text_html)
                     t.subscriber.add(user)
                 except:
                     pass
@@ -1103,8 +1103,8 @@ def nonjs(request, action, object_id):
             # Also allows the opposite action, i.e. to unlock it.
             if thread.is_removed and not request.user.has_perm('forum.remove_thread'):
                 messages.info(request, "The has thread been removed.")
-                return HttpResponseRedirect(reverse('forum.views.category',
-                    args=(thread.category_id,)))
+                return HttpResponseRedirect(reverse(
+                    'forum.views.category', args=(thread.category_id,)))
             if not request.user.has_perm('forum.lock_thread'):
                 messages.error(request,
                     "You do not have permission to lock and unlock threads.")
@@ -1128,8 +1128,8 @@ def nonjs(request, action, object_id):
             # Also allows the opposite action, i.e. to unsticky it.
             if thread.is_removed and not request.user.has_perm('forum.remove_thread'):
                 messages.info(request, "The has thread been removed.")
-                return HttpResponseRedirect(reverse('forum.views.category',
-                    args=(thread.category_id,)))
+                return HttpResponseRedirect(reverse(
+                    'forum.views.category', args=(thread.category_id,)))
             if not request.user.has_perm('forum.sticky_thread'):
                 messages.error(request,
                     "You do not have permission to sticky and unsticky threads.")

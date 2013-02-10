@@ -86,11 +86,11 @@ def parse_manuscript(text):
     global characters
     speaker, content, category, characters = "", "", "", {}
     categories = {
-                    "AUTHOR": "",
-                    "TRANSLATOR": "",
-                    "TITLE": "",
-                    "CHARACTERS": ""
-                }
+        "AUTHOR": "",
+        "TRANSLATOR": "",
+        "TITLE": "",
+        "CHARACTERS": ""
+    }
 
     for line in text:
         if line.rstrip() in categories:
