@@ -1,6 +1,10 @@
 Contribution Guidelines
 =======================
 
+*Please* hold off on the feature requests for now; the project is still in its infancy, and as you can tell by the milestones and feature to-do list in the README, there is plenty to grapple with as it is right now.
+
+Bug reports and suggestions immediately relevant to the current feature and issues list are much preferred. But all rules have exceptions.
+
 “I found a security flaw. What do I do?”
 ----------------------------------------
 Use the contact information in [my GitHub profile](https://github.com/ndarville) to get in touch personally. Proofs of concepts are, of course, always ideal.
