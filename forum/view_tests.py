@@ -4,6 +4,7 @@ import os
 
 from django.core.urlresolvers import reverse
 from django.test.client       import Client
+from django.test.utils        import override_settings
 
 from django_nose              import FastFixtureTestCase as TestCase
 
@@ -368,16 +369,16 @@ class AccountTests(TestCase):
     """Tests operations related to the accounts back-end."""
     fixtures = ['admin_user.json']
 
+    @override_settings(
+        EMAIL_BACKEND='django.core.mail.backends.dummy.EmailBackend')
     def test_register_user(self):
         """Tests registering a user."""
-        with self.settings(
-            EMAIL_BACKEND='django.core.mail.backends.dummy.EmailBackend'):
-            self.client.post(
-                reverse('forum.views.custom_register'), {
-                    'username':  'Foo',
-                    'email':     'contact@example.com',
-                    'password1': 'password',
-                    'password2': 'password'})
+        self.client.post(
+            reverse('forum.views.custom_register'), {
+                'username':  'Foo',
+                'email':     'contact@example.com',
+                'password1': 'password',
+                'password2': 'password'})
 
     def test_log_in_user(self):
         """Tests logging a user in."""
