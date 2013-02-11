@@ -144,14 +144,14 @@ EMAIL_USE_TLS = True
 2. If you are setting up your forum on dotCloud, follow [their guide to environmental variables][environments] and, instead, enter the information like environment variables like so:
 
 ```sh
-dotcloud var set ponyforum EMAIL_HOST_USER=your_user_name@gmail.com
-dotcloud var set ponyforum EMAIL_HOST_PASSWORD=your_password
+dotcloud env set -A ponyforum EMAIL_HOST_USER=your_user_name@gmail.com
+dotcloud env set -A ponyforum EMAIL_HOST_PASSWORD=your_password
 ```
 
 The problem with this method is that dotCloud restarts your server, which takes a while, so to save your time, you can also do it like this on some operating systems:
 
 ```sh
-dotcloud var set ponyforum \
+dotcloud env set -A ponyforum \
     'EMAIL_HOST_USER=your_user_name@gmail.com' \
     'EMAIL_HOST_PASSWORD=your_password'
 ```
@@ -161,7 +161,7 @@ I think the last one is the easiest one, but choose whichever you prefer.
 All dotCloud environment variables for your app can be viewed with
 
 ```sh
-dotcloud var list ponyforum
+dotcloud env list -A ponyforum
 ```
 
 If you have an admin user, you can also view these key/values in your `configuration` view located by default at `/configuration/`.
@@ -171,7 +171,7 @@ If you have an admin user, you can also view these key/values in your `configura
 This should set up your e-mail server. At any point, you can alter the values by the approaches above. You can remove any erroneous environment variables entirely using
 
 ```sh
-dotcloud var unset ponyforum EMAIL_HOST_PASSWORD
+dotcloud env unset -A ponyforum EMAIL_HOST_PASSWORD
 ```
 
 Obviously, you need to change the `USER` and `PASSWORD` fields to your own. Also note that if you are using Google's [two-factor authentication][tfa], you default password will not work, because you need to create a designated application password for it [here][app-password]. The reason is that if you use two-factor authentication, you will not use the password for your actual account outside of Google's own sites, but an application password. The advantage of this is that you can remove this application in your Google account settings right away, if you accidentally share it through GitHub or elsewhere.
