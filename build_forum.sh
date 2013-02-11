@@ -3,7 +3,7 @@
 # Builds an example forum with placeholder objects
 # and an admin user with username 'admin', password 'password'.
 #
-# Requires that a postgreSQL database with the name 'mydb' exists.
+# Requires that a postgreSQL database has been created for the forum.
 set -e # stops execution on error
 python manage.py syncdb --noinput
 python manage.py schemamigration forum --initial
