@@ -835,8 +835,7 @@ def custom_register(request, **kwargs):
                 'site_config_error':  site_config_error,
                 'email_config_error': email_config_error,
                 'max_username_length':
-                    User._meta.get_field("username").max_length
-            })
+                    User._meta.get_field("username").max_length})
 
 
 @login_required()
