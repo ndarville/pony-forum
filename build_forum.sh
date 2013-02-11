@@ -4,6 +4,9 @@
 # and an admin user with username 'admin', password 'password'.
 #
 # Requires that a postgreSQL database has been created for the forum.
+#
+# If you have used Pony Forum before, make sure that there is no
+# forum/migrations/ folder, since that will break this script.
 set -e # stops execution on error
 python manage.py syncdb --noinput
 python manage.py schemamigration forum --initial
