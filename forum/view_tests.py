@@ -364,6 +364,29 @@ class SettingsConfigurationTests(TestCase):
             {'has_dyslexia': 'Y', 'auto_subscribe': 'N'})
 
 
+class AccountTests(TestCase):
+    """Tests operations related to the accounts back-end."""
+    fixtures = ['admin_user.json']
+
+    def test_register_user(self):
+        """Tests registering a user."""
+        with self.settings(
+            EMAIL_BACKEND='django.core.mail.backends.dummy.EmailBackend'):
+            self.client.post(
+                reverse('forum.views.custom_register'), {
+                    'username':  'Foo',
+                    'email':     'contact@example.com',
+                    'password1': 'password',
+                    'password2': 'password'})
+
+    def test_log_in_user(self):
+        """Tests logging a user in."""
+        self.client.post(
+            reverse('django.contrib.auth.views.login'), {
+                'username': 'admin',
+                'password': 'password'})
+
+
 class SiteConfigurationTests(TestCase):
     """Test operations related to the site configuration view."""
     fixtures = ['admin_user.json']
