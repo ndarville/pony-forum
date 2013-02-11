@@ -382,9 +382,8 @@ class AccountTests(TestCase):
     def test_log_in_user(self):
         """Tests logging a user in."""
         self.client.post(
-            reverse('django.contrib.auth.views.login'), {
-                'username': 'admin',
-                'password': 'password'})
+            reverse('django.contrib.auth.views.login'),
+            {'username': 'admin', 'password': 'password'})
 
 
 class SiteConfigurationTests(TestCase):
