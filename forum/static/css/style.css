@@ -515,7 +515,7 @@ legend {
 
 #content a.button {
     display: inline; /** Fixes the width: 100% button problem. Revise */
-    padding: 5px 5px;
+    padding: 5px;
 }
 
 #content .categories thead,
@@ -855,8 +855,11 @@ div#button-group {
     margin: 1em auto; /** Revise */
 }
 
-div#button-group a.button { /** Revise */
+div#button-group a.button,
+div#button-group input[type="submit"] {
+    padding: 5px;
     margin: 0 1em;
+    display: inline-block;
 }
 
 /** Check that CSS doesn't break this in other browsers
