@@ -808,7 +808,7 @@ def search(request):
 
 
 def custom_login(request, **kwargs):
-    """kwargs logged-in users, and allows others to log in."""
+    """Redirects logged-in users, and allows others to log in."""
     if request.user.is_authenticated():  # User logged in
         return HttpResponseRedirect(reverse('forum.views.home', args=()))
     else:
