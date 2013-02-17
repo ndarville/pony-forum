@@ -47,9 +47,11 @@
         {% if user == post_author %}
             <a class="button" href="{% url forum.views.edit post.id %}">Edit</a>
         {% endif %}
+    {% comment %}
         {% if forloop.first and user == post_author %}
             <a class="button" href="/thread/{{ thread.id }}/co-editor">Manage Co-Editors</a>
         {% endif %}
+    {% endcomment %}
     {% endif %}
         </div>
 
