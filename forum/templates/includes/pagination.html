@@ -1,57 +1,55 @@
     {% if page.has_other_pages %}
         <ul class="pagination" role="navigation">
-<!-- Older page -->
             {% if page.has_previous %}
+            <!-- Older page -->
                 <li><a title="Go to previous page" href="?page={{ page.previous_page_number }}" title="Go to the older threads.">&lt;&nbsp;Older</a></li>
             {% endif %}
 
-    <!-- First page -->
             {% if current_page > 4 %}
+            <!-- First page -->
                 <li><a href="?page=1">1</a>&nbsp;&#8943;</li>
             {% endif %}
 
-        <!-- Current page -3 -->
             {% if current_page > 3 %}
+            <!-- Current page -3 -->
                 <li><a href="?page={{ current_page|add:"-3" }}">{{ current_page|add:"-3" }}</a></li>
             {% endif %}
 
-        <!-- Current page -2 -->
             {% if current_page > 2 %}
+            <!-- Current page -2 -->
                 <li><a href="?page={{ current_page|add:"-2" }}">{{ current_page|add:"-2" }}</a></li>
             {% endif %}
 
-        <!-- Current page -1 -->
-            <!-- current_page > 1 -->
             {% if page.has_previous %}
+            <!-- Current page -1 -->
                 <li><a href="?page={{ page.previous_page_number }}">{{ current_page|add:"-1" }}</a></li>
             {% endif %}
 
             <!-- Current page -->
                 <li class="current_page"><a href="#">{{ current_page }}</a></li>
 
-        <!-- Current page +1 -->
-            <!-- current_page < total_pages -->
             {% if page.has_next %}
+            <!-- Current page +1 -->
                 <li><a href="?page={{ page.next_page_number }}">{{ current_page|add:"1" }}</a></li>
             {% endif %}
 
-        <!-- Current page +2 -->
             {% if current_page < total_pages|add:"-1" and total_pages > 2 %}
+            <!-- Current page +2 -->
                 <li><a href="?page={{ current_page|add:"2" }}">{{ current_page|add:"2" }}</a></li>
             {% endif %}
 
-        <!-- Current page +3 -->
             {% if current_page < total_pages|add:"-2" %}
+            <!-- Current page +3 -->
                 <li><a href="?page={{ current_page|add:"3" }}">{{ current_page|add:"3" }}</a></li>
             {% endif %}
 
-    <!-- Last page -->
             {% if current_page < total_pages|add:"-3" and total_pages > 4 %}
+            <!-- Last page -->
                 <li>&#8943;&nbsp;<a href="?page={{ total_pages }}">{{ total_pages }}</a></li>
             {% endif %}
 
-<!-- Newer page -->
             {% if page.has_next %}
+            <!-- Newer page -->
                 <li><a title="Go to next page" href="?page={{ page.next_page_number }}" title="Go to the newer threads.">Newer&nbsp;&gt;</a></li>
             {% endif %}
         </ul>
