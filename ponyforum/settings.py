@@ -299,6 +299,7 @@ NOSE_ARGS = [
 forum.model_tests,\
 forum.view_tests,\
 forum.form_tests,\
+forum.input_tests,\
 forum.installed_apps_order_tests'
 ]
 
