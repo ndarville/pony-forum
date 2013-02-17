@@ -45,13 +45,12 @@ ALLOWED_ATTRIBUTES = {
     'a':       ['href', 'title'],
     'acronym': ['title'],
     'abbr':    ['title'],
-    'img':     ['alt', 'src'],
     'h1':      ['id'],
     'h2':      ['id'],
     'h3':      ['id'],
     'h4':      ['id'],
     'h5':      ['id'],
-    'img':     ['id', 'src'],
+    'img':     ['alt', 'id', 'src', 'title'],
     'th':      ['colspan', 'rowspan'],
     'td':      ['colspan', 'rowspan']
 }
@@ -271,31 +270,31 @@ class ItalicTests(TestCase):
         self.assertEquals(sd(self.output), self.output)
 
 
-# class ImageTests(TestCase):
-#     """Tests the output of an image element."""
+class ImageTests(TestCase):
+    """Tests the output of an image element."""
 
-#     def setUp(self):
-#         self.output = '<p><img src="http://foo.com" alt="bar"></p>'
-#         self.markdown = '![bar](http://foo.com)'
-#         self.title_markdown = '![bar](http://foo.com "baz")'
-#         self.title_html =\
-#             '<p><img src="http://foo.com" alt="bar" title="baz"></p>'
+    def setUp(self):
+        self.output = '<p><img alt="bar" src="http://foo.com"></p>'
+        self.markdown = '![bar](http://foo.com)'
+        self.title_markdown = '![bar](http://foo.com "baz")'
+        self.title_html =\
+            '<p><img alt="bar" src="http://foo.com" title="baz"></p>'
 
-#     def test_html(self):
-#         """Tests the HTML input of an image element."""
-#         self.assertEquals(sd(self.output), self.output)
+    def test_html(self):
+        """Tests the HTML input of an image element."""
+        self.assertEquals(sd(self.output), self.output)
 
-#     def test_markdown(self):
-#         """Tests the Markdown input of an image element."""
-#         self.assertEquals(sd(self.markdown), self.output)
+    def test_markdown(self):
+        """Tests the Markdown input of an image element."""
+        self.assertEquals(sd(self.markdown), self.output)
 
-#     def test_title_attr_html(self):
-#         """Tests the HTML 'title' attribute of an image element."""
-#         self.assertEquals(sd(self.title_html), self.title_html)
+    def test_title_attr_html(self):
+        """Tests the HTML 'title' attribute of an image element."""
+        self.assertEquals(sd(self.title_html), self.title_html)
 
-#     def test_title_attr_markdown(self):
-#         """Tests the Markdown 'title' attribute of an image element."""
-#         self.assertEquals(sd(self.title_markdown), self.title_html)
+    def test_title_attr_markdown(self):
+        """Tests the Markdown 'title' attribute of an image element."""
+        self.assertEquals(sd(self.title_markdown), self.title_html)
 
 
 class InsertTests(TestCase):

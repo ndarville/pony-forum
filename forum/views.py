@@ -215,13 +215,12 @@ def sanitized_smartdown(string):
         'a':       ['href', 'title'],
         'acronym': ['title'],
         'abbr':    ['title'],
-        'img':     ['alt', 'src', 'title'],
         'h1':      ['id'],
         'h2':      ['id'],
         'h3':      ['id'],
         'h4':      ['id'],
         'h5':      ['id'],
-        'img':     ['id', 'src'],
+        'img':     ['alt', 'id', 'src', 'title'],
         'th':      ['colspan', 'rowspan'],
         'td':      ['colspan', 'rowspan']
     }
