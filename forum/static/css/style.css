@@ -857,7 +857,7 @@ div#button-group {
 
 div#button-group a.button,
 div#button-group input[type="submit"] {
-    padding: 5px;
+    padding: 5px 10px;
     margin: 0 1em;
     display: inline-block;
 }
