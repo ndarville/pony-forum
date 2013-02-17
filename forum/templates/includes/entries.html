@@ -12,19 +12,20 @@
         <span class="username">
             <a href="{% url forum.views.user post_author.id %}">{{ post_author.username }}</a>
         </span>
-
+    {% comment %}
         <p class="user-title"></p>
-    <!--
+    {% endcomment %}
+    {% comment %}
         <a class="avatar" href="{% url forum.views.user post_author.id %}">
             <img src="#" />
         </a>
-    -->
+    {% endcomment %}
         <p>Post{{ post_count|pluralize }}: {{ post_count|intcomma }}</p>
-    <!--
+{% comment %}
     {% if user.is_authenticated %}
         <p><a href="#">Send PM</a></p>
     {% endif %}
-    -->
+{% endcomment %}
     </div>
     <div class="words">
         <div class="post-top">
