@@ -10,6 +10,7 @@ from django.conf                    import settings as project_settings
 from django.contrib                 import messages, auth
 from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib.auth.models     import User
+from django.contrib.auth.views      import login
 from django.contrib.sites.models    import Site
 from django.core.paginator          import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers       import reverse
@@ -55,6 +56,7 @@ from registration                   import views as registration_views
 #
 ##  pm
 #
+##  custom_login
 ##  custom_logout
 ##  custom_register
 ##  settings
@@ -803,6 +805,14 @@ def reports(request):
 
 def search(request):
     return render(request, 'placeholder.html', {})
+
+
+def custom_login(request, **kwargs):
+    """kwargs logged-in users, and allows others to log in."""
+    if request.user.is_authenticated():  # User logged in
+        return HttpResponseRedirect(reverse('forum.views.home', args=()))
+    else:
+        return login(request, **kwargs)
 
 
 def custom_logout(request):
