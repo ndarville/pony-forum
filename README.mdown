@@ -253,6 +253,8 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 
 * Support for analytics code
 
+* `nofollow` added to all external links
+
 * [Category-ordering][ordering]
 
 * Thread polls
