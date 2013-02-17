@@ -239,7 +239,7 @@ def sanitized_smartdown(string):
                 extensions=MD_EXTENSIONS,
                 #output_format='html5',
                 #lazy_ol=True,
-                safe_mode=True),
+                safe_mode=False),
             "2"),
         tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES)
 
