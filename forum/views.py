@@ -215,7 +215,7 @@ def sanitized_smartdown(string):
         'a':       ['href', 'title'],
         'acronym': ['title'],
         'abbr':    ['title'],
-        'img':     ['alt', 'src'],
+        'img':     ['alt', 'src', 'title'],
         'h1':      ['id'],
         'h2':      ['id'],
         'h3':      ['id'],
