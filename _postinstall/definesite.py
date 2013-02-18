@@ -7,6 +7,7 @@ import os
 from django.conf import settings as project_settings
 from django.contrib.sites.models import Site
 
+
 if 'DOTCLOUD_ENVIRONMENT' in os.environ:
     import json
     from wsgi import *
