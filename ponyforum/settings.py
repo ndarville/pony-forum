@@ -1,5 +1,11 @@
 import os
 
+
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+DEBUG = False
+LOCAL_DEVELOPMENT = True
+DOTCLOUD_ENVIRONMENT, TRAVIS_ENVIRONMENT = False, False
+
 if 'DOTCLOUD_ENVIRONMENT' in os.environ:
     import json
 
@@ -7,13 +13,9 @@ if 'DOTCLOUD_ENVIRONMENT' in os.environ:
         env = json.load(f)
     LOCAL_DEVELOPMENT = False
     DOTCLOUD_ENVIRONMENT = True
-else:
-    LOCAL_DEVELOPMENT = True
-    DOTCLOUD_ENVIRONMENT = False
-
-
-PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
-DEBUG = False
+elif 'TRAVIS' in os.environ:
+    LOCAL_DEVELOPMENT = False
+    TRAVIS_ENVIRONMENT = True
 
 #ADMINS = (
 #    try:
@@ -25,9 +27,9 @@ DEBUG = False
 #
 #MANAGERS = ADMINS
 
-if not LOCAL_DEVELOPMENT and DOTCLOUD_ENVIRONMENT:
+if DOTCLOUD_ENVIRONMENT:
     # Do not alter these values under normal circumstances:
-    DOTCLOUD_DB = {
+    DATABASES = {
         'default': {
             'ENGINE':  'django.db.backends.postgresql_psycopg2',
             'NAME':    'template1',
@@ -37,13 +39,11 @@ if not LOCAL_DEVELOPMENT and DOTCLOUD_ENVIRONMENT:
             'PORT':     int(env['DOTCLOUD_DB_SQL_PORT']),
         }
     }
-    DATABASES = DOTCLOUD_DB
-
-elif 'TRAVIS' in os.environ:
+elif TRAVIS_ENVIRONMENT:
     DATABASES = {
         'default': {
             'ENGINE':   'django.db.backends.postgresql_psycopg2',
-            'NAME':     'travisdb',
+            'NAME':     'travisdb',  # Must match travis.yml setting
             'USER':     'postgres',
             'PASSWORD': '',
             'HOST':     'localhost',
