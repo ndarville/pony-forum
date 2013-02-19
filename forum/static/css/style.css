@@ -907,7 +907,9 @@ textarea,
     font-size: 0.9em; line-height: 1.35em;
 }
 
-textarea {
+textarea,
+#title-form,
+#id-form {
     font-family: Verdana;
 }
 
