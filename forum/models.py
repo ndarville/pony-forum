@@ -100,7 +100,7 @@ class Thread(models.Model):
 #                             "Ban user from posting in thread permanently"),
 #           ("timeout_user_in_thread",
 #                             "Ban user from posting in thread temporarily"),
-            ("is_threadmin",  "Give a user mod-like permissions in a thread"),
+#           ("is_threadmin",  "Give a user mod-like permissions in a thread"),
         )
 
     def __unicode__(self):
@@ -205,9 +205,9 @@ class UserProfile(models.Model):
                                        choices=BOOLEAN_CHOICES,
                                        verbose_name="User has dyslexia")
     #! Disclose your epilepsy so animated .gif images are hidden by default
-    has_epilepsy    = models.CharField(default='U', max_length=1,
-                                       choices=BOOLEAN_CHOICES,
-                                       verbose_name="User has epilepsy")
+    # has_epilepsy    = models.CharField(default='U', max_length=1,
+    #                                    choices=BOOLEAN_CHOICES,
+    #                                    verbose_name="User has epilepsy")
     #! Disclose your colour blindness to benefit from potential future features
     # has_c_blindness = models.BooleanField(default=False,
     #                                       verbose_name="User has epilepsy")
@@ -220,10 +220,11 @@ class UserProfile(models.Model):
     follows         = models.ManyToManyField(User, null=True, blank=True,
                                              related_name="follows")
     # timezone        = models.CharField(choices=TIMEZONES")
-    twitter         = models.CharField(max_length=20, blank=True)
+    # twitter         = models.CharField(max_length=20, blank=True)
 
     def __unicode__(self):
         return "%s's profile" % self.user
+
 
 def create_user_profile(sender, instance, created, **kwargs):
     """Used to extend User using aforementioned UserProfile model."""
