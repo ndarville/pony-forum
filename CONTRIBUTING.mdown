@@ -29,13 +29,17 @@ Basic Guidelines
 
     I consider this a guideline more than law of the land. There will probably be exceptions where it makes sense to bundle related issues, but keep this guideline in mind as a rule of thumb.
 
+    When filing a pull request, keep the following in mind, too:
+
 3. Limit your commits to a single type of improvement:
 
     To reapply rule #2 to commits and not just pull requests, do not merge commits with different purposes such as spelling, newline, whitespace corrections, as well as any other improvements.
 
     This also improves the quality of your commits significantly.
 
-    There is no harm in making a Pull Request containing several commits.
+    Generally, it is better to submit your changes in a *single* commit. If you know your git, you should [squash](http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html) several commits into a single one. This way, it will be much more manageable for everyone.
+
+    To all rules there are exceptions, though.
 
 4. Include screenshots, whenever relevant.
 
