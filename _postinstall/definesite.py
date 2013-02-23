@@ -23,6 +23,6 @@ if 'DOTCLOUD_ENVIRONMENT' in os.environ:
 
 elif project_settings.LOCAL_DEVELOPMENT:
     s = Site.objects.get_current()
-    s.domain = "http://127.0.0.1:8000"
+    s.domain = "127.0.0.1:8000"
     s.name   = "The Forum"
     s.save()
