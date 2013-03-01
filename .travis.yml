@@ -8,7 +8,7 @@ python:
 services: postgresql
 
 env:
-  - DJANGO=1.4.2
+  - DJANGO=1.4.5
 
 before_install:
   - export DJANGO_SETTINGS_MODULE=ponyforum.settings
