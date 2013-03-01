@@ -17,6 +17,9 @@ elif 'TRAVIS' in os.environ:
     LOCAL_DEVELOPMENT = False
     TRAVIS_ENVIRONMENT = True
 
+if not 'DOTCLOUD_ENVIRONMENT':
+    env = os.environ
+
 #ADMINS = (
 #    try:
 #        # ('Your Name', 'your_email@example.com'),
