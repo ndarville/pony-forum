@@ -128,6 +128,8 @@ I will later create Travis tests to strike a balance between catching errors, be
 
 And for the love of Linus Torvalds, write *descriptive*, *succinct* commit messages with appropriate spelling and capitalization of the first letter when applicable in a way  that does not make people mistake you for a bot.
 
+If you submit a bug fix, consider writing a unit test that would have detected it in the first place, if appropriate.
+
 Finally—and Most Important
 --------------------------
 Please don‘t take it personally, if your suggestion or contribution is rejected. It is incredibly strenuous and time-consuming to manage a project of this magnitude without succumbing to feature creep, design by committee, and people who feel entitled to appropriate the project and make the decisions. Such users are welcome to fork the project and take it in their own direction.
