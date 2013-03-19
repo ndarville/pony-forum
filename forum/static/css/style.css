@@ -4,7 +4,9 @@ html {
     margin-bottom: 1px;
 }
 
-body {
+body,
+button,
+input {
     font: 14px/1.5em "Helvetica Neue", Helvetica, sans-serif;
 }
 
@@ -32,6 +34,11 @@ code {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+}
+
+input {
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 pre {
@@ -508,7 +515,7 @@ legend {
 
 #content a.button {
     display: inline; /** Fixes the width: 100% button problem. Revise */
-    padding: 5px 5px;
+    padding: 5px;
 }
 
 #content .categories thead,
@@ -545,7 +552,7 @@ legend {
 }
 
 #content table.hide {
-    font-size: 0.6em/1.2em Georgia;
+    font: 0.6em/1.2em Georgia;
 }
 /**** * ****/
 
@@ -827,7 +834,8 @@ span#error {
     list-style: none;
 }
 
-.body {
+.body,
+#example {
     font-family: Georgia;
 }
 
@@ -847,8 +855,11 @@ div#button-group {
     margin: 1em auto; /** Revise */
 }
 
-div#button-group a.button { /** Revise */
+div#button-group a.button,
+div#button-group input[type="submit"] {
+    padding: 5px 10px;
     margin: 0 1em;
+    display: inline-block;
 }
 
 /** Check that CSS doesn't break this in other browsers
@@ -894,6 +905,12 @@ textarea,
 #id-form {
     padding: 5px;
     font-size: 0.9em; line-height: 1.35em;
+}
+
+textarea,
+#title-form,
+#id-form {
+    font-family: Verdana;
 }
 
 #id-form {
