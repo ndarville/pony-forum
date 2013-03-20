@@ -8,12 +8,11 @@ python:
 services: postgresql
 
 env:
-  - DJANGO=1.4.5
-
-before_install:
-  - export DJANGO_SETTINGS_MODULE=ponyforum.settings
-  - export PYTHONPATH=$HOME/builds/ndarville/pony-forum
-  - export PIP_USE_MIRRORS=true
+  global:
+  - DJANGO="1.4.5"
+  - DJANGO_SETTINGS_MODULE="ponyforum.settings"
+  - PYTHONPATH="/home/travis/build/ndarville/pony-forum"
+  - PIP_USE_MIRRORS=true
 
 install:
   - pip install -r requirements.txt
