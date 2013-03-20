@@ -393,5 +393,40 @@ class SuperscriptTests(TestCase):
         self.assertEquals(sd(self.output), self.output)
 
 
-# class TableTests(TestCase):
-#     """Tests the output of a table element."""
+class TableTests(TestCase):
+    """Tests the output of a table element."""
+    def setUp(self):
+        self.markdown = """
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+"""
+        self.output = """\
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+</tbody>
+</table>\
+"""
+
+    def test_html(self):
+        """Tests the HTML input of a table element."""
+        self.assertEquals(sd(self.output), self.output)
+
+    def test_markdown(self):
+        """Tests the Markdown input of a table element."""
+        self.assertEquals(sd(self.markdown), self.output)
