@@ -20,7 +20,7 @@
         </ul>
     {% endif %}
 
-    <form action="" method="post">
+    <form action="" method="post" id="account-form">
         {% csrf_token %}
         <label for="id_username">Username</label>
         <input
@@ -31,22 +31,22 @@
             name="username"
             value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
             {% if max_username_length %}maxlength="{{ max_username_length }}"{% endif %}
+            placeholder="Username"
             {% if not form.username.errors %}autofocus{% endif %} required
+            {% if form.username.errors %}class="input-error"{% endif %}
         />
-            {% if form.username.errors %}<span class="input-error-indicator">&larr;</span>{% endif %}
-        <br />
 
-        <label for="id_email">E-mail address</label>
+        <label for="id_email">E-mail</label>
         <input
             id="id_email"
             {% if form.email.errors %}class="input-error"{% endif %}
             type="email"
             name="email"
             value="{% if form.email.value %}{{ form.email.value }}{% endif %}"
+            placeholder="E-mail"
             required
+            {% if form.email.errors %}class="input-error"{% endif %}
         />
-            {% if form.email.errors %}<span class="input-error-indicator">&larr;</span>{% endif %}
-        <br />
 
         <label for="id_password1">Password</label>
         <input
@@ -54,21 +54,21 @@
             {% if form.non_field_errors %}class="input-error"{% endif %}
             type="password"
             name="password1"
+            placeholder="Password"
             required
+            {% if form.non_field_errors %}class="input-error"{% endif %}
         />
-            {% if form.non_field_errors %}<span class="input-error-indicator">&larr;</span>{% endif %}
-        <br />
 
-        <label for="id_password2">Repeat password</label>
+        <label for="id_password2">Re-enter the same password</label>
         <input
             id="id_password2"
             {% if form.non_field_errors %}class="input-error"{% endif %}
             type="password"
             name="password2"
+            placeholder="Re-enter the same password"
             required
+            {% if form.non_field_errors %}class="input-error"{% endif %}
         />
-            {% if form.non_field_errors %}<span class="input-error-indicator">&larr;</span>{% endif %}
-        <br />
 
         <div id="button-group">
             <input type="submit" value="Send activation e-mail" />
