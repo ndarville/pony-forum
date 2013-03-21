@@ -444,10 +444,6 @@ ul.errorlist li {
     border: 1px solid #B94A48;  /** cf. Bootstrap */
 }
 
-#content-body span.input-error-indicator {
-    color: #B94A48;
-}
-
 #content-body label {
     width: 33%;
 }

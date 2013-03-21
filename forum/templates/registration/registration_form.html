@@ -33,9 +33,8 @@
             {% if max_username_length %}maxlength="{{ max_username_length }}"{% endif %}
             placeholder="Username"
             {% if not form.username.errors %}autofocus{% endif %} required
+            {% if form.username.errors %}class="input-error"{% endif %}
         />
-            {% if form.username.errors %}<span class="input-error-indicator">&larr;</span>{% endif %}
-        <br />
 
         <label for="id_email">E-mail</label>
         <input
@@ -46,9 +45,8 @@
             value="{% if form.email.value %}{{ form.email.value }}{% endif %}"
             placeholder="E-mail"
             required
+            {% if form.email.errors %}class="input-error"{% endif %}
         />
-            {% if form.email.errors %}<span class="input-error-indicator">&larr;</span>{% endif %}
-        <br />
 
         <label for="id_password1">Password</label>
         <input
@@ -58,9 +56,8 @@
             name="password1"
             placeholder="Password"
             required
+            {% if form.non_field_errors %}class="input-error"{% endif %}
         />
-            {% if form.non_field_errors %}<span class="input-error-indicator">&larr;</span>{% endif %}
-        <br />
 
         <label for="id_password2">Re-enter the same password</label>
         <input
@@ -70,9 +67,8 @@
             name="password2"
             placeholder="Re-enter the same password"
             required
+            {% if form.non_field_errors %}class="input-error"{% endif %}
         />
-            {% if form.non_field_errors %}<span class="input-error-indicator">&larr;</span>{% endif %}
-        <br />
 
         <div id="button-group">
             <input type="submit" value="Send activation e-mail" />
