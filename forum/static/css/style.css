@@ -1165,11 +1165,25 @@ textarea,
     #credits,
     #header,
     #navigation {
-        width: 95%;
         margin-left: auto;
         margin-right: auto;
         float: none;
         clear: both;
+    }
+
+    #content,
+    #credits,
+    #navigation {
+        width: 100%;
+    }
+
+    #content table.categories,
+    #content table.threads,
+    #board,
+    #header {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
     }
     /* * */
 
