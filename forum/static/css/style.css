@@ -830,6 +830,11 @@ span#error {
     margin-bottom: 1em;
 }
 
+#example {
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
 .post-top {
     clear: both;
     background-color: orange;
