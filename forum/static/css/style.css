@@ -382,6 +382,44 @@ input[type="submit"] {
 /****          *****
 ***** ACCOUNTS *****
 *****          ****/
+#account-form {
+    text-align: center;
+}
+
+#account-form label {
+    display: none;
+}
+
+#account-form #login-helpers {
+    margin: 1.5em auto;
+}
+
+#account-form input[type="email"],
+#account-form input[type="text"],
+#account-form input[type*="password"] {
+    padding-left: 35px;  /** Revise */
+    min-width: 60%;
+    max-width: 95%;
+}
+
+#account-form input[name="username"] {
+    background: url(/static/glyphish/111-user.png) no-repeat left;
+    background-size: 1.5em;
+    background-position: 5px 50%;
+}
+
+#account-form input[name="email"] {
+    background: url(/static/glyphish/18-envelope.png) no-repeat left;
+    background-size: 1.5em;
+    background-position: 5px 50%;
+}
+
+#account-form input[name*="password"] {
+    background: url(/static/glyphish/54-lock.png) no-repeat left;
+    background-size: 1.25em;
+    background-position: 7px 50%;
+}
+
 form p.checkbox { }
 form p.checkbox label {
     width: 90%;
