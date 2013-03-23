@@ -245,8 +245,7 @@ EMAIL_HOST_USER     = env.get('EMAIL_HOST_USER', 'myusername@gmail.com')
 EMAIL_HOST_PASSWORD = env.get('EMAIL_HOST_PASSWORD', 'mypassword')
 EMAIL_PORT          = int(env.get('EMAIL_PORT', '587'))
 EMAIL_USE_TLS       = env.get('EMAIL_USE_TLS', 'True') == 'True'
-# DEFAULT_FROM_EMAIL  = env.get('DEFAULT_FROM_EMAIL', 'noreply@equestria.pony')
-# EMAIL_SUBJECT_PREFIX = ""  # Doesn't work, optional
+DEFAULT_FROM_EMAIL  = '<' + EMAIL_HOST + '>'  # Brackets required for Gmail
 ###
 
 ### DJANGO-REGISTRATION

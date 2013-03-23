@@ -35,14 +35,22 @@ class CustomRegistrationForm(RegistrationFormUniqueEmail):
     def clean_email(self):
         """Validate that the supplied e-mail address is unique for the
         site.
+
+        `strict_email` converts submitted e-mail addresses to ensure
+        that they conform with TO and FROM format required by
+        services like Gmail as explained in
+
+        http://blog.yimingliu.com/2008/11/26/email-servers-and-mail-from-syntax
         """
+        strict_email = '<' + self.cleaned_data['email'] + '>'
+
         error_message = "This email address is already in use. \
                          Please enter a unique one."
 
         if "+" in self.cleaned_data['email']:
             raise forms.ValidationError(_(
                 "Sorry, we currently do not support +filters in e-mail addresses."))
-        elif User.objects.filter(email__iexact=self.cleaned_data['email']):
+        elif User.objects.filter(email__iexact=strict_email):
             raise forms.ValidationError(_(error_message))
         # # If the address is of the type name+filter@example.com
         # elif "+" in self.cleaned_data['email'] and User.objects.filter(
@@ -50,6 +58,8 @@ class CustomRegistrationForm(RegistrationFormUniqueEmail):
         #     email__startswith=self.cleaned_data['email'].split("+")[0],
         #     email__endswith='@'+self.cleaned_data['email'].split("@")[1]):
         #     raise forms.ValidationError(_(error_message))
+        else:
+            return strict_email
 
     def clean(self):
         """Verifiy that the values entered into the two password fields
