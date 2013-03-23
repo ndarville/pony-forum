@@ -65,17 +65,11 @@ elif TRAVIS_ENVIRONMENT:
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-if not LOCAL_DEVELOPMENT:
-    TIME_ZONE = env.get('TIME_ZONE', 'America/Chicago')
-else:
-    TIME_ZONE = 'America/Chicago'
+TIME_ZONE = env.get('TIME_ZONE', 'America/Chicago')
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-if not LOCAL_DEVELOPMENT:
-    LANGUAGE_CODE = env.get('LANGUAGE_CODE', 'en-us')
-else:
-    LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = env.get('LANGUAGE_CODE', 'en-us')
 
 SITE_ID = 1
 
@@ -225,22 +219,13 @@ LOGGING = {
 }
 
 ### PONY-FORUM APP
-if LOCAL_DEVELOPMENT:
-    POSTS_PER_PAGE         = 25
-    THREADS_PER_PAGE       = 25
-    USER_POSTS_PER_PAGE    = 10
-    USER_THREADS_PER_PAGE  = 25
-    SUBSCRIPTIONS_PER_PAGE = 25
-    BOOKMARKS_PER_PAGE     = 35
-    SAVES_PER_PAGE         = 10
-else:
-    POSTS_PER_PAGE         = int(env.get('POSTS_PER_PAGE', '25'))
-    THREADS_PER_PAGE       = int(env.get('THREADS_PER_PAGE', '25'))
-    USER_POSTS_PER_PAGE    = int(env.get('USER_POSTS_PER_PAGE', '10'))
-    USER_THREADS_PER_PAGE  = int(env.get('USER_THREADS_PER_PAGE', '25'))
-    SUBSCRIPTIONS_PER_PAGE = int(env.get('SUBSCRIPTIONS_PER_PAGE', '25'))
-    BOOKMARKS_PER_PAGE     = int(env.get('BOOKMARKS_PER_PAGE', '35'))
-    SAVES_PER_PAGE         = int(env.get('SAVES_PER_PAGE', '10'))
+POSTS_PER_PAGE         = int(env.get('POSTS_PER_PAGE', '25'))
+THREADS_PER_PAGE       = int(env.get('THREADS_PER_PAGE', '25'))
+USER_POSTS_PER_PAGE    = int(env.get('USER_POSTS_PER_PAGE', '10'))
+USER_THREADS_PER_PAGE  = int(env.get('USER_THREADS_PER_PAGE', '25'))
+SUBSCRIPTIONS_PER_PAGE = int(env.get('SUBSCRIPTIONS_PER_PAGE', '25'))
+BOOKMARKS_PER_PAGE     = int(env.get('BOOKMARKS_PER_PAGE', '35'))
+SAVES_PER_PAGE         = int(env.get('SAVES_PER_PAGE', '10'))
 
 # If you change these default values without changing the URLs style.css,
 # the icons will break, because their URLs are hardcoded.
@@ -255,24 +240,18 @@ SITE_CONFIGURATION_URL = '/configuration/'
 
 ### E-MAIL SERVER
 ## http://sontek.net/using-gmail-to-send-e-mails-from-django
-if not LOCAL_DEVELOPMENT:
-    EMAIL_HOST          = env.get('EMAIL_HOST', 'smtp.gmail.com')
-    EMAIL_HOST_USER     = env.get('EMAIL_HOST_USER', 'myusername@gmail.com')
-    EMAIL_HOST_PASSWORD = env.get('EMAIL_HOST_PASSWORD', 'mypassword')
-    EMAIL_PORT          = int(env.get('EMAIL_PORT', '587'))
-    EMAIL_USE_TLS       = env.get('EMAIL_USE_TLS', 'True') == 'True'
-    DEFAULT_FROM_EMAIL  = env.get('DEFAULT_FROM_EMAIL',
-                                  'noreply@equestria.pony')
-#    EMAIL_SUBJECT_PREFIX = ""  # Doesn't work, optional
+EMAIL_HOST          = env.get('EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_HOST_USER     = env.get('EMAIL_HOST_USER', 'myusername@gmail.com')
+EMAIL_HOST_PASSWORD = env.get('EMAIL_HOST_PASSWORD', 'mypassword')
+EMAIL_PORT          = int(env.get('EMAIL_PORT', '587'))
+EMAIL_USE_TLS       = env.get('EMAIL_USE_TLS', 'True') == 'True'
+# DEFAULT_FROM_EMAIL  = env.get('DEFAULT_FROM_EMAIL', 'noreply@equestria.pony')
+# EMAIL_SUBJECT_PREFIX = ""  # Doesn't work, optional
 ###
 
 ### DJANGO-REGISTRATION
-if LOCAL_DEVELOPMENT:
-    ACCOUNT_ACTIVATION_DAYS = 7
-    REGISTRATION_OPEN = True
-else:
-    ACCOUNT_ACTIVATION_DAYS = int(env.get('ACCOUNT_ACTIVATION_DAYS', '7'))
-    REGISTRATION_OPEN = env.get('REGISTRATION_OPEN', 'True') == 'True'
+ACCOUNT_ACTIVATION_DAYS = int(env.get('ACCOUNT_ACTIVATION_DAYS', '7'))
+REGISTRATION_OPEN = env.get('REGISTRATION_OPEN', 'True') == 'True'
 ###
 
 ### DJANGO-SECURE HTTPS
