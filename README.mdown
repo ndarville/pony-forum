@@ -249,6 +249,10 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 ### Eventual, Not Impending, Features ###
 * [Avatars][avatars]
 
+* Antispam:
+    * [stopspam][stopspam]
+    * [djangospam][djangospam]
+
 * [+filters in e-mails][filters] allowed
 
 * Support for analytics code
@@ -326,6 +330,8 @@ And much, much more.
 [subscription]: https://github.com/ndarville/pony-forum/issues/39
 [bans]:         https://github.com/ndarville/pony-forum/issues/40
 [avatars]:      https://github.com/ndarville/pony-forum/issues/41
+[stopspam]:     https://github.com/phalt/stopspam
+[djangospam]:   https://github.com/leandroarndt/djangospam
 [logging]:      http://packages.python.org/Logbook/
 [international]:https://github.com/ndarville/pony-forum/issues?milestone=4&state=open
 [attempts]:     https://docs.djangoproject.com/en/dev/topics/auth/#django.contrib.auth.signals.user_login_failed
