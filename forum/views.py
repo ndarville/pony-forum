@@ -408,7 +408,6 @@ def add(request):
             messages.error(request, long_title_error % MAX_CATEGORY_TITLE_LENGTH)
         else:
             Category.objects.create(title_plain=title_plain, title_html=title_html)
-            request.user.save()
             return HttpResponseRedirect("/")
     return render(request, 'add.html', {'title': title_plain})
 
