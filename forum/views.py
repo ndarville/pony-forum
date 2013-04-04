@@ -407,8 +407,13 @@ def add(request):
         if len(title_plain) > MAX_CATEGORY_TITLE_LENGTH:
             messages.error(request, long_title_error % MAX_CATEGORY_TITLE_LENGTH)
         else:
-            Category.objects.create(title_plain=title_plain, title_html=title_html)
-            return HttpResponseRedirect("/")
+            try:
+                Category.objects.create(title_plain=title_plain, title_html=title_html)
+            except:
+                messages.error(request, "An unidentified error occured. Please try again.")
+            else:
+                return HttpResponseRedirect("/")
+
     return render(request, 'add.html', {'title': title_plain})
 
 
