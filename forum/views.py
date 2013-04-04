@@ -712,23 +712,27 @@ def remove(request, object_id, object_type):
             return HttpResponseRedirect(reverse('forum.views.thread', args=(obj.id,)))
 
     if request.method == 'POST':  # Form has been submitted
-        if 'remove' in request.POST:  # Remove command
-            if obj.is_removed:
-                messages.info(request, "The %s was already removed." % object_type)
-            obj.is_removed = True
-        else:  # Restore command
-            if not obj.is_removed:
-                messages.info(request, "The %s was already not removed." % object_type)
-            obj.is_removed = False
-        obj.save()
-        return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
-    else:
-        return render(request, 'simple_action.html',
-                      {'object_type': object_type,
-                       'obj':         obj,
-                       'thread':      thread,
-                       'post_obj':    post_obj,
-                       'action':     'remove'})
+        try:
+            if 'remove' in request.POST:  # Remove command
+                if obj.is_removed:
+                    messages.info(request, "The %s was already removed." % object_type)
+                obj.is_removed = True
+            else:  # Restore command
+                if not obj.is_removed:
+                    messages.info(request, "The %s was already not removed." % object_type)
+                obj.is_removed = False
+            obj.save()
+        except:
+            messages.error(request, post_request_error)
+        else:
+            return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
+
+    return render(request, 'simple_action.html',
+                  {'object_type': object_type,
+                   'obj':         obj,
+                   'thread':      thread,
+                   'post_obj':    post_obj,
+                   'action':     'remove'})
 
 
 @login_required()
