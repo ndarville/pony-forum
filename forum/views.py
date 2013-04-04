@@ -551,10 +551,16 @@ def edit(request, post_id):
 
     if request.method == 'POST':  # Form has been submitted
         if "submit" in request.POST:  # "submit" button pressed
-            post.content_plain = request.POST['content']
-            post.content_html  = sanitized_smartdown(post.content_plain)
-            post.save()
-            return HttpResponseRedirect(reverse('forum.views.thread', args=(post.thread_id,)))
+            try:
+                post.content_plain = request.POST['content']
+                post.content_html  = sanitized_smartdown(post.content_plain)
+                post.save()
+            except:
+                messages.error(request, submit_error)
+                preview_plain = request.POST['content']
+                preview_html = sanitized_smartdown(preview_plain)
+            else:
+                return HttpResponseRedirect(reverse('forum.views.thread', args=(post.thread_id,)))
         elif "preview" in request.POST:  # "preview" button pressed
             preview_plain = request.POST['content']
             preview_html  = sanitized_smartdown(preview_plain)
@@ -786,7 +792,8 @@ def report(request, object_id, object_type):
                         r.post = obj
                     r.save()
                 except:
-                    pass
+                    messages.error(request, submit_error)
+                    preview_html = text_html
                 else:
                     # After successful submission
                     return HttpResponseRedirect(reverse('forum.views.thread',
