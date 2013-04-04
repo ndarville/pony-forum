@@ -645,15 +645,16 @@ def moderate_thread(request, thread_id):
     title_plain = thread.title_plain
 
     if request.method == 'POST':  # Form has been submitted
-        if len(request.POST['title']) > MAX_THREAD_TITLE_LENGTH:
+        title_plain = request.POST['title']
+        if len(title_plain) > MAX_THREAD_TITLE_LENGTH:
             messages.error(request, long_title_error % MAX_THREAD_TITLE_LENGTH)
         else:
             try:
-                thread.title_plain = request.POST['title']
-                thread.title_html  = prettify_title(thread.title_plain)
+                thread.title_plain = title_plain
+                thread.title_html  = prettify_title(title_plain)
                 thread.save()
             except:
-                pass
+                messages.error(request, submit_error)
             else:
                 return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
     return render(request, 'moderate.html',
