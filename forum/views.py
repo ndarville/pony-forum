@@ -113,6 +113,7 @@ S/he might want to contact the site&rsquo;s host in return.</p>
     How-To guide</a></li>
 </ul>
 """
+post_request_error = "An unidentified error occured. Please try again."
 submit_error = "An unidentified error occured during submission. Save your work and try again."
 
 
@@ -410,7 +411,7 @@ def add(request):
             try:
                 Category.objects.create(title_plain=title_plain, title_html=title_html)
             except:
-                messages.error(request, "An unidentified error occured. Please try again.")
+                messages.error(request, post_request_error)
             else:
                 return HttpResponseRedirect("/")
 
