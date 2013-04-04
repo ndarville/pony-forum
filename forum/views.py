@@ -676,13 +676,17 @@ def move_thread(request, thread_id):
     categories = Category.objects.all()
 
     if request.method == 'POST':  # Form has been submitted
-        thread.category = get_object_or_404(Category, pk=request.POST['category'])
-        thread.save()
-        return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
-    else:  # Otherwise, show clean, normal page with no populated data
-        return render(request, 'move.html',
-                      {'thread':     thread,
-                       'categories': categories})
+        try:
+            thread.category = get_object_or_404(Category, pk=request.POST['category'])
+            thread.save()
+        except:
+            messages.error(request, post_request_error)
+        else:
+            return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
+    # Form has yet to be submitted, or an error occurred during submission
+    return render(request, 'move.html',
+                  {'thread':     thread,
+                   'categories': categories})
 
 
 @login_required()
