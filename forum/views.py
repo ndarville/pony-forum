@@ -113,6 +113,7 @@ S/he might want to contact the site&rsquo;s host in return.</p>
     How-To guide</a></li>
 </ul>
 """
+submit_error = "An unidentified error occured during submission. Save your work and try again."
 
 
 def paginate(request, items, num_items):
@@ -447,7 +448,9 @@ def create(request, category_id):
                         content_plain=text_plain, content_html=text_html)
                     t.subscriber.add(user)
                 except:
-                    pass
+                    messages.error(request, submit_error)
+                    preview_plain = text_plain
+                    preview_html  = text_html
                 else:  # After successful submission
                     category.thread_count += 1
                     category.post_count += 1
@@ -457,6 +460,7 @@ def create(request, category_id):
                     category.save()
                     t.save()
                     request.user.get_profile().save()
+
                     return HttpResponseRedirect(reverse('forum.views.thread', args=(t.id,)))
         elif "preview" in request.POST:  # "preview" button pressed
             preview_plain = text_plain
@@ -495,21 +499,28 @@ def reply(request, thread_id):
             user = request.user
             now  = datetime.datetime.now()  # UTC?
             html = sanitized_smartdown(text)
-            Post.objects.create(
-                thread=thread, author=user, creation_date=now,
-                content_plain=text, content_html=html)
-            if request.user.get_profile().auto_subscribe:
-                thread.subscriber.add(request.user)
-            thread.latest_reply_date = now
+            try:
+                Post.objects.create(
+                    thread=thread, author=user, creation_date=now,
+                    content_plain=text, content_html=html)
+            except:
+                messages.error(request, submit_error)
+                preview_plain = text
+                preview_html = html
+            else:
+                if request.user.get_profile().auto_subscribe:
+                    thread.subscriber.add(request.user)
+                thread.latest_reply_date = now
 
-            thread.category.post_count += 1
-            thread.post_count += 1
-            request.user.get_profile().post_count += 1
-            thread.category.save()
-            thread.save()
-            request.user.get_profile().save()
+                thread.category.post_count += 1
+                thread.post_count += 1
+                request.user.get_profile().post_count += 1
+                thread.category.save()
+                thread.save()
+                request.user.get_profile().save()
 
-            return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
+                return HttpResponseRedirect(reverse('forum.views.thread', args=(thread.id,)))
+
         elif "preview" in request.POST:  # "preview" button pressed
             preview_plain = text
             preview_html  = sanitized_smartdown(text)
