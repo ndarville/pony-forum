@@ -73,6 +73,7 @@ class CategoryTests(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_add(self):
+        """Tests the addition of a category."""
         self.client = logIn()
         response = self.client.post(
             reverse('forum.views.add'), {'title': test_text},
