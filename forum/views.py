@@ -831,11 +831,14 @@ def reports(request):
     reports = reports.order_by("thread")
 
     if request.method == 'POST':  # Report has been dismissed
-        report = get_object_or_404(Report, pk=request.POST['report-id'])
-        report.was_addressed  = True
-        report.addressed_by   = request.user
-        report.date_addressed = datetime.datetime.now()  # UTC?
-        report.save()
+        try:
+            report = get_object_or_404(Report, pk=request.POST['report-id'])
+            report.was_addressed  = True
+            report.addressed_by   = request.user
+            report.date_addressed = datetime.datetime.now()  # UTC?
+            report.save()
+        except:
+            messages.error(request, post_request_error)
     return render(request, 'reports.html', {'reports': reports})
 
 
