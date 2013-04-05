@@ -16,19 +16,15 @@ test_text = "Howdy ho."
 # Determines count of thread and post objects
 # and ID of test category, threads, and post
 with open('forum/fixtures/forum_example.json') as f:
-    test_thread_count, test_post_count = 0, 0
-
     for x in json.load(f):
         if x['model'] == 'forum.category':
             test_category_id = x['pk']
         elif x['model'] == 'forum.thread':
-            test_thread_count += 1
             if x['fields']['title_plain'] == 'Merge Thread 1':
                 merge_thread_1_id = x['pk']
             elif x['fields']['title_plain'] == 'Merge Thread 2':
                 merge_thread_2_id = x['pk']
         elif x['model'] == 'forum.post':
-            test_post_count += 1
             if x['fields']['content_plain'].startswith('Test post'):
                 test_post_id = x['pk']
                 test_thread_id = x['fields']['thread']
