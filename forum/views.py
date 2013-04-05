@@ -602,42 +602,46 @@ def merge_thread(request, thread_id):
         elif request.method == 'POST' and "confirm" in request.POST:
             now  = datetime.datetime.now()  # UTC?
             user = request.user
-            t    = Thread.objects.create(
-                title_plain=new_title_plain, title_html=new_title_html,
-                creation_date=now, author=user, category=thread.category,
-                latest_reply_date=now)
-        # Update posts in two threads to point to new thread t
-            thread.post_set.all().update(thread=t.id)
-            other_thread.post_set.all().update(thread=t.id)
-        # Make post notification in ALL threads
-            # Do not append a redundant full stop
-            if  new_title_plain[-1]    not in set([".!?"]) \
-            and new_title_plain[-3:-1] not in set(['."', '!"', '?"', ".'", "!'", "?'"]):
-                end = "."
+            try:
+                t = Thread.objects.create(
+                    title_plain=new_title_plain, title_html=new_title_html,
+                    creation_date=now, author=user, category=thread.category,
+                    latest_reply_date=now)
+            # Update posts in two threads to point to new thread t
+                thread.post_set.all().update(thread=t.id)
+                other_thread.post_set.all().update(thread=t.id)
+            # Make post notification in ALL threads
+                # Do not append a redundant full stop
+                if  new_title_plain[-1]    not in set([".!?"]) \
+                and new_title_plain[-3:-1] not in set(['."', '!"', '?"', ".'", "!'", "?'"]):
+                    end = "."
+                else:
+                    end = ""
+                message = "(*%s* was merged with *%s* by *%s* into *[%s](%s)*%s)" % (
+                    thread.title_html,
+                    other_thread.title_html,
+                    user.username,
+                    new_title_html,
+                    reverse('forum.views.thread', args=(t.id,)),
+                    end)
+                html = sanitized_smartdown(message)
+                Post.objects.bulk_create([
+                    Post(creation_date=now, author=user, thread=t,
+                         content_plain=message, content_html=html),
+                    Post(creation_date=now, author=user, thread=thread,
+                         content_plain=message, content_html=html),
+                    Post(creation_date=now, author=user, thread=other_thread,
+                         content_plain=message, content_html=html)
+                ])
+            # Lock original threads
+                thread.is_locked       = True
+                other_thread.is_locked = True
+                thread.save()
+                other_thread.save()
+            except:
+                messages.errors(request, post_request_error)
             else:
-                end = ""
-            message = "(*%s* was merged with *%s* by *%s* into *[%s](%s)*%s)" % (
-                thread.title_html,
-                other_thread.title_html,
-                user.username,
-                new_title_html,
-                reverse('forum.views.thread', args=(t.id,)),
-                end)
-            html = sanitized_smartdown(message)
-            Post.objects.bulk_create([
-                Post(creation_date=now, author=user, thread=t,
-                     content_plain=message, content_html=html),
-                Post(creation_date=now, author=user, thread=thread,
-                     content_plain=message, content_html=html),
-                Post(creation_date=now, author=user, thread=other_thread,
-                     content_plain=message, content_html=html)
-            ])
-        # Lock original threads
-            thread.is_locked       = True
-            other_thread.is_locked = True
-            thread.save()
-            other_thread.save()
-            return HttpResponseRedirect(reverse('forum.views.thread', args=(t.id,)))
+                return HttpResponseRedirect(reverse('forum.views.thread', args=(t.id,)))
 
     return render(request, 'merge.html',
                   {'thread':       thread,
