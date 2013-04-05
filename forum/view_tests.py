@@ -55,13 +55,11 @@ class LoginTest(TestCase):
 
         Success criterion: 200 response, including redirects.
         """
-        self.assertEqual(
-            self.client.post(
-                reverse('login'),
-                {'username': 'admin', 'password': 'password'},
-                follow=True
-            ).status_code,
-            200)
+        response = self.client.post(
+            reverse('login'),
+            {'username': 'admin', 'password': 'password'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
 
 class CategoryTests(TestCase):
@@ -70,12 +68,16 @@ class CategoryTests(TestCase):
 
     def test_get(self):
         """Tests the display of a category."""
-        self.client.get(
+        response = self.client.get(
             reverse('forum.views.category', args=(test_category_id,)))
+        self.assertEqual(response.status_code, 200)
 
     def test_add(self):
         self.client = logIn()
-        self.client.post(reverse('forum.views.add'), {'title': test_text})
+        response = self.client.post(
+            reverse('forum.views.add'), {'title': test_text},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
 
 class ThreadTests(TestCase):
@@ -87,49 +89,62 @@ class ThreadTests(TestCase):
 
     def test_get(self):
         """Tests the display of a thread."""
-        self.client.get(reverse('forum.views.thread', args=(test_thread_id,)))
+        response = self.client.get(
+            reverse('forum.views.thread', args=(test_thread_id,)))
+        self.assertEqual(response.status_code, 200)
 
     def test_show_posts_by_author(self):
         """Tests the display of posts by a specific user in a thread."""
-        self.client.get(
+        response = self.client.get(
             reverse(
                 'forum.views.thread',
                 args=(test_category_id, test_user_id,)))
+        self.assertEqual(response.status_code, 200)
 
     def test_create(self):
         """Tests creation of thread."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.create', args=(test_category_id,)),
-            {'title': test_text, 'content': test_text})
+            {'title': test_text, 'content': test_text},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_merge(self):
         """Tests locking of thread."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.merge_thread', args=(merge_thread_1_id,)),
             {'other-thread-id':   merge_thread_2_id,
-             'new-thread-title': 'Merge Thread 3'})
+             'new-thread-title': 'Merge Thread 3'},
+             follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_moderate(self):
         """Tests moderation of thread."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.moderate_thread', args=(test_thread_id,)),
-            {'lock': 'Lock', 'title': test_text})
+            {'lock': 'Lock', 'title': test_text},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_remove(self):
         """Tests removal of a thread."""
-        self.client.post(
+        response = self.client.post(
             reverse(
                 'forum.views.remove',
                 kwargs={'object_id': test_thread_id, 'object_type': 'thread'}),
-            {'remove': 'Remove'})
+            {'remove': 'Remove'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_restore(self):
         """Tests restore of a thread."""
-        self.client.post(
+        response = self.client.post(
             reverse(
                 'forum.views.remove',
                 kwargs={'object_id': test_thread_id, 'object_type': 'thread'}),
-            {'restore': 'Restore'})
+            {'restore': 'Restore'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
 
 class PostTests(TestCase):
@@ -141,27 +156,35 @@ class PostTests(TestCase):
 
     def test_get(self):
         """Tests the display of a post."""
-        self.client.get(reverse('forum.views.post', args=(test_post_id,)))
+        response = self.client.get(
+            reverse('forum.views.post', args=(test_post_id,)))
+        self.assertEqual(response.status_code, 200)
 
     def test_reply(self):
         """Tests creation of a post."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.reply', args=(test_thread_id,)),
-            {'content': test_text})
+            {'content': test_text},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_edit(self):
         """Tests editing of a post."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.edit', args=(test_post_id,)),
-            {'content': test_text})
+            {'content': test_text},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_remove(self):
         """Tests removal of a post."""
-        self.client.post(
+        response = self.client.post(
             reverse(
                 'forum.views.remove',
                 kwargs={'object_id': test_post_id, 'object_type': 'post'}),
-            {'remove': 'Remove'})
+            {'remove': 'Remove'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
 
 class ReportTests(TestCase):
@@ -173,23 +196,28 @@ class ReportTests(TestCase):
 
     def test_report_thread(self):
         """Tests the reporting of a thread."""
-        self.client.post(
+        response = self.client.post(
             reverse(
                 'forum.views.report',
                 kwargs={'object_id': test_thread_id, 'object_type': 'thread'}),
-            {'title': test_text, 'content': test_text, 'submit': 'submit'})
+            {'title': test_text, 'content': test_text, 'submit': 'submit'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_report_post(self):
         """Tests the reporting of a post."""
-        self.client.post(
+        response = self.client.post(
             reverse(
                 'forum.views.report',
                 kwargs={'object_id': test_post_id, 'object_type': 'post'}),
-            {'title': test_text, 'content': test_text, 'submit': 'submit'})
+            {'title': test_text, 'content': test_text, 'submit': 'submit'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_get(self):
         """Tests the display of reports."""
-        self.client.get(reverse('forum.views.reports'))
+        response = self.client.get(reverse('forum.views.reports'))
+        self.assertEqual(response.status_code, 200)
 
     # def test_dismiss_thread_report(self):
     #     """Tests the dismissal of a thread report."""
@@ -205,11 +233,13 @@ class HomeTests(TestCase):
     def test_home_admin_user(self):
         """Tests the behaviour of the view when a logged-in admin visits."""
         self.client = logIn(username='admin', password='password')
-        self.client.get(reverse('forum.views.home'))
+        response = self.client.get(reverse('forum.views.home'))
+        self.assertEqual(response.status_code, 200)
 
     def test_home_anonymous_user(self):
         """Tests the behaviour of the view when a logged-in admin visits."""
-        self.client.get(reverse('forum.views.home'))
+        response = self.client.get(reverse('forum.views.home'))
+        self.assertEqual(response.status_code, 200)
 
 
 class UserTests(TestCase):
@@ -225,8 +255,9 @@ class UserTests(TestCase):
 
     def test_user_content(self):
         """Tests the display of a user's contens."""
-        self.client.get(
+        response = self.client.get(
             reverse('forum.views.user_content', args=(test_user_id,)))
+        self.assertEqual(response.status_code, 200)
 
 
 class NonJsTests(TestCase):
@@ -238,111 +269,146 @@ class NonJsTests(TestCase):
 
     def test_user_follow_nonjs(self):
         """Tests following a user."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('follow', test_user_id,)),
-            {'action': 'follow'})
+            {'action': 'follow'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_user_unfollow_nonjs(self):
         """Tests unfollowing a user."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('follow', test_user_id,)),
-            {'action': 'unfollow'})
+            {'action': 'unfollow'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_user_ignore_nonjs(self):
         """Tests adding a user to shit list."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('ignore', test_user_id,)),
-            {'action': 'ignore'})
+            {'action': 'ignore'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_user_unignore_nonjs(self):
         """Tests removing a user from shit list."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('ignore', test_user_id,)),
-            {'action': 'unignore'})
+            {'action': 'unignore'},
+            follow=True)
 
     def test_sticky(self):
         """Tests the stickying of a thread."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('sticky', test_thread_id,)),
-            {'action': 'sticky'})
+            {'action': 'sticky'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_unsticky(self):
         """Tests the unstickying of a thread."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('sticky', test_thread_id,)),
-            {'action': 'unsticky'})
+            {'action': 'unsticky'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_lock(self):
         """Tests the locking of a thread."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('lock', test_thread_id,)),
-            {'action': 'lock'})
+            {'action': 'lock'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_unlock(self):
         """Tests the unlocking of a thread."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('lock', test_thread_id,)),
-            {'action': 'unlock'})
+            {'action': 'unlock'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_subscribe(self):
         """Tests the subscription of a thread."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('subscribe', test_thread_id,)),
-            {'action': 'subscribe'})
+            {'action': 'subscribe'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_unsubscribe(self):
         """Tests the unsubscription of a thread."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('subscribe', test_thread_id,)),
-            {'action': 'unsubscribe'})
+            {'action': 'unsubscribe'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_bookmark(self):
         """Tests the bookmarking of a thread."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('bookmark', test_thread_id,)),
-            {'action': 'bookmark'})
+            {'action': 'bookmark'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_unbookmark(self):
         """Tests the unbookmarking of a thread."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('bookmark', test_thread_id,)),
-            {'action': 'unbookmark'})
+            {'action': 'unbookmark'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_save(self):
         """Tests the saving of a post."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('save', test_post_id,)),
-            {'action': 'save'})
+            {'action': 'save'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_unsave(self):
         """Tests the unsaving of a post."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('save', test_post_id,)),
-            {'action': 'unsave'})
+            {'action': 'unsave'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_thank(self):
         """Tests the thanking of an author for a post."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('thank', test_post_id,)),
-            {'action': 'thank'})
+            {'action': 'thank'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_unthank(self):
         """Tests the unthanking of an author for a post."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('thank', test_post_id,)),
-            {'action': 'unthank'})
+            {'action': 'unthank'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_agree(self):
         """Tests the agreeing with an author for a post."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('agree', test_post_id,)),
-            {'action': 'agree'})
+            {'action': 'agree'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_unagree(self):
         """Tests the unagreeing with an author for a post."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.nonjs', args=('agree', test_post_id,)),
-            {'action': 'unagree'})
+            {'action': 'unagree'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
 
 class SettingsConfigurationTests(TestCase):
@@ -354,15 +420,18 @@ class SettingsConfigurationTests(TestCase):
 
     def test_get_request(self):
         """Tests the behaviour of the view when people visit it."""
-        self.client.get(reverse('forum.views.settings'))
+        response = self.client.get(reverse('forum.views.settings'))
+        self.assertEqual(response.status_code, 200)
 
     def test_post_request(self):
         """Tests the behaviour of a view when a POST request is submitted."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.settings'),
             #! TODO
             #  Different variations of settings
-            {'has_dyslexia': 'Y', 'auto_subscribe': 'N'})
+            {'has_dyslexia': 'Y', 'auto_subscribe': 'N'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
 
 class AccountTests(TestCase):
@@ -373,18 +442,22 @@ class AccountTests(TestCase):
         EMAIL_BACKEND='django.core.mail.backends.dummy.EmailBackend')
     def test_register_user(self):
         """Tests registering a user."""
-        self.client.post(
+        response = self.client.post(
             reverse('forum.views.custom_register'), {
                 'username':  'Foo',
                 'email':     'contact@example.com',
                 'password1': 'password',
-                'password2': 'password'})
+                'password2': 'password'},
+                follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_log_in_user(self):
         """Tests logging a user in."""
-        self.client.post(
+        response = self.client.post(
             reverse('django.contrib.auth.views.login'),
-            {'username': 'admin', 'password': 'password'})
+            {'username': 'admin', 'password': 'password'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
 
 class SiteConfigurationTests(TestCase):
@@ -396,13 +469,16 @@ class SiteConfigurationTests(TestCase):
 
     def test_get_request(self):
         """Tests the behaviour of the view when people visit it."""
-        self.client.get(reverse('site_configuration'))
+        response = self.client.get(reverse('site_configuration'))
+        self.assertEqual(response.status_code, 200)
 
     def test_post_request(self):
         """Tests the behaviour of a view when a POST request is submitted."""
-        self.client.post(
+        response = self.client.post(
             reverse('site_configuration'),
-            {'site_name': test_text, 'site_domain': test_text})
+            {'site_name': test_text, 'site_domain': test_text},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
 
 # * report dismissal
