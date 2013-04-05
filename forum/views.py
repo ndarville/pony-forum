@@ -1128,71 +1128,67 @@ def nonjs(request, action, object_id):
 
         elif 'subscribe' in action:
             if 'subscribe' in request.POST:  # Subscribe command
-                thread.subscriber.add(request.user)
+                obj.subscriber.add(request.user)
                 messages.info(request, "Subscribed to thread.")
             else:  # Unsubscribe command
-                thread.subscriber.remove(request.user)
+                obj.subscriber.remove(request.user)
                 messages.info(request, "Unsubscribed from thread.")
-            thread.save()
 
         elif 'bookmark' in action:
             if 'bookmark' in request.POST:  # Bookmark command
-                thread.bookmarker.add(request.user)
+                obj.bookmarker.add(request.user)
                 messages.info(request, "Bookmarked thread.")
             else:  # Unbookmark command
-                thread.bookmarker.remove(request.user)
+                obj.bookmarker.remove(request.user)
                 messages.info(request, "Unbookmarked thread.")
-            thread.save()
 
         elif 'lock' in action:
             # Lets the permitted user lock a thread,
             # i.e., prevent people from posting in it.
             #
             # Also allows the opposite action, i.e. to unlock it.
-            if thread.is_removed and not request.user.has_perm('forum.remove_thread'):
+            if obj.is_removed and not request.user.has_perm('forum.remove_thread'):
                 messages.info(request, "The has thread been removed.")
                 return HttpResponseRedirect(reverse(
-                    'forum.views.category', args=(thread.category_id,)))
+                    'forum.views.category', args=(obj.category_id,)))
             if not request.user.has_perm('forum.lock_thread'):
                 messages.error(request,
                     "You do not have permission to lock and unlock threads.")
                 return HttpResponseRedirect(next)
             if 'lock' in request.POST:  # Lock command
-                if thread.is_locked:
+                if obj.is_locked:
                     messages.info(request, "The thread was already locked.")
-                thread.is_locked = True
+                obj.is_locked = True
                 messages.info(request, "Thread was locked.")
             else:  # Unlock command
-                if not thread.is_locked:
+                if not obj.is_locked:
                     messages.info(request, "The thread was already not locked.")
-                thread.is_locked = False
+                obj.is_locked = False
                 messages.info(request, "Thread was unlocked.")
-            thread.save()
 
         elif 'sticky' in action:
             # Lets the permitted user sticky a thread,
             # thereby sticking it to the top of the thread list.
             #
             # Also allows the opposite action, i.e. to unsticky it.
-            if thread.is_removed and not request.user.has_perm('forum.remove_thread'):
+            if obj.is_removed and not request.user.has_perm('forum.remove_thread'):
                 messages.info(request, "The has thread been removed.")
                 return HttpResponseRedirect(reverse(
-                    'forum.views.category', args=(thread.category_id,)))
+                    'forum.views.category', args=(obj.category_id,)))
             if not request.user.has_perm('forum.sticky_thread'):
                 messages.error(request,
                     "You do not have permission to sticky and unsticky threads.")
                 return HttpResponseRedirect(next)
             if 'sticky' in request.POST:  # Lock command
-                if thread.is_sticky:
+                if obj.is_sticky:
                     messages.info(request, "The thread was already sticky.")
-                thread.is_sticky = True
+                obj.is_sticky = True
                 messages.info(request, "Thread was stickied.")
             else:  # Unsticky command
-                if not thread.is_sticky:
+                if not obj.is_sticky:
                     messages.info(request, "The thread was already not sticky.")
-                thread.is_sticky = False
+                obj.is_sticky = False
                 messages.info(request, "Thread was unstickied.")
-            thread.save()
 
         elif 'save' in action:
             if 'save' in request.POST:  # Save command
@@ -1201,7 +1197,6 @@ def nonjs(request, action, object_id):
             else:  # Unsave command
                 obj.saves.remove(request.user)
                 messages.info(request, "Unsaved post.")
-            obj.save()
 
         elif 'thank' in action:
             if 'thank' in request.POST:  # Thank command
@@ -1210,7 +1205,6 @@ def nonjs(request, action, object_id):
             else:  # Unthank command
                 obj.thanks.remove(request.user)
                 messages.info(request, "Unthanked author of the post.")
-            obj.save()
 
         elif 'agree' in action:
             if 'agree' in request.POST:  # Agree command
@@ -1219,7 +1213,11 @@ def nonjs(request, action, object_id):
             else:  # Unagree command
                 obj.agrees.remove(request.user)
                 messages.info(request, "Unagreed with the author of the post.")
+
+        try:
             obj.save()
+        except:
+            messages.error(request, post_request_error)
 
         return HttpResponseRedirect(next)
     else:  # Otherwise, show clean, normal page with no populated data
