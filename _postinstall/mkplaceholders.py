@@ -101,7 +101,7 @@ def parse_manuscript(text):
 
         elif line == "\n":
             if speaker:
-                parse_speaker(speaker, content)
+                parse_speaker(speaker, content.rstrip())
                 speaker, content = "", ""
             else:
                 category = ""
