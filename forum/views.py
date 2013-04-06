@@ -61,6 +61,7 @@ from registration                   import views as registration_views
 ##  custom_register
 ##  settings
 #
+##  manage_users
 ##  site_configuration
 #
 ##  saves_and_bookmarks
@@ -897,6 +898,18 @@ def settings(request):
         messages.success(request, "New settings saved.")
 
     return render(request, 'settings.html', {})
+
+
+@login_required()
+def manage_users(request, user_type):
+    """Inspect and edit permissions and groups for
+
+    1. Post co-editors
+    2. Moderators
+    3. Groups
+    """
+    if user_type in ['co-editors', 'moderators', 'groups']:
+        return render(request, 'manage_users.html', {'user_type': user_type})
 
 
 @login_required()

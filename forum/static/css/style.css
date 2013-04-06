@@ -379,14 +379,16 @@ input[type="submit"] {
     overflow: hidden;
 }
 
-/****          *****
-***** ACCOUNTS *****
-*****          ****/
-#account-form {
+/****                  *****
+***** ACCOUNTS, MANAGE *****
+*****                  ****/
+#account-form,
+#search-form {
     text-align: center;
 }
 
-#account-form label {
+#account-form label,
+#search-form label {
     display: none;
 }
 
@@ -396,7 +398,8 @@ input[type="submit"] {
 
 #account-form input[type="email"],
 #account-form input[type="text"],
-#account-form input[type*="password"] {
+#account-form input[type="password"],
+#search-form input[type="search"] {
     padding-left: 35px;  /** Revise */
     min-width: 60%;
     max-width: 95%;
@@ -408,14 +411,20 @@ input[type="submit"] {
     background-position: 5px 50%;
 }
 
-#account-form input[name="email"] {
+#account-form input[type="email"] {
     background: url(/static/glyphish/18-envelope.png) no-repeat left;
     background-size: 1.5em;
     background-position: 5px 50%;
 }
 
-#account-form input[name*="password"] {
+#account-form input[type="password"] {
     background: url(/static/glyphish/54-lock.png) no-repeat left;
+    background-size: 1.25em;
+    background-position: 7px 50%;
+}
+
+#search-form input[type="search"] {
+    background: url(/static/glyphish/06-magnify.png) no-repeat left;
     background-size: 1.25em;
     background-position: 7px 50%;
 }
@@ -918,6 +927,7 @@ nor with different rules */
 *****                      ****/
 input[type=email],
 input[type=password],
+input[type=search],
 input[type=text],
 textarea,
 #title-form,
@@ -938,6 +948,7 @@ textarea,
 
 input[type=email],
 input[type=password],
+input[type=search],
 input[type=text],
 textarea,
 #title-form,

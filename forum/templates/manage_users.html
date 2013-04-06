@@ -1,0 +1,22 @@
+{% extends "page.html" %}
+
+{% block title %}Manage {{ user_type }} Log In{% endblock %}
+{% block canonical_url %}{% url forum.views.manage_users user_type %}{% endblock %}
+{% block content_body %}
+    <form action="{% url forum.views.manage_users user_type %}" method="post" id="search-form">
+        {% csrf_token %}
+        <label for="search">Search</label>
+        <input
+            id="search"
+            type="search"
+            x-webkit-speech
+            name="search"
+            value=""
+            placeholder=""
+        />
+
+        <div id="button-group">
+            <input type="submit" value="Search" />
+        </div>
+    </form>
+{% endblock %}
