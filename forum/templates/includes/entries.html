@@ -47,6 +47,9 @@
         {% if user == post_author %}
             <a class="button" href="{% url forum.views.edit post.id %}">Edit</a>
         {% endif %}
+        {% if user != post.author and perms.forum.moderate_post %} {# Convert to elif #}
+            <a class="button" href="{% url forum.views.edit post.id %}">Moderate</a>
+        {% endif %}
     {% comment %}
         {% if forloop.first and user == post_author %}
             <a class="button" href="/thread/{{ thread.id }}/co-editor">Manage Co-Editors</a>

@@ -91,16 +91,17 @@ class Thread(models.Model):
     class Meta:
         ordering = ["-creation_date"]
         permissions = (
-            ("remove_thread", "Remove (and restore) threads"),
-            ("merge_thread",  "Merge multiple threads together"),
-            ("sticky_thread", "Stick a thread to the top of the thread list"),
-            ("move_thread",   "Move a thread to another category"),
-            ("lock_thread",   "Lock (and unlock) threads"),
+            ("remove_thread",   "Remove (and restore) threads"),
+            ("moderate_thread", "Edit thread titles"),
+            ("merge_thread",    "Merge multiple threads together"),
+            ("sticky_thread",   "Stick a thread to the top of the thread list"),
+            ("move_thread",     "Move a thread to another category"),
+            ("lock_thread",     "Lock (and unlock) threads"),
 #           ("ban_user_in_thread",
-#                             "Ban user from posting in thread permanently"),
+#                               "Ban user from posting in thread permanently"),
 #           ("timeout_user_in_thread",
-#                             "Ban user from posting in thread temporarily"),
-#           ("is_threadmin",  "Give a user mod-like permissions in a thread"),
+#                               "Ban user from posting in thread temporarily"),
+#           ("is_threadmin",    "Give a user mod-like permissions in a thread"),
         )
 
     def __unicode__(self):
@@ -134,7 +135,8 @@ class Post(models.Model):
     class Meta:
         ordering = ["creation_date"]
         permissions = (
-            ("remove_post", "Can remove posts"),
+            ("moderate_post", "Can edit the post of others"),
+            ("remove_post",   "Can remove posts"),
         )
 
     def __unicode__(self):
@@ -221,6 +223,12 @@ class UserProfile(models.Model):
                                              related_name="follows")
     # timezone        = models.CharField(choices=TIMEZONES")
     # twitter         = models.CharField(max_length=20, blank=True)
+
+    class Meta:
+        permissions = (
+            ("tempban_user",  "Ban user temporarily"),
+            ("permaban_user", "Ban user permanently"),
+        )
 
     def __unicode__(self):
         return "%s's profile" % self.user

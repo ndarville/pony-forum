@@ -543,11 +543,15 @@ def edit(request, post_id):
     preview_plain = False
     preview_html  = False
 
-    if post.thread.is_removed:
+    # If user is not authorized to edit post
+    if request.user != post.author and not request.user.has_perm('forum.moderate_post'):
+        messages.error(request, "You are not allowed to edit the post of this user.")
+        return HttpResponseRedirect(reverse('forum.views.post', args=(post.id,)))
+    elif post.thread.is_removed:
         messages.info(request, "The thread %s has been removed and is no longer available." % post.thread.title_html)
         return HttpResponseRedirect(reverse('forum.views.category', args=(post.thread.category_id,)))
     elif post.is_removed:
-        messages.info(request, "Your post has been removed and is no longer available.")
+        messages.info(request, "The post has been removed and is no longer available.")
         return HttpResponseRedirect(reverse('forum.views.thread', args=(post.thread_id,)))
 
     if request.method == 'POST':  # Form has been submitted
@@ -565,11 +569,6 @@ def edit(request, post_id):
         elif "preview" in request.POST:  # "preview" button pressed
             preview_plain = request.POST['content']
             preview_html  = sanitized_smartdown(preview_plain)
-    # The post author or a moderator/admin visits the link
-    elif request.user == post.author or request.user.has_perm('forum.change_post'):
-        pass
-    else:  # Someone who is not the author goes to the edit link
-        return HttpResponseRedirect(reverse('forum.views.post', args=(post.id,)))
 
     return render(request, 'edit.html',
                   {'post':          post,
@@ -649,7 +648,7 @@ def merge_thread(request, thread_id):
                    'new_title':    new_title_plain})
 
 
-@permission_required('forum.change_thread')
+@permission_required('forum.moderate_thread')
 def moderate_thread(request, thread_id):
     """Change the title of a thread."""
     thread      = get_object_or_404(Thread, pk=thread_id)

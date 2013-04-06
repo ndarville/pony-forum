@@ -4,7 +4,7 @@
     {% if perms.forum.lock_thread %}
         <li><a href="{% url forum.views.nonjs 'lock' thread.id %}">{% if thread.is_locked %}Unlock{% else %}Lock{% endif %}</a></li>
     {% endif %}
-    {% if perms.forum.change_thread %}
+    {% if perms.forum.moderate_thread %}
         <li><a href="{% url forum.views.moderate_thread thread.id %}">Moderate</a></li>
     {% endif %}
     {% if perms.forum.move_thread %}
