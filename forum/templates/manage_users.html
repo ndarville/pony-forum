@@ -1,22 +1,59 @@
 {% extends "page.html" %}
 
-{% block title %}Manage {{ user_type }} Log In{% endblock %}
-{% block canonical_url %}{% url forum.views.manage_users user_type %}{% endblock %}
+{% block title %}Manage {{ user_type|capfirst }}{% endblock %}
+{% block canonical_url %}{% url forum.views.manage_users user_type object_id %}{% endblock %}
 {% block content_body %}
-    <form action="{% url forum.views.manage_users user_type %}" method="post" id="search-form">
+    <form action="{% url forum.views.manage_users user_type object_id %}" method="post" id="search-form">
         {% csrf_token %}
-        <label for="search">Search</label>
+        <label for="search" role="search">Search</label>
         <input
-            id="search"
             type="search"
             x-webkit-speech
-            name="search"
+            name="username"
             value=""
-            placeholder=""
+            placeholder="Search for user by name"
         />
+        <input
+            type="number"
+            x-webkit-speech
+            name="user-id"
+            value=""
+            min="1"
+            step="1"
+            placeholder="Search by ID"
+        />
+
+        {% comment %}
+            {% if people %}<p>Matches for usernames with &ldquo;{{ query }}&rdquo;</p>{% endif %}
+        {% endcomment %}
+
+        <div id="left-aligned-button-group">
+        {% if user_type == "co-editors" %}
+        {% with editors=thread.co_editors.all %}
+            {% if people %}
+                <ul class="user-list">
+                    {% for person in people %}
+                        <li><input type="checkbox" /> <a href="/user/{{ person.id }}" value="{{ person.id }}">{{ person.username }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        <!-- Current co-editors -->
+            {% if people and editors %}<hr />{% endif %}
+            {% if editors %}
+                <ul class="user-list">
+                    {% for person in editors %}
+                        <li><input type="checkbox" checked /> <a href="/user/{{ person.id }}" value="{{ person.id }}">{{ person.username }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% endif %}
+        </div>
 
         <div id="button-group">
             <input type="submit" value="Search" />
+            <input type="submit" value="Save settings" />
+            <input type="hidden" value="{{ object_id }}" />
         </div>
     </form>
 {% endblock %}

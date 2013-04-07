@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib.auth.models     import User
 from django.contrib.auth.views      import login
 from django.contrib.sites.models    import Site
+from django.core.exceptions         import ObjectDoesNotExist
 from django.core.paginator          import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers       import reverse
 from django.db.utils                import DatabaseError
@@ -246,6 +247,13 @@ def sanitized_smartdown(string):
                 safe_mode=False),
             "2"),
         tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES)
+
+
+def search(request, query):
+    user = User.objects.filter(username__icontains=query)
+    if not user:
+        messages.info(request, "No user matched your search query.")
+    return user
 
 
 def home(request):
@@ -842,10 +850,6 @@ def reports(request):
     return render(request, 'reports.html', {'reports': reports})
 
 
-def search(request):
-    return render(request, 'placeholder.html', {})
-
-
 def custom_login(request, **kwargs):
     """Redirects logged-in users, and allows others to log in."""
     if request.user.is_authenticated():  # User logged in
@@ -901,15 +905,49 @@ def settings(request):
 
 
 @login_required()
-def manage_users(request, user_type):
+def manage_users(request, user_type, object_id=None):
     """Inspect and edit permissions and groups for
 
     1. Post co-editors
     2. Moderators
     3. Groups
     """
-    if user_type in ['co-editors', 'moderators', 'groups']:
-        return render(request, 'manage_users.html', {'user_type': user_type})
+    people, post, query = None, None, None
+
+    if user_type in ['moderators', 'groups'] and not request.user.is_superusers:
+        messages.info("You do not have permission to access this page.")
+        return HttpResponseRedirect(reverse('forum.views.home', args=()))
+
+  # if user_type in ['co-editors', 'moderators', 'groups']:
+    if user_type == 'co-editors':
+        if request.method == "POST":
+            if request.POST['user-id'] != "":  # Search by user ID
+                try:
+                    people = User.objects.get(pk=request.POST['user-id'])
+                except ObjectDoesNotExist:
+                    messages.error(request, "That user does not exist.")
+                else:
+                    messages.success(request, "That user exists!")
+            elif 'username' in request.POST:  # Search by username
+                people = search(request, request.POST['username'])
+                query = request.POST['username']
+            else:  # Changes submitted
+                pass
+        elif user_type == 'co-editors':
+            thread = get_object_or_404(Thread, pk=object_id)
+
+            if thread.is_removed:
+                messages.error(request, "This thread no longer exists.")
+            elif (not request.user == thread.author or
+                  not request.user.has_perm('forum.appoint_coeditors')):
+                messages.error(request,
+                    "You are not authorized to assign this thread co-editors.")
+        return render(request, 'manage_users.html', {
+            'user_type': user_type,
+            'object_id': object_id,
+            'people':    people,
+            'thread':    thread,
+            'query':     query})
 
 
 @login_required()

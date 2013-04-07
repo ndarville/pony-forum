@@ -382,6 +382,20 @@ input[type="submit"] {
 /****                  *****
 ***** ACCOUNTS, MANAGE *****
 *****                  ****/
+#left-aligned-button-group {
+    text-align: left;
+}
+
+.user-list {
+    display: block;
+    width: 90%;
+    margin: 1em auto 0 auto;
+}
+
+.user-list li {
+    list-style: none;
+}
+
 #account-form,
 #search-form {
     text-align: center;
@@ -925,10 +939,11 @@ nor with different rules */
 /****                      *****
 ***** CREATE, REPLY & EDIT *****
 *****                      ****/
-input[type=email],
-input[type=password],
-input[type=search],
-input[type=text],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="text"],
 textarea,
 #title-form,
 #id-form {
@@ -946,10 +961,11 @@ textarea,
     -ms-box-sizing: border-box; /** May not work for IE7- */
 }
 
-input[type=email],
-input[type=password],
-input[type=search],
-input[type=text],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="text"],
 textarea,
 #title-form,
 #id-form {
