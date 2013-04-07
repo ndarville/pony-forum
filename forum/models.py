@@ -135,8 +135,9 @@ class Post(models.Model):
     class Meta:
         ordering = ["creation_date"]
         permissions = (
-            ("moderate_post", "Can edit the post of others"),
-            ("remove_post",   "Can remove posts"),
+            ("appoint_coeditor" "Appoint co-editors for posts"),
+            ("moderate_post",   "Can edit the post of others"),
+            ("remove_post",     "Can remove posts"),
         )
 
     def __unicode__(self):
