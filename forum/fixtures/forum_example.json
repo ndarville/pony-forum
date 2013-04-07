@@ -54,6 +54,7 @@
       "post_count": 1,
       "latest_reply_date": "2012-12-20T07:35:18.134",
       "is_removed": false,
+      "co_editors": [],
       "bookmarker": [],
       "is_locked": false
     }
@@ -72,6 +73,7 @@
       "post_count": 1,
       "latest_reply_date": "2012-12-20T07:33:25.410",
       "is_removed": false,
+      "co_editors": [],
       "bookmarker": [],
       "is_locked": false
     }
@@ -90,6 +92,7 @@
       "post_count": 1,
       "latest_reply_date": "2012-12-20T07:33:06.993",
       "is_removed": false,
+      "co_editors": [],
       "bookmarker": [],
       "is_locked": false
     }
@@ -106,7 +109,6 @@
       "creation_date": "2012-12-20T07:33:06.993",
       "is_removed": false,
       "thanks": [],
-      "co_editors": [],
       "content_html": "<p>This thread will be merged with Merge Thread 2.</p>"
     }
   },
@@ -122,7 +124,6 @@
       "creation_date": "2012-12-20T07:33:25.410",
       "is_removed": false,
       "thanks": [],
-      "co_editors": [],
       "content_html": "<p>This thread will be merged with Merge Thread 1.</p>"
     }
   },
@@ -138,7 +139,6 @@
       "creation_date": "2012-12-20T07:35:18.134",
       "is_removed": false,
       "thanks": [],
-      "co_editors": [],
       "content_html": "<p>This thread and its posts will be subjected to the following operations:</p>\n<h2>Thread</h2>\n<ul>\n<li>Lock</li>\n<li>Merge</li>\n<li>Moderate</li>\n<li>Remove</li>\n<li>Sticky</li>\n</ul>\n<h2>Post</h2>\n<ul>\n<li>Edit</li>\n<li>Reply</li>\n<li>Remove</li>\n</ul>"
     }
   }
