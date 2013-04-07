@@ -81,6 +81,9 @@ class Thread(models.Model):
     is_locked         = models.BooleanField(default=False)
     is_removed        = models.BooleanField(default=False)
 #   poll              = models.ForeignKey(Poll, null=True, blank=True)
+    co_editors        = models.ManyToManyField(User, null=True, blank=True,
+                                               verbose_name="co-editor",
+                                               related_name="co-editors")
     bookmarker        = models.ManyToManyField(User, null=True, blank=True,
                                                related_name="bookmarks")
     subscriber        = models.ManyToManyField(User, null=True, blank=True,
@@ -91,6 +94,7 @@ class Thread(models.Model):
     class Meta:
         ordering = ["-creation_date"]
         permissions = (
+            ("appoint_coeditor" "Appoint co-editors for threads"),
             ("remove_thread",   "Remove (and restore) threads"),
             ("moderate_thread", "Edit thread titles"),
             ("merge_thread",    "Merge multiple threads together"),
@@ -121,9 +125,6 @@ class Post(models.Model):
     content_html  = models.TextField()
     author        = models.ForeignKey(User)
     thread        = models.ForeignKey(Thread)
-    co_editors    = models.ManyToManyField(User, null=True, blank=True,
-                                           verbose_name="co-editor",
-                                           related_name="co-editors")
     agrees        = models.ManyToManyField(User, null=True, blank=True,
                                            related_name="agrees")
     thanks        = models.ManyToManyField(User, null=True, blank=True,
@@ -135,7 +136,6 @@ class Post(models.Model):
     class Meta:
         ordering = ["creation_date"]
         permissions = (
-            ("appoint_coeditor" "Appoint co-editors for posts"),
             ("moderate_post",   "Can edit the post of others"),
             ("remove_post",     "Can remove posts"),
         )
