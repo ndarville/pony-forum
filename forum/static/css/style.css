@@ -394,6 +394,7 @@ input[type="submit"] {
 
 .user-list li {
     list-style: none;
+    margin-top: 1em;
 }
 
 #account-form,
