@@ -9,14 +9,14 @@
         <input
             type="search"
             x-webkit-speech
-            name="username"
+            name="username-search"
             value=""
             placeholder="Search for user by name"
         />
         <input
             type="number"
             x-webkit-speech
-            name="user-id"
+            name="user-id-search"
             value=""
             min="1"
             step="1"
@@ -29,22 +29,24 @@
 
         <div id="left-aligned-button-group">
         {% if user_type == "co-editors" %}
-        {% with editors=thread.co_editors.all %}
+        {% with editors=thread.coeditors.all %}
             {% if people %}
                 <ul class="user-list">
                     {% for person in people %}
-                        <li><input type="checkbox" /> <a href="/user/{{ person.id }}" value="{{ person.id }}">{{ person.username }}</a></li>
+                        <li><a class="button js" role="button" href="" id="{{ person.id }}">Promote</a> {{ person.username }}</li>
                     {% endfor %}
                 </ul>
+                <hr />
             {% endif %}
         <!-- Current co-editors -->
-            {% if people and editors %}<hr />{% endif %}
             {% if editors %}
                 <ul class="user-list">
                     {% for person in editors %}
-                        <li><input type="checkbox" checked /> <a href="/user/{{ person.id }}" value="{{ person.id }}">{{ person.username }}</a></li>
+                        <li><a class="button js" role="button" href="" id="{{ person.id }}">Demote</a> {{ person.username }}</li>
                     {% endfor %}
                 </ul>
+            {% else %}
+                <p>This thread currently has no co-editors.</p>
             {% endif %}
         {% endwith %}
         {% endif %}
@@ -52,8 +54,11 @@
 
         <div id="button-group">
             <input type="submit" value="Search" />
-            <input type="submit" value="Save settings" />
-            <input type="hidden" value="{{ object_id }}" />
+            <input type="hidden" id="thread-id" value="{{ object_id }}" />
         </div>
     </form>
+{% endblock %}
+{% block js %}
+        {% include "includes/jquery.html" %}
+            <script type="text/javascript" src="{{ STATIC_URL }}js/manage-users-js.js"></script>
 {% endblock %}

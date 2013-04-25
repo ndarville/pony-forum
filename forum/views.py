@@ -63,6 +63,7 @@ from registration                   import views as registration_views
 ##  settings
 #
 ##  manage_users
+##  manage_users_js
 ##  site_configuration
 #
 ##  saves_and_bookmarks
@@ -250,8 +251,8 @@ def sanitized_smartdown(string):
 
 
 def search(request, query):
-    user = User.objects.filter(username__icontains=query)
-    if not user:
+    user = [] if query == "" else User.objects.filter(username__icontains=query)
+    if query and not query:
         messages.info(request, "No user matched your search query.")
     return user
 
@@ -905,49 +906,86 @@ def settings(request):
 
 
 @login_required()
-def manage_users(request, user_type, object_id=None):
+def manage_users(request, user_type, object_id):
     """Inspect and edit permissions and groups for
 
     1. Post co-editors
     2. Moderators
     3. Groups
+
+    The POST submissions to promote and demote co-editors are handled by views
+    simple_js() and nonjs().
     """
-    people, post, query = None, None, None
+    people, thread, query = None, None, None
 
-    if user_type in ['moderators', 'groups'] and not request.user.is_superusers:
-        messages.info("You do not have permission to access this page.")
-        return HttpResponseRedirect(reverse('forum.views.home', args=()))
+  # if not user_type in ['co-editors', 'moderators', 'groups']:
+    if not user_type == 'co-editors':
+        return "404"
 
-  # if user_type in ['co-editors', 'moderators', 'groups']:
     if user_type == 'co-editors':
-        if request.method == "POST":
-            if request.POST['user-id'] != "":  # Search by user ID
-                try:
-                    people = User.objects.get(pk=request.POST['user-id'])
-                except ObjectDoesNotExist:
-                    messages.error(request, "That user does not exist.")
-                else:
-                    messages.success(request, "That user exists!")
-            elif 'username' in request.POST:  # Search by username
-                people = search(request, request.POST['username'])
-                query = request.POST['username']
-            else:  # Changes submitted
-                pass
-        elif user_type == 'co-editors':
-            thread = get_object_or_404(Thread, pk=object_id)
+        thread = get_object_or_404(Thread, pk=object_id)
 
-            if thread.is_removed:
-                messages.error(request, "This thread no longer exists.")
-            elif (not request.user == thread.author or
-                  not request.user.has_perm('forum.appoint_coeditors')):
-                messages.error(request,
-                    "You are not authorized to assign this thread co-editors.")
-        return render(request, 'manage_users.html', {
-            'user_type': user_type,
-            'object_id': object_id,
-            'people':    people,
-            'thread':    thread,
-            'query':     query})
+        if thread.is_removed:
+            messages.info(request, "This thread no longer exists.")
+            return HttpResponseRedirect(reverse('forum.views.thread',
+                args=(thread.id,)))
+        elif (not request.user == thread.author and
+              not request.user.has_perm('forum.appoint_coeditor')):
+            messages.info(request,
+                "You are not authorized to assign co-editors to this thread.")
+            return HttpResponseRedirect(reverse('forum.views.thread',
+                args=(thread.id,)))
+
+    if request.method == "POST":
+        if request.POST['user-id-search'] != "":  # Search by user ID
+            try:
+                people = [User.objects.get(pk=request.POST['user-id-search'])]
+            except ObjectDoesNotExist:
+                messages.info(request, "No user matching query exists.")
+        elif 'username-search' in request.POST:  # Search by username
+            #TODO Hide users already in other list
+            query = request.POST['username-search']
+            people = search(request, query)
+    # elif user_type in ['moderators', 'groups'] and not request.user.is_superusers:
+    #     messages.info("You do not have permission to access this page.")
+    #     return HttpResponseRedirect(reverse('forum.views.home', args=()))
+        elif 'mote' in request.POST:  # (Pro/De)mote
+            coeditor = get_object_or_404(User, pk=request.POST[''])
+            if 'promote' in request.POST:
+                thread.coeditors.add(coeditor)
+            else:  # Demote
+                thread.coeditors.remove(coeditor)
+
+    return render(request, 'manage_users.html', {
+        'user_type': user_type,
+        'object_id': object_id,
+        'people':    people,
+        'thread':    thread,
+        'query':     query})
+
+
+def manage_users_js(request):
+    """Lets users do one of the following:
+
+    * add co-editors to a thread
+    * add users to a group of moderators
+    * create new groups, and modify group permissions
+    """
+    if request.is_ajax() and request.method == "POST":
+        action = request.POST['action']
+        thread = Thread.objects.get(pk=request.POST['object_id'])
+        person = User.objects.get(pk=request.POST['user_id'])
+
+        if action == "Promote" or action == "Demoted":
+            thread.coeditors.add(person)
+            new_action = "Promoted"
+        else:
+            thread.coeditors.remove(person)
+            new_action = "Demoted"
+
+        thread.save()
+
+    return HttpResponse(new_action)
 
 
 @login_required()
@@ -1059,6 +1097,7 @@ def simple_js(request):
             else:
                 request.user.get_profile().ignores.remove(person)
                 new_action = "Add to shit list"
+
         # Thread JS
         elif "bookmark" in action:
             # Not to be confused with the action related

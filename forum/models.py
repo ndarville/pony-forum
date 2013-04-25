@@ -81,9 +81,9 @@ class Thread(models.Model):
     is_locked         = models.BooleanField(default=False)
     is_removed        = models.BooleanField(default=False)
 #   poll              = models.ForeignKey(Poll, null=True, blank=True)
-    co_editors        = models.ManyToManyField(User, null=True, blank=True,
+    coeditors         = models.ManyToManyField(User, null=True, blank=True,
                                                verbose_name="co-editor",
-                                               related_name="co-editors")
+                                               related_name="coeditors")
     bookmarker        = models.ManyToManyField(User, null=True, blank=True,
                                                related_name="bookmarks")
     subscriber        = models.ManyToManyField(User, null=True, blank=True,
