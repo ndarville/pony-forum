@@ -6,7 +6,6 @@ works. Tests `models.py`.
 import datetime
 
 from django.contrib.auth.models import User
-from django.utils import timezone
 
 from django_nose import FastFixtureTestCase as TestCase
 
