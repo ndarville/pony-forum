@@ -8,7 +8,7 @@ docutils==0.8.1
 # Title and post formatting
 elementtree==1.2.6-20050316
 smartypants==1.6.0.3
-markdown==2.1.1
+markdown==2.3.1
 bleach==1.2.1
 
 # User models and registration
