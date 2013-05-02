@@ -62,8 +62,8 @@ from registration                   import views as registration_views
 ##  custom_register
 ##  settings
 #
-##  manage_users
-##  manage_users_js
+##  manage_coeditors
+##  manage_coeditors_js
 ##  site_configuration
 #
 ##  saves_and_bookmarks
@@ -906,37 +906,25 @@ def settings(request):
 
 
 @login_required()
-def manage_users(request, user_type, object_id):
-    """Inspect and edit permissions and groups for
+def manage_coeditors(request, thread_id):
+    """Promote anad demote co-editors for a thread."""
+    people, thread, coeditors, query = None, None, None, None
+    thread = get_object_or_404(Thread, pk=thread_id)
 
-    1. Post co-editors
-    2. Moderators
-    3. Groups
-
-    The POST submissions to promote and demote co-editors are handled by views
-    simple_js() and nonjs().
-    """
-    people, thread, query = None, None, None
-
-  # if not user_type in ['co-editors', 'moderators', 'groups']:
-    if not user_type == 'co-editors':
-        return "404"
-
-    if user_type == 'co-editors':
-        thread = get_object_or_404(Thread, pk=object_id)
-
-        if thread.is_removed:
-            messages.info(request, "This thread no longer exists.")
-            return HttpResponseRedirect(reverse('forum.views.thread',
-                args=(thread.id,)))
-        elif (not request.user == thread.author and
-              not request.user.has_perm('forum.appoint_coeditor')):
-            messages.info(request,
-                "You are not authorized to assign co-editors to this thread.")
-            return HttpResponseRedirect(reverse('forum.views.thread',
-                args=(thread.id,)))
+    # Check for reasons to redirect user from page
+    if thread.is_removed:
+        messages.info(request, "This thread no longer exists.")
+        return HttpResponseRedirect(reverse('forum.views.thread',
+            args=(thread.id,)))
+    elif (not request.user == thread.author and
+          not request.user.has_perm('forum.appoint_coeditor')):
+        messages.info(request,
+            "You are not authorized to assign co-editors to this thread.")
+        return HttpResponseRedirect(reverse('forum.views.thread',
+            args=(thread.id,)))
 
     if request.method == "POST":
+        coeditors = thread.coeditors.all()
         if request.POST['user-id-search'] != "":  # Search by user ID
             try:
                 people = [User.objects.get(pk=request.POST['user-id-search'])]
@@ -946,9 +934,6 @@ def manage_users(request, user_type, object_id):
             #TODO Hide users already in other list
             query = request.POST['username-search']
             people = search(request, query)
-    # elif user_type in ['moderators', 'groups'] and not request.user.is_superusers:
-    #     messages.info("You do not have permission to access this page.")
-    #     return HttpResponseRedirect(reverse('forum.views.home', args=()))
         elif 'mote' in request.POST:  # (Pro/De)mote
             coeditor = get_object_or_404(User, pk=request.POST[''])
             if 'promote' in request.POST:
@@ -956,21 +941,15 @@ def manage_users(request, user_type, object_id):
             else:  # Demote
                 thread.coeditors.remove(coeditor)
 
-    return render(request, 'manage_users.html', {
-        'user_type': user_type,
-        'object_id': object_id,
+    return render(request, 'manage_coeditors.html', {
         'people':    people,
         'thread':    thread,
+        'coeditors': coeditors,
         'query':     query})
 
 
-def manage_users_js(request):
-    """Lets users do one of the following:
-
-    * add co-editors to a thread
-    * add users to a group of moderators
-    * create new groups, and modify group permissions
-    """
+def manage_coeditors_js(request):
+    """Promote anad demote co-editors for a thread via JS."""
     if request.is_ajax() and request.method == "POST":
         action = request.POST['action']
         thread = Thread.objects.get(pk=request.POST['object_id'])

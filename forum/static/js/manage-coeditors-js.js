@@ -49,16 +49,11 @@ $(document).ready(function() {
                 object_id = $("#thread-id").val(),
                 user_id   = this.id,
                 action    = $this.text()
-                // object_id   = this.id,      // id="{{ person.id }}"
-                // object_type = "thread",
-                // user_type   = "co-editor",
-                // href        = this.href;    // Will that suffice here?
 
-            $.post("/manage/js/", {
+            $.post("/manage/co-editors/js/", {
                 object_id: object_id,
                 user_id:   user_id,
                 action:    action
-                // href:      href
                 },
                 function(data) {
                     $this.text(data);

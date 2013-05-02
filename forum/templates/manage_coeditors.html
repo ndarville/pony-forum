@@ -1,9 +1,9 @@
 {% extends "page.html" %}
 
-{% block title %}Manage {{ user_type|capfirst }}{% endblock %}
-{% block canonical_url %}{% url forum.views.manage_users user_type object_id %}{% endblock %}
+{% block title %}Manage Co-Editors{% endblock %}
+{% block canonical_url %}{% url forum.views.manage_coeditors thread.id %}{% endblock %}
 {% block content_body %}
-    <form action="{% url forum.views.manage_users user_type object_id %}" method="post" id="search-form">
+    <form action="{% url forum.views.manage_coeditors thread.id %}" method="post" id="search-form">
         {% csrf_token %}
         <label for="search" role="search">Search</label>
         <input
@@ -23,13 +23,13 @@
             placeholder="Search by ID"
         />
 
-        {% comment %}
-            {% if people %}<p>Matches for usernames with &ldquo;{{ query }}&rdquo;</p>{% endif %}
-        {% endcomment %}
+        {% if people %}
+            <p>Matches for usernames with &ldquo;{{ query }}&rdquo;</p>
+        {% else %}
+            <p>No usernames match &ldquo;{{ query }}&rdquo;</p>
+        {% endif %}
 
         <div id="left-aligned-button-group">
-        {% if user_type == "co-editors" %}
-        {% with editors=thread.coeditors.all %}
             {% if people %}
                 <ul class="user-list">
                     {% for person in people %}
@@ -39,26 +39,24 @@
                 <hr />
             {% endif %}
         <!-- Current co-editors -->
-            {% if editors %}
+            {% if coeditors %}
                 <ul class="user-list">
-                    {% for person in editors %}
+                    {% for person in coeditors %}
                         <li><a class="button js" role="button" href="" id="{{ person.id }}">Demote</a> {{ person.username }}</li>
                     {% endfor %}
                 </ul>
             {% else %}
                 <p>This thread currently has no co-editors.</p>
             {% endif %}
-        {% endwith %}
-        {% endif %}
         </div>
 
         <div id="button-group">
             <input type="submit" value="Search" />
-            <input type="hidden" id="thread-id" value="{{ object_id }}" />
+            <input type="hidden" id="thread-id" value="{{ thread.id }}" />
         </div>
     </form>
 {% endblock %}
 {% block js %}
         {% include "includes/jquery.html" %}
-            <script type="text/javascript" src="{{ STATIC_URL }}js/manage-users-js.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}js/manage-coeditors-js.js"></script>
 {% endblock %}

@@ -52,7 +52,7 @@
         {% endif %}
         {% if forloop.first %}
             {% if user == post_author or perms.forum.appoint_coeditor %}
-            <a class="button" href="{% url forum.views.manage_users "co-editors" thread.id %}">Manage Co-Editors</a>
+            <a class="button" href="{% url forum.views.manage_coeditors thread.id %}">Manage Co-Editors</a>
             {% endif %}
             {% if user != post_author and thread in user.coeditors_set.all %}
                 <a class="button" href="{% url forum.views.edit post.id %}">
