@@ -1,6 +1,7 @@
 Pony Forum on dotCloud
 ======================
 [![Build Status](https://secure.travis-ci.org/ndarville/pony-forum.png?branch=master)](http://travis-ci.org/ndarville/pony-forum)
+[![Coverage Status](https://coveralls.io/repos/ndarville/pony-forum/badge.png?branch=master)](https://coveralls.io/r/ndarville/pony-forum)
 
 ![The forum on laptop][screenshot1]
 

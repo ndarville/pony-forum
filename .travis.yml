@@ -16,6 +16,7 @@ env:
 
 install:
   - pip install -r requirements.txt
+  - pip install coveralls
 # - pip install django==$DJANGO --quiet
   - pip install psycopg2 --quiet
 # - pip install pip-tools --quiet
@@ -33,6 +34,7 @@ script:
   - python manage.py test
 
 after_success:
+- coveralls
 - "pep8 --statistics --first --format=pylint --exclude=venv,virtualenv,migrations"
 
 notifications:
