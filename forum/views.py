@@ -193,6 +193,7 @@ def sanitized_smartdown(string):
         'h3',
         'h4',
         'h5',
+        'hr',
         'i',
         'img',
         'ins',
