@@ -241,7 +241,7 @@ def sanitized_smartdown(string):
             markdown(
                 text=string,
                 extensions=MD_EXTENSIONS,
-                #output_format='html5',
+                output_format='html5',
                 #lazy_ol=True,
                 safe_mode=False),
             "2"),
