@@ -422,9 +422,25 @@ class CoeditorTests(TestCase):
                 args=(test_thread_id,)))
         self.assertEqual(response.status_code, 200)
 
-    def test_search(self):
+    def test_username_search(self):
         """Tests the search for users based on a username query."""
-        pass
+        response = self.client.post(
+            reverse('forum.views.manage_coeditors',
+                args=(test_thread_id,)),
+            {'username-search': 'abc',
+             'user-id-search': ''},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_id_search(self):
+        """Tests the search for users based on a user ID query."""
+        response = self.client.post(
+            reverse('forum.views.manage_coeditors',
+                args=(test_thread_id,)),
+            {'user-id-search': test_user_id,
+             'username-search': ''},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
 
 
 class CoeditorTestsNonJs(TestCase):
