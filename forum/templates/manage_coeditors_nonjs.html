@@ -13,9 +13,9 @@
 
             <div id="button-group">
                 {% if not is_editor %}
-                    <input type="submit" name="promote" value="Appoint {{ person.username }} co-editor" />
+                    <input type="submit" name="action" value="Appoint as co-editor" />
                 {% else %}
-                    <input type="submit" name="demote" value="Remove {{ person.username }} as co-editor" />
+                    <input type="submit" name="action" value="Remove as co-editor" />
                 {% endif %}
             </div>
         </form>

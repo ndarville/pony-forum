@@ -975,7 +975,7 @@ def manage_coeditors_nonjs(request, thread_id, user_id):
 
     if request.method == "POST":
         try:
-            if 'promote' in request.POST:
+            if 'Appoint' in request.POST['action']:
                 thread.coeditors.add(person)
                 messages.info(request,
                     "%s is now a co-editor." % person.username)
