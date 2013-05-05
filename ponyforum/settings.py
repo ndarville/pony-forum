@@ -153,6 +153,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
@@ -255,7 +256,6 @@ REGISTRATION_OPEN = env.get('REGISTRATION_OPEN', 'True') == 'True'
 
 ### DJANGO-SECURE HTTPS
 if not LOCAL_DEVELOPMENT:
-    SECURE_FRAME_DENY = True
     SECURE_HSTS_SECONDS = 1
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
@@ -264,6 +264,7 @@ if not LOCAL_DEVELOPMENT:
         # Disable for dotCloud: http://tinyurl.com/conn569
     SESSION_COOKIE_SECURE = True
     SESSION_COOKIE_HTTPONLY = True
+    X_FRAME_OPTIONS = 'DENY'
 ###
 
 ### Secure Django (Native Features)
