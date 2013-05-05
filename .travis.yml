@@ -35,7 +35,6 @@ script:
 
 after_success:
 - coveralls
-- "pep8 --statistics --first --format=pylint --exclude=venv,virtualenv,migrations"
 
 notifications:
   email:
