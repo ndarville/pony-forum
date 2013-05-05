@@ -261,14 +261,14 @@ if not LOCAL_DEVELOPMENT:
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_BROWSER_XSS_FILTER = True
-    # SECURE_SSL_REDIRECT = True
-        # Disable for dotCloud: http://tinyurl.com/conn569
     SESSION_COOKIE_SECURE = True
     SESSION_COOKIE_HTTPONLY = True
     X_FRAME_OPTIONS = 'DENY'
 
-    # SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
-        # Disable for dotCloud
+if not DOTCLOUD_ENVIRONMENT or not TRAVIS_ENVIRONMENT:
+    # http://tinyurl.com/proxied-ssl
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 ###
