@@ -153,6 +153,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
@@ -253,22 +254,23 @@ ACCOUNT_ACTIVATION_DAYS = int(env.get('ACCOUNT_ACTIVATION_DAYS', '7'))
 REGISTRATION_OPEN = env.get('REGISTRATION_OPEN', 'True') == 'True'
 ###
 
-### DJANGO-SECURE HTTPS
+### DJANGO SECURITY
 if not LOCAL_DEVELOPMENT:
-    SECURE_FRAME_DENY = True
+    CSRF_COOKIE_SECURE = True
     SECURE_HSTS_SECONDS = 1
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_BROWSER_XSS_FILTER = True
-    # SECURE_SSL_REDIRECT = True
-        # Disable for dotCloud: http://tinyurl.com/conn569
     SESSION_COOKIE_SECURE = True
     SESSION_COOKIE_HTTPONLY = True
-###
+    X_FRAME_OPTIONS = 'DENY'
 
-### Secure Django (Native Features)
-    # SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
-        # Disable for dotCloud
+if not DOTCLOUD_ENVIRONMENT and not TRAVIS_ENVIRONMENT:
+    # http://tinyurl.com/proxied-ssl
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 ###
 
 ### DJANGO-NOSE
