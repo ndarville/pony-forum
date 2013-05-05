@@ -64,6 +64,7 @@ from registration                   import views as registration_views
 #
 ##  manage_coeditors
 ##  manage_coeditors_js
+##  manage_coeditors_nonjs
 ##  site_configuration
 #
 ##  saves_and_bookmarks
@@ -948,6 +949,24 @@ def manage_coeditors(request, thread_id):
         'query':     query})
 
 
+def manage_coeditors_js(request):
+    """Promote anad demote co-editors for a thread via JS."""
+    if request.is_ajax() and request.method == "POST":
+        action = request.POST['action']
+        thread = Thread.objects.get(pk=request.POST['object_id'])
+        person = User.objects.get(pk=request.POST['user_id'])
+
+        if action == "Promote" or action == "Demoted":
+            thread.coeditors.add(person)
+            new_action = "Promoted"
+        else:
+            thread.coeditors.remove(person)
+            new_action = "Demoted"
+        thread.save()
+
+    return HttpResponse(new_action)
+
+
 @login_required()
 def manage_coeditors_nonjs(request, thread_id, user_id):
     """Non-JS view for promoting and demoting thread co-editors."""
@@ -975,24 +994,6 @@ def manage_coeditors_nonjs(request, thread_id, user_id):
         'thread': thread,
         'person': person,
         'is_editor': person in thread.coeditors.all()})
-
-
-def manage_coeditors_js(request):
-    """Promote anad demote co-editors for a thread via JS."""
-    if request.is_ajax() and request.method == "POST":
-        action = request.POST['action']
-        thread = Thread.objects.get(pk=request.POST['object_id'])
-        person = User.objects.get(pk=request.POST['user_id'])
-
-        if action == "Promote" or action == "Demoted":
-            thread.coeditors.add(person)
-            new_action = "Promoted"
-        else:
-            thread.coeditors.remove(person)
-            new_action = "Demoted"
-        thread.save()
-
-    return HttpResponse(new_action)
 
 
 @login_required()
