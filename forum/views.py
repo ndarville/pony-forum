@@ -908,8 +908,9 @@ def settings(request):
 @login_required()
 def manage_coeditors(request, thread_id):
     """Promote anad demote co-editors for a thread."""
-    people, thread, coeditors, query = None, None, None, None
+    people, query = None, None
     thread = get_object_or_404(Thread, pk=thread_id)
+    coeditors = thread.coeditors.all()
 
     # Check for reasons to redirect user from page
     if thread.is_removed:
@@ -924,7 +925,6 @@ def manage_coeditors(request, thread_id):
             args=(thread.id,)))
 
     if request.method == "POST":
-        coeditors = thread.coeditors.all()
         if request.POST['user-id-search'] != "":  # Search by user ID
             try:
                 people = [User.objects.get(pk=request.POST['user-id-search'])]
@@ -948,6 +948,35 @@ def manage_coeditors(request, thread_id):
         'query':     query})
 
 
+@login_required()
+def manage_coeditors_nonjs(request, thread_id, user_id):
+    """Non-JS view for promoting and demoting thread co-editors."""
+    thread = get_object_or_404(Thread, pk=thread_id)
+    person = get_object_or_404(User, pk=user_id)
+
+    if request.method == "POST":
+        try:
+            if 'promote' in request.POST:
+                thread.coeditors.add(person)
+                messages.info(request,
+                    "%s is now a co-editor." % person.username)
+            else:
+                thread.coeditors.remove(person)
+                messages.info(request,
+                    "%s is no longer a co-editor." % person.username)
+            thread.save()
+        except:
+            messages.error(request, post_request_error)
+        else:
+            return HttpResponseRedirect(reverse('forum.views.manage_coeditors',
+            args=(thread.id,)))
+
+    return render(request, 'manage_coeditors_nonjs.html', {
+        'thread': thread,
+        'person': person,
+        'is_editor': person in thread.coeditors.all()})
+
+
 def manage_coeditors_js(request):
     """Promote anad demote co-editors for a thread via JS."""
     if request.is_ajax() and request.method == "POST":
@@ -961,7 +990,6 @@ def manage_coeditors_js(request):
         else:
             thread.coeditors.remove(person)
             new_action = "Demoted"
-
         thread.save()
 
     return HttpResponse(new_action)

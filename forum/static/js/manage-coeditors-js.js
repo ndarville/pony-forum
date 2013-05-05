@@ -50,7 +50,7 @@ $(document).ready(function() {
                 user_id   = this.id,
                 action    = $this.text()
 
-            $.post("/manage/co-editors/js/", {
+            $.post("/thread/co-editors/js/", {
                 object_id: object_id,
                 user_id:   user_id,
                 action:    action
