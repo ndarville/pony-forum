@@ -43,7 +43,7 @@ input {
 
 pre {
     font: 0.8125em/1.8462em monospace;
-    display: block;
+    display: inline-block;
     margin: 1em 1px; /** 1px to offset the border */
     padding: 5px 15px;
     background-color: #F7F7F7;
