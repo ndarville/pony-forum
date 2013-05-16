@@ -16,9 +16,10 @@ env:
 
 install:
   - pip install -r requirements.txt
-  - pip install coveralls
 # - pip install django==$DJANGO --quiet
   - pip install psycopg2 --quiet
+  - pip install coveralls --quiet
+  - pip install radon --quiet
 # - pip install pip-tools --quiet
 
 before_script:
@@ -35,6 +36,7 @@ script:
 
 after_success:
 - coveralls
+- radon cc --min B ../pony-forum
 
 notifications:
   email:
