@@ -252,6 +252,7 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 * [Avatars][avatars]
 
 * Antispam:
+    * Rate limiting
     * [stopspam][stopspam]
     * [djangospam][djangospam]
 
