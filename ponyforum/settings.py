@@ -265,10 +265,10 @@ if not LOCAL_DEVELOPMENT:
     SESSION_COOKIE_HTTPONLY = True
     X_FRAME_OPTIONS = 'DENY'
 
-if not DOTCLOUD_ENVIRONMENT and not TRAVIS_ENVIRONMENT:
-    # http://tinyurl.com/proxied-ssl
-    SECURE_SSL_REDIRECT = True
-    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
+    if not DOTCLOUD_ENVIRONMENT and not TRAVIS_ENVIRONMENT:
+        # http://tinyurl.com/proxied-ssl
+        SECURE_SSL_REDIRECT = True
+        SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 ###
