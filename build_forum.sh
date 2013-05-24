@@ -14,4 +14,5 @@ python manage.py migrate forum --fake
 python _postinstall/mkadmin.py
 python _postinstall/definesite.py
 python _postinstall/mkplaceholders.py
+python manage.py test
 python manage.py runserver
