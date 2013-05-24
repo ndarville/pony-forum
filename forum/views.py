@@ -612,8 +612,8 @@ def merge_thread(request, thread_id):
                 other_thread.post_set.all().update(thread=t.id)
             # Make post notification in ALL threads
                 # Do not append a redundant full stop
-                if  new_title_plain[-1]    not in {".!?"} \
-                and new_title_plain[-3:-1] not in {'."', '!"', '?"', ".'", "!'", "?'"}:
+                if  new_title_plain[-1]    not in set([".!?"]) \
+                and new_title_plain[-3:-1] not in set(['."', '!"', '?"', ".'", "!'", "?'"]):
                     end = "."
                 else:
                     end = ""
@@ -1091,12 +1091,12 @@ def nonjs(request, action, object_id):
     """
     next = request.META.get('HTTP_REFERER', '')
 
-    if action in {'follow', 'ignore'}:
+    if action in set(['follow', 'ignore']):
         obj = get_object_or_404(User, pk=object_id)
         object_type = 'user'
         thread = None
         post_obj = None
-    elif action in {'save', 'thank', 'agree'}:
+    elif action in set(['save', 'thank', 'agree']):
         obj = get_object_or_404(Post, pk=object_id)
         object_type = 'post'
         thread = obj.thread
