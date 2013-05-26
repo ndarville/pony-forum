@@ -1,0 +1,31 @@
+Git Hooks
+=========
+
+I included some basic [Git hooks][git-hooks] that improve your workflow and help you run into stupid bugs. They are, of course, entirely optional.
+
+Installation
+------------
+1. Move the files to `.git/hooks`.
+2. Check if the files are executable.
+3. If they are not executable, use `chmod +x <filename>` in your terminal.
+
+The Scripts
+-----------
+### `pre-commit`
+On committing your staged changes:
+
+1. Runs the test suite against your new changes. If the test fails, the changes won’t be committed.
+
+You can overwrite this behaviour by using the `--no-verify` flag when committing.
+
+### `post-checkout`
+On switching to another branch:
+
+1. Deletes all `.pyc` files and empty folders, and displays a report.
+2. Migrates your database, in case the models between the two branches differ too much.
+
+Thanks to [David Winterbottom][david] for the first of the scripts.
+
+
+[git-hooks]: http://git-scm.com/book/en/Customizing-Git-Git-Hooks
+[david]: http://codeinthehole.com/writing/a-useful-git-post-checkout-hook-for-python-repos/
