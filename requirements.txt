@@ -2,7 +2,7 @@
 Django==1.4.5
 
 # Admin
-django-admin-bootstrapped
+##django-admin-bootstrapped
 docutils==0.8.1
 
 # Title and post formatting
