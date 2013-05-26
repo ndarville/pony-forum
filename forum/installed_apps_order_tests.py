@@ -35,5 +35,5 @@ class AppOrderTest(TestCase):
         """'django_admin_bootstrapped comes before 'django.contrib.admin' cf.
         https://github.com/riccardo-forina/django-admin-bootstrapped/blob/master/README.md.
         """
-        if 'django_admin_bootstrapped' and 'django.contrib.admin' in self.apps:
+        if 'django_admin_bootstrapped' in self.apps and 'django.contrib.admin' in self.apps:
             self.assertTrue(self.apps['django_admin_bootstrapped'] < self.apps['django.contrib.admin'])
