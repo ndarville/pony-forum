@@ -16,7 +16,7 @@ On committing your staged changes:
 
 1. Runs the test suite against your new changes. If the test fails, the changes won’t be committed.
 
-You can overwrite this behaviour by using the `--no-verify` flag when committing.
+You can override this behaviour by using the `--no-verify` flag when committing. It comes in handy when all you’ve staged is a README file.
 
 ### `post-checkout`
 On switching to another branch:
