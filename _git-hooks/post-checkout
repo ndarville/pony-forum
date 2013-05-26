@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+### Delete .pyc files and empty directories from root of project
+### via http://tinyurl.com/clean-up-post-checkout
+cd ./$(git rev-parse --show-cdup)
+
+# Clean-up
+find . -name ".DS_Store" -delete
+
+# Delete .pyc files
+NUM_PYC_FILES=$( find . -name "*.pyc" | wc -l | tr -d ' ' )
+if [ $NUM_PYC_FILES -gt 0 ]; then
+    find . -name "*.pyc" -delete
+    printf "\e[00;31mDeleted $NUM_PYC_FILES .pyc files\e[00m\n"
+fi
+
+# Delete empty dirs
+NUM_EMPTY_DIRS=$( find . -type d -empty | wc -l | tr -d ' ' )
+if [ $NUM_EMPTY_DIRS -gt 0 ]; then
+    find . -type d -empty -delete
+    printf "\e[00;31mDeleted $NUM_EMPTY_DIRS empty directories\e[00m\n"
+fi
+
+### Migrate database. (You still need to update your fixtures, though.)
+cd $(git rev-parse --git-dir) && cd .. && python manage.py migrate

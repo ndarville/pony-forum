@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+### Test for errors before committing
+cd $(git rev-parse --git-dir) && cd .. && python manage.py test
