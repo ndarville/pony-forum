@@ -1,7 +1,7 @@
 Git Hooks
 =========
 
-I included some basic [Git hooks][git-hooks] that improve your workflow and help you run into stupid bugs. They are, of course, entirely optional.
+I included some basic [Git hooks][git-hooks] that improve your workflow and help you avoid (some) stupid bugs. They are, of course, entirely optional.
 
 Installation
 ------------
