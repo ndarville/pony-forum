@@ -5,9 +5,13 @@
 {% block rel_attributes %}
     {% if objects.has_previous %}
         <link rel="prev" href="?page={{ objects.previous_page_number }}" />
+        <link rel="prefetch" href="?page={{ objects.previous_page_number }}" />
+        <link rel="prerender" href="?page={{ objects.previous_page_number }}" />
     {% endif %}
     {% if objects.has_next %}
         <link rel="next" href="?page={{ objects.next_page_number }}" />
+        <link rel="prefetch" href="?page={{ objects.next_page_number }}" />
+        <link rel="prerender" href="?page={{ objects.next_page_number }}" />
     {% endif %}
 {% endblock %}
 {% block threadbar %}

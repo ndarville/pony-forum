@@ -7,9 +7,13 @@
 {% block rel_attributes %}
     {% if category_threads.has_previous %}
         <link rel="prev" href="?page={{ category_threads.previous_page_number }}" />
+        <link rel="prefetch" href="?page={{ category_threads.previous_page_number }}" />
+        <link rel="prerender" href="?page={{ category_threads.previous_page_number }}" />
     {% endif %}
     {% if category_threads.has_next %}
         <link rel="next" href="?page={{ category_threads.next_page_number }}" />
+        <link rel="prefetch" href="?page={{ category_threads.next_page_number }}" />
+        <link rel="prerender" href="?page={{ category_threads.next_page_number }}" />
     {% endif %}
 {% endblock %}
 {% block content %}

@@ -5,9 +5,13 @@
 {% block rel_attributes %}
     {% if posts.has_previous %}
         <link rel="prev" href="?page={{ posts.previous_page_number }}" />
+        <link rel="prefetch" href="?page={{ posts.previous_page_number }}" />
+        <link rel="prerender" href="?page={{ posts.previous_page_number }}" />
     {% endif %}
     {% if posts.has_next %}
         <link rel="next" href="?page={{ posts.next_page_number }}" />
+        <link rel="prefetch" href="?page={{ posts.next_page_number }}" />
+        <link rel="prerender" href="?page={{ posts.next_page_number }}" />
     {% endif %}
 {% endblock %}
 {% block content %}
