@@ -22,4 +22,4 @@ if [ $NUM_EMPTY_DIRS -gt 0 ]; then
 fi
 
 ### Migrate database. (You still need to update your fixtures, though.)
-cd $(git rev-parse --git-dir) && cd .. && migrate
+cd $(git rev-parse --git-dir) && cd .. && python manage.py schemamigration forum --auto && python manage.py migrate
