@@ -53,7 +53,7 @@ LOCAL_DB_MYSQL = {
 LOCAL_DB_POSTGRESQL = {
     'default': {
         'ENGINE':   'django.db.backends.postgresql_psycopg2',
-        'NAME':     'mydb',        # Change this value to your own;
+        'NAME':     'forumdb',     # Change this value to your own;
                                    #     leave blank on OS X
         'USER':     'postgres',    # Leave blank on OS X
         'PASSWORD': 'mypassword',  # Change this value to your own;
