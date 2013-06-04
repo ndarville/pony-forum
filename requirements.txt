@@ -26,9 +26,11 @@ psycopg2
 South==0.7.6
 
 # Testing:
-selenium==2.25.0
-##Firefox - install this yourself, if using func tests
-##PyVirtualDisplay==0.1.2 - func tests disabled for now
 django-nose==1.1
 ##nose-progressive==1.3
 coverage
+
+# Functional Testing:
+##selenium==2.33.0 - func tests disabled for now
+##Firefox - install this yourself, if using func tests
+##PyVirtualDisplay==0.1.2 - func tests disabled for now
