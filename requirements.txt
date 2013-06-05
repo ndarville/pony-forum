@@ -23,7 +23,7 @@ django-debug-toolbar==0.9.1
 
 # Database:
 psycopg2
-South==0.7.6
+South==0.8.1
 
 # Testing:
 django-nose==1.1
