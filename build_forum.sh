@@ -8,9 +8,9 @@
 # If you have used Pony Forum before, make sure that there is no
 # forum/migrations/ folder, since that will break this script.
 set -e # stops execution on error
-python manage.py syncdb --noinput
 python manage.py schemamigration forum --initial
-python manage.py migrate forum --fake
+python manage.py syncdb --noinput
+python manage.py migrate forum
 python _postinstall/mkadmin.py
 python _postinstall/definesite.py
 python _postinstall/mkplaceholders.py
