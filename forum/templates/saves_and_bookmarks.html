@@ -1,7 +1,7 @@
 {% extends "page.html" %}
 
 {% block title %}{{ type|capfirst }}s{% endblock %}
-{% block canonical_url %}{% if type == "bookmark" %}{% url bookmarks %}{% else %}{% url saves %}{% endif %}{% endblock %}
+{% block canonical_url %}{% if type == "bookmark" %}{% url bookmarks %}{% else %}{% url saves %}{% endif %}?page={{ objects.number }}{% endblock %}
 {% block rel_attributes %}
     {% if objects.has_previous %}
         <link rel="prev" href="?page={{ objects.previous_page_number }}" />

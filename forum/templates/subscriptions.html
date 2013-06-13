@@ -3,7 +3,7 @@
 {% load humanize %}
 
 {% block title %}Subscriptions{% endblock %}
-{% block canonical_url %}{% url forum.views.subscriptions %}{% endblock %}
+{% block canonical_url %}{% url forum.views.subscriptions %}?page={{ objects.number }}{% endblock %}
 {% block rel_attributes %}
     {% if objects.has_previous %}
         <link rel="prev" href="?page={{ objects.previous_page_number }}" />

@@ -1,7 +1,7 @@
 {% extends "page.html" %}
 
 {% block title %}{{ type|capfirst }}s by {{ person.username }}{% endblock %}
-{% block canonical_url %}{% if type == "thread" %}{% url user_threads person.id %}{% else %}{% url user_posts person.id %}{% endif %}{% endblock %}
+{% block canonical_url %}{% if type == "thread" %}{% url user_threads person.id %}{% else %}{% url user_posts person.id %}{% endif %}?page={{ objects.number }}{% endblock %}
 {% block rel_attributes %}
     {% if objects.has_previous %}
         <link rel="prev" href="?page={{ objects.previous_page_number }}" />

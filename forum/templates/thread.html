@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}{{ thread.title_html|safe }}{% if thread.is_locked %}&nbsp;(LOCKED){% endif %}{% endblock %}
-{% block canonical_url %}{% url forum.views.thread thread.id %}{% endblock %}
+{% block canonical_url %}{% url forum.views.thread thread_id=thread.id author_id=author_id %}?page={{ posts.number }}{% endblock %}
 {% block rel_attributes %}
     {% if posts.has_previous %}
         <link rel="prev" href="?page={{ posts.previous_page_number }}" />

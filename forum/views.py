@@ -337,7 +337,8 @@ def thread(request, thread_id, author_id):
                       {'thread_id':     thread_id,
                        'thread':        thread,
                        'posts':         posts,
-                       'anchor_number': anchor_number})
+                       'anchor_number': anchor_number,
+                       'author_id':     author_id})
     else:
         messages.info(request, "The thread %s has been removed and no longer available." % thread.title_html)
         return HttpResponseRedirect(reverse('forum.views.category', args=(thread.category_id,)))
