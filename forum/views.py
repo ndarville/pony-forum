@@ -973,6 +973,18 @@ def manage_coeditors_nonjs(request, thread_id, user_id):
     thread = get_object_or_404(Thread, pk=thread_id)
     person = get_object_or_404(User, pk=user_id)
 
+    # Check for reasons to redirect user from page
+    if thread.is_removed:
+        messages.info(request, "This thread no longer exists.")
+        return HttpResponseRedirect(reverse('forum.views.thread',
+            args=(thread.id,)))
+    elif (not request.user == thread.author and
+          not request.user.has_perm('forum.appoint_coeditor')):
+        messages.info(request,
+            "You are not authorized to assign co-editors to this thread.")
+        return HttpResponseRedirect(reverse('forum.views.thread',
+            args=(thread.id,)))
+
     if request.method == "POST":
         try:
             if 'Appoint' in request.POST['action']:
