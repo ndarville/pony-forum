@@ -30,6 +30,13 @@
     font-style: italic;
 }
 
+@font-face {
+    font-family:"opendyslexic-mono";
+    src: url(/static/css/typefaces/OpenDyslexicMono-Regular.otf);
+    font-weight:normal;
+    font-style:normal;
+}
+
 body {
     background-color: #F4F4FA !important;
     background-image: url(/static/images/dyslexia_cross_scratches.png) !important;
