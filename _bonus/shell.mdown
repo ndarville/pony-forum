@@ -1,0 +1,29 @@
+Shell Scripts
+=============
+
+Better Shell Environment
+------------------------
+Try Paul Irish’s [forked dotfiles](https://github.com/paulirish/dotfiles) for an improved and prettier working environment, especially with regards to Git.
+
+Prettier Git Logs
+-----------------
+### With Graph
+`git log --graph --oneline --all --decorate`
+
+### Filipe Kiss’s Git Log
+From [here](https://coderwall.com/p/euwpig).
+
+1. The script:
+    * `git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit`
+
+2. Save it as a shortcut `git lg`:
+    * `git config --global alias.lg "log --graph (... and the rest of the code above)`
+
+3. Show changed lines in output:
+    * `git lg -p`
+
+### Others
+There are many other interesting ones out there, but some of them are more laborious to implement, as they require defined `config` settings:
+
+1. http://stackoverflow.com/a/9074343/419005
+2. https://news.ycombinator.com/item?id=5838588
