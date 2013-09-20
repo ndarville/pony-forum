@@ -33,6 +33,7 @@ script:
   - python manage.py test
 
 after_success:
+- pip freeze
 - echo Uploading code coverage data ...; coveralls
 - echo Code complexity scores:; radon cc --min B ../pony-forum
 
