@@ -297,6 +297,7 @@ I want to implement Markdown footnotes, but as of now, they get identical anchor
 * Security:
     * [Separate account and password reset e-mail][sep-email]
     * [Implicit password][implicit-pwd]
+* [Hot threads][hotness]
 
 And much, much more.
 
@@ -350,3 +351,4 @@ And much, much more.
 [ios-icon]:     https://github.com/ndarville/pony-forum/issues/54
 [sep-email]:    https://twitter.com/mikko/status/231726890933698560
 [implicit-pwd]: https://www.schneier.com/blog/archives/2012/07/implicit_passwo.html
+[hotness]:      http://www.evanmiller.org/rank-hotness-with-newtons-law-of-cooling.html
