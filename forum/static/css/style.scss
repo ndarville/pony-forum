@@ -1,3 +1,18 @@
+$shadow: 1px 1px 5px #888;
+@mixin box-shadow($shadow) {
+    -webkit-appearance: none; /** Fixes box-shadows on iOS */
+    -webkit-box-shadow: $shadow;
+       -moz-box-shadow: $shadow;
+            box-shadow: $shadow;
+}
+
+$radius: 5px;
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+            border-radius: $radius;
+}
+
 html {
 /** cf. hicksdesign.co.uk/journal/forcing-scrollbars-now-even-better cf. Gruber */
     height: 100%;
