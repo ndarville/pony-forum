@@ -46,9 +46,7 @@ code {
     padding: 0 0.25em;
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    @include border-radius($radius);
 }
 
 input {
@@ -63,9 +61,7 @@ pre {
     padding: 5px 15px;
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    @include border-radius($radius);
     overflow: auto;
 }
 
@@ -74,9 +70,7 @@ pre code {
     padding: 0;
     background-color: transparent;
     border: 0;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
+    @include border-radius(0);
 }
 
 table {
@@ -132,13 +126,8 @@ table {
 #popular,
 #content table.categories,
 #content table.threads {
-    -moz-box-shadow: 1px 1px 5px #888;
-    -webkit-box-shadow: 1px 1px 5px #888;
-    box-shadow: 1px 1px 5px #888;
-    -webkit-appearance: none; /** Fixes box-shadows on iOS */
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    @include box-shadow($shadow);
+    @include border-radius($radius);
 }
 
 #header,
@@ -284,9 +273,7 @@ input[type="submit"] {
 #thread-mod-buttons-bottom,
 #content a.button,
 input[type="submit"] {
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
+    @include border-radius(0);
     border: none;
 }
 
@@ -515,9 +502,7 @@ legend {
 }
 
 .remove {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    @include border-radius($radius);
 }
 
 #content-body .unsubscribe,
@@ -732,9 +717,7 @@ span#error {
     margin: 0 auto 1em; /** 1px to offset the border */
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    @include border-radius($radius);
 }
 
     caption {
@@ -797,10 +780,7 @@ span#error {
 
 /**
 .avatar {
-
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
+    @include border-radius(3px);
     border: 2px solid orange;
     width: 100px; height: auto;
 }
@@ -938,13 +918,8 @@ textarea,
 #title-form,
 #id-form {
     border: none;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    box-shadow: inset 1px 1px 5px #888;
-    -moz-box-shadow: inset 1px 1px 5px #888;
-    -webkit-box-shadow: inset 1px 1px 5px #888;
-    -webkit-appearance: none; /** fixes box-shadows on iOS */
+    @include border-radius($radius);
+    @include box-shadow(inset + $shadow);
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -1051,9 +1026,7 @@ textarea,
 /*** Unrounded Corners with Fixes ***/
     #content-body table,
     #board .words table {
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
+        @include border-radius($radius);
     }
 
     /** Upper left AND right **/
@@ -1142,9 +1115,7 @@ textarea,
     /** Navigation bar */
         #navigation {
             background: none;
-            border-radius: 0;
-            -webkit-border-radius: 0;
-            -moz-border-radius: 0;
+            @include border-radius(0);
             box-shadow: none;
             text-align: center;
         }
