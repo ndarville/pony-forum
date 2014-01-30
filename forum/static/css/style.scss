@@ -1015,36 +1015,29 @@ textarea,
                 border-collapse: separate;
             }
 
-        /** Upper left **/
-            #content-body th:first-child,
-            #board .words th:first-child,
-            #content .categories th:first-child,
-            #content .threads th:first-child {
-                @include border-corner-radius(top, left);
-            }
+            #content-body,
+            #board .words,
+            #content .categories,
+            #content .threads {
+                /** Upper left **/
+                th:first-child {
+                    @include border-corner-radius(top, left);
+                }
 
-        /** Upper right **/
-            #content-body th:last-child,
-            #board .words th:last-child,
-            #content .categories th:last-child,
-            #content .threads th:last-child {
-                @include border-corner-radius(top, right);
-            }
+                /** Upper right **/
+                th:last-child {
+                    @include border-corner-radius(top, right);
+                }
 
-        /** Lower left **/
-            .categories tr:last-child td:first-child,
-            .threads tr:last-child td:first-child,
-            #board .words tr:last-child td:first-child,
-            #content-body tr:last-child td:first-child {
-                @include border-corner-radius(bottom, left);
-            }
+                /** Lower left **/
+                tr:last-child td:first-child {
+                    @include border-corner-radius(bottom, left);
+                }
 
-        /** Lower right **/
-            .categories tr:last-child td:last-child,
-            .threads tr:last-child td:last-child,
-            #board .words tr:last-child td:last-child,
-            #content-body tr:last-child td:last-child {
-                @include border-corner-radius(bottom, right);
+                /** Lower right **/
+                tr:last-child td:last-child {
+                    @include border-corner-radius(bottom, right);
+                }
             }
 /**** * ****/
 
