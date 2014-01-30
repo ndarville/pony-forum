@@ -121,18 +121,10 @@ table {
     width: 100%;
     text-align: center;
     font-family: Georgia;
-}
 
-#alert.info {
-    background-color: lightblue;
-}
-
-#alert.success {
-    background-color: #90EE90;
-}
-
-#alert.error {
-    background-color: #EE3B3B;
+    $.info    { background-color: lightblue; }
+    $.success { background-color: #90EE90; }
+    $.error   { background-color: #EE3B3B; }
 }
 /* * */
 
@@ -383,40 +375,40 @@ input[type="submit"] {
 *****          ****/
 #account-form {
     text-align: center;
-}
 
-#account-form label {
-    display: none;
-}
+    label {
+        display: none;
+    }
 
-#account-form #login-helpers {
-    margin: 1.5em auto;
-}
+    #login-helpers {
+        margin: 1.5em auto;
+    }
 
-#account-form input[type="email"],
-#account-form input[type="text"],
-#account-form input[type*="password"] {
-    padding-left: 35px;  /** Revise */
-    min-width: 60%;
-    max-width: 95%;
-}
+    input[type="email"],
+    input[type="text"],
+    input[type*="password"] {
+        padding-left: 35px;  /** Revise */
+        min-width: 60%;
+        max-width: 95%;
+    }
 
-#account-form input[name="username"] {
-    @include navigation-icon(/static/glyphish/111-user.png);
-    background-size: 1.5em;
-    background-position: 5px 50%;
-}
+    input[name="username"] {
+        @include navigation-icon(/static/glyphish/111-user.png);
+        background-size: 1.5em;
+        background-position: 5px 50%;
+    }
 
-#account-form input[name="email"] {
-    @include navigation-icon(/static/glyphish/18-envelope.png);
-    background-size: 1.5em;
-    background-position: 5px 50%;
-}
+    input[name="email"] {
+        @include navigation-icon(/static/glyphish/18-envelope.png);
+        background-size: 1.5em;
+        background-position: 5px 50%;
+    }
 
-#account-form input[name*="password"] {
-    @include navigation-icon(/static/glyphish/54-lock.png);
-    background-size: 1.25em;
-    background-position: 7px 50%;
+    input[name*="password"] {
+        @include navigation-icon(/static/glyphish/54-lock.png);
+        background-size: 1.25em;
+        background-position: 7px 50%;
+    }
 }
 
 form p.checkbox { }
@@ -502,23 +494,25 @@ legend {
     @include border-radius($radius);
 }
 
-#content-body .unsubscribe,
-#content-body .count,
-#content-body .remove {
-    padding: 0.25em 0.75em;
-    background-color: #FFF;
-    border: 1px solid #D1D1D1;
-    text-decoration: none;
-}
+#content-body {
+    .unsubscribe,
+    .count,
+    .remove {
+        padding: 0.25em 0.75em;
+        background-color: #FFF;
+        border: 1px solid #D1D1D1;
+        text-decoration: none;
+    }
 
-#content-body .unsubscribe {
-    @include border-corner-radius(top, left);
-    @include border-corner-radius(bottom, left);
-}
+    .unsubscribe {
+        @include border-corner-radius(top, left);
+        @include border-corner-radius(bottom, left);
+    }
 
-#content-body .count {
-    @include border-corner-radius(top, right);
-    @include border-corner-radius(bottom, right);
+    .count {
+        @include border-corner-radius(top, right);
+        @include border-corner-radius(bottom, right);
+    }
 }
 /**** * ****/
 
@@ -586,13 +580,13 @@ legend {
     width: 210px;
     float: right;
     margin: 1.5em 15px;
-}
 
-#threadbar li a {
-    position: relative;
-    display: block;
-    padding: 5px 3em 5px 10px;
-/** margin: 0.5em 0 0.5em 0; */
+    li a {
+        position: relative;
+        display: block;
+        padding: 5px 3em 5px 10px;
+    /** margin: 0.5em 0 0.5em 0; */
+    }
 }
 
 .threadsort {
@@ -952,30 +946,30 @@ textarea,
     background-color: pink;
     font-family: "Palatino Linotype", sans-serif;
     margin: 0 auto;  /** Pick a better value for 0 */
-}
 
-#markdown blockquote {
-    border-left: 2px solid #000;
-    padding-left: 5px;
-    margin: 0;
-}
+    blockquote {
+        border-left: 2px solid #000;
+        padding-left: 5px;
+        margin: 0;
+    }
 
-#markdown ol,
-#markdown ul {
-    margin-left: 1.5em;
-}
+    ol,
+    ul {
+        margin-left: 1.5em;
+    }
 
-#markdown pre {
-    margin: 0;
-}
+    pre {
+        margin: 0;
+    }
 
-#markdown table {
-    width: 100%;
-}
+    table {
+        width: 100%;
+    }
 
-#markdown th,
-#markdown td {
-    border: 1px solid #000;
+    th,
+    td {
+        border: 1px solid #000;
+    }
 }
 /**** * ****/
 
@@ -990,14 +984,14 @@ textarea,
     margin: 1.5em auto; /** Recalculate */
     text-align: center;
     clear: both;
-}
 
-#credits a {
-    text-decoration: underline;
-}
+    a {
+        text-decoration: underline;
+    }
 
-#credits span {
-    white-space: nowrap;
+    span {
+        white-space: nowrap;
+    }
 }
 /**** * ****/
 
@@ -1084,30 +1078,30 @@ textarea,
             @include border-radius(0);
             box-shadow: none;
             text-align: center;
-        }
 
-        #navigation li {
-            display: inline-block;
-            padding: 0;
-        }
+            li {
+                display: inline-block;
+                padding: 0;
 
-        #navigation li a {
-            border: 1px solid #ccc;
-            padding: 10px 18px;
-            height: 15px;
-            width: 25px;
-        }
+                a {
+                    border: 1px solid #ccc;
+                    padding: 10px 18px;
+                    height: 15px;
+                    width: 25px;
 
-        /** Align icons to the middle instead of left */
-        #navigation li a[href] {
-            background-position: center;
+                    /** Align icons to the middle instead of left */
+                    $[href] {
+                        background-position: center;
+                    }
+                }
+            }
+
+            /** Hide text */
+            span {
+                display: none;
+            }
         }
         /* * */
-
-        /** Hide text */
-        #navigation span {
-            display: none;
-        }
         /* * */
     /* * */
 
@@ -1162,14 +1156,16 @@ textarea,
         width: 76%;
     }
 
-    .post-bottom .left-buttons a.button + a.button {
-        margin-right: 10px;
-    }
+    .post-bottom {
+        .left-buttons a.button + a.button {
+            margin-right: 10px;
+        }
 
-    .post-bottom .left-buttons,
-    .post-bottom .agreeers,
-    .post-bottom .thankers {
-        margin-left: 24%;  /** 100% - .words width */
+        .left-buttons,
+        .agreeers,
+        .thankers {
+            margin-left: 24%;  /** 100% - .words width */
+        }
     }
 }
 /**** * ****/
