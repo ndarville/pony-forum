@@ -22,6 +22,10 @@ $radius: 5px;
             border-radius: $radius;
 }
 
+@mixin navigation-icon($url) {
+    background: url($url) no-repeat left;
+}
+
 html {
 /** cf. hicksdesign.co.uk/journal/forcing-scrollbars-now-even-better cf. Gruber */
     height: 100%;
@@ -164,77 +168,63 @@ table {
     float: left;
     margin: 1.5em 15px;
     background: #98FB98;
-}
 
-#navigation li {
-    padding-left: 10px;
-}
+    li {
+        padding-left: 10px;
 
-#navigation li a {
-    display: block;
-    padding: 5px 0 5px 35px;
-}
+        a {
+            display: block;
+            padding: 5px 0 5px 35px;
 
-#navigation li a[href*="/user/"] {
-    background: url(/static/glyphish/123-id-card.png) no-repeat left;
-}
-
-#navigation li a[href$="/saves/"] {
-    background: url(/static/glyphish/28-star.png) no-repeat left;
-}
-
-#navigation li a[href$="/reports/"] {
-    background: url(/static/glyphish/146-gavel.png) no-repeat left;
-}
-
-#navigation li a[href$="/settings/"] {
-    background: url(/static/glyphish/20-gear2.png) no-repeat left;
-}
-
-#navigation li a[href$="/bookmarks/"] {
-    background: url(/static/glyphish/191-collection.png) no-repeat left;
-}
-
-#navigation li a[href$="/subscriptions/"] {
-    background: url(/static/glyphish/44-shoebox.png) no-repeat left;
-}
-
-#navigation li a[href$="/pm/"] {
-    background: url(/static/glyphish/18-envelope.png) no-repeat left;
-}
-
-#navigation li a[href$="/configuration/"] {
-    background: url(/static/glyphish/158-wrench-2.png) no-repeat left;
-}
-
-#navigation li a[href="http://pony-forum.com/rules/"],
-#navigation li a[href$="/rules/"] {
-    background: url(/static/glyphish/138-scales.png) no-repeat left;
-}
-
-#navigation li a[href$="pony-forum.com/guide/"],
-#navigation li a[href$="/guide/"] {
-    background: url(/static/glyphish/96-book.png) no-repeat left;
-}
-
-#navigation li a[href$="/search/"] {
-    background: url(/static/glyphish/06-magnify.png) no-repeat left;
-}
-
-#navigation li a[href$="/logout/"] {
-    background: url(/static/glyphish/54-lock.png) no-repeat left;
-}
-
-#navigation li a[href*="/login/"] {
-    background: url(/static/glyphish/30-key.png) no-repeat left;
-}
-
-#navigation li a[href$="/register/"] {
-    background: url(/static/glyphish/111-user.png) no-repeat left;
-}
-
-#navigation li a[href*="dyslexia.css"] {
-    background: url(/static/glyphish/12-eye.png) no-repeat left;
+            $[href*="/user/"] {
+                @include navigation-icon(/static/glyphish/123-id-card.png);
+            }
+            $[href$="/saves/"] {
+                @include navigation-icon(/static/glyphish/28-star.png);
+            }
+            $[href$="/reports/"] {
+                @include navigation-icon(/static/glyphish/146-gavel.png);
+            }
+            $[href$="/settings/"] {
+                @include navigation-icon(/static/glyphish/20-gear2.png);
+            }
+            $[href$="/bookmarks/"] {
+                @include navigation-icon(/static/glyphish/191-collection.png);
+            }
+            $[href$="/subscriptions/"] {
+                @include navigation-icon(/static/glyphish/44-shoebox.png);
+            }
+            $[href$="/pm/"] {
+                @include navigation-icon(/static/glyphish/18-envelope.png);
+            }
+            $[href$="/configuration/"] {
+                @include navigation-icon(/static/glyphish/158-wrench-2.png);
+            }
+            $[href="http://pony-forum.com/rules/"],
+            $[href$="/rules/"] {
+                @include navigation-icon(/static/glyphish/138-scales.png);
+            }
+            $[href$="pony-forum.com/guide/"],
+            $[href$="/guide/"] {
+                @include navigation-icon(/static/glyphish/96-book.png);
+            }
+            $[href$="/search/"] {
+                @include navigation-icon(/static/glyphish/06-magnify.png);
+            }
+            $[href$="/logout/"] {
+                @include navigation-icon(/static/glyphish/54-lock.png);
+            }
+            $[href*="/login/"] {
+                @include navigation-icon(/static/glyphish/30-key.png);
+            }
+            $[href$="/register/"] {
+                @include navigation-icon(/static/glyphish/111-user.png);
+            }
+            $[href*="dyslexia.css"] {
+                @include navigation-icon(/static/glyphish/12-eye.png);
+            }
+        }
+    }
 }
 
 #navigation li,
