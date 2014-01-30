@@ -8,7 +8,7 @@ $shadow: 1px 1px 5px #888;
             box-shadow: $shadow;
 }
 
-@mixin box-sizing() {
+@mixin box-sizing {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
         -ms-box-sizing: border-box; /** May not work for IE7- */
@@ -812,7 +812,7 @@ span#error {
 
 #example {
     padding: 0 5px;
-    @include box-sizing();
+    @include box-sizing;
 }
 
 .post-top {
@@ -905,7 +905,7 @@ textarea,
     border: none;
     @include border-radius($radius);
     @include box-shadow(inset + $shadow);
-    @include box-sizing();
+    @include box-sizing;
 }
 
 input[type=email],
