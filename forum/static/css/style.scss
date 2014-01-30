@@ -16,6 +16,12 @@ $shadow: 1px 1px 5px #888;
 }
 
 $radius: 5px;
+@mixin border-corner-radius($vert, $hor, $radius) {
+    -webkit-border-#{$vert}-#{$hor}-radius: $radius;
+    -moz-border-radius-#{$vert}#{$hor}: $radius;
+    border-#{$vert}-#{$hor}-radius: $radius;
+}
+
 @mixin border-radius($radius) {
     -webkit-border-radius: $radius;
        -moz-border-radius: $radius;
@@ -306,12 +312,8 @@ input[type="submit"]:hover {
 #thread-mod-buttons-bottom li:first-child,
 #content a.button,
 input[type="submit"] {
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    -moz-border-radius-bottomleft: 5px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    @include border-corner-radius(top, left);
+    @include border-corner-radius(bottom, left);
 }
 
 .pagination li:first-child a,
@@ -331,12 +333,8 @@ input[type="submit"] {
 #thread-mod-buttons-bottom li:last-child,
 #content a.button,
 input[type="submit"] {
-    -webkit-border-top-right-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-    -moz-border-radius-topright: 5px;
-    -moz-border-radius-bottomright: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    @include border-corner-radius(top, right);
+    @include border-corner-radius(bottom, right);
 }
 
 .pagination li:last-child a,
@@ -514,21 +512,13 @@ legend {
 }
 
 #content-body .unsubscribe {
-    -webkit-border-top-left-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    border-top-left-radius: 5px;
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-radius-bottomleft: 5px;
-    border-bottom-left-radius: 5px;
+    @include border-corner-radius(top, left);
+    @include border-corner-radius(bottom, left);
 }
 
 #content-body .count {
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topright: 5px;
-    border-top-right-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-    -moz-border-radius-bottomright: 5px;
-    border-bottom-right-radius: 5px;
+    @include border-corner-radius(top, right);
+    @include border-corner-radius(bottom, right);
 }
 /**** * ****/
 
@@ -611,12 +601,8 @@ legend {
     display: block;
     padding: 5px 0;
     text-align: center;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    -moz-border-top-left-radius: 5px;
-    -moz-border-top-right-radius: 5px;
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
+    @include border-corner-radius(top, left);
+    @include border-corner-radius(top, right);
 }
 
 #recent {
@@ -1027,23 +1013,15 @@ textarea,
 
     /** Upper left AND right **/
         #navigation .first {
-            -webkit-border-top-left-radius: 5px;
-            -webkit-border-top-right-radius: 5px;
-            -moz-border-radius-topleft: 5px;
-            -moz-border-radius-topright: 5px;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
+            @include border-corner-radius(top, left);
+            @include border-corner-radius(top, right);
         }
 
     /** Bottom left AND right **/
         #threadbar li:last-child,
         #navigation .last {
-            -webkit-border-bottom-right-radius: 5px;
-            -webkit-border-bottom-left-radius: 5px;
-            -moz-border-radius-bottomright: 5px;
-            -moz-border-radius-bottomleft: 5px;
-            border-bottom-right-radius: 5px;
-            border-bottom-left-radius: 5px;
+            @include border-corner-radius(bottom, left);
+            @include border-corner-radius(bottom, right);
         }
 
     /** Tables */
@@ -1057,9 +1035,7 @@ textarea,
             #board .words th:first-child,
             #content .categories th:first-child,
             #content .threads th:first-child {
-                -webkit-border-top-left-radius: 5px;
-                -moz-border-radius-topleft: 5px;
-                border-top-left-radius: 5px;
+                @include border-corner-radius(top, left);
             }
 
         /** Upper right **/
@@ -1067,9 +1043,7 @@ textarea,
             #board .words th:last-child,
             #content .categories th:last-child,
             #content .threads th:last-child {
-                -webkit-border-top-right-radius: 5px;
-                -moz-border-radius-topright: 5px;
-                border-top-right-radius: 5px;
+                @include border-corner-radius(top, right);
             }
 
         /** Lower left **/
@@ -1077,9 +1051,7 @@ textarea,
             .threads tr:last-child td:first-child,
             #board .words tr:last-child td:first-child,
             #content-body tr:last-child td:first-child {
-                -webkit-border-bottom-left-radius: 5px;
-                -moz-border-radius-bottomleft: 5px;
-                border-bottom-left-radius: 5px;
+                @include border-corner-radius(bottom, left);
             }
 
         /** Lower right **/
@@ -1087,9 +1059,7 @@ textarea,
             .threads tr:last-child td:last-child,
             #board .words tr:last-child td:last-child,
             #content-body tr:last-child td:last-child {
-                -webkit-border-bottom-right-radius: 5px;
-                -moz-border-radius-bottomright: 5px;
-                border-bottom-right-radius: 5px;
+                @include border-corner-radius(bottom, right);
             }
 /**** * ****/
 
