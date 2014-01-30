@@ -404,19 +404,19 @@ input[type="submit"] {
 }
 
 #account-form input[name="username"] {
-    background: url(/static/glyphish/111-user.png) no-repeat left;
+    @include navigation-icon(/static/glyphish/111-user.png);
     background-size: 1.5em;
     background-position: 5px 50%;
 }
 
 #account-form input[name="email"] {
-    background: url(/static/glyphish/18-envelope.png) no-repeat left;
+    @include navigation-icon(/static/glyphish/18-envelope.png);
     background-size: 1.5em;
     background-position: 5px 50%;
 }
 
 #account-form input[name*="password"] {
-    background: url(/static/glyphish/54-lock.png) no-repeat left;
+    @include navigation-icon(/static/glyphish/54-lock.png);
     background-size: 1.25em;
     background-position: 7px 50%;
 }
