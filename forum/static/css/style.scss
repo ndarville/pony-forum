@@ -47,10 +47,10 @@ input {
 a {
     text-decoration: none;
     color: inherit;
-}
 
-a:visited {
-    color: inherit;
+    $:visited {
+        color: inherit;
+    }
 }
 
 blockquote {
@@ -82,14 +82,14 @@ pre {
     border: 1px solid #D1D1D1;
     @include border-radius($radius);
     overflow: auto;
-}
 
-/** This basically undoes all rules from the <pre> parent */
-pre code {
-    padding: 0;
-    background-color: transparent;
-    border: 0;
-    @include border-radius(0);
+    /** This basically undoes all rules from the <pre> parent */
+    code {
+        padding: 0;
+        background-color: transparent;
+        border: 0;
+        @include border-radius(0);
+    }
 }
 
 table {
@@ -131,10 +131,10 @@ table {
 /** All side panels */
 #header,
 #navigation,
-#board,
 #recent,
 #subscribed,
 #popular,
+#board,
 #content table.categories,
 #content table.threads {
     @include box-shadow($shadow);
@@ -146,9 +146,9 @@ table {
 #recent,
 #subscribed,
 #popular,
-#content,
-#breadcrumbs
-#credits {
+#breadcrumbs,
+#credits,
+#content {
     text-shadow: $text-shadow;
 }
 
@@ -639,55 +639,53 @@ span#error {
     margin: 1.5em 15px;
 }
 
-#board .words h1,
-#example h1 {
-    font-size: 2.2857em; /* 32px */
-    line-height: 1.3125em; /* 42px */
-    margin-top: 0.6563em;
-    margin-bottom: 0;
-}
+#board .words,
+#example {
+    h1 {
+        font-size: 2.2857em; /* 32px */
+        line-height: 1.3125em; /* 42px */
+        margin-top: 0.6563em;
+        margin-bottom: 0;
+    }
 
-#board .words h2,
-#example h2 {
-    font-size: 1.7143em; /* 24px */
-    line-height: 1.3125em; /* 42px */
-    margin-top: 0.6563em;
-    margin-bottom: 0;
-    font-variant: small-caps;
-}
+    h2 {
+        font-size: 1.7143em; /* 24px */
+        line-height: 1.3125em; /* 42px */
+        margin-top: 0.6563em;
+        margin-bottom: 0;
+        font-variant: small-caps;
+    }
 
-#board .words h3,
-#example h3 {
-    font-size: 1.4286em; /* 20px */
-    line-height: 1.05em; /* 21px */
-    margin-top: 1.05em;
-    margin-bottom: 0;
-    font-variant: small-caps;
-    font-weight: bold;
-}
+    h3 {
+        font-size: 1.4286em; /* 20px */
+        line-height: 1.05em; /* 21px */
+        margin-top: 1.05em;
+        margin-bottom: 0;
+        font-variant: small-caps;
+        font-weight: bold;
+    }
 
-#board .words h4,
-#example h4 {
-    font-size: 1.2857em; /* 18px */
-    line-height: 1.1667em; /* 24px */
-    margin-top: 1.1667em;
-    margin-bottom: 0;
-    font-style: italic;
-}
+    h4 {
+        font-size: 1.2857em; /* 18px */
+        line-height: 1.1667em; /* 24px */
+        margin-top: 1.1667em;
+        margin-bottom: 0;
+        font-style: italic;
+    }
 
-#board .words h5,
-#example h5 {
-    font-size: 1.1429em; /* 16px */
-    line-height: 1.3125em; /* 21px */
-    margin-top: 1.3125em;
-    margin-bottom: 0;
-    text-transform: uppercase;
-}
+    h5 {
+        font-size: 1.1429em; /* 16px */
+        line-height: 1.3125em; /* 21px */
+        margin-top: 1.3125em;
+        margin-bottom: 0;
+        text-transform: uppercase;
+    }
 
-#board .words img, #example img {
-    margin: 1em auto;
-    border: 1px solid #D1D1D1;
-    display: block;
+    img {
+        margin: 1em auto;
+        border: 1px solid #D1D1D1;
+        display: block;
+    }
 }
 
 #board .words table,
@@ -697,7 +695,6 @@ span#error {
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
     @include border-radius($radius);
-}
 
     caption {
         caption-side: top;
@@ -706,33 +703,28 @@ span#error {
 
     }
 
-    #board .words th,
-    #content-body th {
+    th {
         font: bold small-caps 1.25em Georgia;
         background-color: #FFF;
     }
 
-    #board .words td,
-    #board .words th,
-    #content-body td,
-    #content-body th {
+    td,
+    th {
         padding: 8px;
     }
 
-    #board .words tr:nth-child(even),
-    #content-body tr:nth-child(even) {
+    tr:nth-child(even) {
         background-color: #FFF;
     }
 
-    #board .words tr:hover,
-    #content-body tr:hover {
+    tr:hover {
         background-color: rgba(0,0,0, .1);
     }
 
-    #board .words td:hover,
-    #content-body td:hover {
+    td:hover {
         background-color: #FF9;
     }
+}
 
 #breadcrumbs {
     margin-bottom: 1.5em; /** Recalcuate. Depends on button size */
@@ -817,22 +809,22 @@ span#error {
 .post-bottom {
     clear: both;
     background-color: pink;
-}
 
-.post-bottom .right-buttons a.button {
-    float: right;
-    margin-left: 10px;
-}
+    .right-buttons a.button {
+        float: right;
+        margin-left: 10px;
+    }
 
-.post-bottom .left-buttons a.button {
-    float: left;
-    margin-right: 10px;
-}
+    .left-buttons a.button {
+        float: left;
+        margin-right: 10px;
+    }
 
-.post-bottom .left-buttons,
-.post-bottom .agreeers,
-.post-bottom .thankers {
-    margin-left: 160px; /** Recalculate */
+    .left-buttons,
+    .agreeers,
+    .thankers {
+        margin-left: 160px; /** Recalculate */
+    }
 }
 
 .agreeers,
@@ -840,11 +832,10 @@ span#error {
     display: none; /** Shown on-click by jQuery */
     clear: both;
     margin-top: 1em; /** Does not work */
-}
 
-.agreeers li,
-.thankers li {
-    list-style: none;
+    li {
+        list-style: none;
+    }
 }
 
 .body,
