@@ -1,6 +1,21 @@
-$text-shadow: "1px 1px 1px rgba(255, 255, 255, .5)";
-
+$radius: 5px;
 $shadow: 1px 1px 5px #888;
+$text-shadow: 1px 1px 1px rgba(255, 255, 255, .5);
+
+$alert-font:    Georgia;
+$body-font:     "Helvetica Neue", Helvetica, sans-serif;
+$board-font:    Georgia;
+$button-font:   Georgia;
+$caption-font:  "Helvetica Neue", Helvetica, Verdana;
+$code-font:     monospace;
+$credits-font:  "Helvetica Neue", Helvetica, Verdana;
+$header-font:   "Palatino Linotype", Georgia;
+$input-font:    Verdana;
+$markdown-font: "Palatino Linotype", sans-serif;
+$symbol-font:   Georgia;
+$table-font:    Verdana;
+$th-font:       Georgia;
+
 @mixin box-shadow($shadow) {
     -webkit-appearance: none; /** Fixes box-shadows on iOS */
     -webkit-box-shadow: $shadow;
@@ -15,7 +30,6 @@ $shadow: 1px 1px 5px #888;
             box-sizing: border-box;
 }
 
-$radius: 5px;
 @mixin border-corner-radius($vert, $hor, $radius) {
     -webkit-border-#{$vert}-#{$hor}-radius: $radius;
     -moz-border-radius-#{$vert}#{$hor}: $radius;
@@ -41,7 +55,7 @@ html {
 body,
 button,
 input {
-    font: 14px/1.5em "Helvetica Neue", Helvetica, sans-serif;
+    font: 14px/1.5em $body-font;
 }
 
 a {
@@ -61,7 +75,7 @@ blockquote {
 }
 
 code {
-    font-family: monospace;
+    font-family: $font-code;
     padding: 0 0.25em;
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
@@ -74,7 +88,7 @@ input {
 }
 
 pre {
-    font: 0.8125em/1.8462em monospace;
+    font: 0.8125em/1.8462em $font-code;
     display: inline-block;
     margin: 1em 1px; /** 1px to offset the border */
     padding: 5px 15px;
@@ -110,7 +124,7 @@ table {
     text-align: center;
     margin: 0 auto 0.5em;
     background-color: pink;
-    font-family: Georgia;
+    font-family: $alert-font;
 }
 
 #configuration-warning a {
@@ -120,7 +134,6 @@ table {
 #alert {
     width: 100%;
     text-align: center;
-    font-family: Georgia;
 
     $.info    { background-color: lightblue; }
     $.success { background-color: #90EE90; }
@@ -153,7 +166,7 @@ table {
 }
 
 #header {
-    font: 1.5em/2.25em "Palatino Linotype", Georgia;
+    font: 1.5em/2.25em $header-font;
     width: 450px;
     margin: 15px auto 0;
     clear: both;
@@ -254,9 +267,9 @@ table {
 #thread-mod-buttons-bottom,
 #content a.button,
 input[type="submit"] {
-    font-size: 1em; /** Addresses weird font-size for <input> */
-    font-height: 1.5em;
-    font-family: Georgia;
+    font-size: $normal-fontSize; /** Addresses weird font-size for <input> */
+    font-height: $normal-lineHeight;
+    font-family: $button-font;
     font-variant: small-caps;
     margin: 1.5em 0;
     text-align: center;
@@ -569,7 +582,7 @@ legend {
 }
 
 #content table.hide {
-    font: 0.6em/1.2em Georgia;
+    font: 0.6em/1.2em $symbol-font;
 }
 /**** * ****/
 
@@ -690,7 +703,7 @@ span#error {
 
 #board .words table,
 #content-body table {
-    font: 0.8125em/1.8462em Verdana;
+    font: 0.8125em/1.8462em $table-font;
     margin: 0 auto 1em; /** 1px to offset the border */
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
@@ -699,12 +712,12 @@ span#error {
     caption {
         caption-side: top;
         text-align: center;
-        font: small-caps 1.25em "Helvetica Neue", Helvetica, Verdana;
+        font: small-caps 1.25em $caption-font;
 
     }
 
     th {
-        font: bold small-caps 1.25em Georgia;
+        font: bold small-caps 1.25em $th-font;
         background-color: #FFF;
     }
 
@@ -746,7 +759,7 @@ span#error {
 .anchor {
     float: right;
     margin-left: 1em;
-    font-family: Georgia;
+    font-family: $symbol-font;
 }
 
 /**
@@ -840,11 +853,11 @@ span#error {
 
 .body,
 #example {
-    font-family: Georgia;
+    font-family: $board-font;
 }
 
 #example table {
-    font: 0.9em/1.35em Verdana;
+    font: 0.9em/1.35em $table-font;
     border: 1px solid black;
     width: 90%;
     margin: 0 auto 1.5em; /** Recalculate */
@@ -906,7 +919,7 @@ textarea,
 textarea,
 #title-form,
 #id-form {
-    font-family: Verdana;
+    font-family: $input-font;
 }
 
 #id-form {
@@ -935,7 +948,7 @@ textarea,
 
 #markdown {
     background-color: pink;
-    font-family: "Palatino Linotype", sans-serif;
+    font-family: $markdown-font;
     margin: 0 auto;  /** Pick a better value for 0 */
 
     blockquote {
@@ -968,7 +981,7 @@ textarea,
 ***** CREDITS *****
 *****         ****/
 #credits {
-    font-family: "Helvetica Neue", Helvetica, Verdana;
+    font-family: $credits-font;
     font-size: 0.75em;
     line-height: 2em;
     width: 450px;
