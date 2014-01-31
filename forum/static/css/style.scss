@@ -1,8 +1,34 @@
+// Search for "//!"
+
 $radius: 5px;
 $shadow: 1px 1px 5px #888;
 $text-shadow: 1px 1px 1px rgba(255, 255, 255, .5);
 
 // Colours
+$alert-bg:         pink;
+$alertError-bg:    #EE3B3B;
+$alertInfo-bg:     lightblue;
+$alertSuccess-bg:  #90EE90;
+$board-bg:         #FF9;
+$currentPage-bg:   #FF9;
+$errorList-color:  #B94A48;
+$errorList-bg:     #F2DEDE; // cf. Bootstrap
+$errorList-border: #B94A4B;
+$grey-bg:          #F7F7F7;
+$grey-border:      #D1D1D1;
+$header-bg:        #FF9;
+$inputErr-border:  #B94A48;
+$markdown-bg:      pink;
+$navigation-bg:    #98FB98;
+$popular-bg:       pink;
+$post-bg:          beige;
+$postBottom-bg:    pink;
+$recent-bg:        #B0E0E6;
+$stickied-bg:      pink;
+$subscribed-bg:    beige;
+$tdHover-bg:       #FF9;
+$threadsort-bg:    #A9A9A9;
+$updates-color:    pink;
 
 // Fonts
 $alert-font:    Georgia;
@@ -92,7 +118,7 @@ html {
 body,
 button,
 input {
-    font: 14px/1.5em $body-font;
+    font: #{$base-fontSize}/#{$base-lineHeight} $body-font;
 }
 
 a {
@@ -209,7 +235,7 @@ table {
     width: 450px;
     margin: 15px auto 0;
     clear: both;
-    background-color: #ff9;
+    background-color: #FF9;
     text-align: center;
 }
 
@@ -621,7 +647,7 @@ legend {
 }
 
 #content table.hide {
-    font: 0.6em/1.2em $symbol-font;
+    font: 0.6em/1.2em $symbol-font; //!
 }
 /**** * ****/
 
@@ -743,12 +769,12 @@ span#error {
     caption {
         caption-side: top;
         text-align: center;
-        font: small-caps 1.25em $caption-font;
+        font: small-caps 1.25em $caption-font; //!
 
     }
 
     th {
-        font: bold small-caps 1.25em $th-font;
+        font: bold small-caps 1.25em $th-font; //!
         background-color: #FFF;
     }
 
@@ -888,7 +914,7 @@ span#error {
 }
 
 #example table {
-    font: 0.9em/1.35em $table-font;
+    font: 0.9em/1.35em $table-font; //!
     border: 1px solid black;
     width: 90%;
     margin: 0 auto 1.5em; /** Recalculate */
