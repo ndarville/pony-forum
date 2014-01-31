@@ -2,6 +2,9 @@ $radius: 5px;
 $shadow: 1px 1px 5px #888;
 $text-shadow: 1px 1px 1px rgba(255, 255, 255, .5);
 
+// Colours
+
+// Fonts
 $alert-font:    Georgia;
 $body-font:     "Helvetica Neue", Helvetica, sans-serif;
 $board-font:    Georgia;
@@ -15,6 +18,29 @@ $markdown-font: "Palatino Linotype", sans-serif;
 $symbol-font:   Georgia;
 $table-font:    Verdana;
 $th-font:       Georgia;
+
+$base-fontSize:   1em;
+$base-lineHeight: 1.5em;
+
+$fontSize:   14px;
+$lineHeight: 1.5 * $fontSize; // 21px
+
+$credits-fontSize:  0.75em; // em
+$h1-fontSize:       32px;
+$h2-fontSize:       24px;
+$h3-fontSize:       20px;
+$h4-fontSize:       18px;
+$h5-fontSize:       16px;
+$input-fontSize:    0.9em;  // em
+$postDate-fontSize: 0.85em; // em
+$pre-fontSize:      11.5px;
+$table-fontSize:    11.5px;
+$user-fontSize:     0.83em; // em
+
+// These line height should preferably be computed for vertical rhythm
+$credits-lineHeight: 2em;
+$input-lineHeight:   1.35em;
+$user-lineHeight:    1.835em;
 
 @mixin box-shadow($shadow) {
     -webkit-appearance: none; /** Fixes box-shadows on iOS */
@@ -40,6 +66,15 @@ $th-font:       Georgia;
     -webkit-border-radius: $radius;
        -moz-border-radius: $radius;
             border-radius: $radius;
+}
+
+@mixin getFontSize($size)  { font-size: ($size*em) / ($lineHeight*px); }
+@mixin getMarginTop($size) { margin-top: ($lineHeight*em) / ($size*px); }
+@mixin lineHeight($size)   { line-height: ($lineHeight*em) / ($size*px) / 2; }
+@mixin getVerticalRhythm($size) {
+    @include getFontSize($size);
+    @include getMarginTop($size);
+    @include lineHeight($size);
 }
 
 @mixin navigation-icon($url) {
@@ -75,7 +110,7 @@ blockquote {
 }
 
 code {
-    font-family: $font-code;
+    font-family: $code-font;
     padding: 0 0.25em;
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
@@ -88,7 +123,9 @@ input {
 }
 
 pre {
-    font: 0.8125em/1.8462em $font-code;
+    @include getFontSize($pre-fontSize);
+    @include getLineHeight($pre-fontSize);
+    font-family: $code-font;
     display: inline-block;
     margin: 1em 1px; /** 1px to offset the border */
     padding: 5px 15px;
@@ -267,8 +304,8 @@ table {
 #thread-mod-buttons-bottom,
 #content a.button,
 input[type="submit"] {
-    font-size: $normal-fontSize; /** Addresses weird font-size for <input> */
-    font-height: $normal-lineHeight;
+    font-size: $base-fontSize; /** Addresses weird font-size for <input> */
+    font-height: $base-lineHeight;
     font-family: $button-font;
     font-variant: small-caps;
     margin: 1.5em 0;
@@ -655,41 +692,31 @@ span#error {
 #board .words,
 #example {
     h1 {
-        font-size: 2.2857em; /* 32px */
-        line-height: 1.3125em; /* 42px */
-        margin-top: 0.6563em;
+        @include getVerticalRhythm($h1-fontSize);
         margin-bottom: 0;
     }
 
     h2 {
-        font-size: 1.7143em; /* 24px */
-        line-height: 1.3125em; /* 42px */
-        margin-top: 0.6563em;
+        @include getVerticalRhythm($h2-fontSize);
         margin-bottom: 0;
         font-variant: small-caps;
     }
 
     h3 {
-        font-size: 1.4286em; /* 20px */
-        line-height: 1.05em; /* 21px */
-        margin-top: 1.05em;
+        @include getVerticalRhythm($h3-fontSize);
         margin-bottom: 0;
         font-variant: small-caps;
         font-weight: bold;
     }
 
     h4 {
-        font-size: 1.2857em; /* 18px */
-        line-height: 1.1667em; /* 24px */
-        margin-top: 1.1667em;
+        @include getVerticalRhythm($h4-fontSize);
         margin-bottom: 0;
         font-style: italic;
     }
 
     h5 {
-        font-size: 1.1429em; /* 16px */
-        line-height: 1.3125em; /* 21px */
-        margin-top: 1.3125em;
+        @include getVerticalRhythm($h5-fontSize);
         margin-bottom: 0;
         text-transform: uppercase;
     }
@@ -703,7 +730,9 @@ span#error {
 
 #board .words table,
 #content-body table {
-    font: 0.8125em/1.8462em $table-font;
+    @include getFontSize($table-fontSize);
+    @include getLineHeight($table-fontSize);
+    font-family: $table-font;
     margin: 0 auto 1em; /** 1px to offset the border */
     background-color: #F7F7F7;
     border: 1px solid #D1D1D1;
@@ -751,7 +780,7 @@ span#error {
 }
 
 .postdate {
-    font-size: 0.85em;
+    font-size: $postDate-fontSize;
 }
 
 .postsinthread,
@@ -778,8 +807,8 @@ span#error {
 .op {
     float: left;
     width: 150px; /** Recalculate */
-    font-size: 0.83em;
-    line-height: 1.835em;
+    font-size: $user-fontSize;
+    line-height: $user-lineHeight;
 }
 
 .op .username {
@@ -913,7 +942,8 @@ textarea,
 #title-form,
 #id-form {
     padding: 5px;
-    font-size: 0.9em; line-height: 1.35em;
+    font-size: $input-fontSize;
+    line-height: $input-lineHeight;
 }
 
 textarea,
@@ -982,8 +1012,8 @@ textarea,
 *****         ****/
 #credits {
     font-family: $credits-font;
-    font-size: 0.75em;
-    line-height: 2em;
+    font-size: $credits-fontSize;
+    line-height: $credits-lineHeight;
     width: 450px;
     margin: 1.5em auto; /** Recalculate */
     text-align: center;
