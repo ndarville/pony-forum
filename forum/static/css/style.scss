@@ -89,7 +89,7 @@ $user-lineHeight:    1.835em;
             box-sizing: border-box;
 }
 
-@mixin border-corner-radius($vert, $hor, $radius) {
+@mixin border-corner-radius($vert, $hor, $radius:$radius) {
     -webkit-border-#{$vert}-#{$hor}-radius: $radius;
     -moz-border-radius-#{$vert}#{$hor}: $radius;
     border-#{$vert}-#{$hor}-radius: $radius;
