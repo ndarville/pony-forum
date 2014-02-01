@@ -505,17 +505,19 @@ ul.errorlist li {
     border: 1px solid $errorList-border;
 }
 
-#content-body input {
-    border: 1px solid $grey-border;
-    box-shadow: none;
-}
+#content-body {
+    input {
+        border: 1px solid $grey-border;
+        box-shadow: none;
 
-#content-body input.input-error {
-    border: 1px solid $inputErr-border;
-}
+        $.input-error {
+            border: 1px solid $inputErr-border;
+        }
+    }
 
-#content-body label {
-    width: 33%;
+    label {
+        width: 33%;
+    }
 }
 
 legend {
@@ -602,16 +604,22 @@ legend {
     width: 450px;
     margin: 1.5em 15px;
     float: left;
-}
 
-#content table.categories,
-#content table.threads {
-    width: 100%;
-}
+    table {
+        $.categories,
+        $.threads {
+            width: 100%;
+        }
 
-#content a.button {
-    display: inline; /** Fixes the width: 100% button problem. Revise */
-    padding: 5px;
+        $.hide {
+            font: 0.6em/1.2em $symbol-font; //!
+        }
+    }
+
+    a.button {
+        display: inline; /** Fixes the width: 100% button problem. Revise */
+        padding: 5px;
+    }
 }
 
 #content .categories thead,
@@ -619,25 +627,27 @@ legend {
 #content .categories th,
 #content .threads th,
 #threadbar th {
-    background: #FFB;
+    background: #FFB; //!
     font-weight: bold;
     text-align: left;
 }
 
-#content .threads .locked {
-    background: #F5F5C0;
-}
+#content .threads {
+    .locked {
+        background: #F5F5C0; //!
+    }
 
-#content .threads .removed {
-    background: #F08080;
-}
+    .removed {
+        background: #F08080; //!
+    }
 
-#content .threads .stickied {
-    background: $stickied-bg;
-}
+    .stickied {
+        background: $stickied-bg;
+    }
 
-#content .threads .subscribed {
-    background: #FFF7F7;
+    .subscribed {
+        background: #FFF7F7; //!
+    }
 }
 
 #content .categories tr:hover,
@@ -645,10 +655,6 @@ legend {
 #threadbar li:hover,
 #navigation li:hover {
     background-color: rgba(0,0,0, .1);
-}
-
-#content table.hide {
-    font: 0.6em/1.2em $symbol-font; //!
 }
 /**** * ****/
 
@@ -928,13 +934,13 @@ span#error {
 div#button-group {
     text-align: center;
     margin: 1em auto; /** Revise */
-}
 
-div#button-group a.button,
-div#button-group input[type="submit"] {
-    padding: 5px 10px;
-    margin: 0 1em;
-    display: inline-block;
+    a.button,
+    input[type="submit"] {
+        padding: 5px 10px;
+        margin: 0 1em;
+        display: inline-block;
+    }
 }
 
 /** Check that CSS doesn't break this in other browsers
@@ -942,10 +948,10 @@ nor with different rules */
 .spoiler {
     background-color: black;
     color: black;
-}
 
-.spoiler:hover {
-    color: grey;
+    $:hover {
+        color: grey;
+    }
 }
 /**** * ****/
 
