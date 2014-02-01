@@ -972,14 +972,6 @@ textarea,
     @include border-radius($radius);
     @include box-shadow(inset + $shadow);
     @include box-sizing;
-}
-
-input[type=email],
-input[type=password],
-input[type=text],
-textarea,
-#title-form,
-#id-form {
     padding: 5px;
     font-size: $input-fontSize;
     line-height: $input-lineHeight;
