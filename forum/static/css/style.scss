@@ -130,7 +130,7 @@ a {
     text-decoration: none;
     color: inherit;
 
-    $:visited {
+    &:visited {
         color: inherit;
     }
 }
@@ -205,9 +205,9 @@ table {
     width: 100%;
     text-align: center;
 
-    $.info    { background-color: $alertInfo-bg; }
-    $.success { background-color: $alertSuccess-bg; }
-    $.error   { background-color: $alertError-bg; }
+    &.info    { background-color: $alertInfo-bg; }
+    &.success { background-color: $alertSuccess-bg; }
+    &.error   { background-color: $alertError-bg; }
 }
 /* * */
 
@@ -257,51 +257,51 @@ table {
             display: block;
             padding: 5px 0 5px 35px;
 
-            $[href*="/user/"] {
+            &[href*="/user/"] {
                 @include navigation-icon(/static/glyphish/123-id-card.png);
             }
-            $[href$="/saves/"] {
+            &[href$="/saves/"] {
                 @include navigation-icon(/static/glyphish/28-star.png);
             }
-            $[href$="/reports/"] {
+            &[href$="/reports/"] {
                 @include navigation-icon(/static/glyphish/146-gavel.png);
             }
-            $[href$="/settings/"] {
+            &[href$="/settings/"] {
                 @include navigation-icon(/static/glyphish/20-gear2.png);
             }
-            $[href$="/bookmarks/"] {
+            &[href$="/bookmarks/"] {
                 @include navigation-icon(/static/glyphish/191-collection.png);
             }
-            $[href$="/subscriptions/"] {
+            &[href$="/subscriptions/"] {
                 @include navigation-icon(/static/glyphish/44-shoebox.png);
             }
-            $[href$="/pm/"] {
+            &[href$="/pm/"] {
                 @include navigation-icon(/static/glyphish/18-envelope.png);
             }
-            $[href$="/configuration/"] {
+            &[href$="/configuration/"] {
                 @include navigation-icon(/static/glyphish/158-wrench-2.png);
             }
-            $[href="http://pony-forum.com/rules/"],
-            $[href$="/rules/"] {
+            &[href="http://pony-forum.com/rules/"],
+            &[href$="/rules/"] {
                 @include navigation-icon(/static/glyphish/138-scales.png);
             }
-            $[href$="pony-forum.com/guide/"],
-            $[href$="/guide/"] {
+            &[href$="pony-forum.com/guide/"],
+            &[href$="/guide/"] {
                 @include navigation-icon(/static/glyphish/96-book.png);
             }
-            $[href$="/search/"] {
+            &[href$="/search/"] {
                 @include navigation-icon(/static/glyphish/06-magnify.png);
             }
-            $[href$="/logout/"] {
+            &[href$="/logout/"] {
                 @include navigation-icon(/static/glyphish/54-lock.png);
             }
-            $[href*="/login/"] {
+            &[href*="/login/"] {
                 @include navigation-icon(/static/glyphish/30-key.png);
             }
-            $[href$="/register/"] {
+            &[href$="/register/"] {
                 @include navigation-icon(/static/glyphish/111-user.png);
             }
-            $[href*="dyslexia.css"] {
+            &[href*="dyslexia.css"] {
                 @include navigation-icon(/static/glyphish/12-eye.png);
             }
         }
@@ -610,12 +610,12 @@ legend {
     float: left;
 
     table {
-        $.categories,
-        $.threads {
+        &.categories,
+        &.threads {
             width: 100%;
         }
 
-        $.hide {
+        &.hide {
             font: 0.6em/1.2em $symbol-font; //!
         }
     }
@@ -953,7 +953,7 @@ nor with different rules */
     background-color: black;
     color: black;
 
-    $:hover {
+    &:hover {
         color: grey;
     }
 }
@@ -1148,7 +1148,7 @@ textarea,
                     width: 25px;
 
                     /** Align icons to the middle instead of left */
-                    $[href] {
+                    &[href] {
                         background-position: center;
                     }
                 }
