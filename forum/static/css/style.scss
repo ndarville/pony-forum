@@ -258,51 +258,51 @@ table {
             padding: 5px 0 5px 35px;
 
             &[href*="/user/"] {
-                @include navigation-icon(/static/glyphish/123-id-card.png);
+                @include navigation-icon("/static/glyphish/123-id-card.png");
             }
             &[href$="/saves/"] {
-                @include navigation-icon(/static/glyphish/28-star.png);
+                @include navigation-icon("/static/glyphish/28-star.png");
             }
             &[href$="/reports/"] {
-                @include navigation-icon(/static/glyphish/146-gavel.png);
+                @include navigation-icon("/static/glyphish/146-gavel.png");
             }
             &[href$="/settings/"] {
-                @include navigation-icon(/static/glyphish/20-gear2.png);
+                @include navigation-icon("/static/glyphish/20-gear2.png");
             }
             &[href$="/bookmarks/"] {
-                @include navigation-icon(/static/glyphish/191-collection.png);
+                @include navigation-icon("/static/glyphish/191-collection.png");
             }
             &[href$="/subscriptions/"] {
-                @include navigation-icon(/static/glyphish/44-shoebox.png);
+                @include navigation-icon("/static/glyphish/44-shoebox.png");
             }
             &[href$="/pm/"] {
-                @include navigation-icon(/static/glyphish/18-envelope.png);
+                @include navigation-icon("/static/glyphish/18-envelope.png");
             }
             &[href$="/configuration/"] {
-                @include navigation-icon(/static/glyphish/158-wrench-2.png);
+                @include navigation-icon("/static/glyphish/158-wrench-2.png");
             }
             &[href="http://pony-forum.com/rules/"],
             &[href$="/rules/"] {
-                @include navigation-icon(/static/glyphish/138-scales.png);
+                @include navigation-icon("/static/glyphish/138-scales.png");
             }
             &[href$="pony-forum.com/guide/"],
             &[href$="/guide/"] {
-                @include navigation-icon(/static/glyphish/96-book.png);
+                @include navigation-icon("/static/glyphish/96-book.png");
             }
             &[href$="/search/"] {
-                @include navigation-icon(/static/glyphish/06-magnify.png);
+                @include navigation-icon("/static/glyphish/06-magnify.png");
             }
             &[href$="/logout/"] {
-                @include navigation-icon(/static/glyphish/54-lock.png);
+                @include navigation-icon("/static/glyphish/54-lock.png");
             }
             &[href*="/login/"] {
-                @include navigation-icon(/static/glyphish/30-key.png);
+                @include navigation-icon("/static/glyphish/30-key.png");
             }
             &[href$="/register/"] {
-                @include navigation-icon(/static/glyphish/111-user.png);
+                @include navigation-icon("/static/glyphish/111-user.png");
             }
             &[href*="dyslexia.css"] {
-                @include navigation-icon(/static/glyphish/12-eye.png);
+                @include navigation-icon("/static/glyphish/12-eye.png");
             }
         }
     }
@@ -476,19 +476,19 @@ input[type="submit"] {
     }
 
     input[name="username"] {
-        @include navigation-icon(/static/glyphish/111-user.png);
+        @include navigation-icon("/static/glyphish/111-user.png");
         background-size: 1.5em;
         background-position: 5px 50%;
     }
 
     input[name="email"] {
-        @include navigation-icon(/static/glyphish/18-envelope.png);
+        @include navigation-icon("/static/glyphish/18-envelope.png");
         background-size: 1.5em;
         background-position: 5px 50%;
     }
 
     input[name*="password"] {
-        @include navigation-icon(/static/glyphish/54-lock.png);
+        @include navigation-icon("/static/glyphish/54-lock.png");
         background-size: 1.25em;
         background-position: 7px 50%;
     }
