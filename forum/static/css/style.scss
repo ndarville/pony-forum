@@ -5,30 +5,31 @@ $shadow: 1px 1px 5px #888;
 $text-shadow: 1px 1px 1px rgba(255, 255, 255, .5);
 
 // Colours
-$alert-bg:         pink;
-$alertError-bg:    #EE3B3B;
-$alertInfo-bg:     lightblue;
-$alertSuccess-bg:  #90EE90;
-$board-bg:         #FF9;
-$currentPage-bg:   #FF9;
-$errorList-color:  #B94A48;
-$errorList-bg:     #F2DEDE; // cf. Bootstrap
-$errorList-border: #B94A4B;
-$grey-bg:          #F7F7F7;
-$grey-border:      #D1D1D1;
-$header-bg:        #FF9;
-$inputErr-border:  #B94A48;
-$markdown-bg:      pink;
-$navigation-bg:    #98FB98;
-$popular-bg:       pink;
-$post-bg:          beige;
-$postBottom-bg:    pink;
-$recent-bg:        #B0E0E6;
-$stickied-bg:      pink;
-$subscribed-bg:    beige;
-$tdHover-bg:       #FF9;
-$threadsort-bg:    #A9A9A9;
-$updates-color:    pink;
+$alert-bg:          pink;
+$alertError-bg:     #EE3B3B;
+$alertInfo-bg:      lightblue;
+$alertSuccess-bg:   #90EE90;
+$blockquote-border: #444;
+$board-bg:          #FF9;
+$currentPage-bg:    #FF9;
+$errorList-color:   #B94A48;
+$errorList-bg:      #F2DEDE;
+$errorList-border:  #B94A4B;
+$grey-bg:           #F7F7F7;
+$grey-border:       #D1D1D1;
+$header-bg:         #FF9;
+$inputErr-border:   #B94A48;
+$markdown-bg:       pink;
+$navigation-bg:     #98FB98;
+$popular-bg:        pink;
+$post-bg:           beige;
+$postBottom-bg:     pink;
+$recent-bg:         #B0E0E6;
+$stickied-bg:       pink;
+$subscribed-bg:     beige;
+$tdHover-bg:        #FF9;
+$threadsort-bg:     #A9A9A9;
+$updates-color:     pink;
 
 // Fonts
 $alert-font:    Georgia;
@@ -132,7 +133,7 @@ a {
 
 blockquote {
     padding: 0 10px;
-    border-left: 1px solid #444;
+    border-left: 1px solid $blockquote-border;
 /** 1px left offsets the 1px border above */
     margin: 1em 1px 0;
 }
@@ -140,8 +141,8 @@ blockquote {
 code {
     font-family: $code-font;
     padding: 0 0.25em;
-    background-color: #F7F7F7;
-    border: 1px solid #D1D1D1;
+    background-color: $grey-bg;
+    border: 1px solid $grey-border;
     @include border-radius($radius);
 }
 
@@ -157,8 +158,8 @@ pre {
     display: inline-block;
     margin: 1em 1px; /** 1px to offset the border */
     padding: 5px 15px;
-    background-color: #F7F7F7;
-    border: 1px solid #D1D1D1;
+    background-color: $grey-bg;
+    border: 1px solid $grey-border;
     @include border-radius($radius);
     overflow: auto;
 
@@ -188,7 +189,7 @@ table {
     width: 100%;
     text-align: center;
     margin: 0 auto 0.5em;
-    background-color: pink;
+    background-color: $alert-bg;
     font-family: $alert-font;
 }
 
@@ -200,9 +201,9 @@ table {
     width: 100%;
     text-align: center;
 
-    $.info    { background-color: lightblue; }
-    $.success { background-color: #90EE90; }
-    $.error   { background-color: #EE3B3B; }
+    $.info    { background-color: $alertInfo-bg; }
+    $.success { background-color: $alertSuccess-bg; }
+    $.error   { background-color: $alertError-bg; }
 }
 /* * */
 
@@ -235,7 +236,7 @@ table {
     width: 450px;
     margin: 15px auto 0;
     clear: both;
-    background-color: #FF9;
+    background-color: $header-bg;
     text-align: center;
 }
 
@@ -243,7 +244,7 @@ table {
     width: 210px;
     float: left;
     margin: 1.5em 15px;
-    background: #98FB98;
+    background: $navigation-bg;
 
     li {
         padding-left: 10px;
@@ -314,11 +315,11 @@ table {
 }
 
 #subscribed {
-    background: beige;
+    background: $subscribed-bg;
 }
 
 #popular {
-    background: pink;
+    background: $popular-bg;
 }
 /* * */
 
@@ -360,9 +361,9 @@ input[type="submit"] {
 #content a.button,
 input[type="submit"] {
 /** padding: 0 0.5em; */
-    border: 1px solid #D1D1D1;
+    border: 1px solid $grey-border;
     display: inline-block;
-    background-color: #F7F7F7;
+    background-color: $grey-bg;
 }
 
 .pagination li:hover,
@@ -427,7 +428,7 @@ input[type="submit"] {
 }
 
 .pagination .current_page {
-    background-color: #FF9;
+    background-color: $currentPage-bg;
 }
 
 #content-body .pagination a {
@@ -499,18 +500,18 @@ ul.errorlist li {
     display: block;
     padding: 0 0.25em;
     margin-bottom: 3px;
-    color: #B94A48;
-    background-color: #F2DEDE;  /** #F2DEDE cf. Bootstrap */
-    border: 1px solid #B94A4B;
+    color: $errorList-color;
+    background-color: $errorList-bg;
+    border: 1px solid $errorList-border;
 }
 
 #content-body input {
-    border: 1px solid #D1D1D1;
+    border: 1px solid $grey-border;
     box-shadow: none;
 }
 
 #content-body input.input-error {
-    border: 1px solid #B94A48;  /** cf. Bootstrap */
+    border: 1px solid $inputErr-border;
 }
 
 #content-body label {
@@ -578,7 +579,7 @@ legend {
     .remove {
         padding: 0.25em 0.75em;
         background-color: #FFF;
-        border: 1px solid #D1D1D1;
+        border: 1px solid $grey-border;
         text-decoration: none;
     }
 
@@ -632,7 +633,7 @@ legend {
 }
 
 #content .threads .stickied {
-    background: pink;
+    background: $stickied-bg;
 }
 
 #content .threads .subscribed {
@@ -668,7 +669,7 @@ legend {
 }
 
 .threadsort {
-    background-color: #A9A9A9;
+    background-color: $threadsort-bg;
     font-weight: bold;
     display: block;
     padding: 5px 0;
@@ -678,7 +679,7 @@ legend {
 }
 
 #recent {
-    background: #B0E0E6;
+    background: $recent-bg;
 }
 
 td,
@@ -690,7 +691,7 @@ th {
     position: absolute;
     top: 5px;
     right: 5px;
-    color: pink;
+    color: $updates-color;
 }
 
 /**
@@ -711,7 +712,7 @@ span#error {
 ***** THREAD & POST template *****
 *****                        ****/
 #board {
-    background-color: #FF9;
+    background-color: $board-bg;
     width: 680px;
     float: left;
     margin: 1.5em 15px;
@@ -751,7 +752,7 @@ span#error {
 
     img {
         margin: 1em auto;
-        border: 1px solid #D1D1D1;
+        border: 1px solid $grey-border;
         display: block;
     }
 }
@@ -762,8 +763,8 @@ span#error {
     @include getLineHeight($table-fontSize);
     font-family: $table-font;
     margin: 0 auto 1em; /** 1px to offset the border */
-    background-color: #F7F7F7;
-    border: 1px solid #D1D1D1;
+    background-color: $grey-bg;
+    border: 1px solid $grey-border;
     @include border-radius($radius);
 
     caption {
@@ -792,7 +793,7 @@ span#error {
     }
 
     td:hover {
-        background-color: #FF9;
+        background-color: $tdHover-bg;
     }
 }
 
@@ -802,7 +803,7 @@ span#error {
 }
 
 .post {
-    background-color: beige;
+    background-color: $post-bg;
     padding: 0 10px;
     clear: both;
 }
@@ -878,7 +879,7 @@ span#error {
 
 .post-bottom {
     clear: both;
-    background-color: pink;
+    background-color: $postBottom-bg;
 
     .right-buttons a.button {
         float: right;
@@ -1005,7 +1006,7 @@ textarea,
 }
 
 #markdown {
-    background-color: pink;
+    background-color: $markdown-bg;
     font-family: $markdown-font;
     margin: 0 auto;  /** Pick a better value for 0 */
 
