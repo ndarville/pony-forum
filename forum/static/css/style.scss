@@ -319,11 +319,11 @@ table {
 }
 
 #subscribed {
-    background-color $subscribed-bg;
+    background-color: $subscribed-bg;
 }
 
 #popular {
-    background-color $popular-bg;
+    background-color: $popular-bg;
 }
 /* * */
 
@@ -631,26 +631,26 @@ legend {
 #content .categories th,
 #content .threads th,
 #threadbar th {
-    background-color $ththead-color;
+    background-color: $ththead-color;
     font-weight: bold;
     text-align: left;
 }
 
 #content .threads {
     .locked {
-        background-color $locked-bg;
+        background-color: $locked-bg;
     }
 
     .removed {
-        background-color $removed-bg;
+        background-color: $removed-bg;
     }
 
     .stickied {
-        background-color $stickied-bg;
+        background-color: $stickied-bg;
     }
 
     .subscribed {
-        background-color $subscribed-thread;
+        background-color: $subscribed-thread;
     }
 }
 
@@ -689,7 +689,7 @@ legend {
 }
 
 #recent {
-    background-color $recent-bg;
+    background-color: $recent-bg;
 }
 
 td,
