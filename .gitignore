@@ -3,6 +3,7 @@
 *.pot
 *.pyc
 .dotcloud/
+.sass-cache/
 build/
 forum/migrations/
 notes/
