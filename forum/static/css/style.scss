@@ -1,4 +1,4 @@
-// Search for "//!"
+// TODO: "//!"
 
 $radius: 5px;
 $shadow: 1px 1px 5px #888;
@@ -19,16 +19,20 @@ $grey-bg:           #F7F7F7;
 $grey-border:       #D1D1D1;
 $header-bg:         #FF9;
 $inputErr-border:   #B94A48;
+$locked-bg:         #F5F5C0;
 $markdown-bg:       pink;
 $navigation-bg:     #98FB98;
 $popular-bg:        pink;
 $post-bg:           beige;
 $postBottom-bg:     pink;
 $recent-bg:         #B0E0E6;
+$removed-bg:        #F08080;
 $stickied-bg:       pink;
 $subscribed-bg:     beige;
+$subscribed-thread-bg: #FFF7F7;
 $tdHover-bg:        #FF9;
 $threadsort-bg:     #A9A9A9;
+$ththead-color:     #FFB;
 $updates-color:     pink;
 
 // Fonts
@@ -244,7 +248,7 @@ table {
     width: 210px;
     float: left;
     margin: 1.5em 15px;
-    background: $navigation-bg;
+    background-color $navigation-bg;
 
     li {
         padding-left: 10px;
@@ -315,11 +319,11 @@ table {
 }
 
 #subscribed {
-    background: $subscribed-bg;
+    background-color $subscribed-bg;
 }
 
 #popular {
-    background: $popular-bg;
+    background-color $popular-bg;
 }
 /* * */
 
@@ -627,26 +631,26 @@ legend {
 #content .categories th,
 #content .threads th,
 #threadbar th {
-    background: #FFB; //!
+    background-color $ththead-color;
     font-weight: bold;
     text-align: left;
 }
 
 #content .threads {
     .locked {
-        background: #F5F5C0; //!
+        background-color $locked-bg;
     }
 
     .removed {
-        background: #F08080; //!
+        background-color $removed-bg;
     }
 
     .stickied {
-        background: $stickied-bg;
+        background-color $stickied-bg;
     }
 
     .subscribed {
-        background: #FFF7F7; //!
+        background-color $subscribed-thread;
     }
 }
 
@@ -685,7 +689,7 @@ legend {
 }
 
 #recent {
-    background: $recent-bg;
+    background-color $recent-bg;
 }
 
 td,
