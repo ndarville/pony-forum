@@ -107,7 +107,7 @@ $user-lineHeight:    1.835em;
 @mixin getVerticalRhythm($size) {
     @include getFontSize($size);
     @include getMarginTop($size);
-    @include lineHeight($size);
+    @include getLineHeight($size);
 }
 
 @mixin navigation-icon($url) {
@@ -650,7 +650,7 @@ legend {
     }
 
     .subscribed {
-        background-color: $subscribed-thread;
+        background-color: $subscribed-thread-bg;
     }
 }
 
