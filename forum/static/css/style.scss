@@ -101,9 +101,9 @@ $user-lineHeight:    1.835em;
             border-radius: $radius;
 }
 
-@mixin getFontSize($size)   { font-size: $size/$lineHeight em; }
-@mixin getMarginTop($size)  { margin-top: $lineHeight/$size em; }
-@mixin getLineHeight($size) { line-height: $lineHeight/$size/2 em; }
+@mixin getFontSize($size)   { font-size: $size/$lineHeight * 1em; }
+@mixin getMarginTop($size)  { margin-top: $lineHeight/$size * 1em; }
+@mixin getLineHeight($size) { line-height: $lineHeight/$size/2 * 1em; }
 @mixin getVerticalRhythm($size) {
     @include getFontSize($size);
     @include getMarginTop($size);
