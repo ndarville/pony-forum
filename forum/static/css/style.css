@@ -34,7 +34,7 @@ input {
   margin-bottom: 2px; }
 
 pre {
-  font-size: 0.54762em;
+  font-size: 0.82143em;
   line-height: 0.91304em;
   font-family: monospace;
   display: inline-block;
@@ -534,20 +534,20 @@ span#error {
 
 #board .words h1,
 #example h1 {
-  font-size: 1.52381em;
+  font-size: 2.28571em;
   margin-top: 0.65625em;
   line-height: 0.32813em;
   margin-bottom: 0; }
 #board .words h2,
 #example h2 {
-  font-size: 1.14286em;
+  font-size: 1.71429em;
   margin-top: 0.875em;
   line-height: 0.4375em;
   margin-bottom: 0;
   font-variant: small-caps; }
 #board .words h3,
 #example h3 {
-  font-size: 0.95238em;
+  font-size: 1.42857em;
   margin-top: 1.05em;
   line-height: 0.525em;
   margin-bottom: 0;
@@ -555,14 +555,14 @@ span#error {
   font-weight: bold; }
 #board .words h4,
 #example h4 {
-  font-size: 0.85714em;
+  font-size: 1.28571em;
   margin-top: 1.16667em;
   line-height: 0.58333em;
   margin-bottom: 0;
   font-style: italic; }
 #board .words h5,
 #example h5 {
-  font-size: 0.7619em;
+  font-size: 1.14286em;
   margin-top: 1.3125em;
   line-height: 0.65625em;
   margin-bottom: 0;
@@ -575,7 +575,7 @@ span#error {
 
 #board .words table,
 #content-body table {
-  font-size: 0.54762em;
+  font-size: 0.82143em;
   line-height: 0.91304em;
   font-family: Verdana;
   margin: 0 auto 1em;
