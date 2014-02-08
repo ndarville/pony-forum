@@ -3,6 +3,7 @@
 $radius: 5px;
 $shadow: 1px 1px 5px #888;
 $text-shadow: 1px 1px 1px rgba(255, 255, 255, .5);
+$transparent: rgba(0,0,0, .1);
 
 // Colours
 $alert-bg:          pink;
@@ -377,7 +378,7 @@ input[type="submit"] {
 #thread-mod-buttons-bottom li:hover,
 #content a.button:hover,
 input[type="submit"]:hover {
-    background-color: rgba(0,0,0, .1);
+    background-color: $transparent;
 }
 
 .pagination li:first-child,
@@ -658,7 +659,7 @@ legend {
 #content .threads tr:hover,
 #threadbar li:hover,
 #navigation li:hover {
-    background-color: rgba(0,0,0, .1);
+    background-color: $transparent;
 }
 /**** * ****/
 
@@ -799,7 +800,7 @@ span#error {
     }
 
     tr:hover {
-        background-color: rgba(0,0,0, .1);
+        background-color: $transparent;
     }
 
     td:hover {
