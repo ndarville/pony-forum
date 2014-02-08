@@ -35,7 +35,7 @@ input {
 
 pre {
   font-size: 0.82143em;
-  line-height: 0.91304em;
+  line-height: 1.82609em;
   font-family: monospace;
   display: inline-block;
   margin: 1em 1px;
@@ -536,20 +536,20 @@ span#error {
 #example h1 {
   font-size: 2.28571em;
   margin-top: 0.65625em;
-  line-height: 0.32813em;
+  line-height: 0.65625em;
   margin-bottom: 0; }
 #board .words h2,
 #example h2 {
   font-size: 1.71429em;
   margin-top: 0.875em;
-  line-height: 0.4375em;
+  line-height: 0.875em;
   margin-bottom: 0;
   font-variant: small-caps; }
 #board .words h3,
 #example h3 {
   font-size: 1.42857em;
   margin-top: 1.05em;
-  line-height: 0.525em;
+  line-height: 1.05em;
   margin-bottom: 0;
   font-variant: small-caps;
   font-weight: bold; }
@@ -557,14 +557,14 @@ span#error {
 #example h4 {
   font-size: 1.28571em;
   margin-top: 1.16667em;
-  line-height: 0.58333em;
+  line-height: 1.16667em;
   margin-bottom: 0;
   font-style: italic; }
 #board .words h5,
 #example h5 {
   font-size: 1.14286em;
   margin-top: 1.3125em;
-  line-height: 0.65625em;
+  line-height: 1.3125em;
   margin-bottom: 0;
   text-transform: uppercase; }
 #board .words img,
@@ -576,7 +576,7 @@ span#error {
 #board .words table,
 #content-body table {
   font-size: 0.82143em;
-  line-height: 0.91304em;
+  line-height: 1.82609em;
   font-family: Verdana;
   margin: 0 auto 1em;
   /** 1px to offset the border */
