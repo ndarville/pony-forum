@@ -35,6 +35,7 @@ input {
 
 pre {
   font-size: 0.82143em;
+  color: #000;
   line-height: 1.82609em;
   font-family: monospace;
   display: inline-block;
@@ -576,6 +577,7 @@ span#error {
 #board .words table,
 #content-body table {
   font-size: 0.82143em;
+  color: #000;
   line-height: 1.82609em;
   font-family: Verdana;
   margin: 0 auto 1em;
