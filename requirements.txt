@@ -18,7 +18,7 @@ django-registration==0.8
 django-secure==1.0
 
 # Debugging
-django-debug-toolbar==1.0
+django-debug-toolbar==0.11
 ##django-cache-panel
 
 # Database:
