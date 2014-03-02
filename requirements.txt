@@ -6,7 +6,7 @@ django-admin-bootstrapped
 docutils==0.8.1
 
 # Title and post formatting
-elementtree==1.2.7-20070827-preview
+elementtree
 smartypants==1.6.0.3
 markdown==2.1.1
 bleach==1.1.1
