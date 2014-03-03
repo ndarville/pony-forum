@@ -435,23 +435,43 @@ input[type="submit"] {
 /****          *****
 ***** ACCOUNTS *****
 *****          ****/
-#account-form {
+#left-aligned-buttom-group {
+    text-align: left;
+}
+
+.user-list {
+    display: block;
+    width: 90%;
+    margin: 1em auto 0 auto;
+}
+
+.user-list li {
+    list-style: none;
+    margin-top: 1em
+}
+
+#account-form,
+#search-form {
     text-align: center;
+}
 
-    label {
-        display: none;
-    }
+#account-form label,
+#search-form label {
+    display: none;
+}
 
+input[type="email"],
+input[type="text"],
+input[type="password"],
+#search-form input[type="search"] {
+    padding-left: 35px;  /** Revise */
+    min-width: 60%;
+    max-width: 95%;
+}
+
+#account-form {
     #login-helpers {
         margin: 1.5em auto;
-    }
-
-    input[type="email"],
-    input[type="text"],
-    input[type*="password"] {
-        padding-left: 35px;  /** Revise */
-        min-width: 60%;
-        max-width: 95%;
     }
 
     input[name="username"] {
@@ -460,17 +480,23 @@ input[type="submit"] {
         background-position: 5px 50%;
     }
 
-    input[name="email"] {
+    input[type="email"] {
         @include navigation-icon("/static/glyphish/18-envelope.png");
         background-size: 1.5em;
         background-position: 5px 50%;
     }
 
-    input[name*="password"] {
+    input[type="password"] {
         @include navigation-icon("/static/glyphish/54-lock.png");
         background-size: 1.25em;
         background-position: 7px 50%;
     }
+}
+
+#search-form input[type="search"] {
+    background: url(/static/glyphish/06-magnify.png) no-repeat left;
+    background-size: 1.25em;
+    background-position: 7px 50%;
 }
 
 form p.checkbox { }
@@ -554,8 +580,12 @@ legend {
     text-align: center;
 }
 
-.remove {
+#content-body .remove {
     @include border-radius($radius);
+}
+
+#content-body .remove:hover {
+    background-color: rgba(0,0,0, .1);
 }
 
 #content-body {
@@ -941,9 +971,11 @@ nor with different rules */
 /****                      *****
 ***** CREATE, REPLY & EDIT *****
 *****                      ****/
-input[type=email],
-input[type=password],
-input[type=text],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="text"],
 textarea,
 #title-form,
 #id-form {
