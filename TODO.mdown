@@ -1,0 +1,106 @@
+[To-Do List](#to-do-list)
+------------
+Fire up [some music][music] and let's take a look at what I hope to get to at some point.
+
+I want to implement Markdown footnotes, but as of now, they get identical anchor IDs, which breaks the links (since they all point to the same). I hope to find something that will work in the end, because I regard this as a very important feature to a forum that encourages long-form discussion.
+
+1. [Subscriptions][subscription]
+2. [Bans][bans]
+3. Moderator management interface w/ back-end
+4. Better report system
+
+* CSS
+    * General
+    * Print
+
+* Maintenance
+    * [Logging][logging]
+
+* [Internationalization][international]
+
+* Registration
+    * [Finite log-in attempts][attempts] (Django 1.5)
+    * [Invitation-based sign-up][reg-backend]
+    * [Two-factor authentication][reg-backend]
+
+* Versioning system with upgrade notification
+
+### Eventual, Not Impending, Features
+* [Avatars][avatars]
+
+* Antispam:
+    * Rate limiting
+    * [stopspam][stopspam]
+    * [djangospam][djangospam]
+
+* [+filters in e-mails][filters] allowed
+
+* Support for analytics code
+
+* `nofollow` added to all external links
+
+* [Category-ordering][ordering]
+
+* Thread polls
+* Spoiler code
+
+* Moderation and special access
+    * Moderation action tracker
+    * Members-only threads, categories, and forums
+    * Threadmins and moderator groups
+
+* [Caching][caching]
+
+* Embedding
+    * [Gist][gist]
+    * [Tweets][tweets]
+    * [U.S. states][states]
+
+* Replacement of URLs
+    * Secure ones (secure, SSL, etc.)
+
+* Read-only mode
+
+### Features Under Consideration
+* [Search][search]
+* Formatting buttons
+* Syntax highlighting
+* Post edit time stamps
+* [Markdown Video][video]
+* Post and thread drafts
+    * HTML5 storage?
+* [LaTeX/MathML support][latex-mathml]
+* E-mail check with [better regex][+filters]. (Section 3.)
+* [iOS home screen icon trick][ios-icon]
+* Security:
+    * [Separate account and password reset e-mail][sep-email]
+    * [Implicit password][implicit-pwd]
+* [Hot threads][hotness]
+
+And much, much more.
+
+
+[reg-backend]:  https://bitbucket.org/ubernostrum/django-registration/src/27bccd108cde/docs/simple-backend.rst
+[music]:        http://soundcloud.com/pluxemburg/first-floor-power-to-do-list-akamu-remix
+[subscription]: https://github.com/ndarville/pony-forum/issues/39
+[bans]:         https://github.com/ndarville/pony-forum/issues/40
+[avatars]:      https://github.com/ndarville/pony-forum/issues/41
+[stopspam]:     https://github.com/phalt/stopspam
+[djangospam]:   https://github.com/leandroarndt/djangospam
+[logging]:      http://packages.python.org/Logbook/
+[international]:https://github.com/ndarville/pony-forum/issues?milestone=4&state=open
+[attempts]:     https://docs.djangoproject.com/en/dev/topics/auth/#django.contrib.auth.signals.user_login_failed
+[filters]:      https://github.com/ndarville/pony-forum/issues/68
+[ordering]:     https://github.com/jpwatts/django-positions#readme
+[caching]:      http://docs.dotcloud.com/tutorials/python/django/#caching
+[gist]:         https://github.com/blog/122-embedded-gists
+[tweets]:       https://dev.twitter.com/docs/embedded-tweets
+[states]:       https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/<STATE>_in_United_States.svg/500px-<STATE>_in_United_States.svg.png
+[search]:       http://ericholscher.com/blog/2009/nov/2/large-problems-django-mostly-solved/
+[video]:        http://code.google.com/p/python-markdown-video/
+[latex-mathml]: http://mathjax.org
+[+filters]:     https://tools.ietf.org/html/rfc3696
+[ios-icon]:     https://github.com/ndarville/pony-forum/issues/54
+[sep-email]:    https://twitter.com/mikko/status/231726890933698560
+[implicit-pwd]: https://www.schneier.com/blog/archives/2012/07/implicit_passwo.html
+[hotness]:      http://www.evanmiller.org/rank-hotness-with-newtons-law-of-cooling.html
