@@ -9,7 +9,7 @@ docutils==0.8.1
 elementtree==1.2.6-20050316
 smartypants==1.6.0.3
 markdown==2.1.1
-bleach==1.1.1
+bleach==1.2.2
 
 # User models and registration
 ##PIL==1.1.7
