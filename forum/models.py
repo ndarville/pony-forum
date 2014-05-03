@@ -81,6 +81,9 @@ class Thread(models.Model):
     is_locked         = models.BooleanField(default=False)
     is_removed        = models.BooleanField(default=False)
 #   poll              = models.ForeignKey(Poll, null=True, blank=True)
+    coeditors         = models.ManyToManyField(User, null=True, blank=True,
+                                               verbose_name="co-editor",
+                                               related_name="coeditors")
     bookmarker        = models.ManyToManyField(User, null=True, blank=True,
                                                related_name="bookmarks")
     subscriber        = models.ManyToManyField(User, null=True, blank=True,
@@ -91,12 +94,13 @@ class Thread(models.Model):
     class Meta:
         ordering = ["-creation_date"]
         permissions = (
-            ("remove_thread",   "Remove (and restore) threads"),
-            ("moderate_thread", "Edit thread titles"),
-            ("merge_thread",    "Merge multiple threads together"),
-            ("sticky_thread",   "Stick a thread to the top of the thread list"),
-            ("move_thread",     "Move a thread to another category"),
-            ("lock_thread",     "Lock (and unlock) threads"),
+            ("appoint_coeditor", "Appoint co-editors for threads"),
+            ("remove_thread",    "Remove (and restore) threads"),
+            ("moderate_thread",  "Edit thread titles"),
+            ("merge_thread",     "Merge multiple threads together"),
+            ("sticky_thread",    "Stick a thread to the top of the thread list"),
+            ("move_thread",      "Move a thread to another category"),
+            ("lock_thread",      "Lock (and unlock) threads"),
 #           ("ban_user_in_thread",
 #                               "Ban user from posting in thread permanently"),
 #           ("timeout_user_in_thread",
@@ -121,9 +125,6 @@ class Post(models.Model):
     content_html  = models.TextField()
     author        = models.ForeignKey(User)
     thread        = models.ForeignKey(Thread)
-    co_editors    = models.ManyToManyField(User, null=True, blank=True,
-                                           verbose_name="co-editor",
-                                           related_name="co-editors")
     agrees        = models.ManyToManyField(User, null=True, blank=True,
                                            related_name="agrees")
     thanks        = models.ManyToManyField(User, null=True, blank=True,
@@ -135,8 +136,8 @@ class Post(models.Model):
     class Meta:
         ordering = ["creation_date"]
         permissions = (
-            ("moderate_post", "Can edit the post of others"),
-            ("remove_post",   "Can remove posts"),
+            ("moderate_post",   "Can edit the post of others"),
+            ("remove_post",     "Can remove posts"),
         )
 
     def __unicode__(self):

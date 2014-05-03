@@ -1,0 +1,64 @@
+{% extends "page.html" %}
+
+{% block title %}Manage Co-Editors{% endblock %}
+{% block canonical_url %}{% url forum.views.manage_coeditors thread.id %}{% endblock %}
+{% block content_body %}
+    <form action="{% url forum.views.manage_coeditors thread.id %}" method="post" id="search-form">
+        {% csrf_token %}
+        <label for="search" role="search">Search</label>
+        <input
+            type="search"
+            x-webkit-speech
+            name="username-search"
+            value=""
+            placeholder="Search for user by name"
+        />
+        <input
+            type="number"
+            x-webkit-speech
+            name="user-id-search"
+            value=""
+            min="1"
+            step="1"
+            placeholder="Search by ID"
+        />
+
+        {% if query %}
+            {% if people %}
+                <p>Matches for usernames with &ldquo;{{ query }}&rdquo;</p>
+            {% else %}
+                <p>No usernames match &ldquo;{{ query }}&rdquo;</p>
+            {% endif %}
+        {% endif %}
+
+        <div id="left-aligned-button-group">
+            {% if people %}
+                <ul class="user-list">
+                    {% for person in people %}
+                        <li><a href="{% url forum.views.manage_coeditors_nonjs thread.id person.id %}" class="button js" role="button" id="{{ person.id }}">Promote</a> {{ person.username }}</li>
+                    {% endfor %}
+                </ul>
+                <hr />
+            {% endif %}
+        <!-- Current co-editors -->
+            {% if coeditors %}
+                <ul class="user-list">
+                    {% for editor in coeditors %}
+                        <li><a href="{% url forum.views.manage_coeditors_nonjs thread.id editor.id %}" class="button js" role="button" id="{{ editor.id }}">Demote</a> {{ editor.username }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>This thread currently has no co-editors.</p>
+            {% endif %}
+        </div>
+
+        <div id="button-group">
+            <input type="submit" value="Search" />
+            <input type="hidden" id="thread-id" value="{{ thread.id }}" />
+        </div>
+    </form>
+{% endblock %}
+{% block js %}
+        {% include "includes/jquery.html" %}
+            <script type="text/javascript" src="{{ STATIC_URL }}js/manage-coeditors-js.js"></script>
+{% endblock %}

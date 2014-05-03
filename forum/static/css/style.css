@@ -379,14 +379,31 @@ input[type="submit"] {
     overflow: hidden;
 }
 
-/****          *****
-***** ACCOUNTS *****
-*****          ****/
-#account-form {
+/****                  *****
+***** ACCOUNTS, MANAGE *****
+*****                  ****/
+#left-aligned-button-group {
+    text-align: left;
+}
+
+.user-list {
+    display: block;
+    width: 90%;
+    margin: 1em auto 0 auto;
+}
+
+.user-list li {
+    list-style: none;
+    margin-top: 1em;
+}
+
+#account-form,
+#search-form {
     text-align: center;
 }
 
-#account-form label {
+#account-form label,
+#search-form label {
     display: none;
 }
 
@@ -396,7 +413,8 @@ input[type="submit"] {
 
 #account-form input[type="email"],
 #account-form input[type="text"],
-#account-form input[type*="password"] {
+#account-form input[type="password"],
+#search-form input[type="search"] {
     padding-left: 35px;  /** Revise */
     min-width: 60%;
     max-width: 95%;
@@ -408,14 +426,20 @@ input[type="submit"] {
     background-position: 5px 50%;
 }
 
-#account-form input[name="email"] {
+#account-form input[type="email"] {
     background: url(/static/glyphish/18-envelope.png) no-repeat left;
     background-size: 1.5em;
     background-position: 5px 50%;
 }
 
-#account-form input[name*="password"] {
+#account-form input[type="password"] {
     background: url(/static/glyphish/54-lock.png) no-repeat left;
+    background-size: 1.25em;
+    background-position: 7px 50%;
+}
+
+#search-form input[type="search"] {
+    background: url(/static/glyphish/06-magnify.png) no-repeat left;
     background-size: 1.25em;
     background-position: 7px 50%;
 }
@@ -499,10 +523,14 @@ legend {
     text-align: center;
 }
 
-.remove {
+#content-body .remove {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+}
+
+#content-body .remove:hover {
+    background-color: rgba(0,0,0, .1);
 }
 
 #content-body .unsubscribe,
@@ -916,9 +944,11 @@ nor with different rules */
 /****                      *****
 ***** CREATE, REPLY & EDIT *****
 *****                      ****/
-input[type=email],
-input[type=password],
-input[type=text],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="text"],
 textarea,
 #title-form,
 #id-form {
@@ -936,9 +966,11 @@ textarea,
     -ms-box-sizing: border-box; /** May not work for IE7- */
 }
 
-input[type=email],
-input[type=password],
-input[type=text],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="text"],
 textarea,
 #title-form,
 #id-form {

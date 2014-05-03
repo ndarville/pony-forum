@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Manage {{ person.username }} as Co-Editor for &ldquo;{{ thread.title_html|safe }}&rdquo;{% endblock %}
+{% block canonical_url %}{% url forum.views.manage_coeditors_nonjs thread.id person.id %}{% endblock %}
+{% block content %}
+    <div id="board" role="main">
+        {% with thread=thread category=thread.category %}
+            {% include "includes/breadcrumbs.html" %}
+        {% endwith %}
+
+        <form action="{% url forum.views.manage_coeditors_nonjs thread.id person.id %}" method="post">
+            {% csrf_token %}
+
+            <div id="button-group">
+                {% if not is_editor %}
+                    <input type="submit" name="action" value="Appoint as co-editor" />
+                {% else %}
+                    <input type="submit" name="action" value="Remove as co-editor" />
+                {% endif %}
+            </div>
+        </form>
+    </div>
+{% endblock %}

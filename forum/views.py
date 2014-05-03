@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib.auth.models     import User
 from django.contrib.auth.views      import login
 from django.contrib.sites.models    import Site
+from django.core.exceptions         import ObjectDoesNotExist
 from django.core.paginator          import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers       import reverse
 from django.db.utils                import DatabaseError
@@ -61,6 +62,9 @@ from registration                   import views as registration_views
 ##  custom_register
 ##  settings
 #
+##  manage_coeditors
+##  manage_coeditors_js
+##  manage_coeditors_nonjs
 ##  site_configuration
 #
 ##  saves_and_bookmarks
@@ -246,6 +250,13 @@ def sanitized_smartdown(string):
                 safe_mode=False),
             "2"),
         tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES)
+
+
+def search(request, query):
+    user = [] if query == "" else User.objects.filter(username__icontains=query)
+    if query and not query:
+        messages.info(request, "No user matched your search query.")
+    return user
 
 
 def home(request):
@@ -843,10 +854,6 @@ def reports(request):
     return render(request, 'reports.html', {'reports': reports})
 
 
-def search(request):
-    return render(request, 'placeholder.html', {})
-
-
 def custom_login(request, **kwargs):
     """Redirects logged-in users, and allows others to log in."""
     if request.user.is_authenticated():  # User logged in
@@ -899,6 +906,108 @@ def settings(request):
         messages.success(request, "New settings saved.")
 
     return render(request, 'settings.html', {})
+
+
+@login_required()
+def manage_coeditors(request, thread_id):
+    """Promote anad demote co-editors for a thread."""
+    people, query = None, None
+    thread = get_object_or_404(Thread, pk=thread_id)
+    coeditors = thread.coeditors.all()
+
+    # Check for reasons to redirect user from page
+    if thread.is_removed:
+        messages.info(request, "This thread no longer exists.")
+        return HttpResponseRedirect(reverse('forum.views.thread',
+            args=(thread.id,)))
+    elif (not request.user == thread.author and
+          not request.user.has_perm('forum.appoint_coeditor')):
+        messages.info(request,
+            "You are not authorized to assign co-editors to this thread.")
+        return HttpResponseRedirect(reverse('forum.views.thread',
+            args=(thread.id,)))
+
+    if request.method == "POST":
+        if request.POST['user-id-search'] != "":  # Search by user ID
+            try:
+                people = [User.objects.get(pk=request.POST['user-id-search'])]
+            except ObjectDoesNotExist:
+                messages.info(request, "No user matching query exists.")
+        elif 'username-search' in request.POST:  # Search by username
+            #TODO Hide users already in other list
+            query = request.POST['username-search']
+            people = search(request, query)
+        elif 'mote' in request.POST:  # (Pro/De)mote
+            coeditor = get_object_or_404(User, pk=request.POST[''])
+            if 'promote' in request.POST:
+                thread.coeditors.add(coeditor)
+            else:  # Demote
+                thread.coeditors.remove(coeditor)
+
+    return render(request, 'manage_coeditors.html', {
+        'people':    people,
+        'thread':    thread,
+        'coeditors': coeditors,
+        'query':     query})
+
+
+def manage_coeditors_js(request):
+    """Promote anad demote co-editors for a thread via JS."""
+    if request.is_ajax() and request.method == "POST":
+        action = request.POST['action']
+        thread = Thread.objects.get(pk=request.POST['object_id'])
+        person = User.objects.get(pk=request.POST['user_id'])
+
+        if action == "Promote" or action == "Demoted":
+            thread.coeditors.add(person)
+            new_action = "Promoted"
+        else:
+            thread.coeditors.remove(person)
+            new_action = "Demoted"
+        thread.save()
+
+    return HttpResponse(new_action)
+
+
+@login_required()
+def manage_coeditors_nonjs(request, thread_id, user_id):
+    """Non-JS view for promoting and demoting thread co-editors."""
+    thread = get_object_or_404(Thread, pk=thread_id)
+    person = get_object_or_404(User, pk=user_id)
+
+    # Check for reasons to redirect user from page
+    if thread.is_removed:
+        messages.info(request, "This thread no longer exists.")
+        return HttpResponseRedirect(reverse('forum.views.thread',
+            args=(thread.id,)))
+    elif (not request.user == thread.author and
+          not request.user.has_perm('forum.appoint_coeditor')):
+        messages.info(request,
+            "You are not authorized to assign co-editors to this thread.")
+        return HttpResponseRedirect(reverse('forum.views.thread',
+            args=(thread.id,)))
+
+    if request.method == "POST":
+        try:
+            if 'Appoint' in request.POST['action']:
+                thread.coeditors.add(person)
+                messages.info(request,
+                    "%s is now a co-editor." % person.username)
+            else:
+                thread.coeditors.remove(person)
+                messages.info(request,
+                    "%s is no longer a co-editor." % person.username)
+            thread.save()
+        except:
+            messages.error(request, post_request_error)
+        else:
+            return HttpResponseRedirect(reverse('forum.views.manage_coeditors',
+            args=(thread.id,)))
+
+    return render(request, 'manage_coeditors_nonjs.html', {
+        'thread': thread,
+        'person': person,
+        'is_editor': person in thread.coeditors.all()})
 
 
 @login_required()
@@ -1010,6 +1119,7 @@ def simple_js(request):
             else:
                 request.user.get_profile().ignores.remove(person)
                 new_action = "Add to shit list"
+
         # Thread JS
         elif "bookmark" in action:
             # Not to be confused with the action related

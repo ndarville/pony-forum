@@ -50,11 +50,14 @@
         {% if user != post.author and perms.forum.moderate_post %} {# Convert to elif #}
             <a class="button" href="{% url forum.views.edit post.id %}">Moderate</a>
         {% endif %}
-    {% comment %}
-        {% if forloop.first and user == post_author %}
-            <a class="button" href="/thread/{{ thread.id }}/co-editor">Manage Co-Editors</a>
+        {% if forloop.first %}
+            {% if user == post_author or perms.forum.appoint_coeditor %}
+            <a class="button" href="{% url forum.views.manage_coeditors thread.id %}">Manage Co-Editors</a>
+            {% endif %}
+            {% if user != post_author and thread in user.coeditors_set.all %}
+                <a class="button" href="{% url forum.views.edit post.id %}">
+            {% endif %}
         {% endif %}
-    {% endcomment %}
     {% endif %}
         </div>
 

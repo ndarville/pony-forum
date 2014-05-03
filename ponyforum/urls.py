@@ -47,6 +47,12 @@ urlpatterns = patterns('forum.views',
     (r'^thread/(?P<thread_id>\d+)/$',            'thread',
                                                     {'author_id': 'Everyone'}),
     (r'^thread/(?P<thread_id>\d+)/author/(?P<author_id>\d+)/$', 'thread'),
+    (r'^thread/(?P<thread_id>\d+)/co-editors/$',
+                                                  'manage_coeditors'),
+    (r'^thread/(?P<thread_id>\d+)/co-editors/manage/(?P<user_id>\d+)/$',
+                                                  'manage_coeditors_nonjs'),
+    (r'^thread/co-editors/js/$',
+                                                  'manage_coeditors_js'),
 
 #   Post
     (r'^post/(?P<post_id>\d+)/edit/$',           'edit'),

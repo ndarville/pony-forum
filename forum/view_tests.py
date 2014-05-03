@@ -408,6 +408,74 @@ class NonJsTests(TestCase):
         self.assertEqual(response.status_code, 200)
 
 
+class CoeditorTests(TestCase):
+    """Test operations related to the manage_coeditors views."""
+    fixtures = ['forum_example.json']
+
+    def setUp(self):
+        self.client = logIn()
+
+    def test_get_request(self):
+        """Tests the behaviour of the view when people visit it."""
+        response = self.client.get(
+            reverse('forum.views.manage_coeditors',
+                args=(test_thread_id,)))
+        self.assertEqual(response.status_code, 200)
+
+    def test_username_search(self):
+        """Tests the search for users based on a username query."""
+        response = self.client.post(
+            reverse('forum.views.manage_coeditors',
+                args=(test_thread_id,)),
+            {'username-search': 'abc',
+             'user-id-search': ''},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_id_search(self):
+        """Tests the search for users based on a user ID query."""
+        response = self.client.post(
+            reverse('forum.views.manage_coeditors',
+                args=(test_thread_id,)),
+            {'user-id-search': test_user_id,
+             'username-search': ''},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
+
+
+class CoeditorTestsNonJs(TestCase):
+    """Test operations related to the manage_coeditors_nonjs views."""
+    fixtures = ['forum_example.json']
+
+    def setUp(self):
+        self.client = logIn()
+
+    def test_get_request(self):
+        """Tests the behaviour of the view when people visit it."""
+        response = self.client.get(
+            reverse('forum.views.manage_coeditors_nonjs',
+                args=(test_thread_id, test_user_id,)))
+        self.assertEqual(response.status_code, 200)
+
+    def test_promote_coeditor(self):
+        """Tests the promotion of a co-editor."""
+        response = self.client.post(
+            reverse('forum.views.manage_coeditors_nonjs',
+                args=(test_thread_id, test_user_id)),
+            {'action': 'Appoint as co-editor'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
+
+    def test_demote_coeditor(self):
+        """Tests the demotion of a co-editor."""
+        response = self.client.post(
+            reverse('forum.views.manage_coeditors_nonjs',
+                args=(test_thread_id, test_user_id)),
+            {'action': 'Remove as co-editor'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
+
+
 class SettingsConfigurationTests(TestCase):
     """Test operations related to the settings view."""
     fixtures = ['admin_user.json']

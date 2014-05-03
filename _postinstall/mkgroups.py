@@ -24,6 +24,7 @@ if created:
         get_perm('move_thread'),
         get_perm('lock_thread'),
     # Post
+        get_perm('appoint_coeditor'),
         get_perm('remove_post'),
         get_perm('moderate_post'),
     # User

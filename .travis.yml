@@ -15,6 +15,7 @@ env:
   - PIP_USE_MIRRORS=true
 
 install:
+  - pip install elementtree --allow-external elementtree --allow-unverified elementtree
   - pip install -r requirements.txt
 # - pip install django==$DJANGO --quiet
   - pip install coveralls radon
