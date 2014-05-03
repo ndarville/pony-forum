@@ -14,8 +14,8 @@ env:
   - PYTHONPATH="/home/travis/build/ndarville/pony-forum"
   - PIP_USE_MIRRORS=true
 # Last two for OS X, courtesy of stackoverflow.com/a/22697917/419005
-  - CFLAGS=-Qunused-arguments
-  - CPPFLAGS=-Qunused-arguments
+# - CFLAGS=-Qunused-arguments
+# - CPPFLAGS=-Qunused-arguments
 
 install:
   - pip install elementtree --allow-external elementtree --allow-unverified elementtree
