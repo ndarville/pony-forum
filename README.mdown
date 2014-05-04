@@ -24,7 +24,7 @@ Pony Forum is a forum (also known as a bulletin board) written in Python for the
 ----------
 Pony Forum features such niceties as:
 
-* [Installed][_installation] in few easy steps on [dotCloud][dotcloud]
+* [Installed][installation] in few easy steps on [dotCloud][dotcloud]
 * Written in **Python** and uses the popular **Django** framework
 * **Mobile CSS** that adapts the layout to your iPhone
 * A redesigned, mobile-friendly [admin interface][new-admin]
