@@ -170,8 +170,6 @@ def sanitized_smartdown(string):
         `markdown()` takes a string and an optional list argument containing
         all the extensions to be used with it.
 
-        `smartypants()` takes a string to be formatted.
-
     NB (SmartyPants and Quotes):
         For non-English-language boards, the SmartyPants quotes may
         be different from how they are used in your country (e.g. France).
@@ -237,18 +235,17 @@ def sanitized_smartdown(string):
     MD_EXTENSIONS = [
         'attr_list',
         'fenced_code',
+        'smarty',
         'tables'
     ]
 
     return bleach.clean(
-        smartypants(
-            markdown(
-                text=string,
-                extensions=MD_EXTENSIONS,
-                output_format='html5',
-                #lazy_ol=True,
-                safe_mode=False),
-            "2"),
+        markdown(
+            text=string,
+            extensions=MD_EXTENSIONS,
+            output_format='html5',
+            #lazy_ol=True,
+            safe_mode=False),
         tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES)
 
 

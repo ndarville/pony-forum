@@ -56,6 +56,41 @@ ALLOWED_ATTRIBUTES = {
 }
 
 
+class SmartyPantsTests(TestCase):
+    """Tests the output of quotes and dashes."""
+
+    def setUp(self):
+        self.single_quote_markdown = '\'Foo\''
+        self.single_quote_html = u'<p>\u2018Foo\u2019</p>'
+        self.double_quote_markdown = '\"Foo\"'
+        self.double_quote_html = u'<p>\u201cFoo\u201d</p>'
+        self.hellip_markdown = '...'
+        self.hellip_html = u'<p>\u2026</p>'
+        self.en_dash_markdown = 'Foo--bar'
+        self.en_dash_html = u'<p>Foo\u2013bar</p>'
+        self.em_dash_markdown = 'Foo---bar'
+        self.em_dash_html = u'<p>Foo\u2014bar</p>'
+
+    def test_single_quote(self):
+        """Tests the HTML input of an single quote."""
+        self.assertEquals(sd(self.single_quote_markdown), self.single_quote_html)
+
+    def test_double_quote(self):
+        """Tests the HTML input of an double quote."""
+        self.assertEquals(sd(self.double_quote_markdown), self.double_quote_html)
+
+    def test_hellip(self):
+        """Tests the HTML input of an horizontal ellipsis."""
+        self.assertEquals(sd(self.hellip_markdown), self.hellip_html)
+
+    def test_en_dash(self):
+        """Tests the HTML input of an en dash."""
+        self.assertEquals(sd(self.en_dash_markdown), self.en_dash_html)
+
+    def test_en_dash(self):
+        """Tests the HTML input of an em dash."""
+        self.assertEquals(sd(self.em_dash_markdown), self.em_dash_html)
+
 class AnchorTests(TestCase):
     """Tests the output of an anchor element."""
 
