@@ -1,5 +1,5 @@
 from markdown                       import markdown
-from smartypants                    import smartypants as smartypants
+from smartypants                    import smartypants
 import bleach
 import datetime
 import json
