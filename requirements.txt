@@ -7,7 +7,7 @@ docutils==0.11
 
 # Title and post formatting
 smartypants==1.8.3
-markdown==2.3.1
+markdown==2.4
 bleach==1.2.2
 
 # User models and registration
