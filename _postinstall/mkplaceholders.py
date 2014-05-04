@@ -12,6 +12,7 @@ if 'DOTCLOUD_ENVIRONMENT' in os.environ:
         env = json.load(f)
 
 from markdown import markdown as md
+from smartypants import smartypants as sp
 
 from django.contrib.auth.models import User
 
