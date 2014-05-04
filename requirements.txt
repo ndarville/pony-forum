@@ -6,7 +6,6 @@ Django==1.4.9
 docutils==0.10
 
 # Title and post formatting
-elementtree==1.2.6-20050316
 smartypants==1.6.0.3
 markdown==2.3.1
 bleach==1.2.2
