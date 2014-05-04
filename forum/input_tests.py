@@ -99,7 +99,7 @@ class AnchorTests(TestCase):
         self.markdown = '[bar](http://foo.com)'
         self.title_markdown = '[bar](http://foo.com "baz")'
         self.title_html =\
-            '<p><a href="http://foo.com" title="baz">bar</a></p>'
+            '<p><a title="baz" href="http://foo.com">bar</a></p>'
 
     def test_html(self):
         """Tests the HTML input of an anchor element."""
@@ -309,11 +309,11 @@ class ImageTests(TestCase):
     """Tests the output of an image element."""
 
     def setUp(self):
-        self.output = '<p><img alt="bar" src="http://foo.com"></p>'
+        self.output = '<p><img src="http://foo.com" alt="bar"></p>'
         self.markdown = '![bar](http://foo.com)'
         self.title_markdown = '![bar](http://foo.com "baz")'
         self.title_html =\
-            '<p><img alt="bar" src="http://foo.com" title="baz"></p>'
+            '<p><img src="http://foo.com" alt="bar" title="baz"></p>'
 
     def test_html(self):
         """Tests the HTML input of an image element."""
