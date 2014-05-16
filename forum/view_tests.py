@@ -62,6 +62,9 @@ class CategoryTests(TestCase):
     """Tests operations with categories."""
     fixtures = ['admin_user.json', 'forum_example.json']
 
+    def setUp(self):
+        self.client = logIn()
+
     def test_get(self):
         """Tests the display of a category."""
         response = self.client.get(
@@ -70,7 +73,6 @@ class CategoryTests(TestCase):
 
     def test_add(self):
         """Tests the addition of a category."""
-        self.client = logIn()
         response = self.client.post(
             reverse('forum.views.add'), {'title': test_text},
             follow=True)
@@ -227,11 +229,14 @@ class HomeTests(TestCase):
     """Test displays of the home view."""
     fixtures = ['admin_user.json', 'forum_example.json']
 
-    def test_home_admin_user(self):
-        """Tests the behaviour of the view when a logged-in admin visits."""
-        self.client = logIn(username='admin', password='password')
-        response = self.client.get(reverse('forum.views.home'))
-        self.assertEqual(response.status_code, 200)
+    def setUp(self):
+        self.client = logIn()
+
+    # def test_home_admin_user(self):
+    #     """Tests the behaviour of the view when a logged-in admin visits."""
+    #     self.client = logIn(username='admin', password='password')
+    #     response = self.client.get(reverse('forum.views.home'))
+    #     self.assertEqual(response.status_code, 200)
 
     def test_home_anonymous_user(self):
         """Tests the behaviour of the view when a logged-in admin visits."""
@@ -502,6 +507,9 @@ class SettingsConfigurationTests(TestCase):
 class AccountTests(TestCase):
     """Tests operations related to the accounts back-end."""
     fixtures = ['admin_user.json']
+
+    def setUp(self):
+        self.client = logIn()
 
     @override_settings(
         EMAIL_BACKEND='django.core.mail.backends.dummy.EmailBackend')
