@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}{{ post.thread.title_html|safe }}: Edit Post{% endblock %}
-{% block canonical_url %}{% url forum.views.edit post.id %}{% endblock %}
+{% block canonical_url %}{% url "forum.views.edit" post.id %}{% endblock %}
 {% block content %}
     <div id="board" role="main">
         {% with post=post thread=post.thread category=post.thread.category %}
@@ -10,7 +10,7 @@
 
         {% include "includes/preview.html" %}
 
-        <form action="{% url forum.views.edit post.id %}" method="post" id="reply" name="reply-form">
+        <form action="{% url "forum.views.edit" post.id %}" method="post" id="reply" name="reply-form">
             {% csrf_token %}
 
             <textarea

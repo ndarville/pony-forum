@@ -3,7 +3,7 @@
 {% load humanize %}
 
 {% block title %}User Profile for {{ person.username }}{% endblock %}
-{% block canonical_url %}{% url forum.views.user person.id %}/{% endblock %}
+{% block canonical_url %}{% url "forum.views.user" person.id %}/{% endblock %}
 {% block threadbar %}
             {% include "includes/threadbar.html" %}
 {% endblock %}
@@ -13,14 +13,14 @@
 {% if person != user %}
     {#  <p><a href="#">Send PM</a></p> #}
     {% if person in user.get_profile.follows.all %}
-        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'follow' person.id %}" role="buton">Unfollow</a></p>
+        <p><a class="button js" id="{{ person.id }}" href="{% url "forum.views.nonjs" 'follow' person.id %}" role="buton">Unfollow</a></p>
     {% else %}
-        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'follow' person.id %}" role="buton">Follow</a></p>
+        <p><a class="button js" id="{{ person.id }}" href="{% url "forum.views.nonjs" 'follow' person.id %}" role="buton">Follow</a></p>
     {% endif %}
     {% if person in user.get_profile.ignores.all %}
-        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'ignore' person.id %}" role="buton">Remove from shit list</a></p>
+        <p><a class="button js" id="{{ person.id }}" href="{% url "forum.views.nonjs" 'ignore' person.id %}" role="buton">Remove from shit list</a></p>
     {% else %}
-        <p><a class="button js" id="{{ person.id }}" href="{% url forum.views.nonjs 'ignore' person.id %}" role="buton">Add to shit list</a></p>
+        <p><a class="button js" id="{{ person.id }}" href="{% url "forum.views.nonjs" 'ignore' person.id %}" role="buton">Add to shit list</a></p>
     {% endif %}
 {% comment %}
     {% if forum.perms.ban_user %}
@@ -32,7 +32,7 @@
 {% endcomment %}
 {% else %}
 {% comment %}
-    <p><a href="{% url forum.views.settings %}">Manage your settings</a></p>
+    <p><a href="{% url "forum.views.settings" %}">Manage your settings</a></p>
 {% endcomment %}
 {% endif %}
     </div>
@@ -42,8 +42,8 @@
     <div id="profile-information">
         <p><span class="info">Name:</span> {{ person.username }}</p>
         <p><span class="info">Joined:</span> {{ person.date_joined|timesince }} ago</p>
-        <p><span class="info">Post{{ post_count|pluralize }}:</span> <a title="View list of replies by {{ person.username }}" href="{% url user_posts person.id %}">{{ post_count|intcomma }}</a></p>
-        <p><span class="info">Thread{{ thread_count|pluralize }}:</span> <a title="View list of threads by {{ person.username }}" href="{% url user_threads person.id %}">{{ thread_count|intcomma }}</a></p>
+        <p><span class="info">Post{{ post_count|pluralize }}:</span> <a title="View list of replies by {{ person.username }}" href="{% url "user_posts" person.id %}">{{ post_count|intcomma }}</a></p>
+        <p><span class="info">Thread{{ thread_count|pluralize }}:</span> <a title="View list of threads by {{ person.username }}" href="{% url "user_threads" person.id %}">{{ thread_count|intcomma }}</a></p>
     </div>
 
     <div id="latest-posts">
@@ -51,7 +51,7 @@
         <strong>Ten latest posts:</strong>
         <ul>
         {% for post in posts %}
-            <li><a href="{% url forum.views.thread post.thread_id %}#{{ post.id }}">{{ post.thread.title_html|safe }}</a></li>
+            <li><a href="{% url "forum.views.thread" post.thread_id %}#{{ post.id }}">{{ post.thread.title_html|safe }}</a></li>
         {% endfor %}
         </ul>
     {% else %}

@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block title %}Register{% endblock %}
-{% block canonical_url %}{% url forum.views.register %}{% endblock %}
+{% block canonical_url %}{% url "forum.views.register" %}{% endblock %}
 {% block content_body %}
-                <form action="{% url forum.views.register %}" method="post">
+                <form action="{% url "forum.views.register" %}" method="post">
                     {% csrf_token %}
                     <label for="username">Username: </label><input type="text" name="username" id="username" placeholder="Enter a unique username" autofocus required><br />
                     <label for="email">E-mail: </label><input type="email" name="email" id="email" required><br />

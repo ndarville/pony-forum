@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}{{ thread.title_html|safe }}: Post by {{ post.author }}{% endblock %}
-{% block canonical_url %}{% url forum.views.post post.id %}{% endblock %}
+{% block canonical_url %}{% url "forum.views.post" post.id %}{% endblock %}
 {% block content %}
     <div id="board" role="main">
         {% with post=post thread=thread category=thread.category %}

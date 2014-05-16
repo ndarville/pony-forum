@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}{{ thread.title_html|safe }}: Moderate Thread{% endblock %}
-{% block canonical_url %}{% url forum.views.moderate_thread thread.id %}{% endblock %}
+{% block canonical_url %}{% url "forum.views.moderate_thread" thread.id %}{% endblock %}
 {% block content %}
     <div id="board" role="main">
     {% with thread=thread category=thread.category %}
@@ -12,7 +12,7 @@
             Your chosen title was too long. Keep it under characters.
         {% endif %}
 
-        <form action="{% url forum.views.moderate_thread thread.id %}" method="post" id="reply" name="reply-form">
+        <form action="{% url "forum.views.moderate_thread" thread.id %}" method="post" id="reply" name="reply-form">
             {% csrf_token %}
 
             <input type="text" x-webkit-speech name="title" id="title-form" value="{{ title }}" placeholder="Use a descriptive title here." required />

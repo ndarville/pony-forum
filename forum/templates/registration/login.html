@@ -1,7 +1,7 @@
 {% extends "page.html" %}
 
 {% block title %}Log In{% endblock %}
-{% block canonical_url %}{% url login %}{% endblock %}
+{% block canonical_url %}{% url "login" %}{% endblock %}
 {% block content_body %}
     {% if form.errors %}
         {% for field in form %}
@@ -20,7 +20,7 @@
         </ul>
     {% endif %}
 
-    <form action="{% url auth_login %}" method="post" id="account-form">
+    <form action="{% url "auth_login" %}" method="post" id="account-form">
         {% csrf_token %}
         <label for="username">Username</label>
         <input
@@ -49,7 +49,7 @@
                 id="remember-password"
             />
 
-            <p><a href="{% url auth_password_reset %}">I forgot my password</a> :(</p>
+            <p><a href="{% url "auth_password_reset" %}">I forgot my password</a> :(</p>
         </div>
 
         <div id="button-group">

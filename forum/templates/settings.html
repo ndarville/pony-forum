@@ -1,10 +1,10 @@
 {% extends "page.html" %}
 
 {% block title %}Manage Settings{% endblock %}
-{% block canonical_url %}{% url forum.views.settings %}{% endblock %}
+{% block canonical_url %}{% url "forum.views.settings" %}{% endblock %}
 {% block content_body %}
     {% with profile=user.get_profile %}
-    <form action="{% url forum.views.settings %}" method="post">
+    <form action="{% url "forum.views.settings" %}" method="post">
         {% csrf_token %}
         <p>
             <label for="has_dyslexia">I have dyslexia</label>
@@ -24,7 +24,7 @@
         <div id="button-group">
             <input type="submit" name="submit" id="submit" value="Save Settings" />
 
-            <a class="button" href="{% url auth_password_change %}">Change password</a>
+            <a class="button" href="{% url "auth_password_change" %}">Change password</a>
         </div>
     </form>
     {% endwith %}

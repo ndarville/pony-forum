@@ -3,7 +3,7 @@
 {% load humanize %}
 
 {% block title %}Threads in &ldquo;{{ category.title_html|safe }}&rdquo;{% endblock %}
-{% block canonical_url %}{% url forum.views.category category.id %}{% endblock %}
+{% block canonical_url %}{% url "forum.views.category" category.id %}{% endblock %}
 {% block rel_attributes %}
     {% if category_threads.has_previous %}
         <link rel="prev" href="?page={{ category_threads.previous_page_number }}" />
@@ -25,7 +25,7 @@
             <thead>
             <tbody>
             {% for sticky in stickies %}
-                {% url forum.views.thread sticky.id as sticky_url %}
+                {% url "forum.views.thread" sticky.id as sticky_url %}
                 <tr class="stickied">
                     <td><a href="{{ sticky_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.title_html|safe }}{% if thread.is_locked %} <em>(Locked)</em>{% endif %}</a></td>
                     <td><a href="{{ sticky_url }}" title="View the posts in the thread &ldquo;{{ sticky.title_html|safe }}&rdquo;">{{ sticky.post_count|intcomma }}</a></td>
@@ -33,7 +33,7 @@
                 </tr>
             {% endfor %}
             {% for thread in category_threads.object_list %}
-                {% url forum.views.thread thread.id as thread_url %}
+                {% url "forum.views.thread" thread.id as thread_url %}
                 <tr
                 {% if thread.is_removed %}
                     class="removed"
@@ -60,7 +60,7 @@
 
     {% if perms.forum.create_category %}
         <div id="button-group">
-            <a class="button" href="{% url forum.views.create category.id %}">Create new thread</a>
+            <a class="button" href="{% url "forum.views.create" category.id %}">Create new thread</a>
         </div>
     {% endif %}
     </div>

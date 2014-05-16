@@ -2,7 +2,7 @@
 {% block title %}Authenticate Log-In{% endblock %}
 
 {% block content_body %}
-    <form action="{% url login_step_two %}" method="post">
+    <form action="{% url "login_step_two" %}" method="post">
         {% csrf_token %}
         <fieldset>
             <legend>Authentication Code</legend>

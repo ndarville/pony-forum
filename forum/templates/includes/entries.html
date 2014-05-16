@@ -10,13 +10,13 @@
     <div class="user">
     {% endif %}
         <span class="username">
-            <a href="{% url forum.views.user post_author.id %}">{{ post_author.username }}</a>
+            <a href="{% url "forum.views.user" post_author.id %}">{{ post_author.username }}</a>
         </span>
     {% comment %}
         <p class="user-title"></p>
     {% endcomment %}
     {% comment %}
-        <a class="avatar" href="{% url forum.views.user post_author.id %}">
+        <a class="avatar" href="{% url "forum.views.user" post_author.id %}">
             <img src="#" />
         </a>
     {% endcomment %}
@@ -31,38 +31,38 @@
         <div class="post-top">
             <span class="postdate">{{ post.relative_date }}</span>
         {% comment %}
-            <a class="anchor" href="{% url forum.views.thread thread.id %}?page={{ posts.number }}#{{ post.id }}">#</a>
+            <a class="anchor" href="{% url "forum.views.thread" thread.id %}?page={{ posts.number }}#{{ post.id }}">#</a>
         {% endcomment %}
-            <a class="permalink" title="View this post by itself at its own link" href="{% url forum.views.post post.id %}">&infin;</a>
-            <a class="postsinthread" title="View all posts by the {{ post_author.username }} in this thread" href="{% url forum.views.thread thread_id=thread.id author_id=post_author.id %}">&Phi;</a>
+            <a class="permalink" title="View this post by itself at its own link" href="{% url "forum.views.post" post.id %}">&infin;</a>
+            <a class="postsinthread" title="View all posts by the {{ post_author.username }} in this thread" href="{% url "forum.views.thread" thread_id=thread.id author_id=post_author.id %}">&Phi;</a>
         </div>
         <div class="body">{{ post.content_html|safe }}</div>
     </div>
     <div class="post-bottom">
         <div class="right-buttons">
         {% if not thread.is_locked %}
-            <a class="button" href="{% url forum.views.reply thread.id %}">Reply</a>
+            <a class="button" href="{% url "forum.views.reply" thread.id %}">Reply</a>
         {% endif %}
     {% if user.is_authenticated %}
         {% if user == post_author %}
-            <a class="button" href="{% url forum.views.edit post.id %}">Edit</a>
+            <a class="button" href="{% url "forum.views.edit" post.id %}">Edit</a>
         {% endif %}
         {% if user != post.author and perms.forum.moderate_post %} {# Convert to elif #}
-            <a class="button" href="{% url forum.views.edit post.id %}">Moderate</a>
+            <a class="button" href="{% url "forum.views.edit" post.id %}">Moderate</a>
         {% endif %}
         {% if forloop.first %}
             {% if user == post_author or perms.forum.appoint_coeditor %}
-            <a class="button" href="{% url forum.views.manage_coeditors thread.id %}">Manage Co-Editors</a>
+            <a class="button" href="{% url "forum.views.manage_coeditors" thread.id %}">Manage Co-Editors</a>
             {% endif %}
             {% if user != post_author and thread in user.coeditors_set.all %}
-                <a class="button" href="{% url forum.views.edit post.id %}">
+                <a class="button" href="{% url "forum.views.edit" post.id %}">
             {% endif %}
         {% endif %}
     {% endif %}
         </div>
 
         <div class="left-buttons">
-            <a class="button js" id="{{ post.id }}" href="{% url forum.views.nonjs 'save' post.id %}" role="button">{% if post in user.saves.all %}Unsave{% else %}Save{% endif %}</a> {# Expensive #}
+            <a class="button js" id="{{ post.id }}" href="{% url "forum.views.nonjs" 'save' post.id %}" role="button">{% if post in user.saves.all %}Unsave{% else %}Save{% endif %}</a> {# Expensive #}
     {% comment %}
         {% if user != post_author %}
             <a class="button js" id="{{ post.id }}" href="forum.views.nonjs 'thank' post.id" role="button">{% if post in user.thanks.all %}Unthank{% else %}Thank{% endif %}</a> {# Expensive #}
@@ -77,21 +77,21 @@
     {% endcomment %}
     {% if user != post_author %}
         {% if not thread.is_locked %}
-            <a class="button" id="{{ post.id }}" href="{% url report_post post.id %}">Report</a>
+            <a class="button" id="{{ post.id }}" href="{% url "report_post" post.id %}">Report</a>
         {% endif %}
     {% endif %}
         {% if perms.forum.remove_post %}
-            <a class="button" href="{% url remove_post post.id %}">Remove</a>
+            <a class="button" href="{% url "remove_post" post.id %}">Remove</a>
         {% endif %}
         </div>
 
 {% comment %}
 {# Three cases: 1) The first person 2) Everyone between 3) The last person #}
     {% if post_thanks %} {# Expensive #}
-        <div class="thankers">Thanked by: <i>{% for person in post_thanks %}{% if forloop.first and not forloop.last %}<a href="{% url forums.views.user person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}</a>{% endif %}{% if not forloop.first and not forloop.last %}<a href="{% url forums.views.user person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}, </a>{% endif %}{% if forloop.last and not forloop.first %}and <a href="{% url forums.views.user person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}</a>{% endif %}{#<a href="{% url forums.views.user person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}</a>#}{% endfor %}.</i></div>
+        <div class="thankers">Thanked by: <i>{% for person in post_thanks %}{% if forloop.first and not forloop.last %}<a href="{% url "forums.views.user" person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}</a>{% endif %}{% if not forloop.first and not forloop.last %}<a href="{% url "forums.views.user" person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}, </a>{% endif %}{% if forloop.last and not forloop.first %}and <a href="{% url "forums.views.user" person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}</a>{% endif %}{#<a href="{% url "forums.views.user" person.id %}" title="See the people who have thanked the author for this post">{{ person.username }}</a>#}{% endfor %}.</i></div>
     {% endif %}
     {% if post_agrees %} {# Expensive #}
-        <div class="agreeers">These people agree: <i>{% for person in post_agrees %}{% if forloop.first and not forloop.last %}<a href="{% url forums.views.user person.id %}" title="See the people who agreed with this post">{{ person.username }}</a>{% endif %}{% if not forloop.first and not forloop.last %}<a href="{% url forums.views.user person.id %}" title="See the people who agreed with this post">{{ person.username }}, </a>{% endif %}{% if forloop.last and not forloop.first %}and <a href="{% url forums.views.user person.id %}" title="See the people who agreed with this post">{{ person.username }}</a>{% endif %}{#<a href="{% url forums.views.user person.id %}" title="See the people who agreed with this post">{{ person.username }}</a>#}{% endfor %}.</i></div>
+        <div class="agreeers">These people agree: <i>{% for person in post_agrees %}{% if forloop.first and not forloop.last %}<a href="{% url "forums.views.user" person.id %}" title="See the people who agreed with this post">{{ person.username }}</a>{% endif %}{% if not forloop.first and not forloop.last %}<a href="{% url "forums.views.user" person.id %}" title="See the people who agreed with this post">{{ person.username }}, </a>{% endif %}{% if forloop.last and not forloop.first %}and <a href="{% url "forums.views.user" person.id %}" title="See the people who agreed with this post">{{ person.username }}</a>{% endif %}{#<a href="{% url "forums.views.user" person.id %}" title="See the people who agreed with this post">{{ person.username }}</a>#}{% endfor %}.</i></div>
     {% endif %}
 {% endcomment %}
     </div>

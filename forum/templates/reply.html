@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}{{ thread.title_html|safe }}: Reply{% endblock %}
-{% block canonical_url %}{% url forum.views.reply thread.id %}{% endblock %}
+{% block canonical_url %}{% url "forum.views.reply" thread.id %}{% endblock %}
 {% block content %}
     <div id="board" role="main">
         {% with thread=thread category=thread.category %}
@@ -10,7 +10,7 @@
 
         {% include "includes/preview.html" %}
 
-        <form action="{% url forum.views.reply thread.id %}" method="post" id="reply" name="reply-form">
+        <form action="{% url "forum.views.reply" thread.id %}" method="post" id="reply" name="reply-form">
             {% csrf_token %}
 
             <textarea

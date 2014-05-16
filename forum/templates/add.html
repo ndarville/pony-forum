@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block title %}Category creation station{% endblock %}
-{% block canonical_url %}{% url forum.views.add %}{% endblock %}
+{% block canonical_url %}{% url "forum.views.add" %}{% endblock %}
 {% block content %}
             <div id="board" role="main">
-                <form action="{% url forum.views.add %}" method="post" id="reply" name="reply-form">
+                <form action="{% url "forum.views.add" %}" method="post" id="reply" name="reply-form">
                     {% csrf_token %}
 
                     <input type="text" x-webkit-speech name="title" id="title-form" value="{% if title %}{{ title }}{% endif %}" placeholder="Use a descriptive title here." autofocus required />

@@ -1,7 +1,7 @@
 {% extends "page.html" %}
 
 {% block title %}Site Configuration{% endblock %}
-{% block canonical_url %}{% url site_configuration %}{% endblock %}
+{% block canonical_url %}{% url "site_configuration" %}{% endblock %}
 {% block content_body %}
     <table>
         <caption>
@@ -141,7 +141,7 @@
     <hr />
 
     {% if user.is_superuser %}
-        <form action="{% url forum.views.site_configuration %}" method="post">
+        <form action="{% url "forum.views.site_configuration" %}" method="post">
             {% csrf_token %}
             <p>
                 <label for="site_name">Site name:</label>

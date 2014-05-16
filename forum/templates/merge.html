@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}{{ thread.title_html|safe }}: Merge Threads{% endblock %}
-{% block canonical_url %}{% url forum.views.merge_thread thread.id %}{% endblock %}
+{% block canonical_url %}{% url "forum.views.merge_thread" thread.id %}{% endblock %}
 {% block content %}
     <div id="board" role="main">
     {% with thread=thread category=thread.category %}
@@ -13,7 +13,7 @@
     {% endif %}
 
     {% if not other_thread and not has_long_title %}
-        <form action="{% url forum.views.merge_thread thread.id %}" method="post" id="reply" name="reply-form">
+        <form action="{% url "forum.views.merge_thread" thread.id %}" method="post" id="reply" name="reply-form">
             {% csrf_token %}
 
             <input type="number" name="other-thread-id" id="id-form" value="{% if other_thread %}{{ other_thread.id }}{% endif %}" min="1" step="1" placeholder="Enter the ID of the other thread." required />
@@ -25,7 +25,7 @@
             </div>
         </form>
     {% else %}
-        <form action="{% url forum.views.merge_thread thread.id %}" method="post" id="reply" name="reply-form">
+        <form action="{% url "forum.views.merge_thread" thread.id %}" method="post" id="reply" name="reply-form">
             {% csrf_token %}
 
             <p>Are you sure, you want to merge these threads:</p>

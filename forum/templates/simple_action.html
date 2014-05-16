@@ -3,8 +3,8 @@
 {% block title %}{{ thread.title_html|safe }}: {{ action|capfirst }} {{ type|capfirst }}{% endblock %}
 {% block canonical_url %}
     {% if action == "remove" %}
-        {% if object_type == "thread" %}{% url remove_thread obj.id %}
-        {% else %}{% url remove_post obj.id %}
+        {% if object_type == "thread" %}{% url "remove_thread" obj.id %}
+        {% else %}{% url "remove_post" obj.id %}
         {% endif %}
     {% else %}
         {{ canonical_url }}
@@ -20,11 +20,11 @@
 
         <form action="
         {% if action == "remove" %}
-            {% if object_type == "thread" %}{% url remove_thread obj.id %}
-            {% else %}{% url remove_post obj.id %}
+            {% if object_type == "thread" %}{% url "remove_thread" obj.id %}
+            {% else %}{% url "remove_post" obj.id %}
             {% endif %}
         {% else %}
-            {% url forum.views.nonjs action object_id %}
+            {% url "forum.views.nonjs" action object_id %}
         {% endif %}
         " method="post">
             {% csrf_token %}
