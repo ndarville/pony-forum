@@ -1,5 +1,5 @@
 ### Pony-Forum
-Django==1.4.12
+Django==1.5.8
 
 # Admin
 ##django-admin-bootstrapped
