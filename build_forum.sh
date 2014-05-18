@@ -15,4 +15,4 @@ python manage.py migrate forum
 python _postinstall/mkadmin.py
 python _postinstall/definesite.py
 python _postinstall/mkplaceholders.py
-python manage.py test forum
+python -Wall manage.py test forum
