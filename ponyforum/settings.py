@@ -178,7 +178,6 @@ INSTALLED_APPS = (
 #   'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'django.contrib.markup',
     'django.contrib.humanize',
     'registration',
 #   'cache_panel',
